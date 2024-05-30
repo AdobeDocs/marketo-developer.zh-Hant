@@ -1,0 +1,157 @@
+---
+user-guide-title: '"[!DNL Marketo] 開發人員指南」'
+user-guide-description: 「本指南提供使用的指示 [!DNL Marketo] API。」
+breadcrumb-title: '"[!DNL Marketo] 開發人員指南」'
+role: Admin
+feature-set: "Marketo Engage"
+hide: true
+source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+workflow-type: tm+mt
+source-wordcount: '249'
+ht-degree: 8%
+
+---
+
+
+# [!DNL Marketo] 開發人員 {#marketo}
+
+- [首頁](home.md)
+- [快速入門](getting-started.md)
+- Javascript API {#javascriptapi}
+   - [設定](javascript-api/configuration.md)
+   - [自訂資料事件](javascript-api/custom-data-events.md)
+   - [範例](javascript-api/examples.md)
+   - [Forms API參考](javascript-api/forms-api-reference.md)
+   - [取得訪客資料](javascript-api/get-visitor-data.md)
+   - [Javascript API](javascript-api/javascript-api.md)
+   - [銷售機會追蹤](javascript-api/lead-tracking.md)
+   - [模式比對](javascript-api/pattern-match.md)
+   - [預測性內容](javascript-api/predictive-content.md)
+   - [重新導向](javascript-api/redirect.md)
+   - [多媒體Recommendations](javascript-api/rich-media-recommendation.md)
+   - [Social](javascript-api/social.md)
+   - [觸發器](javascript-api/triggers.md)
+   - [網頁個人化](javascript-api/web-personalization.md)
+- 行動 {#mobile}
+   - [安裝 [!DNL Adobe Launch] 副檔名](mobile/adobe-launch-extension-installation.md)
+   - [[!DNL Adobe Launch] 副檔名](mobile/adobe-launch-extension.md)
+   - [進階安全性模式](mobile/advanced-security-access-mode.md)
+   - [自訂動作](mobile/custom-actions.md)
+   - [深層連結](mobile/enabling-deep-links-in-your-app.md)
+   - [應用程式內傳訊](mobile/in-app-messages.md)
+   - [安裝](mobile/installation.md)
+   - [離子型](mobile/ionic.md)
+   - [行動](mobile/mobile.md)
+   - [Phonegap](mobile/phonegap.md)
+   - [推播通知](mobile/push-notifications.md)
+   - [React原生](mobile/react-native.md)
+   - [使用者設定檔](mobile/user-profiles.md)
+- REST{#rest}
+   - [REST API](rest-api/rest-api.md)
+   - 資產 {#assets}
+      - [資產](rest-api/assets.md)
+      - [動態內容](rest-api/dynamic-content.md)
+      - [電子郵件](rest-api/emails.md)
+      - [電子郵件範本](rest-api/email-templates.md)
+      - [檔案](rest-api/files.md)
+      - [資料夾](rest-api/folders.md)
+      - [Forms](rest-api/forms.md)
+      - [登陸頁面](rest-api/landing-pages.md)
+      - [登陸頁面範本](rest-api/landing-page-templates.md)
+      - [登陸頁面重新導向規則](rest-api/landing-page-redirect-rules.md)
+      - [標準欄位清單](rest-api/list-of-standard-fields.md)
+      - [計畫](rest-api/programs.md)
+      - [Smart Campaign](rest-api/smart-campaigns.md)
+      - [智慧清單](rest-api/smart-lists.md)
+      - [代碼片段](rest-api/snippets.md)
+      - [靜態清單](rest-api/static-lists.md)
+      - [Token](rest-api/tokens.md)
+      - [異動電子郵件](rest-api/transactional-email.md)
+   - [驗證](rest-api/authentication.md)
+   - [驗證簽章](rest-api/authentication-signature.md)
+   - [基礎URL](rest-api/base-url.md)
+   - [最佳實務](rest-api/marketo-integration-best-practices.md)
+   - 大量擷取 {#bulk-extract}
+      - [大量活動](rest-api/bulk-activity-extract.md)
+      - [大量自訂物件](rest-api/bulk-custom-object-extract.md)
+      - [大量擷取](rest-api/bulk-extract.md)
+      - [大量銷售機會](rest-api/bulk-lead-extract.md)
+      - [大量計畫成員](rest-api/bulk-program-member-extract.md)
+   - 大量匯入 {#bulk-import}
+      - [大量自訂物件](rest-api/bulk-custom-object-import.md)
+      - [大量匯入](rest-api/bulk-import.md)
+      - [大量銷售機會](rest-api/bulk-lead-import.md)
+      - [大量計畫成員](rest-api/bulk-program-member-import.md)
+   - [頻道](rest-api/channels.md)
+   - [自訂服務](rest-api/custom-services.md)
+   - [端點參考](rest-api/endpoint-reference.md)
+   - [錯誤代碼](rest-api/error-codes.md)
+   - 潛在客戶資料庫 {#lead-database}
+      - [公司](rest-api/companies.md)
+      - [欄位清單](rest-api/fields.md)
+      - [欄位型別](rest-api/field-types.md)
+      - [潛在客戶資料庫](rest-api/lead-database.md)
+      - [具名帳戶](rest-api/named-accounts.md)
+      - [具名帳戶清單](rest-api/named-account-lists.md)
+      - [機會](rest-api/opportunities.md)
+      - [機會角色](rest-api/opportunity-roles.md)
+      - [計畫成員](rest-api/program-members.md)
+      - [銷售人員](rest-api/sales-persons.md)
+   - [分頁權杖](rest-api/paging-tokens.md)
+   - [效能](rest-api/performance.md)
+   - [參考架構](rest-api/reference-architectures.md)
+   - [程式碼範例](https://github.com/Marketo/REST-Sample-Code)
+   - [標記](rest-api/tags.md)
+   - [使用者內容](rest-api/user-context.md)
+   - [User Management](rest-api/user-management.md)
+- SOAP {#soap}
+   - 活動 {#activities}
+      - [活動](soap-api/activities.md)
+      - [getLeadActivity](soap-api/getleadactivity.md)
+      - [getleadchanges](soap-api/getleadchanges.md)
+   - [活動型別篩選器](soap-api/activity-type-filters.md)
+   - [驗證簽章](soap-api/authentication-signature.md)
+   - 行銷活動 {#campaigns}
+      - [getCampaignsForSource](soap-api/getcampaignsforsource.md)
+      - [requestCampaign](soap-api/requestcampaign.md)
+      - [scheduleCampaign](soap-api/schedulecampaign.md)
+   - 自訂物件 {#custom-objects}
+      - [自訂物件](soap-api/custom-objects.md)
+      - [deleteCustomObjects](soap-api/deletecustomobjects.md)
+      - [getcustomobjects](soap-api/getcustomobjects.md)
+      - [syncCustomObjects](soap-api/synccustomobjects.md)
+   - [錯誤代碼](soap-api/error-codes.md)
+   - 銷售機會 {#leads}
+      - [getLead](soap-api/getlead.md)
+      - [getMultipleLead](soap-api/getmultipleleads.md)
+      - [mergeLead](soap-api/mergeleads.md)
+      - [銷售機會](soap-api/leads.md)
+      - [syncLead](soap-api/synclead.md)
+      - [syncMultipleLeads](soap-api/syncmultipleleads.md)
+   - Marketo物件 {#marketo-objects}
+      - [deleteMObjects](soap-api/deletemobjects.md)
+      - [describeMObjects](soap-api/describemobject.md)
+      - [getMObjects](soap-api/getmobjects.md)
+      - [listMObjects](soap-api/listmobjects.md)
+      - [Marketo物件](soap-api/marketo-objects.md)
+      - [syncMObjects](soap-api/syncmobjects.md)
+   - 計畫 {#programs}
+      - [getChannels](soap-api/getchannels.md)
+      - [getTags](soap-api/gettags.md)
+   - [SOAP API](soap-api/soap-api.md)
+   - [SOAP常見問題集](soap-api/soap-faq.md)
+   - 靜態清單 {#static-lists}
+      - [getimporttolstatus](soap-api/getimporttoliststatus.md)
+      - [importToList](soap-api/importtolist.md)
+      - [listOperation](soap-api/listoperation.md)
+   - [資料流位置](soap-api/stream-position.md)
+- Webhooks {#webhooks}
+   - [錯誤次數](webhooks/errors.md)
+   - [回應對應](webhooks/response-mappings.md)
+   - [Webhooks](webhooks/webhooks.md)
+- [使用者端資料庫](https://github.com/Marketo/Community-Supported-Client-Libraries)
+- [資料串流](data-streams.md)
+- [電子郵件指令碼](email-scripting.md)
+- [授權](api-license.md)
+- [合作夥伴沙箱](partner-sandbox.md)
+- [自助服務流程步驟](self-service-flow-steps.md)

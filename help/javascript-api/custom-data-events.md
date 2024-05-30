@@ -1,0 +1,49 @@
+---
+title: 「自訂資料事件」
+description: 「自訂資料事件API」
+feature: Javascript
+source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+workflow-type: tm+mt
+source-wordcount: '223'
+ht-degree: 3%
+
+---
+
+
+# 自訂資料事件
+
+此方法會傳送自訂事件以進行追蹤和即時個人化。 它可用來傳送第三方資料，或根據訪客行為觸發您自己的自訂事件。 自訂資料事件在訪客的工作階段中會計為一次。
+
+您必須成為Web Personalization客戶，並擁有 [已部署RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) 使用使用者內容API之前，先停留在您的網站上。
+
+| 引數 | 選用/必要 | 類型 | 說明 |
+|---|---|---|---|
+| `send` | 必填 | 字串 | 方法動作。 |
+| `event` | 必填 | 字串 | 方法名稱。 |
+| `customData` | 必填 | 字串或陣列 | 自訂資料。 |
+
+## 範例
+
+### 使用自訂資料的字串傳送事件
+
+```javascript
+var customData = {value: 'MyEvent'};
+rtp('send', 'event', customData);
+```
+
+### 使用自訂資料的字串陣列傳送事件
+
+自訂資料陣列最多可包含四個元素。  如果您必須傳送超過四個元素，請重複呼叫「傳送事件API」 （最多四個專案），直到傳送所有專案為止。
+
+```javascript
+var customData = {value: ['MyEvent', 'download - example whitepaper']};
+rtp('send', 'event', customData);
+```
+
+### 根據按鈕點選傳送事件
+
+Marketo會將網站上的內容個人化給下載特定白皮書的網頁訪客。 他們透過擷取訪客的點選白皮書下載按鈕來執行此操作，該按鈕會傳送自訂資料事件。 RTP區段會即時顯示點選了下載白皮書按鈕的所有訪客，為每位訪客顯示稍後可點選2次的個人化行銷活動。 這是藉由顯示另一份與所下載的白皮書相關的內容來達成。
+
+```html
+<button id="download-whitepaper" onclick="rtp('send', 'event', {value :'download - example whitepaper'})">Download</button>
+```

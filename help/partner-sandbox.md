@@ -1,0 +1,25 @@
+---
+title: "合作夥伴沙箱"
+description: 「合作夥伴沙箱總覽」
+source-git-commit: e141ed1178019339640986fb7e6fa95ca7b35fe7
+workflow-type: tm+mt
+source-wordcount: '184'
+ht-degree: 0%
+
+---
+
+
+# 合作夥伴沙箱
+
+合作夥伴沙箱是合作夥伴在軟體開發生命週期期間使用的Marketo Engage例項。 合作夥伴可使用他們的沙箱來瞭解Marketo EngageUI的來回變化，並取得Marketo EngageAPI服務的存取權。
+
+在合作夥伴接受進入後布建沙箱 [Adobe Exchange合作夥伴計畫，數位體驗](http://partners.adobe.com/technologyprogram/experiencecloud.html). 在大多數方面，合作夥伴沙箱在功能上等同於生產執行個體。 合作夥伴沙箱未安裝附加模組，但有固定的容量限制。 以下是常見問題集，以及合作夥伴沙箱功能的摘要。
+
+## 功能摘要
+
+- 每個合作夥伴限制一個沙箱。
+- 每日API呼叫數上限為50,000。
+- 潛在客戶資料庫中的記錄數上限為10,000。
+- 每次行銷活動執行的電子郵件傳送數上限為30。
+- 自訂物件的數量上限為2。
+- 使用者人數上限為25人。

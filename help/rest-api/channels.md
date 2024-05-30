@@ -1,0 +1,180 @@
+---
+title: "管道"
+feature: REST API
+description: 「使用Marketo API設定管道資料。」
+source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+workflow-type: tm+mt
+source-wordcount: '125'
+ht-degree: 1%
+
+---
+
+
+# 頻道
+
+[管道端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels)
+
+管道是所有計畫型別的標準和必填欄位。 每種型別的管道只能與指定的搭配使用 `applicableProgramType` 並提供每個方案中方案成員有效的可用方案狀態清單。 如果管道的節目狀態在建立節目之後變更，則潛在客戶可能會變更到的節目狀態清單將符合當時頻道提供的清單，但不會回溯地變更任何現有節目成員資格記錄的節目狀態。
+
+## 查詢
+
+管道可作為標準資產進行查詢，但沒有端點可依ID擷取管道。
+
+### 瀏覽
+
+```
+GET /rest/asset/v1/channels.json?offset=10
+```
+
+```json
+{
+    "success": true,
+    "warnings": [],
+    "errors": [],
+    "requestId": "651#1504ebbbfcf",
+    "result": [
+        {
+            "id": 3,
+            "name": "Blog",
+            "applicableProgramType": "program",
+            "progressionStatuses": [
+                {
+                    "name": "Not in Program",
+                    "step": 0,
+                    "description": null,
+                    "hidden": false,
+                    "success": false
+                },
+                {
+                    "name": "Invited",
+                    "step": 10,
+                    "description": null,
+                    "hidden": false,
+                    "success": false
+                },
+                {
+                    "name": "Visited Booth",
+                    "step": 20,
+                    "description": null,
+                    "hidden": false,
+                    "success": false
+                },
+                {
+                    "name": "Influenced",
+                    "step": 30,
+                    "description": null,
+                    "hidden": false,
+                    "success": true
+                }
+            ],
+            "createdAt": "2015-07-15T11:40:57Z+0000",
+            "updatedAt": "2015-07-15T11:40:57Z+0000"
+        },
+        {
+            "id": 4,
+            "name": "Online Advertising",
+            "applicableProgramType": "program",
+            "progressionStatuses": [
+                {
+                    "name": "Not in Program",
+                    "step": 0,
+                    "description": null,
+                    "hidden": false,
+                    "success": false
+                },
+                {
+                    "name": "Invited",
+                    "step": 10,
+                    "description": null,
+                    "hidden": false,
+                    "success": false
+                },
+                {
+                    "name": "Registered",
+                    "step": 20,
+                    "description": null,
+                    "hidden": false,
+                    "success": false
+                },
+                {
+                    "name": "No Show",
+                    "step": 30,
+                    "description": null,
+                    "hidden": false,
+                    "success": false
+                },
+                {
+                    "name": "Attended",
+                    "step": 40,
+                    "description": null,
+                    "hidden": false,
+                    "success": true
+                }
+            ],
+            "createdAt": "2015-07-15T11:40:58Z+0000",
+            "updatedAt": "2015-07-15T11:40:58Z+0000"
+        }
+    ]
+}
+```
+
+### 依名稱
+
+```
+GET /rest/asset/v1/channel/byName.json?name=Online Advertising
+```
+
+```json
+{
+    "success": true,
+    "warnings": [],
+    "errors": [],
+    "requestId": "394c#1504eb476ed",
+    "result": [
+        {
+            "id": 4,
+            "name": "Online Advertising",
+            "applicableProgramType": "program",
+            "progressionStatuses": [
+                {
+                    "name": "Not in Program",
+                    "step": 0,
+                    "description": null,
+                    "hidden": false,
+                    "success": false
+                },
+                {
+                    "name": "Invited",
+                    "step": 10,
+                    "description": null,
+                    "hidden": false,
+                    "success": false
+                },
+                {
+                    "name": "Registered",
+                    "step": 20,
+                    "description": null,
+                    "hidden": false,
+                    "success": false
+                },
+                {
+                    "name": "No Show",
+                    "step": 30,
+                    "description": null,
+                    "hidden": false,
+                    "success": false
+                },
+                {
+                    "name": "Attended",
+                    "step": 40,
+                    "description": null,
+                    "hidden": false,
+                    "success": true
+                }
+            ],
+            "createdAt": "2015-07-15T11:40:58Z+0000",
+            "updatedAt": "2015-07-15T11:40:58Z+0000"
+        }
+    ]
+}
+```
