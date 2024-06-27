@@ -1,14 +1,14 @@
 ---
-title: "PhoneGap"
-feature: "Mobile Marketing"
-description: 「在行動裝置上搭配使用PhoneGap與Marketo」
-source-git-commit: 2e4eb416846de3ad62ff0626f536630278e1c0cd
+title: PhoneGap
+feature: Mobile Marketing
+description: 在行動裝置上搭配使用PhoneGap與Marketo
+exl-id: 99f14c76-9438-4942-9309-643bca434d07
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '812'
+source-wordcount: '797'
 ht-degree: 0%
 
 ---
-
 
 # PhoneGap
 
@@ -67,13 +67,13 @@ repositories{
 
 1. 在Firebase主控台上設定Firebase應用程式。
    1. 建立/新增專案於 [](https://console.firebase.google.com/)Firebase主控台。
-      1. 在 [Firebase主控台](https://console.firebase.google.com/)，選取 [!UICONTROL Add Project].
-      1. 從現有Google Cloud專案清單中選取您的GCM專案，然後選取 [!UICONTROL Add Firebase].
+      1. 在 [Firebase主控台](https://console.firebase.google.com/)，選取 **[!UICONTROL Add Project]**.
+      1. 從現有Google Cloud專案清單中選取您的GCM專案，然後選取 **[!UICONTROL Add Firebase]**.
       1. 在Firebase歡迎畫面中，選取「將Firebase新增至Android應用程式」。
-      1. 提供您的封裝名稱和SHA-1，然後選取 [!UICONTROL Add App]. 新 `google-services.json` 已下載您Firebase應用程式的檔案。
-   1. 導覽至專案總覽中的「專案設定」
-      1. 按一下「一般」標籤。 下載「google-services.json」檔案。
-      1. 按一下「雲端訊息」索引標籤。 複製「伺服器金鑰」和「寄件者ID」。 提供這些「伺服器金鑰」和「寄件者ID」給Marketo。
+      1. 提供您的封裝名稱和SHA-1，然後選取 **[!UICONTROL Add App]**. 新 `google-services.json` 已下載您Firebase應用程式的檔案。
+   1. 瀏覽至 **[!UICONTROL Project Settings]** 在 [!UICONTROL Project Overview]
+      1. 按一下 **[!UICONTROL General]** 標籤。 下載「google-services.json」檔案。
+      1. 按一下 **[!UICONTROL Cloud Messaging]** 標籤。 複製 [!UICONTROL Server Key] &amp; [!UICONTROL Sender ID]. 提供這些 [!UICONTROL Server Key] &amp; [!UICONTROL Sender ID] 前往Marketo。
    1. 在Phonegap應用程式中設定FCM變更
       1. 將下載的&#39;google-services.json&#39;檔案移動到Phonegap應用程式模組的根目錄中
       1. 從位置移除&#39;MyFirebaseInstanceIDService&#39;檔案 `platforms/android/app/src/main/java/com/gae/scaffolder/plugin` （已棄用）
@@ -148,7 +148,7 @@ sharedInstance.trackPushNotification(launchOptions)
 
 ### 5.初始化Marketo架構
 
-若要確保在應用程式啟動時啟動Marketo架構，請在底下新增下列程式碼 `onDeviceReady` 函式中。
+若要確保在應用程式啟動時啟動Marketo架構，請在底下新增下列程式碼 `onDeviceReady` JavaScript函式中。
 
 請注意，我們必須通過 `phonegap` 作為PhoneGap應用程式的框架型別。
 
@@ -296,7 +296,7 @@ marketo.reportaction(
 
 ## 工作階段報告
 
-繫結「暫停」和「繼續」事件型別，如下所示，以報告「開始」和「停止」事件。  這可用來追蹤您在行動應用程式中花費的時間。 注意：這是Android的必要專案。
+繫結「暫停」和「繼續」事件型別，如下所示，以報告「開始」和「停止」事件。  這可用來追蹤您在行動應用程式中花費的時間。 注意：這在Android中是必要的。
 
 ```
 //Add the following code in your www/js/index.js

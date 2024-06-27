@@ -1,30 +1,30 @@
 ---
-title: 「愛奧尼」
-feature: "Mobile Marketing"
-description: 「在行動裝置上搭配使用Ionic與Marketo」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: 『[!DNL Ionic]『
+feature: Mobile Marketing
+description: 使用 [!DNL Ionic] 使用適用於行動裝置的Marketo
+exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '613'
+source-wordcount: '606'
 ht-degree: 1%
 
 ---
 
-
 # 離子型
 
-本主題說明如何整合Marketo Cordova外掛程式。 目前不支援離子電容器。
+本主題說明如何整合Marketo Cordova外掛程式。 [!DNL Ionic] 目前不支援電容器。
 
 ## 先決條件
 
 1. [在Marketo管理中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）。
 1. 設定推播通知([iOS](push-notifications.md) | [Android](push-notifications.md) )。
-1. 安裝 [離子型](https://ionicframework.com/getting-started/) &amp; [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
+1. 安裝 [[!DNL Ionic]](https://ionicframework.com/getting-started/) &amp; [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
 
 ## 安裝指示
 
-### 設定Marketo Ionic外掛程式
+### 設定Marketo [!DNL Ionic] 外掛程式
 
-1. 假設您已安裝Cordova CLI，請前往Ionic應用程式目錄，然後執行下列命令，將Marketo外掛程式新增至您的應用程式：
+1. 如果已安裝Cordova CLI，請前往 [!DNL Ionic] 應用程式目錄並執行下列命令，將Marketo外掛程式新增至您的應用程式中：
 
    `$ ionic plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
@@ -72,9 +72,9 @@ sharedInstance.trackPushNotfication(launchOptions)
 
 ### 初始化Marketo框架
 
-若要確保在應用程式啟動時啟動Marketo架構，請在底下新增下列程式碼 `onDeviceReady` 函式中。
+若要確保在應用程式啟動時啟動Marketo架構，請在底下新增下列程式碼 `onDeviceReady` JavaScript函式中。
 
-您必須通過 `ionicCordova` 作為Ionic Cordova應用程式的框架型別。
+您必須通過 `ionicCordova` 作為的框架型別 [!DNL Ionic] Cordova應用程式。
 
 #### 語法
 
@@ -104,7 +104,7 @@ marketo.onStart(
 
 ### 初始化Marketo推播通知
 
-若要確保已起始Marketo推播通知，請在主要JavaScript檔案中的初始化函式後新增下列程式碼。
+若要確保已起始Marketo推播通知，請在主要JavaScript檔案中初始化函式後，新增下列程式碼。
 
 #### 語法
 
@@ -218,7 +218,7 @@ marketo.reportaction(
 
 ## 工作階段報告
 
-繫結「暫停」和「繼續」事件型別，如下所示，以報告「開始」和「停止」事件。 這可用來追蹤您在行動應用程式中花費的時間。 注意：這是Android的必要專案。
+繫結「暫停」和「繼續」事件型別，如下所示，以報告「開始」和「停止」事件。 這可用來追蹤您在行動應用程式中花費的時間。 注意：這在Android中是必要的。
 
 ```javascript
 //Add the following code in your www/js/index.js

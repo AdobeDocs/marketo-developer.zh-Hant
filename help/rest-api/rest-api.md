@@ -1,14 +1,14 @@
 ---
-title: "REST API"
+title: REST API
 feature: REST API
-description: 「REST API總覽」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: REST API總覽
+exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '643'
-ht-degree: 0%
+source-wordcount: '626'
+ht-degree: 1%
 
 ---
-
 
 # REST API
 
@@ -30,15 +30,15 @@ Marketo公開REST API，允許從遠端執行系統的許多功能。 從建立�
 
 ![管理員使用者和角色](assets/admin-users-and-roles.png)
 
-按一下 [!UICONTROL Roles] 索引標籤，然後新增角色，並至少將「唯讀銷售機會」（或「唯讀人員」）許可權指派給存取API群組中的角色。 請務必提供描述性名稱，然後按一下 [!UICONTROL Create].
+按一下 **[!UICONTROL Roles]** 索引標籤，然後新增角色，並至少將「唯讀銷售機會」（或「唯讀人員」）許可權指派給存取API群組中的角色。 請務必提供描述性名稱，然後按一下 **[!UICONTROL Create]**.
 
 ![新角色](assets/new-role.png)
 
-現在返回使用者索引標籤，然後按一下邀請新使用者。 為您的使用者提供描述性名稱（表示其為API使用者）、電子郵件地址並按一下 **[!UICONTROL Next]**.
+現在返回至 [!UICONTROL Users] 標籤並按一下 **[!UICONTROL Invite New User]**. 為您的使用者提供描述性名稱（表示其為API使用者）、電子郵件地址並按一下 **[!UICONTROL Next]**.
 
 ![新使用者資訊](assets/new-user-info.png)
 
-接著，核取「僅限API」選項，並為您的使用者授與您建立的API角色，然後按一下 **[!UICONTROL Next]**.
+然後，檢查 [!UICONTROL API Only] 選項並授予您的使用者您建立並按一下的API角色 **[!UICONTROL Next]**.
 
 ![新使用者許可權](assets/new-user-permissions.png)
 
@@ -46,23 +46,23 @@ Marketo公開REST API，允許從遠端執行系統的許多功能。 從建立�
 
 ![新增使用者訊息](assets/new-user-message.png)
 
-接下來，前往管理員功能表，然後按一下 **[!UICONTROL LaunchPoint]**.
+接下來，前往 [!UICONTROL Admin] 功能表並按一下 **[!UICONTROL LaunchPoint]**.
 
 ![啟動點](assets/admin-launchpoint.png)
 
-按一下「新增」功能表並選取 [!UICONTROL New Service]. 為您的服務提供描述性名稱，然後從「服務」下拉式選單中選取「自訂」。 提供說明，然後從「僅限API使用者」下拉式選單中選取新使用者，並按一下 [!UICONTROL Create].
+按一下 **[!UICONTROL New]** 功能表並選取 **[!UICONTROL New Service]**. 為您的服務提供描述性名稱，並選取 **[!UICONTROL Custom]** 從 [!UICONTROL Service] 下拉式功能表。 提供說明，然後從中選擇您的新使用者 [!UICONTROL API Only User] 下拉式功能表並按一下 **[!UICONTROL Create]**.
 
 ![新啟動點服務](assets/admin-launchpoint-new-service.png)
 
-按一下新服務的檢視詳細資訊，即可存取使用者端ID和使用者端密碼。 現在，您可以按一下 [!UICONTROL Get Token] 按鈕來產生一小時有效的存取權杖。 暫時將代號儲存在備註中。
+按一下 **[!UICONTROL View Details]** 讓您的新服務存取使用者端ID和使用者端密碼。 現在，您可以按一下 **[!UICONTROL Get Token]** 按鈕來產生一小時有效的存取權杖。 暫時將代號儲存在備註中。
 
 ![取得Token](assets/get-token.png)
 
-接下來，前往「管理員」功能表，然後前往 **[!UICONTROL Web Services]**.
+接下來，前往 **[!UICONTROL Admin]** 選單，然後到 **[!UICONTROL Web Services]**.
 
 ![網站服務](assets/admin-web-services.png)
 
-目前在REST API方塊中找到「端點」，並儲存在附註中。
+尋找 [!UICONTROL Endpoint] 並暫時儲存在附註中。
 
 ![REST端點](assets/admin-web-services-rest-endpoint-1.png)
 

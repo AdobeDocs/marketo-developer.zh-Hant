@@ -1,14 +1,14 @@
 ---
-title: "Webhooks"
+title: Webhooks
 feature: Webhooks
-description: 「Webhooks概觀」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Webhooks概觀
+exl-id: fd283c66-05a1-4aa4-8412-0d41b8d1e3c8
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '581'
+source-wordcount: '562'
 ht-degree: 0%
 
 ---
-
 
 # Webhooks
 
@@ -20,12 +20,12 @@ Marketo允許使用Webhook與協力廠商Web服務通訊。 Webhook支援使用G
 
 每個單獨的webhook都有以下屬性：
 
-- URL — 輸入您用來向Web服務提交請求的URL。
-- 要求型別 — HTTP方法。
-- 裝載範本 — 如果您想要在POST內文中傳輸資訊，請輸入範本。 使用支援HTTPPOST的任何資料格式，包括XML、JSON或SOAP。 序列化格式必須在字串周圍加上雙引號。 若要在範本中插入權杖，請按一下「插入權杖」。  字串型別的權杖會自動以雙引號括住。
-- 請求權杖編碼 — 如果權杖值包含特殊字元（例如&amp;符號、「&amp;」），請指出您請求的格式（JSON或表單/Url）。 必須為主體選擇正確的編碼，以確保Webhook正確與Web服務通訊。
-- 回應型別 — 選取您從服務收到的回應格式（JSON或XML）。 必須選取正確的回應型別，才能將回應的屬性對應回Marketo中的潛在客戶欄位
-- 自訂標頭 — 透過Webhooks動作存取 — >設定自訂標頭，此選單允許新增任何數量的自訂索引鍵/值組作為HTTP標頭。
+- [!UICONTROL URL]  — 輸入您用來向Web服務提交請求的URL。
+- [!UICONTROL Request Type] - HTTP方法。
+- [!UICONTROL Payload Template]  — 如果您想要在POST內文中傳輸資訊，請輸入範本。 使用支援HTTPPOST的任何資料格式，包括XML、JSON或SOAP。 序列化格式必須在字串周圍加上雙引號。 若要在範本中插入Token，請按一下 **[!UICONTROL Insert Token]**.  字串型別的權杖會自動以雙引號括住。
+- [!UICONTROL Request Token Encoding]  — 如果代號值包含特殊字元（例如&amp;符號），請指出您請求的格式（JSON或表單/URL）。 必須為主體選擇正確的編碼，以確保Webhook正確與Web服務通訊。
+- [!UICONTROL Response Type]  — 選取您從服務收到的回應格式（JSON或XML）。 必須選取正確的回應型別，才能將回應的屬性對應回Marketo中的潛在客戶欄位
+- [!UICONTROL Custom Headers]  — 存取 [!UICONTROL Webhooks Actions] -> [!UICONTROL Set Custom Header]，此功能表可讓您新增任意數量的自訂索引鍵/值組作為HTTP標題。
 
 可以使用將資料從Web服務回應回寫到銷售機會 [回應對應](response-mappings.md)
 

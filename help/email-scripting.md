@@ -1,14 +1,14 @@
 ---
-title: 「電子郵件指令碼」
+title: 電子郵件指令碼
 feature: Email Programs
-description: 「電子郵件指令碼概觀」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: 電子郵件指令碼概觀
+exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '961'
+source-wordcount: '947'
 ht-degree: 0%
 
 ---
-
 
 # 電子郵件指令碼
 
@@ -98,7 +98,7 @@ $date.whenIs($birthday).days ##outputs 1
 
 ![指令碼Token](assets/script-token.png)
 
-從這裡，您可以編輯權杖的名稱，並透過按一下以編輯選項開啟編輯器：
+從這裡，您可以編輯權杖的名稱，並透過開啟編輯器 [!UICONTROL Click to Edit] 選項：
 
 ![編輯指令碼](assets/script-edit.png)
 
@@ -112,11 +112,11 @@ $date.whenIs($birthday).days ##outputs 1
 
 ![電子郵件指令碼](assets/email-script-marketo-email.png)
 
-您可以使用Marketo電子郵件設計工具中的「傳送範例電子郵件」電子郵件動作來測試指令碼。 若要讓指令碼正確處理，您必須在「銷售機會」欄位中選取要模擬的現有銷售機會。 如果您使用進行測試 `$TriggerObject`，您可以透過「觸發器」引數選取觸發物件。 這會使用該型別之最近更新物件的資料作為 `$TriggerObject` 變數中。
+您可以使用測試指令碼 [!UICONTROL Send Sample Email] Marketo電子郵件設計工具中的電子郵件動作。 若要讓指令碼正確處理，您必須選取現有銷售機會，以在 [!UICONTROL Lead] 欄位。 如果您使用進行測試 `$TriggerObject`，您可以透過以下方式選取觸發物件 [!UICONTROL Trigger] 引數 這會使用該型別之最近更新物件的資料作為 `$TriggerObject` 變數中。
 
 ![測試電子郵件指令碼](assets/velocity-test.png)
 
-您也可以使用電子郵件預覽來測試指令碼。 若要這麼做，您必須選取「檢視方式：銷售機會詳細資訊」，然後從可用的靜態清單中選取銷售機會。 這樣做的另一個好處是，可輸出指令碼執行期間可能發生的任何例外狀況：
+您也可以使用 [!UICONTROL Email Preview] 以測試您的指令碼。 若要這麼做，您必須選取 **[!UICONTROL View As: Lead Detail]**，並從可用靜態清單中選取銷售機會。 這樣做的另一個好處是，可輸出指令碼執行期間可能發生的任何例外狀況：
 
 ![電子郵件檢視方式](assets/view-as.png)
 
@@ -126,7 +126,7 @@ $date.whenIs($birthday).days ##outputs 1
 
 - 電子郵件指令碼中參照的變數必須存在於Marketo中指令碼可用的其中一個物件上。
 - 您可以參考源自您原生整合的CRM的第一層和第二層自訂物件，這些自訂物件直接連線至銷售機會或連絡人，但不包括第三層自訂物件。 自訂物件可能不是潛在客戶或公司的父級
-- 對於Marketo自訂物件，您可以參照具有父子關係的第二層自訂物件。 例如 `Lead <- Parent <- Child`. 您無法參考具有Edge-Bridge關係的第二層自訂物件。 例如，  `Lead <- Bridge -> Edge`
+- 對於Marketo自訂物件，您可以參照具有父子關係的第二層自訂物件。 例如 `Lead <- Parent <- Child`. 您無法參考具有Edge-Bridge關係的第二層級自訂物件。 例如，  `Lead <- Bridge -> Edge`
 - 您可以參照連線至Lead、Contact或Account的自訂物件，但不能參照多個物件。
 - 自訂物件只能透過單一連線、銷售機會、連絡人或帳戶參照
 - 您必須在指令碼編輯器中勾選目前使用之欄位的方塊，否則這些欄位將不會處理

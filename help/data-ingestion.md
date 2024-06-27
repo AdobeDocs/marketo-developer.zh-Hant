@@ -1,10 +1,10 @@
 ---
 title: 「資料擷取」
 description: 「資料擷取API概觀」
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '952'
-ht-degree: 8%
+source-wordcount: '945'
+ht-degree: 9%
 
 ---
 
@@ -42,14 +42,14 @@ ht-degree: 8%
 
 ### 請求
 
-| 索引鍵 | 值 | 必填 | 說明 |
+| 索引鍵 | 值 | 必要 | 說明 |
 |---|---|---|---|
 | X-Correlation-Id | 任意字串（長度上限為255個字元）。 | 否 | 可用於透過系統追蹤請求。 請參閱Marketo可觀察性資料流 |
 | X-Request-Source | 任意字串（長度上限為50個字元）。 | 否 | 可用於透過系統追蹤要求的來源。 請參閱Marketo可觀察性資料流 |
 
 ### 回應
 
-| 索引鍵 | 值 | 必填 | 說明 |
+| 索引鍵 | 值 | 必要 | 說明 |
 |---|---|---|---|
 | X-Request-Id | 唯一請求識別碼。 | 是 | |
 
@@ -132,7 +132,7 @@ ht-degree: 8%
 
 | 路徑 |
 |---|
-| /subscriptions/{munchkinId}/persones |
+| `/subscriptions/{munchkinId}/persons` |
 
 | HeadersKey | 值 |
 |---|---|
@@ -141,7 +141,7 @@ ht-degree: 8%
 
 要求內文
 
-| 索引鍵 | 資料類型 | 必填 | 值 | 預設值 |
+| 索引鍵 | 資料類型 | 必要 | 值 | 預設值 |
 |---|---|---|---|---|
 | 優先順序 | 字串 | 否 | 請求的優先順序：normalhigh | 一般 |
 | partitionName | 字串 | 否 | 個人資料分割的名稱 | 預設 |
@@ -201,7 +201,7 @@ X-Request-ID: WOUBf3fHJNU6sTmJqLL281lOmAEpMZFw
 
 | 路徑 |
 |---|
-| /subscriptions/{munchkinId}/customobjects/{customObjectAPIName} |
+| `/subscriptions/{munchkinId}/customobjects/{customObjectAPIName}` |
 
 標頭
 
@@ -210,7 +210,13 @@ X-Request-ID: WOUBf3fHJNU6sTmJqLL281lOmAEpMZFw
 | Content-Type | application/json |
 | X-Mkto-User-Token | {accessToken} |
 
-要求內文 | 索引鍵 | 資料型別 | 必填 | 值 | 預設值 | |—|—|—|—|—| | 優先順序 | 字串 | 否 | 請求的優先順序：normalhigh | 一般 | | dedupeBy | 字串 | 否 | 要重複資料刪除的屬性： dedupeFieldsmarketoGUID | dedupeField | | 自訂物件 | 物件陣列 | 是 | 物件的屬性名稱 — 值組清單。 | - |
+要求內文
+
+| 索引鍵 | 資料類型 | 必要 | 值 | 預設值 |
+|---|---|---|---|---|
+| 優先順序 | 字串 | 否 | 請求的優先順序：normalhigh | 一般 |
+| dedupeBy | 字串 | 否 | 要重複資料刪除的屬性： dedupeFieldsmarketoGUID | dedupeField |
+| 自訂物件 | 物件陣列 | 是 | 物件的屬性名稱 — 值組清單。 | - |
 
 | 權限 |
 |---|

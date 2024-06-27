@@ -1,26 +1,26 @@
 ---
-title: "SOAP API"
+title: SOAP API
 feature: SOAP
-description: 「Marketo SOAP概觀」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Marketo SOAP概觀
+exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '242'
+source-wordcount: '230'
 ht-degree: 0%
 
 ---
 
-
 # SOAP API
 
-SOAP API不再處於開發中。 呼叫仍可運作，但我們的開發重點為 [REST](https://developer.adobe.com/marketo-apis/) 至今以後。
+SOAP API不再處於作用中開發狀態。 呼叫仍可運作，但我們的開發重點為 [REST](https://developer.adobe.com/marketo-apis/) 至今以後。
 
-Marketo SOAP API允許建立、擷取和移除儲存在Marketo中的實體和資料。 您可找到 [Marketo-SOAP-SDK](https://github.com/Marketo/SOAP-API-Java-Client) 在GitHub上。 此外還有 [使用者端資料庫](https://github.com/Marketo/Community-Supported-Client-Libraries) 以節省您的時間。
+Marketo SOAP API可建立、擷取和移除儲存在Marketo中的實體和資料。 您可找到 [Marketo-SOAP-SDK](https://github.com/Marketo/SOAP-API-Java-Client) 在GitHub上。 此外還有 [使用者端資料庫](https://github.com/Marketo/Community-Supported-Client-Libraries) 以節省您的時間。
 
 最新API版本： 3_1
 
 ## SOAP WSDL
 
-若要擷取SOAP WSDL檔案，請從您的 **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]** 功能表。
+若要擷取SOAP SOAP WSDL檔案，請向 **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]** 功能表。
 
 ![SOAP端點](assets/endpoint-soap.png)
 
@@ -40,10 +40,10 @@ Marketo SOAP API允許建立、擷取和移除儲存在Marketo中的實體和資
 
 ## Marketo中的SOAP API設定
 
-1. 移至「管理員」區段，然後按一下「網站服務」。
+1. 前往 **[!UICONTROL Admin]** 區段並按一下 **[!UICONTROL Web Services]**.
 
 ![admin-web-services2](assets/admin-web-services2.png)
 
-1. 設定適當的加密金鑰，按一下[儲存變更]並使用SOAP API端點、使用者ID和加密金鑰值來產生正確的值 [驗證簽章](authentication-signature.md) 用於每個SOAP API呼叫。
+1. 設定適當的 [!UICONTROL Encryption Key]，按一下 **[!UICONTROL Save Changes]** 和使用SOAP API [!UICONTROL Endpoint]， [!UICONTROL User ID]、和 [!UICONTROL Encryption Key] 值以產生正確的值 [驗證簽章](authentication-signature.md) 用於每個SOAP API呼叫。
 
 ![admin-web-services3](assets/admin-web-services3.png)

@@ -5,9 +5,9 @@ breadcrumb-title: '"[!DNL Marketo] 開發人員指南」'
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 15ac16ab4f8153ee069335951a84cf1691469c6d
+source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
-source-wordcount: '255'
+source-wordcount: '231'
 ht-degree: 7%
 
 ---
@@ -31,7 +31,7 @@ ht-degree: 7%
    - [多媒體Recommendations](javascript-api/rich-media-recommendation.md)
    - [Social](javascript-api/social.md)
    - [觸發器](javascript-api/triggers.md)
-   - [網頁個人化](javascript-api/web-personalization.md)
+   - [網頁Personalization](javascript-api/web-personalization.md)
 - 行動 {#mobile}
    - [安裝 [!DNL Adobe Launch] 副檔名](mobile/adobe-launch-extension-installation.md)
    - [[!DNL Adobe Launch] 副檔名](mobile/adobe-launch-extension.md)
@@ -40,16 +40,16 @@ ht-degree: 7%
    - [深層連結](mobile/enabling-deep-links-in-your-app.md)
    - [應用程式內傳訊](mobile/in-app-messages.md)
    - [安裝](mobile/installation.md)
-   - [離子型](mobile/ionic.md)
+   - [[!DNL Ionic]](mobile/ionic.md)
    - [行動](mobile/mobile.md)
    - [Phonegap](mobile/phonegap.md)
    - [推播通知](mobile/push-notifications.md)
-   - [React原生](mobile/react-native.md)
+   - [React Native](mobile/react-native.md)
    - [使用者設定檔](mobile/user-profiles.md)
 - REST{#rest}
    - [REST API總覽](rest-api/rest-api.md)
    - [REST API參考](https://developer.adobe.com/marketo-apis/)
-   - 資產 {#assets}
+   - Assets {#assets}
       - [資產](rest-api/assets.md)
       - [動態內容](rest-api/dynamic-content.md)
       - [電子郵件](rest-api/emails.md)
@@ -109,43 +109,43 @@ ht-degree: 7%
 - SOAP {#soap}
    - 活動 {#activities}
       - [活動](soap-api/activities.md)
-      - [getLeadActivity](soap-api/getleadactivity.md)
-      - [getleadchanges](soap-api/getleadchanges.md)
+      - [[!DNL getLeadActivity]](soap-api/getleadactivity.md)
+      - [[!DNL getLeadChanges]](soap-api/getleadchanges.md)
    - [活動型別篩選器](soap-api/activity-type-filters.md)
    - [驗證簽章](soap-api/authentication-signature.md)
    - 行銷活動 {#campaigns}
-      - [getCampaignsForSource](soap-api/getcampaignsforsource.md)
-      - [requestCampaign](soap-api/requestcampaign.md)
-      - [scheduleCampaign](soap-api/schedulecampaign.md)
+      - [[!DNL getCampaignsForSource]](soap-api/getcampaignsforsource.md)
+      - [[!DNL requestCampaign]](soap-api/requestcampaign.md)
+      - [[!DNL scheduleCampaign]](soap-api/schedulecampaign.md)
    - 自訂物件 {#custom-objects}
       - [自訂物件](soap-api/custom-objects.md)
-      - [deleteCustomObjects](soap-api/deletecustomobjects.md)
-      - [getcustomobjects](soap-api/getcustomobjects.md)
-      - [syncCustomObjects](soap-api/synccustomobjects.md)
+      - [[!DNL deleteCustomObjects]](soap-api/deletecustomobjects.md)
+      - [[!DNL getCustomObjects]](soap-api/getcustomobjects.md)
+      - [[!DNL syncCustomObjects]](soap-api/synccustomobjects.md)
    - [錯誤代碼](soap-api/error-codes.md)
    - 銷售機會 {#leads}
-      - [getLead](soap-api/getlead.md)
-      - [getMultipleLead](soap-api/getmultipleleads.md)
-      - [mergeLead](soap-api/mergeleads.md)
+      - [[!DNL getLead]](soap-api/getlead.md)
+      - [[!DNL getMultipleLeads]](soap-api/getmultipleleads.md)
+      - [[!DNL mergeLeads]](soap-api/mergeleads.md)
       - [銷售機會](soap-api/leads.md)
-      - [syncLead](soap-api/synclead.md)
-      - [syncMultipleLeads](soap-api/syncmultipleleads.md)
+      - [[!DNL syncLead]](soap-api/synclead.md)
+      - [[!DNL syncMultipleLeads]](soap-api/syncmultipleleads.md)
    - Marketo物件 {#marketo-objects}
-      - [deleteMObjects](soap-api/deletemobjects.md)
-      - [describeMObjects](soap-api/describemobject.md)
-      - [getMObjects](soap-api/getmobjects.md)
-      - [listMObjects](soap-api/listmobjects.md)
+      - [[!DNL deleteMObjects]](soap-api/deletemobjects.md)
+      - [[!DNL describeMObjects]](soap-api/describemobject.md)
+      - [[!DNL getMObjects]](soap-api/getmobjects.md)
+      - [[!DNL listMObjects]](soap-api/listmobjects.md)
       - [Marketo物件](soap-api/marketo-objects.md)
-      - [syncMObjects](soap-api/syncmobjects.md)
+      - [[!DNL syncMObjects]](soap-api/syncmobjects.md)
    - 計畫 {#programs}
-      - [getChannels](soap-api/getchannels.md)
-      - [getTags](soap-api/gettags.md)
+      - [[!DNL getChannels]](soap-api/getchannels.md)
+      - [[!DNL getTags]](soap-api/gettags.md)
    - [SOAP API](soap-api/soap-api.md)
    - [SOAP常見問題集](soap-api/soap-faq.md)
    - 靜態清單 {#static-lists}
-      - [getimporttolstatus](soap-api/getimporttoliststatus.md)
-      - [importToList](soap-api/importtolist.md)
-      - [listOperation](soap-api/listoperation.md)
+      - [[!DNL getImportToListStatus]](soap-api/getimporttoliststatus.md)
+      - [[!DNL importToList]](soap-api/importtolist.md)
+      - [[!DNL listOperation]](soap-api/listoperation.md)
    - [資料流位置](soap-api/stream-position.md)
 - Webhooks {#webhooks}
    - [錯誤次數](webhooks/errors.md)
