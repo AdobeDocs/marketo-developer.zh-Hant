@@ -1,14 +1,14 @@
 ---
-title: "銷售機會追蹤"
-description: 「潛在客戶追蹤API」
+title: 銷售機會追蹤
+description: 潛在客戶追蹤API
 feature: Munchkin Tracking Code, Javascript
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '766'
 ht-degree: 0%
 
 ---
-
 
 # 潛在客戶追蹤API
 
@@ -74,7 +74,7 @@ Munchkin的行為可以透過使用Munchkin來修改 [組態設定](lead-trackin
 
 - 潛在客戶必須造訪包含的Munchkin追蹤頁面 `mkt_tok` 來自追蹤Marketo電子郵件連結的查詢字串引數。
 - 潛在客戶必須填寫Marketo表單。
-- SOAP [syncLead](../soap-api/leads.md) 或REST [關聯銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST) 必須傳送呼叫。
+- 一個SOAP [syncLead](../soap-api/leads.md) 或REST [關聯銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST) 必須傳送呼叫。
 
 當其中一項條件達成時，Cookie和所有相關的網路活動都會與已知潛在客戶建立關聯。
 
@@ -96,7 +96,7 @@ Munchkin Cookie是每個第二層網域專屬的，也就是說， `example.com`
 
 ## Beta
 
-若要選擇加入登陸頁面的Munchkin測試版管道，請前往 [管理員 — > Treasure Check](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) 功能表並啟用「登陸頁面上的Munchkin測試版」設定。 如此將提供中新的程式碼片段 **[!UICONTROL Admin]** ->  **[!UICONTROL Munchkin]** 功能表可讓您在外部網站上使用Beta版。
+若要選擇加入登陸頁面的Munchkin測試版管道，請前往 [管理員 — > Treasure Check](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features) 功能表並啟用「登陸頁面上的Munchkin Beta」設定。 如此將提供中新的程式碼片段 **[!UICONTROL Admin]** ->  **[!UICONTROL Munchkin]** 功能表可讓您在外部網站上使用Beta版。
 
 ## 選擇退出
 

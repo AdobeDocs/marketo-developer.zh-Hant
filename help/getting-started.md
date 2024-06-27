@@ -69,7 +69,7 @@ Marketo Engage是行銷自動化平台，可讓行銷人員管理針對潛在客
 
 ## 資產
 
-資產是指程式中使用的登入頁面、電子郵件、表單和影像。 資產可以是指定計畫的本機或全域。 全域資產適用於任何計畫。
+Assets是指程式中使用的登入頁面、電子郵件、表單和影像。 Assets可以是指定方案的本機或全域。 全域資產適用於任何計畫。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/asset/)
 
