@@ -1,16 +1,16 @@
 ---
-title: "React Native"
-feature: "Mobile Marketing"
-description: 「安裝Marketo的React Native」
-source-git-commit: 416044a6cce4dac229640058a9cb0013070c9d9c
+title: React Native
+feature: Mobile Marketing
+description: 安裝適用於Marketo的React Native
+exl-id: 462fd32e-91f1-4582-93f2-9efe4d4761ff
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '822'
 ht-degree: 0%
 
 ---
 
-
-# React原生
+# React Native
 
 本文提供如何安裝和設定Marketo的原生SDK，以將您的行動應用程式與我們的平台整合的相關資訊。
 
@@ -47,7 +47,7 @@ build script {
 
 #### iOS SDK整合
 
-在您為React原生專案建立橋接之前，請務必在Xcode專案中設定我們的SDK。
+在您為React Native專案建立Bridge之前，請務必在Xcode專案中設定我們的SDK。
 
 **SDK整合 — 使用CocoaPods**
 
@@ -81,11 +81,11 @@ build script {
 
 ## 原生模組安裝指示
 
-有時React原生應用程式需要存取JavaScript中預設不可用的原生平台API，例如用於存取Apple或Google Pay的原生API。 您可能想要重複使用一些現有的Objective-C、Swift、Java或C++程式庫，而不需要在JavaScript中重新實作，或針對影像處理等作業編寫一些高效能的多執行緒程式碼。
+有時React Native應用程式需要存取JavaScript中預設不可用的原生平台API，例如存取Apple或Google Pay的原生API。 您可能想要重複使用一些現有的Objective-C、Swift、Java或C++程式庫，而不需要在JavaScript中重新實作，或針對影像處理等作業編寫一些高效能的多執行緒程式碼。
 
-NativeModule系統向JavaScript (JS)公開Java/Objective-C/C++ （原生）類別的例項作為JS物件，因此允許您從JS內執行任意原生程式碼。 雖然我們不預期此功能會成為一般開發流程的一部分，但必須具備此功能。 如果React Native沒有匯出JS應用程式所需的原生API，您應該能夠自行匯出！
+NativeModule系統向JavaScript (JS)公開Java/Objective-C/C++ （原生）類別的例項作為JS物件，因此允許您從JS內執行任意原生程式碼。 雖然我們不預期此功能會成為一般開發流程的一部分，但必須具備此功能。 如果React Native未匯出JS應用程式所需的原生API，您應該能夠自行匯出！
 
-React原生橋接器用於JSX和原生應用程式層之間的通訊。 在此情況下，主機應用程式將能撰寫可叫用Marketo SDK方法的JSX程式碼。
+React Native Bridge可用來在JSX和原生應用程式層之間通訊。 在此情況下，主機應用程式將能撰寫可叫用Marketo SDK方法的JSX程式碼。
 
 ### Android
 
@@ -226,7 +226,7 @@ public class MainApplication extends Application implements ReactApplication {
 
 在以下指南中，您將建立原生模組， _RNMarketoModule_，可讓您從JavaScript存取Marketo的API。
 
-若要開始使用，請在Xcode的React原生應用程式中開啟iOS專案。 您可以在React原生應用程式中找到您的iOS專案。 建議您使用Xcode來撰寫原生程式碼。 Xcode是專為iOS開發所建置，使用它可以協助您快速解決小錯誤，例如程式碼語法。
+若要開始使用，請在Xcode的React Native應用程式中開啟iOS專案。 您可以在React Native應用程式中找到您的iOS專案。 建議您使用Xcode來撰寫原生程式碼。 Xcode是專為iOS開發所建置，使用它可以協助您快速解決小錯誤，例如程式碼語法。
 
 建立主要自訂原生模組標頭和實施檔案。 建立名為的新檔案 `MktoBridge.h` 並新增下列專案：
 
