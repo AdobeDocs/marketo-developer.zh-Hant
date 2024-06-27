@@ -1,14 +1,14 @@
 ---
-title: 「[！DNLAadobe Launch]擴充功能安裝」
-feature: "Mobile Marketing"
-description: '"[!DNL Adobe Launch] 擴充功能安裝概述」'
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: 『[!DNL Adobe Launch] 擴充功能安裝
+feature: Mobile Marketing
+description: 『[!DNL Adobe Launch] 擴充功能安裝概觀
+exl-id: d71b7cd7-309b-4882-9bba-7daaaa5ef32d
+source-git-commit: 2b6fd22becb0eb692dbcf48686c23f7a878cd812
 workflow-type: tm+mt
-source-wordcount: '703'
+source-wordcount: '701'
 ht-degree: 0%
 
 ---
-
 
 # [!DNL Adobe Launch] 擴充功能安裝
 
@@ -151,7 +151,7 @@ ProGuard組態（選購）
 
 ## Firebase Cloud Messaging支援
 
-適用於Android的MME Software Development Kit (SDK)已更新至更現代、穩定及可擴充的架構，其中包含更優異的彈性及適合Android應用程式開發人員的新工程功能。
+適用於Android的MME Software Development Kit (SDK)已更新至更現代、穩定及可擴充的架構，其中包含更優異的彈性和新工程功能，適合您的Android應用程式開發人員使用。
 
 Android應用程式開發人員現在可以直接使用Google的 [Firebase雲端通訊](https://firebase.google.com/docs/cloud-messaging/) (FCM)搭配此SDK。
 
@@ -220,7 +220,7 @@ Android應用程式開發人員現在可以直接使用Google的 [Firebase雲端
 
 **問：我可以在哪裡找到更新MME SDK最新版本的指示？** 如需指示，請參閱Marketo開發人員網站 [此處](installation.md).
 
-**問：更新至最新版SDK需要我將Android應用程式的更新版本發佈給現有的使用者嗎？** 不適用。
+**問：更新至SDK最新版本會要求我將Android應用程式的更新版本發佈給現有的使用者嗎？** 不適用。
 
 **問：這對已發佈與Marketo Android SDK整合之Android應用程式的現有MME客戶有何影響？** 他們可以將Android上的現有GCM使用者端應用程式移轉至Firebase Cloud Messaging (FCM)，如下所示：
 
