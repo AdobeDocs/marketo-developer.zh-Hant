@@ -1,7 +1,7 @@
 ---
-user-guide-title: '"[!DNL Marketo] 開發人員指南」'
-user-guide-description: 「本指南提供使用的指示 [!DNL Marketo] API。」
-breadcrumb-title: '"[!DNL Marketo] 開發人員指南」'
+user-guide-title: "[!DNL Marketo]開發人員指南"
+user-guide-description: 本指南提供使用 [!DNL Marketo] API的說明。
+breadcrumb-title: "[!DNL Marketo]開發人員指南"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
@@ -13,7 +13,7 @@ ht-degree: 7%
 ---
 
 
-# [!DNL Marketo] 開發人員 {#marketo}
+# [!DNL Marketo]開發人員 {#marketo}
 
 - [首頁](home.md)
 - [快速入門](getting-started.md)
@@ -32,9 +32,9 @@ ht-degree: 7%
    - [Social](javascript-api/social.md)
    - [觸發器](javascript-api/triggers.md)
    - [網頁Personalization](javascript-api/web-personalization.md)
-- 行動 {#mobile}
-   - [安裝 [!DNL Adobe Launch] 副檔名](mobile/adobe-launch-extension-installation.md)
-   - [[!DNL Adobe Launch] 副檔名](mobile/adobe-launch-extension.md)
+- 行動{#mobile}
+   - [安裝 [!DNL Adobe Launch] 延伸](mobile/adobe-launch-extension-installation.md)
+   - [[!DNL Adobe Launch]副檔名](mobile/adobe-launch-extension.md)
    - [進階安全性模式](mobile/advanced-security-access-mode.md)
    - [自訂動作](mobile/custom-actions.md)
    - [深層連結](mobile/enabling-deep-links-in-your-app.md)
@@ -72,13 +72,13 @@ ht-degree: 7%
    - [驗證簽章](rest-api/authentication-signature.md)
    - [基礎URL](rest-api/base-url.md)
    - [最佳實務](rest-api/marketo-integration-best-practices.md)
-   - 大量擷取 {#bulk-extract}
+   - 大量擷取{#bulk-extract}
       - [大量活動](rest-api/bulk-activity-extract.md)
       - [大量自訂物件](rest-api/bulk-custom-object-extract.md)
       - [大量擷取](rest-api/bulk-extract.md)
       - [大量銷售機會](rest-api/bulk-lead-extract.md)
       - [大量計畫成員](rest-api/bulk-program-member-extract.md)
-   - 大量匯入 {#bulk-import}
+   - 大量匯入{#bulk-import}
       - [大量自訂物件](rest-api/bulk-custom-object-import.md)
       - [大量匯入](rest-api/bulk-import.md)
       - [大量銷售機會](rest-api/bulk-lead-import.md)
@@ -88,7 +88,7 @@ ht-degree: 7%
    - [下載Swagger定義](rest-api/swagger.md)
    - [端點參考](rest-api/endpoint-reference.md)
    - [錯誤代碼](rest-api/error-codes.md)
-   - 潛在客戶資料庫 {#lead-database}
+   - 潛在客戶資料庫{#lead-database}
       - [公司](rest-api/companies.md)
       - [欄位清單](rest-api/fields.md)
       - [欄位型別](rest-api/field-types.md)
@@ -103,52 +103,52 @@ ht-degree: 7%
    - [分頁權杖](rest-api/paging-tokens.md)
    - [效能](rest-api/performance.md)
    - [參考架構](rest-api/reference-architectures.md)
-   - [程式碼範例](https://github.com/Marketo/REST-Sample-Code)
+   - [範常式式碼](https://github.com/Marketo/REST-Sample-Code)
    - [標記](rest-api/tags.md)
    - [使用者內容](rest-api/user-context.md)
    - [User Management](rest-api/user-management.md)
 - SOAP {#soap}
-   - 活動 {#activities}
+   - 活動{#activities}
       - [活動](soap-api/activities.md)
       - [[!DNL getLeadActivity]](soap-api/getleadactivity.md)
       - [[!DNL getLeadChanges]](soap-api/getleadchanges.md)
    - [活動型別篩選器](soap-api/activity-type-filters.md)
    - [驗證簽章](soap-api/authentication-signature.md)
-   - 行銷活動 {#campaigns}
+   - 行銷活動{#campaigns}
       - [[!DNL getCampaignsForSource]](soap-api/getcampaignsforsource.md)
       - [[!DNL requestCampaign]](soap-api/requestcampaign.md)
       - [[!DNL scheduleCampaign]](soap-api/schedulecampaign.md)
-   - 自訂物件 {#custom-objects}
+   - 自訂物件{#custom-objects}
       - [自訂物件](soap-api/custom-objects.md)
       - [[!DNL deleteCustomObjects]](soap-api/deletecustomobjects.md)
       - [[!DNL getCustomObjects]](soap-api/getcustomobjects.md)
       - [[!DNL syncCustomObjects]](soap-api/synccustomobjects.md)
    - [錯誤代碼](soap-api/error-codes.md)
-   - 銷售機會 {#leads}
+   - 潛在客戶{#leads}
       - [[!DNL getLead]](soap-api/getlead.md)
       - [[!DNL getMultipleLeads]](soap-api/getmultipleleads.md)
       - [[!DNL mergeLeads]](soap-api/mergeleads.md)
       - [銷售機會](soap-api/leads.md)
       - [[!DNL syncLead]](soap-api/synclead.md)
       - [[!DNL syncMultipleLeads]](soap-api/syncmultipleleads.md)
-   - Marketo物件 {#marketo-objects}
+   - Marketo物件{#marketo-objects}
       - [[!DNL deleteMObjects]](soap-api/deletemobjects.md)
       - [[!DNL describeMObjects]](soap-api/describemobject.md)
       - [[!DNL getMObjects]](soap-api/getmobjects.md)
       - [[!DNL listMObjects]](soap-api/listmobjects.md)
       - [Marketo物件](soap-api/marketo-objects.md)
       - [[!DNL syncMObjects]](soap-api/syncmobjects.md)
-   - 計畫 {#programs}
+   - 程式{#programs}
       - [[!DNL getChannels]](soap-api/getchannels.md)
       - [[!DNL getTags]](soap-api/gettags.md)
    - [SOAP API](soap-api/soap-api.md)
    - [SOAP常見問題集](soap-api/soap-faq.md)
-   - 靜態清單 {#static-lists}
+   - 靜態清單{#static-lists}
       - [[!DNL getImportToListStatus]](soap-api/getimporttoliststatus.md)
       - [[!DNL importToList]](soap-api/importtolist.md)
       - [[!DNL listOperation]](soap-api/listoperation.md)
    - [資料流位置](soap-api/stream-position.md)
-- Webhooks {#webhooks}
+- Webhook {#webhooks}
    - [錯誤次數](webhooks/errors.md)
    - [回應對應](webhooks/response-mappings.md)
    - [Webhooks](webhooks/webhooks.md)
