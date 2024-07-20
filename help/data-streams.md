@@ -1,13 +1,13 @@
 ---
-title: 「資料串流」
-description: 「資料串概述」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: 資料串流
+description: 資料串概述
+exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1589'
 ht-degree: 0%
 
 ---
-
 
 # 資料串流
 
@@ -19,7 +19,7 @@ ht-degree: 0%
 - 減少API限制的情況，產生較少的警報訊息。
 - 由於資料串流功能，任何專案都必須執行大量匯出才能擷取資料。
 
-已購買資料流的使用者可使用資料串流 [Marketo Engage效能層套件](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835).
+已購買[Marketo Engage效能層套件](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835)的使用者可使用資料串流。
 
 ## 潛在客戶活動資料串流概觀
 
@@ -185,7 +185,7 @@ ht-degree: 0%
    1. 步驟1中的端點URL
    1. 他們想要收到的活動型別（以上完整的清單）
    1. 一種驗證方法，可讓客戶驗證請求是否合法。 可以：
-      1. OAuth的身分提供者URL、使用者端ID和使用者端密碼 [使用者端認證驗證](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)
+      1. OAuth [使用者端認證驗證](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)的身分提供者URL、使用者端識別碼和使用者端密碼
       1. API權杖，可包含在潛在客戶活動資料流傳送的請求中(在查詢引數中或在Authorization標頭（客戶選擇）中)
 
 然後Adobe會啟用資料串流，客戶在那時開始接收資料。
@@ -239,7 +239,7 @@ app.listen(port,()=>{
 })
 ```
 
-您可為使用Marketo銷售機會活動資料流的應用程式找到程式碼範例 [此處](https://github.com/ihgrant/activity-stream-consumer-example).
+使用Marketo銷售機會活動資料流的應用程式程式碼範例可以在[這裡](https://github.com/ihgrant/activity-stream-consumer-example)找到。
 
 ### 使用者稽核資料流和通知資料流
 
@@ -254,23 +254,23 @@ app.listen(port,()=>{
    1. 此步驟需要Adobe組織
    1. 需要Adobe組織使用者擁有開發人員或系統管理員角色
 
-若要設定AdobeIO，請參閱 [使用AdobeIO設定Marketo使用者稽核資料流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/) 位於公開檔案區段。
+若要設定AdobeIO，請參閱公開檔案區段中的[使用AdobeIO設定Marketo使用者稽核資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/)。
 
 ### 在Marketo中設定使用者稽核資料流
 
-「使用者稽核資料流」目前可與其他3個「資料流」一起作為「效能」套裝程式的一部分使用。 有關套件的詳細資訊，請參閱 [產品說明頁面](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html) 產品限制和功能說明。
+「使用者稽核資料流」目前可與其他3個「資料流」一起作為「效能」套裝程式的一部分使用。 如需封裝的詳細資訊，請參閱[產品說明頁面](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html)以瞭解產品限制和功能。
 
 ### 設定Adobe I/O
 
 [請參閱Adobe I/O事件快速入門](https://developer.adobe.com/runtime/docs/guides/getting-started/)
 
-如需此使用案例的基本指示，請從 [console.adobe.io](https://developer.adobe.com/console)：
+如需此使用案例的基本指示，請從[console.adobe.io](https://developer.adobe.com/console)開始：
 
-出現提示時，選取 **[!UICONTROL Create New Project]** 或 **[!UICONTROL Add Event]**.
+出現提示時，請選取&#x200B;**[!UICONTROL Create New Project]**&#x200B;或&#x200B;**[!UICONTROL Add Event]**。
 
 ### 開始使用您的新專案
 
-若要開始使用Adobe服務、新增API、事件或執行階段，請檢視我們的 [檔案](https://developer.adobe.com/runtime/docs/).
+若要開始使用Adobe服務、新增API、事件或執行階段，請檢視我們的[檔案](https://developer.adobe.com/runtime/docs/)。
 
 ## 公開檔案
 

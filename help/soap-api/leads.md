@@ -1,14 +1,14 @@
 ---
-title: 「銷售機會」
+title: 銷售機會
 feature: SOAP
-description: 「銷售機會SOAP呼叫」
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: 潛在客戶SOAP呼叫
+exl-id: 412fa16c-bd6e-4344-83ed-33dd5381fda4
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '21'
 ht-degree: 0%
 
 ---
-
 
 # 銷售機會
 

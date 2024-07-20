@@ -1,30 +1,30 @@
 ---
-title: "getCustomObjects"
+title: getcustomobjects
 feature: SOAP, Custom Objects
-description: "getCustomObjects SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getCustomObjects SOAP呼叫
+exl-id: 32ff208a-f824-4420-a26f-1fd969a2bc4c
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '156'
 ht-degree: 4%
 
 ---
 
-
 # getcustomobjects
 
 使用包含零或一個自訂物件索引鍵的條件組合來擷取一或多個自訂物件。
 
-傳回符合的自訂物件清單，包含單一型別的所有物件、批次中最多100個物件，以及 [串流位置](stream-position.md) 用於擷取連續批次的權杖。
+傳回符合的自訂物件清單，所有都是單一型別，批次中最多100個，以及擷取連續批次的[串流位置](stream-position.md)權杖。
 
 ## 請求
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| 物件型別名稱 | 必填 | 自訂物件的名稱 |
-| customObjKeyLists->keyList->屬性 | 必填 | 屬性是索引鍵/值組，用於識別您要擷取的自訂物件。 您可以在 `customObjKeyLists` |
-| includeAttributes | 必填 | 您要擷取的自訂物件欄位清單。 不傳遞將傳回所有值。 |
+| 物件型別名稱 | 必要 | 自訂物件的名稱 |
+| customObjKeyLists->keyList->屬性 | 必要 | 屬性是索引鍵/值組，用於識別您要擷取的自訂物件。 您可以在`customObjKeyLists`中指定多個屬性 |
+| includeAttributes | 必要 | 您要擷取的自訂物件欄位清單。 不傳遞將傳回所有值。 |
 | batchSize | 可選 | 要傳回的物件數目（最多100個） |
-| streamPosition | 可選 | 用於分頁顯示多個結果集。 傳遞的值是先前傳回的值 `getCustomObjects` 呼叫。 |
+| streamPosition | 可選 | 用於分頁顯示多個結果集。 傳遞的值是先前`getCustomObjects`呼叫傳回的值。 |
 
 ## 請求XML
 

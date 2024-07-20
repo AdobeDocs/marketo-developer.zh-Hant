@@ -1,14 +1,14 @@
 ---
-title: 「自訂物件」
+title: 自訂物件
 feature: SOAP
-description: 「建立自訂物件。」
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: 建立自訂物件。
+exl-id: 29d65841-4b44-4d94-b14e-c583d433d015
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '231'
 ht-degree: 0%
 
 ---
-
 
 # 自訂物件
 
@@ -36,6 +36,6 @@ Marketo自訂物件可讓您在Marketo銷售機會與自訂物件記錄之間建
 
 下列呼叫可用來與CO互動。
 
-- [getcustomobjects](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectsUsingGET)
+- [getCustomObjects](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectsUsingGET)
 - [syncCustomObjects](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST)
 - [deleteCustomObjects](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/deleteCustomObjectsUsingPOST)

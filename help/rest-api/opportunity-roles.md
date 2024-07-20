@@ -1,20 +1,20 @@
 ---
-title: 「機會角色」
+title: 機會角色
 feature: REST API
-description: 「在Marketo中處理機會角色。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 在Marketo中處理機會角色。
+exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '253'
 ht-degree: 0%
 
 ---
 
-
 # 機會角色
 
 [機會角色端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/getOpportunityRolesUsingGET)
 
-潛在客戶透過中間產品與商機連結 `opportunityRole` 物件。
+潛在客戶透過中繼`opportunityRole`物件連結至商機。
 
 機會角色API僅公開給未啟用原生CRM同步處理的訂閱。
 
@@ -106,7 +106,7 @@ GET /rest/v1/opportunities/roles/describe.json
 
 ## 查詢
 
-請注意，兩者皆有 `dedupeFields` 和 `searchableFields` 與機會稍有不同。 `dedupeFields` 實際上會提供複合金鑰，其中所有三個 `externalOpportunityId`， `leadId`、和 `role` 為必要項。 目的地執行個體中必須有識別碼欄位的機會和潛在客戶連結，才能成功建立記錄。 的 `searchableFields`， `marketoGUID`， `leadId`、和 `externalOpportunityId` 都適用於自行查詢，且使用與商機相同的模式，但額外選項是使用複合索引鍵進行查詢，這要求透過POST提交JSON物件並提供額外的查詢引數 `_method=GET`.
+請注意，`dedupeFields`和`searchableFields`與機會都有點不同。 `dedupeFields`實際上提供了複合金鑰，其中需要`externalOpportunityId`、`leadId`和`role`的所有三項。 目的地執行個體中必須有識別碼欄位的機會和潛在客戶連結，才能成功建立記錄。 對於`searchableFields`、`marketoGUID`、`leadId`和`externalOpportunityId`，它們都自己對查詢有效，並使用與商機相同的模式，但有一個額外的選項可使用複合索引鍵進行查詢，這要求透過POST提交JSON物件，連同額外的查詢引數`_method=GET`。
 
 ```
 POST /rest/v1/opportunities/roles.json?_method=GET

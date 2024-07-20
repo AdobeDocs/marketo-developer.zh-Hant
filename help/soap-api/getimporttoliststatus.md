@@ -1,27 +1,27 @@
 ---
-title: "getImportToListStatus"
+title: getimporttolstatus
 feature: SOAP
-description: "getImportToListStatus SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getImportToListStatus SOAP呼叫
+exl-id: 17a62f65-dfa0-4f40-89b2-154f7734a2dc
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '76'
 ht-degree: 7%
 
 ---
 
-
 # getimporttolstatus
 
-此函式檢查特定的 `importToList` 函式呼叫。
+此函式檢查特定`importToList`函式呼叫的狀態。
 
-完成 `importToList` 先呼叫API，然後輪詢 `getImportToListStatus` 定期進行。 不輪詢 `getImportToListStatus` 每分鐘超過一次。
+先完成`importToList` API呼叫，然後定期輪詢`getImportToListStatus`。 不要每分鐘輪詢`getImportToListStatus`超過一次。
 
 ## 請求
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| programName | 必填 | 包含靜態清單的程式名稱 |
-| listName | 必填 | Marketo中要擷取匯入狀態的靜態清單名稱。 |
+| programName | 必要 | 包含靜態清單的程式名稱 |
+| listName | 必要 | Marketo中要擷取匯入狀態的靜態清單名稱。 |
 
 ## 請求XML
 

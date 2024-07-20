@@ -1,14 +1,14 @@
 ---
-title: "範例"
-description: 「Marketo程式碼範例」
+title: 範例
+description: Marketo程式碼範例
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: dc5f0cc5-ff5a-48b0-be36-52c10e56f798
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '207'
 ht-degree: 0%
 
 ---
-
 
 # 範例
 
@@ -32,7 +32,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form
 
 ## 將訪客帶至使用者定義的URL
 
-此範例會在成功提交後，將訪客帶往由JavaScript判斷的URL，而非已設定的感謝頁面。
+此範例會在成功提交後，將訪客帶至JavaScript判斷的URL，而非已設定的感謝頁面。
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form) {
@@ -137,7 +137,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (for
 
 ## 在LightBox中顯示表單
 
-此範例顯示燈箱樣式對話方塊中的表單（如果url包含引數） `lightboxForm=true`.
+此範例會在URL包含引數`lightboxForm=true`時顯示Lightbox樣式對話方塊中的表單。
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) { 

@@ -1,48 +1,48 @@
 ---
-title: "getLeadChanges"
+title: getleadchanges
 feature: SOAP
-description: "getLeadChanges SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getLeadChanges SOAP呼叫
+exl-id: 23445684-d8d9-407b-8f19-cb69e806795c
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '402'
 ht-degree: 1%
 
 ---
 
-
 # getleadchanges
 
-此API如下 `getLeadActivity` 但一次對多個潛在客戶執行操作。 此操作會檢查已建立的新銷售機會、銷售機會欄位更新和其他活動。
+此API類似於`getLeadActivity`，只是它同時會在多個潛在客戶上運作。 此操作會檢查已建立的新銷售機會、銷售機會欄位更新和其他活動。
 
-結果包含導致變更的活動，以及 [串流位置](stream-position.md) 以分頁方式瀏覽大型結果集。
+結果包含導致變更以及[資料流位置](stream-position.md)在大型結果集中分頁的活動。
 
 您必須包含輸入引數，以識別要在結果中傳回的活動篩選器。 如果您想要所有活動，可傳遞空白值。 如需多個活動篩選器，請傳入活動篩選器清單。
 
 某些活動型別範例為：「造訪網頁」、「填寫表單」和「按一下連結」。
 
-在SOAP API 2_2版之後，您可以包含 `leadSelector`.
+在SOAP API 2_2版之後，您可以包含`leadSelector`。
 
-的 `LastUpdateAtSelector`，則 `oldestUpdatedAt` 值將對應至 `oldestCreatedAt` 中的值 `startPosition`. 以及 `latestUpdatedAt` 值會對應至 `latestCreatedAt` 中的值 `startPosition`.
+對於`LastUpdateAtSelector`，`oldestUpdatedAt`值將對應至`startPosition`中的`oldestCreatedAt`值。 而`latestUpdatedAt`值會對應至`startPosition`中的`latestCreatedAt`值。
 
-注意：中支援的銷售機會數量限制 `LeadKeySelector` 為100。 如果銷售機會數量超過100，API會擲回錯誤的引數例外狀況並傳回SOAP錯誤。
+注意： `LeadKeySelector`中支援的潛在客戶數量限製為100。 如果銷售機會數量超過100，API會擲回錯誤的引數例外狀況並傳回SOAP錯誤。
 
 ## 請求
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| activityFilter->includeAttributes->activityType | 選用（已棄用）使用 `activityNameFilter` 而非 | 將回應限製為僅包含指定的活動型別。 請參閱WSDL以瞭解所有活動型別。 |
-| activityFilter->excludeAttributes->activityType | 可選 | 限制回應，以排除指定的活動型別。 請參閱WSDL以瞭解所有活動型別。 附註：您不能同時指定兩者 `includeAttributes` 和 `excludeAttributes` 在同一呼叫中。 |
+| activityFilter->includeAttributes->activityType | 選用（已棄用）改用`activityNameFilter` | 將回應限製為僅包含指定的活動型別。 請參閱WSDL以瞭解所有活動型別。 |
+| activityFilter->excludeAttributes->activityType | 可選 | 限制回應，以排除指定的活動型別。 請參閱WSDL以瞭解所有活動型別。 注意：您無法在同一呼叫中同時指定`includeAttributes`和`excludeAttributes`。 |
 | activityNameFilter | 可選 | 將回應限製為僅包含指定的活動篩選器。 |
-| batchSize | 可選 | 要傳回的最大記錄數。 系統限製為1,000或 `batchSize`，以較小者為準。 |
-| startPosition | 必填 | 用於分頁顯示大量活動回應。 |
+| batchSize | 可選 | 要傳回的最大記錄數。 系統限製為1,000或`batchSize`，以較小者為準。 |
+| startPosition | 必要 | 用於分頁顯示大量活動回應。 |
 | startPosition->offset | 可選 | 位移值是由先前的呼叫回應欄位newStartPosition->offset傳回。 |
-| startPosition->oldestCreatedAt | 可選 | 用於篩選結果以僅包含自oldestCreatedAt以來建立的潛在客戶的時間戳記。 注意：您可以使用 `LastUpdateAtSelector->oldestUpdatedAt` 要指定的時間戳記 `oldestCreatedAt`. |
-| startPosition->activityCreatedAt | 可選 | 用於篩選結果以僅包含自activityCreatedAt以來具有活動的潛在客戶的時間戳記。 注意：您可以使用 `LastUpdateAtSelector->latestUpdatedAt` 要指定的時間戳記 `activityCreatedAt`. |
-| 銷售機會選擇器 | 可選 | 可以是下列3種型別之一： `LeadKeySelector`， `StaticListSelector`， `LastUpdateAtSelector` |
-| LeadKeySelector： leadSelector->keyType | 必填 | 您要查詢的ID型別。 值包括 `IDNUM`， `COOKIE`， `EMAIL`， `LEADOWNEREMAIL`， `SFDCACCOUNTID`， `SFDCCONTACTID`， `SFDCLEADID`， `SFDCLEADOWNERID`， `SFDCOPPTYID`. |
-| LeadKeySelector： leadSelector->keyValues->stringItem | 必填 | 索引鍵值清單。 即&quot;lead@email.com&quot; |
-| StaticListSelector： leadSelector->staticListName | 選擇性，當 `leadSelector->staticListId` 存在 | 靜態清單的名稱 |
-| StaticListSelector： leadSelector->staticListId | 選擇性，當 `leadSelector->staticListName` 存在 | 靜態清單的ID |
+| startPosition->oldestCreatedAt | 可選 | 用於篩選結果以僅包含自oldestCreatedAt以來建立的潛在客戶的時間戳記。 注意：您可以使用`LastUpdateAtSelector->oldestUpdatedAt`時間戳記來指定`oldestCreatedAt`。 |
+| startPosition->activityCreatedAt | 可選 | 用於篩選結果以僅包含自activityCreatedAt以來具有活動的潛在客戶的時間戳記。 注意：您可以使用`LastUpdateAtSelector->latestUpdatedAt`時間戳記來指定`activityCreatedAt`。 |
+| 銷售機會選擇器 | 可選 | 可以是下列3種型別之一： `LeadKeySelector`、`StaticListSelector`、`LastUpdateAtSelector` |
+| LeadKeySelector： leadSelector->keyType | 必要 | 您要查詢的ID型別。 值包括`IDNUM`、`COOKIE`、`EMAIL`、`LEADOWNEREMAIL`、`SFDCACCOUNTID`、`SFDCCONTACTID`、`SFDCLEADID`、`SFDCLEADOWNERID`、`SFDCOPPTYID`。 |
+| LeadKeySelector： leadSelector->keyValues->stringItem | 必要 | 索引鍵值清單。 即&quot;lead@email.com&quot; |
+| StaticListSelector： leadSelector->staticListName | `leadSelector->staticListId`存在時為選用 | 靜態清單的名稱 |
+| StaticListSelector： leadSelector->staticListId | `leadSelector->staticListName`存在時為選用 | 靜態清單的ID |
 
 ## 請求XML
 

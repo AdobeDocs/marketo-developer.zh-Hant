@@ -1,34 +1,34 @@
 ---
-title: "getLeadActivity"
+title: getLeadActivity
 feature: SOAP
-description: "getLeadActivity SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getLeadActivity SOAP呼叫
+exl-id: f38dee95-235f-4dc2-8839-61d6008132a5
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '346'
 ht-degree: 1%
 
 ---
 
-
 # getLeadActivity
 
 此函式擷取所提供索引鍵所識別之單一潛在客戶的活動歷史記錄。 您可以指定要在結果中傳回的活動型別。 如果您想要所有活動型別，則需要傳遞空白值。 如需多種活動型別，請傳入活動型別清單。 請求多個活動時，剩餘計數不是準確的數字，但應視為一個旗標，以表示當剩餘計數> 0時有更多活動。
 
-A [串流位置](stream-position.md) 可用於分頁大型結果集。
+[資料流位置](stream-position.md)可用來分頁大型結果集。
 
 ## 請求
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| leadKey->keyType | 必填 | keyType可讓您指定查詢潛在客戶的欄位。 可能的值包括：`IDNUM`， `COOKIE`， `EMAIL`， `SFDCLEADID`， `LEADOWNEREMAIL`， `SFDCACCOUNTID`， `SFDCCONTACTID`， `SFDCLEADID`， `SFDCLEADOWNERID`， `SFDCOPPTYID` |
-| leadKey->keyValue | 必填 | `keyValue` 是您要用來查詢潛在客戶的值。 |
+| leadKey->keyType | 必要 | keyType可讓您指定查詢潛在客戶的欄位。 可能的值包括：`IDNUM`、`COOKIE`、`EMAIL`、`SFDCLEADID`、`LEADOWNEREMAIL`、`SFDCACCOUNTID`、`SFDCCONTACTID`、`SFDCLEADID`、`SFDCLEADOWNERID`、`SFDCOPPTYID` |
+| leadKey->keyValue | 必要 | `keyValue`是您要用來查詢潛在客戶的值。 |
 | activityFilter->includeAttributes->activityType | 可選 | 將回應限製為僅包含指定的活動型別。 請參閱WSDL以瞭解所有活動型別。 |
-| activityFilter->excludeAttributes->activityType | 可選 | 限制回應，以排除指定的活動型別。 請參閱WSDL以瞭解所有活動型別。 附註：您不能同時指定兩者 `includeAttributes` 和 `excludeAttributes` 在同一呼叫中。 |
-| batchSize | 可選 | 要傳回的最大記錄數。 系統將限製為100或 `batchSize`，以較小者為準。 |
-| startPosition->offset | 可選 | 用於分頁顯示大量活動回應。 位移值由先前呼叫回應欄位傳回 `newStartPosition->offset`. |
-| startPosition->activityCreatedAt | 可選 | 用於分頁顯示大量活動回應。 activityCreatedAt是由前一個呼叫的回應欄位傳回 `newStartPosition->activityCreatedAt`. （W3C WSDL日期格式）。 |
-| startPosition->latestCreatedAt | 可選 | 用於分頁顯示大量活動回應。 上一個呼叫的回應欄位會傳回latestCreatedAt `newStartPosition->latestCreatedAt`. （W3C WSDL日期格式）。 |
-| startPosition->oldestCreatedAt | 可選 | 用於分頁顯示大量活動回應。 先前呼叫的回應欄位會傳回oldestCreatedAt `newStartPosition->oldestCreatedAt`. （W3C WSDL日期格式）。 |
+| activityFilter->excludeAttributes->activityType | 可選 | 限制回應，以排除指定的活動型別。 請參閱WSDL以瞭解所有活動型別。 注意：您無法在同一呼叫中同時指定`includeAttributes`和`excludeAttributes`。 |
+| batchSize | 可選 | 要傳回的最大記錄數。 系統將限製為100或`batchSize`，以較小者為準。 |
+| startPosition->offset | 可選 | 用於分頁顯示大量活動回應。 先前的呼叫回應欄位`newStartPosition->offset`傳回位移值。 |
+| startPosition->activityCreatedAt | 可選 | 用於分頁顯示大量活動回應。 上一個呼叫的回應欄位`newStartPosition->activityCreatedAt`傳回activityCreatedAt。 （W3C WSDL日期格式）。 |
+| startPosition->latestCreatedAt | 可選 | 用於分頁顯示大量活動回應。 上一個呼叫的回應欄位`newStartPosition->latestCreatedAt`傳回latestCreatedAt。 （W3C WSDL日期格式）。 |
+| startPosition->oldestCreatedAt | 可選 | 用於分頁顯示大量活動回應。 先前呼叫的回應欄位`newStartPosition->oldestCreatedAt`傳回oldestCreatedAt。 （W3C WSDL日期格式）。 |
 
 ## 請求XML
 
@@ -668,7 +668,7 @@ A [串流位置](stream-position.md) 可用於分頁大型結果集。
 </SOAP-ENV:Envelope>
 ```
 
-請注意，在 `activityRecord` 元素， `id` 元素正由 `marketoGUID` 元素做為唯一識別碼。  此變更將於2017年春季發行版本中進行。
+請注意，在`activityRecord`元素中，`id`元素會由`marketoGUID`元素取代為唯一識別碼。  此變更將於2017年春季發行版本中進行。
 
 ## 範常式式碼 — PHP
 

@@ -1,14 +1,14 @@
 ---
-title: 「推播通知」
-feature: "Mobile Marketing"
-description: 「啟用Marketo Mobile的推播通知」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+title: 推播通知
+feature: Mobile Marketing
+description: 啟用Marketo Mobile的推播通知
+exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1329'
 ht-degree: 0%
 
 ---
-
 
 # 推播通知
 
@@ -24,15 +24,15 @@ ht-degree: 0%
 
 ### 在Apple開發人員帳戶上設定推播通知
 
-1. 登入Apple開發人員 [成員中心](http://developer.apple.com/membercenter).
+1. 登入Apple開發人員[成員中心](http://developer.apple.com/membercenter)。
 1. 按一下「憑證、識別碼和設定檔」。
 1. 按一下「iOS， tvOS， watchOS」底下的「Certificates->All」資料夾。
-1. 選取左上方畫面中憑證旁的「+」 ![](assets/certificates-plus.png)
+1. 選取憑證![](assets/certificates-plus.png)旁邊左上角畫面上的「+」
 1. 啟用「Apple推播通知服務SSL （沙箱和生產）」核取方塊，然後按一下「繼續」。
 1. 選取您用來建置應用程式的應用程式識別碼。![](assets/push-appid.png)
-1. 建立並上傳CSR以產生推送憑證。 ![](assets/push-ssl.png)
-1. 將憑證下載到本機電腦，然後按兩下以安裝。 ![](assets/certificate-download.png)
-1. 開啟「鑰匙圈存取」，以滑鼠右鍵按一下憑證，然後將2個專案匯出至 `.p12` 檔案。![key_chain](assets/key-chain.png)
+1. 建立並上傳CSR以產生推送憑證。![](assets/push-ssl.png)
+1. 將憑證下載到本機電腦，然後按兩下以安裝。![](assets/certificate-download.png)
+1. 開啟「鑰匙圈存取」，以滑鼠右鍵按一下憑證，然後將2個專案匯出至`.p12`檔案。![key_chain](assets/key-chain.png)
 1. 透過MarketoAdmin Console上傳此檔案以設定通知。
 1. 更新應用程式布建設定檔。
 
@@ -42,11 +42,11 @@ ht-degree: 0%
 
 ### 透過Marketo SDK啟用應用程式中的推播通知
 
-將下列程式碼新增至 `AppDelegate.m` 將推播通知傳送至客戶裝置的檔案。
+將下列程式碼新增至`AppDelegate.m`檔案，以將推播通知傳送至您客戶的裝置。
 
-**注意**  — 若使用 [!DNL Adobe Launch] 擴充功能，使用 `ALMarketo` 作為類別名稱
+**備註** — 如果使用[!DNL Adobe Launch]副檔名，請使用`ALMarketo`作為類別名稱
 
-匯入以下內容： `AppDelegate.h`.
+在`AppDelegate.h`中匯入下列專案。
 
 >[!BEGINTABS]
 
@@ -64,7 +64,7 @@ import UserNotifications
 
 >[!ENDTABS]
 
-新增 `UNUserNotificationCenterDelegate` 至 `AppDelegate` 如下所示。
+將`UNUserNotificationCenterDelegate`新增至`AppDelegate`，如下所示。
 
 >[!BEGINTABS]
 
@@ -125,9 +125,9 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 >[!ENDTABS]
 
-呼叫此方法以開始向Apple推送服務註冊流程。 如果註冊成功，應用程式會呼叫您應用程式委派物件的 `application:didRegisterForRemoteNotificationsWithDeviceToken:` 方法並向其傳遞裝置Token。
+呼叫此方法以開始向Apple推送服務註冊流程。 如果註冊成功，應用程式會呼叫您應用程式委派物件的`application:didRegisterForRemoteNotificationsWithDeviceToken:`方法，並為其傳遞裝置代號。
 
-如果註冊失敗，應用程式會呼叫其應用程式委派的 `application:didFailToRegisterForRemoteNotificationsWithError:` 方法。
+如果註冊失敗，應用程式會改為呼叫其應用程式委派的`application:didFailToRegisterForRemoteNotificationsWithError:`方法。
 
 向Marketo註冊推播權杖。 若要從Marketo接收推播通知，您必須向Marketo註冊裝置代號。
 
@@ -257,19 +257,19 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
 
 如果您的應用程式在背景執行（或未啟用），裝置將會收到推播通知，如下所示。 Marketo將會追蹤使用者點選通知的時間。
 
-![mobile8](assets/mobile8.png)
+![行動裝置8](assets/mobile8.png)
 
-如果裝置收到推播通知，則會傳送至 `application:didReceiveRemoteNotification:` 回撥您的應用程式委派。
+如果裝置收到推播通知，就會在您的App委派上將它傳遞給`application:didReceiveRemoteNotification:`回呼。
 
 以下是來自Marketo的Marketo活動記錄，其中顯示應用程式事件和推播通知事件。
 
-![行動9](assets/mobile9.png)
+![行動裝置9](assets/mobile9.png)
 
 ## 在Android上設定推播通知
 
 1. 在應用程式標籤內新增以下許可權。
 
-   開啟 `AndroidManifest.xml` 並新增下列許可權。 您的應用程式必須要求「網際網路」和「ACCESS_NETWORK_STATE」許可權。 如果您的應用程式已要求這些許可權，請略過此步驟。
+   開啟`AndroidManifest.xml`並新增下列許可權。 您的應用程式必須要求「網際網路」和「ACCESS_NETWORK_STATE」許可權。 如果您的應用程式已要求這些許可權，請略過此步驟。
 
    ```xml
    <uses‐permission android:name="android.permission.INTERNET"/>
@@ -285,9 +285,9 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
    ```
 
-1. 使用HTTPv1設定FCM (Google已 [已過時的XMPP通訊協定](https://firebase.google.com/docs/cloud-messaging/xmpp-server-ref) （2023年6月12日到期，將於2024年6月移除） 
+1. 使用HTTPv1設定FCM (Google在2023年6月12日有[已棄用的XMPP通訊協定](https://firebase.google.com/docs/cloud-messaging/xmpp-server-ref)，並將在2024年6月移除) 
 
-- 在Marketo功能管理員中啟用MME FCM HTTPv1 ![](assets/feature-manager.png)
+- 在Marketo功能管理員![](assets/feature-manager.png)中啟用MME FCM HTTPv1
    - 在MLM中上傳應用程式的服務帳戶Json檔案。
    - 您可以從Firebase主控台下載服務帳戶Json檔案。   ![](assets/fcm-console.png)
    - 在Marketo中上傳服務帳戶Json檔案後，等候一小時再傳送推播通知。  
@@ -309,7 +309,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
 
 ## 註冊Marketo推送服務
 
-1. 若要從Marketo接收推播通知，您必須將Firebase傳訊服務新增至您的 `AndroidManifest.xml`. 在結尾的應用程式標籤前新增。
+1. 若要從Marketo接收推播通知，您必須將Firebase訊息服務新增至`AndroidManifest.xml`。 在結尾的應用程式標籤前新增。
 
    ```xml
    <meta-data
@@ -323,7 +323,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
    </service>
    ```
 
-1. 在檔案中新增Marketo SDK方法 `MyFirebaseMessagingService` 如下所示
+1. 在檔案`MyFirebaseMessagingService`中新增Marketo SDK方法，如下所示
 
    ```java
    import com.marketo.Marketo;
@@ -348,7 +348,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
    }
    ```
 
-   **注意**  — 如果使用Adobe擴充功能，請新增如下
+   **附註** — 如果使用Adobe副檔名，請新增如下
 
    ```java
    import com.marketo.Marketo;
@@ -371,7 +371,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
    }
    ```
 
-**注意**： FCM SDK會自動新增所有必要許可權以及必要的接收器功能。 如果您使用舊版SDK，請務必從應用程式的資訊清單中移除下列過時的（且可能有害，因為它們可能會導致訊息重複）元素
+**注意**： FCM SDK會自動新增所有必要的許可權以及必要的接收器功能。 如果您使用舊版SDK，請務必從應用程式的資訊清單中移除下列過時的（且可能有害，因為它們可能會導致訊息重複）元素
 
 ```xml
 <receiver android:name="com.marketo.MarketoBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
@@ -399,14 +399,14 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
    marketoSdk.initializeMarketoPush(SENDER_ID,"ChannelName");
    ```
 
-   若使用 [!DNL Adobe Launch] 擴充功能，請依照下列指示操作
+   如果使用[!DNL Adobe Launch]副檔名，請使用下列指示
 
    ```java
    // Enable push notification here. The push notification channel name can by any string
    ALMarketo.initializeMarketoPush(SENDER_ID,"ChannelName");
    ```
 
-   如果您沒有SENDER_ID，請完成中詳述的步驟以啟用Google雲端傳訊服務。 [本教學課程](https://developers.google.com/cloud-messaging/).
+   如果您沒有SENDER_ID，請完成[本教學課程](https://developers.google.com/cloud-messaging/)中詳述的步驟以啟用Google雲端傳訊服務。
 
    當使用者登出時，也可以取消註冊權杖。
 
@@ -414,7 +414,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
    marketoSdk.uninitializeMarketoPush();
    ```
 
-   若使用 [!DNL Adobe Launch] 擴充功能，請遵循下列指示
+   如果使用[!DNL Adobe Launch]副檔名，請使用下列指示
 
    ```java
    ALMarketo.uninitializeMarketoPush();
@@ -464,7 +464,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
 
 ### .p12檔案遺失憑證或金鑰(iOS)
 
-匯出憑證時，請務必匯出金鑰 _和_ 憑證。
+匯出憑證時，請確定您匯出金鑰&#x200B;_和_&#x200B;憑證。
 
 ### 布建設定檔已過期(iOS)
 

@@ -1,14 +1,14 @@
 ---
-title: "錯誤"
+title: 錯誤次數
 feature: Webhooks
-description: 「Webhooks的錯誤代碼」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: Webhook的錯誤代碼
+exl-id: adce40c3-87b1-4f31-8995-eb64e8a72b55
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '232'
-ht-degree: 1%
+ht-degree: 2%
 
 ---
-
 
 # 錯誤次數
 
@@ -25,9 +25,9 @@ ht-degree: 1%
 
 ## 擷取Webhook錯誤
 
-來自Webhook的錯誤可由以下動作攔截和處理 [!UICONTROL Webhook is Called] 觸發器：
+來自Webhook的錯誤可由[!UICONTROL Webhook is Called]觸發器捕捉和處理：
 
-![已呼叫Webhook](assets/webhook-called.png)
+已呼叫![Webhook](assets/webhook-called.png)
 
 * Response - Response是要求已接收的常值回應裝載。
 * 錯誤型別 — 這對應至HTTP狀態訊息的理由短語。

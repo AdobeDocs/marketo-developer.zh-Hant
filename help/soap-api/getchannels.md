@@ -1,14 +1,14 @@
 ---
-title: "getChannels"
+title: getChannels
 feature: SOAP
-description: "getChannels SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getChannels SOAP呼叫
+exl-id: bcaef85b-154b-4571-ad24-07a36707a6ef
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '92'
 ht-degree: 4%
 
 ---
-
 
 # getChannels
 
@@ -24,7 +24,7 @@ ht-degree: 4%
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| tag->values->stringItem | 可選 | 您要查詢的管道清單。 如果 `<tag>` 省略，您將收到有關所有頻道的資訊 |
+| tag->values->stringItem | 可選 | 您要查詢的管道清單。 如果省略`<tag>`，您將收到有關所有頻道的資訊 |
 
 ## 請求XML
 

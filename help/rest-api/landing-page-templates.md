@@ -1,28 +1,28 @@
 ---
-title: 「登入頁面範本」
+title: 登陸頁面範本
 feature: REST API, Landing Pages
-description: 「建立和編輯登入頁面範本。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 建立和編輯登入頁面範本。
+exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '533'
 ht-degree: 0%
 
 ---
 
-
 # 登陸頁面範本
 
-[登陸頁面範本端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates)
+[登入頁面範本端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates)
 
 登陸頁面範本是個別Marketo登陸頁面的上層資源和相依性。 登入頁面會從父範本衍生出其內容的骨架。
 
 ## 範本型別
 
-Marketo提供兩種型別的登陸頁面範本：自由格式和引導式。 自由表單登入頁面範本為衍生自這些範本的頁面提供鬆散結構的編輯體驗。 引導式範本提供高度結構化的體驗，可在範本層級限制元素型別和位置。 如需差異的詳細資訊，請參閱 [本檔案](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages).
+Marketo提供兩種型別的登陸頁面範本：自由格式和引導式。 自由表單登入頁面範本為衍生自這些範本的頁面提供鬆散結構的編輯體驗。 引導式範本提供高度結構化的體驗，可在範本層級限制元素型別和位置。 如需差異的詳細資訊，請參閱[此檔案](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages)。
 
 ## 查詢
 
-登陸頁面範本支援的資產標準查詢型別： [依id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET)， [依名稱](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET)、和 [瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET). 這些端點會傳回範本的中繼資料。 若要擷取範本的HTML內容，必須透過其ID為每個範本完成。
+登入頁面範本支援[依識別碼](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET)和[瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET)之資產的標準查詢型別。 這些端點會傳回範本的中繼資料。 若要擷取範本的HTML內容，必須透過其ID為每個範本完成。
 
 ## 建立和更新
 
@@ -66,11 +66,11 @@ name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 }
 ```
 
-範本的內容必須透過 [更新登入頁面範本內容](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST) 端點。
+範本的內容必須透過[更新登陸頁面範本內容](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST)端點個別填入。
 
 ### 更新中繼資料
 
-可透過以下方式更新登入頁面範本的中繼資料： [更新登入頁面範本中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST) 端點。 名稱、說明和enableMunchkin設定可透過此方式更新。
+可透過[更新登入頁面範本中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST)端點更新登入頁面範本的中繼資料。 名稱、說明和enableMunchkin設定可透過此方式更新。
 
 ### 更新內容
 
@@ -114,13 +114,13 @@ Content-Type: text/plain
 
 Marketo提供複製登入頁面範本的簡單方法。 這是application/x-www-url-formencodedPOST要求。
 
-此 `id` path引數會指定要複製的來源登入頁面範本識別碼。
+`id`路徑引數指定要複製的來源登入頁面範本識別碼。
 
-此 `name` 引數可用來指定新登入頁面範本的名稱。
+`name`引數是用來指定新登入頁面範本的名稱。
 
-此 `folder` 引數用於指定新登陸頁面範本將所在的父資料夾。 其形式為內嵌JSON物件，包含  `id` 和 `type`.
+`folder`引數是用來指定新登入頁面範本所在的父資料夾。 其形式為內嵌JSON物件，包含  `id`和`type`。
 
-選填 `description` 引數可用來說明新的登陸頁面範本。
+選用的`description`引數可用來說明新的登入頁面範本。
 
 ```
 POST /rest/asset/v1/landingPageTemplate/{id}/clone.json

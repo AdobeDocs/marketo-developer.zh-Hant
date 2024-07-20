@@ -1,14 +1,14 @@
 ---
-title: 「驗證簽名」
+title: 驗證簽章
 feature: REST API
-description: 「使用安全驗證來傳送訊息。」
-source-git-commit: 9bc1e0867f9a21e2dc72bfab444a09f188d1bac9
+description: 使用安全驗證來傳送訊息。
+exl-id: dda9d81b-0a77-4a99-916b-bf21319fd26d
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '210'
 ht-degree: 2%
 
 ---
-
 
 # 驗證簽章
 
@@ -20,7 +20,7 @@ HMAC-SHA1簽名需要下列專案：
 - 使用共用機密金鑰和訊息內容計算並與服務要求一起傳輸的簽章
 - 未隨服務要求傳輸的共用機密金鑰（也稱為加密金鑰）
 
-使用者端程式會使用共用的秘密金鑰和部分要求訊息內容來計算HMAC-SHA1簽章。 使用者端必須包含SOAP標頭AuthenticationHeaderInfo，才能傳遞SOAP訊息的驗證資訊。
+使用者端程式會使用共用的秘密金鑰和部分要求訊息內容來計算HMAC-SHA1簽章。 使用者端必須包含SOAP標頭AuthenticationHeaderInfo，才能在SOAP訊息中傳遞驗證資訊。
 
 下列虛擬程式碼會示範演演算法：
 
@@ -43,10 +43,10 @@ authHeader = "<ns1:AuthenticationHeader>" +
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| `mktowsUserId` | 必填 | Marketo使用者端存取ID可在Marketo管理員SOAP API面板的整合下找到。 |
-| `requestSignature` | 必填 | 以共用機密金鑰為基礎的HMAC-SHA1簽章， `requestTimestamp`和Marketo使用者ID |
-| `requestTimestamp` | 必填 | 要求時間戳記(W3C WSDL日期格式，例如 「2013-06-09T14:04:54-08:00英吋) |
-| `partnerId` | 可選 | LaunchPoint技術合作夥伴 [API金鑰](../launchpoint-api.pdf). |
+| `mktowsUserId` | 必要 | Marketo使用者端存取ID位於Marketo管理員SOAP API面板的「整合」下方。 |
+| `requestSignature` | 必要 | 以共用機密金鑰、`requestTimestamp`和Marketo使用者ID為基礎的HMAC-SHA1簽章 |
+| `requestTimestamp` | 必要 | 要求時間戳記(W3C WSDL日期格式，例如 「2013-06-09T14:04:54-08:00」) |
+| `partnerId` | 可選 | LaunchPoint技術合作夥伴[API金鑰](../launchpoint-api.pdf)。 |
 
 ## 請求XML - getLeadActivity
 

@@ -1,20 +1,20 @@
 ---
-title: 「大量銷售機會匯入」
+title: 大量潛在客戶匯入
 feature: REST API
-description: 「批次匯入潛在客戶資料。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 批次匯入潛在客戶資料。
+exl-id: 615f158b-35f9-425a-b568-0a7041262504
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '803'
 ht-degree: 0%
 
 ---
 
-
 # 大量潛在客戶匯入
 
 [大量潛在客戶匯入端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads)
 
-對於大量的銷售機會記錄，銷售機會可以透過以下方式非同步匯入： [大量API](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST). 這可讓您使用含分隔字元（逗號、定位字元或分號）的平面檔案，將記錄清單匯入Marketo。 檔案可包含任意數量的記錄，只要檔案總計小於10MB即可。 記錄作業僅限「插入或更新」。
+針對大量潛在客戶記錄，可以使用[大量API](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)非同步匯入潛在客戶。 這可讓您使用含分隔字元（逗號、定位字元或分號）的平面檔案，將記錄清單匯入Marketo。 檔案可包含任意數量的記錄，只要檔案總計小於10MB即可。 記錄作業僅限「插入或更新」。
 
 ## 處理限制
 
@@ -29,9 +29,9 @@ email,firstName,lastName
 test@example.com,John,Doe
 ```
 
-此 `externalCompanyId` 欄位可用來將潛在客戶記錄連結至公司記錄。 此 `externalSalesPersonId` 欄位可用來將潛在客戶記錄連結至銷售人員記錄。
+`externalCompanyId`欄位可用來將潛在客戶記錄連結至公司記錄。 `externalSalesPersonId`欄位可用來將潛在客戶記錄連結至銷售人員記錄。
 
-呼叫本身會使用 `multipart/form-data` content-type。
+呼叫本身是使用`multipart/form-data`內容型別所執行。
 
 此請求型別可能很難實作，因此強烈建議您使用現有程式庫實作。
 
@@ -75,7 +75,7 @@ Easy,Fox,easyfox@marketo.com,Marketo
 }
 ```
 
-此端點使用 [content-type的多重部分/表單資料](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). 這可能很難對付，因此最佳實務是為您選擇的語言使用HTTP支援程式庫。 從命令列對cURL執行此動作的簡單方法如下所示：
+此端點使用[multipart/form-data做為content-type](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html)。 這可能很難對付，因此最佳實務是為您選擇的語言使用HTTP支援程式庫。 從命令列對cURL執行此動作的簡單方法如下所示：
 
 ```
 curl -i -F format=csv -F file=@lead_data.csv -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/leads.json
@@ -90,7 +90,7 @@ Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
 ```
 
-您也可以選擇包含 `lookupField`， `listId`、和 `partitionName` 請求中的引數。 `lookupField` 可讓您選取要取消重複的特定欄位，例如「同步銷售機會」，並預設為電子郵件。 您可以指定 `id` 作為 `lookupField` 以指示「僅更新」作業。 `listId` 可讓您選取要匯入潛在客戶清單的靜態清單；這將導致清單中的潛在客戶成為此靜態清單的成員，以及匯入導致的任何建立或更新。 `partitionName` 選取要匯入的特定分割區。 如需詳細資訊，請參閱工作區和分割區區段。
+您也可以選擇在要求中包含`lookupField`、`listId`和`partitionName`引數。 `lookupField`可讓您選取要取消重複的特定欄位，例如「同步銷售機會」，並預設為電子郵件。 您可以將`id`指定為`lookupField`以表示「僅更新」作業。 `listId`可讓您選取要匯入潛在客戶清單的靜態清單；這將導致清單中的潛在客戶成為此靜態清單的成員，以及匯入所導致的任何建立或更新。 `partitionName`選取要匯入的特定磁碟分割。 如需詳細資訊，請參閱工作區和分割區區段。
 
 請注意，在回應我們的呼叫時，沒有成功或失敗清單（例如同步銷售機會），而是結果陣列中記錄的batchId和狀態列位。 這是因為此API為非同步，且可能傳回「已排入佇列」、「匯入」或「失敗」狀態。 您必須保留batchId才能取得匯入工作的狀態，以及在完成時擷取失敗和/或警告。 batchId的有效期為七天。
 

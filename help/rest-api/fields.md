@@ -1,14 +1,14 @@
 ---
-title: "欄位"
+title: 欄位
 feature: REST API, Field Management
-description: 「支援的欄位名稱清單。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 支援的欄位名稱清單。
+exl-id: 9033f32a-c7cb-4bbf-abcf-38ca4112139f
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '194'
 ht-degree: 2%
 
 ---
-
 
 # 欄位
 
@@ -35,4 +35,4 @@ REST API和SOAP API對潛在客戶欄位使用不同的命名慣例。
 
 ### 為何REST API欄位sfdcId一律會傳回null值？
 
-欄位 `sfdcId` 是一個公式欄位，但錯誤地包含在REST API的原始欄位對應中。 透過REST API擷取的記錄不會計算公式欄位的值，因此值將一律為空。 若要擷取實際的SFDC ID，您應使用下列欄位： `sfdcLeadId` 和 `sfdcContactId`.
+欄位`sfdcId`是公式欄位，錯誤包含在REST API的原始欄位對應中。 透過REST API擷取的記錄不會計算公式欄位的值，因此值將一律為空。 若要擷取真實的SFDC ID，您應該使用名為`sfdcLeadId`和`sfdcContactId`的欄位。

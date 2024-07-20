@@ -1,27 +1,27 @@
 ---
-title: "syncLead"
+title: syncLead
 feature: SOAP
-description: "syncLead SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: syncLead SOAP呼叫
+exl-id: e6cda794-a9d4-4153-a5f3-52e97a506807
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '518'
 ht-degree: 1%
 
 ---
 
-
 # syncLean
 
 此函式插入或更新單一銷售機會記錄。 更新現有潛在客戶時，會使用下列其中一個索引鍵來識別潛在客戶：
 
 - Marketo ID
-- 外部系統ID (實作為 `foreignSysPersonId`)
+- 外部系統ID （實作為`foreignSysPersonId`）
 - Marketo Cookie （由Munchkin JS指令碼建立）
 - 電子郵件
 
 如果找到現有的相符專案，呼叫會執行更新。 如果沒有，則會插入並建立銷售機會。 匿名潛在客戶可使用Marketo Cookie ID進行更新，並在更新後成為已知客戶。
 
-除了電子郵件之外，這些識別碼都會被視為唯一金鑰。 Marketo ID的優先順序高於所有其他索引鍵。 如果兩者 `foreignSysPersonId` 而且潛在客戶記錄中有Marketo ID，則Marketo ID會取得優先權，而且 `foreignSysPersonId` 將會針對該潛在客戶進行更新。 若僅 `foreignSysPersonId` 會提供，然後作為唯一識別碼使用。 如果兩者 `foreignSysPersonId` 和電子郵件存在，但Marketo ID不存在，則 `foreignSysPersonId` 會取得優先權，且會更新該潛在客戶的電子郵件。
+除了電子郵件之外，這些識別碼都會被視為唯一金鑰。 Marketo ID的優先順序高於所有其他索引鍵。 如果潛在客戶記錄中同時存在`foreignSysPersonId`和Marketo ID，則Marketo ID會取得優先權，並會更新該潛在客戶的`foreignSysPersonId`。 如果只指定了`foreignSysPersonId`，則會將其用作唯一識別碼。 如果`foreignSysPersonId`和電子郵件同時存在，但Marketo ID不存在，則會以`foreignSysPersonId`優先，並更新該潛在客戶的電子郵件。
 
 您可以視需要指定「內容標頭」來命名目標工作區。
 
@@ -42,14 +42,14 @@ ht-degree: 1%
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| leadRecord->Id | 必要 — 僅當電子郵件或 `foreignSysPersonId` 不存在 | 潛在客戶記錄的Marketo ID |
-| leadRecord->電子郵件 | 必要 — 僅當ID或 `foreignSysPersonId` 不存在 | 與潛在客戶記錄關聯的電子郵件地址 |
+| leadRecord->Id | 必要 — 僅在電子郵件或`foreignSysPersonId`不存在時 | 潛在客戶記錄的Marketo ID |
+| leadRecord->電子郵件 | 必要 — 僅當ID或`foreignSysPersonId`不存在時 | 與潛在客戶記錄關聯的電子郵件地址 |
 | leadRecord->`foreignSysPersonId` | 必要 — 僅當ID或電子郵件不存在時 | 與潛在客戶記錄相關聯的外部系統ID |
-| leadRecord->foreignSysType | 選擇性 — 只有在 `foreignSysPersonId` 存在 | 外部系統的型別。 可能的值：自訂、SFDC、NETSUITE |
-| leadRecord->leadAttributeList->attribute->attrName | 必填 | 您要更新其值的潛在客戶屬性名稱。 |
-| leadRecord->leadAttributeList->attribute->attrValue | 必填 | 您要設定為attrName中指定的潛在客戶屬性的值。 |
-| returnLead | 必填 | 為true時，會在更新時傳回完整更新的潛在客戶記錄。 |
-| marketoCookie | 可選 | 此 [Munchkin javascript](../javascript-api/lead-tracking.md) Cookie |
+| leadRecord->foreignSysType | 選擇性 — 僅當`foreignSysPersonId`存在時才為必要 | 外部系統的型別。 可能的值：自訂、SFDC、NETSUITE |
+| leadRecord->leadAttributeList->attribute->attrName | 必要 | 您要更新其值的潛在客戶屬性名稱。 |
+| leadRecord->leadAttributeList->attribute->attrValue | 必要 | 您要設定為attrName中指定的潛在客戶屬性的值。 |
+| returnLead | 必要 | 為true時，會在更新時傳回完整更新的潛在客戶記錄。 |
+| marketoCookie | 可選 | [Munchkin javascript](../javascript-api/lead-tracking.md) Cookie |
 
 ## 請求XML
 

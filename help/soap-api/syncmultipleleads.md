@@ -1,35 +1,35 @@
 ---
-title: "syncMultipleLeads"
+title: syncMultipleLeads
 feature: SOAP
-description: "syncMultipleLeads SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: syncMultipleLeads SOAP呼叫
+exl-id: 91980b82-dff9-48a7-b03e-20dce9d0d046
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '221'
 ht-degree: 3%
 
 ---
 
-
 # syncMultipleLeads
 
-此函式要求插入或更新（更新插入）作業 _多個_ 潛在客戶記錄。 更新現有潛在客戶時，可以使用下列其中一個索引鍵來識別潛在客戶：
+此函式要求&#x200B;_多個_&#x200B;潛在客戶記錄的插入或更新（更新插入）作業。 更新現有潛在客戶時，可以使用下列其中一個索引鍵來識別潛在客戶：
 
 - Marketo ID
 - 外部系統ID
 - 電子郵件
 
-如果出現多個索引鍵，則Marketo ID的優先順序會高於 `ForeignSysPersonId`，而後者將會更新。 不過，如果電子郵件也以索引鍵的形式出現，則除非在屬性清單中指定，否則不會更新電子郵件。
+如果出現多個索引鍵，則Marketo ID會優先於`ForeignSysPersonId`，而後者將會更新。 不過，如果電子郵件也以索引鍵的形式出現，則除非在屬性清單中指定，否則不會更新電子郵件。
 
 我們的建議為批次大小不得超過300。 不支援較大尺寸，這可能會導致逾時並在極端情況下進行節流。
 
-您可以使用此函式呼叫來關閉去重複化功能。 若dedupEnabled設為true ，且不指定其他唯一識別碼(`foreignSysPersonId` 或Marketo銷售機會ID)，則系統會使用電子郵件地址為銷售機會記錄刪除重複專案。 請記住，傳入false會在Marketo中建立重複專案。
+您可以使用此函式呼叫來關閉去重複化功能。 如果dedupEnabled設為true，但未提供其他唯一識別碼(`foreignSysPersonId`或Marketo銷售機會識別碼)，則會使用電子郵件地址來刪除銷售機會記錄的重複專案。 請記住，傳入false會在Marketo中建立重複專案。
 
 ## 請求
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| leadRecordList->leadRecord | 必填 | 您要同步的LeadRecords陣列。 LeadRecords必須指定潛在客戶ID、電子郵件或ForeignSysPersonId |
-| dedupEnabled | 可選 | 可選值，可讓您關閉重複資料刪除功能。 傳入值 `false` 會在Marketo中建立重複專案 |
+| leadRecordList->leadRecord | 必要 | 您要同步的LeadRecords陣列。 LeadRecords必須指定潛在客戶ID、電子郵件或ForeignSysPersonId |
+| dedupEnabled | 可選 | 可選值，可讓您關閉重複資料刪除功能。 傳入`false`的值將會在Marketo中建立重複專案 |
 
 ## 請求XML
 

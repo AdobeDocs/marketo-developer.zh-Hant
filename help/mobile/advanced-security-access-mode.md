@@ -1,14 +1,14 @@
 ---
 title: 進階安全性存取模式
-feature: "Mobile Marketing"
-description: 「進階安全性存取模式的詳細資料」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+feature: Mobile Marketing
+description: 有關進階安全性存取模式的詳細資料
+exl-id: bd4730ff-708b-465e-b494-485a4dbf67ff
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '303'
 ht-degree: 0%
 
 ---
-
 
 # 進階安全性存取模式
 

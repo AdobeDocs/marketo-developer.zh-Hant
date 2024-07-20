@@ -1,14 +1,14 @@
 ---
-title: 「智慧清單」
+title: 智慧清單
 feature: REST API
-description: 「建立和編輯智慧列示。」
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: 建立和編輯智慧列示。
+exl-id: 4ba37e57-ee56-48c3-bb2b-b4ec8e907911
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '419'
 ht-degree: 0%
 
 ---
-
 
 # 智慧清單
 
@@ -16,17 +16,17 @@ ht-degree: 0%
 
 Marketo提供了一組REST API，可用於對智慧列示執行作業。 這些API遵循資產API的標準介面模式，提供查詢、刪除和複製選項。
 
-注意：這些API僅支援使用者建立的智慧列示。 它們不能用於 [內建/系統智慧清單](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists).
+注意：這些API僅支援使用者建立的智慧列示。 無法用於[內建/系統智慧列示](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists)。
 
 ## 查詢
 
-查詢智慧列示會遵循以下資產的標準查詢型別： [依id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByIdUsingGET)， [依名稱](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET)、和 [瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListsUsingGET).
+查詢智慧列示會依循[的標準查詢型別（依識別碼](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET)和[瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListsUsingGET)）。
 
 ### 依Id
 
-[依識別碼查詢](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByIdUsingGET) 採用單一智慧清單 `id` 作為路徑引數，並傳回單一智慧清單記錄。 您可以選擇是否傳遞 `includeRules` 布林值引數，在回應中包含智慧清單規則。
+[依ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByIdUsingGET)進行查詢，會以單一智慧列示`id`作為路徑引數，並傳回單一智慧列示記錄。 您可以選擇傳遞`includeRules`布林值引數，在回應中包含智慧列示規則。
 
-![Smartlist規則](assets/smartlist-rules.png)
+![智慧清單規則](assets/smartlist-rules.png)
 
 ```
 GET /rest/asset/v1/smartList/{id}.json?includeRules=true
@@ -99,7 +99,7 @@ GET /rest/asset/v1/smartList/{id}.json?includeRules=true
 
 ### 依智慧行銷活動Id
 
-[依智慧型行銷活動ID查詢](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getSmartListBySmartCampaignIdUsingGET) 需要單一智慧行銷活動 `id` 作為路徑引數，並傳回單一智慧清單記錄。 您可以選擇是否傳遞 `includeRules` 布林值引數，在回應中包含智慧清單規則。
+[依智慧行銷活動ID查詢](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/getSmartListBySmartCampaignIdUsingGET)會以單一智慧行銷活動`id`作為路徑引數，並傳回單一智慧清單記錄。 您可以選擇傳遞`includeRules`布林值引數，在回應中包含智慧列示規則。
 
 ```
 GET /rest/asset/v1/smartCampaign/{smartCampaignId}/smartList.json
@@ -130,7 +130,7 @@ GET /rest/asset/v1/smartCampaign/{smartCampaignId}/smartList.json
 
 ### 依計畫ID
 
-[依方案ID查詢](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getSmartListByProgramIdUsingGET) 需要單一電子郵件程式 `id` 作為路徑引數，並傳回單一智慧清單記錄。 您可以選擇是否傳遞 `includeRules` 布林值引數，在回應中包含智慧清單規則。
+[依程式ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getSmartListByProgramIdUsingGET)查詢，會以單一電子郵件程式`id`作為路徑引數，並傳回單一智慧清單記錄。 您可以選擇傳遞`includeRules`布林值引數，在回應中包含智慧列示規則。
 
 ```
 GET /rest/asset/v1/program/{programId}/smartList.json
@@ -161,7 +161,7 @@ GET /rest/asset/v1/program/{programId}/smartList.json
 
 ### 依名稱
 
-[依名稱查詢](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET) 採用智慧清單 `name` 作為引數，並傳回單一智慧清單記錄。  會針對執行個體中的所有智慧列示名稱執行完全相符的字串，並傳回符合該名稱的智慧列示結果。
+[依名稱查詢](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListByNameUsingGET)將智慧清單`name`作為引數並傳回單一智慧清單記錄。  會針對執行個體中的所有智慧列示名稱執行完全相符的字串，並傳回符合該名稱的智慧列示結果。
 
 ```
 GET /rest/asset/v1/smartList/byName.json?name=2018 Leads
@@ -191,7 +191,7 @@ GET /rest/asset/v1/smartList/byName.json?name=2018 Leads
 
 ### 瀏覽
 
-智慧列示也可 [批次擷取](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListsUsingGET). 此 `folder` parameter用於指定在其下執行查詢的父資料夾。 格式為包含下列專案的JSON物件 `id` 和 `type`. 如同其他大量資產擷取端點， `offset` 和 `maxReturn` 是可用於分頁的可選引數。 選填 `earliestUpdatedAt` 和 `latestUpdatedAt` 日期時間引數可用來依UpdatedAt日期範圍篩選結果。
+智慧列示也可以以批次](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/getSmartListsUsingGET)擷取[。 `folder`引數是用來指定執行查詢的父資料夾。 其格式為包含`id`和`type`的JSON物件。 如同其他大量資產擷取端點，`offset`和`maxReturn`是可用於分頁的選用引數。 選用的`earliestUpdatedAt`和`latestUpdatedAt`日期時間引數可用來依據UpdatedAt日期範圍篩選結果。
 
 ```
 GET /rest/asset/v1/smartLists.json?folder={"id":31,"type":"Folder"}
@@ -245,7 +245,7 @@ GET /rest/asset/v1/smartLists.json?folder={"id":31,"type":"Folder"}
 
 ## 原地複製
 
-[複製智慧清單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/cloneSmartListUsingPOST) 是以application/x-www-form-urlencodedPOST執行。 要複製的智慧清單指定於 `id` path引數。 此 `folder` 引數可用來指定要在其中建立智慧清單的父資料夾，並格式化為包含ID和型別的JSON物件。 父資料夾必須是程式或智慧清單資料夾。 此 `name` 引數是用來命名新的智慧清單，而且必須是唯一的。 選擇性 `description` 引數可用來說明智慧清單。
+[複製智慧列示](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/cloneSmartListUsingPOST)是以application/x-www-form-urlencodedPOST執行。 在`id`路徑引數中指定要複製的智慧清單。 `folder`引數是用來指定要在其下建立智慧列示的父資料夾，並格式化為包含ID和型別的JSON物件。 父資料夾必須是程式或智慧清單資料夾。 `name`引數是用來命名新的智慧清單，而且必須是唯一的。 可選擇使用`description`引數描述智慧列示。
 
 ```
 POST /rest/asset/v1/smartList/{id}/clone.json
@@ -283,7 +283,7 @@ folder={"id":31,"type":"Folder"}&name=2018 Leads Qualified
 
 ## 刪除
 
-[刪除智慧清單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/deleteSmartListByIdUsingPOST) 採用單一智慧清單 `id` 作為路徑引數。
+[刪除智慧列示](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists/operation/deleteSmartListByIdUsingPOST)會以單一智慧列示`id`作為路徑引數。
 
 ```
 POST /rest/asset/v1/smartList/{id}/delete.json

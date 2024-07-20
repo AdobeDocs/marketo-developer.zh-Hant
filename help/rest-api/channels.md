@@ -1,20 +1,20 @@
 ---
-title: "管道"
+title: 頻道
 feature: REST API
-description: 「使用Marketo API設定管道資料。」
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: 使用Marketo API設定管道資料。
+exl-id: ec6c279f-a7b4-4a7c-b980-1a68045f37ce
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '125'
 ht-degree: 1%
 
 ---
 
-
 # 頻道
 
 [管道端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels)
 
-管道是所有計畫型別的標準和必填欄位。 每種型別的管道只能與指定的搭配使用 `applicableProgramType` 並提供每個方案中方案成員有效的可用方案狀態清單。 如果管道的節目狀態在建立節目之後變更，則潛在客戶可能會變更到的節目狀態清單將符合當時頻道提供的清單，但不會回溯地變更任何現有節目成員資格記錄的節目狀態。
+管道是所有計畫型別的標準和必填欄位。 每種管道型別只能與指定的`applicableProgramType`搭配使用，並提供每個方案中對方案成員有效的可用方案狀態清單。 如果管道的節目狀態在建立節目之後變更，則潛在客戶可能會變更到的節目狀態清單將符合當時頻道提供的清單，但不會回溯地變更任何現有節目成員資格記錄的節目狀態。
 
 ## 查詢
 

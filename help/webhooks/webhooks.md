@@ -16,18 +16,18 @@ Marketo允許使用Webhook與協力廠商Web服務通訊。 Webhook支援使用G
 
 - [建立Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
 - [呼叫Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
-- [在Smart Campaign中使用Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
+- [在智慧行銷活動中使用Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
 
 每個單獨的webhook都有以下屬性：
 
-- [!UICONTROL URL]  — 輸入您用來向Web服務提交請求的URL。
+- [!UICONTROL URL] — 輸入您用來將要求提交至Web服務的URL。
 - [!UICONTROL Request Type] - HTTP方法。
-- [!UICONTROL Payload Template]  — 如果您想要在POST內文中傳輸資訊，請輸入範本。 使用支援HTTPPOST的任何資料格式，包括XML、JSON或SOAP。 序列化格式必須在字串周圍加上雙引號。 若要在範本中插入Token，請按一下 **[!UICONTROL Insert Token]**.  字串型別的權杖會自動以雙引號括住。
-- [!UICONTROL Request Token Encoding]  — 如果代號值包含特殊字元（例如&amp;符號），請指出您請求的格式（JSON或表單/URL）。 必須為主體選擇正確的編碼，以確保Webhook正確與Web服務通訊。
-- [!UICONTROL Response Type]  — 選取您從服務收到的回應格式（JSON或XML）。 必須選取正確的回應型別，才能將回應的屬性對應回Marketo中的潛在客戶欄位
-- [!UICONTROL Custom Headers]  — 存取 [!UICONTROL Webhooks Actions] -> [!UICONTROL Set Custom Header]，此功能表可讓您新增任意數量的自訂索引鍵/值組作為HTTP標題。
+- [!UICONTROL Payload Template] — 如果您想要在POST內文中傳輸資訊，請輸入範本。 使用支援HTTPPOST的任何資料格式，包括XML、JSON或SOAP。 序列化格式必須在字串周圍加上雙引號。 若要在範本中插入權杖，請按一下&#x200B;**[!UICONTROL Insert Token]**。  字串型別的權杖會自動以雙引號括住。
+- [!UICONTROL Request Token Encoding] — 如果權杖值包含特殊字元（例如&amp;符號、&#39;&amp;&#39;），請指出您請求的格式（JSON或表單/URL）。 必須為主體選擇正確的編碼，以確保Webhook正確與Web服務通訊。
+- [!UICONTROL Response Type] — 選取您從服務收到的回應格式（JSON或XML）。 必須選取正確的回應型別，才能將回應的屬性對應回Marketo中的潛在客戶欄位
+- [!UICONTROL Custom Headers] — 透過[!UICONTROL Webhooks Actions] -> [!UICONTROL Set Custom Header]存取，此功能表允許將任意數量的自訂索引鍵值配對新增為HTTP標題。
 
-可以使用將資料從Web服務回應回寫到銷售機會 [回應對應](response-mappings.md)
+可以使用[回應對應](response-mappings.md)，將資料從Web服務回應寫入潛在客戶
 
 ## Token
 
@@ -37,11 +37,11 @@ Webhook中的所有傳出欄位（URL、範本和自訂標題）都會在流程�
 - [系統權杖字彙表](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
 - [有趣時刻的Token](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
 
-常見的情況是，方案或行銷活動明確對應至協力廠商資源。 ID可在方案層級設定為 `My Token`，然後以Token的形式傳遞至Webhook要求。
+常見的情況是，方案或行銷活動明確對應至協力廠商資源。 ID可在程式層級設定為`My Token`，然後作為Token傳遞至Webhook要求。
 
 ## 自訂標頭
 
-Webhook允許使用任意數量的自訂標題欄位與傳出請求一起傳送。 您可透過新增這些許可權 **[!UICONTROL Webhooks Actions]** > **[!UICONTROL Set Custom Header]**. 每個標頭都會記錄為一個簡單的索引鍵/值組。 Token可用於此區域。
+Webhook允許使用任意數量的自訂標題欄位與傳出請求一起傳送。 可透過&#x200B;**[!UICONTROL Webhooks Actions]** > **[!UICONTROL Set Custom Header]**&#x200B;新增這些專案。 每個標頭都會記錄為一個簡單的索引鍵/值組。 Token可用於此區域。
 
 ![自訂標頭](assets/custom-headers.png)
 

@@ -1,14 +1,14 @@
 ---
-title: "getTags"
+title: getTags
 feature: SOAP, Tags
-description: "getTags SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getTags SOAP呼叫
+exl-id: 4fd9de1a-9362-479a-afe1-09ef0aaf5e6e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '94'
 ht-degree: 4%
 
 ---
-
 
 # getTags
 
@@ -23,7 +23,7 @@ ht-degree: 4%
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| tagList->標籤 | 可選 | 您要查詢的標籤清單。 每個標籤可以有型別和值陣列做為字串。 如果 `<tagList>` 省略，您將收到有關所有頻道的資訊 |
+| tagList->標籤 | 可選 | 您要查詢的標籤清單。 每個標籤可以有型別和值陣列做為字串。 如果省略`<tagList>`，您將收到有關所有頻道的資訊 |
 
 ## 請求XML
 

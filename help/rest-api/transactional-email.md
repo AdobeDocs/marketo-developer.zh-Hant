@@ -1,24 +1,24 @@
 ---
-title: 「異動電子郵件」
+title: 異動電子郵件
 feature: REST API
-description: 「處理請求行銷活動的異動電子郵件。」
-source-git-commit: 29e9a5f513fe8e0f70e7377ef4b1ab3f572da0b0
+description: 處理請求行銷活動的異動電子郵件。
+exl-id: 057bc342-53f3-4624-a3c0-ae619e0c81a5
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '971'
 ht-degree: 0%
 
 ---
 
-
 # 異動電子郵件
 
-Marketo API的常見使用案例是透過 [請求行銷活動](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/triggerCampaignUsingPOST) API呼叫。 Marketo有一些設定需求，需要透過Marketo REST API執行必要的呼叫。
+Marketo API的常見使用案例是透過[請求行銷活動](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/triggerCampaignUsingPOST) API呼叫，觸發傳送異動電子郵件給特定記錄。 Marketo有一些設定需求，需要透過Marketo REST API執行必要的呼叫。
 
 - 收件者必須在Marketo中擁有記錄
 - 您的Marketo執行個體中必須已建立和核准交易式電子郵件。
-- 必須有具有「已請求行銷活動，1」的有效觸發行銷活動。 來源：網站服務API」，已設定為傳送電子郵件
+- 必須有具有「已請求行銷活動，1」的有效觸發行銷活動。 Source：網站服務API」，設定為傳送電子郵件
 
-第一 [建立和核准您的電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html). 如果電子郵件確實是交易式的，您可能必須將其設定為可操作的，但請確保其符合操作性法律資格。 這可透過「電子郵件動作>電子郵件設定」下的「編輯」畫面進行設定：
+首先[建立並核准您的電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html)。 如果電子郵件確實是交易式的，您可能必須將其設定為可操作的，但請確保其符合操作性法律資格。 這可透過「電子郵件動作>電子郵件設定」下的「編輯」畫面進行設定：
 
 ![Request-Campaign-Email-Settings](assets/request-campaign-email-settings.png)
 
@@ -28,7 +28,7 @@ Marketo API的常見使用案例是透過 [請求行銷活動](https://developer
 
 ![RequestCampaign-Approve-Draft](assets/request-campaign-approve-draft.png)
 
-如果您是建立行銷活動的新手，請檢視 [建立新的Smart Campaign](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html) 文章。 在您建立行銷活動後，我們必須完成這些步驟。 使用Campaign is Requested觸發器設定智慧清單：
+如果您是建立行銷活動的新手，請參閱[建立新的Smart Campaign](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html)文章。 在您建立行銷活動後，我們必須完成這些步驟。 使用Campaign is Requested觸發器設定智慧清單：
 
 ![Request-Campaign-Smart-List](assets/request-campaign-smart-list.png)
 
@@ -44,9 +44,9 @@ Marketo API的常見使用案例是透過 [請求行銷活動](https://developer
 
 ## 傳送API呼叫
 
-**注意：** 在以下Java範例中，我們使用 [minimal-json套件](https://github.com/ralfstx/minimal-json) 處理程式碼中的JSON表示法。
+**注意：**&#x200B;在下方的Java範例中，我們使用[minimal-json套件](https://github.com/ralfstx/minimal-json)處理程式碼中的JSON表現。
 
-透過API傳送交易式電子郵件的第一個部分，是確保您的Marketo執行個體中存在具有對應電子郵件地址的記錄，並且我們有權存取其銷售機會ID。 出於本文目的，我們假設電子郵件地址已在Marketo中，且我們僅必須擷取記錄ID。 為此，我們使用 [依篩選器型別取得銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET) 呼叫。 讓我們來看一下要求促銷活動的主要方法：
+透過API傳送交易式電子郵件的第一個部分，是確保您的Marketo執行個體中存在具有對應電子郵件地址的記錄，並且我們有權存取其銷售機會ID。 出於本文目的，我們假設電子郵件地址已在Marketo中，且我們僅必須擷取記錄ID。 為此，我們使用[依篩選器型別取得銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET)呼叫。 讓我們來看一下要求促銷活動的主要方法：
 
 ```java
 package dev.marketo.blog_request_campaign;
@@ -179,17 +179,17 @@ public class RequestCampaign {
 }
 ```
 
-此類別有一個接受驗證的建構函式，以及促銷活動的ID。 銷售機會會透過傳遞以下方式新增到物件 `ArrayList<Integer>` 包含要設定為setLeads之記錄的ID，或使用addLead，這需要一個整數並將其附加到leads屬性中的現有ArrayList。 若要觸發API呼叫以將潛在客戶記錄傳遞至促銷活動，必須呼叫postData，其會傳回包含來自請求的回應資料的JsonObject。 呼叫要求促銷活動時，Marketo中的目標觸發程式促銷活動會處理每個傳遞至呼叫的潛在客戶，並傳送先前建立的電子郵件。 恭喜，您已透過Marketo REST API觸發電子郵件。 請留意第2部分，我們將透過「請求行銷活動」以動態方式自訂電子郵件內容。
+此類別有一個接受驗證的建構函式，以及促銷活動的ID。 透過傳遞包含記錄的ID的`ArrayList<Integer>`給setLeads，或使用addLead （取一個整數並將其附加到leads屬性中的現有ArrayList），將潛在客戶新增到物件。 若要觸發API呼叫以將潛在客戶記錄傳遞至促銷活動，必須呼叫postData，其會傳回包含來自請求的回應資料的JsonObject。 呼叫要求促銷活動時，Marketo中的目標觸發程式促銷活動會處理每個傳遞至呼叫的潛在客戶，並傳送先前建立的電子郵件。 恭喜，您已透過Marketo REST API觸發電子郵件。 請留意第2部分，我們將透過「請求行銷活動」以動態方式自訂電子郵件內容。
 
 ### 建立電子郵件
 
-若要自訂內容，首先我們必須設定 [方案](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html) 和 [電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html) 在Marketo中。 若要產生自訂內容，我們必須在程式中建立權杖，然後將它們放入要傳送的電子郵件中。 為了簡單起見，在此範例中，我們僅使用一個權杖，但您可以取代電子郵件、寄件者電子郵件、寄件者姓名、回覆或電子郵件中任何內容的任何數量權杖。 所以讓我們建立一個Token Rich Text作為取代，並將其稱為「bodyReplacement」。 RTF可讓我們使用想要輸入的任意HTML來取代權杖中的任何內容。
+若要自訂我們的內容，我們必須先在Marketo中設定[程式](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html)和[電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html)。 若要產生自訂內容，我們必須在程式中建立權杖，然後將它們放入要傳送的電子郵件中。 為了簡單起見，在此範例中，我們僅使用一個權杖，但您可以取代電子郵件、寄件者電子郵件、寄件者姓名、回覆或電子郵件中任何內容的任何數量權杖。 所以讓我們建立一個Token Rich Text作為取代，並將其稱為「bodyReplacement」。 RTF可讓我們使用想要輸入的任意HTML來取代權杖中的任何內容。
 
 ![New-Token](assets/New-Token.png)
 
 Token在空白時無法儲存，因此請在此插入一些預留位置文字。 現在必須將代號插入電子郵件中：
 
-![Add-Token](assets/Add-Token.png)
+![新增Token](assets/Add-Token.png)
 
 此Token現在可透過「請求行銷活動」呼叫進行取代。 此代號可以很簡單，只需一行文字，但必須根據每封電子郵件進行取代，也可以包含電子郵件的幾乎整個版面。
 
@@ -265,4 +265,4 @@ Result:
 
 ## 正在結束
 
-此方法可透過多種方式擴充，可變更個別版面區段內或外部電子郵件中的內容，讓自訂值可傳遞至任務或有趣的時刻。 在程式中可以使用代號的任何地方，都可以使用此方法自訂。 類似的功能也適用於 [排程行銷活動](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/scheduleCampaignUsingPOST) 呼叫，可讓您在整個批次行銷活動中處理代號。 這些無法根據潛在客戶進行自訂，但可用於在廣泛的潛在客戶群中自訂內容。
+此方法可透過多種方式擴充，可變更個別版面區段內或外部電子郵件中的內容，讓自訂值可傳遞至任務或有趣的時刻。 在程式中可以使用代號的任何地方，都可以使用此方法自訂。 [排程行銷活動](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/scheduleCampaignUsingPOST)呼叫也有類似的功能，可讓您處理整個批次行銷活動中的權杖。 這些無法根據潛在客戶進行自訂，但可用於在廣泛的潛在客戶群中自訂內容。

@@ -1,14 +1,14 @@
 ---
-title: 「多媒體建議」
-description: 「多媒體建議」
+title: 多媒體推薦
+description: 多媒體推薦
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '812'
 ht-degree: 3%
 
 ---
-
 
 # 多媒體推薦
 
@@ -21,14 +21,14 @@ ht-degree: 3%
 1. 在頁面本文中
    1. 將範本標籤（div類別）放置在您要顯示範本的位置
 
-更多資訊可用 [此處](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media).
+[此處](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)提供詳細資訊。
 
 ## 範本標籤
 
 | 屬性 | 選用/必要 | 說明 |
 |---|---|---|
-| 類別 | 必填 | 指定此divHTML元素為RTP建議div。 |
-| data-rtp-template-id | 必填 | 範本識別碼。 這會決定建議的對齊方式。 使用「template1」進行水準對齊、「template2」進行垂直對齊，或「template3」進行僅包含標題和說明的垂直對齊。 指令碼會將相符的範本插入此範本 `div.Permissible` 值： template1、template2、template3。 |
+| 類別 | 必要 | 指定此divHTML元素為RTP建議div。 |
+| data-rtp-template-id | 必要 | 範本識別碼。 這會決定建議的對齊方式。 使用「template1」進行水準對齊、「template2」進行垂直對齊，或「template3」進行僅包含標題和說明的垂直對齊。 指令碼會將相符的範本插入這個`div.Permissible`值：template1、template2、template3。 |
 
 ### 範例
 
@@ -50,21 +50,21 @@ ht-degree: 3%
 <div class="RTP_RCMD2" data-rtp-template-id="template3"></div>
 ```
 
-檢視範本對齊的熒幕擷取畫面 [此處](#example_of_rich_media_recommendation_template_1).
+在[這裡](#example_of_rich_media_recommendation_template_1)檢視範本對齊的熒幕擷取畫面。
 
 ## 填入建議
 
-此方法會填入所有多媒體 `<divs>` 在含有建議的頁面上。
+此方法會使用建議填入頁面上的所有豐富媒體`<divs>`。
 
-### 使用情況
+### 使用量
 
 `rtp('get', 'rcmd', 'richmedia');`
 
 | 引數 | 選用/必要 | 類型 | 說明 |
 |---|---|---|---|
-| &#39;get&#39; | 必填 | 字串 | 方法動作。 |
-| &#39;rcmd&#39; | 必填 | 字串 | 方法名稱。 |
-| &#39;富媒體&#39; | 必填 | 字串 | 子方法名稱。 |
+| &#39;get&#39; | 必要 | 字串 | 方法動作。 |
+| &#39;rcmd&#39; | 必要 | 字串 | 方法名稱。 |
+| &#39;富媒體&#39; | 必要 | 字串 | 子方法名稱。 |
 
 
 ## 變更範本組態
@@ -73,17 +73,17 @@ ht-degree: 3%
 
 注意：使用此方法時，必須在呼叫rtp(&#39;get&#39;，&#39;rcmd&#39;， &#39;richmedia&#39;)之前呼叫它；
 
-### 使用情況
+### 使用量
 
 `rtp('set', 'rcmd', 'richmedia', 'template_id', conf_obj);`
 
 | 引數 | 選用/必要 | 類型 | 說明 |
 |---|---|---|---|
-| &#39;設定&#39; | 必填 | 字串 | 方法動作。 |
-| &#39;rcmd&#39; | 必填 | 字串 | 方法名稱。 |
-| &#39;富媒體&#39; | 必填 | 字串 | 子方法名稱。 |
+| &#39;設定&#39; | 必要 | 字串 | 方法動作。 |
+| &#39;rcmd&#39; | 必要 | 字串 | 方法名稱。 |
+| &#39;富媒體&#39; | 必要 | 字串 | 子方法名稱。 |
 | template_id | 可選 | 字串 | 用於設定變更的範本ID。 使用僅為一個範本指定設定變更。 |
-| conf_obj | 必填 | 物件 | 新設定。 物件會將所有設定儲存為索引鍵/值組。 |
+| conf_obj | 必要 | 物件 | 新設定。 物件會將所有設定儲存為索引鍵/值組。 |
 
 
 ### 範例
@@ -149,7 +149,7 @@ rtp("set", "rcmd", "richmedia",
 | rcmd.cta.background.color | &quot;rcmd.cta.background.color&quot; ： &quot;green&quot; | 變更按鈕背景顏色。 此屬性支援所有css色彩值（色彩名稱、rgb、...） |
 | rcmd.cta.font.color | &quot;rcmd.cta.font.color&quot; ： &quot;rgb(90， 84， 164)&quot; | 變更按鈕字型顏色。 此屬性支援所有字型色彩值（rgb、十六進位……） |
 | rcmd.cta.text | &quot;rcmd.cta.text&quot; ： &quot;推播&quot; | 變更按鈕文字。 所有按鈕的文字都相同。 |
-| 類別 | &quot;category&quot; ： [&quot;一個類別&quot;] | 變更此範本支援的建議類別。 範本只會顯示具有此組態所設定其中一個類別的建議。 |
+| 類別 | &quot;category&quot; ： [&quot;one category&quot;] | 變更此範本支援的建議類別。 範本只會顯示具有此組態所設定其中一個類別的建議。 |
 
 
 注意：組態支援可根據範本變更。
@@ -232,16 +232,16 @@ rtp('get','rcmd', 'richmedia');
 
 #### 多媒體建議範本范#1範例
 
-**名稱**：範本1 **說明**：水準內容包括影像、標題和說明，以及行動號召按鈕。
+**名稱**：範本1 **描述**：水準內容包含影像、標題和描述，以及行動號召按鈕。
 
 ![多媒體範本](assets/rich-media-template1.png)
 
 #### 多媒體建議範本范#2範例
 
-**名稱**：範本2 **說明**：垂直內容，包括影像、標題和說明，以及行動號召按鈕。
+**名稱**：範本2 **描述**：垂直內容包括影像、標題和描述，以及行動號召按鈕。
 
 ![多媒體範本](assets/rich-media-template2.png)
 
 #### 多媒體建議範本范#3範例
 
-**名稱**：範本3 **說明**：垂直內容，僅包含標題和說明。 滑鼠懸停時，標題會變更顏色，並超連結至內容URL。 說明也連結至不變更顏色的內容。 ![多媒體範本](assets/rich-media-template3.png)
+**名稱**：範本3 **描述**：僅包含標題和描述的垂直內容。 滑鼠懸停時，標題會變更顏色，並超連結至內容URL。 說明也連結至不變更顏色的內容。 ![多媒體範本](assets/rich-media-template3.png)

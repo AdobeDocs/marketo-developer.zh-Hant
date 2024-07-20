@@ -1,22 +1,22 @@
 ---
-title: 「自訂服務」
+title: 自訂服務
 feature: REST API
-description: 「使用Marketo的驗證認證。」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: 使用Marketo的驗證認證。
+exl-id: 38b05c4c-4404-4c30-a7cb-d31b28a3a72e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '968'
 ht-degree: 0%
 
 ---
 
-
 # 自訂服務
 
-自訂服務會提供認證以使用Marketo進行驗證。 需要認證才能從Marketo取得存取權杖 [Identity服務](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET). 每個自訂服務的範圍限定為單一API專用使用者，自訂服務會從中衍生其許可權。
+自訂服務會提供認證以使用Marketo進行驗證。 需要認證才能從Marketo [身分識別服務](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET)取得存取權杖。 每個自訂服務的範圍限定為單一API專用使用者，自訂服務會從中衍生其許可權。
 
 ## 角色
 
-建立自訂服務的第一步是建立可套用至相關「僅限API」使用者的角色。 這是從以下位置完成的： **[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Roles]** 功能表。
+建立自訂服務的第一步是建立可套用至相關「僅限API」使用者的角色。 這是從&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Roles]**&#x200B;功能表完成的。
 
 角色是個別許可權的容器，可允許或限制存取特定功能。 在已啟用工作區與分割區的訂閱中，會根據工作區授予許可權。 如果使用者在一個工作區中擁有許可權，但在另一個工作區沒有許可權，則他們只能在該工作區中執行允許的動作。 若要建立角色，請按一下新增角色按鈕。
 
@@ -30,7 +30,7 @@ ht-degree: 0%
 
 只有「存取API」群組中的許可權會套用至API使用者，也就是說，授予所有管理員許可權不會將任何API許可權授予使用者。
 
-建構角色時，請仔細考慮您應該允許應用程式使用此角色來執行哪些動作。 僅授予執行這些動作所需的最低許可權集。 允許不必要的許可權集可允許整合在您的訂閱中執行不需要的動作。 您可以使用 [許可權工具](endpoint-reference.md) 以決定您的最低許可權集。 檢視完整清單 [許可權](#permission_list).
+建構角色時，請仔細考慮您應該允許應用程式使用此角色來執行哪些動作。 僅授予執行這些動作所需的最低許可權集。 允許不必要的許可權集可允許整合在您的訂閱中執行不需要的動作。 您可以使用[許可權工具](endpoint-reference.md)來決定您的最小許可權集。 檢視[許可權](#permission_list)的完整清單。
 
 ## 使用者
 
@@ -42,7 +42,7 @@ ht-degree: 0%
 
 >[!MORELIKETHIS]
 >
->若要建立僅限API的使用者，請前往 **[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Users]** 功能表並按一下 [!UICONTROL Invite New User].
+>若要建立僅限API的使用者，請前往「**[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Users]**」功能表並按一下「[!UICONTROL Invite New User]」。
 
 
 ![新使用者資訊](assets/new-user-info.png)
@@ -57,13 +57,13 @@ ht-degree: 0%
 
 ## 自訂服務
 
-自訂服務會提供使用Marketo執行個體執行驗證所需的實際憑證（使用者端ID和使用者端密碼）。 若要布建一個，請移至 **[!UICONTROL Admin]** > **[!UICONTROL Integrations]** > **[!UICONTROL LaunchPoint]** 功能表，然後選取 **[!UICONTROL New Service]**.
+自訂服務會提供使用Marketo執行個體執行驗證所需的實際憑證（使用者端ID和使用者端密碼）。 若要布建一個，請移至您的&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integrations]** > **[!UICONTROL LaunchPoint]**&#x200B;功能表，然後選取&#x200B;**[!UICONTROL New Service]**。
 
-為服務指定描述性名稱，並從「服務」清單中選取「自訂」。 提供您服務的詳細說明，並從「僅限API使用者」清單中選取適當的使用者，然後按一下 [!UICONTROL Create].
+為服務指定描述性名稱，並從「服務」清單中選取「自訂」。 提供您服務的詳細描述，並從[僅限API使用者]清單中選取適當的使用者，然後按一下[!UICONTROL Create]。
 
-![新增自訂服務](assets/admin-launchpoint-new-service.png)
+![新的自訂服務](assets/admin-launchpoint-new-service.png)
 
-這會將新服務新增至您的LaunchPoint服務清單，以及「檢視詳細資料」的選項。 按一下「檢視詳細資料」，系統就會提供驗證所需的使用者端ID和使用者端密碼、擁有的使用者，以及取得權杖以用於短期測試目的的選項。 您從此對話方塊取得的權杖，其期限與一般從 [Identity服務](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET) 並從建立起的3,600秒內有效。
+這會將新服務新增至您的LaunchPoint服務清單，以及「檢視詳細資料」的選項。 按一下「檢視詳細資料」，系統就會提供驗證所需的使用者端ID和使用者端密碼、擁有的使用者，以及取得權杖以用於短期測試目的的選項。 您從此對話方塊取得的權杖，其存留期與一般從[身分識別服務](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET)取得的權杖相同，並且從建立起的3,600秒內有效。
 
 ![取得Token](assets/get-token.png)
 
@@ -71,7 +71,7 @@ ht-degree: 0%
 
 在具有Workspaces和Partitions的訂閱中，存取指定記錄或資產的能力是根據使用者角色在指定工作區中的許可權授與的。 每個工作區都可以存取「工作區與分割區」功能表中的一或多個分割區，而且銷售機會屬於單一分割區。 如果僅限API的使用者有權讀取或寫入工作區中的潛在客戶記錄，則其能夠存取該工作區有權存取之分割中的所有記錄。
 
-資產屬於工作區，因此讀取或寫入資產的能力取決於使用者是否在相關工作區中擁有角色，且角色有權在工作區中讀取或寫入該型別的資產記錄。
+Assets屬於工作區，因此讀取或寫入資產的能力取決於使用者是否在相關工作區中擁有角色，且角色有權在工作區中讀取或寫入該型別的資產記錄。
 
 ## 許可權清單
 
@@ -79,11 +79,11 @@ ht-degree: 0%
 
 | 角色許可權 | 授予存取權…… |
 | --- | --- |
-| 核准資產 | 核准資產 |
+| 核准Assets | 核准資產 |
 | 執行行銷活動 | 請求或排程行銷活動 |
 | 唯讀活動 | 擷取潛在客戶活動 |
 | 唯讀活動中繼資料 | 擷取潛在客戶活動中繼資料 |
-| 唯讀資產 | 擷取資產詳細資訊 |
+| 唯讀Assets | 擷取資產詳細資訊 |
 | 唯讀行銷活動 | 擷取行銷活動詳細資料 |
 | 唯讀公司 | 擷取公司詳細資料 |
 | 唯讀自訂物件 | 擷取自訂物件詳細資料 |
@@ -94,7 +94,7 @@ ht-degree: 0%
 | 唯讀銷售人員 | 擷取銷售人員詳細資料 |
 | 讀寫活動 | 擷取和建立潛在客戶活動 |
 | 讀寫活動中繼資料 | 擷取和建立潛在客戶活動中繼資料 |
-| 讀寫資產 | 擷取、建立和更新資產 |
+| 讀寫Assets | 擷取、建立和更新資產 |
 | 讀寫行銷活動 | 擷取、建立和更新行銷活動 |
 | 讀寫公司 | 擷取、建立和更新公司 |
 | 讀寫自訂物件 | 擷取、建立和更新自訂物件 |

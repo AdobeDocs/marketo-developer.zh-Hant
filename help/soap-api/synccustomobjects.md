@@ -1,14 +1,14 @@
 ---
-title: "syncCustomObjects"
+title: syncCustomObjects
 feature: SOAP
-description: 「syncCustomObjects SOAP呼叫」
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: syncCustomObjects SOAP呼叫
+exl-id: dbdd7ee6-f83f-4e20-b847-25a61f0f6046
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 3%
 
 ---
-
 
 # syncCustomObjects
 
@@ -20,16 +20,16 @@ ht-degree: 3%
 
 在單一API呼叫中，有些更新可能會成功，有些可能會失敗。 每次失敗都會傳回錯誤訊息。
 
-對於使用新自訂物件UI布建的自訂物件，僅指定為 `dedupe` UI中的欄位可作為屬性傳入以下位置： `CustomObjKeyList`. 連結欄位不是 `dedupe` 欄位必須作為屬性傳入到 `customObjAttributeList`.
+對於使用新自訂物件UI布建的自訂物件，只有在UI中指定為`dedupe`欄位的欄位才能在`CustomObjKeyList`中作為屬性傳遞。 非`dedupe`欄位的連結欄位必須作為`customObjAttributeList`中的屬性傳遞。
 
 ## 請求
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| 操作 | 必填 | &quot;INSERT&quot;、&quot;UPDATE&quot;或&quot;UPSERT&quot; |
-| objectTypeName | 必填 | 自訂物件的名稱 |
-| customObjectList->customObject->customObjKeyList->屬性 | 必填 | 屬性是用於識別自訂物件的索引鍵/值組。 customObjKeyList中可以有多個屬性 |
-| customObjectList->customObject->customObjAttributeList->attribute | 必填 | 金鑰/值配對，其中名稱是欄位名稱，值是您要插入至customObject的值 |
+| 操作 | 必要 | &quot;INSERT&quot;、&quot;UPDATE&quot;或&quot;UPSERT&quot; |
+| objectTypeName | 必要 | 自訂物件的名稱 |
+| customObjectList->customObject->customObjKeyList->屬性 | 必要 | 屬性是用於識別自訂物件的索引鍵/值組。 customObjKeyList中可以有多個屬性 |
+| customObjectList->customObject->customObjAttributeList->attribute | 必要 | 金鑰/值配對，其中名稱是欄位名稱，值是您要插入至customObject的值 |
 
 ## 請求XML
 

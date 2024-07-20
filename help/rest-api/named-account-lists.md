@@ -1,20 +1,20 @@
 ---
-title: 「具名帳戶清單」
+title: 具名帳戶清單
 feature: REST API
-description: 「設定具名帳戶清單。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 設定具名帳戶清單。
+exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '696'
 ht-degree: 2%
 
 ---
 
-
 # 具名帳戶清單
 
 [具名帳戶列出端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-[具名帳戶清單](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists) 在Marketo中，代表具名帳戶的集合。 它們可用於多種情況，包括分類、資料擴充和智慧型行銷活動篩選。 具名帳戶清單API允許從遠端管理這些清單資產及其成員資格。
+Marketo中的[具名帳戶清單](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists)代表具名帳戶的集合。 它們可用於多種情況，包括分類、資料擴充和智慧型行銷活動篩選。 具名帳戶清單API允許從遠端管理這些清單資產及其成員資格。
 `Content`
 
 ## 權限
@@ -37,7 +37,7 @@ ht-degree: 2%
 
 ## 查詢
 
-查詢帳戶清單簡單明瞭。 目前，查詢具名帳戶清單的有效filterTypes只有兩種：&quot;dedupeFields&quot;和&quot;idField&quot;。 要篩選的欄位設定在 `filterType` 引數，而值設定於 `filterValues as` 逗號分隔清單。 此 `nextPageToken` 和 `batchSize` 篩選也是選用引數。
+查詢帳戶清單簡單明瞭。 目前，查詢具名帳戶清單的有效filterTypes只有兩種：&quot;dedupeFields&quot;和&quot;idField&quot;。 要篩選的欄位設定在查詢的`filterType`引數中，而值設定在`filterValues as`中以逗號分隔的清單中。 `nextPageToken`和`batchSize`篩選器也是選用引數。
 
 ```
 GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fb,dff23271-f996-47d7-984f-f2676861b5fc
@@ -72,11 +72,11 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
 
 ## 建立和更新
 
-建立和更新具名帳戶清單記錄會遵循其他Lead Database建立和更新作業的已建立模式。 請記住，具名帳戶清單只有一個可更新的欄位， `name`.
+建立和更新具名帳戶清單記錄會遵循其他Lead Database建立和更新作業的已建立模式。 請記住，具名帳戶清單只有一個可更新的欄位`name`。
 
-端點允許兩種標準動作型別：「createOnly」和「updateOnly」。  此 `action defaults` 至「createOnly」。
+端點允許兩種標準動作型別：「createOnly」和「updateOnly」。  `action defaults`為「createOnly」。
 
-選填 `dedupeBy parameter` 可以指定動作是否為 `updateOnly`.  允許的值是&quot;dedupeFields&quot; （對應至&quot;name&quot;）或&quot;idField&quot; （對應至&quot;marketoGUID&quot;）。  在 `createOnly` 模式，僅允許以「name」作為 `dedupeBy` 欄位。 您一次最多可以提交300筆記錄。
+如果動作為`updateOnly`，則可指定選擇性`dedupeBy parameter`。  允許的值是&quot;dedupeFields&quot; （對應至&quot;name&quot;）或&quot;idField&quot; （對應至&quot;marketoGUID&quot;）。  在`createOnly`模式中，`dedupeBy`欄位僅允許&quot;name&quot;。 您一次最多可以提交300筆記錄。
 
 ```
 POST /rest/v1/namedAccountLists.json
@@ -118,7 +118,7 @@ POST /rest/v1/namedAccountLists.json
 
 ## 刪除
 
-刪除具名帳戶清單非常簡單，您可以根據 `name`，或 `marketoGUID` 清單的。 若要選取您要使用的金鑰，請在「 」中將「dedupeFields」傳遞給name，或將「idField」傳遞給marketoGUID`deleteB` 請求的成員。 如果未設定，則預設為dedupeFields。 您一次最多可以刪除300筆記錄。
+刪除具名帳戶清單非常簡單，您可以根據`name`或清單的`marketoGUID`完成。 若要選取您要使用的金鑰，請在請求的`deleteB`成員中，為name傳遞「dedupeFields」，或為marketoGUID傳遞「idField」。 如果未設定，則預設為dedupeFields。 您一次最多可以刪除300筆記錄。
 
 ```
 POST /rest/v1/namedAccountLists/delete.json
@@ -170,17 +170,19 @@ POST /rest/v1/namedAccountLists/delete.json
 }
 ```
 
-在找不到指定索引鍵的記錄的情況下，對應的結果專案將具有`status` 以及說明失敗的程式碼和訊息的原因，如上述範例所示。
+在找不到指定索引鍵的記錄的情況下，對應的結果專案會有`status`個「已略過」，以及包含說明失敗之程式碼和訊息的原因，如上述範例所示。
 
 ## 管理成員資格
 
 ### 查詢成員資格
 
-查詢具名帳戶清單的成員資格非常簡單，只需指定`i` 帳戶清單的。 可選引數包括：
+查詢具名帳戶清單的成員資格很簡單，只需要帳戶清單的`i`。 可選引數包括：
 
--`field`  — 回應記錄中包含的逗號分隔欄位清單 — `nextPageToke`  — 用於分頁結果集 — `batchSiz`  — 指定要傳回的記錄數
+-`field` — 要包含在回應記錄中的逗號分隔欄位清單
+-`nextPageToke` — 用於分頁結果集
+-`batchSiz` — 指定要傳回的記錄數
 
-如果`field` 未設定，則`marketoGUI`，`nam`， `createdA`、和`updatedA` 將會傳回。 `batchSiz` 具有最大和預設值300。
+如果未設定`field`，則會傳回`marketoGUI`、`nam`、`createdA`和`updatedA`。 `batchSiz`的最大值和預設值為300。
 
 ```
 GET /rest/v1/namedAccountList/{id}/namedAccounts.json
@@ -251,7 +253,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 ### 移除成員
 
-從帳戶清單中移除記錄具有不同的路徑，但需要相同的介面，`marketoGUI` 每個要刪除的記錄。 您一次最多可以移除300筆記錄。
+從帳戶清單移除記錄有不同的路徑，但介面相同，您想要刪除的每個記錄都需要`marketoGUI`。 您一次最多可以移除300筆記錄。
 
 ```
 POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json

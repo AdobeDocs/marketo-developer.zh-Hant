@@ -1,14 +1,14 @@
 ---
-title: 「錯誤代碼」
+title: 錯誤代碼
 feature: REST API
-description: 「Marketo錯誤代碼說明。」
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: Marketo錯誤代碼說明。
+exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '2272'
 ht-degree: 3%
 
 ---
-
 
 # 錯誤代碼
 
@@ -22,7 +22,7 @@ ht-degree: 3%
 
 Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
 
-* HTTP-Level：這些錯誤由 `4xx` 程式碼。
+* HTTP-Level：這些錯誤以`4xx`程式碼表示。
 * 回應層級：這些錯誤包含在JSON回應的「錯誤」陣列中。
 * 記錄層級：這些錯誤包含在JSON回應的「結果」陣列中，並以「狀態」欄位和「原因」陣列依個別記錄指示。
 
@@ -30,12 +30,12 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
 
 ### HTTP層級錯誤
 
-在正常作業情況下，Marketo應該只會傳回兩個HTTP狀態程式碼錯誤， `413 Request Entity Too Large`、和 `414 Request URI Too Long`. 擷取錯誤、修改請求和重試都可以復原這些設定，但使用智慧編碼實務作法，您絕不應該在萬不得已的情況下遇到這些設定。
+在正常作業情況下，Marketo應該只傳回兩個HTTP狀態程式碼錯誤： `413 Request Entity Too Large`和`414 Request URI Too Long`。 擷取錯誤、修改請求和重試都可以復原這些設定，但使用智慧編碼實務作法，您絕不應該在萬不得已的情況下遇到這些設定。
 
 如果要求裝載超過1MB，Marketo會傳回413，若是Import Lead，會傳回10MB。 在大多數情況下，應該不會達到這些限制，但新增檢查至要求的大小，並移動任何記錄（這會導致限制超過新的要求）應該可以防止任何情況（這會導致任何端點傳回此錯誤）。
 
-當GET要求的URI超過8KB時，將會傳回414。 若要避免出現這種情況，請檢查查詢字串的長度，看看是否超過此限制。 如果它確實將您的請求變更為POST方法，則使用其他引數將您的查詢字串輸入為請求內文 `_method=GET`. 這放棄了URI的限制。 在大多數情況下很少達到此限制，但在擷取具有長的個別篩選值（例如GUID）的大量記錄時，這比較常見。
-此 [身分](https://developer.adobe.com/marketo-apis/api/identity/) 端點可能會傳回401 Unauthorized錯誤。 這通常是因為無效的使用者端ID或無效的使用者端密碼。 HTTP層級錯誤代碼
+當GET要求的URI超過8KB時，將會傳回414。 若要避免出現這種情況，請檢查查詢字串的長度，看看是否超過此限制。 如果它確實將您的要求變更為POST方法，則使用其他引數`_method=GET`將您的查詢字串輸入為要求內文。 這放棄了URI的限制。 在大多數情況下很少達到此限制，但在擷取具有長的個別篩選值（例如GUID）的大量記錄時，這比較常見。
+[身分](https://developer.adobe.com/marketo-apis/api/identity/)端點可能傳回401未授權錯誤。 這通常是因為無效的使用者端ID或無效的使用者端密碼。 HTTP層級錯誤代碼
 
 <table>
   <thead>
@@ -62,7 +62,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
 
 #### 回應層級錯誤
 
-回應層級錯誤出現於 `success` 回應的引數設為false，其結構如下：
+當回應的`success`引數設為false，且結構如下列時，會出現回應層級錯誤：
 
 ```json
 {
@@ -77,7 +77,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
 }
 ```
 
-「錯誤」陣列中的每個物件都有兩個成員， `code`，引號為601到799的整數，以及 `message` 提供錯誤的純文字原因。 6xx程式碼一律會指出要求完全失敗且未執行。 601「存取權杖無效」即是範例，您可使用要求重新驗證並傳遞新的存取權杖來復原它。 7xx錯誤表示請求失敗，可能是因為未傳回任何資料，或是請求引數化不正確，例如包含無效的日期，或遺漏必要的引數。
+「錯誤」陣列中的每個物件都有兩個成員，`code`，這是從601到799的引號整數，以及提供錯誤純文字原因的`message`。 6xx程式碼一律會指出要求完全失敗且未執行。 601「存取權杖無效」即是範例，您可使用要求重新驗證並傳遞新的存取權杖來復原它。 7xx錯誤表示請求失敗，可能是因為未傳回任何資料，或是請求引數化不正確，例如包含無效的日期，或遺漏必要的引數。
 
 #### 回應層級錯誤代碼
 
@@ -110,7 +110,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     <tr>
       <td><a name="603"></a>603</td>
       <td>存取遭拒</td>
-      <td>驗證成功，但使用者沒有足夠的許可權呼叫此API。 [其他許可權](custom-services.md)可能需要指派給使用者角色，或 <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">IP型API存取的允許清單</a> 可能已啟用。</td>
+      <td>驗證成功，但使用者沒有足夠的許可權呼叫此API。 [其他許可權](custom-services.md)可能需要指派給使用者角色，或可能啟用<a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">IP型API存取的允許清單</a>。</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
@@ -155,7 +155,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     <tr>
       <td><a name="612"></a>612</td>
       <td>無效的內容型別</td>
-      <td>如果您看到此錯誤，請新增內容型別標頭，以指定JSON格式至您的請求。 例如，嘗試使用「content type： application/json」。 <a href="https://stackoverflow.com/questions/28181325/why-invalid-content-type">請參閱此StackOverflow問題</a> 以取得更多詳細資料。</td>
+      <td>如果您看到此錯誤，請新增內容型別標頭，以指定JSON格式至您的請求。 例如，嘗試使用「content type： application/json」。 <a href="https://stackoverflow.com/questions/28181325/why-invalid-content-type">如需詳細資訊，請參閱此StackOverflow問題</a>。</td>
     </tr>
     <tr>
       <td><a name="613"></a>613</td>
@@ -207,7 +207,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
       <td>無法完成呼叫，因為它違反了建立或更新資產的要求，例如，嘗試在沒有範本的情況下建立電子郵件。 嘗試下列動作時，也可能發生此錯誤：
         <ul>
           <li>擷取包含社交內容的登入頁面內容。</li>
-          <li>複製包含特定資產型別的程式(請參閱 <a href="programs.md#clone">程式複製</a> 以取得詳細資訊)。</li>
+          <li>複製包含特定資產型別的程式（如需詳細資訊，請參閱<a href="programs.md#clone">程式複製</a>）。</li>
           <li>核准沒有草稿的資產（即已核准）。</li>
         </ul></td>
     </tr>
@@ -352,8 +352,8 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     <tr>
       <td><a name="1012"></a>1012</td>
       <td>無效的Cookie值'%s'</td>
-      <td>呼叫時可能發生 <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">關聯銷售機會</a> Cookie引數的值無效。
-        呼叫時也會發生這種情況 <a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">依篩選器型別取得銷售機會</a> 使用filterType=cookies，且filterValues引數的有效值無效。</td>
+      <td>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">關聯銷售機會</a>時，可能會發生與Cookie引數值無效的情況。
+        當使用filterType=cookies和filterValues引數的有效值來呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">依篩選型別</a>取得銷售機會時，也會發生這種情況。</td>
     </tr>
     <tr>
       <td><a name="1013"></a>1013</td>
@@ -469,19 +469,20 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     </tr>
     <tr>
       <td><a name="1076"></a>1076</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a> 使用mergeInCRM標幟的呼叫是4。</td>
+      <td>具有mergeInCRM旗標的<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫為4。</td>
       <td>您正在建立重複記錄。 建議您改用現有記錄。
         這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
     </tr>
     <tr>
       <td><a name="1077"></a>1077</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a> 由於「SFDC欄位」長度，呼叫失敗</td>
+      <td>由於「SFDC欄位」長度，<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗</td>
       <td>mergeInCRM設為true的合併潛在客戶呼叫失敗，因為「SFDC欄位」超過允許的字元限制。 若要更正，請縮短「SFDC欄位」的長度，或將mergeInCRM設為false。</td>
     </tr>
     <tr>
       <td><a name="1078"></a>1078</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a> 呼叫失敗，因為實體已刪除，非銷售機會/聯絡人，或欄位篩選條件不相符。</td>
-      <td>合併失敗，無法在原生同步的CRM中執行合併作業這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
+      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗，因為實體已刪除，不是銷售機會/連絡人，或欄位篩選條件不符。</td>
+      <td>合併失敗，無法在原生同步的CRM中執行合併操作
+        這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
     </tr>
   </tbody>
 </table>

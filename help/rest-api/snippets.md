@@ -1,14 +1,14 @@
 ---
-title: "代碼片段"
+title: 代碼片段
 feature: REST API, Snippets
-description: 「透過Marketo API管理代碼片段。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 透過Marketo API管理代碼片段。
+exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '438'
 ht-degree: 1%
 
 ---
-
 
 # 代碼片段
 
@@ -18,7 +18,7 @@ ht-degree: 1%
 
 ## 查詢
 
-查詢代碼片段會遵循資產的標準模式，不過沒有By Name方法。 兩者 [依Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetByIdUsingGET) 和 [瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetUsingGET) 方法可讓您使用狀態列位來擷取已核准或草稿的程式碼片段版本。
+查詢代碼片段會遵循資產的標準模式，不過沒有By Name方法。 [By Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetByIdUsingGET)和[Browse](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetUsingGET)方法都允許使用狀態列位來擷取已核准或草稿版本的程式碼片段。
 
 ### 依Id
 
@@ -139,11 +139,11 @@ GET /rest/asset/v1/snippet/{id}/content.json
 }
 ```
 
-此呼叫會傳回內容區段的清單，該清單包含HTML型別或動態內容型別的區段，以及選擇性包含文字型別的區段。
+呼叫會傳回內容區段的清單，  包含型別HTML或型別DynamicContent的區段，以及選擇性包含型別Text的區段。
 
 ## 建立和更新
 
-程式碼片段會遵循複雜的資產建立模式，也就是呼叫 [建立代碼片段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST)及其內容會個別進行，因此第一個呼叫必須是建立端點，並附上可選說明。   資料以x-www-form-urlencoded傳遞，而非以JSON傳遞。
+程式碼片段會遵循複雜的資產建立模式，也就是呼叫[建立程式碼片段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST)，而且其內容會個別進行，因此第一個呼叫必須是建立端點，並附上選用的說明。   資料以x-www-form-urlencoded傳遞，而非以JSON傳遞。
 
 ```
 POST /rest/asset/v1/snippets.json
@@ -211,7 +211,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-[更新中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST) 也會依id完成。 只能更新名稱和說明：
+[中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST)的更新也由ID完成。 只能更新名稱和說明：
 
 ```
 POST /rest/asset/v1/snippet/{id}.json
@@ -344,7 +344,7 @@ POST /rest/asset/v1/snippet/{id}/approveDraft.json
 
 ### 取消核准
 
-此 `unapprove` 端點只能用於已核准的程式碼片段。
+`unapprove`端點只能用於已核准的程式碼片段。
 
 ```
 POST /rest/asset/v1/snippet/{id}/unapprove.json
@@ -400,7 +400,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## 原地複製
 
-[復製程式碼片段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST) API簡單易用，並遵循標準模式，包含必要名稱、原始程式碼片段和資料夾的id，以及選用的說明。  如果不存在核准的版本，則會複製草稿版本。
+[使用API復製程式碼片段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST)很簡單，並遵循標準模式，具有必要名稱、原始程式碼片段和資料夾的識別碼，以及選用的說明。  如果不存在核准的版本，則會複製草稿版本。
 
 ```
 POST /rest/asset/v1/snippet/{id}/clone.json

@@ -1,18 +1,18 @@
 ---
-title: "syncMObjects"
+title: syncMObjects
 feature: SOAP
-description: "syncMObjects SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: syncMObjects SOAP呼叫
+exl-id: 68bb69ce-aa8c-40b7-8938-247f4fe97b5d
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '421'
 ht-degree: 3%
 
 ---
 
-
 # syncMObjects
 
-接受模組 [MObject](marketo-objects.md) 建立或更新時，每個呼叫最多100個，並傳回操作的結果（狀態） (CREATED、UPDATED、FAILED、UNCHANGED、SKIPPED)和MObject的Marketo ID。 API可使用下列三種操作模式之一進行呼叫：
+接受要建立或更新的[MObjects](marketo-objects.md)陣列（每個呼叫最多100個），並傳回操作(CREATED、UPDATED、FAILED、UNCHANGED、SKIPPED)的結果（狀態）以及MObject的Marketo ID。 API可使用下列三種操作模式之一進行呼叫：
 
 1. INSERT — 僅插入新物件，略過現有物件
 1. UPDATE — 僅更新現有物件，略過新物件。
@@ -25,10 +25,10 @@ UPDATE和UPSERT作業使用ID作為索引鍵。 在單一API呼叫中，有些�
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| mObjectList->mObject->type | 必填 | 可以是下列其中一項：`Program`， `Opportunity`， `OpportunityPersonRole` |
-| mObjectList->mObject->id | 必填 | 物件的ID。 您最多可以為每次呼叫指定100個MObjects。 |
-| mObjectList->mObject->typeAttribList->typeAttrib->attrType | 必填 | 成本（僅在更新程式物件時使用）可以是下列其中一項： `Cost`， `Tag` |
-| mObjectList->mObject->typeAttribList->typeAttrib->attrList->attrib->name | 必填 | 對於Program MObject，下列屬性可以名稱 — 值配對的形式傳遞。 成本方面：`Month (Required)`， `Amount (Required)`， `Id (Cost Id - Optional)`， `Note (Optional)`. 對於標籤/頻道： `Type (Required)`， `Value (Required)`. 若為Opportunity MoBject，則 [describeMObject](describemobject.md) 能以名稱 — 值組的方式傳遞。 以下清單是所有選用欄位和標準屬性集。 Opportunity物件上可能有透過支援要求建立的其他欄位。 |
+| mObjectList->mObject->type | 必要 | 可以是：`Program`、`Opportunity`、`OpportunityPersonRole`其中之一 |
+| mObjectList->mObject->id | 必要 | 物件的ID。 您最多可以為每次呼叫指定100個MObjects。 |
+| mObjectList->mObject->typeAttribList->typeAttrib->attrType | 必要 | 成本（僅在更新程式MObject時使用）可以是： `Cost`、`Tag`其中之一 |
+| mObjectList->mObject->typeAttribList->typeAttrib->attrList->attrib->name | 必要 | 對於Program MObject，下列屬性可以名稱 — 值配對的形式傳遞。 針對成本： `Month (Required)`，`Amount (Required)`，`Id (Cost Id - Optional)`，`Note (Optional)`。 對於標籤/頻道： `Type (Required)`，`Value (Required)`。 若為Opportunity MObject，[describeMObject](describemobject.md)輸出中的所有欄位都可做為名稱 — 值組傳遞。 以下清單是所有選用欄位和標準屬性集。 Opportunity物件上可能有透過支援要求建立的其他欄位。 |
 
 1. 數量
 1. 關閉日期
@@ -50,7 +50,7 @@ UPDATE和UPSERT作業使用ID作為索引鍵。 在單一API呼叫中，有些�
 1. 階段
 1. 類型
 
-對於OpportunityPersonRole物件，您可以從輸出提供所有欄位 [describeMObject](./describemobject.md) 名稱值組。 此處列出OpportunityPersonRole物件上的標準屬性集：
+對於OpportunityPersonRole MObject，您可以從[describeMObject](./describemobject.md)的輸出提供所有欄位，做為名稱 — 值組。 此處列出OpportunityPersonRole物件上的標準屬性集：
 
 1. OpportunityId （必要）
 1. PersonId （必要）
@@ -60,7 +60,10 @@ UPDATE和UPSERT作業使用ID作為索引鍵。 在單一API呼叫中，有些�
 1. IsPrimary （選用）
 1. 角色（選擇性）
 
-| | mObjAssociationList->mObjAssociation->mObjType | 可選 | 用於使用關聯物件的ID或外部索引鍵來更新Opportunity/OpportunityPersonRole物件。 關聯的物件可為下列其中一個：公司（以更新商機物件）、銷售機會（以更新商機個人角色物件）、商機（以更新商機個人角色物件）| | mObjAssociationList->mObjAssociation->id | 可選 | 關聯物件（銷售機會/公司/商機）的識別碼 | | mObjAssociationList->mObjAssociation->externalKey | 可選 | 關聯物件的自訂屬性 |
+|
+| mObjAssociationList->mObjAssociation->mObjType | 可選 | 用於使用關聯物件的ID或外部索引鍵來更新Opportunity/OpportunityPersonRole物件。 關聯的物件可為下列其中一個：公司（以更新商機物件）、銷售機會（以更新商機個人角色物件）、商機（以更新商機個人角色物件）|
+| mObjAssociationList->mObjAssociation->id | 可選 | 關聯物件（銷售機會/公司/商機）的識別碼 |
+| mObjAssociationList->mObjAssociation->externalKey | 可選 | 關聯物件的自訂屬性 |
 
 ## 請求XML
 

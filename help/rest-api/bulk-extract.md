@@ -1,14 +1,14 @@
 ---
-title: "大量擷取"
+title: 大量擷取
 feature: REST API
-description: 「擷取Marketo資料的批次作業。」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: 擷取Marketo資料的批次作業。
+exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1643'
 ht-degree: 0%
 
 ---
-
 
 # 大量擷取
 
@@ -21,11 +21,11 @@ Marketo提供的介面可擷取大量人員和人員相關資料，稱為大量�
 
 大量擷取是透過建立作業、定義要擷取的資料集、將作業排入佇列、等待作業完成寫入檔案，然後透過HTTP擷取檔案來執行。 這些作業會以非同步方式執行，且可以輪詢以擷取匯出的狀態。
 
-`Note:` 大量API端點沒有像其他端點一樣以「/rest」為前置詞。
+`Note:`大量API端點未像其他端點一樣加上前置詞「/rest」。
 
 ## 驗證
 
-大量擷取API會使用與其他Marketo REST API相同的OAuth 2.0驗證方法。 這要求內嵌有效的存取權杖做為查詢字串引數 `access_token={_AccessToken_}`或作為HTTP標頭 `Authorization: Bearer {_AccessToken_}`.
+大量擷取API會使用與其他Marketo REST API相同的OAuth 2.0驗證方法。 這要求內嵌有效的存取權杖做為查詢字串引數`access_token={_AccessToken_}`或HTTP標頭`Authorization: Bearer {_AccessToken_}`。
 
 ## 限制
 
@@ -45,13 +45,13 @@ UpdatedAt和智慧清單的大量潛在客戶擷取篩選器不適用於某些�
 
 ### 檔案大小
 
-大量擷取API是根據大量擷取作業所擷取的資料磁碟大小來計量。 工作的明確大小（位元組）可透過讀取 `fileSize` 匯出作業的已完成狀態回應中的屬性。
+大量擷取API是根據大量擷取作業所擷取的資料磁碟大小來計量。 從匯出作業的已完成狀態回應中讀取`fileSize`屬性，即可決定作業的明確位元組大小。
 
-每日配額的上限為每天500MB，在潛在客戶、活動、方案成員和自訂物件之間共用。 當超過配額時，在每日配額於午夜重設之前，您無法建立或排入其他工作 [中部時間](https://en.wikipedia.org/wiki/Central_Time_Zone). 在此之前，會傳回錯誤「1029， Export daily quota exceeded」。 除了每日配額，沒有檔案大小上限。
+每日配額的上限為每天500MB，在潛在客戶、活動、方案成員和自訂物件之間共用。 超過配額時，除非每日配額在午夜[中部時間](https://en.wikipedia.org/wiki/Central_Time_Zone)重設，否則您無法建立或排入其他工作。 在此之前，會傳回錯誤「1029， Export daily quota exceeded」。 除了每日配額，沒有檔案大小上限。
 
 工作排入佇列或處理之後，就會執行至完成（除非發生錯誤或工作取消）。 如果工作由於某個原因而失敗，您必須重新建立它。 只有當作業達到已完成狀態（永遠不寫入部分檔案）時，才會完全寫入檔案。 您可以計算檔案的SHA-256雜湊，並將其與工作狀態端點傳回的總和檢查碼進行比較，以確認檔案已完全寫入。
 
-您可以呼叫Get Export Lead/Activity/Program Member Jobs來判斷當天使用的磁碟總數。 這些端點會傳回過去七天內的所有工作清單。 您可以篩選該清單，僅顯示當天完成的工作(使用 `status` 和 `finishedAt` 屬性)。 然後加總這些工作的檔案大小，以產生使用的總數量。 無法刪除檔案以回收磁碟空間。
+您可以呼叫Get Export Lead/Activity/Program Member Jobs來判斷當天使用的磁碟總數。 這些端點會傳回過去七天內的所有工作清單。 您可以篩選該清單，找出當天完成的工作（使用`status`和`finishedAt`屬性）。 然後加總這些工作的檔案大小，以產生使用的總數量。 無法刪除檔案以回收磁碟空間。
 
 ## 權限
 
@@ -107,7 +107,7 @@ POST /bulk/v1/leads/export/create.json
 }
 ```
 
-當我們建立工作時，系統會在 `exportId` 屬性。 然後，我們可以使用此作業ID將作業排入佇列、取消作業、檢查其狀態或擷取完成的檔案。
+當我們建立工作時，它會傳回`exportId`屬性中的工作ID。 然後，我們可以使用此作業ID將作業排入佇列、取消作業、檢查其狀態或擷取完成的檔案。
 
 ### 通用引數
 
@@ -122,7 +122,7 @@ POST /bulk/v1/leads/export/create.json
 
 ## 正在擷取作業
 
-有時候，您必須擷取最近的工作。 使用對應物件型別的「取得匯出作業」可輕鬆完成這項作業。 每個Get Export Jobs端點支援 `status` 篩選器欄位，  `batchSize` 以限制傳回的工作數量，以及 `nextPageToken` 用於分頁大型結果集。 狀態篩選器支援匯出作業的每個有效狀態：已建立、已排入佇列、正在處理、已取消、已完成和失敗。 batchSize的最大值和預設值是300。 讓我們取得潛在客戶匯出工作清單：
+有時候，您必須擷取最近的工作。 使用對應物件型別的「取得匯出作業」可輕鬆完成這項作業。 每個Get Export Jobs端點都支援`status`篩選欄位，  `batchSize`用來限制傳回的工作數目，以及`nextPageToken`用來分頁大型結果集。 狀態篩選器支援匯出作業的每個有效狀態：已建立、已排入佇列、正在處理、已取消、已完成和失敗。 batchSize的最大值和預設值是300。 讓我們取得潛在客戶匯出工作清單：
 
 ```
 GET /bulk/v1/leads/export.json?status=Completed,Failed
@@ -150,7 +150,7 @@ GET /bulk/v1/leads/export.json?status=Completed,Failed
 }
 ```
 
-端點會回應 `status` 針對結果陣列中該物件型別在過去七天內建立的每個工作的回應。 回應只會包含進行呼叫的API使用者所擁有之作業的結果。
+端點會針對過去七天在結果陣列中針對該物件型別建立的每個工作，以`status`回應回應。 回應只會包含進行呼叫的API使用者所擁有之作業的結果。
 
 ## 開始工作
 
@@ -193,7 +193,7 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 }
 ```
 
-內部 `status` member表示工作的進度，可能是下列其中一個值： Created、Queued、Processing、Canceled、Completed、Failed。 在此情況下，我們的工作已完成，因此我們可以停止輪詢並繼續擷取檔案。 完成後， `fileSize` member表示檔案的總長度（位元組），以及 `fileChecksum` 成員包含檔案的SHA-256雜湊。 在達到「已完成」或「失敗」狀態後，工作狀態可使用30天。
+內部`status`成員表示工作的進度，可能是下列其中一個值： Created、Queued、Processing、Canceled、Completed、Failed。 在此情況下，我們的工作已完成，因此我們可以停止輪詢並繼續擷取檔案。 完成時，`fileSize`成員會指出檔案的總長度（位元組），而`fileChecksum`成員包含檔案的SHA-256雜湊。 在達到「已完成」或「失敗」狀態後，工作狀態可使用30天。
 
 ## 正在擷取您的資料
 
@@ -205,7 +205,7 @@ GET /bulk/v1/leads/export/{exportId}/file.json
 
 回應包含以設定作業方式格式化的檔案。 端點會以檔案內容回應。 與大多數其他Marketo REST端點不同，如果作業尚未完成或傳遞了錯誤的作業ID，檔案端點會以「404找不到」狀態回應，並以純文字錯誤訊息作為裝載。
 
-為了支援擷取資料的部份擷取和便於恢復擷取，檔案端點可選擇性地支援HTTP標頭 `Range` 型別 `bytes` (每 [RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233))。 如果未設定標頭，將會傳回所有內容。 若要擷取檔案的前10,000個位元組，您必須將下列標題作為GET要求的一部分傳遞給端點，從位元組0開始：
+為了支援擷取資料的部分和復原友好擷取，檔案端點可選擇性地支援型別`bytes` （每[RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)）的HTTP標頭`Range`。 如果未設定標頭，將會傳回所有內容。 若要擷取檔案的前10,000個位元組，您必須將下列標題作為GET要求的一部分傳遞給端點，從位元組0開始：
 
 ```
 Range: bytes=0-9999
@@ -221,7 +221,7 @@ Content-Range: bytes 0-9999/123424
 
 ### 部分擷取與恢復
 
-檔案可部分擷取，或稍後使用 `Range` 標頭。 檔案的範圍從位元組0開始，到的值結束 `fileSize` 減1。 檔案的長度也會報告為的值中的分母。 `Content-Range` 呼叫Get Export File端點時的回應標題。 如果擷取部分失敗，稍後可以繼續進行。 例如，如果您嘗試擷取長度為1000個位元組的檔案，但只收到前725個位元組，則可以從失敗點再次呼叫端點並傳遞新範圍來重試擷取：
+檔案可以部分擷取，或稍後使用`Range`標頭繼續。 檔案的範圍從位元組0開始，到值`fileSize`減1結束。 呼叫Get Export File端點時，檔案的長度也會回報為`Content-Range`回應標頭值的分母。 如果擷取部分失敗，稍後可以繼續進行。 例如，如果您嘗試擷取長度為1000個位元組的檔案，但只收到前725個位元組，則可以從失敗點再次呼叫端點並傳遞新範圍來重試擷取：
 
 ```
 Range: bytes 724-999
@@ -231,7 +231,7 @@ Range: bytes 724-999
 
 #### 檔案完整性驗證
 
-工作狀態端點會在以下位置傳回檢查值： `fileChecksum` 屬性條件 `status` 為「已完成」。 總和檢查碼是匯出檔案的SHA-256雜湊。 您可以將總和檢查碼與擷取之檔案的SHA-256雜湊進行比較，以確認其已完成。
+當`status`為「已完成」時，工作狀態端點會在`fileChecksum`屬性中傳回總和檢查碼。 總和檢查碼是匯出檔案的SHA-256雜湊。 您可以將總和檢查碼與擷取之檔案的SHA-256雜湊進行比較，以確認其已完成。
 
 以下是包含總和檢查碼的範例回應：
 

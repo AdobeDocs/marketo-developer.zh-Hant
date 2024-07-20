@@ -1,14 +1,14 @@
 ---
-title: "describeMObject"
+title: describeMObject
 feature: SOAP
-description: "describeMObjects SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: describeMObjects SOAP呼叫
+exl-id: a5ee60c4-b0ec-49a2-9a9d-22806ddde8f7
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '71'
 ht-degree: 7%
 
 ---
-
 
 # describeMObject
 
@@ -18,7 +18,7 @@ ht-degree: 7%
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| objectName | 必填 | 您要取得中繼資料的MO物件名稱。 `objectName` 可以是下列其中一項： `ActivityRecord`， `LeadRecord`， `Opportunity`， `OpportunityPersonRole` |
+| objectName | 必要 | 您要取得中繼資料的MO物件名稱。 `objectName`可以是：`ActivityRecord`、`LeadRecord`、`Opportunity`、`OpportunityPersonRole`其中之一 |
 
 ## 請求XML
 

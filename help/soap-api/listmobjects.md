@@ -1,18 +1,18 @@
 ---
-title: "listMObjects"
+title: listMObjects
 feature: SOAP
-description: "listMObjects SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: listMObjects SOAP呼叫
+exl-id: d8b32ba2-7c20-4611-9062-c3c5db2d2ccb
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '48'
 ht-degree: 2%
 
 ---
 
-
 # listMObjects
 
-此函式傳回Marketo物件的名稱，這些物件可當做輸入至 [describeMObjects](./describemobject.md) 用於結構描述探索操作的函式。
+此函式傳回Marketo物件的名稱，這些物件可用來作為結構描述探索作業之[describeMObjects](./describemobject.md)函式的輸入。
 
 ## 請求
 

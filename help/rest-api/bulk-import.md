@@ -1,14 +1,14 @@
 ---
 title: 大量匯入
 feature: REST API
-description: 「批次匯入人員資料。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 批次匯入人員資料。
+exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '554'
 ht-degree: 1%
 
 ---
-
 
 # 大量匯入
 
@@ -24,7 +24,7 @@ Marketo提供介面，用於插入大型人員及人員相關資料集，稱為�
 
 ## 驗證
 
-大量匯入API使用與其他Marketo REST API相同的OAuth 2.0驗證方法。  這要求內嵌有效的存取權杖做為查詢字串引數 `access_token={_AccessToken_}`或作為HTTP標頭 `Authorization: Bearer {_AccessToken_}`.
+大量匯入API使用與其他Marketo REST API相同的OAuth 2.0驗證方法。  這要求內嵌有效的存取權杖做為查詢字串引數`access_token={_AccessToken_}`或HTTP標頭`Authorization: Bearer {_AccessToken_}`。
 
 ## 限制
 
@@ -42,7 +42,7 @@ Marketo提供介面，用於插入大型人員及人員相關資料集，稱為�
 
 ## 建立工作
 
-Marketo的大量匯入API使用工作的概念來執行資料匯入。 讓我們來看看如何使用建立簡單的銷售機會匯入工作 [匯入銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) 端點。  請注意，此端點使用 [content-type的多重部分/表單資料](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html). 這可能很難對付，因此最佳實務是為您選擇的語言使用HTTP支援程式庫。  如果您只是想試一試，我們建議您使用 [curl](https://curl.se/).
+Marketo的大量匯入API使用工作的概念來執行資料匯入。 讓我們來看看如何使用[匯入銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)端點來建立簡單的銷售機會匯入工作。  請注意，此端點使用[multipart/form-data做為content-type](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html)。 這可能很難對付，因此最佳實務是為您選擇的語言使用HTTP支援程式庫。  如果您剛開始接觸，我們建議您使用[curl](https://curl.se/)。
 
 ```
 POST /bulk/v1/leads.json?format=csv
@@ -96,7 +96,7 @@ Easy,Fox,easyfox@marketo.com
 
 ## 輪詢工作狀態
 
-使用，可輕鬆判斷工作的狀態 [取得匯入銷售機會狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET) 端點。
+使用[Get Import Lead Status](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET)端點可輕鬆判斷工作的狀態。
 
 ```
 GET /bulk/v1/leads/batch/{batchId}.json
@@ -120,13 +120,13 @@ GET /bulk/v1/leads/batch/{batchId}.json
 }
 ```
 
-內部 `status` 成員會指出工作的進度，可能是下列其中一個值：「已排入佇列」、「匯入」、「完成」、「失敗」。 在此情況下，我們的工作已完成，因此我們可以停止輪詢。
+內部`status`成員會指出工作進度，可能是下列其中一個值：「已排入佇列」、「匯入」、「完成」、「失敗」。 在此情況下，我們的工作已完成，因此我們可以停止輪詢。
 
 ## 失敗
 
-失敗由以下指示 `numOfRowsFailed` Get Import Lead Status回應中的屬性。 如果 `numOfRowsFailed` 大於零，則該值表示發生的失敗次數。
+失敗由Get Import Lead Status回應中的`numOfRowsFailed`屬性指示。 如果`numOfRowsFailed`大於零，則該值表示發生的失敗次數。
 
-若要擷取失敗資料列的記錄和原因，您必須使用 [取得匯入銷售機會失敗](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET) 端點。
+若要擷取失敗資料列的記錄與原因，您必須使用[取得匯入潛在客戶失敗](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET)端點來擷取失敗檔案。
 
 ```
 GET /bulk/v1/leads/batch/{batchId}/failures.json

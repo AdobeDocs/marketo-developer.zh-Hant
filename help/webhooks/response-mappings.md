@@ -1,20 +1,20 @@
 ---
-title: 「回應對應」
+title: 回應對應
 feature: Webhooks
-description: 「Marketo的回應對應」
-source-git-commit: bcc0c0c8e8209cf9fb962a85c8e7da354d95a8fe
+description: Marketo的回應對應
+exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '460'
 ht-degree: 0%
 
 ---
 
-
 # 回應對應
 
-Marketo可以翻譯Webhook從兩種內容型別收到的資料，並將這些值傳回潛在客戶欄位：JSON和XML。 Marketo欄位引數一律使用 [SOAP API名稱](../rest-api/fields.md) 欄位的。 每個Webhook可以有不限數量的回應對應，按一下 [!UICONTROL Edit] Webhook的「回應對應」窗格中的按鈕：
+Marketo可以翻譯Webhook從兩種內容型別收到的資料，並將這些值傳回潛在客戶欄位：JSON和XML。 Marketo欄位引數一律會使用欄位的[SOAP API名稱](../rest-api/fields.md)。 每個Webhook可以有不限數量的回應對應，這些對應可以按一下Webhook的「回應對應」窗格中的[!UICONTROL Edit]按鈕來新增和編輯：
 
-![回應 — 對應](assets/response-mapping.png)
+![回應對應](assets/response-mapping.png)
 
 「回應對應」是透過「回應屬性」、XML或JSON檔案中所需屬性的路徑，以及「Marketo欄位」的配對所建立，該欄位指定了「銷售機會」欄位，該欄位具有從「回應屬性」寫入的值。
 
@@ -28,7 +28,7 @@ JSON屬性可使用點標籤法和陣列標籤法存取。 Marketo中的陣列�
 { "foo":"bar"}
 ```
 
-若要存取 `foo` 在回應對應中，使用 `name` 屬性的，因為它位在JSON物件的第一層， `foo`. 以下是Marketo中的外觀：
+若要存取回應對應中的`foo`屬性，請使用屬性的`name`，因為該屬性位於JSON物件的第一個層級`foo`。 以下是Marketo中的外觀：
 
 ![回應對應](assets/json-resp.png)
 
@@ -69,7 +69,7 @@ JSON屬性可使用點標籤法和陣列標籤法存取。 Marketo中的陣列�
 
 若要在此存取foo屬性，請使用下列專案： `example.foo`
 
-在存取之前，必須先參考範例元素 `foo`. 若要存取屬性，必須在對應中參考階層中的所有元素。 含陣列的XML檔案則更為複雜。 使用下列範例：
+在存取`foo`之前，必須先參考範例專案。 若要存取屬性，必須在對應中參考階層中的所有元素。 含陣列的XML檔案則更為複雜。 使用下列範例：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -86,8 +86,8 @@ JSON屬性可使用點標籤法和陣列標籤法存取。 Marketo中的陣列�
 </elementList>
 ```
 
-檔案由父陣列組成 `elementList`，具有子系，包含一個屬性的元素： `foo`. 出於Marketo回應對應的目的，陣列參考為 `elementList.element`，因此可透過以下方式存取elementList的子項： `elementList.element[i]`. 若要從elementList的第一個子系取得foo的值，我們會使用此回應屬性： `elementList.element[0].foo` 這會將「baz」值傳回至我們的指定欄位。 嘗試存取同時包含唯一和非唯一元素名稱的元素內的屬性會導致未定義的行為。 每個元素都必須是單一屬性或陣列，型別不能混合使用。
+檔案由父陣列`elementList`組成，具有子系，元素包含一個屬性： `foo`。 就Marketo回應對應而言，陣列是以`elementList.element`參考，因此可透過`elementList.element[i]`存取elementList的子系。 若要從elementList的第一個子系取得foo的值，我們會使用此回應屬性： `elementList.element[0].foo`這會將「baz」值傳回至我們的指定欄位。 嘗試存取同時包含唯一和非唯一元素名稱的元素內的屬性會導致未定義的行為。 每個元素都必須是單一屬性或陣列，型別不能混合使用。
 
 ## 型別
 
-將屬性對應到欄位時，您必須確保webhook回應中的型別與目標欄位相容。 例如，如果回應中的值為字串，而選取的欄位為型別整數，則不會寫入值。 閱讀關於 [欄位型別](../rest-api/field-types.md).
+將屬性對應到欄位時，您必須確保webhook回應中的型別與目標欄位相容。 例如，如果回應中的值為字串，而選取的欄位為型別整數，則不會寫入值。 閱讀[欄位型別](../rest-api/field-types.md)。

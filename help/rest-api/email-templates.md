@@ -1,24 +1,24 @@
 ---
 title: 電子郵件範本
 feature: REST API
-description: 「使用Marketo API建立電子郵件範本。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 使用Marketo API建立電子郵件範本。
+exl-id: 0ecf4da6-eb7e-43c1-8d5c-0517c43b47c8
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '569'
 ht-degree: 1%
 
 ---
 
-
 # 電子郵件範本
 
 [電子郵件範本端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates)
 
-電子郵件範本是Marketo中每封新電子郵件的基礎。  雖然電子郵件可以透過HTML替代從範本取消連結，但最初建立電子郵件時必須以範本為基礎。  範本是在Marketo中建立為純HTML檔案，包含如名稱和說明等中繼資料。  內容限制較少，但範本的HTML必須有效，且至少必須包含一個符合要求的可編輯區段 [在此概述](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0).
+電子郵件範本是Marketo中每封新電子郵件的基礎。  雖然電子郵件可以透過HTML替代從範本取消連結，但最初建立電子郵件時必須以範本為基礎。  範本是在Marketo中建立為純HTML檔案，包含如名稱和說明等中繼資料。  內容限制較少，但範本的HTML必須有效，而且必須至少包含一個可編輯的區段，其遵循此處[概述的要求](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0)。
 
 ## 查詢
 
-查詢電子郵件範本遵循資產的標準模式，允許查詢 [依id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/getTemplateByIdUsingGET)， [依名稱](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/getTemplateByNameUsingGET) 和 [瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/getEmailTemplatesUsingGET) 指定的資料夾。
+查詢電子郵件範本遵循資產的標準模式，允許查詢[依id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/getTemplateByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/getTemplateByNameUsingGET)和[瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/getEmailTemplatesUsingGET)指定的資料夾。
 
 ### 依Id
 
@@ -192,7 +192,7 @@ GET /rest/asset/v1/emailTemplates.json
 
 ## 建立和更新
 
-[建立](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/createEmailTemplateUsingPOST) 或 [更新](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) 範本相當簡單明瞭。 每個範本的內容會儲存為HTML檔案，且必須使用POST的多重部分/表單資料型別傳遞至Marketo。 您必須傳遞適當的Content-Type標頭，其中包含的RFC中所述的邊界 [多重部分](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html) 和 [多部分/表單資料](https://www.ietf.org/rfc/rfc2388.txt).
+[建立](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/createEmailTemplateUsingPOST)或[更新](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST)範本相當簡單明瞭。 每個範本的內容會儲存為HTML檔案，且必須使用POST的多重部分/表單資料型別傳遞至Marketo。 您必須傳遞適當的Content-Type標頭，該標頭包含[multipart](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html)和[multipart/form-data](https://www.ietf.org/rfc/rfc2388.txt)的RFC中所述的邊界。
 
 建立範本需要您包含三個引數：名稱、資料夾、內容。 其中可能包括選用的說明引數。  HTML檔案是在內容引數中傳遞，該引數也必須包含傳統的檔案名稱引數作為其Content-Disposition標頭的一部分。
 
@@ -257,7 +257,7 @@ Create email template using API
 }
 ```
 
-更新內容是使用 [個別端點](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST) 這需要電子郵件範本的ID。 此端點僅允許在本體中提交內容引數。 進行更新時，如果更新已核准的版本，則內容引數中傳遞的任何內容都將完全替換新草稿中的現有電子郵件內容，或者如果資產處於僅草稿狀態，則替換當前草稿。
+更新內容是使用需要Email範本識別碼的[個別端點](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/updateEmailTemplateContentUsingPOST)完成。 此端點僅允許在本體中提交內容引數。 進行更新時，如果更新已核准的版本，則內容引數中傳遞的任何內容都將完全替換新草稿中的現有電子郵件內容，或者如果資產處於僅草稿狀態，則替換當前草稿。
 
 ```
 POST /rest/asset/v1/emailTemplate/{id}/content.json
@@ -299,7 +299,7 @@ Content-Type: text/html
 
 ## 更新中繼資料
 
-至 [更新範本的中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/updateEmailTemplateUsingPOST)、名稱和說明，您可以使用與相同的端點來更新內容，但改為傳遞application/x-www-url-formencodedPOST，並附上name和description引數。
+若要[更新範本的中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/updateEmailTemplateUsingPOST)、名稱和說明，您可以使用與相同的端點來更新內容，但改為傳遞application/x-www-url-formencodedPOST，並附上name和description引數。
 
 ```
 POST /rest/asset/v1/emailTemplate/{id}.json
@@ -459,7 +459,7 @@ POST /rest/asset/v1/emailTemplate/{id}/delete.json
 
 ## 原地複製
 
-Marketo提供簡單的方法用於 [複製電子郵件範本](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/cloneTemplateUsingPOST). 與建立不同，這類請求是以application/x-www-url-formencodedPOST提出，並使用名稱和資料夾兩個必要引數，即含有id和型別的內嵌JSON物件。  說明也是選用引數。
+Marketo提供[複製電子郵件範本](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/cloneTemplateUsingPOST)的簡單方法。 與建立不同，這類請求是以application/x-www-url-formencodedPOST提出，並使用名稱和資料夾兩個必要引數，即含有id和型別的內嵌JSON物件。  說明也是選用引數。
 
 ```
 POST /rest/asset/v1/emailTemplate/{id}/clone.json
@@ -501,9 +501,9 @@ name=Sample Template 01 - deverly&folder={"id":12,"type":"Folder"}&description=T
 
 ## 查詢電子郵件相依性
 
-使用 [取得使用的電子郵件範本](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/getEmailTemplateUsedByUsingGET) 端點會根據指定的電子郵件範本擷取電子郵件清單。  此 `id` path引數指定上層電子郵件範本。
+使用[Get Email Template Used By](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates/operation/getEmailTemplateUsedByUsingGET)端點來擷取相依於指定電子郵件範本的電子郵件清單。  `id`路徑引數指定上層電子郵件範本。
 
-有2個可選引數。 `maxReturn`  是限制結果數量的整數（預設為20，最大為200），並且 `offset` 是可搭配使用的整數 `maxReturn` 讀取大型結果集（預設為0）。
+有2個可選引數。 `maxReturn`  是限制結果數目的整數（預設為20，最大為200），而`offset`是可與`maxReturn`搭配使用以讀取大型結果集的整數（預設為0）。
 
 ```
 GET /rest/asset/v1/emailTemplates/{id}/usedBy.json

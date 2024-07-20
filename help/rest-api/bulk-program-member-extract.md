@@ -1,14 +1,14 @@
 ---
-title: 「大量程式成員擷取」
+title: 大量程式成員擷取
 feature: REST API
-description: 「批次處理成員資料擷取。」
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: 批次處理成員資料擷取。
+exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1142'
 ht-degree: 2%
 
 ---
-
 
 # 大量程式成員擷取
 
@@ -22,7 +22,7 @@ REST API的批次程式成員擷取集提供程式化介面，可從Marketo中�
 
 ## 說明
 
-[描述方案成員](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/describeProgramMemberUsingGET2) 是欄位是否可供使用的主要信任來源，以及有關這些欄位的中繼資料。 此 `name` 屬性包含REST API名稱。
+[描述方案成員](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/describeProgramMemberUsingGET2)是欄位是否可供使用的主要信任來源，以及有關這些欄位的中繼資料。 `name`屬性包含REST API名稱。
 
 ```
 GET /rest/v1/programs/members/describe.json
@@ -213,7 +213,7 @@ GET /rest/v1/programs/members/describe.json
 
 ## 篩選器
 
-計畫成員支援各種篩選選項。 可以為一個作業指定多個篩選器型別，在這種情況下，它們會一起進行AND運算。 您必須指定 `programId` 或 `programIds` 篩選。 所有其他篩選器皆為選用專案。 此 `updatedAt` 篩選器需要其他基礎架構元件，這些元件尚未推出至所有訂閱。
+計畫成員支援各種篩選選項。 可以為一個作業指定多個篩選器型別，在這種情況下，它們會一起進行AND運算。 您必須指定`programId`或`programIds`篩選器。 所有其他篩選器皆為選用專案。 `updatedAt`篩選器需要額外的基礎結構元件，這些元件尚未轉出到所有訂閱。
 
 <table>
   <tbody>
@@ -225,17 +225,17 @@ GET /rest/v1/programs/members/describe.json
     <tr>
       <td>programId</td>
       <td>整數</td>
-      <td>接受方案的ID。 工作會傳回工作開始處理時屬於程式成員的所有可存取記錄。使用 <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">取得計畫</a> endpoint.無法與programIds篩選器搭配使用。</td>
+      <td>接受方案的ID。 工作會傳回工作開始處理時屬於程式成員的所有可存取記錄。使用<a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">取得程式</a>端點擷取程式ID。無法搭配programIds篩選器使用。</td>
     </tr>
     <tr>
       <td>programIds</td>
       <td>Array[整數]</td>
-      <td>接受最多10個計畫ID的陣列。 作業會傳回作業開始處理時屬於程式成員的所有可存取記錄。匯出檔案中會新增一個額外欄位「programId」，作為第一個欄位。 此欄位會識別從中擷取計畫會員資格記錄的計畫。使用 <a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">取得計畫</a> endpoint.Cannot be used with programId filter.</td>
+      <td>接受最多10個計畫ID的陣列。 作業會傳回作業開始處理時屬於程式成員的所有可存取記錄。匯出檔案中會新增一個額外欄位「programId」，作為第一個欄位。 此欄位識別從擷取程式成員資格記錄的程式。使用<a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs">取得程式</a>端點擷取程式ID。無法搭配programId篩選器使用。</td>
     </tr>
     <tr>
       <td>isExhausted</td>
       <td>布林值</td>
-      <td>接受用於篩選計畫成員資格記錄的布林值 <a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">已耗盡內容的人</a>.</td>
+      <td>接受用於篩選已用完內容</a>的<a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">人之方案成員資格記錄的布林值。</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>
@@ -318,16 +318,16 @@ GET /rest/v1/programs/members/describe.json
 - 重新命名這些欄位的欄標題
 - 指定匯出檔案的格式
 
-| 引數 | 資料類型 | 必填 | 附註 |
+| 引數 | 資料類型 | 必要 | 附註 |
 |---|---|---|---|
-| 欄位 | 陣列[字串] | 是 | 欄位引數接受字串的JSON陣列。 列出的欄位會包含在匯出的檔案中。 可以匯出下列欄位型別：`LeadCustom` `LeadProgram` Membercustom `ProgramMember`. 使用REST API名稱來指定欄位，您可以使用「描述銷售機會2」和/或「描述方案成員」端點來擷取該欄位。 |
+| 欄位 | 陣列[字串] | 是 | 欄位引數接受字串的JSON陣列。 列出的欄位會包含在匯出的檔案中。 下列欄位型別可以匯出： `LeadCustom` `LeadProgram` MemberCustom `ProgramMember`。 使用REST API名稱來指定欄位，您可以使用「描述銷售機會2」和/或「描述方案成員」端點來擷取該欄位。 |
 | columnHeaderName | 物件 | 否 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 值是該欄位匯出的欄標題的名稱。 |
 | 格式 | 字串 | 否 | 接受以下其中之一：CSV、TSV、SSV。 匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（如果設定）。 如果未設定，則預設為CSV。 |
 
 
 ## 建立工作
 
-工作的引數是在使用開始匯出之前定義的 [建立匯出程式成員工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/createExportProgramMembersUsingPOST) 端點。 我們必須定義 `filter` 包含程式id，以及 `fields` 匯出所需。 我們可選擇定義 `format` ，以及 `columnHeaderNames`.
+使用[建立匯出程式成員工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/createExportProgramMembersUsingPOST)端點開始匯出之前，會定義工作的引數。 我們必須定義包含方案ID的`filter`，以及匯出所需的`fields`。 我們可選擇定義檔案的`format`，以及`columnHeaderNames`。
 
 ```
 POST /bulk/v1/program/members/export/create.json
@@ -371,7 +371,7 @@ POST /bulk/v1/program/members/export/create.json
 }
 ```
 
-這會傳回狀態回應，指出工作已建立。 工作已定義並建立，但尚未開始。 若要這麼做，請 [將匯出程式成員工作排入佇列](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST) 必須使用呼叫端點 `exportId` 從建立狀態回應：
+這會傳回狀態回應，指出工作已建立。 工作已定義並建立，但尚未開始。 若要這麼做，必須使用建立狀態回應中的`exportId`呼叫[排入佇列匯出程式成員工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST)端點：
 
 ```
 POST /bulk/v1/program/members/export/{exportId}/enqueue.json
@@ -393,13 +393,13 @@ POST /bulk/v1/program/members/export/{exportId}/enqueue.json
 }
 ```
 
-這將以初始回應 `status` 的「已排入佇列」數量，之後當有可用的匯出位置時，便會設為「正在處理」。
+這會以初始`status`的「已排入佇列」回應，之後當有可用的匯出位置時，會設為「正在處理」。
 
 ## 輪詢工作狀態
 
 注意：只能為相同API使用者建立的作業擷取狀態。
 
-由於這是非同步端點，在建立作業後，我們必須輪詢其狀態以判斷其進度。 使用 [取得匯出程式成員工作狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET) 端點。 狀態只會每60秒更新一次，因此不建議使用低於此值的輪詢頻率，並且在幾乎所有情況下仍然會太高。 狀態列位可能會以下列任一專案回應：已建立、已排入佇列、正在處理、已取消、已完成、失敗。
+由於這是非同步端點，在建立作業後，我們必須輪詢其狀態以判斷其進度。 使用[取得匯出程式成員工作狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET)端點進行輪詢。 狀態只會每60秒更新一次，因此不建議使用低於此值的輪詢頻率，並且在幾乎所有情況下仍然會太高。 狀態列位可能會以下列任一專案回應：已建立、已排入佇列、正在處理、已取消、已完成、失敗。
 
 ```
 GET /bulk/v1/program/members/export/{exportId}/status.json
@@ -422,7 +422,7 @@ GET /bulk/v1/program/members/export/{exportId}/status.json
 }
 ```
 
-狀態端點回應指出工作仍在處理中，因此檔案尚不可擷取。 工作執行後 `status` 「已完成」的變更可供下載。
+狀態端點回應指出工作仍在處理中，因此檔案尚不可擷取。 工作`status`變更為「已完成」後，便可供下載。
 
 ```json
 {
@@ -447,9 +447,9 @@ GET /bulk/v1/program/members/export/{exportId}/status.json
 
 ## 正在擷取您的資料
 
-若要擷取已完成程式成員匯出的檔案，只需呼叫 [取得匯出程式成員檔案](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET) 端點，含您的 `exportId`.
+若要擷取已完成程式成員匯出的檔案，只要使用您的`exportId`呼叫[取得匯出程式成員檔案](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET)端點即可。
 
-回應包含以設定作業方式格式化的檔案。 端點會以檔案內容回應。 如果請求的方案成員欄位為空（不包含資料），則 `null` 會放置在匯出檔案的對應欄位中。
+回應包含以設定作業方式格式化的檔案。 端點會以檔案內容回應。 如果要求的程式成員欄位是空的（不包含任何資料），則會將`null`放置在匯出檔案中的對應欄位中。
 
 ```
 GET /bulk/v1/program/members/export/{exportId}/file.json
@@ -471,11 +471,11 @@ Jory,Cassel,jcas@housestark.com,2020-01-08T18:10:26Z,PMCF Program,On List,1799,f
 Septa,Mordane,smor@housestark.com,2020-01-08T18:10:26Z,PMCF Program,On List,1800,false,Lead01_Value,Lead02_Value,PM01_Value,PM02_Value
 ```
 
-為了支援擷取資料的部份擷取和便於恢復擷取，檔案端點可選擇性地支援型別位元組的HTTP標頭範圍。 如果未設定標頭，將會傳回所有內容。 您可以深入瞭解如何搭配Marketo使用Range標頭 [大量擷取](bulk-extract.md).
+為了支援擷取資料的部份擷取和便於恢復擷取，檔案端點可選擇性地支援型別位元組的HTTP標頭範圍。 如果未設定標頭，將會傳回所有內容。 您可以閱讀更多有關搭配Marketo [大量擷取](bulk-extract.md)使用Range標頭的資訊。
 
 ## 取消工作
 
-如果工作設定錯誤或變得不必要，可以使用輕鬆取消 [取消匯出方案成員工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/cancelExportProgramMembersUsingPOST) 端點：
+如果工作設定不正確或變得不必要，可以使用[取消匯出程式成員工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/cancelExportProgramMembersUsingPOST)端點輕鬆取消工作：
 
 ```
 POST /bulk/v1/program/members/export/{exportId}/cancel.json
@@ -496,4 +496,4 @@ POST /bulk/v1/program/members/export/{exportId}/cancel.json
 }
 ```
 
-這會以回應 `status` 表示工作已取消。
+此回應中包含`status`，指出工作已取消。

@@ -1,14 +1,14 @@
 ---
-title: "deleteCustomObjects"
+title: deleteCustomObjects
 feature: SOAP, Custom Objects
-description: "deleteCustomObjects SOAP呼叫。"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: deleteCustomObjects SOAP呼叫。
+exl-id: 214b7cd1-dc4e-45dc-a29a-91518a275e61
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '78'
 ht-degree: 7%
 
 ---
-
 
 # deleteCustomObjects
 
@@ -18,8 +18,8 @@ ht-degree: 7%
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| 物件型別名稱 | 必填 | 自訂物件的名稱 |
-| customObjKeyLists->keyList->屬性 | 必填 | 屬性是用來識別您要刪除之自訂物件的索引鍵/值組。 您可以在customObjKeyLists中指定多個屬性 |
+| 物件型別名稱 | 必要 | 自訂物件的名稱 |
+| customObjKeyLists->keyList->屬性 | 必要 | 屬性是用來識別您要刪除之自訂物件的索引鍵/值組。 您可以在customObjKeyLists中指定多個屬性 |
 
 ## 請求XML
 

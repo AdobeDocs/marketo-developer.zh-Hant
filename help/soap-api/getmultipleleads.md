@@ -1,42 +1,42 @@
 ---
-title: "getMultipleLeads"
+title: getMultipleLead
 feature: SOAP
-description: "getMultipleLeads SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getMultipleLeads SOAP呼叫
+exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '384'
 ht-degree: 2%
 
 ---
 
-
 # getMultipleLead
 
-按讚 `getLead`， `getMultipleLeads` 從Marketo擷取潛在客戶記錄。 此呼叫不會傳回單一銷售機會的資料，而是傳回符合傳入leadSelector引數之條件的批次銷售機會的資料。 條件可以是日期範圍（例如上次更新日期）、潛在客戶索引鍵陣列或靜態清單。
+類似`getLead`，`getMultipleLeads`會從Marketo擷取潛在客戶記錄。 此呼叫不會傳回單一銷售機會的資料，而是傳回符合傳入leadSelector引數之條件的批次銷售機會的資料。 條件可以是日期範圍（例如上次更新日期）、潛在客戶索引鍵陣列或靜態清單。
 
 注意：如果您使用銷售機會索引鍵陣列，每個批次最多只能使用100個；其他索引鍵將被忽略。
 
-如果只需要潛在客戶欄位的子集，則 `includeAttributes` 引數應該用於指定所需欄位。
+如果只需要潛在客戶欄位的子集，則應使用`includeAttributes`引數來指定所需欄位。
 
-每個 `getMultipleLeads` 函式呼叫最多傳回1000個銷售機會。 如果您必須擷取超過1000個銷售機會，結果將會傳回 [串流位置](stream-position.md)，可用於後續呼叫以擷取下一批最多1000個銷售機會。 結果中的剩餘計數會告訴您剩餘的確切潛在客戶數。 從靜態清單擷取時，終止條件為remainingCount == 0。
+每個`getMultipleLeads`函式呼叫最多會傳回1000個銷售機會。 如果您必須擷取1000個以上的銷售機會，結果將會傳回[資料流位置](stream-position.md)，這可用於後續呼叫以擷取下一批的1000個銷售機會。 結果中的剩餘計數會告訴您剩餘的確切潛在客戶數。 從靜態清單擷取時，終止條件為remainingCount == 0。
 
-此端點的常見使用案例是尋找在特定日期更新的潛在客戶。 此 `LastUpdateAtSelector` 可讓您這麼做。
+此端點的常見使用案例是尋找在特定日期更新的潛在客戶。 `LastUpdateAtSelector`可讓您這麼做。
 
 ## 請求
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| 銷售機會選擇器 | 必填 | 可以是下列3種型別之一：`LeadKeySelector`， `StaticListSelector`，`LastUpdateAtSelector` |
-| keyType | 必填 | 您要查詢的ID型別。 值包括IDNUM、COOKIE、電子郵件、LEADOWNEREMAIL、SFDCACCOUNTID、SFDCCONTACTID、SFDCLEADUDID、SFDCLEADOWNERID、SFDCOPTYID。 |
-| keyValues->stringItem | 必填 | 索引鍵值清單。 即&quot;lead@email.com&quot; |
-| LastUpdateAtSelector： leadSelector->oldestUpdatedAt | 必填 | 用於指定「起始」條件的時間戳記。 也就是說，傳回自指定時間以來更新的所有銷售機會。 （W3C WSDL日期時間格式） |
+| 銷售機會選擇器 | 必要 | 可以是下列3種型別之一：`LeadKeySelector`、`StaticListSelector`、`LastUpdateAtSelector` |
+| keyType | 必要 | 您要查詢的ID型別。 值包括IDNUM、COOKIE、電子郵件、LEADOWNEREMAIL、SFDCACCOUNTID、SFDCCONTACTID、SFDCLEADUDID、SFDCLEADOWNERID、SFDCOPTYID。 |
+| keyValues->stringItem | 必要 | 索引鍵值清單。 即&quot;lead@email.com&quot; |
+| LastUpdateAtSelector： leadSelector->oldestUpdatedAt | 必要 | 用於指定「起始」條件的時間戳記。 也就是說，傳回自指定時間以來更新的所有銷售機會。 （W3C WSDL日期時間格式） |
 | LastUpdateAtSelector： leadSelector->latestUpdatedAt | 可選 | 指定「直到」條件的時間戳記。 也就是說，傳回所有更新至指定時間的銷售機會。 （W3C WSDL日期時間格式） |
-| StaticListSelector： leadSelector->staticListName | 選擇性，當 `leadSelector->staticListId` 存在 | 靜態清單的名稱 |
-| StaticListSelector： leadSelector->staticListId | 選擇性，當 `leadSelector->staticListName` 存在 | 靜態清單的ID |
-| lastUpdatedAt | **已棄用** | 使用 `LastUpdateAtSelector` 而非 |
+| StaticListSelector： leadSelector->staticListName | `leadSelector->staticListId`存在時為選用 | 靜態清單的名稱 |
+| StaticListSelector： leadSelector->staticListId | `leadSelector->staticListName`存在時為選用 | 靜態清單的ID |
+| lastUpdatedAt | **已棄用** | 改用`LastUpdateAtSelector` |
 | includeAttributes | 可選 | 您要擷取的屬性清單。 限制傳回的潛在客戶欄位可改善API的回應時間。 |
-| batchSize | 可選 | 要傳回的最大記錄數。 系統限製為100或 `batchSize`，取較小者 |
-| streamPosition | 可選 | 用於分頁查閱大量潛在客戶回應。 此 `streamPosition` 值由先前的呼叫回應欄位傳回 `newStreamPosition` |
+| batchSize | 可選 | 要傳回的最大記錄數。 系統限製為100或`batchSize`，以較小者為準 |
+| streamPosition | 可選 | 用於分頁查閱大量潛在客戶回應。 `streamPosition`值是由先前的呼叫回應欄位`newStreamPosition`傳回 |
 
 ## 請求XML
 

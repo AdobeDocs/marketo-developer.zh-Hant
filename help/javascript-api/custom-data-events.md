@@ -1,26 +1,26 @@
 ---
-title: 「自訂資料事件」
-description: 「自訂資料事件API」
+title: 自訂資料事件
+description: 自訂資料事件API
 feature: Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: ef7cab9c-3bd0-450e-9247-9324b1e6f9ab
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '223'
 ht-degree: 3%
 
 ---
 
-
 # 自訂資料事件
 
 此方法會傳送自訂事件以進行追蹤和即時個人化。 它可用來傳送第三方資料，或根據訪客行為觸發您自己的自訂事件。 自訂資料事件在訪客的工作階段中會計為一次。
 
-您必須成為Web Personalization客戶，並擁有 [已部署RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) 使用使用者內容API之前，先停留在您的網站上。
+您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 
 | 引數 | 選用/必要 | 類型 | 說明 |
 |---|---|---|---|
-| `send` | 必填 | 字串 | 方法動作。 |
-| `event` | 必填 | 字串 | 方法名稱。 |
-| `customData` | 必填 | 字串或陣列 | 自訂資料。 |
+| `send` | 必要 | 字串 | 方法動作。 |
+| `event` | 必要 | 字串 | 方法名稱。 |
+| `customData` | 必要 | 字串或陣列 | 自訂資料。 |
 
 ## 範例
 

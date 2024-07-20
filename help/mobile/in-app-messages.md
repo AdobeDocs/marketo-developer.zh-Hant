@@ -1,26 +1,26 @@
 ---
-title: 「應用程式內訊息」
-feature: "Mobile Marketing"
-description: 「應用程式內訊息概觀」
-source-git-commit: e8bb45a7b3bee71c3d0ab6117296a75c8959d72e
+title: 應用程式內訊息
+feature: Mobile Marketing
+description: 應用程式內訊息概觀
+exl-id: 73c9f862-d154-4b37-94ce-92311aa756e8
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '293'
 ht-degree: 0%
 
 ---
 
-
 # 應用程式內訊息
 
 若要使用Marketo的應用程式內傳訊功能，您必須執行下列步驟：
 
-1. 安裝Marketo Mobile SDK，如 [行動安裝](installation.md).
-1. 將行動應用程式新增至Marketo，如所述 [新增行動應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app).
-1. 可選擇將程式碼新增至您的行動應用程式以擷取 [自訂動作](custom-actions.md).
+1. 依照[行動安裝](installation.md)中的說明安裝Marketo Mobile SDK。
+1. 依照[新增行動應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app)中所述，將行動應用程式新增至Marketo。
+1. 選擇性地新增程式碼至您的行動應用程式以擷取[自訂動作](custom-actions.md)。
 
 安裝Marketo Mobile SDK並完成在Marketo中新增應用程式後，您就可以傳送應用程式內訊息，當使用者開啟您的應用程式時就會顯示。
 
-依預設，應用程式會在開啟時觸發應用程式內訊息。 如果您想要針對其他事件（例如檢視特定頁面或按下特定按鈕時）觸發應用程式內訊息，您必須將自訂動作新增至程式碼。 另請參閱 [自訂動作](custom-actions.md) 區段以取得此專案的程式碼範例。
+依預設，應用程式會在開啟時觸發應用程式內訊息。 如果您想要針對其他事件（例如檢視特定頁面或按下特定按鈕時）觸發應用程式內訊息，您必須將自訂動作新增至程式碼。 如需此專案的程式碼範例，請參閱[自訂動作](custom-actions.md)區段。
 
 ## 疑難排解
 
@@ -34,4 +34,4 @@ Marketo只有在使用Marketo平台初始化Marketo Mobile SDK後，才會回應
 
 請務必指派除了主要或次要按鈕之一「關閉」以外的動作，以追蹤點選活動，並根據點選次數使用基本顯示頻率。
 
-如需詳細資訊，請參閱 [應用程式內訊息](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message) 區段建立關聯。
+如需詳細資訊，請參閱產品檔案中的[應用程式內訊息](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message)區段。

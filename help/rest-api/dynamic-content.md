@@ -1,14 +1,14 @@
 ---
-title: 「動態內容」
+title: 動態內容
 feature: REST API, Dynamic Content
-description: 「使用Marketo API設定動態內容。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 使用Marketo API設定動態內容。
+exl-id: 8ab97624-5fb5-4a41-911f-ec8616dd43c9
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '426'
 ht-degree: 1%
 
 ---
-
 
 # 動態內容
 
@@ -24,7 +24,7 @@ Marketo透過對多種資產型別的潛在客戶細分來促進動態內容的�
 
 ## 範例
 
-為了示範，讓我們檢視一個電子郵件範例，其中我們有地區（美國）分段，並且只想為落於西南區段的銷售機會顯示事件促銷活動，該區段包含加利福尼亞、內華達、猶他州、科羅拉多、亞利桑那州和新墨西哥的銷售機會。 為此，我們將ID為「Q1-promotion-banner」的電子郵件中的可編輯區段設為DynamicContent區段。 為此，我們必須使用 [更新電子郵件內容區段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/updateEmailComponentContentUsingPOST) 我們電子郵件的端點。 此 `value` 引數可用來指定分段的ID。
+為了示範，讓我們檢視一個電子郵件範例，其中我們有地區（美國）分段，並且只想為落於西南區段的銷售機會顯示事件促銷活動，該區段包含加利福尼亞、內華達、猶他州、科羅拉多、亞利桑那州和新墨西哥的銷售機會。 為此，我們將ID為「Q1-promotion-banner」的電子郵件中的可編輯區段設為DynamicContent區段。 若要這麼做，我們必須使用電子郵件的[更新電子郵件內容區段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/updateEmailComponentContentUsingPOST)端點。 `value`引數是用來指定分段的識別碼。
 
 注意：電子郵件和登入頁面都遵循此模式。 程式碼片段有不同的模式，詳細資訊請參閱程式碼片段API檔案。
 
@@ -52,7 +52,7 @@ type=DynamicContent&value=1001
 }
 ```
 
-若要為個別區段新增內容，我們必須呼叫 [更新電子郵件動態內容區段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/updateEmailDynamicContentUsingPOST) 特定區段的端點。
+若要為個別區段新增內容，我們必須呼叫特定區段的[更新電子郵件動態內容區段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails/operation/updateEmailDynamicContentUsingPOST)端點。
 
 下列範例會設定區段，以針對西南區段中的銷售機會顯示我們的特殊橫幅影像，而非預設值。 如果我們想要為更多區段建立更多變數，我們會為每個區段和區段再次呼叫此端點。
 

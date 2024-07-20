@@ -1,20 +1,20 @@
 ---
-title: 「網頁個人化」
-description: 「網頁個人化」
+title: 網頁Personalization
+description: 網頁Personalization
 feature: Web Personalization, Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: b2c26b28-e9bf-4faf-8b6e-c102f41aeaa1
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '401'
 ht-degree: 4%
 
 ---
 
+# 網頁Personalization
 
-# 網頁個人化
+網路Personalization JavaScript API擴充了平台的自動個人化功能。 它允許事件追蹤和網頁的動態自訂。 其他功能： [自訂資料事件](custom-data-events.md)、[動態內容](web-personalization.md)、[取得訪客資料](get-visitor-data.md)、[排除特定機器人的標籤](#exclude_tag_for_specific_bots)。
 
-網頁個人化JavaScript API擴充了平台的自動個人化功能。 它允許事件追蹤和網頁的動態自訂。 其他功能： [自訂資料事件](custom-data-events.md)， [動態內容](web-personalization.md)， [取得訪客資料](get-visitor-data.md)， [排除特定機器人的標籤](#exclude_tag_for_specific_bots).
-
-- 您必須成為Web Personalization客戶，並擁有 [已部署RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript) 使用使用者內容API之前，先停留在您的網站上。
+- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - RTP不支援以帳戶為根據的行銷指定帳戶清單。 ABM清單和程式碼只與在RTP內管理的已上傳帳戶清單（CSV檔案）有關。
 
 ## 標籤設定
@@ -38,8 +38,8 @@ g.src=f;var b=h.getElementsByTagName("script")[0];b.parentNode.insertBefore(g,b)
 
 | 引數 | 選用/必要 | 類型 | 說明 |
 |--------------|-------------------|--------|--------------|
-| &#39;setAccount&#39; | 必填 | 字串 | 方法名稱。 |
-| accountId | 必填 | 字串 | 帳戶ID。 |
+| &#39;setAccount&#39; | 必要 | 字串 | 方法名稱。 |
+| accountId | 必要 | 字串 | 帳戶ID。 |
 
 
 ```javascript
@@ -55,8 +55,8 @@ rtp('setAccount', accountId);
 
 | 引數 | 選用/必要 | 類型 | 說明 |
 |-----------|-------------------|--------|---------------------------------|
-| &#39;傳送&#39; | 必填 | 字串 | 方法動作。 |
-| &#39;檢視&#39; | 必填 | 字串 | 方法名稱。 |
+| &#39;傳送&#39; | 必要 | 字串 | 方法動作。 |
+| &#39;檢視&#39; | 必要 | 字串 | 方法名稱。 |
 | 頁面 | 可選 | 字串 | 相對路徑或完整頁面URL。 |
 
 
@@ -73,7 +73,7 @@ rtp('send', 'view', page);
 
 若要將特定瀏覽器排除在傳送資料至Web Personalization平台（在已識別機器人的情況下）之外，請將下列IF陳述式新增至標籤指令碼。
 
-在以下程式碼範例中，「GoogleBot|msnbot」會作為機器人範例使用，以從Web個人化活動中排除。
+在以下程式碼範例中，「GoogleBot|msnbot」會作為機器人範例使用，以從網頁Personalization活動中排除。
 
 ```javascript
 <!-- RTP tag --> 
@@ -93,7 +93,7 @@ if(navigator.userAgent.match(/.(Googlebot|msnbot)./gi) == null){
 
 ## 說明JavaScript呼叫
 
-使用Web個人化和預測性內容時新增到網站的JavaScript說明。
+使用網頁JavaScript和預測性內容時，新增至網站的Personalization說明。
 
 ### 核心/相依JavaScript
 
@@ -115,4 +115,3 @@ if(navigator.userAgent.match(/.(Googlebot|msnbot)./gi) == null){
 | insightera-bar-2.1.js | 在預測性內容推薦列已啟用時使用 | 由Marketo控制 |
 | froogaloop2.min.js | 在啟用內容追蹤且頁面上存在Vimeo播放器時使用 | - |
 | iframe-api-v1.js | 用於已啟用內容追蹤，且頁面上存在YouTube播放器的情況 | - |
-

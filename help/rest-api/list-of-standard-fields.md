@@ -1,20 +1,20 @@
 ---
-title: 「標準欄位」
+title: 標準欄位
 feature: REST API, Field Management
-description: 「標準Marketo欄位表格。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 標準Marketo欄位表格。
+exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1140'
 ht-degree: 11%
 
 ---
 
-
 # 標準欄位
 
 以下是可透過API存取的Marketo中可用標準欄位清單。
 
-您可以使用REST來擷取潛在客戶記錄中所有支援的欄位名稱清單 [描述銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/) 端點。
+您可以使用REST [Describe Lead](https://developer.adobe.com/marketo-apis/api/mapi/)端點來擷取潛在客戶記錄上所有支援的欄位名稱清單。
 
 | REST API名稱 | SOAP API名稱 | 易記標籤 | 說明 |
 | --- | --- | --- | --- |
@@ -82,7 +82,7 @@ ht-degree: 11%
 | 評等 | 評等 | 銷售機會評等 | 潛在客戶的行銷/銷售評等 |
 | salutation | 問候語 | 問候語 | 潛在客戶偏好的稱呼，例如「先生」、「未接電話」等。 |
 | sicCode | SICCode | SIC 代碼 | 潛在客戶公司的標準產業分類代碼 |
-| 網站 | 網站 | 網站 |  |
+| 網站 | 地點 | 地點 |  |
 | state | 州別 | 州別 | 潛在客戶狀態 |
 | 標題 | 標題 | 職稱 | 潛在客戶職稱 |
 | 已取消訂閱 | 退訂 | 退訂 | 潛在客戶的電子郵件取消訂閱狀態。 部分系統受管理。 若設為true，將防止接收非營運電子郵件。 |

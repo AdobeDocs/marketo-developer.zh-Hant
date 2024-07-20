@@ -1,7 +1,7 @@
 ---
-title: 『[!DNL Ionic]『
+title: '[!DNL Ionic]'
 feature: Mobile Marketing
-description: 使用 [!DNL Ionic] 使用適用於行動裝置的Marketo
+description: 將 [!DNL Ionic] 用於行動裝置的Marketo
 exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
 source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
 workflow-type: tm+mt
@@ -12,19 +12,19 @@ ht-degree: 1%
 
 # 離子型
 
-本主題說明如何整合Marketo Cordova外掛程式。 [!DNL Ionic] 目前不支援電容器。
+本主題說明如何整合Marketo Cordova外掛程式。 目前不支援[!DNL Ionic]電容器。
 
 ## 先決條件
 
-1. [在Marketo管理中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）。
+1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）。
 1. 設定推播通知([iOS](push-notifications.md) | [Android](push-notifications.md) )。
-1. 安裝 [[!DNL Ionic]](https://ionicframework.com/getting-started/) &amp; [Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/).
+1. 安裝[[!DNL Ionic]](https://ionicframework.com/getting-started/)與[Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/)。
 
 ## 安裝指示
 
-### 設定Marketo [!DNL Ionic] 外掛程式
+### 設定Marketo [!DNL Ionic]外掛程式
 
-1. 如果已安裝Cordova CLI，請前往 [!DNL Ionic] 應用程式目錄並執行下列命令，將Marketo外掛程式新增至您的應用程式中：
+1. 假設已安裝Cordova CLI，請移至您的[!DNL Ionic]應用程式目錄，然後執行下列命令，將Marketo外掛程式新增至您的應用程式：
 
    `$ ionic plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
@@ -48,7 +48,7 @@ ht-degree: 1%
 
 ### 追蹤推播通知
 
-將下列程式碼貼入 `application:didFinishLaunchingWithOptions:` 函式。
+將下列程式碼貼入`application:didFinishLaunchingWithOptions:`函式中。
 
 >[!BEGINTABS]
 
@@ -72,9 +72,9 @@ sharedInstance.trackPushNotfication(launchOptions)
 
 ### 初始化Marketo框架
 
-若要確保在應用程式啟動時啟動Marketo架構，請在底下新增下列程式碼 `onDeviceReady` JavaScript函式中。
+若要確保在應用程式啟動時起始Marketo架構，請在主要JavaScript檔案的`onDeviceReady`函式下新增下列程式碼。
 
-您必須通過 `ionicCordova` 作為的框架型別 [!DNL Ionic] Cordova應用程式。
+您必須傳遞`ionicCordova`作為[!DNL Ionic] Cordova應用程式的架構型別。
 
 #### 語法
 
@@ -121,7 +121,7 @@ marketo.initializeMarketoPush(
 
 - Success回呼：Marketo推播通知成功初始化時要執行的函式。
 - 失敗回呼：當Marketo推播通知無法初始化時要執行的函式。
-- GCM_PROJECT_ID ：在中找到GCM專案ID [Google開發人員主控台](https://accounts.google.com/ServiceLogin?service=cloudconsole&amp;passive=1209600&amp;osid=1&amp;continue=https://console.cloud.google.com/apis/dashboard&amp;followup=https://console.cloud.google.com/apis/dashboard) 建立應用程式之後。
+- GCM_PROJECT_ID ：建立應用程式後，在[Google開發人員主控台](https://accounts.google.com/ServiceLogin?service=cloudconsole&amp;passive=1209600&amp;osid=1&amp;continue=https://console.cloud.google.com/apis/dashboard&amp;followup=https://console.cloud.google.com/apis/dashboard)中找到GCM專案ID。
 
 登出時也可以取消註冊權杖。
 
@@ -177,7 +177,7 @@ marketo.associateLead(
 
 ## 報表動作
 
-您可以呼叫「 」，報告使用者執行的任何動作 `reportaction` 函式。
+您可以藉由呼叫`reportaction`函式來報告任何使用者執行的動作。
 
 ### 語法
 

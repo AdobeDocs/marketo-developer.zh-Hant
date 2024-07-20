@@ -1,18 +1,18 @@
 ---
 title: Social
-description: "Social"
+description: Social
 feature: Social, Javascript
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+exl-id: 82d2b86f-5efe-4434-b617-d27f76515a79
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '776'
 ht-degree: 2%
 
 ---
 
-
 # Social
 
-[Marketo社交行銷](https://business.adobe.com/products/marketo/social-marketing.html) 可讓行銷人員將社交Widget內嵌在網站和登陸頁面中。 社交Widget包括投票、社交分享按鈕、影片、抽獎和類似轉介優惠的促銷活動。
+[Marketo社交行銷](https://business.adobe.com/products/marketo/social-marketing.html)可讓行銷人員將社交Widget內嵌在網站和登陸頁面中。 社交Widget包括投票、社交分享按鈕、影片、抽獎和類似轉介優惠的促銷活動。
 
 ## 內嵌共用Widget範例
 
@@ -37,7 +37,7 @@ ht-degree: 2%
 
 ## 將事件附加至一般UI
 
-有兩種方式可訂閱CF JavaScript資料庫中的事件（全域或單一Widget）。 事件記錄於事件表格下方。
+有兩種方式可全域或針對單一Widget訂閱CF JavaScript資料庫中的事件。 事件記錄於事件表格下方。
 
 ### 全域活動訂閱
 
@@ -90,18 +90,18 @@ cf_scripts.afterload(function(){
 
 | 事件名稱 | 說明 | 使用此事件的Widget | 支援的引數（傳遞至事件回呼函式） |
 | --- | --- | --- | --- | 
-| share_sent | 每次將共用要求傳送至伺服器以進行處理時引發 | 所有能夠共用的Widget | 1.」share_sent&quot; （字串）<br>2. 引數已傳送（物件） |
-| share_success | 成功處理共用要求時引發。 | 所有能夠共用的Widget。 | 1.」share_success&quot; （字串）<br>2. 共用回應物件，包含已傳送的訊息和縮短的URL （物件） |
-| vote_成功率 | 當使用者在輪詢中成功投票時引發。 | 投票、VS、投票Widget | 1. &quot;vote_success&quot; （字串）<br>2. 投票給的專案，包括標題、說明、實體識別碼（物件） |
-| offer_registered | 當使用者成功註冊優惠時引發 | 所有優惠方案Widget | 1.」offer_registered&quot; （字串）<br>2. 變更的使用者屬性（物件）、<br>3. 變更的使用者屬性（物件） |
-| 設定檔已儲存 | 當使用者從設定檔擷取更新其設定檔時引發 | 已啟用設定檔擷取的所有非選件Widget | 1.」profile_saved&quot; （字串）<br>2. 變更的使用者屬性（物件）<br>3. 變更的使用者屬性（物件） |
+| share_sent | 每次將共用要求傳送至伺服器以進行處理時引發 | 所有能夠共用的Widget | 1.」share_sent&quot; （字串）<br>2。 引數已傳送（物件） |
+| share_success | 成功處理共用要求時引發。 | 所有能夠共用的Widget。 | 1.」share_success&quot; （字串）<br>2。 共用回應物件，包含已傳送的訊息和縮短的URL （物件） |
+| vote_成功率 | 當使用者在輪詢中成功投票時引發。 | 投票、VS、投票Widget | 1. &quot;vote_success&quot; （字串）<br>2。 投票給的專案，包括標題、說明、實體識別碼（物件） |
+| offer_registered | 當使用者成功註冊優惠時引發 | 所有優惠方案Widget | 1.」offer_registered&quot; （字串）<br>2。 已變更使用者屬性（物件），<br>3。 變更的使用者屬性（物件） |
+| 設定檔已儲存 | 當使用者從設定檔擷取更新其設定檔時引發 | 已啟用設定檔擷取的所有非選件Widget | 1.」profile_saved&quot; （字串）<br>2。 已變更使用者屬性（物件）<br>3。 變更的使用者屬性（物件） |
 | video_loaded | 當內嵌視訊完全載入及初始化時引發。 | VideoShare Widget | 1. &quot;video_loaded&quot; （字串） 2. 儲存視訊（jQuery物件）的「.cf_videoshare_wrap」元素 |
 
 ## 使用自訂UI取代UI
 
-若要使用自訂UI取代UI，您必須先關閉一般UI，方法是設定選項 _popupUIOnly_ 至 _true_. 設定此選項後，標準UI將不會在頁面載入時呈現，而是由Widget擷取其資料，並透過呼叫 _CF.widget.activate_ 函式並提供其應執行動作的選項。
+若要以自訂UI取代UI，您必須先關閉一般UI，方法是將選項&#x200B;_popupUIOnly_&#x200B;設定為&#x200B;_true_。 設定此選項後，標準UI將不會在頁面載入時呈現，而是Widget會擷取其資料，並藉由呼叫&#x200B;_CF.widget.activate_&#x200B;函式以及提供應執行動作的選項來等待您開始其其中一個彈出式階段。
 
-以下範例說明如何建立自訂按鈕，為名為的推薦優惠Widget啟動推薦優惠註冊流程 _referral_Signup_.
+以下是建立自訂按鈕的範例，此按鈕會針對名為&#x200B;_referral_Signup_&#x200B;的推薦優惠Widget啟動推薦優惠註冊流程。
 
 ```html
 <button id="myNewSignUpButton">My newSign Up button</button>
@@ -139,9 +139,9 @@ cf_scripts.afterload(function($, CF){
 
 ## 取得Widget UI資料以放入您的取代UI
 
-如果您需要有關Widget的資料以繪製替代UI，可以從特殊事件取得資料 _ui_data_. 您可以使用一般監聽此事件 `CF.widget.listen` 函式，但這麼做可能會造成潛在的競爭條件，也就是在Widget已引發_ui_data_事件之後新增事件接聽程式，因此您絕不會收到資料。 若要避免此競爭，請使用 `CF.widget.uiData_ method instead, which will give you the most recent available _ui_data_, and listen for all future updates as well. The _ui_data` 每當採取會導致重新繪製Widget標準UI的動作時，就會引發事件，即使您已使用停用該UI `popupUIOnly` 選項。
+如果您需要有關Widget的資料以繪製您的取代UI，您可以從特殊事件&#x200B;_ui_data_&#x200B;取得資料。 您可以使用一般`CF.widget.listen`函式接聽此事件，但這麼做可能會造成潛在競爭情形，使您的事件接聽程式在Widget已引發_ui_data_事件之後新增，因此您永遠不會收到資料。 若要避免此競爭，只要執行了會導致重新繪製Widget的標準UI的動作，就會使用`CF.widget.uiData_ method instead, which will give you the most recent available _ui_data_, and listen for all future updates as well. The _ui_data`事件，即使您已使用`popupUIOnly`選項停用該UI亦然。
 
-使用的範例 `uiData` 函式以顯示使用者具有Widget名稱之抽獎專案的專案數 _掃描_抽獎_.
+此範例使用`uiData`函式來顯示使用者擁有的Widget名稱為&#x200B;_sweeps_Sweepstakes_&#x200B;之抽獎專案的專案數。
 
 ```html
 <span>You have <span id="entryCount">?</span> entries.</span>

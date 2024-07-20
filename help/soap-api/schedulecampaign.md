@@ -1,14 +1,14 @@
 ---
-title: "scheduleCampaign"
+title: scheduleCampaign
 feature: SOAP, Smart Campaigns
-description: "scheduleCampaign SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: scheduleCampaign SOAP呼叫
+exl-id: a9ef2c16-34ef-4e0f-b765-e332335b0b81
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '252'
 ht-degree: 2%
 
 ---
-
 
 # scheduleCampaign
 
@@ -18,7 +18,7 @@ ht-degree: 2%
 
 與requestCampaign函式類似，您可以將我的權杖陣列傳遞至此API呼叫，以覆寫現有權杖。 行銷活動執行後，會捨棄代號。
 
-如果您使用此選用引數搭配 [importToList](importtolist.md)，Token的優先順序如下：
+如果您將此選用引數與[importToList](importtolist.md)搭配使用，Token會依下列順序排列優先順序：
 
 1. 每個潛在客戶權杖的importToList
 1. 每個行銷活動代號的scheduleCampaign
@@ -28,11 +28,11 @@ ht-degree: 2%
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| programName | 必填 | 包含程式的名稱 |
-| campaignName | 必填 | 智慧行銷活動的名稱 |
+| programName | 必要 | 包含程式的名稱 |
+| campaignName | 必要 | 智慧行銷活動的名稱 |
 | campaignRunAt | 可選 | 執行已排程行銷活動的時間（W3C WSDL日期格式）。 |
 | cloneToProgramName | 可選 | 此屬性出現時，會複製行銷活動的父級方案，並排程新建立的行銷活動。 屬性會為產生的程式指定所需的名稱。 注意：使用此欄位時，每天僅允許10次呼叫。 |
-| programTokenList->attrib->name | 可選 | 您要為其傳送新值的Token名稱。 使用完整的Token格式，就像在Marketo UI中一樣。 換言之， 」{{my.message}}&quot; |
+| programTokenList->attrib->name | 可選 | 您要為其傳送新值的Token名稱。 使用完整的Token格式，就像在Marketo UI中一樣。 即&quot;{{my.message}}&quot; |
 | programTokenList->attrib->value | 可選 | 關聯權杖名稱的值。 |
 
 ## 請求XML

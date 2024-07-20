@@ -1,14 +1,14 @@
 ---
-title: "mergeLeads"
+title: mergeLead
 feature: SOAP
-description: "mergeLeads SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: mergeLeads SOAP呼叫
+exl-id: a667cb76-525d-4583-b26a-1181d320a68c
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '83'
 ht-degree: 7%
 
 ---
-
 
 # mergeLead
 
@@ -18,8 +18,8 @@ ht-degree: 7%
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| winningLeadKeyList | 必填 | 用來識別成功潛在客戶的金鑰。 可能的值包括： `IDNUM`， `EMAIL`， `SFDCLEADID`， `LEADOWNEREMAIL`， `SFDCACCOUNTID`， `SFDCCONTACTID`， `SFDCLEADID`， `SFDCLEADOWNERID`， `SFDCOPPTYID` |
-| lowingLeadKeyLists | 必填 | 用於識別損失潛在客戶的索引鍵清單。 |
+| winningLeadKeyList | 必要 | 用來識別成功潛在客戶的金鑰。 可能的值為： `IDNUM`、`EMAIL`、`SFDCLEADID`、`LEADOWNEREMAIL`、`SFDCACCOUNTID`、`SFDCCONTACTID`、`SFDCLEADID`、`SFDCLEADOWNERID`、`SFDCOPPTYID` |
+| lowingLeadKeyLists | 必要 | 用於識別損失潛在客戶的索引鍵清單。 |
 | mergeInSales | 可選 | 以Boolean形式傳遞，可以是「True」或「False」 |
 
 ## 請求XML

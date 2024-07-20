@@ -1,26 +1,26 @@
 ---
-title: 「銷售人員」
+title: 銷售人員
 feature: REST API
-description: 「閱讀有關銷售人員的資料。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 讀取有關銷售人員的資料。
+exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '303'
 ht-degree: 0%
 
 ---
 
-
 # 銷售人員
 
 [銷售人員端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
 
-銷售人員API是訂閱的唯讀存取權，訂閱具有 [SFDC同步](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync) 或 [Microsoft Dynamics同步](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync) 已啟用。 「銷售人員」是銷售機會記錄的銷售擁有者之人員記錄的型態。 它們與每個Lead記錄上的externalSalesPersonId欄位上的Lead記錄有關。 當銷售機會透過填入的externalSalesPersonId欄位與銷售人員相關時，對應的銷售機會擁有者查閱欄位會針對Marketo中的該銷售機會記錄填入，以允許使用對應的篩選器和代號。
+針對已啟用[SFDC Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync)的訂閱，銷售人員API是唯讀存取。 「銷售人員」是銷售機會記錄的銷售擁有者之人員記錄的型態。 它們與每個Lead記錄上的externalSalesPersonId欄位上的Lead記錄有關。 當銷售機會透過填入的externalSalesPersonId欄位與銷售人員相關時，對應的銷售機會擁有者查閱欄位會針對Marketo中的該銷售機會記錄填入，以允許使用對應的篩選器和代號。
 
-「銷售人員」與「銷售機會」記錄相關，使用 [同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST) 端點並傳遞externalSalesPersonId屬性。
+銷售人員使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST)端點並傳遞externalSalesPersonId屬性，與銷售機會記錄相關聯。
 
-銷售人員與商機記錄相關，使用 [同步機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/syncOpportunitiesUsingPOST) 端點並傳遞externalSalesPersonId屬性。
+銷售人員使用[Sync Opportunities](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Opportunities/operation/syncOpportunitiesUsingPOST)端點並傳遞externalSalesPersonId屬性，與Opportunity記錄相關聯。
 
-銷售人員與公司記錄相關，使用 [同步公司](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST) 端點並傳遞externalSalesPersonId屬性。
+使用[Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST)端點並傳遞externalSalesPersonId屬性，銷售人員與公司記錄相關。
 
 銷售人員記錄只能透過API編輯。
 
@@ -95,7 +95,7 @@ GET /rest/v1/salespersons/describe.json
 }
 ```
 
-根據預設， `idField` 「銷售人員」為「id」，且 `dedupeFields` 只是「externalSalesPersonId」。
+依預設，銷售人員的`idField`是&quot;id&quot;，`dedupeFields`只是&quot;externalSalesPersonId&quot;。
 
 ## 查詢
 

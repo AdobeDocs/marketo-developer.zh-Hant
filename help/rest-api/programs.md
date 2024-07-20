@@ -1,14 +1,14 @@
 ---
-title: 「程式」
+title: 計畫
 feature: REST API, Programs
-description: 「建立和編輯計畫資訊。」
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: 建立和編輯計畫資訊。
+exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '843'
 ht-degree: 1%
 
 ---
-
 
 # 計畫
 
@@ -32,13 +32,13 @@ Marketo中有五種核心型別的計畫：
 
 ## 查詢
 
-程式遵循資產查詢的標準模式，並提供依標籤型別和值查詢的額外選項。 可用的標籤和值可以透過以下擷取： [取得標籤型別](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags/operation/getTagTypesUsingGET).
+程式遵循資產查詢的標準模式，並提供依標籤型別和值查詢的額外選項。 可用的標籤和值可以使用[取得標籤型別](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags/operation/getTagTypesUsingGET)擷取。
 
 ### 依Id
 
-此 [依ID取得計畫](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) 端點需要 `id` path引數。
+[依ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5)取得程式端點需要`id`路徑引數。
 
-可在UI中從方案的URL取得方案ID，該URL將類似 `https://app-\*\*\*.marketo.com/#PG1001A1`. 在此URL中， `id` 是1001。 它永遠介於URL中的第一組字母和第二組字母之間。
+程式識別碼可從UI中程式的URL取得，其中該URL類似於`https://app-\*\*\*.marketo.com/#PG1001A1`。 在此URL中，`id`為1001。 它永遠介於URL中的第一組字母和第二組字母之間。
 
 ```
 GET /rest/asset/v1/program/{id}.json
@@ -82,7 +82,7 @@ GET /rest/asset/v1/program/{id}.json
 
 ### 依名稱
 
-此 [依名稱取得計畫](https://developer.adobe.com/marketo-apis/api/asset/) 端點需要 `name` 查詢引數。 選用的布林值查詢引數包括 `includeTags` 和 `includeCosts` 用於分別傳回方案標籤和方案成本。
+[Get Program by Name](https://developer.adobe.com/marketo-apis/api/asset/)端點需要`name`查詢引數。 選用布林查詢引數是`includeTags`和`includeCosts`，分別用來傳回程式標籤和程式成本。
 
 ```
 GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
@@ -126,13 +126,13 @@ GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 
 ### 瀏覽
 
-此 [取得計畫](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) 端點可讓您瀏覽程式。
+[取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5)端點可讓您瀏覽程式。
 
-選填 `status` 引數可讓您依計畫狀態篩選。 此引數僅適用於參與和電子郵件計畫。 參與計畫的值可能是「開啟」和「關閉」，電子郵件計畫的值可能是「已解鎖」。
+選用的`status`引數可讓您篩選程式狀態。 此引數僅適用於參與和電子郵件計畫。 參與計畫的值可能是「開啟」和「關閉」，電子郵件計畫的值可能是「已解鎖」。
 
-選填 `maxReturn` 引數會控制要傳回的程式數目（最大值為200，預設值為20）。 選填 `offset` 用於分頁結果的引數（預設為0）。
+選用的`maxReturn`引數控制要傳回的程式數目（最大值為200，預設值為20）。 用於分頁結果的選用`offset`引數（預設為0）。
 
-請注意，此端點不會傳回與方案相關聯的標籤。 您可以使用以下任一專案來擷取計畫標籤： [依ID取得計畫](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) 或 [依名稱取得計畫](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET).
+請注意，此端點不會傳回與方案相關聯的標籤。 可以使用[依ID取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET)或[依名稱取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET)來擷取程式標籤。
 
 ```
 GET /rest/asset/v1/programs.json
@@ -187,7 +187,7 @@ GET /rest/asset/v1/programs.json
 
 ### 依日期範圍
 
-此 `earliestUpdatedAt` 和 `latestUpdatedAt` 引數至 [取得計畫](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) 端點可讓您為傳回的程式設定低日期時間和高日期時間浮水印，這些程式在指定範圍內已更新或最初建立。
+我們的[取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5)端點的`earliestUpdatedAt`和`latestUpdatedAt`引數可讓您為傳回在指定範圍內更新或最初建立的程式設定低和高的日期時間浮水印。
 
 ```
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
@@ -278,9 +278,9 @@ GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&lat
 
 ### 依標籤型別
 
-此 [按標籤取得計畫](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramListByTagUsingGET) 端點會擷取符合所提供標籤型別和標籤值的程式清單。
+[依標籤取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramListByTagUsingGET)端點會擷取符合所提供標籤型別和標籤值的程式清單。
 
-有兩個必要引數， `tagType` 這是要篩選的標籤型別，以及 `tagValue` ，即可作為篩選依據的標籤值。  有一個可選整數 `maxReturn` 控制要傳回之程式數的引數（最大值為200，預設值為20），以及選用的整數 `offset` 用於分頁結果的引數（預設為0）。  結果會以隨機順序傳回。
+有兩個必要的引數，`tagType`是要篩選的標籤型別，`tagValue`是要篩選的標籤值。  有一個可選整數`maxReturn`引數可控制要傳回的程式數目（最大值為200，預設值為20），以及一個可選整數`offset`引數用於分頁結果（預設值為0）。  結果會以隨機順序傳回。
 
 ```
 GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
@@ -320,9 +320,9 @@ GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 
 ## 建立和更新
 
-[建立]https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/createProgramUsingPOST)和 [更新](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) 程式遵循標準資產模式且 `folder`， `name`， `type` 和 `channel` 作為必要引數，包含 `description`， `costs` 和 `tags` 是選用的。 頻道和型別只能在建立方案時設定。 僅說明、名稱、 `tags` 和 `costs` 可在建立後更新，但需額外更新 `costsDestructiveUpdate` 允許引數。 通過 `costsDestructiveUpdate` 若為true，則會結清所有現有成本，並取代為通話中包含的任何成本。 請注意，在某些訂閱中，某些計畫型別可能需要標籤，但這取決於設定，應該首先使用「取得標籤」檢視是否有執行個體特定要求。
+[建立]https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/createProgramUsingPOST)和[更新](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST)程式遵循標準資產模式，並以`folder`、`name`、`type`和`channel`為必要引數，`description`、`costs`和`tags`為選用引數。 頻道和型別只能在建立方案時設定。 建立後只能更新描述、名稱、`tags`和`costs`，並允許額外的`costsDestructiveUpdate`引數。 將`costsDestructiveUpdate`傳遞為true將會導致所有現有成本被清除，並取代為通話中包含的任何成本。 請注意，在某些訂閱中，某些計畫型別可能需要標籤，但這取決於設定，應該首先使用「取得標籤」檢視是否有執行個體特定要求。
 
-建立或更新電子郵件計畫時， `startDate` 和 `endDate` 也可能通過。
+建立或更新電子郵件程式時，也可能傳遞`startDate`和`endDate`。
 
 ### 建立
 
@@ -376,7 +376,7 @@ name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API 
 
 ### 更新
 
-更新計畫成本時，若要附加新成本，只需將其新增至您的 `costs` 陣列。 若要執行破壞性更新，請傳遞您的新成本以及引數 `costsDestructiveUpdate` 設為 `true`. 若要清除程式的所有成本，請勿傳遞 `costs` 引數，然後只傳遞 `costsDestructiveUpdate` 設為 `true`.
+更新程式成本時，若要附加新成本，只需將其新增至您的`costs`陣列即可。 若要執行破壞性更新，請傳遞您的新成本，以及設定為`true`的引數`costsDestructiveUpdate`。 若要清除程式的所有成本，請勿傳遞`costs`引數，只傳遞`costsDestructiveUpdate`設定為`true`。
 
 ```
 POST /rest/asset/v1/program/{id}.json
@@ -482,9 +482,9 @@ POST /rest/asset/v1/program/{id}/unapprove.json
 
 ## 原地複製
 
-[復製程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/cloneProgramUsingPOST) 以標準資產模式將新名稱和資料夾視為必要引數和可選說明。  此 `name` 引數必須是全域唯一的，而且不能超過255個字元。  此 `folder` parameter是父資料夾。  此 `folder` 引數型別屬性必須設定為「資料夾」，而且目標資料夾必須與要複製的程式位於相同的工作區。
+[復製程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/cloneProgramUsingPOST)會遵循標準資產模式，將新名稱和資料夾作為必要引數和選擇性說明。  `name`引數必須是全域唯一的，而且不能超過255個字元。  `folder`引數是父資料夾。  `folder`引數型別屬性必須設定為「資料夾」，而且目標資料夾必須與複製中的程式位於相同的工作區。
 
-包含特定資產型別的程式可能無法透過此API進行複製，包括推送通知、應用程式內訊息、報表和社交資產。 應用程式內程式可能無法透過此API進行複製。
+包含特定資產型別的程式可能無法透過此API進行複製，包括推送通知、應用程式內訊息、報表和社交Assets。 應用程式內程式可能無法透過此API進行複製。
 
 ```
 POST /rest/asset/v1/program/{id}/clone.json

@@ -1,14 +1,14 @@
 ---
-title: "getCampaignsForSource"
+title: getCampaignsForSource
 feature: SOAP
-description: "getCampaignsForSource SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getCampaignsForSource SOAP呼叫
+exl-id: bd8803ef-f462-4346-a381-73f40dc5d9ee
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '131'
 ht-degree: 5%
 
 ---
-
 
 # getCampaignsForSource
 
@@ -22,7 +22,7 @@ ht-degree: 5%
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| 來源 | 必填 | 來源可以是 `MKTOWS` 或 `SALES`. 後者提供Sales Insight可用的行銷活動清單。 |
+| 來源 | 必要 | 來源可以是`MKTOWS`或`SALES`。 後者提供Sales Insight可用的行銷活動清單。 |
 | 名稱 | 可選 | 使用此項可依名稱篩選。 這是單一字串，而非字串陣列。 |
 | exactName | 可選 | 表示您是否想要完全符合name引數的布林值 |
 

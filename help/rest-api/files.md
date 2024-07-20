@@ -1,14 +1,14 @@
 ---
-title: "檔案"
+title: 檔案
 feature: REST API
-description: 「儲存和操作Marketo檔案。」
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: 儲存和操作Marketo檔案。
+exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '267'
 ht-degree: 1%
 
 ---
-
 
 # 檔案
 
@@ -18,7 +18,7 @@ Marketo訂閱可儲存任意檔案，例如影像、指令碼、檔案和樣式�
 
 ## 查詢
 
-查詢檔案非常簡單，並遵循資產的標準查詢型別 [依id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByIdUsingGET)， [依名稱](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByNameUsingGET)、和 [瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFilesUsingGET).
+查詢檔案非常簡單，並遵循[的資產（依識別碼](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFileByNameUsingGET)和[瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/getFilesUsingGET)）的標準查詢型別。
 
 ### 依Id
 
@@ -53,7 +53,7 @@ GET /rest/asset/v1/file/{id}.json
 
 ### 依名稱
 
-使用所需的指定檔案名稱 `name` 引數。
+使用必要的`name`引數指定檔案的名稱。
 
 ```
 GET /rest/asset/v1/file/byName.json?name=foo.png
@@ -155,7 +155,7 @@ GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 
 ## 建立和更新
 
-[建立檔案](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/createFileUsingPOST) 使用請求的多部分/表單資料型別完成。 最低限度，要求中必須包含名稱、資料夾和檔案，並附上可選說明和insertOnly旗標，以防止建立呼叫更新具有相同名稱的現有檔案。 對於檔案引數，除了name引數之外，Content-Disposition標頭中還需要「filename」。 您也必須傳遞檔案的Content-Type標頭，該標頭將為Marketo用來提供檔案的MIME型別。
+[建立檔案](https://developer.adobe.com/marketo-apis/api/asset/#tag/Files/operation/createFileUsingPOST)已使用請求的多重部分/表單資料型別完成。 最低限度，要求中必須包含名稱、資料夾和檔案，並附上可選說明和insertOnly旗標，以防止建立呼叫更新具有相同名稱的現有檔案。 對於檔案引數，除了name引數之外，Content-Disposition標頭中還需要「filename」。 您也必須傳遞檔案的Content-Type標頭，該標頭將為Marketo用來提供檔案的MIME型別。
 
 ```
 POST /rest/asset/v1/files.json
@@ -208,7 +208,7 @@ This is a test file
 }
 ```
 
-[更新檔案](https://developer.adobe.com/marketo-apis/api/asset/#tag/File-Contents/operation/updateContentUsingPOST) 可以根據其id完成。 唯一的引數是要求與建立相同的檔案引數。
+[可依據檔案](https://developer.adobe.com/marketo-apis/api/asset/#tag/File-Contents/operation/updateContentUsingPOST)的ID更新檔案。 唯一的引數是要求與建立相同的檔案引數。
 
 ```
 POST /rest/asset/v1/file/{id}/content.json

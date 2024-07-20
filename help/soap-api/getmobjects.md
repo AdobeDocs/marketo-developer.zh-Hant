@@ -1,39 +1,39 @@
 ---
-title: "getMObjects"
+title: getMObjects
 feature: SOAP
-description: "getMObjects SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: getMObjects SOAP呼叫
+exl-id: 5cf18161-f590-4dc3-bba1-ee3ed9fd7e9f
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 3%
 
 ---
 
-
 # getMObjects
 
-擷取一或多個 [MObject](marketo-objects.md) 使用由下列專案組成的條件組合：
+使用下列條件的組合擷取一或多個[MObjects](marketo-objects.md)：
 
 - 零個或一個唯一ID，可能是Marketo ID或外部ID
 - 零個或多個屬性篩選器，做為名稱/值/比較三重奏
 - 零個或多個關聯的物件篩選器，做為物件名稱/ID配對
 
-傳回符合的MObjects清單，全部為單一型別、批次中最多100個，以及 [串流位置](stream-position.md) 用於擷取連續批次的權杖。
+傳回符合的MObjects清單，所有都是單一型別，批次中最多100個，以及擷取連續批次的[串流位置](stream-position.md)權杖。
 
 ## 請求
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| 類型 | 必填 | 您要查詢的物件型別。 可以是下列其中一項： `Opportunity`， `OpportunityPersonRole`，或 `Program` |
+| 類型 | 必要 | 您要查詢的物件型別。 可以是下列其中一項： `Opportunity`、`OpportunityPersonRole`或`Program` |
 | ID | 可選 | 物件的ID |
 | includeDetails | 可選 | 為true時，將傳回給定MObject的所有屬性。 此引數僅適用於搭配方案MObjects使用時 |
-| mObjCriteriaList->mObjCriteria->attrName | 可選 | 可以使用下列一或多個輸入引數：`Name`， `Role`， `Type`， `Stage`， `CRM Id`， `Created At`， `Updated At` 或 `Tag Type` （只能指定一個）， `Tag Value`， `Workspace Name`， `Workspace Id`， `Include Archive` |
+| mObjCriteriaList->mObjCriteria->attrName | 可選 | 可以使用下列一或多個輸入引數： `Name`、`Role`、`Type`、`Stage`、`CRM Id`、`Created At`、`Updated At`或`Tag Type` （只能指定一個）、`Tag Value`、`Workspace Name`、`Workspace Id`、`Include Archive` |
 | mObjCriteriaList->mObjCriteria->attrValue | 可選 | 您要用於篩選的值 |
-| mObjCriteriaList->mObjCriteria->comparison | 可選 | 其中之一 `EQ`， `NE`， `LT` ，`LE`， `GT`， `GE` |
+| mObjCriteriaList->mObjCriteria->comparison | 可選 | `EQ`、`NE`、`LT`、`LE`、`GT`、`GE`其中之一 |
 | mObjAssociationList->mObjAssociation->mObjType | 可選 |  |
 | mObjAssociationList->mObjAssociation->id | 可選 | 關聯物件（銷售機會/公司/商機）的識別碼 |
 | mObjAssociationList->mObjAssociation->externalKey | 可選 | 關聯物件的自訂屬性 |
-| streamPosition | 可選 | 用於分頁顯示多個結果集。 傳遞的值是先前傳回的值 `getMObjects` 呼叫。 |
+| streamPosition | 可選 | 用於分頁顯示多個結果集。 傳遞的值是先前`getMObjects`呼叫傳回的值。 |
 
 ## 請求XML
 

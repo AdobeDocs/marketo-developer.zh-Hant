@@ -16,15 +16,15 @@ ht-degree: 0%
 
 ## 先決條件
 
-[在Marketo管理中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）。
+[在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）。
 
 ## SDK整合
 
 ### Android SDK整合
 
-**使用Gradle進行設定**
+**使用Gradle進行安裝**
 
-使用最新版本新增Marketo SDK相依性：在應用程式層級 `build.gradle` 檔案在相依性區段底下新增(包括適當版本的Marketo SDK)
+使用最新版本新增Marketo SDK相依性：在應用程式層級`build.gradle`檔案的相依性區段下方，新增(包括適當版本的Marketo SDK)
 
 ```
 implementation 'com.marketo:MarketoSDK:0.x.x'
@@ -32,7 +32,7 @@ implementation 'com.marketo:MarketoSDK:0.x.x'
 
 **新增mavencentral存放庫**
 
-Marketo SDK位於 [maven中央存放庫](https://mvnrepository.com/). 若要同步這些檔案，請新增 `mavencentral` 存放庫至根目錄 `build.gradle`
+[maven中央存放庫](https://mvnrepository.com/)提供Marketo SDK。 若要同步處理這些檔案，請新增`mavencentral`存放庫至根`build.gradle`
 
 ```
 build script {
@@ -53,7 +53,7 @@ build script {
 
 在應用程式中使用我們的iOS SDK相當容易。 執行以下步驟，透過CocoaPods在應用程式的Xcode專案中進行設定，將我們的平台與應用程式整合。
 
-下載 [CocoaPods](https://cocoapods.org/)  — 以Ruby gem形式發佈，這是Objective-C和Swift的相依性管理程式，可簡化在程式碼中使用協力廠商程式庫(例如iOS SDK)的程式。
+下載[CocoaPods](https://cocoapods.org/) — 以Ruby gem形式發佈，它是Objective-C和Swift的相依性管理員，可簡化程式碼中使用協力廠商程式庫(例如iOS SDK)的程式。
 
 若要下載並安裝，請在Mac上啟動命令列終端機，並在其上執行下列命令：
 
@@ -83,7 +83,7 @@ build script {
 
 有時React Native應用程式需要存取JavaScript中預設不可用的原生平台API，例如存取Apple或Google Pay的原生API。 您可能想要重複使用一些現有的Objective-C、Swift、Java或C++程式庫，而不需要在JavaScript中重新實作，或針對影像處理等作業編寫一些高效能的多執行緒程式碼。
 
-NativeModule系統向JavaScript (JS)公開Java/Objective-C/C++ （原生）類別的例項作為JS物件，因此允許您從JS內執行任意原生程式碼。 雖然我們不預期此功能會成為一般開發流程的一部分，但必須具備此功能。 如果React Native未匯出JS應用程式所需的原生API，您應該能夠自行匯出！
+NativeModule系統向JavaScript (JS)公開Java/Objective-C/C++ （原生）類別的執行個體，做為JS物件，因此可讓您從JS內執行任意原生程式碼。 雖然我們不預期此功能會成為一般開發流程的一部分，但必須具備此功能。 如果React Native未匯出JS應用程式所需的原生API，您應該能夠自行匯出！
 
 React Native Bridge可用來在JSX和原生應用程式層之間通訊。 在此情況下，主機應用程式將能撰寫可叫用Marketo SDK方法的JSX程式碼。
 
@@ -174,7 +174,7 @@ public class RNMarketoModule extends ReactContextBaseJavaModule {
 }
 ```
 
-**註冊封裝**
+**登入封裝**
 
 告知react-native Marketo套件。
 
@@ -224,11 +224,11 @@ public class MainApplication extends Application implements ReactApplication {
 
 ### iOS
 
-在以下指南中，您將建立原生模組， _RNMarketoModule_，可讓您從JavaScript存取Marketo的API。
+在下列指南中，您將建立原生模組&#x200B;_RNMarketoModule_，此模組可讓您從JavaScript存取Marketo的API。
 
 若要開始使用，請在Xcode的React Native應用程式中開啟iOS專案。 您可以在React Native應用程式中找到您的iOS專案。 建議您使用Xcode來撰寫原生程式碼。 Xcode是專為iOS開發所建置，使用它可以協助您快速解決小錯誤，例如程式碼語法。
 
-建立主要自訂原生模組標頭和實施檔案。 建立名為的新檔案 `MktoBridge.h` 並新增下列專案：
+建立主要自訂原生模組標頭和實施檔案。 建立名為`MktoBridge.h`的新檔案，並新增下列內容：
 
 ```
 //
@@ -344,7 +344,7 @@ const NewModuleButton = () => {
 export default NewModuleButton;
 ```
 
-此JavaScript檔案會將原生模組載入到JavaScript圖層。
+此JavaScript檔案會將原生模組載入JavaScript層。
 
 ```javascript
 import React from 'react';
@@ -387,7 +387,7 @@ RNMarketoModule.uninitializeMarketoPush()
 RNMarketoModule.initializeMarketoPush("ProjectId", "Channel_name")
 ```
 
-將下列服務新增至 `AndroidManifest.xml`
+將下列服務新增至`AndroidManifest.xml`
 
 
 ```xml
@@ -401,7 +401,7 @@ RNMarketoModule.initializeMarketoPush("ProjectId", "Channel_name")
 </activity/>
 ```
 
-以名稱建立類別 `FirebaseMessagingService.java` 並新增下列程式碼
+建立名稱為`FirebaseMessagingService.java`的類別並新增下列程式碼
 
 ```java
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -427,15 +427,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 必須在您的Xcode專案中啟用許可權，才能將推播通知傳送至使用者的裝置。
 
-若要傳送推播通知， [新增推播通知](push-notifications.md).
+若要傳送推播通知，[新增推播通知](push-notifications.md)。
 
-現在位於您的 `AppDelegate.m` xcode中的檔案，匯入Marketo
+現在在XCode的`AppDelegate.m`檔案中，匯入Marketo
 
 ```
 #import <MarketoFramework/MarketoFramework.h> 
 ```
 
-新增 `UNUserNotificationCenterDelegate` 至AppDelegate介面以處理委派，如下所示
+將`UNUserNotificationCenterDelegate`新增至AppDelegate介面以處理委派，如下所示
 
 ```
 @interface AppDelegate () <UNUserNotificationCenterDelegate>
@@ -443,7 +443,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 @end
 ```
 
-在中註冊遠端通知 `didFinishLaunchingWithOptions` 方法。
+在`didFinishLaunchingWithOptions`方法中登入遠端通知。
 
 ```
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -485,7 +485,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 }
 ```
 
-包含下列專案 `UNUserNotificationCenter` 委派必要的通知委派方法。
+包含下列`UNUserNotificationCenter`個委派必要的通知委派方法。
 
 ```
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
@@ -516,7 +516,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 
 **Android**
 
-將「MarketoActivity」新增至 `AndroidManifest.xml` 應用程式標籤內的檔案。
+將「MarketoActivity」新增至應用程式標籤內的`AndroidManifest.xml`檔案。
 
 ```xml
 <activity android:name="com.marketo.MarketoActivity" android:configChanges="orientation|screenSize" android:exported="true">
@@ -537,9 +537,9 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 
 1. 設定URL配置： `mkto-<S_ecret Key_>`
 
-1. 包含 `application:openURL:sourceApplication:annotation:` 至 `AppDelegate.m` 檔案(Objective-C)
+1. 包含`application:openURL:sourceApplication:annotation:`至`AppDelegate.m`檔案(Objective-C)
 
-**iOS — 處理AppDelegate中的自訂Url型別/深層連結** 
+**iOS — 處理AppDelegate**&#x200B;中的自訂Url型別/深層連結 
 
 ```
 - (BOOL)application:(UIApplication *)app

@@ -1,33 +1,33 @@
 ---
-title: 「Marketo整合最佳實務」
+title: Marketo整合最佳實務
 feature: REST API
-description: 「使用Marketo API的最佳實務。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 使用Marketo API的最佳實務。
+exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '952'
 ht-degree: 0%
 
 ---
 
-
 # Marketo整合最佳實務
 
 ## API限制
 
-- **每日配額：** 大部分的訂閱每天皆會分配50,000個API呼叫（這會在中部標準時間每天凌晨12:00重設）。 您可以透過帳戶管理員增加每日配額。
-- **速率限制：** 每個執行個體的API存取限製為每20秒100次呼叫。
+- **每日配額：**&#x200B;大部分的訂閱每天會配置50,000個API呼叫（這會在每日中午12:00CST重設）。 您可以透過帳戶管理員增加每日配額。
+- **速率限制：**&#x200B;每個執行個體的API存取限製為每20秒100次呼叫。
 - **並行限制：**  最多十個同時進行的API呼叫。
-- **批次大小：** 潛在客戶資料庫 — 300筆記錄；資產查詢 — 200筆記錄
-- **REST API裝載大小：** 1MB
-- **大量匯入檔案大小：** 10MB
-- **SOAP最大批次大小：** 300筆記錄
-- **大量擷取工作：** 2個執行中；10個已排入佇列（含）
+- **批次大小：**&#x200B;潛在客戶資料庫 — 300筆記錄；資產查詢 — 200筆記錄
+- **REST API承載大小：** 1MB
+- **大量匯入檔案大小：** 10MB
+- **SOAP批次大小上限：** 300筆記錄
+- **大量擷取工作：** 2個正在執行； 10個已排入佇列（含）
 
 ## 快速提示
 
 - 假設您的應用程式會與其他應用程式競爭配額、比率及並行資源，並設定保守的使用量限制。
 - 若有條件使用Marketo的大量和批次方法。 必要時僅使用單一記錄或單一結果呼叫。
-- 使用 [指數輪詢](https://en.wikipedia.org/wiki/Exponential_backoff) 以重試因速率或並行限制而失敗的API呼叫。
+- 使用[指數回退](https://en.wikipedia.org/wiki/Exponential_backoff)來重試由於速率或並行限制而失敗的API呼叫。
 - 如果您的使用案例不能從中受益，請避免同時進行API呼叫。
 
 ## 批次處理程式
@@ -41,14 +41,14 @@ ht-degree: 0%
 | 可接受的延遲 | 偏好方法 | 附註 |
 |---|---|---|
 | 低（&lt;10秒） | 同步API （批次或未批次） | 確保您的使用案例需要此專案。 針對大量使用案例傳送即時和同步呼叫可能會快速消耗每日API配額，並可能超過速率和並行限制。 |
-| 中（10秒 — 60米） | 同步API （批次） | 若要將傳入資料整合至Marketo，強烈建議使用同時具有年齡和大小限制的佇列。 達到任一限制時，請排清佇列並提交包含累積記錄的API請求。 這在速度與效率之間是一種強烈的折衷，可確保您的請求以所需的節奏進行，同時批次處理儘可能多的記錄，數量以佇列的年齡所允許。 |
+| Medium（10秒 — 6000萬） | 同步API （批次） | 若要將傳入資料整合至Marketo，強烈建議使用同時具有年齡和大小限制的佇列。 達到任一限制時，請排清佇列並提交包含累積記錄的API請求。 這在速度與效率之間是一種強烈的折衷，可確保您的請求以所需的節奏進行，同時批次處理儘可能多的記錄，數量以佇列的年齡所允許。 |
 | 高（>60米） | 大量匯入/匯出（如果支援） | 針對傳入資料整合，應透過Marketo大量API，將記錄排入佇列並隨時提交。 |
 
 ## 每日限制
 
 Marketo每個啟用API的執行個體每天至少會配置10,000個REST API呼叫，但通常為50,000個或更多，以及500MB或更多「大量擷取」容量。 雖然額外的每日容量可作為Marketo訂閱的一部分購買，但您的應用程式設計應考慮Marketo訂閱的共同限制。
 
-由於容量是在執行個體中的所有API服務和使用者之間共用，最佳實務是消除多餘的呼叫，並儘可能將記錄批次化為少數呼叫。 匯入記錄最具呼叫效率的方法是使用Marketo的大量匯入API，這些API可用於 [銷售機會/人員](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST) 和 [自訂物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Snippets/operation/createSnippetUsingPOST). Marketo也提供大量擷取以用於 [銷售機會](bulk-lead-extract.md) 和 [活動](bulk-activity-extract.md).
+由於容量是在執行個體中的所有API服務和使用者之間共用，最佳實務是消除多餘的呼叫，並儘可能將記錄批次化為少數呼叫。 匯入記錄最有效率的呼叫方式是使用Marketo的大量匯入API，這些可供[銷售機會/人員](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)和[自訂物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Snippets/operation/createSnippetUsingPOST)使用。 Marketo也為[銷售機會](bulk-lead-extract.md)和[活動](bulk-activity-extract.md)提供大量擷取。
 
 ### 快取
 
@@ -72,4 +72,4 @@ Marketo每個啟用API的執行個體每天至少會配置10,000個REST API呼�
 
 ## 錯誤次數
 
-除了極少數情況外，API請求會傳回200的HTTP狀態代碼。 商業邏輯錯誤也會傳回200，但在回應本文中包含詳細資訊。 另請參閱 [錯誤代碼](error-codes.md) 以取得詳細說明。 不應評估HTTP原因片語，因為它是選用字詞，而且可能會有所變更。
+除了極少數情況外，API請求會傳回200的HTTP狀態代碼。 商業邏輯錯誤也會傳回200，但在回應本文中包含詳細資訊。 如需詳細說明，請參閱[錯誤碼](error-codes.md)。 不應評估HTTP原因片語，因為它是選用字詞，而且可能會有所變更。

@@ -1,34 +1,34 @@
 ---
-title: "requestCampaign"
+title: requestCampaign
 feature: SOAP, Smart Campaigns
-description: "requestCampaign SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: requestCampaign SOAP呼叫
+exl-id: b5367eb9-4f4c-4e1d-8b6d-36de8f134f0e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '277'
 ht-degree: 2%
 
 ---
 
-
 # requestCampaign
 
 此函式在Marketo Smart Campaign中執行現有的Marketo銷售機會。 Smart Campaign必須有具有Web服務API來源的「已要求Campaign」觸發器（請參閱下文）。
 
-![網站服務API](assets/webserviceapi.png)
+![Web服務API](assets/webserviceapi.png)
 
-有兩個引數集可供使用。 第一個案例是使用 `campaignName` + `programName` + `programTokenList`. 此 `programTokenList` 在此情況下可以為空白。 第二個案例是使用 `campaignId` 獨處。 任何其他組合都會擲回錯誤的引數例外狀況。
+有兩個引數集可供使用。 第一個案例是使用`campaignName` + `programName` + `programTokenList`。 在這種情況下，`programTokenList`可以空白。 第二個案例是單獨使用`campaignId`。 任何其他組合都會擲回錯誤的引數例外狀況。
 
 注意：每個呼叫最多100個leadKey值。 會忽略其他索引鍵。
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| leadList->leadKey->keyType | 必填 | `keyType` 可讓您指定查詢潛在客戶的欄位。 可能的值包括：`IDNUM`， `EMAIL`， `SFDCLEADID`， `LEADOWNEREMAIL`， `SFDCACCOUNTID`， `SFDCCONTACTID`， `SFDCLEADID`， `SFDCLEADOWNERID`， `SFDCOPPTYID` |
-| leadList->leadKey->keyValue | 必填 | `keyValue` 是您要用來查詢潛在客戶的值。 |
-| 來源 | 必填 | 行銷活動來源。 可能的值： `MKTOWS` 或 `SALES`. 列舉是在WSDL中定義。 |
-| campaignId | 選擇性，當 `campaignName`， `programName`、和 `programTokenList` 都會在引數網站中；否則 `campaignId` 為必要項 | 行銷活動的ID。 注意：如果出現以下情況，則會發生錯誤的引數錯誤： `campaignID` 和 `campaignName` 都傳遞了。 |
-| campaignName | campaignId存在時為選用；否則在集中需為 `campaignName`、 programName和programTokenList | 行銷活動的名稱 |
-| programName | campaignId存在時為選用；否則在集中需為 `campaignName`、 programName和programTokenList | 方案的名稱 |
-| programTokenList | campaignId存在時為選用；否則在集中需為 `campaignName`， `programName`、和 `programTokenList` | 用於行銷活動中的權杖陣列。 指定Token、programName和 `campaignName` 為必要項。 |
+| leadList->leadKey->keyType | 必要 | `keyType`可讓您指定查詢潛在客戶的欄位。 可能的值包括：`IDNUM`、`EMAIL`、`SFDCLEADID`、`LEADOWNEREMAIL`、`SFDCACCOUNTID`、`SFDCCONTACTID`、`SFDCLEADID`、`SFDCLEADOWNERID`、`SFDCOPPTYID` |
+| leadList->leadKey->keyValue | 必要 | `keyValue`是您要用來查詢潛在客戶的值。 |
+| 來源 | 必要 | 行銷活動來源。 可能的值： `MKTOWS`或`SALES`。 列舉是在WSDL中定義。 |
+| campaignId | 當`campaignName`、`programName`和`programTokenList`在引數網站中同時存在時為選用；否則需要`campaignId` | 行銷活動的ID。 注意：如果同時傳遞`campaignID`和`campaignName`，則會發生錯誤的引數錯誤。 |
+| campaignName | 當campaignId存在時為選用；否則在集合中必須是`campaignName`、programName和programTokenList | 行銷活動的名稱 |
+| programName | 當campaignId存在時為選用；否則在集合中必須是`campaignName`、programName和programTokenList | 方案的名稱 |
+| programTokenList | 當campaignId存在時為選用；否則在集合中必須是`campaignName`、`programName`和`programTokenList` | 用於行銷活動中的權杖陣列。 指定權杖時，需要programName和`campaignName`。 |
 | programTokenList->attrib->name | 可選 | 您要傳遞其值的程式權杖名稱。 例如：{{my.message}} |
 | programTokenList->attrib->value | 可選 | 指定Token名稱的值。 |
 

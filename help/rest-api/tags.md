@@ -1,14 +1,14 @@
 ---
-title: "標籤"
+title: 標記
 feature: REST API, Tags
-description: 「在Marketo中管理方案的標籤。」
-source-git-commit: 8c1ffb6db05da49e7377b8345eeb30472ad9b78b
+description: 在Marketo中管理方案的標籤。
+exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '205'
-ht-degree: 1%
+ht-degree: 2%
 
 ---
-
 
 # 標記
 
@@ -77,7 +77,7 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 
 ## 更新
 
-此 [更新計畫標籤](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) 端點可讓您更新指定標籤型別的值。 端點會採用 `id` 和 `tagType` 指定程式id的路徑引數，以及要更新的標籤型別。 A `tagValue` 查詢引數可用來指定標籤型別的新值。 所有引數皆為必要項。
+[更新程式標籤](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST)端點可讓您更新指定標籤型別的值。 端點採用`id`和`tagType`路徑引數，這些引數指定程式ID以及要更新的標籤型別。 使用`tagValue`查詢引數來指定標籤型別的新值。 所有引數皆為必要項。
 
 ```
 POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
@@ -97,11 +97,11 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-您可以使用大量更新標籤 [更新程式中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST) 端點。 這方面的範例可以找到 [此處](programs.md#update).
+可以使用[更新程式中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST)端點大量更新標籤。 [此處](programs.md#update)提供範例。
 
 ## 刪除
 
-此 [刪除計畫標籤](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/deleteProgramUsingPOST) 端點可讓您刪除不需要的標籤型別。 端點取用 `id` 和 `tagType` 指定程式id的路徑引數，以及要刪除的標籤型別。
+[刪除程式標籤](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/deleteProgramUsingPOST)端點可讓您刪除不需要的標籤型別。 端點採用`id`和`tagType`路徑引數，這些引數指定程式識別碼以及要刪除的標籤型別。
 
 ```
 POST /rest/asset/v1/program/{id}/tag/{tagType}/delete.json

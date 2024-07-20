@@ -1,25 +1,25 @@
 ---
-title: "deleteMObjects"
+title: deleteMObjects
 feature: SOAP
-description: "deleteMObjects SOAP呼叫"
-source-git-commit: d335bdd9f939c3e557a557b43fb3f33934e13fef
+description: deleteMObjects SOAP呼叫
+exl-id: 31511584-5366-4af1-975b-94417680c4d9
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '58'
 ht-degree: 10%
 
 ---
 
-
 # deleteMObjects
 
-刪除一或多個 [MObject](marketo-objects.md) 並傳回作業的結果(DELETED、UNCHANGED、FAILED)。
+刪除一或多個[MObjects](marketo-objects.md)並傳回作業的結果(DELETED、UNCHANGED、FAILED)。
 
 ## 請求
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| mObjectList->mObject->type | 必填 | 可以是其中一項 `Opportunity` 或 `OpportunityPersonRole` |
-| mObjectList->mObject->id | 必填 | 要刪除的MObject識別碼 |
+| mObjectList->mObject->type | 必要 | 可以是`Opportunity`或`OpportunityPersonRole`其中之一 |
+| mObjectList->mObject->id | 必要 | 要刪除的MObject識別碼 |
 
 ## 請求XML
 

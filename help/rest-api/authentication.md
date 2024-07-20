@@ -1,14 +1,14 @@
 ---
-title: 「驗證」
+title: 驗證
 feature: REST API
-description: 「驗證Marketo使用者的API使用情形。」
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+description: 驗證Marketo使用者的API使用情形。
+exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '531'
 ht-degree: 0%
 
 ---
-
 
 # 驗證
 
@@ -16,13 +16,13 @@ Marketo的REST API已透過雙腿OAuth 2.0驗證。使用者端ID和使用者端
 
 ## 建立存取Token
 
-此 `Client ID` 和 `Client Secret` 可以在以下位置找到： **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL LaunchPoint]** 功能表，方法是選取自訂服務，然後按一下 **[!UICONTROL View Details]**.
+在&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL LaunchPoint]**&#x200B;功能表中找到`Client ID`和`Client Secret`，方法是選取自訂服務並按一下&#x200B;**[!UICONTROL View Details]**。
 
 ![取得REST服務詳細資料](assets/authentication-service-view-details.png)
 
-![Launchpoint認證](assets/admin-launchpoint-credentials.png)
+![啟動點認證](assets/admin-launchpoint-credentials.png)
 
-此 `Identity URL` 可以在以下位置找到： **[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]** REST API區段中的功能表。
+在REST API區段的&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**&#x200B;功能表中找到`Identity URL`。
 
 使用HTTPGET(或POST)請求建立存取權杖，如下所示：
 
@@ -43,10 +43,10 @@ GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client I
 
 回應定義
 
-- `access_token`  — 您在後續呼叫中傳遞以驗證Target執行個體的Token。
+- `access_token` — 您隨著後續呼叫傳遞的Token，以驗證目標執行個體。
 - `token_type` - OAuth驗證方法。
-- `expires_in`  — 目前權杖的剩餘有效期限（以秒為單位）（超過此秒後，該權杖即無效）。 存取權杖最初建立時，其有效期限為3600秒或一小時。
-- `scope`  — 用於驗證的自訂服務的擁有者。
+- `expires_in` — 目前Token的剩餘有效期限（以秒為單位） （超過此時間後即無效）。 存取權杖最初建立時，其有效期限為3600秒或一小時。
+- `scope` — 用於驗證之自訂服務的擁有使用者。
 
 ## 使用存取權杖
 
@@ -66,7 +66,7 @@ GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client I
 
 管理存取權杖到期很重要，可確保您的整合順暢運作，並防止在正常作業期間發生未預期的驗證錯誤。 為整合設計驗證時，請務必儲存身分識別回應中包含的權杖和有效期。
 
-在發出任何REST呼叫之前，您應該根據權杖的剩餘期限來檢查其有效性。 如果Token已過期，請呼叫 [身分](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET)端點。 這有助於確保您的REST呼叫絕不會因為權杖過期而失敗。 這可協助您以可預測的方式管理REST呼叫的延遲，這對於面向使用者的應用程式至關重要。
+在發出任何REST呼叫之前，您應該根據權杖的剩餘期限來檢查其有效性。 如果權杖已過期，請呼叫[身分](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET)端點以更新權杖。 這有助於確保您的REST呼叫絕不會因為權杖過期而失敗。 這可協助您以可預測的方式管理REST呼叫的延遲，這對於面向使用者的應用程式至關重要。
 
 如果使用過期的權杖來驗證REST呼叫，REST呼叫將失敗並傳回602錯誤代碼。 如果使用無效的權杖來驗證REST呼叫，則會傳回601錯誤代碼。 如果收到這些程式碼中的任一個，使用者端應呼叫身分識別端點以續約權杖。
 

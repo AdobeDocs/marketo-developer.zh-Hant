@@ -1,18 +1,18 @@
 ---
-title: 「Forms API參考」
-description: 「Forms API參考」
+title: Forms API參考
+description: Forms API參考
 feature: Forms, Javascript
-source-git-commit: 2185972a272b64908d6aac8818641af07c807ac2
+exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
+source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
 workflow-type: tm+mt
 source-wordcount: '1327'
 ht-degree: 1%
 
 ---
 
-
 # Forms API參考
 
-使用Forms 2.0 API時，您會與兩個主要物件互動。 此 `MktoForms2` 物件與 `Form` 物件。 此 `MktoForms2` object是Forms2功能的最上層公開可見名稱空間，包含建立、載入及擷取Form物件的函式。
+使用Forms 2.0 API時，您會與兩個主要物件互動。 `MktoForms2`物件與`Form`物件。 `MktoForms2`物件是Forms2功能的最上層公開可見名稱空間，包含建立、載入及擷取Form物件的函式。
 
 ## MktoForms2方法
 
@@ -178,11 +178,11 @@ ht-degree: 1%
     <tr valign="top">
       <td>.onSuccess(callback)</td>
       <td>新增回呼，此回呼會在表單成功提交後、潛在客戶轉送至後續追蹤頁面之前呼叫。 可用於防止在成功提交後將潛在客戶轉送到後續追蹤頁面。</td>
-      <td>callback — 成功提交表單時將呼叫的函式。 此回呼將傳遞兩個引數。 JS物件，其中包含已提交的值和使用者將轉送到的後續頁面的字串URL，如果沒有已設定的後續頁面，則為空字串或空字串。 特殊行為：如果此回呼傳回「false」(使用===測量)，則訪客「不會」轉送到後續頁面，「不會」重新載入頁面。 這可讓實作者對後續的URL執行額外的處理，或使用JavaScript在頁面上採取行動而不是離開頁面。</td>
+      <td>callback — 成功提交表單時將呼叫的函式。 此回呼將傳遞兩個引數。 JS物件，其中包含已提交的值和使用者將轉送到的後續頁面的字串URL，如果沒有已設定的後續頁面，則為空字串或空字串。 特殊行為：如果此回呼傳回「false」(使用===測量)，則訪客「不會」轉送到後續頁面，「不會」重新載入頁面。 這可讓實作者對後續追蹤URL執行額外處理，或使用JavaScript在頁面上採取行動而非離開頁面。</td>
       <td>表單物件 — 與呼叫方法的表單物件相同，以做為鏈結之用。</td>
     </tr>
     <tr valign="top">
-      <td>.submittable(canSubmit) <em>也可作為：</em> <em>.submitable(canSubmit)</em></td>
+      <td>.submittable(canSubmit) <em>也可用為：</em> <em>.submitable(canSubmit)</em></td>
       <td>取得或設定是否可提交表單。 如果呼叫時沒有引數，它會取得值；如果呼叫時有一個引數，則會設定值。這可用來防止表單提交，同時必須符合一般表單之外的其他條件。</td>
       <td>canSubmit （選用）（布林值） — 將表單設為可提交或不可提交。</td>
       <td>布林值或表單物件 — 如果呼叫時沒有引數，會傳回布林值，指出表單是否可提交。 若以一個引數呼叫，會傳回此表單物件以供鏈結之用。 </td>
