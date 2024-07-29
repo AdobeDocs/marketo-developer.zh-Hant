@@ -5,10 +5,10 @@ breadcrumb-title: "[!DNL Marketo]開發人員指南"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 85062243d57a3fc6d15251163e926495858edf2a
+source-git-commit: 5d18a24f25e5bda39e10bce3b2a77370dd28c937
 workflow-type: tm+mt
-source-wordcount: '234'
-ht-degree: 7%
+source-wordcount: '237'
+ht-degree: 14%
 
 ---
 
@@ -29,12 +29,12 @@ ht-degree: 7%
    - [預測性內容](javascript-api/predictive-content.md)
    - [重新導向](javascript-api/redirect.md)
    - [多媒體Recommendations](javascript-api/rich-media-recommendation.md)
-   - [Social](javascript-api/social.md)
+   - [社交](javascript-api/social.md)
    - [觸發器](javascript-api/triggers.md)
    - [網頁Personalization](javascript-api/web-personalization.md)
-- 行動{#mobile}
+- 行動 {#mobile}
    - [安裝 [!DNL Adobe Launch] 延伸](mobile/adobe-launch-extension-installation.md)
-   - [[!DNL Adobe Launch]副檔名](mobile/adobe-launch-extension.md)
+   - [[!DNL Adobe Launch] 擴充功能](mobile/adobe-launch-extension.md)
    - [進階安全性模式](mobile/advanced-security-access-mode.md)
    - [自訂動作](mobile/custom-actions.md)
    - [深層連結](mobile/enabling-deep-links-in-your-app.md)
@@ -49,7 +49,7 @@ ht-degree: 7%
 - REST{#rest}
    - [REST API總覽](rest-api/rest-api.md)
    - [REST API參考](https://developer.adobe.com/marketo-apis/)
-   - Assets {#assets}
+   - 資產 {#assets}
       - [資產](rest-api/assets.md)
       - [動態內容](rest-api/dynamic-content.md)
       - [電子郵件](rest-api/emails.md)
@@ -64,13 +64,13 @@ ht-degree: 7%
       - [計畫](rest-api/programs.md)
       - [Smart Campaign](rest-api/smart-campaigns.md)
       - [智慧清單](rest-api/smart-lists.md)
-      - [代碼片段](rest-api/snippets.md)
+      - [程式碼片段](rest-api/snippets.md)
       - [靜態清單](rest-api/static-lists.md)
       - [Token](rest-api/tokens.md)
       - [異動電子郵件](rest-api/transactional-email.md)
    - [驗證](rest-api/authentication.md)
    - [驗證簽章](rest-api/authentication-signature.md)
-   - [基礎URL](rest-api/base-url.md)
+   - [基礎 URL](rest-api/base-url.md)
    - [最佳實務](rest-api/marketo-integration-best-practices.md)
    - 大量擷取{#bulk-extract}
       - [大量活動](rest-api/bulk-activity-extract.md)
@@ -85,6 +85,7 @@ ht-degree: 7%
       - [大量計畫成員](rest-api/bulk-program-member-import.md)
    - [頻道](rest-api/channels.md)
    - [自訂服務](rest-api/custom-services.md)
+   - [資料擷取API](rest-api/data-ingestion.md)
    - [下載Swagger定義](rest-api/swagger.md)
    - [端點參考](rest-api/endpoint-reference.md)
    - [錯誤代碼](rest-api/error-codes.md)
@@ -103,18 +104,18 @@ ht-degree: 7%
    - [分頁權杖](rest-api/paging-tokens.md)
    - [效能](rest-api/performance.md)
    - [參考架構](rest-api/reference-architectures.md)
-   - [範常式式碼](https://github.com/Marketo/REST-Sample-Code)
+   - [範例程式碼](https://github.com/Marketo/REST-Sample-Code)
    - [標記](rest-api/tags.md)
    - [使用者內容](rest-api/user-context.md)
    - [User Management](rest-api/user-management.md)
 - SOAP {#soap}
-   - 活動{#activities}
+   - 活動 {#activities}
       - [活動](soap-api/activities.md)
       - [[!DNL getLeadActivity]](soap-api/getleadactivity.md)
       - [[!DNL getLeadChanges]](soap-api/getleadchanges.md)
    - [活動型別篩選器](soap-api/activity-type-filters.md)
    - [驗證簽章](soap-api/authentication-signature.md)
-   - 行銷活動{#campaigns}
+   - 行銷活動 {#campaigns}
       - [[!DNL getCampaignsForSource]](soap-api/getcampaignsforsource.md)
       - [[!DNL requestCampaign]](soap-api/requestcampaign.md)
       - [[!DNL scheduleCampaign]](soap-api/schedulecampaign.md)
