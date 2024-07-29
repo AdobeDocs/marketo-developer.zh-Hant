@@ -3,10 +3,10 @@ title: syncMObjects
 feature: SOAP
 description: syncMObjects SOAP呼叫
 exl-id: 68bb69ce-aa8c-40b7-8938-247f4fe97b5d
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 04e6b38a7ee602c38a851f9b99101186e72a8518
 workflow-type: tm+mt
-source-wordcount: '421'
-ht-degree: 3%
+source-wordcount: '426'
+ht-degree: 4%
 
 ---
 
@@ -62,9 +62,9 @@ UPDATE和UPSERT作業使用ID作為索引鍵。 在單一API呼叫中，有些�
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| mObjAssociationList->mObjAssociation->mObjType | 可選 | 用於使用關聯物件的ID或外部索引鍵來更新Opportunity/OpportunityPersonRole物件。 關聯的物件可為下列其中一個：公司（以更新商機物件）、銷售機會（以更新商機個人角色物件）、商機（以更新商機個人角色物件）|
-| mObjAssociationList->mObjAssociation->id | 可選 | 關聯物件（銷售機會/公司/商機）的識別碼 |
-| mObjAssociationList->mObjAssociation->externalKey | 可選 | 關聯物件的自訂屬性 |
+| mObjAssociationList->mObjAssociation->mObjType | 選填 | 用於使用關聯物件的ID或外部索引鍵來更新Opportunity/OpportunityPersonRole物件。 關聯的物件可以是：公司（以更新商機物件）、銷售機會（以更新商機個人角色物件）、商機（以更新商機個人角色物件） |
+| mObjAssociationList->mObjAssociation->id | 選填 | 關聯物件（銷售機會/公司/商機）的識別碼 |
+| mObjAssociationList->mObjAssociation->externalKey | 選填 | 關聯物件的自訂屬性 |
 
 ## 請求XML
 
