@@ -2,7 +2,7 @@
 title: 資料擷取
 feature: REST API, Dynamic Content
 description: 使用Marketo API使用資料。
-source-git-commit: 5d18a24f25e5bda39e10bce3b2a77370dd28c937
+source-git-commit: 1595aa6df0b0404c7cda2c246c9249018fe87e77
 workflow-type: tm+mt
 source-wordcount: '968'
 ht-degree: 10%
@@ -50,7 +50,7 @@ ht-degree: 10%
 ### 回應
 
 | 索引鍵 | 值 | 必要 |
-| - | - |
+| - | - | - |
 | X-Request-Id | 唯一請求識別碼。 | 是 |
 
 ## 請求
