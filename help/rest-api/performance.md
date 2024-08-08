@@ -3,9 +3,9 @@ title: 效能
 feature: REST API
 description: 使用Marketo API的效能秘訣。
 exl-id: 173a398a-9d36-4e8d-9dd3-7d0d375b085a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 4e64b8a801e443471f52090b7f008b11e628012d
 workflow-type: tm+mt
-source-wordcount: '117'
+source-wordcount: '122'
 ht-degree: 0%
 
 ---
@@ -16,9 +16,11 @@ ht-degree: 0%
 
 ## HTTP壓縮
 
-Marketo REST API使用HTTP 1.1規格定義的標準，支援回應主體的HTTP壓縮。  建議啟用壓縮，因為這會減少頻寬使用量，以及擷取資料所花費的時間。
+Marketo REST API使用HTTP 1.1規格定義的標準，支援回應主體的HTTP壓縮。 建議啟用壓縮，因為這會減少頻寬使用量，以及擷取資料所花費的時間。
 
-**附註：**  少於1024個位元組的裝載將不會壓縮。
+>[!NOTE]
+>
+>少於1024個位元組的裝載不會壓縮，且大量API不支援壓縮。
 
 若要啟用壓縮，請在請求中包含以下HTTP標頭：
 
