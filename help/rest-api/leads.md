@@ -3,10 +3,10 @@ title: 銷售機會
 feature: REST API
 description: 潛在客戶API呼叫的詳細資訊
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 2c125161cf06be8ebb44ae8212f15fbbe5c1f6b7
+source-git-commit: 8c1c620614408dd2df0b0848e6efc027adb71834
 workflow-type: tm+mt
-source-wordcount: '3308'
-ht-degree: 1%
+source-wordcount: '3343'
+ht-degree: 2%
 
 ---
 
@@ -152,11 +152,19 @@ GET /rest/v1/leads.json?filterType=id&filterValues=318581,318592
 
 ## ADOBEECID
 
-Adobe Experience Cloud對象共用功能啟用時，會進行Cookie同步程式，將Adobe Experience Cloud ID (ECID)與Marketo銷售機會建立關聯。  上述潛在客戶擷取方法可用來擷取關聯的ECID值。  請在欄位引數中指定&quot;ecid&quot;來執行此動作。 例如，「&amp;fields=email，firstName，lastName，ecid」。
+Adobe Experience Cloud對象共用功能啟用時，會進行Cookie同步程式，將Adobe Experience Cloud ID (ECID)與Marketo銷售機會建立關聯。  上述潛在客戶擷取方法可用來擷取關聯的ECID值。  請在欄位引數中指定`ecids`，以執行此操作。 例如 `&fields=email,firstName,lastName,ecids`。
 
 ## 建立和更新
 
 除了擷取銷售機會資料，您還可以透過API建立、更新和刪除銷售機會記錄。 建立和更新銷售機會會與請求中定義的作業型別共用相同的端點，最多可同時建立或更新300筆記錄。
+
+>[!NOTE]
+>
+> 不支援使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST)端點更新公司欄位。 請改用[同步處理公司](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST)端點。
+
+>[!NOTE]
+>
+> 在人員記錄上建立或更新電子郵件值時，電子郵件位址列位僅支援ASCII字元。
 
 ### 請求
 
@@ -483,9 +491,9 @@ POST /rest/v1/leads/schema/fields.json
 </tr>
 <tr>
 <td style="width: 26.5306%;">資料型別</td>
-<td style="width: 17.449%;">否</td>
-<td style="width: 17.551%;">否</td>
-<td style="width: 19.3878%;">否</td>
+<td style="width: 17.449%;">no</td>
+<td style="width: 17.551%;">no</td>
+<td style="width: 19.3878%;">no</td>
 <td style="width: 18.8776%;">是</td>
 </tr>
 <tr>
@@ -497,21 +505,21 @@ POST /rest/v1/leads/schema/fields.json
 </tr>
 <tr>
 <td style="width: 26.5306%;">顯示名稱</td>
-<td style="width: 17.449%;">否</td>
-<td style="width: 17.551%;">否</td>
+<td style="width: 17.449%;">no</td>
+<td style="width: 17.551%;">no</td>
 <td style="width: 19.3878%;">是</td>
 <td style="width: 18.8776%;">是</td>
 </tr>
 <tr>
 <td style="width: 26.5306%;">isCustom</td>
-<td style="width: 17.449%;">否</td>
-<td style="width: 17.551%;">否</td>
-<td style="width: 19.3878%;">否</td>
-<td style="width: 18.8776%;">否</td>
+<td style="width: 17.449%;">no</td>
+<td style="width: 17.551%;">no</td>
+<td style="width: 19.3878%;">no</td>
+<td style="width: 18.8776%;">no</td>
 </tr>
 <tr>
 <td style="width: 26.5306%;">ishidden</td>
-<td style="width: 17.449%;">否</td>
+<td style="width: 17.449%;">no</td>
 <td style="width: 17.551%;">是</td>
 <td style="width: 19.3878%;">是（若由API建立）</td>
 <td style="width: 18.8776%;">是</td>
@@ -532,17 +540,17 @@ POST /rest/v1/leads/schema/fields.json
 </tr>
 <tr>
 <td style="width: 26.5306%;">length</td>
-<td style="width: 17.449%;">否</td>
-<td style="width: 17.551%;">否</td>
-<td style="width: 19.3878%;">否</td>
-<td style="width: 18.8776%;">否</td>
+<td style="width: 17.449%;">no</td>
+<td style="width: 17.551%;">no</td>
+<td style="width: 19.3878%;">no</td>
+<td style="width: 18.8776%;">no</td>
 </tr>
 <tr>
 <td style="width: 26.5306%;">名稱</td>
-<td style="width: 17.449%;">否</td>
-<td style="width: 17.551%;">否</td>
-<td style="width: 19.3878%;">否</td>
-<td style="width: 18.8776%;">否</td>
+<td style="width: 17.449%;">no</td>
+<td style="width: 17.551%;">no</td>
+<td style="width: 19.3878%;">no</td>
+<td style="width: 18.8776%;">no</td>
 </tr>
 </tbody>
 </table>
@@ -710,7 +718,7 @@ Cookie成員字串為選用，可讓您將Munchkin Cookie與Marketo中的個人�
 POST /rest/v1/leads/submitForm.json
 ```
 
-### 頁首
+### 標頭
 
 ```
 Content-Type: application/json
