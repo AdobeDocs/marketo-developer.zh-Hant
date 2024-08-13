@@ -3,14 +3,14 @@ title: syncLead
 feature: SOAP
 description: syncLead SOAP呼叫
 exl-id: e6cda794-a9d4-4153-a5f3-52e97a506807
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: ebe8faf41dff0e0ba5f4323f5909cc3c9813fd10
 workflow-type: tm+mt
 source-wordcount: '518'
-ht-degree: 1%
+ht-degree: 2%
 
 ---
 
-# syncLean
+# syncLead
 
 此函式插入或更新單一銷售機會記錄。 更新現有潛在客戶時，會使用下列其中一個索引鍵來識別潛在客戶：
 
@@ -49,7 +49,7 @@ ht-degree: 1%
 | leadRecord->leadAttributeList->attribute->attrName | 必要 | 您要更新其值的潛在客戶屬性名稱。 |
 | leadRecord->leadAttributeList->attribute->attrValue | 必要 | 您要設定為attrName中指定的潛在客戶屬性的值。 |
 | returnLead | 必要 | 為true時，會在更新時傳回完整更新的潛在客戶記錄。 |
-| marketoCookie | 可選 | [Munchkin javascript](../javascript-api/lead-tracking.md) Cookie |
+| marketoCookie | 選填 | [Munchkin javascript](../javascript-api/lead-tracking.md) Cookie |
 
 ## 請求XML
 
