@@ -3,9 +3,9 @@ title: User Management
 feature: REST API
 description: 對使用者記錄執行CRUD作業。
 exl-id: 2a58f496-0fe6-4f7e-98ef-e9e5a017c2de
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
 workflow-type: tm+mt
-source-wordcount: '1155'
+source-wordcount: '1185'
 ht-degree: 0%
 
 ---
@@ -130,31 +130,35 @@ GET /userservice/management/v1/users/allusers.json
 ```json
 [
   {
-    "userid": "jamie@lannister.com",
-    "firstName": "Jamie",
-    "lastName": "Lannister",
-    "emailAddress": "jamie@houselannister.com",
-    "id": 6785,
+    "userid": "02226aae-9f54-45d1-bc26-8305c8f55ec7@adobe.com",
+    "firstName": "Aparna",
+    "lastName": "Ghosh",
+    "emailAddress": "aparna.ghosh@ericsson.com",
+    "id": 5222,
     "apiOnly": false
-  },
-  {
-    "userid": "jeoffery@housebaratheon.com",
-    "firstName": "Jeoffery",
-    "lastName": "Baratheon",
-    "emailAddress": "jeoffery@housebaratheon.com",
-    "id": 7718,
+    },
+    {
+    "userid": "038e1cac-3f3e-4c05-b0b3-6265fd2abcd3@adobe.com",
+    "firstName": "Timm",
+    "lastName": "Rehse",
+    "emailAddress": "timm.rehse@ericsson.com",
+    "id": 7075,
     "apiOnly": false
-  },
-  {
-    "userid": "rickon@housestark.com",
-    "firstName": "Rickon",
-    "lastName": "Stark",
-    "emailAddress": "rickon@housestark.com",
-    "id": 8612,
+    },
+    {
+    "userid": "0a855522-06c9-4a9e-93de-91a0d2cc2987@adobe.com",
+    "firstName": "Dhinagaran",
+    "lastName": "Swaminathan",
+    "emailAddress": "dhinagaran.swaminathan@ericsson.com",
+    "id": 6439,
     "apiOnly": false
-  }
+    }
 ]
 ```
+
+>[!NOTE]
+>
+>在上述程式碼範例中，顯示的`userid`適用於已移轉至Adobe IMS的客戶。 尚未移轉的客戶會在`userid`欄位中看到一般電子郵件地址。
 
 ### 瀏覽角色
 
@@ -298,7 +302,7 @@ GET /userservice/management/v1/users/workspaces.json
 
 [邀請使用者](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/inviteUserUsingPOST)端點會傳送「歡迎使用Marketo」電子郵件邀請給新使用者。 電子郵件內文包含「登入Marketo」連結，可讓使用者首次存取Marketo。 若要接受邀請，電子郵件收件者請按一下「登入Marketo」連結、建立密碼，然後取得Marketo的存取權。 在接受程式完成之前，邀請處於「擱置中」狀態，使用者記錄可能無法編輯。 未決的邀請會在傳送七天後過期。 如需管理使用者的詳細資訊，請參閱[這裡](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)。
 
-引數會以application/json格式傳遞至要求內文。
+引數以`application/json`格式傳入要求內文。
 
 需要下列引數：  `emailAddress`，`firstName`，`lastName, userRoleWorkspaces`。 `userRoleWorkspaces`引數是包含`accessRoleId`和`workspaceId`屬性的物件陣列。
 
