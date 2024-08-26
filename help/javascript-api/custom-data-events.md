@@ -1,11 +1,11 @@
 ---
 title: 自訂資料事件
-description: 自訂資料事件API
+description: 使用自訂資料事件Javascript API追蹤您的獨特事件。
 feature: Javascript
 exl-id: ef7cab9c-3bd0-450e-9247-9324b1e6f9ab
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e609f9d5d58f656298412acef5e2106a19765396
 workflow-type: tm+mt
-source-wordcount: '223'
+source-wordcount: '231'
 ht-degree: 3%
 
 ---
@@ -16,9 +16,9 @@ ht-degree: 3%
 
 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 
-| 引數 | 選用/必要 | 類型 | 說明 |
+| 參數 | 選用/必要 | 類型 | 說明 |
 |---|---|---|---|
-| `send` | 必要 | 字串 | 方法動作。 |
+| `send` | 必填 | 字串 | 方法動作。 |
 | `event` | 必要 | 字串 | 方法名稱。 |
 | `customData` | 必要 | 字串或陣列 | 自訂資料。 |
 

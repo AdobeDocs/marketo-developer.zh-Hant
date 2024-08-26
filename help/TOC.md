@@ -5,9 +5,9 @@ breadcrumb-title: "[!DNL Marketo]開發人員指南"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
+source-git-commit: e609f9d5d58f656298412acef5e2106a19765396
 workflow-type: tm+mt
-source-wordcount: '238'
+source-wordcount: '240'
 ht-degree: 14%
 
 ---
@@ -49,7 +49,6 @@ ht-degree: 14%
 - REST{#rest}
    - [REST API總覽](rest-api/rest-api.md)
    - [REST API參考](https://developer.adobe.com/marketo-apis/)
-   - [活動](rest-api/activities.md)
    - 資產 {#assets}
       - [資產](rest-api/assets.md)
       - [動態內容](rest-api/dynamic-content.md)
@@ -91,7 +90,9 @@ ht-degree: 14%
    - [端點參考](rest-api/endpoint-reference.md)
    - [錯誤代碼](rest-api/error-codes.md)
    - 潛在客戶資料庫{#lead-database}
+      - [活動](rest-api/activities.md)
       - [公司](rest-api/companies.md)
+      - [自訂物件](rest-api/custom-objects.md)
       - [欄位清單](rest-api/fields.md)
       - [欄位型別](rest-api/field-types.md)
       - [潛在客戶資料庫](rest-api/lead-database.md)
