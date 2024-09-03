@@ -3,9 +3,9 @@ title: React Native
 feature: Mobile Marketing
 description: 安裝適用於Marketo的React Native
 exl-id: 462fd32e-91f1-4582-93f2-9efe4d4761ff
-source-git-commit: e609f9d5d58f656298412acef5e2106a19765396
+source-git-commit: e7cb23c4d578d949553b2b7a6e127d6be54cdf23
 workflow-type: tm+mt
-source-wordcount: '836'
+source-wordcount: '811'
 ht-degree: 0%
 
 ---
@@ -139,7 +139,7 @@ public class RNMarketoModule extends ReactContextBaseJavaModule {
    }
    @ReactMethod
       public void initializeSDK(String frameworkType, String munchkinId, String appSecreteKey){
-          marketoSdk.initializeSDK(frameworkType,munchkinId,appSecreteKey);
+          marketoSdk.initializeSDK(munchkinId,appSecreteKey,frameworkType);
     }
    
 
@@ -464,89 +464,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
 若要傳送推播通知，[新增推播通知](push-notifications.md)。
 
-在Xcode匯入`AppDelegate.m`檔案中的`Marketo`中，
-
-```
-#import <MarketoFramework/MarketoFramework.h> 
-```
-
-將`UNUserNotificationCenterDelegate`新增至AppDelegate介面以處理委派，如下所示
-
-```
-@interface AppDelegate () <UNUserNotificationCenterDelegate>
-
-@end
-```
-
-在`didFinishLaunchingWithOptions`方法中登入遠端通知。
-
-```
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-#ifdef FB_SONARKIT_ENABLED
-  InitializeFlipper(application);
-#endif
-
-  RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
-                                                   moduleName:@"HelloRN"
-                                            initialProperties:nil];  
-  
-// asking user permission to send push notifications 
-  [self registerForRemoteNotifications];
-  
-  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  UIViewController *rootViewController = [UIViewController new];
-  rootViewController.view = rootView;
-  self.window.rootViewController = rootViewController;
-  [self.window makeKeyAndVisible];
-
-  return YES;
-}
-
-- (void)registerForRemoteNotifications {
-   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;
-        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
-            if(!error){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [[UIApplication sharedApplication] registerForRemoteNotifications];
-                });
-            }
-            else{
-                NSLog(@"failed");
-            }
-        }];
-}
-```
-
-包含下列`UNUserNotificationCenter`個委派必要的通知委派方法。
-
-```
--(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
-    completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
-}
-
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center
-didReceiveNotificationResponse:(UNNotificationResponse *)response
-         withCompletionHandler:(void(^)(void))completionHandler {
-    [[Marketo sharedInstance] userNotificationCenter:center didReceiveNotificationResponse:response withCompletionHandler:completionHandler];
-}
-
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    // Register the push token with Marketo
-    [[Marketo sharedInstance] registerPushDeviceToken:deviceToken];
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    [[Marketo sharedInstance] unregisterPushDeviceToken];
-}
-
--(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error{
-    NSLog(@"didFailToRegisterForRemoteNotificationsWithError");
-}
-```
-
+設定iOS推播通知，
 建立PushNotifications.tsx檔案並新增下列專案：
 
 ```
