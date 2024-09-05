@@ -3,9 +3,9 @@ title: 設定
 description: 使用Munchkin時，請使用設定Javascript API來設定設定值。
 feature: Javascript
 exl-id: 4700ce7b-f624-4f27-871e-9a050f203973
-source-git-commit: e609f9d5d58f656298412acef5e2106a19765396
+source-git-commit: 257478ecb76b5908c2f623192f37be25bff1a02a
 workflow-type: tm+mt
-source-wordcount: '618'
+source-wordcount: '554'
 ht-degree: 3%
 
 ---
@@ -29,7 +29,7 @@ Munchkin.init("AAA-BBB-CCC", {
 | 名稱 | 資料類型 | 說明 |
 |---|---|---|
 | altIds | 陣列 | 接受Munchkin ID字串的陣列。 啟用後，系統會根據目標訂閱的Munchkin ID，將所有網頁活動複製到目標訂閱。 |
-| anonymizeip | 布林值 | 匿名處理Marketo中記錄的新訪客的IP位址。您可以檢查您的`{Munchkin-Id}.mktoresp.com`網域是否有下列其中一個位址，藉此判斷您的訂閱是否已布建Munchkin V2： `192.28.144.124` `134.213.193.62` `192.28.147.68` `103.237.104.82`。 或者，您可以從unix shell執行下面的指令碼： nslookup {munchkin-id}.mktoresp.com | grep -E -c -e &quot;(192.28.144.124,134.213.193.62,192.28.147.68,103.237.104.82)&quot;如果命令輸出「0」，則您的訂閱不會布建Munchkin V2；如果命令輸出1或更大，則會布建。 |
+| anonymizeip | 布林值 | 將新訪客在Marketo中記錄的IP位址匿名化。 |
 | apiOnly | 布林值 | 若設為true，則`Munchkin.Init()`函式將不會呼叫`visitsWebPage`。 這對於需要每個`visitsWebPage`事件的完整控制權的單頁網頁應用程式非常有用。 |
 | asyncOnly | 布林值 | 若設為true，會以非同步方式傳送XMLHttpRequest。 預設值為false。 |
 | clickTime | 整數 | 設定點選後要封鎖的時間長度，以允許點選追蹤要求（以毫秒為單位）。 減少這項操作會降低點選追蹤的準確度。 預設值為350毫秒。 |
