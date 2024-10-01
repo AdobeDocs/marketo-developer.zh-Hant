@@ -3,10 +3,10 @@ title: 大量活動擷取
 feature: REST API
 description: 從Marketo批次處理活動資料。
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 8c22255673fee1aa0f5b47393a241fcf6680778b
 workflow-type: tm+mt
-source-wordcount: '1381'
-ht-degree: 1%
+source-wordcount: '1343'
+ht-degree: 2%
 
 ---
 
@@ -22,148 +22,94 @@ REST API的批次活動擷取集提供程式化介面，可從Marketo擷取大�
 
 ## 篩選器
 
-<table>
-  <tbody>
-    <tr>
-      <td>篩選器型別</td>
-      <td>資料類型</td>
-      <td>必要</td>
-      <td>附註</td>
-    </tr>
-    <tr>
-      <td>createdAt</td>
-      <td>日期範圍</td>
-      <td>是</td>
-      <td>接受具有成員startAt和endAt的JSON物件。 startAt接受代表低浮水印的日期時間，而endAt接受代表高浮水印的日期時間。 範圍必須是31天或更短。具有此篩選型別的工作會傳回在日期範圍內建立的所有可存取記錄。日期時間應該是ISO-8601格式，不帶毫秒。</td>
-    </tr>
-    <tr>
-      <td>activityTypeIds</td>
-      <td>Array[整數]</td>
-      <td>否</td>
-      <td>接受具有一個成員activityTypeIds的JSON物件。 值必須是整數陣列，對應於所需的活動型別。不支援「刪除銷售機會」活動（請改用<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET">取得刪除的銷售機會</a>端點）。使用<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getActivitiesPagingTokenUsingGET">取得活動型別</a>端點擷取活動型別識別碼。</td>
-    </tr>
-    <tr>
-      <td>primaryAttributeValueIds</td>
-      <td>Array[整數]</td>
-      <td>否</td>
-      <td>接受具有一個成員primaryAttributeValueIds的JSON物件。 此值是ID陣列，用於指定要篩選的主要屬性。 最多可指定50個ID。這些ID是潛在客戶欄位或資產的唯一識別碼，可透過呼叫適當的REST API端點來擷取。 例如，若要篩選「填寫表單」活動的特定表單，請將表單名稱傳遞給<a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET">依名稱取得表單</a>端點，以擷取表單ID。以下是支援主要屬性篩選的活動型別清單。
-        <table>
-          <tbody>
-            <tr>
-              <td>活動型別</td>
-              <td>主要屬性值ID</td>
-              <td>擷取端點</td>
-              <td>資產群組</td>
-            </tr>
-            <tr>
-              <td>變更資料值</td>
-              <td>潛在客戶欄位ID</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2">描述銷售機會</a></td>
-              <td>屬性名稱</td>
-            </tr>
-            <tr>
-              <td>變更分數</td>
-              <td>潛在客戶欄位ID</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2">描述銷售機會</a></td>
-              <td>屬性名稱</td>
-            </tr>
-            <tr>
-              <td>進度中的變更狀態</td>
-              <td>方案ID</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET">依名稱取得計畫</a></td>
-              <td>行銷方案</td>
-            </tr>
-            <tr>
-              <td>新增至清單</td>
-              <td>靜態清單ID</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET">依名稱取得靜態清單</a></td>
-              <td>靜態清單</td>
-            </tr>
-            <tr>
-              <td>從清單移除</td>
-              <td>靜態清單ID</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET">依名稱取得靜態清單</a></td>
-              <td>靜態清單</td>
-            </tr>
-            <tr>
-              <td>填寫表單</td>
-              <td>表單ID</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET">依名稱取得表單</a></td>
-              <td>網路表單</td>
-            </tr>
-          </tbody>
-        </table>
-        使用primaryAttributeValueIds時，activityTypeIds篩選器必須存在，並且僅包含符合相對應資產群組的活動ID。例如：如果您正在篩選網頁表單資產，activityTypeIds中僅允許「填寫表單」活動型別ID。範例請求內文：{"filter"：{"createdAt"：{"startAt"： "2021-07-01T23:59:59-00:00"，"end2 1-07-02T23:59:59-00:00"}，"activityTypeIds"：[2]，"primaryAttributeValueIds" ： [16,102,95,8]}}primaryAttributeValueIds和primaryAttributeValues不能一起使用。</td>
-    </tr>
-    <tr>
-      <td>primaryAttributeValues</td>
-      <td>Array[字串]</td>
-      <td>否</td>
-      <td>接受具有一個成員primaryAttributeValues的JSON物件。 值是名稱陣列，可指定要篩選的主要屬性。 最多可指定50個名稱。這些名稱是潛在客戶欄位或資產的唯一識別碼，可透過呼叫適當的REST API端點來擷取。 例如，若要篩選「填寫表單」活動的特定表單，請將表單ID傳遞至<a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5">依ID取得表單</a>端點以擷取表單名稱。以下是支援主要屬性篩選的活動型別清單。
-        <table>
-          <tbody>
-            <tr>
-              <td>活動型別</td>
-              <td>主要屬性值</td>
-              <td>擷取端點</td>
-              <td>資產群組</td>
-            </tr>
-            <tr>
-              <td>變更資料值</td>
-              <td>潛在客戶欄位displayName</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2">描述銷售機會</a></td>
-              <td>屬性名稱</td>
-            </tr>
-            <tr>
-              <td>變更分數</td>
-              <td>潛在客戶欄位displayName</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2">描述銷售機會</a></td>
-              <td>屬性名稱</td>
-            </tr>
-            <tr>
-              <td>進度中的變更狀態</td>
-              <td>計畫名稱</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET">依ID取得計畫</a></td>
-              <td>行銷方案</td>
-            </tr>
-            <tr>
-              <td>新增至清單</td>
-              <td>靜態清單名稱</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET">依Id取得靜態清單</a></td>
-              <td>靜態清單</td>
-            </tr>
-            <tr>
-              <td>從清單移除</td>
-              <td>靜態清單名稱</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET">依Id取得靜態清單</a></td>
-              <td>靜態清單</td>
-            </tr>
-            <tr>
-              <td>填寫表單</td>
-              <td>表單名稱</td>
-              <td><a href="https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5">依ID取得表單</a></td>
-              <td>網路表單</td>
-            </tr>
-          </tbody>
-        </table>
-        請注意，您必須使用「&lt;<em>方案</em>&gt;」。&lt;<em>資產</em>&gt;」標籤法，用來唯一指定下列資產群組的名稱：行銷計畫、靜態清單、Web表單。例如：位於名為「GL_OP_ALL_2021」的計畫下且名稱為「MPS Outbound」的表單，將會指定為「GL_OP_ALL_2021.MPS Outbound」。範例要求內文：{"filter"：{"createdAt"：{"startAt"： "2021-07 -01T23:59:59-00:00"，"endAt"： "2021-07-02T23:59:59-00:00"}，"activityTypeIds"：[2]，"primaryAttributeValues"：["GL_OP_ALL_2021.MPS Outbound"]}使用primaryAttributeValues時，actics過濾器必須存在並且僅包含匹配相應活動ID資產組。 例如，如果您正在篩選網頁表單資產，activityTypeIds.primaryAttributeValues中只允許使用「填寫表單」活動型別ID，而primaryAttributeValueIds則無法同時使用。</td>
-    </tr>
-  </tbody>
-</table>
+| 篩選器型別 | 資料類型 | 必要 | 附註 |
+| --- | --- | --- | --- |
+| createdAt | 日期範圍 | 是 | 接受具有成員`startAt`和`endAt`的JSON物件。 `startAt`接受代表低浮水印的日期時間，而`endAt`接受代表高浮水印的日期時間。 範圍必須為31天或更少。 具有此篩選型別的工作會傳回在日期範圍內建立的所有可存取記錄。 日期時間應採用ISO-8601格式，不含毫秒。 |
+| activityTypeIds | 陣列\[整數\] | 無 | 接受具有一個成員`activityTypeIds`的JSON物件。 該值必須為整數陣列，與所需的活動型別相對應。 不支援「刪除銷售機會」活動（請改用[取得刪除的銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET)端點）。 使用[取得活動型別端點](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET)擷取活動型別識別碼。 |
+| [primaryAttributeValueIds](#primaryattributevalueids-options) | 陣列\[整數\] | 無 | 接受具有一個成員`primaryAttributeValueIds`的JSON物件。 值是ID陣列，用於指定要篩選的主要屬性。 最多可以指定50個ID。 ID是潛在客戶欄位或資產的唯一識別碼，可透過呼叫適當的REST API端點來擷取。 例如，若要篩選「填寫表單」活動的特定表單，請將表單名稱傳遞至[依名稱取得表單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET)端點，以擷取表單ID。 以下是支援主要屬性篩選的活動型別清單。 |
+| [primaryAttributeValues](#primaryattributevalues-options) | 陣列\[字串\] | 無 | 接受具有一個成員`primaryAttributeValues`的JSON物件。 值是名稱陣列，可指定要篩選的主要屬性。 最多可以指定50個名稱。 這些名稱是潛在客戶欄位或資產的唯一識別碼，可透過呼叫適當的REST API端點來擷取。 例如，若要篩選「填寫表單」活動的特定表單，請將表單ID傳遞至[依ID取得表單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5)端點以擷取表單名稱。 以下是支援主要屬性篩選的活動型別清單。 |
+
+### primaryAttributeValueIds選項 {#primaryattributevalueids-options}
+
+| 活動型別 | 主要屬性值ID | 擷取端點 | 資產群組 |
+| --- | --- | --- | --- |
+| 變更資料值 | 潛在客戶欄位ID | [描述銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | 屬性名稱 |
+| 變更分數 | 潛在客戶欄位ID | [描述銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | 屬性名稱 |
+| 進度中的變更狀態 | 方案ID | [依名稱取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET) | 行銷方案 |
+| 新增至清單 | 靜態清單ID | [依名稱取得靜態清單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | 靜態清單 |
+| 從清單移除 | 靜態清單ID | [依名稱取得靜態清單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | 靜態清單 |
+| 填寫表單 | 表單ID | [依名稱取得表單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET) | 網路表單 |
+
+使用`primaryAttributeValueIds`時，`activityTypeIds`篩選器必須存在，並且僅包含符合相應資產群組的活動ID。 例如，如果您正在篩選網路表單資產，`activityTypeIds`中僅允許「填寫表單」活動型別ID。
+
+範例要求內文：
+
+```json
+{
+  "filter": {
+    "createdAt": {
+      "startAt": "2021-07-01T23:59:59-00:00",
+      "endAt": "2021-07-02T23:59:59-00:00"
+    },
+    "activityTypeIds": [
+      2
+    ],
+    "primaryAttributeValueIds": [
+      16,102,95,8
+    ]
+  }
+}
+```
+
+`primaryAttributeValueIds`和`primaryAttributeValues`不能一起使用。
+
+### primaryAttributeValues選項 {#primaryattributevalues-options}
+
+| 活動型別 | 主要屬性值 | 擷取端點 | 資產群組 |
+| --- | --- | --- | --- |
+| 變更資料值 | 潛在客戶欄位displayName | [描述銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | 屬性名稱 |
+| 變更分數 | 潛在客戶欄位displayName | [描述銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | 屬性名稱 |
+| 進度中的變更狀態 | 計畫名稱 | [依ID取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) | 行銷方案 |
+| 新增至清單 | 靜態清單名稱 | [依Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET)取得靜態清單 | 靜態清單 |
+| 從清單移除 | 靜態清單名稱 | [依Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET)取得靜態清單 | 靜態清單 |
+| 填寫表單 | 表單名稱 | [依ID取得表單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) | 網路表單 |
+
+請注意，您必須使用「&lt;<em>方案</em>>」。&lt;<em>資產</em>>標籤法，用以指定下列資產群組的名稱：行銷計畫、靜態清單、網頁表單。 例如，名稱為「MPS Outbound」的表單位於名稱為「GL_OP_ALL_2021」的程式下，將會指定為「GL_OP_ALL_2021.MPS Outbound」。
+
+範例要求內文：
+
+```json
+{
+  "filter": {
+    "createdAt": {
+      "startAt": "2021-07-01T23:59:59-00:00",
+      "endAt": "2021-07-02T23:59:59-00:00"
+    },
+    "activityTypeIds": [
+      2
+    ],
+    "primaryAttributeValues": [
+      "GL_OP_ALL_2021.MPS Outbound"
+    ]
+  }
+}
+```
+
+使用`primaryAttributeValues`時，`activityTypeIds`篩選器必須存在，並且僅包含符合相應資產群組的活動ID。 例如，如果您正在篩選網頁表單資產，則在`activityTypeIds`中只允許使用「填寫表單」活動型別ID。 `primaryAttributeValues`和`primaryAttributeValueIds`不能一起使用。
 
 ## 選項
 
-| 引數 | 資料類型 | 必要 | 附註 |
+| 參數 | 資料類型 | 必要 | 附註 |
 |---|---|---|---|
-| 篩選 | 陣列[物件] | 是 | 接受篩選陣列。 陣列中必須包含正好一個createdAt篩選器。 其中可能包括選用的activityTypeIds篩選器。這些篩選器會套用至可存取的活動集，而匯出作業會傳回活動集。 |
-| 格式 | 字串 | 否 | 接受下列其中一項：CSV、TSV、SSV如果設定，匯出的檔案將分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案。如果未設定，則預設為CSV。 |
-| columnHeaderName | 物件 | 否 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 值是該欄位匯出的欄標題的名稱。 |
-| 欄位 | 陣列[字串] | 否 | 包含欄位值的選擇性字串陣列。 列出的欄位會包含在匯出的檔案中。預設會傳回下列欄位： `marketoGUIDleadId` `activityDate` `activityTypeId` `campaignId` `primaryAttributeValueId` `primaryAttributeValueattributes`。此引數可用於減少從上述清單指定子集所傳回的欄位數目。範例： &quot;fields&quot;： [&quot;leadId&quot;， &quot;activityDate&quot;， &quot;activityTypeId&quot;]可指定其他欄位&quot;actionResult&quot;以包含活動動作(&quot;succeeded&quot;， &quot;skipped&quot;， &quot;failed&quot;)。 |
+| 篩選 | 陣列[物件] | 是 | 接受篩選陣列。 陣列中必須包含正好一個`createdAt`篩選器。 可包含選用的`activityTypeIds`篩選器。 篩選器會套用至可存取的活動集，而匯出作業會傳回活動集。 |
+| 格式 | 字串 | 無 | 接受下列其中一項：CSV、TSV、SSV匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（若有設定）。 如果未設定，則預設為CSV。 |
+| columnHeaderName | 物件 | 無 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 值是該欄位匯出的欄標題的名稱。 |
+| 欄位 | 陣列[字串] | 無 | 包含欄位值的選擇性字串陣列。 列出的欄位會包含在匯出的檔案中。 預設會傳回下列欄位： `marketoGUIDleadId` `activityDate` `activityTypeId` `campaignId` `primaryAttributeValueId` `primaryAttributeValueattributes`。 此引數可用於透過從上述清單指定子集來減少傳回的欄位數。 範例：「欄位」： [「leadId」、「activityDate」、「activityTypeId」]可指定其他欄位「actionResult」以包含活動動作（「succeeded」、「skipped」或「failed」）。 |
 
 
 ## 建立工作
 
-若要匯出記錄，您必須先定義工作以及要擷取的記錄集。  使用[建立匯出活動作業](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/createExportActivitiesUsingPOST)端點建立作業。  匯出活動時，有兩個可套用的主要篩選器： `createdAt` （一律為必要）和`activityTypeIds` （選用）。  createdAt篩選器是用來使用`startAt`和`endAt`引數定義建立活動的日期範圍，這兩個引數都是日期時間欄位，分別代表最早允許的建立日期和最近允許的建立日期。  您也可以選擇使用`activityTypeIds`篩選器，僅篩選特定型別的活動。  這對於移除與您的使用案例無關的結果非常有用。
+若要匯出記錄，您必須先定義工作以及要擷取的記錄集。  使用[建立匯出活動作業](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/createExportActivitiesUsingPOST)端點建立作業。  匯出活動時，有兩個可套用的主要篩選器： `createdAt` （一律為必要）和`activityTypeIds` （選用）。  `createdAt`篩選器是用來定義使用`startAt`和`endAt`引數建立活動的日期範圍，這兩個引數都是日期時間欄位，分別代表最早允許的建立日期和最近允許的建立日期。  您也可以選擇使用`activityTypeIds`篩選器，僅篩選特定型別的活動。  這對於移除與您的使用案例無關的結果非常有用。
 
 ```
 POST /bulk/v1/activities/export/create.json
@@ -202,7 +148,7 @@ POST /bulk/v1/activities/export/create.json
 }
 ```
 
-工作目前的狀態為「已建立」，但尚未在處理佇列中。  若要將其放入佇列以便開始處理，我們必須使用建立狀態回應中的exportId來呼叫[排入佇列匯出活動作業](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/enqueueExportActivitiesUsingPOST)端點。
+工作目前的狀態為「已建立」，但尚未在處理佇列中。  若要將其放入佇列以便開始處理，請使用建立狀態回應中的exportId呼叫[排入佇列匯出活動作業](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Activities/operation/enqueueExportActivitiesUsingPOST)端點。
 
 ```
 POST /bulk/v1/activities/export/{exportId}/enqueue.json
@@ -224,7 +170,7 @@ POST /bulk/v1/activities/export/{exportId}/enqueue.json
 }
 ```
 
-現在，狀態為報告工作已排入佇列。  當背景工作可用於此工作時，狀態會切換為「處理」，且工作將開始從Marketo彙總記錄。
+現在，狀態為報告工作已排入佇列。  當背景工作可用於此工作時，狀態會切換為「處理」，且工作會開始從Marketo彙總記錄。
 
 ## 輪詢工作狀態
 
@@ -286,7 +232,7 @@ marketoGUID,leadId,activityDate,activityTypeId,campaignId,primaryAttributeValueI
 783961924,5316669,2022-02-13T14:27:21Z,104,11614,2333,Nurture Automation,"{""Program Member ID"":3240306,""Acquired By"":false,""Old Status"":""Not in Program"",""New Status ID"":27,""Success"":false,""New Status"":""Member"",""Old Status ID"":26}"
 ```
 
-為了支援擷取資料的部分擷取和便於恢復擷取，檔案端點可選擇性地支援型別`bytes`的HTTP標頭`Range`。  如果未設定標頭，將會傳回所有內容。  您可以閱讀更多有關搭配Marketo [大量擷取](bulk-extract.md)使用Range標頭的資訊。
+為了支援擷取資料的部分擷取和便於恢復擷取，檔案端點可選擇性地支援型別`bytes`的HTTP標頭`Range`。  如果未設定標頭，則會傳回所有內容。  您可以閱讀更多有關搭配Marketo [大量擷取](bulk-extract.md)使用Range標頭的資訊。
 
 ## 取消工作
 
