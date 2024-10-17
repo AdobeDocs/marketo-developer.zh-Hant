@@ -3,9 +3,9 @@ title: 錯誤代碼
 feature: REST API
 description: Marketo錯誤代碼說明。
 exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: d0750eab0a37df0b7f80c6252f46c95068975000
 workflow-type: tm+mt
-source-wordcount: '2272'
+source-wordcount: '2273'
 ht-degree: 3%
 
 ---
@@ -224,7 +224,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     <tr>
       <td><a name="712"></a>712</td>
       <td>「合併至人員帳戶」作業無效</td>
-      <td>由於嘗試合併Salesforce個人帳戶的銷售機會，合併銷售機會呼叫失敗。  Salesforce人員帳戶必須合併到Salesforce中。</td>
+      <td>由於嘗試合併Salesforce個人帳戶的銷售機會，合併銷售機會呼叫失敗。  Salesforce個人帳戶必須合併到Salesforce中。</td>
     </tr>
     <tr>
       <td><a name="713"></a>713</td>
@@ -352,8 +352,8 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     <tr>
       <td><a name="1012"></a>1012</td>
       <td>無效的Cookie值'%s'</td>
-      <td>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">關聯銷售機會</a>時，可能會發生與Cookie引數值無效的情況。
-        當使用filterType=cookies和filterValues引數的有效值來呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">依篩選型別</a>取得銷售機會時，也會發生這種情況。</td>
+      <td>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">關聯銷售機會</a>時，可能會發生'cookie'引數的無效值。
+        當使用'filterType=cookies'並有'filterValues'引數的無效值依篩選型別</a>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">取得銷售機會時，也會發生這種情況。</td>
     </tr>
     <tr>
       <td><a name="1013"></a>1013</td>
