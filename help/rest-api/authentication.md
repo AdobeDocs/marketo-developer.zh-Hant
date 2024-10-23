@@ -3,7 +3,7 @@ title: 驗證
 feature: REST API
 description: 驗證Marketo使用者的API使用情形。
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: e0fc654efe4501f734ab5158ce0bfd3ed08896ce
+source-git-commit: 2bea5277a80ca99d98eb9b774f8cbea24cb6705f
 workflow-type: tm+mt
 source-wordcount: '579'
 ht-degree: 0%
@@ -64,7 +64,7 @@ GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client I
 
    >[!IMPORTANT]
    >
-   >在後續版本中，將移除對使用&#x200B;**access_token**&#x200B;查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，則應儘快更新以使用&#x200B;**Authorization**&#x200B;標頭。 新開發應專門使用&#x200B;**Authorization**&#x200B;標頭。
+   >自2025年6月30日起，將移除對使用&#x200B;**access_token**&#x200B;查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，則應儘快更新以使用&#x200B;**Authorization**&#x200B;標頭。 新開發應專門使用&#x200B;**Authorization**&#x200B;標頭。
 
 ## 提示和最佳實務
 
