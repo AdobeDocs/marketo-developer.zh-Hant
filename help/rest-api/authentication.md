@@ -3,9 +3,9 @@ title: 驗證
 feature: REST API
 description: 驗證Marketo使用者的API使用情形。
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 2bea5277a80ca99d98eb9b774f8cbea24cb6705f
+source-git-commit: d57167d60f1cc6a32c600b72829afcba81e6ec92
 workflow-type: tm+mt
-source-wordcount: '579'
+source-wordcount: '560'
 ht-degree: 0%
 
 ---
@@ -52,19 +52,13 @@ GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client I
 
 呼叫REST API方法時，存取權杖必須包含在每個呼叫中，呼叫才能成功。
 
-若要在呼叫中包含代號，可使用兩種方法做為HTTP標頭或查詢字串引數：
+存取權杖必須以HTTP標頭傳送。
 
-1. HTTP標頭
+`Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int`
 
-   `Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int`
-
-1. 查詢引數
-
-   `access_token=cdf01657-110d-4155-99a7-f986b2ff13a0:int`
-
-   >[!IMPORTANT]
-   >
-   >自2025年6月30日起，將移除對使用&#x200B;**access_token**&#x200B;查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，則應儘快更新以使用&#x200B;**Authorization**&#x200B;標頭。 新開發應專門使用&#x200B;**Authorization**&#x200B;標頭。
+>[!IMPORTANT]
+>
+>自2025年6月30日起，將移除對使用&#x200B;**access_token**&#x200B;查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，則應儘快更新以使用&#x200B;**Authorization**&#x200B;標頭。 新開發應專門使用&#x200B;**Authorization**&#x200B;標頭。
 
 ## 提示和最佳實務
 
