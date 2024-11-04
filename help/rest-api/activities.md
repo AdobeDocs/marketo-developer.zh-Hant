@@ -2,13 +2,13 @@
 title: 活動
 feature: REST API
 description: 用於管理Marketo Engage活動的API。
-source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
+exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
+source-git-commit: 6baf62bc8881470eca597899e3228c377fb597d0
 workflow-type: tm+mt
 source-wordcount: '2029'
 ht-degree: 0%
 
 ---
-
 
 # 活動
 
@@ -133,7 +133,7 @@ GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK
 
 請注意，在每個結果陣列專案中，`id`整數屬性會由`marketoGUID`字串屬性取代為唯一識別碼。 
 
-## 資料值變更
+### 資料值變更
 
 針對資料值變更活動，提供專門的活動API版本。 [Get Lead Changes](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadChangesUsingGET)端點只傳回資料值變更記錄到Lead欄位的活動。 此介面與Get Lead Activities API相同，有兩個差異：
 
@@ -188,7 +188,7 @@ GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQG
 
 請注意，在每個結果陣列專案中，`id`整數屬性會由`marketoGUID`字串屬性取代為唯一識別碼。
 
-## 已刪除的銷售機會
+### 已刪除的銷售機會
 
 還有一個特殊的端點[取得已刪除的銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET)，用於從Marketo擷取已刪除的活動。
 
@@ -229,7 +229,7 @@ GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQ
 
 請注意，在每個結果陣列專案中，`id`整數屬性會由`marketoGUID`字串屬性取代為唯一識別碼。
 
-## 逐頁瀏覽結果
+### 逐頁瀏覽結果
 
 依預設，本節中提到的端點一次會傳回300個活動專案。  如果`moreResult`屬性為true，則有更多結果可用。 呼叫端點，直到`moreResult`屬性傳回false為止，這表示沒有其他可用的結果。 從此端點傳回的`nextPageToken`應一律重複用於此呼叫的下一個反複專案。
 
@@ -322,7 +322,7 @@ GET /rest/v1/activities/external/type/{apiName}/describe.json
 }
 ```
 
-### 建立型別
+## 建立型別
 
 每個自訂活動型別都需要顯示名稱、API名稱、觸發程式名稱、篩選器名稱和主要屬性。
 
@@ -386,7 +386,7 @@ POST /rest/v1/activities/external/type.json
 }
 ```
 
-### 更新型別
+## 更新型別
 
 更新型別非常類似，只是apiName是作為path引數唯一需要的引數。
 
@@ -448,7 +448,7 @@ POST /rest/v1/activities/external/type/{apiName}.json
 
 變更活動型別的主要屬性時，應該先將`isPrimary`設定為false，將任何現有的主要屬性降級。
 
-## 建立屬性
+### 建立屬性
 
 建立屬性需要必要的`apiName`路徑引數。 `name`和`dataType`引數也是必要的。` The description and` `isPrimary`引數是選用的。
 
@@ -515,7 +515,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/create.json
 }
 ```
 
-## 更新屬性
+### 更新屬性
 
 執行屬性更新時，屬性的`apiName`是主索引鍵。 `apiName`引數必須存在，更新才能成功（也就是說，您無法使用更新變更`apiName`引數）。
 
@@ -582,7 +582,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/update.json
 }
 ```
 
-## 刪除屬性
+### 刪除屬性
 
 刪除屬性需要自訂活動API名稱的必要`apiName`路徑引數。  屬性引數也是必要的，它是屬性物件的陣列。  每個物件都必須包含自訂活動型別API名稱的`apiName`引數。
 
@@ -710,4 +710,4 @@ POST /rest/v1/activities/external.json
 除非在下面註明，否則活動端點的逾時值為30秒。
 
 * 取得分頁權杖： 300秒 
-* 新增自訂活動：90秒 
+* 新增自訂活動：90秒
