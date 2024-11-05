@@ -3,9 +3,9 @@ title: 分頁權杖
 feature: REST API
 description: 檢視分頁權杖資料。
 exl-id: 63fbbf03-8daf-4add-85b0-a8546c825e5b
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: a00583f367c2da36d9d1d6e0b05bfd4216573fbb
 workflow-type: tm+mt
-source-wordcount: '345'
+source-wordcount: '352'
 ht-degree: 0%
 
 ---
@@ -15,6 +15,8 @@ ht-degree: 0%
 為了逐頁瀏覽結果，或擷取相對於指定資料更新的資料，Marketo提供分頁權杖。
 
 在某些情況下，可能會傳回長分頁Token字串。 這可能會造成您遇到HTTP 414錯誤碼。 您可以找到有關如何處理這些[錯誤](error-codes.md)的詳細資訊。
+
+請參閱[分頁Token API](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getActivitiesPagingTokenUsingGET)檔案。
 
 ## 權杖型別
 
