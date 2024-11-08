@@ -5,9 +5,9 @@ breadcrumb-title: "[!DNL Marketo]開發人員指南"
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 959d841bc6ee38c9ebee8fd5e0c261ed27c666f7
+source-git-commit: 28b040f6473677abaaa0c73f1bb6e887e9e35a81
 workflow-type: tm+mt
-source-wordcount: '243'
+source-wordcount: '241'
 ht-degree: 14%
 
 ---
@@ -70,7 +70,6 @@ ht-degree: 14%
       - [Token](rest-api/tokens.md)
       - [異動電子郵件](rest-api/transactional-email.md)
    - [驗證](rest-api/authentication.md)
-   - [驗證簽章](rest-api/authentication-signature.md)
    - [基礎 URL](rest-api/base-url.md)
    - [最佳實務](rest-api/marketo-integration-best-practices.md)
    - 大量擷取{#bulk-extract}
