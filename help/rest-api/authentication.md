@@ -3,9 +3,9 @@ title: 驗證
 feature: REST API
 description: 驗證Marketo使用者的API使用情形。
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: d57167d60f1cc6a32c600b72829afcba81e6ec92
+source-git-commit: 6f8dc76703aba204b6d0d4f1a3b5275aea819f08
 workflow-type: tm+mt
-source-wordcount: '560'
+source-wordcount: '558'
 ht-degree: 0%
 
 ---
