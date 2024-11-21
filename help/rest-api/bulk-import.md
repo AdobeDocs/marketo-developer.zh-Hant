@@ -3,9 +3,9 @@ title: 大量匯入
 feature: REST API
 description: 批次匯入人員資料。
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
 workflow-type: tm+mt
-source-wordcount: '554'
+source-wordcount: '592'
 ht-degree: 1%
 
 ---
@@ -24,7 +24,11 @@ Marketo提供介面，用於插入大型人員及人員相關資料集，稱為�
 
 ## 驗證
 
-大量匯入API使用與其他Marketo REST API相同的OAuth 2.0驗證方法。  這要求內嵌有效的存取權杖做為查詢字串引數`access_token={_AccessToken_}`或HTTP標頭`Authorization: Bearer {_AccessToken_}`。
+大量匯入API使用與其他Marketo REST API相同的OAuth 2.0驗證方法。  這需要有效的存取權杖作為HTTP標頭`Authorization: Bearer {_AccessToken_}`傳送。
+
+>[!IMPORTANT]
+>
+>自2025年6月30日起，將移除對使用&#x200B;**access_token**&#x200B;查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，則應儘快更新以使用&#x200B;**Authorization**&#x200B;標頭。 新開發應專門使用&#x200B;**Authorization**&#x200B;標頭。
 
 ## 限制
 
@@ -88,7 +92,7 @@ Easy,Fox,easyfox@marketo.com
 
 每個工作建立端點會共用一些通用引數，用於設定檔案格式、欄位名稱和大量擷取工作的篩選器。  每個擷取作業的子型別都可能有其他引數：
 
-| 引數 | 資料類型 | 附註 |
+| 參數 | 資料類型 | 附註 |
 |---|---|---|
 | 格式 | 字串 | 使用逗號分隔值、定位字元分隔值和分號分隔值的選項，決定匯入資料的檔案格式。 接受以下其中之一：CSV、SSV、TSV。 格式預設為CSV。 |
 | 檔案 | 字串 | 透過檔案中的多部分表單資料指定資料。 |

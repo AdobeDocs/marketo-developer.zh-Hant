@@ -3,9 +3,9 @@ title: 大量擷取
 feature: REST API
 description: 擷取Marketo資料的批次作業。
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
 workflow-type: tm+mt
-source-wordcount: '1643'
+source-wordcount: '1683'
 ht-degree: 0%
 
 ---
@@ -25,7 +25,11 @@ Marketo提供的介面可擷取大量人員和人員相關資料，稱為大量�
 
 ## 驗證
 
-大量擷取API會使用與其他Marketo REST API相同的OAuth 2.0驗證方法。 這要求內嵌有效的存取權杖做為查詢字串引數`access_token={_AccessToken_}`或HTTP標頭`Authorization: Bearer {_AccessToken_}`。
+大量擷取API會使用與其他Marketo REST API相同的OAuth 2.0驗證方法。 這需要有效的存取權杖才能作為HTTP標頭`Authorization: Bearer {_AccessToken_}`傳送。
+
+>[!IMPORTANT]
+>
+>自2025年6月30日起，將移除對使用&#x200B;**access_token**&#x200B;查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，則應儘快更新以使用&#x200B;**Authorization**&#x200B;標頭。 新開發應專門使用&#x200B;**Authorization**&#x200B;標頭。
 
 ## 限制
 
@@ -113,7 +117,7 @@ POST /bulk/v1/leads/export/create.json
 
 每個工作建立端點會共用一些通用引數，用於設定檔案格式、欄位名稱和大量擷取工作的篩選器。 每個擷取作業的子型別都可能有其他引數：
 
-| 引數 | 資料類型 | 附註 |
+| 參數 | 資料類型 | 附註 |
 |---|---|---|
 | 格式 | 字串 | 使用逗號分隔值、定位字元分隔值和分號分隔值的選項，決定擷取資料的檔案格式。 接受以下其中之一：CSV、SSV、TSV。 格式預設為CSV。 |
 | columnHeaderName | 物件 | 允許設定傳回檔案中欄標題的名稱。 每個成員索引鍵都是要重新命名的欄標題名稱，值是欄標題的新名稱。 例如，「columnHeaderNames」：{ &quot;firstName&quot;： &quot;First Name&quot;， &quot;lastName&quot;： &quot;Last Name&quot; }， |

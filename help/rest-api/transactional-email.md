@@ -3,7 +3,7 @@ title: 異動電子郵件
 feature: REST API
 description: 處理請求行銷活動的異動電子郵件。
 exl-id: 057bc342-53f3-4624-a3c0-ae619e0c81a5
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
 workflow-type: tm+mt
 source-wordcount: '971'
 ht-degree: 0%
@@ -18,7 +18,7 @@ Marketo API的常見使用案例是透過[請求行銷活動](https://developer.
 - 您的Marketo執行個體中必須已建立和核准交易式電子郵件。
 - 必須有具有「已請求行銷活動，1」的有效觸發行銷活動。 Source：網站服務API」，設定為傳送電子郵件
 
-首先[建立並核准您的電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html)。 如果電子郵件確實是交易式的，您可能必須將其設定為可操作的，但請確保其符合操作性法律資格。 這可透過「電子郵件動作>電子郵件設定」下的「編輯」畫面進行設定：
+首先[建立並核准您的電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=zh-Hant)。 如果電子郵件確實是交易式的，您可能必須將其設定為可操作的，但請確保其符合操作性法律資格。 這可透過「電子郵件動作>電子郵件設定」下的「編輯」畫面進行設定：
 
 ![Request-Campaign-Email-Settings](assets/request-campaign-email-settings.png)
 
@@ -135,9 +135,8 @@ public class RequestCampaign {
         JsonObject result = null;
         try {
             JsonObject requestBody = buildRequest(); //builds the Json Request Body
-            String s = endpoint + "?access_token=" + auth.getToken(); //takes the endpoint URL and appends the access_token parameter to authenticate
-            System.out.println("Executing RequestCampaign call\n" + "Endpoint: " + s + "\nRequest Body:\n"  + requestBody);
-            URL url = new URL(s); 
+            System.out.println("Executing RequestCampaign call\n" + "Endpoint: " + endpoint + "\nRequest Body:\n"  + requestBody);
+            URL url = new URL(endpoint);
             HttpsURLConnection urlConn = (HttpsURLConnection) url.openConnection(); //Return a URL connection and cast to HttpsURLConnection
             urlConn.setRequestMethod("POST");
             urlConn.setRequestProperty("Content-type", "application/json");
@@ -183,7 +182,7 @@ public class RequestCampaign {
 
 ### 建立電子郵件
 
-若要自訂我們的內容，我們必須先在Marketo中設定[程式](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html)和[電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html)。 若要產生自訂內容，我們必須在程式中建立權杖，然後將它們放入要傳送的電子郵件中。 為了簡單起見，在此範例中，我們僅使用一個權杖，但您可以取代電子郵件、寄件者電子郵件、寄件者姓名、回覆或電子郵件中任何內容的任何數量權杖。 所以讓我們建立一個Token Rich Text作為取代，並將其稱為「bodyReplacement」。 RTF可讓我們使用想要輸入的任意HTML來取代權杖中的任何內容。
+若要自訂我們的內容，我們必須先在Marketo中設定[程式](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html)和[電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=zh-Hant)。 若要產生自訂內容，我們必須在程式中建立權杖，然後將它們放入要傳送的電子郵件中。 為了簡單起見，在此範例中，我們僅使用一個權杖，但您可以取代電子郵件、寄件者電子郵件、寄件者姓名、回覆或電子郵件中任何內容的任何數量權杖。 所以讓我們建立一個Token Rich Text作為取代，並將其稱為「bodyReplacement」。 RTF可讓我們使用想要輸入的任意HTML來取代權杖中的任何內容。
 
 ![New-Token](assets/New-Token.png)
 
@@ -256,7 +255,7 @@ Token is empty or expired. Trying new authentication
 Trying to authenticate with ...
 Got Authentication Response: {"access_token":"19d51b9a-ff60-4222-bbd5-be8b206f1d40:st","token_type":"bearer","expires_in":3565,"scope":"apiuser@mktosupport.com"}
 Executing RequestCampaign call
-Endpoint: .../rest/v1/campaigns/1578/trigger.json?access_token=19d51b9a-ff60-4222-bbd5-be8b206f1d40:st
+Endpoint: .../rest/v1/campaigns/1578/trigger.json
 Request Body:
 {"input":{"leads":[{"id":1}],"tokens":[{"name":"{{my.bodyReplacement}}","value":"<div class=\"replacedContent\"><p>This content has been replaced</p></div>"}]}}
 Result:
