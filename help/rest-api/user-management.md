@@ -3,9 +3,9 @@ title: User Management
 feature: REST API
 description: 對使用者記錄執行CRUD作業。
 exl-id: 2a58f496-0fe6-4f7e-98ef-e9e5a017c2de
-source-git-commit: 13a567be067a8a1272e981fad4e03b0a8519f132
+source-git-commit: 159c3fe29c26ea0fff718bf582a7e4c9a1740831
 workflow-type: tm+mt
-source-wordcount: '1185'
+source-wordcount: '1180'
 ht-degree: 0%
 
 ---
@@ -23,12 +23,12 @@ Marketo提供了一組「使用者管理」端點，可讓您對Marketo中的使
    1. 來自[存取管理員](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)群組的「存取使用者」許可權
    1. [Access API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)群組中的「Access User Management Api」
 - 回應主體不包含「success」布林值屬性，指出呼叫的成功或失敗。 您必須改為評估HTTP回應狀態代碼。 如果呼叫成功，則會傳回200狀態代碼。 如果呼叫失敗，會傳回非200層級的狀態代碼，且回應內文包含標準「錯誤」陣列，其中包含錯誤代碼和描述性錯誤訊息。
-- 日期時間字串的格式為&quot;yyyyMMdd&#39;T&#39;HH:mm:ss.SSS&#39;t&#39;+|-hhmm&quot;。 這適用於下列屬性： createdAt、updatedAt、expiresAt。
+- 日期時間字串的格式為`yyyyMMdd'T'HH:mm:ss.SSS't'+|-hhmm`。 這適用於下列屬性： `createdAt`、`updatedAt`、`expiresAt`。
 - 使用者管理API端點未像其他端點一樣以「/rest」為前置詞。
 
 ## 查詢
 
-使用者管理的查詢支援包括擷取所有使用者、角色和工作區的功能。 此外，您也可以依使用者ID擷取單一使用者記錄，或依使用者ID擷取角色/文字空間記錄。
+使用者管理的查詢支援包括擷取所有使用者、角色和工作區的功能。 此外，您也可以依使用者ID擷取單一使用者記錄，或依使用者ID擷取角色/工作區記錄。
 
 ### 使用者（依ID）
 
