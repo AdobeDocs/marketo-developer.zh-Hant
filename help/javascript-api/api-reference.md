@@ -1,14 +1,14 @@
 ---
 title: Munchkin API參考
 description: 使用Munchkin Javascript API來自訂您的Munchkin資料。
-feature: Javascript
-source-git-commit: c6c0a492ede415471e10efb6213eb3f590e63ebe
+feature: Munchkin Tracking Code, Javascript
+exl-id: e9727691-5501-4223-bc98-2b4bacc33513
+source-git-commit: 1ad2d793832d882bb32ebf7ef1ecd4148a6ef8d5
 workflow-type: tm+mt
 source-wordcount: '414'
 ht-degree: 7%
 
 ---
-
 
 # Munchkin API參考
 
@@ -17,6 +17,8 @@ Munchkin提供數個可透過Javascript手動呼叫的功能。 這些專案可�
 ## 函數
 
 Munchkin API由下列函式組成： `init`、`createTrackingCookie`、`munchkinFunction`。
+
+<a name="munchkin_init"></a>
 
 ### Munchkin.init()
 
