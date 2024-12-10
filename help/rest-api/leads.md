@@ -3,9 +3,9 @@ title: 銷售機會
 feature: REST API
 description: 潛在客戶API呼叫的詳細資訊
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 8c1c620614408dd2df0b0848e6efc027adb71834
+source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
 workflow-type: tm+mt
-source-wordcount: '3343'
+source-wordcount: '3338'
 ht-degree: 2%
 
 ---
@@ -18,10 +18,10 @@ Marketo Lead的API提供了一組針對潛在客戶記錄的簡單CRUD應用程�
 
 ## 說明
 
-Leads API的一項重要功能是Describe方法。 使用「說明銷售機會」可透過REST API和SOAP API擷取可用於互動的欄位完整清單，以及每個欄位的中繼資料：
+Leads API的一項重要功能是Describe方法。 使用「說明銷售機會」可透過REST API擷取可用於互動的欄位完整清單，以及每個欄位的中繼資料：
 
 * 資料類型
-* REST和SOAP API名稱
+* REST API名稱
 * 長度（如果適用）
 * 唯讀
 * 易記標籤
@@ -95,7 +95,7 @@ GET /rest/v1/lead/{id}.json
 
 依篩選器型別取得銷售機會將傳回相同型別的記錄，但每頁最多可傳回300筆記錄。 它需要`filterType`和`filterValues`查詢引數。
 
-`filterType`接受任何自訂欄位，或大部分常用的欄位。 呼叫`Describe2`端點以取得允許在`filterType`中使用之可搜尋欄位的完整清單。 依自訂欄位搜尋時，僅支援下列資料型別： `string`、`email`、`integer`。 您可以取得欄位詳細資訊（說明、型別等） 使用上述的Describe方法。
+`filterType`接受任何自訂欄位，或大部分常用的欄位。 呼叫`Describe2`端點以取得允許在`filterType`中使用之可搜尋欄位的完整清單。 依自訂欄位搜尋時，僅支援下列資料型別： `string`、`email`、`integer`。 您可以使用上述的Describe方法取得欄位詳細資訊（說明、型別等）。
 
 `filterValues`接受最多300個逗號分隔格式的值。 通話會搜尋潛在客戶欄位符合其中一個所包含`filterValues`的記錄。 如果符合潛在客戶篩選器的潛在客戶數量大於1,000，則會傳回錯誤：「1003，有太多結果符合篩選器」。
 
@@ -708,7 +708,7 @@ POST /rest/v1/leads/push.json
 
 `visitorData`成員物件是選用的，且包含對應至頁面瀏覽資料（包括`pageURL`、`queryString`、`leadClientIpAddress`和`userAgentString`）的名稱/值組。 可用來填入其他活動欄位，以用於篩選和觸發目的。
 
-Cookie成員字串為選用，可讓您將Munchkin Cookie與Marketo中的個人記錄建立關聯。 建立新銷售機會時，任何先前的匿名活動都會與該銷售機會相關聯，除非Cookie值先前已與其他已知記錄相關聯。 如果先前已關聯Cookie值，則會針對記錄追蹤新活動，但舊活動不會移離現有的已知記錄。 若要建立沒有活動歷史記錄的新銷售機會，只需略過Cookie成員即可。
+Cookie成員字串是選用字串，可讓您將Munchkin Cookie與Marketo中的個人記錄建立關聯。 建立新銷售機會時，任何先前的匿名活動都會與該銷售機會相關聯，除非Cookie值先前已與其他已知記錄相關聯。 如果先前已關聯Cookie值，則會針對記錄追蹤新活動，但舊活動不會移離現有的已知記錄。 若要建立沒有活動歷史記錄的新銷售機會，只需略過Cookie成員即可。
 
 新潛在客戶會在表單所在的工作區的主要分割區中建立。
 
@@ -789,7 +789,7 @@ POST /rest/v1/leads/{id}/merge.json?leadId=1324
 
 在path引數中指定的銷售機會是成功銷售機會，因此，如果合併的記錄之間有任何欄位衝突，將會取得來自成功者的值，除非成功記錄中的欄位為空且失敗記錄中的對應欄位為空白。 在`leadId`或`leadIds`引數中指定的潛在客戶是失敗的潛在客戶。
 
-如果您有啟用SFDC-sync的訂閱，則您也可以在請求中使用`mergeInCRM`引數。 如果設為true，系統也會在CRM中執行對應的合併。 如果兩個潛在客戶都在SFDC中，且其中一個是CRM潛在客戶，另一個是CRM聯絡人，則獲勝者會是CRM聯絡人（無論將哪個潛在客戶指定為獲勝者）。 如果其中一個潛在客戶位於SFDC，而另一個僅是Marketo，則獲勝者為SFDC潛在客戶（無論哪一個潛在客戶被指定為獲勝者）。
+如果您有啟用SFDC-sync的訂閱，則您也可以在請求中使用`mergeInCRM`引數。 如果設為true，系統也會在CRM中執行對應的合併。 如果兩個潛在客戶都在SFDC中，且一個是CRM潛在客戶，另一個是CRM聯絡人，則獲勝者會是CRM聯絡人（無論將哪個潛在客戶指定為獲勝者）。 如果其中一個潛在客戶在SFDC，而另一個僅在Marketo，則成功者為SFDC潛在客戶（無論將哪個潛在客戶指定為成功者）。
 
 ## 關聯網頁活動
 

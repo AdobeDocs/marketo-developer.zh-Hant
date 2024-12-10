@@ -3,20 +3,16 @@ title: SOAP API
 feature: SOAP
 description: Marketo SOAP概觀
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
 workflow-type: tm+mt
-source-wordcount: '230'
+source-wordcount: '207'
 ht-degree: 0%
 
 ---
 
 # SOAP API
 
-SOAP API不再處於作用中開發狀態。 呼叫仍可運作，但我們的開發專注在往後的[REST](https://developer.adobe.com/marketo-apis/)。
-
-Marketo SOAP API可建立、擷取和移除儲存在Marketo中的實體和資料。 您可以在GitHub上找到[Marketo-SOAP-SDK](https://github.com/Marketo/SOAP-API-Java-Client)。 還有[個使用者端資料庫](https://github.com/Marketo/Community-Supported-Client-Libraries)可以節省您的時間。
-
-最新API版本： 3_1
+SOAP API即將淘汰，自2025年10月31日起不再提供。  所有新的開發應使用Marketo [REST](https://developer.adobe.com/marketo-apis/) API完成，而現有服務應於該日期前移轉，以避免服務中斷。
 
 ## SOAP WSDL
 
