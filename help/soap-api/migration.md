@@ -2,15 +2,15 @@
 title: 移轉至REST API
 feature: SOAP
 description: 從SOAP移轉至REST API
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: 4c410afbe8ccfff644376670b8990fac671459eb
 workflow-type: tm+mt
-source-wordcount: '643'
-ht-degree: 1%
+source-wordcount: '646'
+ht-degree: 0%
 
 ---
 
 
-# 概觀
+# 移轉至REST API
 
 Marketo Engage SOAP API將在2025年10月31日之後淘汰。 在此日期之前，所有使用SOAP API的現有整合應該已淘汰或移轉至[Marketo EngageREST API](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/rest-api)，以避免服務中斷。
 
