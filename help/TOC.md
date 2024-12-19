@@ -1,14 +1,14 @@
 ---
-user-guide-title: "[!DNL Marketo]開發人員指南"
+user-guide-title: '[!DNL Marketo] 開發人員指南'
 user-guide-description: 本指南提供使用 [!DNL Marketo] API的說明。
-breadcrumb-title: "[!DNL Marketo]開發人員指南"
+breadcrumb-title: '[!DNL Marketo] 開發人員指南'
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: afe7e713fe15d63822625cd0299dc7125761cd33
+source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
 workflow-type: tm+mt
-source-wordcount: '243'
-ht-degree: 14%
+source-wordcount: '247'
+ht-degree: 15%
 
 ---
 
@@ -142,6 +142,7 @@ ht-degree: 14%
       - [[!DNL listMObjects]](soap-api/listmobjects.md)
       - [Marketo物件](soap-api/marketo-objects.md)
       - [[!DNL syncMObjects]](soap-api/syncmobjects.md)
+   - [移轉至REST API](soap-api/migration.md)
    - 程式{#programs}
       - [[!DNL getChannels]](soap-api/getchannels.md)
       - [[!DNL getTags]](soap-api/gettags.md)

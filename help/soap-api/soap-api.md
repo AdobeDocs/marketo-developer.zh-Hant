@@ -3,16 +3,16 @@ title: SOAP API
 feature: SOAP
 description: Marketo SOAP概觀
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
+source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
 workflow-type: tm+mt
-source-wordcount: '207'
+source-wordcount: '229'
 ht-degree: 0%
 
 ---
 
 # SOAP API
 
-SOAP API即將淘汰，自2025年10月31日起不再提供。  所有新的開發應使用Marketo [REST](https://developer.adobe.com/marketo-apis/) API完成，而現有服務應於該日期前移轉，以避免服務中斷。
+SOAP API即將淘汰，自2025年10月31日起不再提供。 所有新的開發應使用Marketo [REST API](../rest-api/rest-api.md)完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱SOAP API [移轉指南](./migration.md)以瞭解如何移轉的資訊。
 
 ## SOAP WSDL
 

@@ -2,9 +2,9 @@
 title: 快速入門
 description: Marketo Engage API快速入門
 exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
-source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
+source-git-commit: 490411e411bed7b5b76fd9e5f41ccc9d156b2ba9
 workflow-type: tm+mt
-source-wordcount: '1265'
+source-wordcount: '1337'
 ht-degree: 0%
 
 ---
@@ -13,7 +13,11 @@ ht-degree: 0%
 
 Marketo Engage是行銷自動化平台，可讓行銷人員管理針對潛在客戶和客戶的個人化多管道方案和行銷活動。 可使用整合點來擴充Marketo Engage平台。 您可以在下方找到核心實體及其關係。
 
-啟用原生同步時，下列物件無法透過REST API使用：公司、商機、機會角色、銷售人員
+>[!NOTE]
+>SOAP API即將淘汰，自2025年10月31日起不再提供。 所有新的開發應使用Marketo [REST API](./rest-api/rest-api.md)完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱SOAP API [移轉指南](./soap-api/migration.md)以瞭解如何移轉的資訊。
+>
+
+在Marketo Engage執行個體上啟用原生SFDC或MS Dynamics CRM連線時，下列物件為唯讀：公司、機會、機會角色、銷售人員
 
 ![資料模型](assets/data_model.png)
 

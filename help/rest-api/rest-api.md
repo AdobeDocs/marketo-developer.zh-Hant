@@ -3,9 +3,9 @@ title: REST API
 feature: REST API
 description: REST API總覽
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: ade3216f04c822de14dc0bbcbc08bfa3a4b17cb3
+source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
 workflow-type: tm+mt
-source-wordcount: '706'
+source-wordcount: '770'
 ht-degree: 1%
 
 ---
@@ -15,6 +15,10 @@ ht-degree: 1%
 Marketo公開REST API，允許從遠端執行系統的許多功能。 從建立程式到大量潛在客戶匯入，有許多選項可讓您對Marketo執行個體進行微調控制。
 
 這些API通常分為兩大類： [潛在客戶資料庫](https://developer.adobe.com/marketo-apis/api/mapi/)和[資產](https://developer.adobe.com/marketo-apis/api/asset/)。 潛在客戶資料庫API可擷取Marketo個人記錄和相關物件型別（例如商機和公司）並與其互動。 資產API可與行銷宣傳品和工作流程相關記錄互動。
+
+>[!NOTE]
+>SOAP API即將淘汰，自2025年10月31日起不再提供。 所有新的開發應使用Marketo [REST API](./rest-api.md)完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱SOAP API [移轉指南](../soap-api/migration.md)以瞭解如何移轉的資訊。
+>
 
 - **每日配額：**&#x200B;訂閱每天會配置50,000個API呼叫（這會在每日中午12:00CST重設）。 您可以透過帳戶管理員增加每日配額。
 - **速率限制：**&#x200B;每個執行個體的API存取限製為每20秒100次呼叫。

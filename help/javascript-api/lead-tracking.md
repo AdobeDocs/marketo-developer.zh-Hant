@@ -3,9 +3,9 @@ title: 銷售機會追蹤
 description: 潛在客戶追蹤API
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-source-git-commit: 1ad2d793832d882bb32ebf7ef1ecd4148a6ef8d5
+source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
 workflow-type: tm+mt
-source-wordcount: '767'
+source-wordcount: '764'
 ht-degree: 0%
 
 ---
@@ -74,7 +74,7 @@ Munchkin的行為可透過使用Munchkin [組態設定](configuration.md)來修�
 
 - 潛在客戶必須從追蹤的Munchkin電子郵件連結，造訪在查詢字串中具有`mkt_tok`引數的Marketo追蹤頁面。
 - 潛在客戶必須填寫Marketo表單。
-- 必須傳送SOAP [syncLead](../soap-api/leads.md)或REST [關聯銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST)呼叫。
+- 必須傳送REST [關聯銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST)呼叫。
 
 當其中一項條件達成時，Cookie和所有相關的網路活動都會與已知潛在客戶建立關聯。
 
