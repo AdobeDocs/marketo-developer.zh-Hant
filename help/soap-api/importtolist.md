@@ -3,9 +3,9 @@ title: importToList
 feature: SOAP
 description: importToList SOAP呼叫
 exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 8a019985fc9ce7e1aa690ca26bfa263cd3c48cfc
 workflow-type: tm+mt
-source-wordcount: '317'
+source-wordcount: '393'
 ht-degree: 3%
 
 ---
@@ -24,7 +24,7 @@ ht-degree: 3%
 | mary@company.com | Mary | 分類帳 |
 | wanda@megacorp.com | 萬達 | Williams |
 
-**注意：** `displayName`值應在`importFileHeader`中使用，而非`name`值。
+`displayName`值應在`importFileHeader`中使用，而不是`name`值。
 
 **動態電子郵件內容：**&#x200B;您可以選擇性地以每個潛在客戶為基礎傳遞值，作為電子郵件中「我的Token」的取代。
 
@@ -36,19 +36,21 @@ ht-degree: 3%
 
 **重要：**&#x200B;如果您為潛在客戶新增代號，則必須指定使用這些代號的Smart Campaign。 下次指定的Smart Campaign執行時，將會使用您清單中的值，而非一般的「我的Token」值。 該單一Campaign執行後，便會捨棄代號。
 
-**注意：** `importToList`可能需要一些時間才能完成，尤其是大型清單。 如果您打算在其他API呼叫中使用新匯入的清單，您應該使用`importToListStatus`來檢查作業是否已完成。
+`importToList`可能需要一些時間才能完成，尤其是大型清單。 如果您打算在其他API呼叫中使用新匯入的清單，您應該使用`importToListStatus`來檢查作業是否已完成。
+
+**注意：**&#x200B;匯入CSV檔案中數值欄位的NULL值可能會產生這些欄位的「變更資料值」活動，即使欄位已經空白。 任何使用「資料值變更」篩選器或「資料值變更」觸發器的智慧行銷活動，都可能導致潛在客戶符合這些行銷活動的資格，即使資料實際上並未變更。 對這些篩選器/觸發器使用限制，以確保潛在客戶在執行匯入時不符合錯誤行銷活動的資格。
 
 ## 請求
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
 | programName | 必要 | 包含靜態清單的程式名稱 |
-| campaignName | 可選 | 如果使用「我的代號」覆寫，這是將使用這些代號的促銷活動名稱。 行銷活動必須在指定的方案內。 |
+| campaignName | 選填 | 如果使用「我的代號」覆寫，這是將使用這些代號的促銷活動名稱。 行銷活動必須在指定的方案內。 |
 | listName | 必要 | 要新增銷售機會的Marketo中的靜態清單名稱 |
 | importFileHeader | 必要 | 要匯入的潛在客戶的欄標題，包括潛在客戶屬性和我的權杖名稱。 |
 | importFileRows->stringItem | 必要 | 逗號分隔值，每個潛在客戶一列 |
 | importListMode | 必要 | 有效選項： `UPSERTLEADS`和`LISTONLY` |
-| clearList | 可選 | 如果為true，則在匯入之前清除靜態清單；如果為false，則會附加潛在客戶。 |
+| clearList | 選填 | 如果為true，則在匯入之前清除靜態清單；如果為false，則會附加潛在客戶。 |
 
 ## 請求XML
 
