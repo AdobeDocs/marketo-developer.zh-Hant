@@ -3,9 +3,9 @@ title: 計畫
 feature: REST API, Programs
 description: 建立和編輯計畫資訊。
 exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: f28aa6daf53063381077b357061fe7813c64b5de
 workflow-type: tm+mt
-source-wordcount: '843'
+source-wordcount: '848'
 ht-degree: 1%
 
 ---
@@ -21,9 +21,9 @@ ht-degree: 1%
 Marketo中有五種核心型別的計畫：
 
 - 預設
-- 事件
+- 活動
 - 含網路研討會的事件
-- 參與
+- 參與度
 - 電子郵件
 
 參與計畫可能是其他計畫型別的父級，而預設、事件和帶網路研討會的事件可能只是電子郵件計畫的父級。
@@ -320,9 +320,12 @@ GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 
 ## 建立和更新
 
-[建立]https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/createProgramUsingPOST)和[更新](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST)程式遵循標準資產模式，並以`folder`、`name`、`type`和`channel`為必要引數，`description`、`costs`和`tags`為選用引數。 頻道和型別只能在建立方案時設定。 建立後只能更新描述、名稱、`tags`和`costs`，並允許額外的`costsDestructiveUpdate`引數。 將`costsDestructiveUpdate`傳遞為true將會導致所有現有成本被清除，並取代為通話中包含的任何成本。 請注意，在某些訂閱中，某些計畫型別可能需要標籤，但這取決於設定，應該首先使用「取得標籤」檢視是否有執行個體特定要求。
+[建立](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/createProgramUsingPOST)和[更新](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST)程式遵循標準資產模式，並以`folder`、`name`、`type`和`channel`為必要引數，`description`、`costs`和`tags`為選用引數。 頻道和型別只能在建立方案時設定。 建立後只能更新描述、名稱、`tags`和`costs`，並允許額外的`costsDestructiveUpdate`引數。 將`costsDestructiveUpdate`傳遞為true將會導致所有現有成本被清除，並取代為通話中包含的任何成本。 請注意，在某些訂閱中，某些計畫型別可能需要標籤，但這取決於設定，應該首先使用「取得標籤」檢視是否有執行個體特定要求。
 
-建立或更新電子郵件程式時，也可能傳遞`startDate`和`endDate`。
+建立或更新電子郵件程式時，`startDate`和`endDate`也可能作為UTC日期/時間傳遞：
+
+`"startDate": "2022-10-19T15:00:00.000Z"`
+`"endDate": "2022-10-19T15:00:00.000Z"`
 
 ### 建立
 
