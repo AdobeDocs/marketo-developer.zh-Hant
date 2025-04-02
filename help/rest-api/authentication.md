@@ -3,9 +3,9 @@ title: Authentication
 feature: REST API
 description: 驗證Marketo使用者的API使用情形。
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: 9582f7ac5998b670dd04cc6529db23f558c0e18e
 workflow-type: tm+mt
-source-wordcount: '564'
+source-wordcount: '610'
 ht-degree: 0%
 
 ---
@@ -51,15 +51,27 @@ GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client I
 ## 使用存取權杖
 
 呼叫REST API方法時，存取權杖必須包含在每個呼叫中，呼叫才能成功。
+存取權杖必須以HTTP標頭傳送。
 
 >[!IMPORTANT]
 >
 >自2025年6月30日起，將移除對使用&#x200B;**access_token**&#x200B;查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，則應儘快更新以使用&#x200B;**Authorization**&#x200B;標頭。 新開發應專門使用&#x200B;**Authorization**&#x200B;標頭。
 
-存取權杖必須以HTTP標頭傳送。 例如，在CURL請求中：
+### 切換至Authorization標題
+
+
+若要從使用`access_token`查詢引數切換為授權標頭，需要少量程式碼變更。
+
+以CURL為例，此程式碼會傳送`access_token`值做為表單引數（ — F標幟）：
 
 ```bash
-$ curl -H 'Authorization: Bearer cdf01657-110d-4155-99a7-f984b2ff13a0:int`' 'https://123-ABC-456.mktourl.com/rest/v1/apicall.json?filterType=id&filterValues=4,5,7,12,13'
+curl ...  -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/apiCall.json
+```
+
+此程式碼會傳送與`Authorization: Bearer` http標頭相同的值（ — H標幟）：
+
+```bash
+curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/bulk/v1/apiCall.json
 ```
 
 ## 提示和最佳實務
