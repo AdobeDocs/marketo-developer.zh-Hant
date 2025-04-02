@@ -1,16 +1,16 @@
 ---
-title: 驗證
+title: Authentication
 feature: REST API
 description: 驗證Marketo使用者的API使用情形。
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 6f8dc76703aba204b6d0d4f1a3b5275aea819f08
+source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
 workflow-type: tm+mt
-source-wordcount: '558'
+source-wordcount: '564'
 ht-degree: 0%
 
 ---
 
-# 驗證
+# Authentication
 
 Marketo的REST API已透過雙腿OAuth 2.0驗證。使用者端ID和使用者端密碼由您定義的自訂服務提供。 每個自訂服務都由僅限API的使用者擁有，該使用者擁有一組可授權服務執行特定動作的角色和許可權。 存取權杖與單一自訂服務相關聯。 存取權杖到期與執行個體中可能存在之其他自訂服務相關聯的權杖無關。
 
@@ -24,7 +24,7 @@ Marketo的REST API已透過雙腿OAuth 2.0驗證。使用者端ID和使用者端
 
 在REST API區段的&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**&#x200B;功能表中找到`Identity URL`。
 
-使用HTTPGET(或POST)請求建立存取權杖，如下所示：
+使用HTTP GET （或POST）要求建立存取權杖，如下所示：
 
 ```
 GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client Id>&client_secret=<Client Secret>
@@ -52,13 +52,15 @@ GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client I
 
 呼叫REST API方法時，存取權杖必須包含在每個呼叫中，呼叫才能成功。
 
-存取權杖必須以HTTP標頭傳送。
-
-`Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int`
-
 >[!IMPORTANT]
 >
 >自2025年6月30日起，將移除對使用&#x200B;**access_token**&#x200B;查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，則應儘快更新以使用&#x200B;**Authorization**&#x200B;標頭。 新開發應專門使用&#x200B;**Authorization**&#x200B;標頭。
+
+存取權杖必須以HTTP標頭傳送。 例如，在CURL請求中：
+
+```bash
+$ curl -H 'Authorization: Bearer cdf01657-110d-4155-99a7-f984b2ff13a0:int`' 'https://123-ABC-456.mktourl.com/rest/v1/apicall.json?filterType=id&filterValues=4,5,7,12,13'
+```
 
 ## 提示和最佳實務
 

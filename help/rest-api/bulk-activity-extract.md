@@ -3,10 +3,10 @@ title: 大量活動擷取
 feature: REST API
 description: 從Marketo批次處理活動資料。
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 8c22255673fee1aa0f5b47393a241fcf6680778b
+source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
 workflow-type: tm+mt
-source-wordcount: '1343'
-ht-degree: 2%
+source-wordcount: '1342'
+ht-degree: 3%
 
 ---
 
@@ -37,7 +37,7 @@ REST API的批次活動擷取集提供程式化介面，可從Marketo擷取大�
 | 變更分數 | 潛在客戶欄位ID | [描述銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | 屬性名稱 |
 | 進度中的變更狀態 | 方案ID | [依名稱取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET) | 行銷方案 |
 | 新增至清單 | 靜態清單ID | [依名稱取得靜態清單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | 靜態清單 |
-| 從清單移除 | 靜態清單ID | [依名稱取得靜態清單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | 靜態清單 |
+| 從清單中移除 | 靜態清單ID | [依名稱取得靜態清單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET) | 靜態清單 |
 | 填寫表單 | 表單ID | [依名稱取得表單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET) | 網路表單 |
 
 使用`primaryAttributeValueIds`時，`activityTypeIds`篩選器必須存在，並且僅包含符合相應資產群組的活動ID。 例如，如果您正在篩選網路表單資產，`activityTypeIds`中僅允許「填寫表單」活動型別ID。
@@ -71,7 +71,7 @@ REST API的批次活動擷取集提供程式化介面，可從Marketo擷取大�
 | 變更分數 | 潛在客戶欄位displayName | [描述銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2) | 屬性名稱 |
 | 進度中的變更狀態 | 計畫名稱 | [依ID取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET) | 行銷方案 |
 | 新增至清單 | 靜態清單名稱 | [依Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET)取得靜態清單 | 靜態清單 |
-| 從清單移除 | 靜態清單名稱 | [依Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET)取得靜態清單 | 靜態清單 |
+| 從清單中移除 | 靜態清單名稱 | [依Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET)取得靜態清單 | 靜態清單 |
 | 填寫表單 | 表單名稱 | [依ID取得表單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5) | 網路表單 |
 
 請注意，您必須使用「&lt;<em>方案</em>>」。&lt;<em>資產</em>>標籤法，用以指定下列資產群組的名稱：行銷計畫、靜態清單、網頁表單。 例如，名稱為「MPS Outbound」的表單位於名稱為「GL_OP_ALL_2021」的程式下，將會指定為「GL_OP_ALL_2021.MPS Outbound」。
@@ -205,7 +205,7 @@ GET /bulk/v1/activities/export/{exportId}/status.json
 
 狀態列位可能會以下列其中一個值回應：
 
-- 建立時間
+- 已建立
 - 已排入佇列
 - 處理中
 - 已取消
@@ -222,7 +222,7 @@ GET /bulk/v1/activities/export/{exportId}/file.json
 
 回應包含以設定作業方式格式化的檔案。 端點會以檔案內容回應。
 
-如果請求的潛在客戶欄位為空（不包含任何資料），則會將`then null`放置在匯出檔案中的對應欄位中。  在以下範例中，傳回活動的campaignId欄位為空白。
+如果請求的潛在客戶欄位為空（不包含任何資料），則會將`then null`放置在匯出檔案中的對應欄位中。  在下列範例中，傳回活動的`campaignId`欄位是空的。
 
 ```json
 marketoGUID,leadId,activityDate,activityTypeId,campaignId,primaryAttributeValueId,primaryAttributeValue,attributes

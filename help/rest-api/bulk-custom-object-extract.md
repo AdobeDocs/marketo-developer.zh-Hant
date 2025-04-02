@@ -3,9 +3,9 @@ title: 大量自訂物件擷取
 feature: REST API, Custom Objects
 description: 批次處理自訂Marketo物件。
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
 workflow-type: tm+mt
-source-wordcount: '1300'
+source-wordcount: '1298'
 ht-degree: 1%
 
 ---
@@ -44,11 +44,11 @@ REST API的批次自訂物件擷取集合提供程式設計介面，可從Market
 - 重新命名這些欄位的欄標題
 - 指定匯出檔案的格式
 
-| 引數 | 資料類型 | 必要 | 附註 |
+| 參數 | 資料類型 | 必要 | 附註 |
 |---|---|---|---|
 | `fields` | 陣列[字串] | 是 | 字串陣列，包含描述自訂物件端點傳回的自訂物件屬性名稱值。 列出的欄位會包含在匯出的檔案中。 |
-| `columnHeaderNames` | 物件 | 否 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 值是該欄位匯出的欄標題的名稱。 |
-| `format` | 字串 | 否 | 接受以下其中之一：CSV、TSV、SSV。 匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（如果設定）。 如果未設定，則預設為CSV。 |
+| `columnHeaderNames` | 物件 | 無 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 值是該欄位匯出的欄標題的名稱。 |
+| `format` | 字串 | 無 | 接受以下其中之一：CSV、TSV、SSV。 匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（如果設定）。 如果未設定，則預設為CSV。 |
 
 
 ## 建立工作
@@ -403,7 +403,7 @@ leadId,color,make,model,vIN
 13,Fusion Red,Tesla,Roadster,SFGRC3C41FF154321
 ```
 
-為了支援擷取資料的部份擷取和便於恢復擷取，檔案端點可選擇性地支援型別位元組的HTTP標頭範圍。 如果未設定標頭，將會傳回所有內容。 您可以閱讀更多有關在Marketo [大量擷取](bulk-extract.md)中使用Range標頭的資訊。
+為了支援擷取資料的部分擷取和便於恢復擷取，檔案端點可選擇性地支援型別`bytes`的HTTP標頭`Range`。 如果未設定標頭，將會傳回所有內容。 您可以閱讀更多有關在Marketo [大量擷取](bulk-extract.md)中使用Range標頭的資訊。
 
 ## 取消工作
 

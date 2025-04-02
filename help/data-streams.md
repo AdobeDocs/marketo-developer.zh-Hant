@@ -2,16 +2,16 @@
 title: 資料串流
 description: 資料串概述
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
 workflow-type: tm+mt
-source-wordcount: '1589'
-ht-degree: 0%
+source-wordcount: '1583'
+ht-degree: 1%
 
 ---
 
 # 資料串流
 
-我們客戶的行銷組織仰賴及時且重點突出的行銷活動，以掌握業務優勢並維持競爭力。 為了支援快節奏的決策並快速啟用策略變更，擁有資料以支援並推進那些提供重點且目標明確之行銷活動的關鍵決策非常重要。 還有一些客戶在Marketo Engage內外之客戶區段的層級執行行銷工作。 為了支援這些不同的工作，Marketo已建立透過資料串流以近乎即時的方式取得大量資料的能力。
+我們客戶的行銷組織仰賴及時且重點突出的行銷活動，以掌握業務優勢並維持競爭力。 為了支援快節奏的決策並快速啟用策略變更，擁有資料以支援並推進那些提供重點且目標明確之行銷活動的關鍵決策非常重要。 還有一些客戶在Marketo Engage內外的客戶區段層級執行行銷工作。 為了支援這些不同的工作，Marketo已建立透過資料串流以近乎即時的方式取得大量資料的能力。
 
 除了具備近乎即時資料的好處外，產品相關優勢如下：
 
@@ -70,18 +70,18 @@ ht-degree: 0%
 
 訂閱此資料流的適合使用案例是：
 
-- 使用多個行銷系統時追蹤變更：有些客戶也會在其他系統（例如Salesforce等CRM）中執行某個層級的行銷活動，然後將Lead傳遞至Marketo。 Lead有時會更新並前後同步，因此必須追蹤哪個系統最近進行了變更。
+- 使用多個行銷系統時追蹤變更：有些客戶也會在其他系統(例如CRM (例如Salesforce)中執行某個層級的行銷活動，然後將銷售機會傳遞至Marketo。 Lead有時會更新並前後同步，因此必須追蹤哪個系統最近進行了變更。
 
 串流使用者稽核事件清單：
 
 | 元件 | 事件型別清單 |
 |--- |--- |
-| 預設計畫 | 原地複製、建立、刪除、編輯頻道、匯出、修改程式設定、修改程式權杖、重新命名 |
+| 預設方案 | 原地複製、建立、刪除、編輯頻道、匯出、修改程式設定、修改程式權杖、重新命名 |
 | 電子郵件 | 核准、原地複製、建立、刪除、編輯、移動、重新命名、取消核准 |
 | 電子郵件批次程式 | 核准，子更新，複製，建立，刪除，編輯，編輯頻道，修改方案排程，修改方案設定，修改方案權杖，重新命名，取消核准 |
 | 電子郵件範本 | 核准、複製、建立、刪除、草稿建立、草稿捨棄、編輯、重新命名、取消核准 |
-| 參與計畫 | 複製、建立、刪除、編輯頻道、修改程式設定、修改程式流、修改程式權杖、重新命名 |
-| 事件程式 | 複製、建立、刪除、編輯頻道、修改方案排程、修改方案設定、修改方案權杖、重新命名 |
+| 參與方案 | 複製、建立、刪除、編輯頻道、修改程式設定、修改程式流、修改程式權杖、重新命名 |
+| 事件方案 | 複製、建立、刪除、編輯頻道、修改方案排程、修改方案設定、修改方案權杖、重新命名 |
 | 資料夾 | 建立、刪除、編輯、重新命名 |
 | 表單 | 核准、複製、建立、刪除、草稿建立、編輯、移動、重新命名 |
 | 表單 — >登陸頁面表單 | 建立、複製、編輯、刪除、核准、重新命名 |
@@ -92,7 +92,7 @@ ht-degree: 0%
 | Nurture計畫 | 複製、建立、刪除、編輯頻道、修改方案設定、修改方案流、修改方案權杖、重新命名 |
 | 區段 | 建立、刪除、編輯、重新命名 |
 | 區段 | 核准、建立、刪除、draftCreated、draftDiscarded、重新命名、取消核准 |
-| Smart Campaign | 中止、啟動、複製、建立、停用、刪除、編輯、修改行銷活動排程、修改流程步驟動作、修改智慧列示設定、移動、重新命名 |
+| 智慧行銷活動 | 中止、啟動、複製、建立、停用、刪除、編輯、修改行銷活動排程、修改流程步驟動作、修改智慧列示設定、移動、重新命名 |
 | 程式碼片段 | 核准、核准且無草稿、複製、建立、刪除、編輯、重新命名、取消核准 |
 | 管理UI -> Launchpoint ->整合 | 建立、刪除、編輯 |
 | 管理員UI ->使用者 | 建立、編輯、刪除（僅適用於API使用者） |
@@ -128,9 +128,9 @@ ht-degree: 0%
 
 ## 通知資料流總覽
 
-通知資料流是Marketo Engage效能等級方案的一部分。
+通知資料流是Marketo Engage效能等級產品的一部分。
 
-目前，Marketo中的通知中心可設定為傳送通知至電子郵件地址。 Notification Data Stream可讓通知透過Adobe I/O事件直接傳送至可設定的端點。 今天，通知會透過UI提供，並且可供熒幕右上角的橘色鈴鐺參考，此資料流會接收這些通知並將其透過資料流傳送。
+目前，Marketo中的通知中心可設定為傳送通知至電子郵件地址。 通知資料流可讓通知透過Adobe I/O事件直接傳送至可設定的端點。 今天，通知會透過UI提供，並且可供熒幕右上角的橘色鈴鐺參考，此資料流會接收這些通知並將其透過資料流傳送。
 
 通知事件清單：
 
@@ -179,16 +179,16 @@ ht-degree: 0%
 
 若要實施銷售機會活動資料流，以下是客戶應遵循的步驟：
 
-1. 公開可從公用網際網路接收具有JSON內文之POST請求的HTTP端點。 活動推送資料流傳送請求至：
-1. 為Adobe提供下列專案：
+1. 公開可從公用網際網路接收含JSON內文之POST請求的HTTP端點。 活動推送資料流傳送請求至：
+1. 為Adobe提供下列功能：
    1. 適用於其訂閱的Marketo Munchkin ID
    1. 步驟1中的端點URL
    1. 他們想要收到的活動型別（以上完整的清單）
    1. 一種驗證方法，可讓客戶驗證請求是否合法。 可以：
       1. OAuth [使用者端認證驗證](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials/)的身分提供者URL、使用者端識別碼和使用者端密碼
-      1. API權杖，可包含在潛在客戶活動資料流傳送的請求中(在查詢引數中或在Authorization標頭（客戶選擇）中)
+      1. API權杖，可包含在授權http標頭中，由潛在客戶活動資料流傳送的請求中
 
-然後Adobe會啟用資料串流，客戶在那時開始接收資料。
+然後Adobe會啟用資料串流，客戶從此時開始接收資料。
 
 典型潛在客戶活動資料流呼叫的UML圖表：
 
@@ -243,18 +243,18 @@ app.listen(port,()=>{
 
 ### 使用者稽核資料流和通知資料流
 
-使用者稽核事件會傳送到AdobeIO，並可透過Adobe ID登入來使用。 以下是需遵循的步驟：
+使用者稽核事件會傳送至Adobe IO，並可透過Adobe ID登入來使用。 以下是需遵循的步驟：
 
-1. 客戶為Adobe提供下列功能：
+1. 客戶向Adobe提供下列功能：
    1. Adobe ID
    1. 適用於其訂閱的Marketo Munchkin ID
 1. 客戶公開REST端點，以正常使用webhook形式的事件。
-1. 提供後，Adobe會啟用客戶訂閱的資料流。
-1. 客戶接著在AdobeIO中設定資料流（需提供指示）
+1. 提供後，Adobe就會啟用客戶訂閱的資料流。
+1. 客戶然後在Adobe IO中設定資料流（需提供指示）
    1. 此步驟需要Adobe組織
    1. 需要Adobe組織使用者擁有開發人員或系統管理員角色
 
-若要設定AdobeIO，請參閱公開檔案區段中的[使用AdobeIO設定Marketo使用者稽核資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/)。
+若要設定Adobe IO，請參閱公開檔案區段中的[使用Adobe IO設定Marketo使用者稽核資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/)。
 
 ### 在Marketo中設定使用者稽核資料流
 
@@ -262,7 +262,7 @@ app.listen(port,()=>{
 
 ### 設定Adobe I/O
 
-[請參閱Adobe I/O事件快速入門](https://developer.adobe.com/runtime/docs/guides/getting-started/)
+[請參閱Adobe I/O Events快速入門](https://developer.adobe.com/runtime/docs/guides/getting-started/)
 
 如需此使用案例的基本指示，請從[console.adobe.io](https://developer.adobe.com/console)開始：
 
@@ -275,5 +275,5 @@ app.listen(port,()=>{
 ## 公開檔案
 
 - [Marketo資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)
-- [AdobeIO活動與Webhook簡介](https://developer.adobe.com/events/docs/guides/)
+- [Adobe IO活動與Webhook簡介](https://developer.adobe.com/events/docs/guides/)
 - [資料串流部落格](https://blog.developer.adobe.com/introducing-the-adobe-marketo-engage-data-streams-61198b567fbb)
