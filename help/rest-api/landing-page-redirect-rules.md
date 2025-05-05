@@ -16,7 +16,7 @@ ht-degree: 2%
 
 Marketo提供了一組REST API，可在登陸頁面重新導向URL上執行CRUD操作。 這些API遵循資產API的標準介面模式，提供查詢、建立、更新和刪除選項。
 
-登陸頁面重新導向規則提供將登陸頁面URL重新導向至其他頁面URL的功能。 您可以重新導向Marketo登陸頁面、非Marketo登陸頁面，或它們的組合。 如需重新導向登陸頁面規則的其他資訊，請參閱[這裡](https://experienceleague.adobe.com/docs/marketo/using/home.html)。
+登陸頁面重新導向規則提供將登陸頁面URL重新導向至其他頁面URL的功能。 您可以重新導向Marketo登陸頁面、非Marketo登陸頁面，或它們的組合。 如需重新導向登陸頁面規則的其他資訊，請參閱[這裡](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=zh-Hant)。
 
 ## 查詢
 
@@ -156,7 +156,7 @@ GET /rest/asset/v1/redirectRules.json&maxReturn=3
 | Marketo | landingPageId | {&quot;type&quot;：&quot;landingPageId&quot;，&quot;value&quot;：&quot;1774&quot;} |
 | 非Marketo | url | {&quot;type&quot;：&quot;url&quot;，&quot;value&quot;：&quot;www.contactLogs.com&quot;} |
 
-如需建立登入頁面重新導向規則的詳細資訊，請參閱[這裡](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html)。
+如需建立登入頁面重新導向規則的詳細資訊，請參閱[這裡](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=zh-Hant)。
 
 ```
 POST /rest/asset/v1/redirectRules.json

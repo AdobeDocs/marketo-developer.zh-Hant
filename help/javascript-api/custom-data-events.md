@@ -14,7 +14,7 @@ ht-degree: 3%
 
 此方法會傳送自訂事件以進行追蹤和即時個人化。 它可用來傳送第三方資料，或根據訪客行為觸發您自己的自訂事件。 自訂資料事件在訪客的工作階段中會計為一次。
 
-您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 
 | 參數 | 選用/必要 | 類型 | 說明 |
 |---|---|---|---|

@@ -426,7 +426,7 @@ POST /rest/v1/campaigns/{id}/schedule.json
 
 此端點需要行銷活動`id`做為路徑引數，以及包含潛在客戶ID的`leads`整數陣列引數。 每次呼叫最多允許100個銷售機會。
 
-`tokens`陣列引數可選擇性用來覆寫促銷活動上層方案的本機My Token。 `tokens`接受最多100個權杖。 每個`tokens`陣列專案都包含一個名稱/值組。 權杖的名稱必須格式化為&quot;{{my.name}}&quot;。 如果您使用[新增系統權杖作為電子郵件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email)方法中的連結來新增「viewAsWebPageLink」系統權杖，則無法使用`tokens`覆寫它。 改為使用[將檢視新增為網頁連結至電子郵件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email)方法，可讓您使用`tokens`覆寫「viewAsWebPageLink」。
+`tokens`陣列引數可選擇性用來覆寫促銷活動上層方案的本機My Token。 `tokens`接受最多100個權杖。 每個`tokens`陣列專案都包含一個名稱/值組。 權杖的名稱必須格式化為&quot;{{my.name}}&quot;。 如果您使用[新增系統權杖作為電子郵件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email)方法中的連結來新增「viewAsWebPageLink」系統權杖，則無法使用`tokens`覆寫它。 改為使用[將檢視新增為網頁連結至電子郵件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email)方法，可讓您使用`tokens`覆寫「viewAsWebPageLink」。
 
 `leads`和`tokens`引數是以application/json的形式傳入要求內文中。
 

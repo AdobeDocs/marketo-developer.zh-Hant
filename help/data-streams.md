@@ -258,7 +258,7 @@ app.listen(port,()=>{
 
 ### 在Marketo中設定使用者稽核資料流
 
-「使用者稽核資料流」目前可與其他3個「資料流」一起作為「效能」套裝程式的一部分使用。 如需封裝的詳細資訊，請參閱[產品說明頁面](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html)以瞭解產品限制和功能。
+「使用者稽核資料流」目前可與其他3個「資料流」一起作為「效能」套裝程式的一部分使用。 如需封裝的詳細資訊，請參閱[產品說明頁面](https://helpx.adobe.com/tw/legal/product-descriptions/adobe-marketo-engage---product-description.html)以瞭解產品限制和功能。
 
 ### 設定Adobe I/O
 

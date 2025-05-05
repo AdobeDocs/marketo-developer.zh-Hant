@@ -14,7 +14,7 @@ ht-degree: 5%
 
 RTP會公開公用程式函式，以檢查模式是否符合特定字串。 此公用程式無法用於非同步處理，因為它會傳回是否有相符專案的指示。
 
-您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 
 ## 使用量
 

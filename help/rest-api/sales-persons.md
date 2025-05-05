@@ -14,7 +14,7 @@ ht-degree: 0%
 
 [銷售人員端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Sales-Persons)
 
-針對已啟用[SFDC Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync)的訂閱，銷售人員API是唯讀存取。 「銷售人員」是銷售機會記錄的銷售擁有者之人員記錄的型態。 它們與每個Lead記錄上的externalSalesPersonId欄位上的Lead記錄有關。 當銷售機會透過填入的externalSalesPersonId欄位與銷售人員相關時，對應的銷售機會擁有者查閱欄位會針對Marketo中的該銷售機會記錄填入，以允許使用對應的篩選器和代號。
+針對已啟用[SFDC Sync](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync)的訂閱，銷售人員API是唯讀存取。 「銷售人員」是銷售機會記錄的銷售擁有者之人員記錄的型態。 它們與每個Lead記錄上的externalSalesPersonId欄位上的Lead記錄有關。 當銷售機會透過填入的externalSalesPersonId欄位與銷售人員相關時，對應的銷售機會擁有者查閱欄位會針對Marketo中的該銷售機會記錄填入，以允許使用對應的篩選器和代號。
 
 銷售人員使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST)端點並傳遞externalSalesPersonId屬性，與銷售機會記錄相關聯。
 

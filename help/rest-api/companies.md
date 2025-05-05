@@ -16,7 +16,7 @@ ht-degree: 0%
 
 公司代表潛在客戶記錄所屬的組織。 使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST)或[大量銷售機會匯入](bulk-lead-import.md)端點填入其對應的`externalCompanyId`欄位，以將銷售機會新增到公司。 將潛在客戶新增至公司後，您即無法從該公司中刪除該潛在客戶（除非您將潛在客戶新增至其他公司）。 連結到公司記錄的銷售機會將直接繼承來自公司記錄的值，就像值存在於銷售機會自己的記錄上一樣。
 
-對於已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en)的訂閱，公司API是唯讀存取。
+對於已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=zh-Hant)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=zh-Hant)的訂閱，公司API是唯讀存取。
 
 ## 說明
 

@@ -18,7 +18,7 @@ ht-degree: 0%
 
 ## 範本型別
 
-Marketo提供兩種型別的登陸頁面範本：自由格式和引導式。 自由表單登入頁面範本為衍生自這些範本的頁面提供鬆散結構的編輯體驗。 引導式範本提供高度結構化的體驗，可在範本層級限制元素型別和位置。 如需差異的詳細資訊，請參閱[此檔案](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages)。
+Marketo提供兩種型別的登陸頁面範本：自由格式和引導式。 自由表單登入頁面範本為衍生自這些範本的頁面提供鬆散結構的編輯體驗。 引導式範本提供高度結構化的體驗，可在範本層級限制元素型別和位置。 如需差異的詳細資訊，請參閱[此檔案](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages)。
 
 ## 查詢
 
@@ -167,9 +167,9 @@ name=Standard Template Clone&folder={"type": "Folder", "id": 732}
 
 若要核准範本，它必須符合其型別的規則，無論是以自由形式引導。 如需有關建立和核准各自型別範本之需求的詳細資訊，請參閱各自建立檔案：
 
-- [自由表單登陸頁面範本](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [引導式登陸頁面範本](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
-- [引導式範本範例](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
+- [自由表單登陸頁面範本](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [引導式登陸頁面範本](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [引導式範本範例](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## 刪除
 

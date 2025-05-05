@@ -40,7 +40,7 @@ Munchkin.init("AAA-BBB-CCC", {
 | domainSelectorV2 | 布林值 | 若設為true，會使用改良的方法判斷如何設定Cookie網域屬性。 |
 | httpsOnly | 布林值 | 預設為false。 若設為true，則在透過https提供追蹤的頁面時，將Cookie設定為使用Secure設定。 |
 | useBeaconAPI | 布林值 | 預設為false。 設定為True時，會使用[Beacon API](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API)來傳送非封鎖要求，而非[XMLHttpRequest](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest)。 如果瀏覽器不支援此API，Munchkin會退回使用XMLHttpRequest。 |
-| wsInfo | 字串 | 以字串作為工作區的目標。 在「管理員>整合> Munchkin」功能表中選取Workspace ，即可取得此工作區ID。 此設定僅適用於匿名潛在客戶記錄的初始建立。 一旦為該潛在客戶記錄建立了Munchkin Cookie值，wsInfo引數就無法用來變更其資料分割。 由於此設定只會影響匿名銷售機會，因此只與網頁報表中分割特定的[匿名訪客](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports)有關。 |
+| wsInfo | 字串 | 以字串作為工作區的目標。 在「管理員>整合> Munchkin」功能表中選取Workspace ，即可取得此工作區ID。 此設定僅適用於匿名潛在客戶記錄的初始建立。 一旦為該潛在客戶記錄建立了Munchkin Cookie值，wsInfo引數就無法用來變更其資料分割。 由於此設定只會影響匿名銷售機會，因此只與網頁報表中分割特定的[匿名訪客](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports)有關。 |
 
 ## 範例
 
