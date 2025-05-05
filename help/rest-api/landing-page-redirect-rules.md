@@ -246,7 +246,7 @@ redirectTo={"type":"landingPageId", "value":"5561"}
 
 ## 刪除
 
-依ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/deleteLandingPageRedirectRuleUsingPOST)端點的[刪除登陸頁面重新導向規則採用單一登陸頁面規則重新導向`id`路徑引數。
+依ID[&#128279;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Redirect-Rules/operation/deleteLandingPageRedirectRuleUsingPOST)端點的刪除登陸頁面重新導向規則採用單一登陸頁面規則重新導向`id`路徑引數。
 
 ```
 POST /rest/asset/v1/redirectRule/{id}/delete.json

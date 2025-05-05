@@ -82,7 +82,7 @@ GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
 
 #### 瀏覽
 
-靜態清單也可以以批次](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET)擷取[。 `folder`引數可用來指定要在其中執行查詢的父資料夾，並將其格式化為包含ID和型別的JSON物件。 如同其他大量資產擷取端點，`offset`和`maxReturn`是可用於分頁的選用引數。 `earliestUpdatedAt`和`latestUpdatedAt`引數可讓您設定低日期時間與高日期時間浮水印，以傳回在指定範圍內建立或更新之靜態清單。 日期時間值必須是有效的ISO-8601字串，而且不應該包含毫秒
+靜態清單也可以以批次[&#128279;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET)擷取。 `folder`引數可用來指定要在其中執行查詢的父資料夾，並將其格式化為包含ID和型別的JSON物件。 如同其他大量資產擷取端點，`offset`和`maxReturn`是可用於分頁的選用引數。 `earliestUpdatedAt`和`latestUpdatedAt`引數可讓您設定低日期時間與高日期時間浮水印，以傳回在指定範圍內建立或更新之靜態清單。 日期時間值必須是有效的ISO-8601字串，而且不應該包含毫秒
 
 ```
 GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
@@ -351,7 +351,7 @@ GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 
 #### 依銷售機會Id查詢清單成員資格
 
-清單](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET)端點的[成員用於檢視一個或多個潛在客戶是否為清單的成員。 端點採用必要的`listId`路徑引數，以及一或多個包含潛在客戶ID的`id`查詢引數（允許的最大值為300）。
+清單[&#128279;](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET)端點的成員用於檢視一個或多個潛在客戶是否為清單的成員。 端點採用必要的`listId`路徑引數，以及一或多個包含潛在客戶ID的`id`查詢引數（允許的最大值為300）。
 
 回應包含`result`陣列，由JSON物件組成，要求中指定的每個潛在客戶ID都具有狀態。
 

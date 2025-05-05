@@ -130,7 +130,7 @@ $date.whenIs($birthday).days ##outputs 1
 - 您可以參照連線至Lead、Contact或Account的自訂物件，但不能參照多個物件。
 - 自訂物件只能透過單一連線、銷售機會、連絡人或帳戶參照
 - 您必須在指令碼編輯器中勾選目前使用之欄位的方塊，否則這些欄位將不會處理
-- 對於每個自訂物件，每個人員/連絡人最近更新的10筆記錄可在執行階段使用，並依照最近更新（於0）到最舊更新（於9）的順序排列。 您可以依照指示](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting)增加[可用的記錄數。
+- 對於每個自訂物件，每個人員/連絡人最近更新的10筆記錄可在執行階段使用，並依照最近更新（於0）到最舊更新（於9）的順序排列。 您可以依照指示[&#128279;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting)增加可用的記錄數。
 - 如果您在電子郵件中包含多個電子郵件指令碼，這些指令碼會由上到下執行。 第一個要執行的指令碼中所定義的變數範圍，可在後續指令碼中使用。
 - 工具參考： [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - 有關包含新行字元「\\n」或「\\r\\n」的權杖的備註。 當透過傳送範例或批次促銷活動傳送電子郵件時，代號中的新行字元會被替換為空格。 透過「觸發器促銷活動」傳送電子郵件時，新行字元保持不變。

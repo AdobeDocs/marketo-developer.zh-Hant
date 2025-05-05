@@ -20,7 +20,7 @@ Marketo表單具有一組複雜的端點，可完全控制遠端系統的表單�
 
 ## 查詢
 
-Forms支援資產擷取的標準方法，識別碼為](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByIdUsingGET)的[、名稱為](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET)的[以及瀏覽為](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/browseForms2UsingGET)的[。 每個表單回應都包含其所有屬性，但欄位清單除外。
+Forms支援資產擷取的標準方法，識別碼為[&#128279;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByIdUsingGET)的[、名稱為](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/getLpFormByNameUsingGET)的[以及瀏覽為](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms/operation/browseForms2UsingGET)的。 每個表單回應都包含其所有屬性，但欄位清單除外。
 
 ### 依ID
 
@@ -874,7 +874,7 @@ Content-Type: text/html
 
 Marketo表單具有稱為欄位集的選用元件。 欄位集是欄位群組，在頂層欄位清單中被視為單一欄位，以依據可見性規則移動和處理。 例如，如果有一個「法規遵循要求」欄位，而使用者端選取「是」，可能會顯示包含HIPAA和PCI法規遵循要求欄位的欄位集。
 
-欄位集內的欄位在整個表單中都是獨一無二的，因此重複欄位可能不會同時位於表單的父欄位清單和子欄位集中。 欄位集是透過[新增欄位集至Form](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addFieldSetUsingPOST)端點來新增，然後會出現在表單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/getFormFieldByFormVidUsingGET)的[取得欄位結果中。 透過[更新欄位位置](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/updateFieldPositionsUsingPOST)將欄位移動到欄位集的fieldList中，將其新增到欄位集。 對於這些端點，資料以x-www-form-urlencodedPOST傳遞，而不是以JSON格式傳遞。
+欄位集內的欄位在整個表單中都是獨一無二的，因此重複欄位可能不會同時位於表單的父欄位清單和子欄位集中。 欄位集是透過[新增欄位集至Form](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/addFieldSetUsingPOST)端點來新增，然後會出現在表單[&#128279;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/getFormFieldByFormVidUsingGET)的取得欄位結果中。 透過[更新欄位位置](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/operation/updateFieldPositionsUsingPOST)將欄位移動到欄位集的fieldList中，將其新增到欄位集。 對於這些端點，資料以x-www-form-urlencodedPOST傳遞，而不是以JSON格式傳遞。
 
 ## 可見度規則
 

@@ -816,7 +816,7 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 您也可以根據靜態清單或計畫中的成員資格來擷取潛在客戶記錄。 此外，您可以擷取潛在客戶所屬的所有靜態清單、方案或智慧行銷活動。
 
 回應結構和選用引數與「依篩選型別取得銷售機會」的相同，不過filterType和filterValues不能與此API搭配使用。
-若要透過Marketo UI存取清單ID，請導覽至清單。 清單`id`位於靜態清單`https://app-****.marketo.com/#ST1001A1`的URL中。 在此範例中，1001是清單的`id`。
+若要透過Marketo UI存取清單ID，請導覽至清單。 清單`id`位於靜態清單`https://app-**&#x200B;**.marketo.com/#ST1001A1`的URL中。 在此範例中，1001是清單的`id`。
 
 ### 請求
 
