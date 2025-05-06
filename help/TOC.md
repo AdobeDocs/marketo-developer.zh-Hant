@@ -5,10 +5,10 @@ breadcrumb-title: '[!DNL Marketo] 開發人員指南'
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: e2e45c0dfa55966aeaa11c0ecf5bfcff01bbaf81
 workflow-type: tm+mt
-source-wordcount: '247'
-ht-degree: 15%
+source-wordcount: '249'
+ht-degree: 16%
 
 ---
 
@@ -23,14 +23,14 @@ ht-degree: 15%
    - [Forms API參考](javascript-api/forms-api-reference.md)
    - [取得訪客資料](javascript-api/get-visitor-data.md)
    - [Javascript API](javascript-api/javascript-api.md)
-   - 潛在客戶追蹤{#leadtracking}
+   - 銷售機會追蹤 {#leadtracking}
       - [銷售機會追蹤](javascript-api/lead-tracking.md)
       - [設定](javascript-api/configuration.md)
       - [Munchkin API參考](javascript-api/api-reference.md)
    - [模式比對](javascript-api/pattern-match.md)
    - [預測性內容](javascript-api/predictive-content.md)
    - [重新導向](javascript-api/redirect.md)
-   - [多媒體Recommendations](javascript-api/rich-media-recommendation.md)
+   - [多媒體建議](javascript-api/rich-media-recommendation.md)
    - [社交](javascript-api/social.md)
    - [觸發器](javascript-api/triggers.md)
    - [網頁Personalization](javascript-api/web-personalization.md)
@@ -58,7 +58,7 @@ ht-degree: 15%
       - [電子郵件範本](rest-api/email-templates.md)
       - [檔案](rest-api/files.md)
       - [資料夾](rest-api/folders.md)
-      - [Forms](rest-api/forms.md)
+      - [表單](rest-api/forms.md)
       - [登陸頁面](rest-api/landing-pages.md)
       - [登陸頁面重新導向規則](rest-api/landing-page-redirect-rules.md)
       - [登陸頁面範本](rest-api/landing-page-templates.md)
@@ -70,27 +70,27 @@ ht-degree: 15%
       - [靜態清單](rest-api/static-lists.md)
       - [Token](rest-api/tokens.md)
       - [異動電子郵件](rest-api/transactional-email.md)
-   - [驗證](rest-api/authentication.md)
+   - [Authentication](rest-api/authentication.md)
    - [基礎 URL](rest-api/base-url.md)
    - [最佳實務](rest-api/marketo-integration-best-practices.md)
-   - 大量擷取{#bulk-extract}
+   - 大量擷取 {#bulk-extract}
       - [大量活動](rest-api/bulk-activity-extract.md)
       - [大量自訂物件](rest-api/bulk-custom-object-extract.md)
       - [大量擷取](rest-api/bulk-extract.md)
       - [大量銷售機會](rest-api/bulk-lead-extract.md)
       - [大量計畫成員](rest-api/bulk-program-member-extract.md)
-   - 大量匯入{#bulk-import}
+   - 大量匯入 {#bulk-import}
       - [大量自訂物件](rest-api/bulk-custom-object-import.md)
       - [大量匯入](rest-api/bulk-import.md)
       - [大量銷售機會](rest-api/bulk-lead-import.md)
       - [大量計畫成員](rest-api/bulk-program-member-import.md)
-   - [頻道](rest-api/channels.md)
+   - [管道](rest-api/channels.md)
    - [自訂服務](rest-api/custom-services.md)
    - [資料擷取API](rest-api/data-ingestion.md)
    - [下載Swagger定義](rest-api/swagger.md)
    - [端點參考](rest-api/endpoint-reference.md)
    - [錯誤代碼](rest-api/error-codes.md)
-   - 潛在客戶資料庫{#lead-database}
+   - 潛在客戶資料庫 {#lead-database}
       - [活動](rest-api/activities.md)
       - [公司](rest-api/companies.md)
       - [自訂物件](rest-api/custom-objects.md)
@@ -122,20 +122,20 @@ ht-degree: 15%
       - [[!DNL getCampaignsForSource]](soap-api/getcampaignsforsource.md)
       - [[!DNL requestCampaign]](soap-api/requestcampaign.md)
       - [[!DNL scheduleCampaign]](soap-api/schedulecampaign.md)
-   - 自訂物件{#custom-objects}
+   - 自訂物件 {#custom-objects}
       - [自訂物件](soap-api/custom-objects.md)
       - [[!DNL deleteCustomObjects]](soap-api/deletecustomobjects.md)
       - [[!DNL getCustomObjects]](soap-api/getcustomobjects.md)
       - [[!DNL syncCustomObjects]](soap-api/synccustomobjects.md)
    - [錯誤代碼](soap-api/error-codes.md)
-   - 潛在客戶{#leads}
+   - 銷售機會 {#leads}
       - [[!DNL getLead]](soap-api/getlead.md)
       - [[!DNL getMultipleLeads]](soap-api/getmultipleleads.md)
       - [[!DNL mergeLeads]](soap-api/mergeleads.md)
       - [銷售機會](soap-api/leads.md)
       - [[!DNL syncLead]](soap-api/synclead.md)
       - [[!DNL syncMultipleLeads]](soap-api/syncmultipleleads.md)
-   - Marketo物件{#marketo-objects}
+   - Marketo物件 {#marketo-objects}
       - [[!DNL deleteMObjects]](soap-api/deletemobjects.md)
       - [[!DNL describeMObjects]](soap-api/describemobject.md)
       - [[!DNL getMObjects]](soap-api/getmobjects.md)
@@ -143,17 +143,17 @@ ht-degree: 15%
       - [Marketo物件](soap-api/marketo-objects.md)
       - [[!DNL syncMObjects]](soap-api/syncmobjects.md)
    - [移轉至REST API](soap-api/migration.md)
-   - 程式{#programs}
+   - 計畫 {#programs}
       - [[!DNL getChannels]](soap-api/getchannels.md)
       - [[!DNL getTags]](soap-api/gettags.md)
    - [SOAP API](soap-api/soap-api.md)
    - [SOAP常見問題集](soap-api/soap-faq.md)
-   - 靜態清單{#static-lists}
+   - 靜態清單 {#static-lists}
       - [[!DNL getImportToListStatus]](soap-api/getimporttoliststatus.md)
       - [[!DNL importToList]](soap-api/importtolist.md)
       - [[!DNL listOperation]](soap-api/listoperation.md)
    - [資料流位置](soap-api/stream-position.md)
-- Webhook {#webhooks}
+- Webhooks {#webhooks}
    - [錯誤次數](webhooks/errors.md)
    - [回應對應](webhooks/response-mappings.md)
    - [Webhooks](webhooks/webhooks.md)
@@ -163,3 +163,4 @@ ht-degree: 15%
 - [授權](api-license.md)
 - [合作夥伴沙箱](partner-sandbox.md)
 - [自助服務流程步驟](self-service-flow-steps.md)
+- [部落格封存](blog.md)
