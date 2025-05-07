@@ -3,9 +3,9 @@ title: 大量活動擷取
 feature: REST API
 description: 從Marketo批次處理活動資料。
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: a5b855691e7fb9e628e2d68fd14a8a6c689d6750
 workflow-type: tm+mt
-source-wordcount: '1342'
+source-wordcount: '1332'
 ht-degree: 3%
 
 ---
@@ -104,7 +104,7 @@ REST API的批次活動擷取集提供程式化介面，可從Marketo擷取大�
 | 篩選 | 陣列[物件] | 是 | 接受篩選陣列。 陣列中必須包含正好一個`createdAt`篩選器。 可包含選用的`activityTypeIds`篩選器。 篩選器會套用至可存取的活動集，而匯出作業會傳回活動集。 |
 | 格式 | 字串 | 無 | 接受下列其中一項：CSV、TSV、SSV匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（若有設定）。 如果未設定，則預設為CSV。 |
 | columnHeaderName | 物件 | 無 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 值是該欄位匯出的欄標題的名稱。 |
-| 欄位 | 陣列[字串] | 無 | 包含欄位值的選擇性字串陣列。 列出的欄位會包含在匯出的檔案中。 預設會傳回下列欄位： `marketoGUIDleadId` `activityDate` `activityTypeId` `campaignId` `primaryAttributeValueId` `primaryAttributeValueattributes`。 此引數可用於透過從上述清單指定子集來減少傳回的欄位數。 範例：「欄位」： [「leadId」、「activityDate」、「activityTypeId」]可指定其他欄位「actionResult」以包含活動動作（「succeeded」、「skipped」或「failed」）。 |
+| 欄位 | 陣列[字串] | 無 | 包含欄位值的選擇性字串陣列。 列出的欄位會包含在匯出的檔案中。 預設會傳回下列欄位： <ul><li>`marketoGUIDleadId`</li><li> `activityDate` </li><li>`activityTypeId` </li><li>`campaignId`</li><li> `primaryAttributeValueId` </li><li>`primaryAttributeValue`</li><li> `attributes`</li></ul>。此引數可用來減少從上述清單指定子集而傳回的欄位數目： `"fields": ["leadId", "activityDate", "activityTypeId"]`。 可以指定額外的欄位`actionResult`以包含活動動作： `("succeeded", "skipped", or "failed")`。 |
 
 
 ## 建立工作
