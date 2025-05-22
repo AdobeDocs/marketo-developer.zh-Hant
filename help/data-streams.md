@@ -2,14 +2,18 @@
 title: 資料串流
 description: 資料串概述
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 9830572277db2709c6853bea56fc70c455fd5e54
+source-git-commit: 43bcafd335a2fdc709e917ef74504500422c2889
 workflow-type: tm+mt
-source-wordcount: '1583'
+source-wordcount: '1596'
 ht-degree: 1%
 
 ---
 
 # 資料串流
+
+>[!NOTE]
+> 在[使用資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)找到目前關於資料串流的資訊。
+>
 
 我們客戶的行銷組織仰賴及時且重點突出的行銷活動，以掌握業務優勢並維持競爭力。 為了支援快節奏的決策並快速啟用策略變更，擁有資料以支援並推進那些提供重點且目標明確之行銷活動的關鍵決策非常重要。 還有一些客戶在Marketo Engage內外的客戶區段層級執行行銷工作。 為了支援這些不同的工作，Marketo已建立透過資料串流以近乎即時的方式取得大量資料的能力。
 
@@ -258,7 +262,7 @@ app.listen(port,()=>{
 
 ### 在Marketo中設定使用者稽核資料流
 
-「使用者稽核資料流」目前可與其他3個「資料流」一起作為「效能」套裝程式的一部分使用。 如需封裝的詳細資訊，請參閱[產品說明頁面](https://helpx.adobe.com/tw/legal/product-descriptions/adobe-marketo-engage---product-description.html)以瞭解產品限制和功能。
+「使用者稽核資料流」目前可與其他3個「資料流」一起作為「效能」套裝程式的一部分使用。 如需封裝的詳細資訊，請參閱[產品說明頁面](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html)以瞭解產品限制和功能。
 
 ### 設定Adobe I/O
 
