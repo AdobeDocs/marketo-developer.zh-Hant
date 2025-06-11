@@ -3,10 +3,10 @@ title: 計畫成員
 feature: REST API
 description: 建立和管理方案成員。
 exl-id: 22f29a42-2a30-4dce-a571-d7776374cf43
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 8a785b0719e08544ed1a87772faf90bd9dda3077
 workflow-type: tm+mt
-source-wordcount: '1712'
-ht-degree: 0%
+source-wordcount: '1708'
+ht-degree: 2%
 
 ---
 
@@ -14,7 +14,7 @@ ht-degree: 0%
 
 [程式成員端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members)
 
-Marketo會公開API，以供讀取、建立、更新和刪除程式成員記錄。 方案成員記錄會透過銷售機會ID欄位與銷售機會記錄相關。 記錄由一組標準欄位和選擇性地最多20個其他自訂欄位組成。 這些欄位包含每個成員的程式特定資料，並可用於表單、篩選器、觸發器和流程動作。 您可以在Marketo EngageUI中程式[成員標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members)中檢視此資料。
+Marketo會公開API，以供讀取、建立、更新和刪除程式成員記錄。 方案成員記錄會透過銷售機會ID欄位與銷售機會記錄相關。 記錄由一組標準欄位和選擇性地最多20個其他自訂欄位組成。 這些欄位包含每個成員的程式特定資料，並可用於表單、篩選器、觸發器和流程動作。 您可以在Marketo Engage UI中程式[成員標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members)中檢視此資料。
 
 ## 說明
 
@@ -228,7 +228,7 @@ GET /rest/v1/programs/members/describe.json
 
 依預設，最多會傳回300筆記錄。 您可以使用`batchSize`查詢引數來減少此數目。 如果&#x200B;**moreResult**&#x200B;屬性為true，表示有更多結果可用。 繼續呼叫此端點，直到moreResult屬性傳回false （表示沒有可用的結果）。 從此API傳回的`nextPageToken`應一律重複用於此呼叫的下一個反複專案。
 
-如果GET要求的總長度超過8KB，則會傳回HTTP錯誤：「414， URI太長」（根據[RFC 7231](https://datatracker.ietf.org/doc/html/rfc72316.5.12)）。 作為因應措施，您可以將GET變更為POST、新增`_method=GET`引數，並將查詢字串放入要求內文中。
+如果GET請求的總長度超過8KB，則會傳回HTTP錯誤：「414， URI太長」。 暫行解決方法是將GET變更為POST、新增`_method=GET`引數，並將查詢字串放入要求內文中。
 
 ```
 GET /rest/v1/programs/{programId}/members.json?filterType=statusName&filterValues=Influenced
@@ -597,9 +597,9 @@ GET /rest/v1/programs/members/schema/fields.json?batchSize=5
 
 ### 建立欄位
 
-[建立程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/createProgramMemberFieldUsingPOST)端點會在程式成員物件上建立一或多個自訂欄位。 此端點提供的功能與Marketo EngageUI[&#128279;](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields)中可用的相當。 您可以使用此端點建立最多20個自訂欄位。
+[建立程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/createProgramMemberFieldUsingPOST)端點會在程式成員物件上建立一或多個自訂欄位。 此端點提供的功能與Marketo Engage UI](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields)中的[可用功能相當。 您可以使用此端點建立最多20個自訂欄位。
 
-請仔細考量您在使用API的Marketo Engage生產執行個體中建立的每個欄位。 欄位建立後，您就無法刪除（[您只能隱藏它](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)）。 未使用欄位數量激增是壞做法，會增加執行個體的雜亂。
+請仔細考慮您在使用API的Marketo Engage生產執行個體中建立的每個欄位。 欄位建立後，您就無法刪除（[您只能隱藏它](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)）。 未使用欄位數量激增是壞做法，會增加執行個體的雜亂。
 
 必要的`input`引數是程式成員欄位物件的陣列。 每個物件包含一或多個屬性。 必要屬性為`displayName`、`name`和`dataType`，分別對應至欄位的UI顯示名稱、欄位的API名稱以及欄位型別。 您可以選擇指定`description`、`isHidden`、`isHtmlEncodingInEmail`和`isSensitive`。
 
@@ -637,19 +637,19 @@ POST /rest/v1/programs/members/schema/fields.json
 
 ### 更新欄位
 
-[更新程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/updateProgramMemberFieldUsingPOST)端點更新程式成員物件上的單一自訂欄位。 通常，使用Marketo Engage UI執行的欄位更新操作可以使用API實現。 下表總結了幾項差異。
+[更新程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/updateProgramMemberFieldUsingPOST)端點更新程式成員物件上的單一自訂欄位。 一般而言，使用Marketo Engage UI執行的欄位更新作業，可使用API達成。 下表總結了幾項差異。
 
 | 屬性 | 可透過API更新嗎？ | 可透過UI更新嗎？ | 可透過API更新嗎？ | 可透過UI更新嗎？ |
 |---|---|---|---|---|
-| 資料型別 | 否 | 否 | 否 | 是 |
+| 資料型別 | no | no | no | 是 |
 | 說明 | 是 | 是 | 是 | 是 |
-| 顯示名稱 | 否 | 否 | 是 | 是 |
-| isCustom | 否 | 否 | 否 | 否 |
-| ishidden | 否 | 是 | 是（若由API建立） | 是 |
+| 顯示名稱 | no | no | 是 | 是 |
+| isCustom | no | no | no | no |
+| ishidden | no | 是 | 是（若由API建立） | 是 |
 | isHtmlEncodingInEmail | 是 | 是 | 是 | 是 |
 | isSensitive | 是 | 是 | 是 | 是 |
-| length | 否 | 否 | 否 | 否 |
-| 名稱 | 否 | 否 | 否 | 否 |
+| length | no | no | no | no |
+| 名稱 | no | no | no | no |
 
 必要的`fieldApiName`路徑引數指定要更新的欄位的API名稱。 必要的`input`引數是包含單一潛在客戶欄位物件的陣列。 欄位物件包含一或多個屬性。
 

@@ -1,10 +1,11 @@
 ---
-title: 資料擷取
+title: 資料攝取
 feature: REST API, Dynamic Content
 description: 使用Marketo API使用資料。
-source-git-commit: 1595aa6df0b0404c7cda2c246c9249018fe87e77
+exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
+source-git-commit: 8a785b0719e08544ed1a87772faf90bd9dda3077
 workflow-type: tm+mt
-source-wordcount: '968'
+source-wordcount: '965'
 ht-degree: 10%
 
 ---
@@ -13,13 +14,13 @@ ht-degree: 10%
 
 資料擷取API是一項高容量、低延遲、高可用性的服務，專門用於以最低延遲有效處理大量與人員相關的資料擷取。
 
-透過提交非同步執行的請求來內嵌資料。 訂閱來自[Marketo可觀察性資料流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup/)的事件，即可擷取要求狀態&#x200B;。
+透過提交非同步執行的請求來內嵌資料。 訂閱來自[Marketo可觀察性資料流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup)的事件，即可擷取要求狀態&#x200B;。
 
 介面提供兩種物件型別：人員、自訂物件。 記錄作業僅限「插入或更新」。
 
-資料擷取API目前處於私人測試階段。  受邀者必須擁有[Marketo Engage效能層](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835)套件的權益。
+資料擷取API目前處於私人測試階段。  受邀者必須擁有[Marketo Engage效能階層](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835)套件的權益。
 
-## 驗證
+## Authentication
 
 資料擷取API使用與Marketo REST API相同的OAuth 2.0驗證方法來產生存取權杖，但必須透過HTTP標頭`X-Mkto-User-Token`傳遞存取權杖。 您無法透過查詢引數傳遞存取權杖。
 
@@ -55,13 +56,13 @@ ht-degree: 10%
 
 ## 請求
 
-使用HTTPPOST方法將資料傳送至伺服器。
+使用HTTP POST方法將資料傳送至伺服器。
 
 資料表示以application/json的形式包含在請求本文中。
 
 網域名稱是： `mkto-ingestion-api.adobe.io`
 
-路徑以`/subscriptions/MunchkinId`開頭，其中MunchkinId是您的Marketo執行個體專屬的。 您可以在Marketo EngageUI的&#x200B;**管理員** > **我的帳戶** > **支援資訊**&#x200B;下找到您的Munchkin ID。  路徑的其餘部分用於指定感興趣的資源。
+路徑以`/subscriptions/MunchkinId`開頭，其中MunchkinId是您的Marketo執行個體專屬的。 您可以在Marketo Engage UI的&#x200B;**管理員** > **我的帳戶** > **支援資訊**&#x200B;下找到您的Munchkin ID。  路徑的其餘部分用於指定感興趣的資源。
 
 人員的URL範例：
 
@@ -111,7 +112,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 | - | - | - |
 | 400 | 4000801 | 錯誤的請求 |
 | 400 | 4000802 | 無效的資料 |
-| 403 | 4030801 | 未獲授權 |
+| 403 | 4030801 | 未經授權 |
 | 429 | 4290801 | 已達到每日配額 |
 | 500 | 5000801 | 內部伺服器錯誤 |
 
