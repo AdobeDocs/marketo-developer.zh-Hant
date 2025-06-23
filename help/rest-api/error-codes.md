@@ -3,9 +3,9 @@ title: 錯誤代碼
 feature: REST API
 description: Marketo錯誤代碼說明。
 exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
-source-git-commit: d0750eab0a37df0b7f80c6252f46c95068975000
+source-git-commit: d44ec0442bc33e3e5cb7e2dd6ce3947036c7cd25
 workflow-type: tm+mt
-source-wordcount: '2273'
+source-wordcount: '2283'
 ht-degree: 3%
 
 ---
@@ -54,7 +54,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     <tr>
       <td><a name="414"></a>414</td>
       <td>請求URI太長</td>
-      <td>請求的URI超過8k。 該請求應在URL中作為帶有param '_method=GET'的POST重試，其餘的查詢字串應包含在請求正文中。</td>
+      <td>請求的URI超過8k。 該請求應該重試為POST，在URL中包含param '_method=GET'，其餘的查詢字串在請求內文中。</td>
     </tr>
   </tbody>
 </table>
@@ -110,7 +110,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     <tr>
       <td><a name="603"></a>603</td>
       <td>存取遭拒</td>
-      <td>驗證成功，但使用者沒有足夠的許可權呼叫此API。 [其他許可權](custom-services.md)可能需要指派給使用者角色，或可能啟用<a href="https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">IP型API存取的允許清單</a>。</td>
+      <td>驗證成功，但使用者沒有足夠的許可權呼叫此API。 [其他許可權](custom-services.md)可能需要指派給使用者角色，或可能啟用<a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">IP型API存取的允許清單</a>。</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
@@ -287,8 +287,10 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
 
 #### 記錄層級錯誤代碼
 
-<table>
-  <tbody>
+>[!NOTE]
+>
+><table>
+<tbody>
     <tr>
       <td>回應代碼</td>
       <td>說明</td>
@@ -430,10 +432,12 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
       <td><ul>
           <li>佇列中有太多工作</li>
           <li>超出匯出每日配額</li>
+          <li>工作已排入佇列</li>
         </ul></td>
       <td><ul>
           <li>在任何指定時間，佇列中的訂閱最多允許10個大量擷取工作。</li>
           <li>根據預設，擷取工作限製為每天500MB （CST每天凌晨12:00重設）。</li>
+          <li>匯出ID已排入佇列。</li>
         </ul></td>
     </tr>
     <tr>
@@ -486,3 +490,4 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     </tr>
   </tbody>
 </table>
+
