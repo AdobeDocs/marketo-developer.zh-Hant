@@ -290,204 +290,204 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
 >[!NOTE]
 >
 ><table>
-<tbody>
-    <tr>
-      <td>回應代碼</td>
-      <td>說明</td>
-      <td>註解</td>
-    </tr>
-    <tr>
-      <td><a name="1001"></a>1001</td>
-      <td>無效的值'%s'。 需要'%s'型別</td>
-      <td>每當引數值的型別不符時，就會產生錯誤。 例如，為integer引數指定的字串值。</td>
-    </tr>
-    <tr>
-      <td><a name="1002"></a>1002</td>
-      <td>遺失必要引數'%s'的值</td>
-      <td>請求中缺少必要引數時會產生錯誤</td>
-    </tr>
-    <tr>
-      <td><a name="1003"></a>1003</td>
-      <td>無效的資料</td>
-      <td>當提交的資料不是指定端點或模式的有效型別時；例如當使用指定為createOnly的動作提交潛在客戶的ID時，或當在批次促銷活動上使用請求促銷活動時。</td>
-    </tr>
-    <tr>
-      <td><a name="1004"></a>1004</td>
-      <td>找不到銷售機會</td>
-      <td>對於syncLead，當動作為"updateOnly"且找不到潛在客戶時</td>
-    </tr>
-    <tr>
-      <td><a name="1005"></a>1005</td>
-      <td>潛在客戶已存在</td>
-      <td>對於syncLead，當動作為"createOnly"且潛在客戶已存在時</td>
-    </tr>
-    <tr>
-      <td><a name="1006"></a>1006</td>
-      <td>找不到欄位'%s'</td>
-      <td>呼叫中包含的欄位不是有效欄位。</td>
-    </tr>
-    <tr>
-      <td><a name="1007"></a>1007</td>
-      <td>多個銷售機會符合查詢條件</td>
-      <td>有多個銷售機會符合查詢條件。 僅當索引鍵符合單一記錄時才能執行更新</td>
-    </tr>
-    <tr>
-      <td><a name="1008"></a>1008</td>
-      <td>拒絕存取資料分割'%s'</td>
-      <td>自訂服務的使用者無法存取含有記錄所在資料分割的工作區。</td>
-    </tr>
-    <tr>
-      <td><a name="1009"></a>1009</td>
-      <td>必須指定資料分割名稱</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><a name="1010"></a>1010</td>
-      <td>不允許資料分割更新</td>
-      <td>指定的記錄已經存在於不同的潛在客戶分割中。</td>
-    </tr>
-    <tr>
-      <td><a name="1011"></a>1011</td>
-      <td>欄位'%s'不受支援</td>
-      <td>當查閱欄位或以不支援的標準欄位指定的「filterType」時（例如：firstName、lastName）</td>
-    </tr>
-    <tr>
-      <td><a name="1012"></a>1012</td>
-      <td>無效的Cookie值'%s'</td>
-      <td>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">關聯銷售機會</a>時，可能會發生'cookie'引數的無效值。
-        當使用'filterType=cookies'並有'filterValues'引數的無效值依篩選型別</a>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">取得銷售機會時，也會發生這種情況。</td>
-    </tr>
-    <tr>
-      <td><a name="1013"></a>1013</td>
-      <td>找不到物件</td>
-      <td>依ID取得物件（清單、促銷活動）會傳回此錯誤代碼</td>
-    </tr>
-    <tr>
-      <td><a name="1014"></a>1014</td>
-      <td>無法建立物件</td>
-      <td>建立物件（清單）失敗</td>
-    </tr>
-    <tr>
-      <td><a name="1015"></a>1015</td>
-      <td>潛在客戶不在清單中</td>
-      <td>指定的潛在客戶不是目標清單的成員</td>
-    </tr>
-    <tr>
-      <td><a name="1016"></a>1016</td>
-      <td>匯入次數過多</td>
-      <td>有太多匯入已排入佇列。 最多允許10個</td>
-    </tr>
-    <tr>
-      <td><a name="1017"></a>1017</td>
-      <td>物件已存在</td>
-      <td>建立失敗，因為記錄已經存在</td>
-    </tr>
-    <tr>
-      <td><a name="1018"></a>1018</td>
-      <td>CRM已啟用</td>
-      <td>無法執行動作，因為執行個體已啟用原生CRM整合。</td>
-    </tr>
-    <tr>
-      <td><a name="1019"></a>1019</td>
-      <td>匯入進行中</td>
-      <td>目標清單已匯入</td>
-    </tr>
-    <tr>
-      <td><a name="1020"></a>1020</td>
-      <td>要程式化的翻制專案太多</td>
-      <td>訂閱已達當天排程程式中的「cloneToProgramName」使用配額</td>
-    </tr>
-    <tr>
-      <td><a name="1021"></a>1021</td>
-      <td>不允許公司更新</td>
-      <td>在syncLead期間不允許公司更新</td>
-    </tr>
-    <tr>
-      <td><a name="1022"></a>1022</td>
-      <td>使用中的物件</td>
-      <td>當物件正由另一個物件使用時，不允許刪除</td>
-    </tr>
-    <tr>
-      <td><a name="1025"></a>1025</td>
-      <td>找不到程式狀態</td>
-      <td>已為「變更銷售機會計畫狀態」指定狀態，但該狀態不符合計畫頻道可用的狀態。</td>
-    </tr>
-    <tr>
-      <td><a name="1026"></a>1026</td>
-      <td>未啟用自訂物件</td>
-      <td>無法執行動作，因為執行個體未啟用自訂物件整合。</td>
-    </tr>
-    <tr>
-      <td><a name="1027"></a>1027</td>
-      <td>已達到最大活動型別限制</td>
-      <td>訂閱已達到可用自訂活動型別的最大數量。</td>
-    </tr>
-    <tr>
-      <td><a name="1028"></a>1028</td>
-      <td>已達到最大欄位限制</td>
-      <td>自訂活動最多有20個次要屬性。</td>
-    </tr>
-    <tr>
-      <td><a name="1029"></a>1029</td>
-      <td><ul>
-          <li>佇列中有太多工作</li>
-          <li>超出匯出每日配額</li>
-          <li>工作已排入佇列</li>
-        </ul></td>
-      <td><ul>
-          <li>在任何指定時間，佇列中的訂閱最多允許10個大量擷取工作。</li>
-          <li>根據預設，擷取工作限製為每天500MB （CST每天凌晨12:00重設）。</li>
-          <li>匯出ID已排入佇列。</li>
-        </ul></td>
-    </tr>
-    <tr>
-      <td><a name="1035"></a>1035</td>
-      <td>不支援的篩選器型別</td>
-      <td>在某些訂閱中，不支援下列大量銷售機會擷取篩選器型別： updatedAt、smartListId、smartListName。</td>
-    </tr>
-    <tr>
-      <td><a name="1036"></a>1036</td>
-      <td>在輸入中發現重複的物件</td>
-      <td>已呼叫使用相同的外部索引鍵更新兩個或多個記錄。 例如，同步公司呼叫時，多個公司使用相同的externalCompanyId。</td>
-    </tr>
-    <tr>
-      <td><a name="1037"></a>1037</td>
-      <td>已略過銷售機會</td>
-      <td>已略過Lead，因為它已經處於或超過此狀態。</td>
-    </tr>
-    <tr>
-      <td><a name="1042"></a>1042</td>
-      <td>無效的runAt日期</td>
-      <td>為排程行銷活動指定的runAt日期太久未來（最多兩年）。</td>
-    </tr>
-    <tr>
-      <td><a name="1048"></a>1048</td>
-      <td>自訂物件捨棄草稿失敗</td>
-      <td>已進行呼叫以捨棄自訂物件的草稿版本。</td>
-    </tr>
-    <tr>
-      <td><a name="1049"></a>1049</td>
-      <td>建立活動失敗</td>
-      <td>屬性陣列太長。
-        傳遞至記錄的屬性陣列超過65536個位元組的最大長度</td>
-    </tr>
-    <tr>
-      <td><a name="1076"></a>1076</td>
-      <td>具有mergeInCRM旗標的<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫為4。</td>
-      <td>您正在建立重複記錄。 建議您改用現有記錄。
-        這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
-    </tr>
-    <tr>
-      <td><a name="1077"></a>1077</td>
-      <td>由於「SFDC欄位」長度，<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗</td>
-      <td>mergeInCRM設為true的合併潛在客戶呼叫失敗，因為「SFDC欄位」超過允許的字元限制。 若要更正，請縮短「SFDC欄位」的長度，或將mergeInCRM設為false。</td>
-    </tr>
-    <tr>
-      <td><a name="1078"></a>1078</td>
-      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗，因為實體已刪除，不是銷售機會/連絡人，或欄位篩選條件不符。</td>
-      <td>合併失敗，無法在原生同步的CRM中執行合併操作
-        這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
-    </tr>
-  </tbody>
-</table>
+><tbody>
+>    <tr>
+>      <td>回應代碼</td>
+>      <td>說明</td>
+>      <td>註解</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1001"></a>1001</td>
+>      <td>無效的值'%s'。 需要'%s'型別</td>
+>      <td>每當引數值的型別不符時，就會產生錯誤。 例如，為integer引數指定的字串值。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1002"></a>1002</td>
+>      <td>遺失必要引數'%s'的值</td>
+>      <td>請求中缺少必要引數時會產生錯誤</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1003"></a>1003</td>
+>      <td>無效的資料</td>
+>      <td>當提交的資料不是指定端點或模式的有效型別時；例如當使用指定為createOnly的動作提交潛在客戶的ID時，或當在批次促銷活動上使用請求促銷活動時。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1004"></a>1004</td>
+>      <td>找不到銷售機會</td>
+>      <td>對於syncLead，當動作為"updateOnly"且找不到潛在客戶時</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1005"></a>1005</td>
+>      <td>潛在客戶已存在</td>
+>      <td>對於syncLead，當動作為"createOnly"且潛在客戶已存在時</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1006"></a>1006</td>
+>      <td>找不到欄位'%s'</td>
+>      <td>呼叫中包含的欄位不是有效欄位。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1007"></a>1007</td>
+>      <td>多個銷售機會符合查詢條件</td>
+>      <td>有多個銷售機會符合查詢條件。 僅當索引鍵符合單一記錄時才能執行更新</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1008"></a>1008</td>
+>      <td>拒絕存取資料分割'%s'</td>
+>      <td>自訂服務的使用者無法存取含有記錄所在資料分割的工作區。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1009"></a>1009</td>
+>      <td>必須指定資料分割名稱</td>
+>      <td></td>
+>    </tr>
+>    <tr>
+>      <td><a name="1010"></a>1010</td>
+>      <td>不允許資料分割更新</td>
+>      <td>指定的記錄已經存在於不同的潛在客戶分割中。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1011"></a>1011</td>
+>      <td>欄位'%s'不受支援</td>
+>      <td>當查閱欄位或以不支援的標準欄位指定的「filterType」時（例如：firstName、lastName）</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1012"></a>1012</td>
+>      <td>無效的Cookie值'%s'</td>
+>      <td>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST">關聯銷售機會</a>時，可能會發生'cookie'引數的無效值。
+>        當使用'filterType=cookies'並有'filterValues'引數的無效值依篩選型別</a>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadsByFilterUsingGET">取得銷售機會時，也會發生這種情況。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1013"></a>1013</td>
+>      <td>找不到物件</td>
+>      <td>依ID取得物件（清單、促銷活動）會傳回此錯誤代碼</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1014"></a>1014</td>
+>      <td>無法建立物件</td>
+>      <td>建立物件（清單）失敗</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1015"></a>1015</td>
+>      <td>潛在客戶不在清單中</td>
+>      <td>指定的潛在客戶不是目標清單的成員</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1016"></a>1016</td>
+>      <td>匯入次數過多</td>
+>      <td>有太多匯入已排入佇列。 最多允許10個</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1017"></a>1017</td>
+>      <td>物件已存在</td>
+>      <td>建立失敗，因為記錄已經存在</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1018"></a>1018</td>
+>      <td>CRM已啟用</td>
+>      <td>無法執行動作，因為執行個體已啟用原生CRM整合。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1019"></a>1019</td>
+>      <td>匯入進行中</td>
+>      <td>目標清單已匯入</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1020"></a>1020</td>
+>      <td>要程式化的翻制專案太多</td>
+>      <td>訂閱已達當天排程程式中的「cloneToProgramName」使用配額</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1021"></a>1021</td>
+>      <td>不允許公司更新</td>
+>      <td>在syncLead期間不允許公司更新</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1022"></a>1022</td>
+>      <td>使用中的物件</td>
+>      <td>當物件正由另一個物件使用時，不允許刪除</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1025"></a>1025</td>
+>      <td>找不到程式狀態</td>
+>      <td>已為「變更銷售機會計畫狀態」指定狀態，但該狀態不符合計畫頻道可用的狀態。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1026"></a>1026</td>
+>      <td>未啟用自訂物件</td>
+>      <td>無法執行動作，因為執行個體未啟用自訂物件整合。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1027"></a>1027</td>
+>      <td>已達到最大活動型別限制</td>
+>      <td>訂閱已達到可用自訂活動型別的最大數量。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1028"></a>1028</td>
+>      <td>已達到最大欄位限制</td>
+>      <td>自訂活動最多有20個次要屬性。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1029"></a>1029</td>
+>      <td><ul>
+>          <li>佇列中有太多工作</li>
+>          <li>超出匯出每日配額</li>
+>          <li>工作已排入佇列</li>
+>        </ul></td>
+>      <td><ul>
+>          <li>在任何指定時間，佇列中的訂閱最多允許10個大量擷取工作。</li>
+>          <li>根據預設，擷取工作限製為每天500MB （CST每天凌晨12:00重設）。</li>
+>          <li>匯出ID已排入佇列。</li>
+>        </ul></td>
+>    </tr>
+>    <tr>
+>      <td><a name="1035"></a>1035</td>
+>      <td>不支援的篩選器型別</td>
+>      <td>在某些訂閱中，不支援下列大量銷售機會擷取篩選器型別： updatedAt、smartListId、smartListName。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1036"></a>1036</td>
+>      <td>在輸入中發現重複的物件</td>
+>      <td>已呼叫使用相同的外部索引鍵更新兩個或多個記錄。 例如，同步公司呼叫時，多個公司使用相同的externalCompanyId。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1037"></a>1037</td>
+>      <td>已略過銷售機會</td>
+>      <td>已略過Lead，因為它已經處於或超過此狀態。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1042"></a>1042</td>
+>      <td>無效的runAt日期</td>
+>      <td>為排程行銷活動指定的runAt日期太久未來（最多兩年）。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1048"></a>1048</td>
+>      <td>自訂物件捨棄草稿失敗</td>
+>      <td>已進行呼叫以捨棄自訂物件的草稿版本。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1049"></a>1049</td>
+>      <td>建立活動失敗</td>
+>      <td>屬性陣列太長。
+>        傳遞至記錄的屬性陣列超過65536個位元組的最大長度</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1076"></a>1076</td>
+>      <td>具有mergeInCRM旗標的<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫為4。</td>
+>      <td>您正在建立重複記錄。 建議您改用現有記錄。
+>        這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1077"></a>1077</td>
+>      <td>由於「SFDC欄位」長度，<a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗</td>
+>      <td>mergeInCRM設為true的合併潛在客戶呼叫失敗，因為「SFDC欄位」超過允許的字元限制。 若要更正，請縮短「SFDC欄位」的長度，或將mergeInCRM設為false。</td>
+>    </tr>
+>    <tr>
+>      <td><a name="1078"></a>1078</td>
+>      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗，因為實體已刪除，不是銷售機會/連絡人，或欄位篩選條件不符。</td>
+>      <td>合併失敗，無法在原生同步的CRM中執行合併操作
+>        這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
+>    </tr>
+>  </tbody>
+></table>
 
