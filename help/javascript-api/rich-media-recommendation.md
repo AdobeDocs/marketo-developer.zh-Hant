@@ -21,7 +21,7 @@ ht-degree: 4%
 1. 在頁面本文中
    1. 將範本標籤（div類別）放置在您要顯示範本的位置
 
-[此處](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)提供詳細資訊。
+[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)提供詳細資訊。
 
 ## 範本標籤
 
