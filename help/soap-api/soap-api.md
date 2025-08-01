@@ -3,9 +3,9 @@ title: SOAP API
 feature: SOAP
 description: Marketo SOAP概觀
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '229'
+source-wordcount: '228'
 ht-degree: 0%
 
 ---
@@ -28,7 +28,7 @@ SOAP API即將淘汰，自2025年10月31日起不再提供。 所有新的開發
 
 ## 限制
 
-- **每日配額：**&#x200B;大部分的訂閱每天皆會配置10,000個API呼叫（這會在每日中午12:00CST重設）。 您可以透過帳戶管理員增加每日配額。
+- **每日配額：**&#x200B;大部分的訂閱每天皆會配置10,000個API呼叫（這會在每日的12:00AM CST重設）。 您可以透過帳戶管理員增加每日配額。
 - **速率限制：**&#x200B;每個執行個體的API存取限製為每20秒100次呼叫。
 - **並行限制：**  最多十個同時進行的API呼叫。
 

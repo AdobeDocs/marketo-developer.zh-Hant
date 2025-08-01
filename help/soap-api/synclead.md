@@ -3,7 +3,7 @@ title: syncLead
 feature: SOAP
 description: syncLead SOAP呼叫
 exl-id: e6cda794-a9d4-4153-a5f3-52e97a506807
-source-git-commit: ebe8faf41dff0e0ba5f4323f5909cc3c9813fd10
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '518'
 ht-degree: 2%
@@ -16,7 +16,7 @@ ht-degree: 2%
 
 - Marketo ID
 - 外部系統ID （實作為`foreignSysPersonId`）
-- Marketo Cookie （由Munchkin JS指令碼建立）
+- Marketo Cookie (由Munchkin JS指令碼建立)
 - 電子郵件
 
 如果找到現有的相符專案，呼叫會執行更新。 如果沒有，則會插入並建立銷售機會。 匿名潛在客戶可使用Marketo Cookie ID進行更新，並在更新後成為已知客戶。
@@ -49,7 +49,7 @@ ht-degree: 2%
 | leadRecord->leadAttributeList->attribute->attrName | 必要 | 您要更新其值的潛在客戶屬性名稱。 |
 | leadRecord->leadAttributeList->attribute->attrValue | 必要 | 您要設定為attrName中指定的潛在客戶屬性的值。 |
 | returnLead | 必要 | 為true時，會在更新時傳回完整更新的潛在客戶記錄。 |
-| marketoCookie | 選填 | [Munchkin javascript](../javascript-api/lead-tracking.md) Cookie |
+| marketoCookie | 選用 | [Munchkin javascript](../javascript-api/lead-tracking.md) Cookie |
 
 ## 請求XML
 
@@ -109,21 +109,21 @@ ht-degree: 2%
 
 ```php
  <?php
- 
+
   $debug = true;
- 
+
   $marketoSoapEndPoint     = "";  // CHANGE ME
   $marketoUserId           = "";  // CHANGE ME
   $marketoSecretKey        = "";  // CHANGE ME
   $marketoNameSpace        = "http://www.marketo.com/mktows/";
- 
+
   // Create Signature
   $dtzObj = new DateTimeZone("America/Los_Angeles");
   $dtObj  = new DateTime('now', $dtzObj);
   $timeStamp = $dtObj->format(DATE_W3C);
   $encryptString = $timeStamp . $marketoUserId;
   $signature = hash_hmac('sha1', $encryptString, $marketoSecretKey);
- 
+
   // Create SOAP Header
   $attrs = new stdClass();
   $attrs->mktowsUserId = $marketoUserId;
@@ -134,30 +134,30 @@ ht-degree: 2%
   if ($debug) {
     $options["trace"] = true;
   }
- 
+
   // Create Request
   $leadKey = new stdClass();
   $leadKey->Email = "george@jungle.com";
- 
+
   // Lead attributes to update
   $attr1 = new stdClass();
   $attr1->attrName  = "FirstName";
   $attr1->attrValue = "George";
- 
+
   $attr2= new stdClass();
   $attr2->attrName  = "LastName";
   $attr2->attrValue = "of the Jungle";
- 
+
   $attrArray = array($attr1, $attr2);
   $attrList = new stdClass();
   $attrList->attribute = $attrArray;
   $leadKey->leadAttributeList = $attrList;
- 
+
   $leadRecord = new stdClass();
   $leadRecord->leadRecord = $leadKey;
   $leadRecord->returnLead = false;
   $params = array("paramsSyncLead" =$leadRecord);
- 
+
   $soapClient = new SoapClient($marketoSoapEndPoint ."?WSDL", $options);
   try {
     $result = $soapClient->__soapCall('syncLead', $params, $options, $authHdr);
@@ -165,13 +165,13 @@ ht-degree: 2%
   catch(Exception $ex) {
     var_dump($ex);
   }
- 
+
   if ($debug) {
     print "RAW request:\n" .$soapClient->__getLastRequest() ."\n";
     print "RAW response:\n" .$soapClient->__getLastResponse() ."\n";
   }
   print_r($result);
- 
+
 ?>
 ```
 
@@ -190,75 +190,75 @@ import org.apache.commons.codec.binary.Hex;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
- 
- 
+
+
 public class SyncLead {
- 
+
     public static void main(String[] args) {
         System.out.println("Executing syncLead");
         try {
             URL marketoSoapEndPoint = new URL("https://100-AEK-913.mktoapi.com/soap/mktows/2_1" + "?WSDL");
             String marketoUserId = "demo17_1_809934544BFABAE58E5D27";
             String marketoSecretKey = "27272727aa";
-             
+
             QName serviceName = new QName("http://www.marketo.com/mktows/", "MktMktowsApiService");
             MktMktowsApiService service = new MktMktowsApiService(marketoSoapEndPoint, serviceName);
             MktowsPort port = service.getMktowsApiSoapPort();
-             
+
             // Create Signature
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             String text = df.format(new Date());
-            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);           
+            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);
             String encryptString = requestTimestamp + marketoUserId ;
-             
+
             SecretKeySpec secretKey = new SecretKeySpec(marketoSecretKey.getBytes(), "HmacSHA1");
             Mac mac = Mac.getInstance("HmacSHA1");
             mac.init(secretKey);
             byte[] rawHmac = mac.doFinal(encryptString.getBytes());
             char[] hexChars = Hex.encodeHex(rawHmac);
-            String signature = new String(hexChars); 
-             
+            String signature = new String(hexChars);
+
             // Set Authentication Header
             AuthenticationHeader header = new AuthenticationHeader();
             header.setMktowsUserId(marketoUserId);
             header.setRequestTimestamp(requestTimestamp);
             header.setRequestSignature(signature);
-             
+
             // Create Request
             ParamsSyncLead request = new ParamsSyncLead();
             LeadRecord key = new LeadRecord();
-             
+
             ObjectFactory objectFactory = new ObjectFactory();
             JAXBElement<Stringemail = objectFactory.createLeadRecordEmail("george@jungle.com");
             key.setEmail(email);
             request.setLeadRecord(key);
-             
+
             Attribute attr1 = new Attribute();
             attr1.setAttrName("FirstName");
             attr1.setAttrValue("George2");
-             
+
             Attribute attr2 = new Attribute();
             attr2.setAttrName("LastName");
             attr2.setAttrValue("of the Jungle");
-             
+
             ArrayOfAttribute aoa = new ArrayOfAttribute();
             aoa.getAttributes().add(attr1);
             aoa.getAttributes().add(attr2);
-             
+
             QName qname = new QName("http://www.marketo.com/mktows/", "leadAttributeList");
-            JAXBElement<ArrayOfAttributeattrList = new JAXBElement(qname, ArrayOfAttribute.class, aoa);         
+            JAXBElement<ArrayOfAttributeattrList = new JAXBElement(qname, ArrayOfAttribute.class, aoa);
             key.setLeadAttributeList(attrList);
-             
+
             MktowsContextHeader headerContext = new MktowsContextHeader();
             headerContext.setTargetWorkspace("default");
-             
+
             SuccessSyncLead result = port.syncLead(request, header, headerContext);
- 
+
             JAXBContext context = JAXBContext.newInstance(SuccessSyncLead.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(result, System.out);
-             
+
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -287,9 +287,9 @@ hashedsignature = OpenSSL::HMAC.hexdigest(digest, marketoSecretKey, encryptStrin
 requestSignature = hashedsignature.to_s
 
 #Create SOAP Header
-headers = { 
-    'ns1:AuthenticationHeader' ={ "mktowsUserId" =mktowsUserId, "requestSignature" =requestSignature, 
-    "requestTimestamp"  =requestTimestamp 
+headers = {
+    'ns1:AuthenticationHeader' ={ "mktowsUserId" =mktowsUserId, "requestSignature" =requestSignature,
+    "requestTimestamp"  =requestTimestamp
     }
 }
 

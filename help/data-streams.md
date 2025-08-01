@@ -2,7 +2,7 @@
 title: 資料串流
 description: 資料串概述
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 43bcafd335a2fdc709e917ef74504500422c2889
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '1596'
 ht-degree: 1%
@@ -95,7 +95,7 @@ ht-degree: 1%
 | 行銷資料夾 | 建立、編輯、刪除 |
 | Nurture計畫 | 複製、建立、刪除、編輯頻道、修改方案設定、修改方案流、修改方案權杖、重新命名 |
 | 區段 | 建立、刪除、編輯、重新命名 |
-| 區段 | 核准、建立、刪除、draftCreated、draftDiscarded、重新命名、取消核准 |
+| 分段 | 核准、建立、刪除、draftCreated、draftDiscarded、重新命名、取消核准 |
 | 智慧行銷活動 | 中止、啟動、複製、建立、停用、刪除、編輯、修改行銷活動排程、修改流程步驟動作、修改智慧列示設定、移動、重新命名 |
 | 程式碼片段 | 核准、核准且無草稿、複製、建立、刪除、編輯、重新命名、取消核准 |
 | 管理UI -> Launchpoint ->整合 | 建立、刪除、編輯 |
@@ -124,7 +124,7 @@ ht-degree: 1%
             "munchkinId": "123-ABC-456",
             "imsOrgId": "ADOBEORGID@AdobeOrg",
             "user": 253,
-            "userId": "example@marketo.com"          
+            "userId": "example@marketo.com"
         }
     }
 }
@@ -262,7 +262,7 @@ app.listen(port,()=>{
 
 ### 在Marketo中設定使用者稽核資料流
 
-「使用者稽核資料流」目前可與其他3個「資料流」一起作為「效能」套裝程式的一部分使用。 如需封裝的詳細資訊，請參閱[產品說明頁面](https://helpx.adobe.com/tw/legal/product-descriptions/adobe-marketo-engage---product-description.html)以瞭解產品限制和功能。
+「使用者稽核資料流」目前可與其他3個「資料流」一起作為「效能」套裝程式的一部分使用。 如需封裝的詳細資訊，請參閱[產品說明頁面](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html)以瞭解產品限制和功能。
 
 ### 設定Adobe I/O
 

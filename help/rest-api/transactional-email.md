@@ -3,7 +3,7 @@ title: 異動電子郵件
 feature: REST API
 description: 處理請求行銷活動的異動電子郵件。
 exl-id: 057bc342-53f3-4624-a3c0-ae619e0c81a5
-source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '971'
 ht-degree: 0%
@@ -28,7 +28,7 @@ Marketo API的常見使用案例是透過[請求行銷活動](https://developer.
 
 ![RequestCampaign-Approve-Draft](assets/request-campaign-approve-draft.png)
 
-如果您是建立行銷活動的新手，請參閱[建立新的Smart Campaign](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html?lang=zh-Hant)文章。 在您建立行銷活動後，我們必須完成這些步驟。 使用Campaign is Requested觸發器設定智慧清單：
+如果您是建立行銷活動的新手，請參閱[建立新的Smart Campaign](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html)文章。 在您建立行銷活動後，我們必須完成這些步驟。 使用Campaign is Requested觸發器設定智慧清單：
 
 ![Request-Campaign-Smart-List](assets/request-campaign-smart-list.png)
 
@@ -53,7 +53,7 @@ package dev.marketo.blog_request_campaign;
 
 import com.eclipsesource.json.JsonArray;
 
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
@@ -108,7 +108,7 @@ public class RequestCampaign {
     private Auth auth;
     public ArrayList leads = new ArrayList();
     public ArrayList tokens = new ArrayList();
-    
+
     public RequestCampaign(Auth auth, int campaignId) {
         this.auth = auth;
         this.endpoint = this.auth.marketoInstance + "/rest/v1/campaigns/" + campaignId + "/trigger.json";
@@ -156,7 +156,7 @@ public class RequestCampaign {
         }
         return result;
     }
-    
+
     private JsonObject buildRequest(){
         JsonObject requestBody = new JsonObject(); //Create a new JsonObject for the Request Body
         JsonObject input = new JsonObject();
@@ -182,7 +182,7 @@ public class RequestCampaign {
 
 ### 建立電子郵件
 
-若要自訂我們的內容，我們必須先在Marketo中設定[程式](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html?lang=zh-Hant)和[電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=zh-Hant)。 若要產生自訂內容，我們必須在程式中建立權杖，然後將它們放入要傳送的電子郵件中。 為了簡單起見，在此範例中，我們僅使用一個權杖，但您可以取代電子郵件、寄件者電子郵件、寄件者姓名、回覆或電子郵件中任何內容的任何數量權杖。 所以讓我們建立一個Token Rich Text作為取代，並將其稱為「bodyReplacement」。 RTF可讓我們使用想要輸入的任意HTML來取代權杖中的任何內容。
+若要自訂我們的內容，我們必須先在Marketo中設定[程式](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html)和[電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=zh-Hant)。 若要產生自訂內容，我們必須在程式中建立權杖，然後將它們放入要傳送的電子郵件中。 為了簡單起見，在此範例中，我們僅使用一個權杖，但您可以取代電子郵件、寄件者電子郵件、寄件者姓名、回覆或電子郵件中任何內容的任何數量權杖。 所以讓我們建立一個Token Rich Text作為取代，並將其稱為「bodyReplacement」。 RTF可讓我們使用想要輸入的任意HTML來取代權杖中的任何內容。
 
 ![New-Token](assets/New-Token.png)
 
@@ -199,22 +199,22 @@ package dev.marketo.blog_request_campaign;
 
 import com.eclipsesource.json.JsonArray;
 
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
         //Create an instance of Auth so that we can authenticate with our Marketo instance
         Auth auth = new Auth("Client ID - CHANGE ME", "Client Secret - CHANGE ME", "Host - CHANGE ME");
-        
+
         //Create and parameterize an instance of Leads
         Leads leadsRequest = new Leads(auth).setFilterType("email").addFilterValue("requestCampaign.test@marketo.com");
-        
+
         //get the inner results array of the response
         JsonArray leadsResult = leadsRequest.getData().get("result").asArray();
-        
+
         //get the id of the record indexed at 0
         int lead = leadsResult.get(0).asObject().get("id").asInt();
-        
+
         //Set the ID of our campaign from Marketo
         int campaignId = 1578;
         RequestCampaign rc = new RequestCampaign(auth, campaignId).addLead(lead);

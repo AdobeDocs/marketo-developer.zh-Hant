@@ -3,7 +3,7 @@ title: 大量程式成員擷取
 feature: REST API
 description: 批次處理成員資料擷取。
 exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '1142'
 ht-degree: 2%
@@ -235,7 +235,7 @@ GET /rest/v1/programs/members/describe.json
     <tr>
       <td>isExhausted</td>
       <td>布林值</td>
-      <td>接受用於篩選已用完內容</a>的<a href="https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">人之方案成員資格記錄的布林值。</td>
+      <td>接受用於篩選已用完內容<a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">的</a>人之方案成員資格記錄的布林值。</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>
@@ -269,7 +269,7 @@ GET /rest/v1/programs/members/describe.json
             </tr>
             <tr>
               <td>已邀請</td>
-              <td>會員</td>
+              <td>成員</td>
               <td>無節目</td>
             </tr>
             <tr>
@@ -318,11 +318,11 @@ GET /rest/v1/programs/members/describe.json
 - 重新命名這些欄位的欄標題
 - 指定匯出檔案的格式
 
-| 引數 | 資料類型 | 必要 | 附註 |
+| 參數 | 資料類型 | 必要 | 附註 |
 |---|---|---|---|
 | 欄位 | 陣列[字串] | 是 | 欄位引數接受字串的JSON陣列。 列出的欄位會包含在匯出的檔案中。 下列欄位型別可以匯出： `LeadCustom` `LeadProgram` MemberCustom `ProgramMember`。 使用REST API名稱來指定欄位，您可以使用「描述銷售機會2」和/或「描述方案成員」端點來擷取該欄位。 |
-| columnHeaderName | 物件 | 否 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 值是該欄位匯出的欄標題的名稱。 |
-| 格式 | 字串 | 否 | 接受以下其中之一：CSV、TSV、SSV。 匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（如果設定）。 如果未設定，則預設為CSV。 |
+| columnHeaderName | 物件 | 無 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 值是該欄位匯出的欄標題的名稱。 |
+| 格式 | 字串 | 無 | 接受以下其中之一：CSV、TSV、SSV。 匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（如果設定）。 如果未設定，則預設為CSV。 |
 
 
 ## 建立工作
@@ -334,9 +334,9 @@ POST /bulk/v1/program/members/export/create.json
 ```
 
 ```json
-{ 
+{
    "format": "CSV",
-   "fields": [ 
+   "fields": [
         "firstName",
         "lastName",
         "email",
@@ -350,7 +350,7 @@ POST /bulk/v1/program/members/export/create.json
         "pMCustomField01",
         "pMCustomField02"
    ],
-   "filter": { 
+   "filter": {
       "programId":1044
    }
 }
@@ -371,7 +371,7 @@ POST /bulk/v1/program/members/export/create.json
 }
 ```
 
-這會傳回狀態回應，指出工作已建立。 工作已定義並建立，但尚未開始。 若要這麼做，必須使用建立狀態回應中的`exportId`呼叫[排入佇列匯出程式成員工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST)端點：
+這會傳回狀態回應，指出工作已建立。 工作已定義並建立，但尚未開始。 若要這麼做，必須使用建立狀態回應中的[呼叫](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/enqueueExportProgramMembersUsingPOST)排入佇列匯出程式成員工作`exportId`端點：
 
 ```
 POST /bulk/v1/program/members/export/{exportId}/enqueue.json
@@ -447,7 +447,7 @@ GET /bulk/v1/program/members/export/{exportId}/status.json
 
 ## 正在擷取您的資料
 
-若要擷取已完成程式成員匯出的檔案，只要使用您的`exportId`呼叫[取得匯出程式成員檔案](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET)端點即可。
+若要擷取已完成程式成員匯出的檔案，只要使用您的[呼叫](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Program-Members/operation/getExportProgramMembersFileUsingGET)取得匯出程式成員檔案`exportId`端點即可。
 
 回應包含以設定作業方式格式化的檔案。 端點會以檔案內容回應。 如果要求的程式成員欄位是空的（不包含任何資料），則會將`null`放置在匯出檔案中的對應欄位中。
 

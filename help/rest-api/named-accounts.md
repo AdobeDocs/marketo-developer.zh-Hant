@@ -3,7 +3,7 @@ title: 具名帳戶
 feature: REST API
 description: 透過API操控具名帳戶。
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '679'
 ht-degree: 0%
@@ -27,99 +27,99 @@ GET /rest/v1/namedaccounts/describe.json
 ```
 
 ```json
-{  
+{
    "requestId":"d65e#156c27ac57d",
-   "result":[  
-      {  
+   "result":[
+      {
          "name":"Named Account",
          "description":"Marketo standard account attribute map",
          "createdAt":"2016-08-18T20:16:41Z",
          "updatedAt":"2016-08-18T20:16:41Z",
          "idField":"marketoGUID",
-         "dedupeFields":[  
+         "dedupeFields":[
             "name"
          ],
          "searchableFields":[
             [
                "marketoGUID",
-            ], 
-            [  
+            ],
+            [
                "annualRevenue"
             ],
-            [  
+            [
                "city"
             ],
-            [  
+            [
                "country"
             ],
-            [  
+            [
                "domainName"
             ],
-            [  
+            [
                "industry"
             ],
-            [  
+            [
                "logoUrl"
             ],
-            [  
+            [
                "membershipCount"
             ],
-            [  
+            [
                "name"
             ],
-            [  
+            [
                "numberOfEmployees"
             ],
-            [  
+            [
                "opptyAmount"
             ],
-            [  
+            [
                "opptyCount"
             ],
-            [  
+            [
                "score1"
             ],
-            [  
+            [
                "score2"
             ],
-            [  
+            [
                "score3"
             ],
-            [  
+            [
                "score4"
             ],
-            [  
+            [
                "score5"
             ],
-            [  
+            [
                "sicCode"
             ],
-            [  
+            [
                "state"
             ]
          ],
-         "fields":[  
-            {  
+         "fields":[
+            {
                "name":"marketoGUID",
                "displayName":"Marketo GUID",
                "dataType":"string",
                "length":36,
                "updateable":false
             },
-            {  
+            {
                "name":"annualRevenue",
                "displayName":"annualRevenue",
                "dataType":"currency",
                "updateable":true
             },
-            {  
+            {
                "name":"city",
                "displayName":"city",
                "dataType":"string",
                "length":255,
                "updateable":true
             },
-            {  
+            {
                "name":"country",
                "displayName":"country",
                "dataType":"string",
@@ -166,7 +166,7 @@ GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
 
 ### 建立和更新
 
-建立和更新具名帳戶會遵循標準潛在客戶資料庫模式。 必須在POST請求的JSON內文的輸入成員中傳遞記錄。 `input`是唯一必要的成員，`action`與`dedupeBy`為選用成員。 輸入中最多可包含300筆記錄。 動作可以是createOnly、updateOnly或createOrUpdate其中之一。 如果未指定，動作會預設為createOrUpdate。 dedupeBy只能在action為updateOnly時指定，且僅接受其中一個dedupeFields或idField （分別對應至name和marketoGUID欄位）。
+建立和更新具名帳戶會遵循標準潛在客戶資料庫模式。 必須在POST請求的JSON內文輸入成員中傳遞記錄。 `input`是唯一必要的成員，`action`與`dedupeBy`為選用成員。 輸入中最多可包含300筆記錄。 動作可以是createOnly、updateOnly或createOrUpdate其中之一。 如果未指定，動作會預設為createOrUpdate。 dedupeBy只能在action為updateOnly時指定，且僅接受其中一個dedupeFields或idField （分別對應至name和marketoGUID欄位）。
 
 ```
 POST /rest/v1/namedaccounts.json
@@ -177,15 +177,15 @@ Content-Type: application/json
 ```
 
 ```json
-{  
+{
    "action":"updateOnly",
    "dedupeBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "name":"Google",
          "domainName":"www.google.com"
       },
-      {  
+      {
          "name":"Yahoo",
          "domainName":"www.yahoo.com"
       }
@@ -194,16 +194,16 @@ Content-Type: application/json
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "status":"updated",
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fb"
       },
-      {  
+      {
          "seq":1,
          "status":"created",
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fc"
@@ -331,7 +331,7 @@ GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
 
 ### 刪除
 
-刪除是透過JSONPOST要求完成，並具備必要的輸入成員以及選用的deleteBy成員。 deleteBy可能是「dedupeFields」或「idField」之一，分別對應至name或marketoGUID，如果未設定，將預設為dedupeFields。 輸入成員接受最多300筆記錄的陣列，每個包含一名成員，根據deleteBy的設定，可以是name或marketoGUID。
+刪除是透過JSON POST要求完成，並擁有必要的輸入成員以及選用的deleteBy成員。 deleteBy可能是「dedupeFields」或「idField」之一，分別對應至name或marketoGUID，如果未設定，將預設為dedupeFields。 輸入成員接受最多300筆記錄的陣列，每個包含一名成員，根據deleteBy的設定，可以是name或marketoGUID。
 
 ```
 POST /rest/v1/namedaccounts/delete.json
@@ -342,16 +342,16 @@ Content-Type: application/json
 ```
 
 ```json
-{  
+{
    "deleteBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "name":"Google"
       },
-      {  
+      {
          "name":"Yahoo"
       },
-      {  
+      {
          "name":"Marketo"
       }
    ]
@@ -359,25 +359,25 @@ Content-Type: application/json
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fb",
          "status":"deleted"
       },
-      {  
+      {
          "seq":1,
          "id":"dff23271-f996-47d7-984f-f2676861b5fc",
          "status":"deleted"
       },
-      {  
+      {
          "seq":2,
          "status":"skipped",
-         "reasons":[  
-            {  
+         "reasons":[
+            {
                "code":"1013",
                "message":"Record not found"
             }

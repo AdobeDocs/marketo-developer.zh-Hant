@@ -3,7 +3,7 @@ title: 銷售機會
 feature: REST API
 description: 潛在客戶API呼叫的詳細資訊
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 7a3df193e47e7ee363c156bf24f0941879c6bd13
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '3338'
 ht-degree: 2%
@@ -37,20 +37,20 @@ GET /rest/v1/leads/describe.json
 ### 回應
 
 ```json
-{  
+{
    "requestId":"37ca#1475b74e276",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "id":2,
          "displayName":"Company Name",
          "dataType":"string",
          "length":255,
-         "rest":{  
+         "rest":{
             "name":"company",
             "readOnly":false
          },
-         "soap":{  
+         "soap":{
             "name":"Company",
             "readOnly":false
          }
@@ -58,7 +58,7 @@ GET /rest/v1/leads/describe.json
 }
 ```
 
-一般而言，回應在結果陣列中包含一組更大的欄位，但我們出於示範目的而略過這些欄位。 結果陣列中的每個專案都對應到潛在客戶記錄上的可用欄位，並且至少會有id、displayName和資料型別。 特定欄位可能存在rest和soap子物件，也可能不存在，其存在將指示該欄位是否可以在REST或SOAP API中使用。 `readOnly`屬性會透過對應的API (REST或SOAP)指出欄位是否為唯讀。 length屬性指出欄位的最大長度（如果存在）。 dataType屬性指出欄位的資料型別。
+一般而言，回應在結果陣列中包含一組更大的欄位，但我們出於示範目的而略過這些欄位。 結果陣列中的每個專案都對應到潛在客戶記錄上的可用欄位，並且至少會有id、displayName和資料型別。 特定欄位可能存在rest和soap子物件，也可能不存在，如果存在，則表示該欄位在REST或SOAP API中是否有效。 `readOnly`屬性會透過對應的API (REST或SOAP)指出欄位是否為唯讀。 length屬性指出欄位的最大長度（如果存在）。 dataType屬性指出欄位的資料型別。
 
 ## 查詢
 
@@ -150,7 +150,7 @@ GET /rest/v1/leads.json?filterType=id&filterValues=318581,318592
 
 「依ID取得銷售機會」和「依篩選型別取得銷售機會」也接受欄位查詢引數，此引數接受以逗號分隔的API欄位清單。 如果包括這個，則回應中的每個記錄都將包括那些列出的欄位。  如果省略，則會傳回預設欄位集： `id`、`email`、`updatedAt`、`createdAt`、`firstName`和`lastName`。
 
-## ADOBEECID
+## ADOBE ECID
 
 Adobe Experience Cloud對象共用功能啟用時，會進行Cookie同步程式，將Adobe Experience Cloud ID (ECID)與Marketo銷售機會建立關聯。  上述潛在客戶擷取方法可用來擷取關聯的ECID值。  請在欄位引數中指定`ecids`，以執行此操作。 例如 `&fields=email,firstName,lastName,ecids`。
 
@@ -175,21 +175,21 @@ POST /rest/v1/leads.json
 ### 內文
 
 ```json
-{  
+{
    "action":"createOnly",
    "lookupField":"email",
-   "input":[  
-      {  
+   "input":[
+      {
          "email":"kjashaedd-1@klooblept.com",
          "firstName":"Kataldar-1",
          "postalCode":"04828"
       },
-      {  
+      {
          "email":"kjashaedd-2@klooblept.com",
          "firstName":"Kataldar-2",
          "postalCode":"04828"
       },
-      {  
+      {
          "email":"kjashaedd-3@klooblept.com",
          "firstName":"Kataldar-3",
          "postalCode":"04828"
@@ -201,19 +201,19 @@ POST /rest/v1/leads.json
 ### 回應
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "id":50,
          "status":"created"
       },
-      {  
+      {
          "id":51,
          "status":"created"
       },
-      {  
+      {
          "id":52,
          "status":"created"
       }
@@ -225,7 +225,7 @@ POST /rest/v1/leads.json
 
 依預設，會使用預設分割區。 您可以選擇指定`partitionName`引數，這只有在動作為`createOnly`或`createOrUpdate`時才有效。 若要讓`partitionName`做為其他重複資料刪除條件，它必須是自訂重複資料刪除規則中來源型別的一部分。 在更新作業期間，如果指定的資料分割中不存在潛在客戶，則會傳回錯誤。 如果僅限API的使用者沒有存取指定之分割區的許可權，則會傳回錯誤。
 
-使用`updateOnly`動作時，`id`欄位只能包含為引數，因為`id`是系統管理的唯一索引鍵。
+使用`id`動作時，`updateOnly`欄位只能包含為引數，因為`id`是系統管理的唯一索引鍵。
 
 要求也必須有`input`引數，這是潛在客戶記錄的陣列。 每個潛在客戶記錄都是一個JSON物件，具有任意數量的潛在客戶欄位。 記錄中包含的索引鍵對該記錄而言應該是唯一的，並且所有JSON字串都應該使用UTF-8編碼。 `externalCompanyId`欄位可用來將潛在客戶記錄連結至公司記錄。 `externalSalesPersonId`欄位可用來將潛在客戶記錄連結至銷售人員記錄。
 
@@ -417,8 +417,8 @@ GET /rest/v1/leads/schema/fields.json
 
 ## 建立欄位
 
-「建立銷售機會欄位」端點會在銷售機會物件上建立一或多個自訂欄位。 此端點提供的功能與Marketo EngageUI中可用的功能相當。 您可以使用此端點建立最多100個自訂欄位。
-請仔細考量您在使用API的Marketo Engage生產執行個體中建立的每個欄位。  欄位一旦建立就不能再刪除（只能隱藏）。 未使用欄位數量激增是壞做法，會增加執行個體的雜亂。
+「建立銷售機會欄位」端點會在銷售機會物件上建立一或多個自訂欄位。 此端點提供的功能與Marketo Engage UI中提供的功能相當。 您可以使用此端點建立最多100個自訂欄位。
+請仔細考慮您在使用API的Marketo Engage生產執行個體中建立的每個欄位。  欄位一旦建立就不能再刪除（只能隱藏）。 未使用欄位數量激增是壞做法，會增加執行個體的雜亂。
 
 必要的輸入引數是潛在客戶欄位物件的陣列。 每個物件包含一或多個屬性。 必要屬性為`displayName`、`name`和`dataType`，分別對應至欄位的UI顯示名稱、欄位的API名稱以及欄位型別。  您可以選擇指定`description`、`isHidden`、`isHtmlEncodingInEmail`和`isSensitive`。
 
@@ -474,7 +474,7 @@ POST /rest/v1/leads/schema/fields.json
 
 ## 更新欄位
 
-「更新潛在客戶欄位」端點會更新潛在客戶物件上的單一自訂欄位。 大部分情況下，使用Marketo EngageUI執行的欄位更新作業可使用API達成。 下表總結了幾項差異。
+「更新潛在客戶欄位」端點會更新潛在客戶物件上的單一自訂欄位。 大部分情況下，使用Marketo Engage UI執行的欄位更新操作，是可以使用API實現的。 下表總結了幾項差異。
 
 <table>
 <tbody>
@@ -700,7 +700,7 @@ POST /rest/v1/leads/push.json
 * 允許根據Cookie值關聯潛在客戶
 * 執行表單欄位驗證
 
-提交表單會遵循標準潛在客戶資料庫模式。 單一物件記錄會傳入POST請求JSON內文的所需輸入成員。 必要的`formId`成員包含目標Marketo表單識別碼。
+提交表單會遵循標準潛在客戶資料庫模式。 單一物件記錄會傳入POST請求的JSON本文的必要輸入成員。 必要的`formId`成員包含目標Marketo表單識別碼。
 
 選用的`programId`可用於指定要新增銷售機會的方案，和/或指定要新增方案成員自訂欄位的方案。 若已提供`programId`，則潛在客戶會新增至方案，而表單中呈現的任何方案成員欄位也會一併新增。 請注意，指定的程式必須與表單位於相同的工作區。 如果表單不包含方案成員自訂欄位且未提供`programId`，則潛在客戶不會新增至方案。 如果表單位在程式中，但未提供`programId`，則當表單中出現一或多個程式成員自訂欄位時，會使用該程式。
 
@@ -764,7 +764,7 @@ Content-Type: application/json
 }
 ```
 
-我們在這裡可以從Marketo EngageUI中看到對應的「填寫表單」活動詳細資料：
+我們在這裡可以從Marketo Engage UI中看到對應的「填寫表單」活動詳細資料：
 
 ![填寫表單UI](assets/fill_out_form_activity_details.png)
 
@@ -781,7 +781,7 @@ POST /rest/v1/leads/{id}/merge.json?leadId=1324
 ### 回應
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true
 }
@@ -804,7 +804,7 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 ### 回應
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true
 }
@@ -816,7 +816,7 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 您也可以根據靜態清單或計畫中的成員資格來擷取潛在客戶記錄。 此外，您可以擷取潛在客戶所屬的所有靜態清單、方案或智慧行銷活動。
 
 回應結構和選用引數與「依篩選型別取得銷售機會」的相同，不過filterType和filterValues不能與此API搭配使用。
-若要透過Marketo UI存取清單ID，請導覽至清單。 清單`id`位於靜態清單`https://app-**&#x200B;**.marketo.com/#ST1001A1`的URL中。 在此範例中，1001是清單的`id`。
+若要透過Marketo UI存取清單ID，請導覽至清單。 清單`id`位於靜態清單`https://app-****.marketo.com/#ST1001A1`的URL中。 在此範例中，1001是清單的`id`。
 
 ### 請求
 
@@ -827,14 +827,14 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
 ### 回應
 
 ```json
-{ 
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
    "nextPageToken":
 "PS5VL5WD4UOWGOUCJR6VY7JQO2KUXL7BGBYXL4XH4BYZVPYSFBAONP4V4KQKN4SSBS55U4LEMAKE6===",
     "result":[
        {
-            "id":50,  
+            "id":50,
             "email":"kjashaedd@klooblept.com",
             "firstName":"Kataldar",
              "postalCode":"04828"
@@ -843,11 +843,11 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
            "id":2343,
            "email":"kjashaedd@klooblept.com",
            "firstName":"Kataldar",
-           "postalCode":"04828" 
+           "postalCode":"04828"
        },
       {
            "id":88498,
-           "email":"kjashaedd@klooblept.com", 
+           "email":"kjashaedd@klooblept.com",
            "firstName":"Kataldar",
          "postalCode":"04828"
          }

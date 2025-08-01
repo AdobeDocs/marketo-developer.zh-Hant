@@ -3,7 +3,7 @@ title: 大量活動擷取
 feature: REST API
 description: 從Marketo批次處理活動資料。
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: a5b855691e7fb9e628e2d68fd14a8a6c689d6750
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '1332'
 ht-degree: 3%
@@ -116,14 +116,14 @@ POST /bulk/v1/activities/export/create.json
 ```
 
 ```json
-{ 
+{
    "format": "CSV",
-   "filter": { 
-      "createdAt": { 
+   "filter": {
+      "createdAt": {
          "startAt": "2017-07-01T23:59:59-00:00",
          "endAt": "2017-07-31T23:59:59-00:00"
       },
-      "activityTypeIds": [ 
+      "activityTypeIds": [
          1,
          12,
          13
@@ -205,7 +205,7 @@ GET /bulk/v1/activities/export/{exportId}/status.json
 
 狀態列位可能會以下列其中一個值回應：
 
-- 已建立
+- 建立日期
 - 已排入佇列
 - 處理中
 - 已取消
@@ -232,7 +232,7 @@ marketoGUID,leadId,activityDate,activityTypeId,campaignId,primaryAttributeValueI
 783961924,5316669,2022-02-13T14:27:21Z,104,11614,2333,Nurture Automation,"{""Program Member ID"":3240306,""Acquired By"":false,""Old Status"":""Not in Program"",""New Status ID"":27,""Success"":false,""New Status"":""Member"",""Old Status ID"":26}"
 ```
 
-為了支援擷取資料的部分擷取和便於恢復擷取，檔案端點可選擇性地支援型別`bytes`的HTTP標頭`Range`。  如果未設定標頭，則會傳回所有內容。  您可以閱讀更多有關搭配Marketo [大量擷取](bulk-extract.md)使用Range標頭的資訊。
+為了支援擷取資料的部分擷取和便於恢復擷取，檔案端點可選擇性地支援型別`Range`的HTTP標頭`bytes`。  如果未設定標頭，則會傳回所有內容。  您可以閱讀更多有關搭配Marketo [大量擷取](bulk-extract.md)使用Range標頭的資訊。
 
 ## 取消工作
 

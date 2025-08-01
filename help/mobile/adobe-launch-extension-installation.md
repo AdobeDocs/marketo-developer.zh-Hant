@@ -1,11 +1,11 @@
 ---
 title: '[!DNL Adobe Launch]延伸模組安裝'
 feature: Mobile Marketing
-description: '[!DNL Adobe Launch]延伸模組安裝概述'
+description: '[!DNL Adobe Launch]擴充功能安裝總覽'
 exl-id: d71b7cd7-309b-4882-9bba-7daaaa5ef32d
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '665'
+source-wordcount: '664'
 ht-degree: 0%
 
 ---
@@ -16,7 +16,7 @@ ht-degree: 0%
 
 ## 先決條件
 
-1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）
+1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (取得您的應用程式秘密金鑰和Munchkin ID)
 1. [在 [!DNL Adobe Launch] 入口網站](https://experience.adobe.com/#/@amc/data-collection/home)中設定屬性
 1. 設定[!DNL Adobe Launch]入口網站中屬性的應用程式秘密金鑰和Munchkin ID
 1. [設定推播通知](push-notifications.md) （選擇性）
@@ -76,8 +76,8 @@ func applicationDidBecomeActive(_ application: UIApplication)
 
 ```
 #ifdef __IPHONE_10_0
--(BOOL)application:(UIApplication *)application 
-           openURL:(NSURL *)url 
+-(BOOL)application:(UIApplication *)application
+           openURL:(NSURL *)url
            options:(NSDictionary *)options{
     return [[ALMarketo sharedInstance] application:application
                                          openURL:url
@@ -151,23 +151,23 @@ ProGuard組態（選購）
 
 ## Firebase Cloud Messaging支援
 
-適用於Android的MME Software Development Kit (SDK)已更新至更現代、穩定及可擴充的架構，其中包含更優異的彈性和新工程功能，適合您的Android應用程式開發人員使用。
+適用於Android的MME Software Development Kit (SDK)已更新至更現代、穩定及可擴充的架構，其中包含更優異的彈性和全新的工程功能，適合您的Android應用程式開發人員使用。
 
-Android應用程式開發人員現在可直接將Google的[Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) (FCM)與此SDK搭配使用。
+Android應用程式開發人員現在可以直接將Google的[Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) (FCM)與此SDK搭配使用。
 
 ### 新增FCM至您的應用程式
 
-1. 在Android應用程式中整合最新的Marketo Android SDK。  步驟可在[GitHub](https://github.com/Marketo/android-sdk)取得。
+1. 在Android應用程式中整合最新的Marketo Android SDK 。  步驟可在[GitHub](https://github.com/Marketo/android-sdk)取得。
 1. 在Firebase主控台上設定Firebase應用程式。
-   1. 在[&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
-      1. 在[Firebase主控台](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/)中，選取&#x200B;**[!UICONTROL Add Project]**。
+   1. 在[](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
+      1. 在[Firebase主控台](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)中，選取&#x200B;**[!UICONTROL Add Project]**。
       1. 從現有Google Cloud專案清單中選取您的GCM專案，然後選取&#x200B;**[!UICONTROL Add Firebase]**。
       1. 在Firebase歡迎畫面中，選取&#x200B;**[!UICONTROL Add Firebase to your Android App]**。
       1. 提供您的封裝名稱和SHA-1，然後選取&#x200B;**[!UICONTROL Add App]**。 已下載您Firebase應用程式的新`google-services.json`檔案。
       1. 選取&#x200B;**[!UICONTROL Continue]**&#x200B;並依照在Android Studio中新增Google Services外掛程式的詳細指示操作。
 
-   1. 在[!UICONTROL Project Overview]中導覽至&#x200B;**[!UICONTROL Project Settings]**
-      1. 按一下「**[!UICONTROL General]**」標籤。 下載`google-services.json`檔案。
+   1. 在&#x200B;**[!UICONTROL Project Settings]**&#x200B;中導覽至[!UICONTROL Project Overview]
+      1. 按一下「**[!UICONTROL General]**」標籤。 下載 `google-services.json` 檔案。
       1. 按一下「**[!UICONTROL Cloud Messaging]**」標籤。 複製[!UICONTROL Server Key]和[!UICONTROL Sender ID]。 提供這些[!UICONTROL Server Key]和[!UICONTROL Sender ID]給Marketo。
    1. 在Android應用程式中設定FCM變更
       1. 切換至Android Studio中的專案檢視，以檢視您的專案根目錄
@@ -187,13 +187,13 @@ Android應用程式開發人員現在可直接將Google的[Firebase Cloud Messag
             ```
             dependencies {
               compile 'com.google.firebase:firebase-core:17.4.0'
-            } 
-            // Add to the bottom of the file 
+            }
+            // Add to the bottom of the file
             apply plugin: 'com.google.gms.google-services'
             ```
 
          1. 最後，按一下ID中所顯示列中的&#x200B;**[!UICONTROL Sync now]**
-   1. 編輯應用程式的資訊清單FCM SDK會自動新增所有必要的許可權和必要的接收器功能。 請務必從應用程式的資訊清單中移除下列過時的（且可能有害，因為它們可能會導致訊息重複）元素：
+   1. 編輯應用程式的資訊清單FCM SDK會自動新增所有必要許可權和必要的接收器功能。 請務必從應用程式的資訊清單中移除下列過時的（且可能有害，因為它們可能會導致訊息重複）元素：
 
       ```xml
       <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -209,7 +209,7 @@ Android應用程式開發人員現在可直接將Google的[Firebase Cloud Messag
         <intent-filter>
           <action android:name="com.google.android.c2dm.intent.RECEIVE" />
           <category android:name="<your-package-name> />
-        </intent-filter> 
+        </intent-filter>
       </receiver>
       ```
 
@@ -218,17 +218,17 @@ Android應用程式開發人員現在可直接將Google的[Firebase Cloud Messag
 
 關於Firebase雲端訊息支援的常見問題。
 
-**問：我可以在哪裡找到更新至MME SDK最新版本的指示？在Marketo開發人員網站[此處](installation.md)找到**&#x200B;指示。
+**問：我可以在哪裡找到更新至MME SDK最新版本的指示？在Marketo開發人員網站**&#x200B;此處[找到](installation.md)指示。
 
-**問：更新至最新版SDK需要我將Android應用程式的更新版本發佈給現有的使用者嗎？**&#x200B;否
+**問：更新至SDK最新版本會要求我將Android應用程式的更新版本發佈給現有的使用者嗎？**&#x200B;否
 
 **問：這對已發佈與Marketo Android SDK整合之Android應用程式的現有MME客戶有何影響？**&#x200B;他們可以將Android上的現有GCM使用者端應用程式移轉至Firebase Cloud Messaging (FCM)，如下所示：
 
-1. 在[Firebase主控台](https://accounts.google.com/ServiceLogin?passive=1209600&amp;osid=1&amp;continue=https://console.firebase.google.com/&amp;followup=https://console.firebase.google.com/)中，選取&#x200B;**[!UICONTROL Add Project]**。
+1. 在[Firebase主控台](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)中，選取&#x200B;**[!UICONTROL Add Project]**。
 1. 從現有Google Cloud專案清單中選取您的GCM專案，然後選取&#x200B;**[!UICONTROL Add Firebase]**。
 1. 在Firebase歡迎畫面中，選取&#x200B;**[!UICONTROL Add Firebase to your Android App]**。
 1. 提供您的封裝名稱和SHA-1，然後選取&#x200B;**[!UICONTROL Add App]**。 適用於您的新google-services.json檔案
 1. Firebase應用程式已下載。
 1. 選取&#x200B;**[!UICONTROL Continue]**&#x200B;並依照在Android Studio中新增Google Services外掛程式的詳細指示操作。
 
-**問：我們可以鎖定使用GCM應用程式的舊Marketo SDK所建立的潛在客戶嗎？**&#x200B;是。 所有使用Marketo SDK建立的銷售機會都可以定位為傳送推播通知。
+**問：我們可以鎖定使用GCM應用程式的舊版Marketo SDK所建立的潛在客戶嗎？**&#x200B;是。 所有使用Marketo SDK建立的銷售機會都可以定位為傳送推播通知。

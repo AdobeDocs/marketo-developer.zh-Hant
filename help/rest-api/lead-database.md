@@ -3,9 +3,9 @@ title: 潛在客戶資料庫
 feature: REST API, Database
 description: 操控主要銷售機會資料庫。
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '1345'
+source-wordcount: '1342'
 ht-degree: 0%
 
 ---
@@ -44,79 +44,79 @@ Lead Database物件包括：
 
 ## 說明
 
-針對銷售機會、公司、商機、角色、銷售人員和自訂物件，提供說明API。 呼叫此項會擷取物件的中繼資料，以及可用於更新和查詢的欄位清單。 說明是設計與Marketo適當整合的重要一環。 它提供豐富的中繼資料，說明物件可以和無法互動的方式，以及如何建立、更新和查詢物件。 除了Describe Lead之外，每個都傳回`dedupeFields`回應引數中`deduplication`可用的金鑰清單。 欄位清單可做為索引鍵以查詢`searchableFields`回應引數。
+針對銷售機會、公司、商機、角色、銷售人員和自訂物件，提供說明API。 呼叫此項會擷取物件的中繼資料，以及可用於更新和查詢的欄位清單。 說明是設計與Marketo適當整合的重要一環。 它提供豐富的中繼資料，說明物件可以和無法互動的方式，以及如何建立、更新和查詢物件。 除了Describe Lead之外，每個都傳回`deduplication`回應引數中`dedupeFields`可用的金鑰清單。 欄位清單可做為索引鍵以查詢`searchableFields`回應引數。
 
 ```
 GET /rest/v1/opportunities/roles/describe.json
 ```
 
 ```json
-{  
+{
    "requestId":"185d6#14b51985ff0",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "name":"opportunityRole",
          "displayName":"Opportunity Role",
          "createdAt":"2015-02-03T22:36:23Z",
          "updatedAt":"2015-02-03T22:36:24Z",
          "idField":"marketoGUID",
-         "dedupeFields":[  
+         "dedupeFields":[
             "externalOpportunityId",
             "leadId",
             "role"
          ],
-         "searchableFields":[  
-            [  
+         "searchableFields":[
+            [
                "externalOpportunityId",
                "leadId",
                "role"
             ],
-            [  
+            [
                "marketoGUID"
             ],
-            [  
+            [
                "leadId"
             ],
-            [  
+            [
                "externalOpportunityId"
             ]
          ],
-         "fields":[  
-            {  
+         "fields":[
+            {
                "name":"marketoGUID",
                "displayName":"Marketo GUID",
                "dataType":"string",
                "length":36,
                "updateable":false
             },
-            {  
+            {
                "name":"externalOpportunityId",
                "displayName":"External Opportunity Id",
                "dataType":"string",
                "length":50,
                "updateable":false
             },
-            {  
+            {
                "name":"leadId",
                "displayName":"Lead Id",
                "dataType":"integer",
                "updateable":false
             },
-            {  
+            {
                "name":"role",
                "displayName":"Role",
                "dataType":"string",
                "length":50,
                "updateable":false
             },
-            {  
+            {
                "name":"isPrimary",
                "displayName":"Is Primary",
                "dataType":"boolean",
                "updateable":true
             },
-            {  
+            {
                "name":"externalCreatedDate",
                "displayName":"External Created Date",
                "dataType":"datetime",
@@ -140,12 +140,12 @@ Lead Database物件都共用基本模式，以查詢簡單索引鍵，其中僅�
 GET /rest/v1/{type}.json?filterType={field to query}&filterValues={comma-separated list of possible values}
 ```
 
-對於潛在客戶以外的所有物件，您可以從對應的說明呼叫的searchableFields中選取要查詢的{fields}，並撰寫最多300個值的逗號分隔清單。 也有這些選用的查詢引數：
+對於潛在客戶以外的所有物件，您可以從對應的描述呼叫的searchableFields中選取{field to query}，並撰寫最多300個值的逗號分隔清單。 也有這些選用的查詢引數：
 
 - `batchSize` — 要傳回的結果數的整數計數。 預設和最大值為300。
 - `nextPageToken` — 從先前呼叫傳回的分頁語彙基元。 如需詳細資訊，請參閱[分頁權杖](paging-tokens.md)。
 - `fields` — 以逗號分隔的欄位名稱清單，可針對每個記錄傳回。 如需有效欄位清單，請參閱對應的說明。 如果要求特定欄位但未傳回，則值會隱含為空值。
-- `_method` — 用於使用POSTHTTP方法提交查詢。 請參閱下方的_method=GET一節以取得使用方式。
+- `_method` — 用於使用POST HTTP方法提交查詢。 請參閱下方的_method=GET一節以取得使用方式。
 
 舉個簡單的例子，讓我們來看看查詢商機：
 
@@ -154,11 +154,11 @@ GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fa ",
          "externalOpportunityId":"19UYA31581L000000",
@@ -167,7 +167,7 @@ GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47
          "amount":"1604.47",
          "source":"Inbound Sales Call/Email"
       },
-      {  
+      {
          "seq":1,
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fc ",
          "externalOpportunityId":"29UYA31581L000000",
@@ -186,7 +186,7 @@ GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47
 
 ### 長URI
 
-有時，例如透過GUID進行查詢時，您的URI可能會很長，並且超過REST服務所允許的8KB。 在此情況下，您必須使用HTTPPOST方法而非GET，並新增查詢引數`_method=GET`。 此外，其餘的查詢引數必須以「application/x-www-form-urlencoded」字串形式傳遞至POST內文中，並傳遞相關聯的Content-type標頭。
+有時，例如透過GUID進行查詢時，您的URI可能會很長，並且超過REST服務所允許的8KB。 在此情況下，您必須使用HTTP POST方法而非GET，並新增查詢引數`_method=GET`。 此外，其餘的查詢引數必須以「application/x-www-form-urlencoded」字串形式傳遞至POST內文中，並傳遞相關聯的Content-type標頭。
 
 ```
 POST /rest/v1/opportunities.json?_method=GET
@@ -204,33 +204,33 @@ filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fa&dff23271-f9
 
 ### 複合鍵
 
-查詢複合索引鍵的模式與簡單索引鍵不同，因為它需要提交具有JSON主體的POST。 這並非所有情況都需要，只有在具有多個欄位的`dedupeFields`選項已用作`filterType`的情況下。 目前複合金鑰僅供機會角色及某些自訂物件使用。 讓我們看一下具有來自`dedupeFields`的複合索引鍵的商機角色查詢範例：
+查詢複合索引鍵的模式與簡單索引鍵不同，因為這需要提交具有JSON本文的POST。 這並非所有情況都需要，只有在具有多個欄位的`dedupeFields`選項已用作`filterType`的情況下。 目前複合金鑰僅供機會角色及某些自訂物件使用。 讓我們看一下具有來自`dedupeFields`的複合索引鍵的商機角色查詢範例：
 
 ```
 POST /rest/v1/opportunities/roles.json?_method=GET
 ```
 
 ```json
-{  
+{
    "filterType":"dedupeFields",
-   "fields":[  
+   "fields":[
       "marketoGuid",
       "externalOpportunityId",
       "leadId",
       "role"
    ],
-   "input":[  
-      {  
+   "input":[
+      {
         "externalOpportunityId":"Opportunity1",
         "leadId": 1,
         "role": "Captain"
       },
-      {  
+      {
         "externalOpportunityId":"Opportunity2",
         "leadId": 1872,
         "role": "Commander"
       },
-      {  
+      {
         "externalOpportunityId":"Opportunity3",
         "leadId": 273891,
         "role": "Lieutenant Commander"
@@ -254,18 +254,18 @@ POST /rest/v1/opportunities.json
 ```
 
 ```json
-{  
+{
    "action":"createOrUpdate",
    "dedupeBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "externalOpportunityId":"19UYA31581L000000",
          "name":"Chairs",
          "description":"Chairs",
          "amount":"1604.47",
          "source":"Inbound Sales Call/Email"
       },
-      {  
+      {
          "externalOpportunityId":"29UYA31581L000000",
          "name":"Big Dog Day Care-Phase12",
          "description":"Big Dog Day Care-Phase12",
@@ -277,16 +277,16 @@ POST /rest/v1/opportunities.json
 ```
 
 ```json
-{  
+{
    "requestId":"e42b#14272d07d78",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "seq":0,
          "status":"updated",
          "marketoGUID":"dff23271-f996-47d7-984f-f2676861b5fb"
       },
-      {  
+      {
          "seq":1,
          "status":"created",
          "marketoGUID":"cff23271-f996-47d7-984f-f2676861b5fb"
@@ -295,7 +295,7 @@ POST /rest/v1/opportunities.json
 }
 ```
 
-除了潛在客戶API之外，建立或更新潛在客戶資料庫物件的呼叫會在`result`陣列中的每個物件中傳回`seq`欄位。 列出的數字與請求中更新記錄的順序相對應。 每個專案都會傳回物件型別`idField`的值，以及`status`。 狀態列位會指出「已建立」、「已更新」或「已略過」其中之一。  如果略過狀態，則也會有對應的「原因」陣列，其中包含一或多個原因物件，其中包含程式碼和訊息，指出略過記錄的原因。 如需其他詳細資訊，請參閱[錯誤碼](error-codes.md)。
+除了潛在客戶API之外，建立或更新潛在客戶資料庫物件的呼叫會在`seq`陣列中的每個物件中傳回`result`欄位。 列出的數字與請求中更新記錄的順序相對應。 每個專案都會傳回物件型別`idField`的值，以及`status`。 狀態列位會指出「已建立」、「已更新」或「已略過」其中之一。  如果略過狀態，則也會有對應的「原因」陣列，其中包含一或多個原因物件，其中包含程式碼和訊息，指出略過記錄的原因。 如需其他詳細資訊，請參閱[錯誤碼](error-codes.md)。
 
 ### 刪除
 
@@ -306,16 +306,16 @@ POST /rest/v1/customobjects/{name}/delete.json
 ```
 
 ```json
-{  
+{
    "deleteBy":"dedupeFields",
-   "input":[  
-      {  
+   "input":[
+      {
          "vin":"19UYA31581L000000"
       },
-      {  
+      {
          "vin":"29UYA31581L000000"
       },
-      {  
+      {
          "vin":"39UYA31581L000000"
       }
    ]

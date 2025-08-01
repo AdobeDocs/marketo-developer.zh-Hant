@@ -3,10 +3,10 @@ title: getleadchanges
 feature: SOAP
 description: getLeadChanges SOAP呼叫
 exl-id: 23445684-d8d9-407b-8f19-cb69e806795c
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '402'
-ht-degree: 1%
+ht-degree: 3%
 
 ---
 
@@ -22,7 +22,7 @@ ht-degree: 1%
 
 在SOAP API 2_2版之後，您可以包含`leadSelector`。
 
-對於`LastUpdateAtSelector`，`oldestUpdatedAt`值將對應至`startPosition`中的`oldestCreatedAt`值。 而`latestUpdatedAt`值會對應至`startPosition`中的`latestCreatedAt`值。
+對於`LastUpdateAtSelector`，`oldestUpdatedAt`值將對應至`oldestCreatedAt`中的`startPosition`值。 而`latestUpdatedAt`值會對應至`latestCreatedAt`中的`startPosition`值。
 
 注意： `LeadKeySelector`中支援的潛在客戶數量限製為100。 如果銷售機會數量超過100，API會擲回錯誤的引數例外狀況並傳回SOAP錯誤。
 
@@ -31,14 +31,14 @@ ht-degree: 1%
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
 | activityFilter->includeAttributes->activityType | 選用（已棄用）改用`activityNameFilter` | 將回應限製為僅包含指定的活動型別。 請參閱WSDL以瞭解所有活動型別。 |
-| activityFilter->excludeAttributes->activityType | 可選 | 限制回應，以排除指定的活動型別。 請參閱WSDL以瞭解所有活動型別。 注意：您無法在同一呼叫中同時指定`includeAttributes`和`excludeAttributes`。 |
-| activityNameFilter | 可選 | 將回應限製為僅包含指定的活動篩選器。 |
-| batchSize | 可選 | 要傳回的最大記錄數。 系統限製為1,000或`batchSize`，以較小者為準。 |
+| activityFilter->excludeAttributes->activityType | 選用 | 限制回應，以排除指定的活動型別。 請參閱WSDL以瞭解所有活動型別。 注意：您無法在同一呼叫中同時指定`includeAttributes`和`excludeAttributes`。 |
+| activityNameFilter | 選用 | 將回應限製為僅包含指定的活動篩選器。 |
+| batchSize | 選用 | 要傳回的最大記錄數。 系統限製為1,000或`batchSize`，以較小者為準。 |
 | startPosition | 必要 | 用於分頁顯示大量活動回應。 |
-| startPosition->offset | 可選 | 位移值是由先前的呼叫回應欄位newStartPosition->offset傳回。 |
-| startPosition->oldestCreatedAt | 可選 | 用於篩選結果以僅包含自oldestCreatedAt以來建立的潛在客戶的時間戳記。 注意：您可以使用`LastUpdateAtSelector->oldestUpdatedAt`時間戳記來指定`oldestCreatedAt`。 |
-| startPosition->activityCreatedAt | 可選 | 用於篩選結果以僅包含自activityCreatedAt以來具有活動的潛在客戶的時間戳記。 注意：您可以使用`LastUpdateAtSelector->latestUpdatedAt`時間戳記來指定`activityCreatedAt`。 |
-| 銷售機會選擇器 | 可選 | 可以是下列3種型別之一： `LeadKeySelector`、`StaticListSelector`、`LastUpdateAtSelector` |
+| startPosition->offset | 選用 | 位移值是由先前的呼叫回應欄位newStartPosition->offset傳回。 |
+| startPosition->oldestCreatedAt | 選用 | 用於篩選結果以僅包含自oldestCreatedAt以來建立的潛在客戶的時間戳記。 注意：您可以使用`LastUpdateAtSelector->oldestUpdatedAt`時間戳記來指定`oldestCreatedAt`。 |
+| startPosition->activityCreatedAt | 選用 | 用於篩選結果以僅包含自activityCreatedAt以來具有活動的潛在客戶的時間戳記。 注意：您可以使用`LastUpdateAtSelector->latestUpdatedAt`時間戳記來指定`activityCreatedAt`。 |
+| 銷售機會選擇器 | 選用 | 可以是下列3種型別之一： `LeadKeySelector`、`StaticListSelector`、`LastUpdateAtSelector` |
 | LeadKeySelector： leadSelector->keyType | 必要 | 您要查詢的ID型別。 值包括`IDNUM`、`COOKIE`、`EMAIL`、`LEADOWNEREMAIL`、`SFDCACCOUNTID`、`SFDCCONTACTID`、`SFDCLEADID`、`SFDCLEADOWNERID`、`SFDCOPPTYID`。 |
 | LeadKeySelector： leadSelector->keyValues->stringItem | 必要 | 索引鍵值清單。 即&quot;lead@email.com&quot; |
 | StaticListSelector： leadSelector->staticListName | `leadSelector->staticListId`存在時為選用 | 靜態清單的名稱 |
@@ -497,14 +497,14 @@ $marketoSoapEndPoint    = "";  // CHANGE ME
 $marketoUserId      = "";  // CHANGE ME
 $marketoSecretKey   = ""; // CHANGE ME
 $marketoNameSpace   = "http://www.marketo.com/mktows/";
- 
+
 // Create Signature
 $dtzObj = new DateTimeZone("America/Los_Angeles");
 $dtObj  = new DateTime('now', $dtzObj);
 $timeStamp = $dtObj->format(DATE_W3C);
 $encryptString = $timeStamp . $marketoUserId;
 $signature = hash_hmac('sha1', $encryptString, $marketoSecretKey);
- 
+
 // Create SOAP Header
 $attrs = new stdClass();
 $attrs->mktowsUserId = $marketoUserId;
@@ -515,7 +515,7 @@ $options = array("connection_timeout" => 600, "location" => $marketoSoapEndPoint
 if ($debug) {
   $options["trace"] = 1;
 }
- 
+
 // Create Request
 $params = new stdClass();
 $filter = new stdClass();
@@ -564,73 +564,73 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.Marshaller;
 import java.util.GregorianCalendar;
- 
- 
+
+
 public class GetLeadChanges {
- 
+
     public static void main(String[] args) {
         System.out.println("Executing Get Lead Changes");
         try {
             URL marketoSoapEndPoint = new URL("CHANGE ME" + "?WSDL");
             String marketoUserId = "CHANGE ME";
             String marketoSecretKey = "CHANGE ME";
-             
+
             QName serviceName = new QName("http://www.marketo.com/mktows/", "MktMktowsApiService");
             MktMktowsApiService service = new MktMktowsApiService(marketoSoapEndPoint, serviceName);
             MktowsPort port = service.getMktowsApiSoapPort();
-             
+
             // Create Signature
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             String text = df.format(new Date());
-            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);           
+            String requestTimestamp = text.substring(0, 22) + ":" + text.substring(22);
             String encryptString = requestTimestamp + marketoUserId;
-             
+
             SecretKeySpec secretKey = new SecretKeySpec(marketoSecretKey.getBytes(), "HmacSHA1");
             Mac mac = Mac.getInstance("HmacSHA1");
             mac.init(secretKey);
             byte[] rawHmac = mac.doFinal(encryptString.getBytes());
             char[] hexChars = Hex.encodeHex(rawHmac);
-            String signature = new String(hexChars); 
-             
+            String signature = new String(hexChars);
+
             // Set Authentication Header
             AuthenticationHeader header = new AuthenticationHeader();
             header.setMktowsUserId(marketoUserId);
             header.setRequestTimestamp(requestTimestamp);
             header.setRequestSignature(signature);
-             
+
             // Create Request
             ParamsGetLeadChanges request = new ParamsGetLeadChanges();
- 
+
             ObjectFactory objectFactory = new ObjectFactory();
             JAXBElement<Integer> batchSize = objectFactory.createParamsGetLeadActivityBatchSize(10);
             request.setBatchSize(batchSize);
-             
+
             ArrayOfString activities = new ArrayOfString();
             activities.getStringItems().add("Visit Webpage");
             activities.getStringItems().add("Click Link");
-            
+
             JAXBElement<ArrayOfString> activityFilter = objectFactory.createParamsGetLeadChangesActivityNameFilter(activities);
             request.setActivityNameFilter(activityFilter);
-             
+
             // Create oldestCreateAt timestamp from 5 days ago
             GregorianCalendar gc = new GregorianCalendar();
             gc.setTimeInMillis(new Date().getTime());
             gc.add( GregorianCalendar.DAY_OF_YEAR, -5);
-             
+
             DatatypeFactory factory = DatatypeFactory.newInstance();
             JAXBElement<XMLGregorianCalendar> oldestCreateAtValue =objectFactory.createStreamPositionOldestCreatedAt(factory.newXMLGregorianCalendar(gc));
- 
+
             StreamPosition sp = new StreamPosition();
             sp.setOldestCreatedAt(oldestCreateAtValue);
             request.setStartPosition(sp);
-             
+
             SuccessGetLeadChanges result = port.getLeadChanges(request, header);
- 
+
             JAXBContext context = JAXBContext.newInstance(SuccessGetLeadChanges.class);
             Marshaller m = context.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(result, System.out);
-             
+
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -659,9 +659,9 @@ hashedsignature = OpenSSL::HMAC.hexdigest(digest, marketoSecretKey, encryptStrin
 requestSignature = hashedsignature.to_s
 
 #Create SOAP Header
-headers = { 
-    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,                     
-    "requestTimestamp"  => requestTimestamp 
+headers = {
+    'ns1:AuthenticationHeader' => { "mktowsUserId" => mktowsUserId, "requestSignature" => requestSignature,
+    "requestTimestamp"  => requestTimestamp
     }
 }
 

@@ -3,7 +3,7 @@ title: 推播通知
 feature: Mobile Marketing
 description: 啟用Marketo Mobile的推播通知
 exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '1329'
 ht-degree: 0%
@@ -33,7 +33,7 @@ ht-degree: 0%
 1. 建立並上傳CSR以產生推送憑證。![](assets/push-ssl.png)
 1. 將憑證下載到本機電腦，然後按兩下以安裝。![](assets/certificate-download.png)
 1. 開啟「鑰匙圈存取」，以滑鼠右鍵按一下憑證，然後將2個專案匯出至`.p12`檔案。![key_chain](assets/key-chain.png)
-1. 透過MarketoAdmin Console上傳此檔案以設定通知。
+1. 透過Marketo Admin Console上傳此檔案以設定通知。
 1. 更新應用程式布建設定檔。
 
 ### 在xCode中啟用推播通知
@@ -108,7 +108,7 @@ UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotification
 
 ```
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-            
+
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound,    .badge]) { granted, error in
             if let error = error {
                 print("\(error.localizedDescription)")
@@ -118,7 +118,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
                 }
             }
         }
-        
+
         return true
 }
 ```
@@ -216,7 +216,7 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
 >[!TAB Swift]
 
 ```
-func userNotificationCenter(_ center: UNUserNotificationCenter, 
+func userNotificationCenter(_ center: UNUserNotificationCenter,
             willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (
     UNNotificationPresentationOptions) -> Void) {
     completionHandler([.alert, .sound,.badge])
@@ -348,7 +348,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
    }
    ```
 
-   **附註** — 如果使用Adobe副檔名，請新增如下
+   **注意** — 如果使用Adobe擴充功能，請新增如下
 
    ```java
    import com.marketo.Marketo;
@@ -371,7 +371,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
    }
    ```
 
-**注意**： FCM SDK會自動新增所有必要的許可權以及必要的接收器功能。 如果您使用舊版SDK，請務必從應用程式的資訊清單中移除下列過時的（且可能有害，因為它們可能會導致訊息重複）元素
+**注意**： FCM SDK會自動新增所有必要的許可權以及必要的接收者功能。 如果您使用舊版SDK，請務必從應用程式的資訊清單中移除下列過時的（且可能有害，因為它們可能會導致訊息重複）元素
 
 ```xml
 <receiver android:name="com.marketo.MarketoBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
@@ -430,13 +430,13 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
    config.setNotificationLargeIcon(bitmap);
    
    // Required icon Resource ID
-   config.setNotificationSmallIcon(R.drawable.notification_small_icon); 
+   config.setNotificationSmallIcon(R.drawable.notification_small_icon);
    
-   // Set the configuration 
+   // Set the configuration
    //Use the static methods on ALMarketo class when using Adobe Extension
-   Marketo.getInstance(context).setNotificationConfig(config); 
+   Marketo.getInstance(context).setNotificationConfig(config);
    
-   // Get the configuration set 
+   // Get the configuration set
    Marketo.getInstance(context).getNotificationConfig();
    ```
 

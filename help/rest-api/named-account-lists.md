@@ -3,7 +3,7 @@ title: 具名帳戶清單
 feature: REST API
 description: 設定具名帳戶清單。
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '696'
 ht-degree: 2%
@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [具名帳戶列出端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-Marketo中的[具名帳戶清單](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/target-account-management/target/account-lists)代表具名帳戶的集合。 它們可用於多種情況，包括分類、資料擴充和智慧型行銷活動篩選。 具名帳戶清單API允許從遠端管理這些清單資產及其成員資格。
+Marketo中的[具名帳戶清單](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists)代表具名帳戶的集合。 它們可用於多種情況，包括分類、資料擴充和智慧型行銷活動篩選。 具名帳戶清單API允許從遠端管理這些清單資產及其成員資格。
 `Content`
 
 ## 權限
@@ -28,11 +28,11 @@ Marketo中的[具名帳戶清單](https://experienceleague.adobe.com/zh-hant/doc
 
 | 名稱 | 資料類型 | 可更新 | 附註 |
 |---|---|---|---|
-| marketoGUID | 字串 | 假 | 具名帳戶清單的唯一字串識別碼。 此欄位由系統管理，不允許在建立記錄時作為欄位。 「dedupeBy」：「idField」執行建立或更新時所使用的欄位。 |
-| 名稱 | 字串 | 真 | 清單的名稱。 「dedupeBy」在執行建立或更新時所使用的欄位：「dedupeFields」。 |
-| createdAt | 日期時間 | 假 | 建立清單的日期時間。 此欄位由系統管理，在建立或更新記錄時不允許作為欄位。 |
-| 更新時間 | 日期時間 | 假 | 清單最近更新的日期時間。 此欄位由系統管理，在建立或更新記錄時不允許作為欄位。 |
-| 類型 | 字串 | 假 | 清單型別。 的值可能是「預設」或「外部」。 外部清單是由CRM帳戶檢視建立的清單。 |
+| marketoGUID | 字串 | False | 具名帳戶清單的唯一字串識別碼。 此欄位由系統管理，不允許在建立記錄時作為欄位。 「dedupeBy」：「idField」執行建立或更新時所使用的欄位。 |
+| 名稱 | 字串 | True | 清單的名稱。 「dedupeBy」在執行建立或更新時所使用的欄位：「dedupeFields」。 |
+| createdAt | 日期時間 | False | 建立清單的日期時間。 此欄位由系統管理，在建立或更新記錄時不允許作為欄位。 |
+| 更新時間 | 日期時間 | False | 清單最近更新的日期時間。 此欄位由系統管理，在建立或更新記錄時不允許作為欄位。 |
+| 類型 | 字串 | False | 清單型別。 的值可能是「預設」或「外部」。 外部清單是由CRM帳戶檢視建立的清單。 |
 
 
 ## 查詢
@@ -44,11 +44,11 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
 ```
 
 ```json
-{ 
+{
    "requestId": "e42b#14272d07d78",
    "success": true,
-   "result": [ 
-      { 
+   "result": [
+      {
          "seq": 0,
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb",
          "name": "Saas List",
@@ -57,7 +57,7 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
          "type": "default",
          "updateable": true
       },
-      { 
+      {
          "seq": 1,
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fc",
          "name": "My Account List",
@@ -76,21 +76,21 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
 
 端點允許兩種標準動作型別：「createOnly」和「updateOnly」。  `action defaults`為「createOnly」。
 
-如果動作為`updateOnly`，則可指定選擇性`dedupeBy parameter`。  允許的值是&quot;dedupeFields&quot; （對應至&quot;name&quot;）或&quot;idField&quot; （對應至&quot;marketoGUID&quot;）。  在`createOnly`模式中，`dedupeBy`欄位僅允許&quot;name&quot;。 您一次最多可以提交300筆記錄。
+如果動作為`dedupeBy parameter`，則可指定選擇性`updateOnly`。  允許的值是&quot;dedupeFields&quot; （對應至&quot;name&quot;）或&quot;idField&quot; （對應至&quot;marketoGUID&quot;）。  在`createOnly`模式中，`dedupeBy`欄位僅允許&quot;name&quot;。 您一次最多可以提交300筆記錄。
 
 ```
 POST /rest/v1/namedAccountLists.json
 ```
 
 ```json
-{ 
+{
    "action": "createOnly",
    "dedupeBy": "dedupeFields",
-   "input": [ 
-      { 
+   "input": [
+      {
          "name": "SAAS List"
       },
-      { 
+      {
          "name": "Manufacturing (Domestic)"
       }
    ]
@@ -98,16 +98,16 @@ POST /rest/v1/namedAccountLists.json
 ```
 
 ```json
-{ 
+{
    "requestId": "e42b#14272d07d78",
    "success": true,
-   "result": [ 
-      { 
+   "result": [
+      {
          "seq": 0,
          "status": "created",
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb"
       },
-      { 
+      {
          "seq": 1,
          "status": "created",
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fc"
@@ -125,16 +125,16 @@ POST /rest/v1/namedAccountLists/delete.json
 ```
 
 ```json
-{ 
+{
    "deleteBy": "dedupeFields",
-   "input": [ 
-      { 
+   "input": [
+      {
          "name": "Saas List"
       },
-      { 
+      {
          "name": "B2C List"
       },
-      { 
+      {
          "name": "Launchpoint Partner List"
       }
    ]
@@ -142,25 +142,25 @@ POST /rest/v1/namedAccountLists/delete.json
 ```
 
 ```json
-{ 
+{
    "requestId": "e42b#14272d07d78",
    "success": true,
-   "result": [ 
-      { 
+   "result": [
+      {
          "seq": 0,
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb",
          "status": "deleted"
       },
-      { 
+      {
          "seq": 1,
          "id": "dff23271-f996-47d7-984f-f2676861b5fc",
          "status": "deleted"
       },
-      { 
+      {
          "seq": 2,
          "status": "skipped",
-         "reasons": [ 
-            { 
+         "reasons": [
+            {
                "code": "1013",
                "message": "Record not found"
             }
@@ -189,18 +189,18 @@ GET /rest/v1/namedAccountList/{id}/namedAccounts.json
 ```
 
 ```json
-{ 
+{
    "requestId": "e42b#14272d07d78",
    "success": true,
-   "result": [ 
-      { 
+   "result": [
+      {
          "seq": 0,
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb",
          "name": "Saas List",
          "createdAt": "2017-02-01T00:00:00Z",
          "updatedAt": "2017-03-05T17:21:15Z"
       },
-      { 
+      {
          "seq": 1,
          "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fc",
          "name": "My Account List",
@@ -223,7 +223,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 {
     "input": [
         {
-             "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb" 
+             "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb"
         },
         {
              "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb"
@@ -263,7 +263,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 {
     "input": [
         {
-             "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb" 
+             "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb"
         },
         {
              "marketoGUID": "dff23271-f996-47d7-984f-f2676861b5fb"

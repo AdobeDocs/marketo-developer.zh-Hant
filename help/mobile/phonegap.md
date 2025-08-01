@@ -3,10 +3,10 @@ title: PhoneGap
 feature: Mobile Marketing
 description: 在行動裝置上搭配使用PhoneGap與Marketo
 exl-id: 99f14c76-9438-4942-9309-643bca434d07
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '797'
-ht-degree: 0%
+ht-degree: 1%
 
 ---
 
@@ -16,7 +16,7 @@ ht-degree: 0%
 
 ## 先決條件
 
-1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）。
+1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (取得您的應用程式秘密金鑰和Munchkin ID)。
 1. 設定推播通知([iOS](push-notifications.md) | [Android](push-notifications.md))。
 1. [安裝PhoneGap/Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/)。
 
@@ -48,10 +48,10 @@ ht-degree: 0%
 
 **Cordova 8.0.0版(Cordova@Android7.0.0)及更高版本**
 
-建置Cordova Android平台之後，請使用Android Studio開啟應用程式，並更新`com.marketo.plugin`資料夾中找到`Marketo.gradle`檔案的`dirs`值。
+建置Cordova Android平台之後，請使用Android Studio開啟應用程式，並更新`dirs`資料夾中找到`Marketo.gradle`檔案的`com.marketo.plugin`值。
 
 ```
-repositories{    
+repositories{
   jcenter()
   flatDir{
       dirs '../app/src/main/aar'
@@ -66,12 +66,12 @@ repositories{
 1. Firebase Cloud Messaging支援
 
 1. 在Firebase主控台上設定Firebase應用程式。
-   1. 在[&#128279;](https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
+   1. 在[](https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
       1. 在[Firebase主控台](https://console.firebase.google.com/)中，選取&#x200B;**[!UICONTROL Add Project]**。
       1. 從現有Google Cloud專案清單中選取您的GCM專案，然後選取&#x200B;**[!UICONTROL Add Firebase]**。
       1. 在Firebase歡迎畫面中，選取「將Firebase新增至Android應用程式」。
       1. 提供您的封裝名稱和SHA-1，然後選取&#x200B;**[!UICONTROL Add App]**。 已下載您Firebase應用程式的新`google-services.json`檔案。
-   1. 在[!UICONTROL Project Overview]中導覽至&#x200B;**[!UICONTROL Project Settings]**
+   1. 在&#x200B;**[!UICONTROL Project Settings]**&#x200B;中導覽至[!UICONTROL Project Overview]
       1. 按一下「**[!UICONTROL General]**」標籤。 下載「google-services.json」檔案。
       1. 按一下「**[!UICONTROL Cloud Messaging]**」標籤。 複製[!UICONTROL Server Key]和[!UICONTROL Sender ID]。 提供這些[!UICONTROL Server Key]和[!UICONTROL Sender ID]給Marketo。
    1. 在Phonegap應用程式中設定FCM變更
@@ -160,22 +160,22 @@ marketo.initialize(
   function() { console.log("MarketoSDK Init done."); },
   function(error) { console.log("an error occurred:" + error); },
   'YOUR_MUNCHKIN_ID',
-  'YOUR_SECRET_KEY', 
+  'YOUR_SECRET_KEY',
   'FRAMEWORK_TYPE'
 );
 
-// For session tracking, add following. 
+// For session tracking, add following.
 marketo.onStart(
   function(){ console.log("onStart."); },
   function(error){ console.log("Failed to report onStart." + error); }
 );
 ```
 
-### 引數
+### 參數
 
 - Success回呼：在Marketo架構成功初始化時要執行的函式。
 - 失敗回呼：當Marketo架構初始化失敗時要執行的函式。
-- MUNCHKIN ID ：註冊時從Marketo收到的Munchkin ID。
+- Munchkin ID ：註冊時從Marketo收到的Munchkin ID。
 - 秘密金鑰：註冊時從Marketo收到的秘密金鑰。
 
 ### 6.初始化Marketo推播通知
@@ -193,7 +193,7 @@ marketo.initializeMarketoPush(
 );
 ```
 
-### 引數
+### 參數
 
 - Success回呼：Marketo推播通知成功初始化時要執行的函式。
 - 失敗回呼：當Marketo推播通知無法初始化時要執行的函式。
@@ -222,7 +222,7 @@ marketo.associateLead(
 );
 ```
 
-### 引數
+### 參數
 
 - Success回呼：當Marketo架構成功建立潛在客戶關聯時要執行的函式。
 - 失敗回呼：當Marketo架構無法關聯潛在客戶時要執行的函式。
@@ -268,7 +268,7 @@ marketo.reportaction(
 );
 ```
 
-### 引數
+### 參數
 
 - 成功回呼：Marketo框架成功回報動作時要執行的函式。
 - 失敗回呼：Marketo框架無法回報動作時要執行的函式。

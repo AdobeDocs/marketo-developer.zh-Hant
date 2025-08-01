@@ -1,28 +1,28 @@
 ---
-title: Social
-description: Social
+title: 社交
+description: 社交
 feature: Social, Javascript
 exl-id: 82d2b86f-5efe-4434-b617-d27f76515a79
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '776'
 ht-degree: 2%
 
 ---
 
-# Social
+# 社交
 
 [Marketo社交行銷](https://business.adobe.com/products/marketo/social-marketing.html)可讓行銷人員將社交Widget內嵌在網站和登陸頁面中。 社交Widget包括投票、社交分享按鈕、影片、抽獎和類似轉介優惠的促銷活動。
 
 ## 內嵌共用Widget範例
 
 ```html
-<!-- Marketo Widget Loader Script --> 
+<!-- Marketo Widget Loader Script -->
 
 <script type="text/javascript" src="//b2c-mlm.marketo.com/jsloader/271d8232-1500-4305-b7ed-05d451b9ee0c/loader.php.js">
 </script>
 
- <!-- The Location of the Social Widget --> 
+ <!-- The Location of the Social Widget -->
 
 <divclass='cf_widgetloader cf_w_245d8f3c0955454cbd26abc39d0d874c'="" options="{&quot;outerHeight&quot;:400, &quot;outerWidth&quot;:600}">
 </divclass='cf_widgetloader'>
@@ -89,13 +89,13 @@ cf_scripts.afterload(function(){
 ## 基本事件表格
 
 | 事件名稱 | 說明 | 使用此事件的Widget | 支援的引數（傳遞至事件回呼函式） |
-| --- | --- | --- | --- | 
+| --- | --- | --- | --- |
 | share_sent | 每次將共用要求傳送至伺服器以進行處理時引發 | 所有能夠共用的Widget | 1.」share_sent&quot; （字串）<br>2。 引數已傳送（物件） |
 | share_success | 成功處理共用要求時引發。 | 所有能夠共用的Widget。 | 1.」share_success&quot; （字串）<br>2。 共用回應物件，包含已傳送的訊息和縮短的URL （物件） |
-| vote_成功率 | 當使用者在輪詢中成功投票時引發。 | 投票、VS、投票Widget | 1. &quot;vote_success&quot; （字串）<br>2。 投票給的專案，包括標題、說明、實體識別碼（物件） |
+| vote_成功率 | 當使用者在輪詢中成功投票時引發。 | 投票、VS、投票Widget | &#x200B;1. &quot;vote_success&quot; （字串）<br>2。 投票給的專案，包括標題、說明、實體識別碼（物件） |
 | offer_registered | 當使用者成功註冊優惠時引發 | 所有優惠方案Widget | 1.」offer_registered&quot; （字串）<br>2。 已變更使用者屬性（物件），<br>3。 變更的使用者屬性（物件） |
 | 設定檔已儲存 | 當使用者從設定檔擷取更新其設定檔時引發 | 已啟用設定檔擷取的所有非選件Widget | 1.」profile_saved&quot; （字串）<br>2。 已變更使用者屬性（物件）<br>3。 變更的使用者屬性（物件） |
-| video_loaded | 當內嵌視訊完全載入及初始化時引發。 | VideoShare Widget | 1. &quot;video_loaded&quot; （字串） 2. 儲存視訊（jQuery物件）的「.cf_videoshare_wrap」元素 |
+| video_loaded | 當內嵌視訊完全載入及初始化時引發。 | VideoShare Widget | &#x200B;1. &quot;video_loaded&quot; （字串） 2. 儲存視訊（jQuery物件）的「.cf_videoshare_wrap」元素 |
 
 ## 使用自訂UI取代UI
 

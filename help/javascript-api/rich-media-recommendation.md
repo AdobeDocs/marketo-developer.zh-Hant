@@ -3,10 +3,10 @@ title: 多媒體推薦
 description: 多媒體推薦
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '812'
-ht-degree: 3%
+ht-degree: 4%
 
 ---
 
@@ -21,13 +21,13 @@ ht-degree: 3%
 1. 在頁面本文中
    1. 將範本標籤（div類別）放置在您要顯示範本的位置
 
-[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)提供詳細資訊。
+[此處](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)提供詳細資訊。
 
 ## 範本標籤
 
 | 屬性 | 選用/必要 | 說明 |
 |---|---|---|
-| 類別 | 必要 | 指定此divHTML元素為RTP建議div。 |
+| 類別 | 必要 | 指定此div HTML元素為RTP建議div。 |
 | data-rtp-template-id | 必要 | 範本識別碼。 這會決定建議的對齊方式。 使用「template1」進行水準對齊、「template2」進行垂直對齊，或「template3」進行僅包含標題和說明的垂直對齊。 指令碼會將相符的範本插入這個`div.Permissible`值：template1、template2、template3。 |
 
 ### 範例
@@ -56,11 +56,11 @@ ht-degree: 3%
 
 此方法會使用建議填入頁面上的所有豐富媒體`<divs>`。
 
-### 使用量
+### 使用情況
 
 `rtp('get', 'rcmd', 'richmedia');`
 
-| 引數 | 選用/必要 | 類型 | 說明 |
+| 參數 | 選用/必要 | 類型 | 說明 |
 |---|---|---|---|
 | &#39;get&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;rcmd&#39; | 必要 | 字串 | 方法名稱。 |
@@ -73,16 +73,16 @@ ht-degree: 3%
 
 注意：使用此方法時，必須在呼叫rtp(&#39;get&#39;，&#39;rcmd&#39;， &#39;richmedia&#39;)之前呼叫它；
 
-### 使用量
+### 使用情況
 
 `rtp('set', 'rcmd', 'richmedia', 'template_id', conf_obj);`
 
-| 引數 | 選用/必要 | 類型 | 說明 |
+| 參數 | 選用/必要 | 類型 | 說明 |
 |---|---|---|---|
 | &#39;設定&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;rcmd&#39; | 必要 | 字串 | 方法名稱。 |
 | &#39;富媒體&#39; | 必要 | 字串 | 子方法名稱。 |
-| template_id | 可選 | 字串 | 用於設定變更的範本ID。 使用僅為一個範本指定設定變更。 |
+| template_id | 選用 | 字串 | 用於設定變更的範本ID。 使用僅為一個範本指定設定變更。 |
 | conf_obj | 必要 | 物件 | 新設定。 物件會將所有設定儲存為索引鍵/值組。 |
 
 
@@ -103,7 +103,7 @@ rtp("set", "rcmd", "richmedia","template1",
 ```javascript
 rtp("set", "rcmd", "richmedia",
     {
-        "template1": 
+        "template1":
         {
             "rcmd.title.text": "RECOMMENDED CONTENT",
             "rcmd.general.font.family": "arial",
@@ -156,7 +156,7 @@ rtp("set", "rcmd", "richmedia",
 
 #### 基本範例
 
-此範例有一個範本，內含三個建議。 將此範例複製到HTML頁面中，然後將RTP標籤取代為您的標籤。
+此範例有一個範本，內含三個建議。 將此範例複製到HTML頁面，然後將RTP標籤取代為您的標籤。
 
 ```html
 <!DOCTYPE>
@@ -164,7 +164,7 @@ rtp("set", "rcmd", "richmedia",
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RTP recommendation</title>
-<!-- RTP tag --> 
+<!-- RTP tag -->
 <script type='text/javascript'>
 
 // This tag needs to be replaced with your account tag
@@ -188,7 +188,7 @@ rtp('get','rcmd', 'richmedia');
 
 #### 進階範例
 
-此範例有一個範本，內含三個建議。 範本標題為「建議內容」，而按鈕文字為「閱讀更多」。 將此範例複製到HTML頁面中，然後將RTP標籤取代為您的標籤。
+此範例有一個範本，內含三個建議。 範本標題為「建議內容」，而按鈕文字為「閱讀更多」。 將此範例複製到HTML頁面，然後將RTP標籤取代為您的標籤。
 
 ```html
 <!DOCTYPE>
@@ -196,7 +196,7 @@ rtp('get','rcmd', 'richmedia');
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>RTP recommendation</title>
-<!-- RTP tag --> 
+<!-- RTP tag -->
 <script type='text/javascript'>
 
 // This tag needs to be replaced with your account tag
@@ -232,13 +232,13 @@ rtp('get','rcmd', 'richmedia');
 
 #### 多媒體建議範本范#1範例
 
-**名稱**：範本1 **描述**：水準內容包含影像、標題和描述，以及行動號召按鈕。
+**名稱**：範本1 **描述**：水準內容包含影像、標題和描述，以及call to action按鈕。
 
 ![多媒體範本](assets/rich-media-template1.png)
 
 #### 多媒體建議範本范#2範例
 
-**名稱**：範本2 **描述**：垂直內容包括影像、標題和描述，以及行動號召按鈕。
+**名稱**：範本2 **描述**：垂直內容，包括影像、標題和描述，以及call to action按鈕。
 
 ![多媒體範本](assets/rich-media-template2.png)
 

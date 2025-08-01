@@ -3,10 +3,10 @@ title: 重新導向
 description: 重新導向
 feature: Javascript
 exl-id: bbf91245-42e5-47ae-a561-e522cc65ff49
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '468'
-ht-degree: 6%
+ht-degree: 8%
 
 ---
 
@@ -14,21 +14,21 @@ ht-degree: 6%
 
 RTP重新導向API可讓您將分段的對象重新導向至目標URL。
 
-- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - RTP不支援以帳戶為根據的行銷指定帳戶清單。 ABM清單和程式碼只與在RTP內管理的已上傳帳戶清單（CSV檔案）有關。
 
-## 使用量
+## 使用情況
 
 `rtp('send' , 'redirect' , 'field_name' , [ 'values_array' , '...' , '...' ] , 'www.redirect_url.com' , true/false )`
 
-| 引數 | 選用/必要 | 類型 | 說明 |
+| 參數 | 選用/必要 | 類型 | 說明 |
 |---------------------------|-------------------|---------|-----------------------------|
 | &#39;傳送&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;重新導向&#39; | 必要 | 字串 | 方法名稱。 |
 | field_name | 必要 | 字串 | 要比對的欄位名稱。 範例： &#39;abm.name&#39; （請參閱下文）。 |
 | values_array | 必要 | 陣列 | 比對欄位的值清單（不區分大小寫）。 |
 | redirect_url | 必要 | 字串 | 將符合條件的訪客重新導向的目標URL。 |
-| redirect_matched_visitors | 可選 | 布林值 | 如果為true，則會重新導向符合條件的訪客。 若為false，系統會重新導向條件不相符的訪客。 預設值： true。 |
+| redirect_matched_visitors | 選用 | 布林值 | 如果為true，則會重新導向符合條件的訪客。 若為false，系統會重新導向條件不相符的訪客。 預設值： true。 |
 
 組織、產業、ABM清單、地點、ISP、相符區段
 
@@ -57,7 +57,7 @@ RTP重新導向API可讓您將分段的對象重新導向至目標URL。
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-<!-- RTP tag --> 
+<!-- RTP tag -->
 <script type='text/javascript'>
 
 // This tag needs to be replaced with your account tag
@@ -65,18 +65,18 @@ RTP重新導向API可讓您將分段的對象重新導向至目標URL。
 c[a].a=i;var g=h.createElement("script");g.async=true;g.type="text/javascript";
 g.src=f+'?rh='+c.location.hostname+'&aid='+i;var b=h.getElementsByTagName("script")[0];b.parentNode.insertBefore(g,b);
 })(window,document,"rtp","//xyz.marketo.com/rtp-api/v1/rtp.js","xyz");
- 
-// START REDIRECT EXAMPLE 
+
+// START REDIRECT EXAMPLE
 //   - Using a helper redirect function
 //   - Redirect based on named account
 rtp('send','redirect','org', ['microsoft'],'http://www.marketo.com');
- 
+
 // Redirect based on named account list (ABM)
 rtp('send','redirect','abm.name', {
     // Redirect visitors that match 'first_abm' list to www.marketo.com
     'http://www.marketo.com' : ['first_abm'],
     // Redirect visitors that match 'second_abm' list to blog.marketo.com
-    'http://blog.marketo.com' : ['second_abm'] 
+    'http://blog.marketo.com' : ['second_abm']
 });
 // END REDIRECT EXAMPLE
 rtp('send','view');
@@ -97,11 +97,11 @@ rtp('get','campaign');
 
 重新導向呼叫支援多個呼叫。 這可讓您使用多個欄位重新導向，並使用不同的URL和值建立複雜的條件。
 
-### 使用量
+### 使用情況
 
 `rtp('send', 'redirect', field_name, url_values_map);`
 
-| 引數 | 選用/必要 | 類型 | 說明 |
+| 參數 | 選用/必要 | 類型 | 說明 |
 |---|---|---|---|
 | &#39;傳送&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;重新導向&#39; | 必要 | 字串 | 方法名稱。 |

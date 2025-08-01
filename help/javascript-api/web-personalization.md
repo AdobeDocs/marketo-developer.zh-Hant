@@ -3,10 +3,10 @@ title: 網頁Personalization
 description: 網頁Personalization
 feature: Web Personalization, Javascript
 exl-id: b2c26b28-e9bf-4faf-8b6e-c102f41aeaa1
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '401'
-ht-degree: 4%
+ht-degree: 5%
 
 ---
 
@@ -14,7 +14,7 @@ ht-degree: 4%
 
 網路Personalization JavaScript API擴充了平台的自動個人化功能。 它允許事件追蹤和網頁的動態自訂。 其他功能： [自訂資料事件](custom-data-events.md)、[動態內容](web-personalization.md)、[取得訪客資料](get-visitor-data.md)、[排除特定機器人的標籤](#exclude_tag_for_specific_bots)。
 
-- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - RTP不支援以帳戶為根據的行銷指定帳戶清單。 ABM清單和程式碼只與在RTP內管理的已上傳帳戶清單（CSV檔案）有關。
 
 ## 標籤設定
@@ -22,7 +22,7 @@ ht-degree: 4%
 RTP標籤應插入個人化頁面的標頭。
 
 ```javascript
-<!-- RTP tag --> 
+<!-- RTP tag -->
 <script type='text/javascript'>
 (function(c,h,a,f,e,i){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
 c[a].p=e;c[a].a=i;var g=h.createElement("script");g.async=true;g.type="text/javascript";
@@ -36,7 +36,7 @@ g.src=f;var b=h.getElementsByTagName("script")[0];b.parentNode.insertBefore(g,b)
 
 系統會在標籤層級自動呼叫此方法，以設定相關的帳戶ID。 當您想要在不同網域之間分割時，可以設定帳戶ID。
 
-| 引數 | 選用/必要 | 類型 | 說明 |
+| 參數 | 選用/必要 | 類型 | 說明 |
 |--------------|-------------------|--------|--------------|
 | &#39;setAccount&#39; | 必要 | 字串 | 方法名稱。 |
 | accountId | 必要 | 字串 | 帳戶ID。 |
@@ -53,11 +53,11 @@ rtp('setAccount', accountId);
 
 透過在此方法中傳遞選用的「page」引數，可以覆寫目前頁面。
 
-| 引數 | 選用/必要 | 類型 | 說明 |
+| 參數 | 選用/必要 | 類型 | 說明 |
 |-----------|-------------------|--------|---------------------------------|
 | &#39;傳送&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;檢視&#39; | 必要 | 字串 | 方法名稱。 |
-| 頁面 | 可選 | 字串 | 相對路徑或完整頁面URL。 |
+| 頁面 | 選用 | 字串 | 相對路徑或完整頁面URL。 |
 
 
 ```javascript
@@ -76,7 +76,7 @@ rtp('send', 'view', page);
 在以下程式碼範例中，「GoogleBot|msnbot」會作為機器人範例使用，以從網頁Personalization活動中排除。
 
 ```javascript
-<!-- RTP tag --> 
+<!-- RTP tag -->
 <script type='text/javascript'>
 if(navigator.userAgent.match(/.(Googlebot|msnbot)./gi) == null){
     (function(c,h,a,f,i){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

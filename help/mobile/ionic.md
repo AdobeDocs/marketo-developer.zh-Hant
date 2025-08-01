@@ -3,10 +3,10 @@ title: '[!DNL Ionic]'
 feature: Mobile Marketing
 description: 將 [!DNL Ionic] 用於行動裝置的Marketo
 exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
-source-git-commit: 6fc45ff98998217923e2a5b02d00d1522fe3272c
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '606'
-ht-degree: 1%
+ht-degree: 2%
 
 ---
 
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 ## 先決條件
 
-1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）。
+1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (取得您的應用程式秘密金鑰和Munchkin ID)。
 1. 設定推播通知([iOS](push-notifications.md) | [Android](push-notifications.md) )。
 1. 安裝[[!DNL Ionic]](https://ionicframework.com/getting-started/)與[Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/)。
 
@@ -88,18 +88,18 @@ marketo.initialize(
   'FRAMEWORK_TYPE'
 );
 
-// For session tracking, add following. 
+// For session tracking, add following.
 marketo.onStart(
   function(){ console.log("onStart."); },
   function(error){ console.log("Failed to report onStart." + error); }
 );
 ```
 
-#### 引數
+#### 參數
 
 - Success回呼：在Marketo架構成功初始化時要執行的函式。
 - 失敗回呼：當Marketo架構初始化失敗時要執行的函式。
-- MUNCHKIN ID ：註冊時從Marketo收到的Munchkin ID。
+- Munchkin ID ：註冊時從Marketo收到的Munchkin ID。
 - 秘密金鑰：註冊時從Marketo收到的秘密金鑰。
 
 ### 初始化Marketo推播通知
@@ -117,11 +117,11 @@ marketo.initializeMarketoPush(
 );
 ```
 
-#### 引數
+#### 參數
 
 - Success回呼：Marketo推播通知成功初始化時要執行的函式。
 - 失敗回呼：當Marketo推播通知無法初始化時要執行的函式。
-- GCM_PROJECT_ID ：建立應用程式後，在[Google開發人員主控台](https://accounts.google.com/ServiceLogin?service=cloudconsole&amp;passive=1209600&amp;osid=1&amp;continue=https://console.cloud.google.com/apis/dashboard&amp;followup=https://console.cloud.google.com/apis/dashboard)中找到GCM專案ID。
+- GCM_PROJECT_ID ：建立應用程式後，在[Google開發人員主控台](https://accounts.google.com/ServiceLogin?service=cloudconsole&passive=1209600&osid=1&continue=https://console.cloud.google.com/apis/dashboard&followup=https://console.cloud.google.com/apis/dashboard)中找到GCM專案ID。
 
 登出時也可以取消註冊權杖。
 
@@ -146,7 +146,7 @@ marketo.associateLead(
 );
 ```
 
-### 引數
+### 參數
 
 - Success回呼：當Marketo架構成功建立潛在客戶關聯時要執行的函式。
 - 失敗回呼：當Marketo架構無法關聯潛在客戶時要執行的函式。
@@ -190,7 +190,7 @@ marketo.reportaction(
 );
 ```
 
-### 引數
+### 參數
 
 - 成功回呼：Marketo框架成功回報動作時要執行的函式。
 - 失敗回呼：Marketo框架無法回報動作時要執行的函式。

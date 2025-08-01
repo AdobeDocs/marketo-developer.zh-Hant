@@ -3,10 +3,10 @@ title: 端點參考
 feature: REST API
 description: Marketo API端點參考
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 3632d2b713d97a2c895c65f144c07e62e1d369cb
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
-source-wordcount: '4676'
-ht-degree: 3%
+source-wordcount: '4448'
+ht-degree: 5%
 
 ---
 
@@ -41,7 +41,7 @@ ht-degree: 3%
 | 取得分頁Token | 活動 | GET | /rest/v1/activities/pagingtoken.json | 唯讀活動 |
 | 更新自訂活動型別 | 活動 | POST | /rest/v1/activities/external/type/{apiName}.json | 讀寫活動中繼資料 |
 | 更新自訂活動型別屬性 | 活動 | POST | /rest/v1/activities/external/type/{apiName}/attributes/update.json | 讀寫活動中繼資料 |
-| 身分識別 | 驗證 | GET或POST | /identity/oauth/token | None |
+| 身分識別 | Authentication | GET或POST | /identity/oauth/token | None |
 | 取消匯出活動工作 | 大量匯出活動 | POST | /bulk/v1/activities/export/{exportid}/cancel.json | 唯讀活動 |
 | 建立匯出活動工作 | 大量匯出活動 | POST | /bulk/v1/activities/export/create.json | 唯讀活動 |
 | 將匯出活動工作排入佇列 | 大量匯出活動 | POST | /bulk/v1/activities/export/{exportid}/enqueue.json | 唯讀活動 |
@@ -82,8 +82,8 @@ ht-degree: 3%
 | 取得行銷活動 | 行銷活動 | GET | /rest/v1/campaigns.json | 唯讀行銷活動 |
 | 請求行銷活動 | 行銷活動 | POST | /rest/v1/campaigns/{id}/trigger.json | 讀寫行銷活動 |
 | 排程行銷活動 | 行銷活動 | POST | /rest/v1/campaigns/{id}/schedule.json | 讀寫行銷活動 |
-| 依名稱取得頻道 | 頻道 | GET | /rest/asset/v1/channel/byName.json | 唯讀資產 |
-| 取得頻道 | 頻道 | GET | /rest/asset/v1/channels.json | 唯讀資產 |
+| 依名稱取得頻道 | 管道 | GET | /rest/asset/v1/channel/byName.json | 唯讀資產 |
+| 取得頻道 | 管道 | GET | /rest/asset/v1/channels.json | 唯讀資產 |
 | 刪除公司 | 公司 | POST | /rest/v1/companies/delete.json | 讀寫公司 |
 | 說明公司 | 公司 | GET | /rest/v1/companies/describe.json | 唯讀公司 |
 | 取得公司 | 公司 | GET | /rest/v1/companies.json | 唯讀公司 |
@@ -169,19 +169,19 @@ ht-degree: 3%
 | 取得表單欄位 | 表單欄位 | GET | /rest/asset/v1/form/{id}/fields.json | 唯讀資產 |
 | 更新欄位位置 | 表單欄位 | POST | /rest/asset/v1/form/{id}/reArrange.json | 讀寫資產 |
 | 更新表單欄位 | 表單欄位 | POST | /rest/asset/v1/form/{id}/field/{fieldId}.json | 讀寫資產 |
-| 核准表單草稿 | Forms | POST | /rest/asset/v1/form/{id}/approveDraft.json | 讀寫資產 |
-| 複製表單 | Forms | POST | /rest/asset/v1/form/{id}/clone.json | 讀寫資產 |
-| 建立表單 | Forms | POST | /rest/asset/v1/forms.json | 讀寫資產 |
-| 取得使用的表單 | Forms | GET | /rest/asset/v1/form/{id}/usedBy.json | 讀寫資產 |
-| 刪除表單 | Forms | POST | /rest/asset/v1/form/{id}/delete.json | 讀寫資產 |
-| 捨棄表單草稿 | Forms | POST | /rest/asset/v1/form/{id}/discardDraft.json | 讀寫資產 |
-| 依ID取得表單 | Forms | GET | /rest/asset/v1/form/{id}.json | 唯讀資產 |
-| 依名稱取得表單 | Forms | GET | /rest/asset/v1/form/byName.json | 唯讀資產 |
-| 取得Forms | Forms | GET | /rest/asset/v1/forms.json | 唯讀資產 |
-| 依表單ID取得感謝頁面 | Forms | GET | /rest/asset/v1/form/{id}/thankYouPage.json | 唯讀資產 |
-| 更新表單中繼資料 | Forms | POST | /rest/asset/v1/form/{id}.json | 讀寫資產 |
-| 更新提交按鈕 | Forms | POST | /rest/asset/v1/{id}/submitButton.json | 讀寫資產 |
-| 更新感謝頁面 | Forms | POST | /rest/asset/v1/form/{id}/thankYouPage.json | 讀寫資產 |
+| 核准表單草稿 | 表單 | POST | /rest/asset/v1/form/{id}/approveDraft.json | 讀寫資產 |
+| 複製表單 | 表單 | POST | /rest/asset/v1/form/{id}/clone.json | 讀寫資產 |
+| 建立表單 | 表單 | POST | /rest/asset/v1/forms.json | 讀寫資產 |
+| 取得使用的表單 | 表單 | GET | /rest/asset/v1/form/{id}/usedBy.json | 讀寫資產 |
+| 刪除表單 | 表單 | POST | /rest/asset/v1/form/{id}/delete.json | 讀寫資產 |
+| 捨棄表單草稿 | 表單 | POST | /rest/asset/v1/form/{id}/discardDraft.json | 讀寫資產 |
+| 依ID取得表單 | 表單 | GET | /rest/asset/v1/form/{id}.json | 唯讀資產 |
+| 依名稱取得表單 | 表單 | GET | /rest/asset/v1/form/byName.json | 唯讀資產 |
+| 取得Forms | 表單 | GET | /rest/asset/v1/forms.json | 唯讀資產 |
+| 依表單ID取得感謝頁面 | 表單 | GET | /rest/asset/v1/form/{id}/thankYouPage.json | 唯讀資產 |
+| 更新表單中繼資料 | 表單 | POST | /rest/asset/v1/form/{id}.json | 讀寫資產 |
+| 更新提交按鈕 | 表單 | POST | /rest/asset/v1/{id}/submitButton.json | 讀寫資產 |
+| 更新感謝頁面 | 表單 | POST | /rest/asset/v1/form/{id}/thankYouPage.json | 讀寫資產 |
 | 新增登陸頁面內容區段 | 登陸頁面內容 | POST | /rest/asset/v1/landingPage/{id}/content.json | 讀寫資產 |
 | 刪除登陸頁面內容區段 | 登陸頁面內容 | POST | /rest/asset/v1/landingPage/{id}/content/{contentId}/delete.json | 讀寫資產 |
 | 取得登陸頁面內容 | 登陸頁面內容 | GET | /rest/asset/v1/landingPage/{id}/content.json | 唯讀資產 |
@@ -329,11 +329,11 @@ ht-degree: 3%
 | 依名稱取得靜態清單 | 靜態清單 | GET | /asset/v1/staticList/byName.json | 唯讀資產 |
 | 取得靜態清單 | 靜態清單 | GET | /asset/v1/staticLists.json | 唯讀資產 |
 | 清單成員 | 靜態清單 | GET | /rest/v1/lists/{listId}/leads/ismember.json | 唯讀銷售機會 |
-| 從清單移除 | 靜態清單 | DELETE | /rest/v1/lists/{listId}/leads.json | 讀寫潛在客戶 |
+| 從清單中移除 | 靜態清單 | DELETE | /rest/v1/lists/{listId}/leads.json | 讀寫潛在客戶 |
 | 更新靜態清單中繼資料 | 靜態清單 | POST | /asset/v1/staticList/{id}.json | 讀寫資產 |
 | 依名稱取得標籤 | 標記 | GET | /rest/asset/v1/tagType/byName.json | 唯讀資產 |
 | 取得標籤型別 | 標記 | GET | /rest/asset/v1/tagTypes.json | 唯讀資產 |
-| 建立Token | Token | POST | /rest/asset/v1/folder/{id}/tokens.json | 讀寫資產 |
+| 建立代號 | Token | POST | /rest/asset/v1/folder/{id}/tokens.json | 讀寫資產 |
 | 依名稱刪除Token | Token | POST | /rest/asset/v1/folder/{id}/tokens/delete.json | 讀寫資產 |
 | 依資料夾ID取得權杖 | Token | GET | /rest/asset/v1/folder/{id}/tokens.json | 唯讀資產 |
 | 新增角色 | User Management | POST | /userservice/management/v1/users/{userid}/roles/create.json | 存取使用者管理Api |

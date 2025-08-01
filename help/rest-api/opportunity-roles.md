@@ -3,7 +3,7 @@ title: 機會角色
 feature: REST API
 description: 在Marketo中處理機會角色。
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
 workflow-type: tm+mt
 source-wordcount: '253'
 ht-degree: 0%
@@ -27,72 +27,72 @@ GET /rest/v1/opportunities/roles/describe.json
 ```
 
 ```json
-{  
+{
    "requestId":"185d6#14b51985ff0",
    "success":true,
-   "result":[  
-      {  
+   "result":[
+      {
          "name":"opportunityRole",
          "displayName":"Opportunity Role",
          "createdAt":"2015-02-03T22:36:23Z",
          "updatedAt":"2015-02-03T22:36:24Z",
          "idField":"marketoGUID",
-         "dedupeFields":[  
+         "dedupeFields":[
             "externalOpportunityId",
             "leadId",
             "role"
          ],
-         "searchableFields":[  
-            [  
+         "searchableFields":[
+            [
                "externalOpportunityId",
                "leadId",
                "role"
             ],
-            [  
+            [
                "marketoGUID"
             ],
-            [  
+            [
                "leadId"
             ],
-            [  
+            [
                "externalOpportunityId"
             ]
          ],
-         "fields":[  
-            {  
+         "fields":[
+            {
                "name":"marketoGUID",
                "displayName":"Marketo GUID",
                "dataType":"string",
                "length":36,
                "updateable":false
             },
-            {  
+            {
                "name":"externalOpportunityId",
                "displayName":"External Opportunity Id",
                "dataType":"string",
                "length":50,
                "updateable":false
             },
-            {  
+            {
                "name":"leadId",
                "displayName":"Lead Id",
                "dataType":"integer",
                "updateable":false
             },
-            {  
+            {
                "name":"role",
                "displayName":"Role",
                "dataType":"string",
                "length":50,
                "updateable":false
             },
-            {  
+            {
                "name":"isPrimary",
                "displayName":"Is Primary",
                "dataType":"boolean",
                "updateable":true
             },
-            {  
+            {
                "name":"externalCreatedDate",
                "displayName":"External Created Date",
                "dataType":"datetime",
@@ -106,33 +106,33 @@ GET /rest/v1/opportunities/roles/describe.json
 
 ## 查詢
 
-請注意，`dedupeFields`和`searchableFields`與機會都有點不同。 `dedupeFields`實際上提供了複合金鑰，其中需要`externalOpportunityId`、`leadId`和`role`的所有三項。 目的地執行個體中必須有識別碼欄位的機會和潛在客戶連結，才能成功建立記錄。 對於`searchableFields`、`marketoGUID`、`leadId`和`externalOpportunityId`，它們都自己對查詢有效，並使用與商機相同的模式，但有一個額外的選項可使用複合索引鍵進行查詢，這要求透過POST提交JSON物件，連同額外的查詢引數`_method=GET`。
+請注意，`dedupeFields`和`searchableFields`與機會都有點不同。 `dedupeFields`實際上提供了複合金鑰，其中需要`externalOpportunityId`、`leadId`和`role`的所有三項。 目的地執行個體中必須有識別碼欄位的機會和潛在客戶連結，才能成功建立記錄。 對於`searchableFields`、`marketoGUID`、`leadId`和`externalOpportunityId`，它們都自己對查詢有效，並使用與Opportunities相同的模式，但有一個額外的選項可使用複合索引鍵進行查詢，這要求透過POST提交JSON物件，連同額外的查詢引數`_method=GET`。
 
 ```
 POST /rest/v1/opportunities/roles.json?_method=GET
 ```
 
 ```json
-{  
+{
    "filterType": "dedupeFields",
-   "fields": [  
+   "fields": [
       "marketoGuid",
       "externalOpportunityId",
       "leadId",
       "role"
    ],
-   "input": [  
-      {  
+   "input": [
+      {
         "externalOpportunityId": "Opportunity1",
         "leadId": 1,
         "role": "Captain"
       },
-      {  
+      {
         "externalOpportunityId": "Opportunity2",
         "leadId": 1872,
         "role": "Commander"
       },
-      {  
+      {
         "externalOpportunityId": "Opportunity3",
         "leadId": 273891,
         "role": "Lieutenant Commander"
@@ -141,7 +141,7 @@ POST /rest/v1/opportunities/roles.json?_method=GET
 }
 ```
 
-這會產生與標準GET查詢相同的回應型別，只是用於提出要求的介面不同。
+這會產生與標準GET查詢相同的回應型別，只是用來提出要求的介面不同。
 
 ## 建立和更新
 
@@ -156,7 +156,7 @@ POST /rest/v1/opportunities/roles.json
    "action": "createOrUpdate",
    "dedupeBy": "dedupeFields",
    "input": [
-      {  
+      {
          "externalOpportunityId": "19UYA31581L000000",
          "leadId": 456783,
          "role": "Technical Buyer",
@@ -200,10 +200,10 @@ POST /rest/v1/opportunities/roles/delete.json
 ```
 
 ```json
-{  
+{
    "deleteBy": "dedupeFields",
-   "input": [  
-      {  
+   "input": [
+      {
         "externalOpportunityId": "19UYA31581L000000",
         "leadId": 456783,
         "role": "Technical Buyer"
