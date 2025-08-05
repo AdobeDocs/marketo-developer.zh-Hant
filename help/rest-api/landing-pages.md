@@ -274,7 +274,7 @@ segment=New Segment&value=New Content
 </head>
 ```
 
-如需詳細資訊，請參閱[建立引導式登陸頁面範本](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)檔案中的「可編輯變數」一節。
+如需詳細資訊，請參閱[建立引導式登陸頁面範本](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)檔案中的「可編輯變數」一節。
 
 ### 查詢
 
