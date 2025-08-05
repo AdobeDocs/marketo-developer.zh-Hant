@@ -3,9 +3,9 @@ title: 重新導向
 description: 重新導向
 feature: Javascript
 exl-id: bbf91245-42e5-47ae-a561-e522cc65ff49
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '468'
+source-wordcount: '457'
 ht-degree: 8%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 8%
 
 RTP重新導向API可讓您將分段的對象重新導向至目標URL。
 
-- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - RTP不支援以帳戶為根據的行銷指定帳戶清單。 ABM清單和程式碼只與在RTP內管理的已上傳帳戶清單（CSV檔案）有關。
 
 ## 使用情況
@@ -34,17 +34,16 @@ RTP重新導向API可讓您將分段的對象重新導向至目標URL。
 
 | 條件 | 資料階層 | 範例 |
 |-------------------------------------------------|----------------------|------------------------------------------------------------------------------------------------------------------|
-| 相符的區段（僅在首次點按後運作） | matchedSegments.name | rtp( &#39;send&#39;， &#39;redirect&#39; ， &#39;matchedSegments.name&#39; ， [&#39;Fortune 1,000&#39; ， &#39;Enterprise&#39;] ， &#39;http://www.marketo.com&#39;)； |
-| 相符的區段（僅在首次點按後運作） | matchedSegments.id | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;matchedSegments.id&#39;， [106， 107， 190]， &#39;http://www.marketo.com&#39;)； |
-| ABM清單 | abm.name | rtp( &#39;send&#39;， &#39;redirect&#39; ， &#39;abm.name&#39; ， [&#39;top_key_accounts&#39;， &#39;active_customers&#39;] ， &#39;http://www.marketo.com&#39;)； |
-| ABM清單 | abm.code | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;abm.code&#39; ， [13 ， 15] ， &#39;http://www.marketo.com&#39;)； |
-| 組織 | org | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;org&#39;， [&#39;ebay&#39;]， &#39;http://www.marketo.com&#39;)； |
-| 位置 | location.country | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;location.country&#39;， [&#39;United States&#39;]， &#39;http://www.marketo.com&#39;)； |
-| 位置 | location.state | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;location.state&#39;， [&#39;ca&#39;]， &#39;http://www.marketo.com&#39;)； |
-| 位置 | location.city | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;location.city&#39;， [&#39;San Mateo&#39;]， &#39;http://www.marketo.com&#39;)； |
-| 產業 | 產業 | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;industries&#39;， [&#39;Education&#39;]， &#39;http://www.marketo.com&#39;)； |
-| ISP | isp | rtp( &#39;send&#39;， &#39;redirect&#39; ， isp ， [&#39;False&#39;]， &#39;http://www.marketo.com&#39;)； |
-
+| 相符的區段（僅在首次點按後運作） | matchedSegments.name | rtp( &#39;send&#39;， &#39;redirect&#39; ， &#39;matchedSegments.name&#39; ， [&#39;Fortune 1,000&#39; ， &#39;Enterprise&#39;] ， &#39;<http://www.marketo.com>&#39;)； |
+| 相符的區段（僅在首次點按後運作） | matchedSegments.id | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;matchedSegments.id&#39;， [106， 107， 190]， &#39;<http://www.marketo.com>&#39;)； |
+| ABM清單 | abm.name | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;abm.name&#39; ， [&#39;top_key_accounts&#39;， &#39;active_customers&#39;]， &#39;<http://www.marketo.com>&#39;)； |
+| ABM清單 | abm.code | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;abm.code&#39;， [13， 15]， &#39;<http://www.marketo.com>&#39;)； |
+| 組織 | org | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;org&#39;， [&#39;ebay&#39;]， &#39;<http://www.marketo.com>&#39;)； |
+| 位置 | location.country | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;location.country&#39;， [&#39;United States&#39;]， &#39;<http://www.marketo.com>&#39;)； |
+| 位置 | location.state | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;location.state&#39;， [&#39;ca&#39;]， &#39;<http://www.marketo.com>&#39;)； |
+| 位置 | location.city | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;location.city&#39;， [&#39;San Mateo&#39;]， &#39;<http://www.marketo.com>&#39;)； |
+| 產業 | 產業 | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;industries&#39;， [&#39;Education&#39;]， &#39;<http://www.marketo.com>&#39;)； |
+| ISP | isp | rtp( &#39;send&#39;， &#39;redirect&#39; ， isp ， [&#39;False&#39;]， &#39;<http://www.marketo.com>&#39;)； |
 
 ## 附註
 
@@ -87,7 +86,7 @@ rtp('get','campaign');
 
 ## 如何重新導向追蹤的訪客
 
-1. 將引數附加至目標URL的結尾：即www.marketo.com？rtp=redirect
+1. 將引數附加至目標URL的結尾： &lt;www.marketo.com？rtp=redirect>
 1. 建立名為「由RTP重新導向」的區段
 1. 使用「特定頁面」引數，透過下列引數鎖定檢視任何頁面的訪客。
 
@@ -106,8 +105,7 @@ rtp('get','campaign');
 | &#39;傳送&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;重新導向&#39; | 必要 | 字串 | 方法名稱。 |
 | field_name | 必要 | 字串 | 要比對的欄位名稱。 範例： &#39;abm.name&#39; （請參閱上文）。 |
-| url_values_map | 必要 | 物件 | 在重新導向URL和值清單之間對應。 範例：{&#39;http://marketo.com&#39; ： [&#39;first_abm&#39;， &#39;second_abm&#39;]} |
-
+| url_values_map | 必要 | 物件 | 在重新導向URL和值清單之間對應。 範例：{&#39;<http://marketo.com>&#39; ： [&#39;first_abm&#39;， &#39;second_abm&#39;]} |
 
 #### 範例
 

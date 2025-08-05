@@ -3,7 +3,7 @@ title: scheduleCampaign
 feature: SOAP, Smart Campaigns
 description: scheduleCampaign SOAP呼叫
 exl-id: a9ef2c16-34ef-4e0f-b765-e332335b0b81
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '252'
 ht-degree: 3%
@@ -14,7 +14,7 @@ ht-degree: 3%
 
 此函式設定批次Smart Campaign的排程，以立即或在未來日期執行。 需要現有的Smart Campaign才能成功完成。 這可以與importToList搭配使用，上傳銷售機會清單，然後針對新建立的清單執行批次行銷活動。
 
-## 選擇性程式代號：
+## 選擇性計畫代號
 
 與requestCampaign函式類似，您可以將我的權杖陣列傳遞至此API呼叫，以覆寫現有權杖。 行銷活動執行後，會捨棄代號。
 

@@ -3,9 +3,9 @@ title: importToList
 feature: SOAP
 description: importToList SOAP呼叫
 exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '393'
+source-wordcount: '387'
 ht-degree: 3%
 
 ---
@@ -20,9 +20,9 @@ ht-degree: 3%
 
 | 電子郵件 | 第一 | 上次 |
 | --- | --- | --- |
-| joe@company.com | Joe | Smith |
-| mary@company.com | Mary | 分類帳 |
-| wanda@megacorp.com | 萬達 | Williams |
+| <joe@company.com> | Joe | Smith |
+| <mary@company.com> | Mary | 分類帳 |
+| <wanda@megacorp.com> | 萬達 | Williams |
 
 `displayName`值應在`importFileHeader`中使用，而不是`name`值。
 
@@ -30,9 +30,9 @@ ht-degree: 3%
 
 | 電子郵件 | 第一 | 上次 | {{my.specialToken}} | {{my.otherToken}} |
 | --- | --- | --- | --- | --- |
-| joe@company.com | Joe | Smith | 魚 | 藍色 |
-| mary@company.com | Mary | 分類帳 | 雞肉 | 棕色 |
-| wanda@megacorp.com | 萬達 | Williams | 素菜 | 淡褐色 |
+| <joe@company.com> | Joe | Smith | 魚 | 藍色 |
+| <mary@company.com> | Mary | 分類帳 | 雞肉 | 棕色 |
+| <wanda@megacorp.com> | 萬達 | Williams | 素菜 | 淡褐色 |
 
 **重要：**&#x200B;如果您為潛在客戶新增代號，則必須指定使用這些代號的Smart Campaign。 下次指定的Smart Campaign執行時，將會使用您清單中的值，而非一般的「我的Token」值。 該單一Campaign執行後，便會捨棄代號。
 

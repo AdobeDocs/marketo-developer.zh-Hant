@@ -3,7 +3,7 @@ title: 活動
 feature: REST API
 description: 用於管理Marketo Engage活動的API。
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '2029'
 ht-degree: 0%
@@ -131,7 +131,7 @@ GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK
 
 在某些情況下，此API的回應可能會少於300個活動專案，但也會將`moreResult`屬性設定為true。  這表示有更多活動可傳回，而且將傳回的`nextPageToken`納入後續呼叫中，可查詢端點以取得較新的活動。
 
-請注意，在每個結果陣列專案中，`id`整數屬性會由`marketoGUID`字串屬性取代為唯一識別碼。 
+請注意，在每個結果陣列專案中，`id`整數屬性會由`marketoGUID`字串屬性取代為唯一識別碼。
 
 ### 資料值變更
 
@@ -435,7 +435,6 @@ POST /rest/v1/activities/external/type/{apiName}.json
 
 您可以使用核准自訂活動型別、捨棄自訂活動型別草稿和刪除自訂活動型別來管理型別，就像標準Marketo資產一樣。
 
-
 ## 自訂活動型別屬性
 
 每個自訂活動型別可以有0到20個次要屬性。 次要屬性可具有Marketo欄位的任何有效欄位型別。 它們會從父型別中分別新增、更新和移除，但在活動型別使用中時可以編輯，然後核准。 在即時型別上編輯欄位時，則核准後建立的該型別的所有活動都會有新的次要屬性集。 變更將不會回溯套用至共用該型別的現有活動。
@@ -450,7 +449,7 @@ POST /rest/v1/activities/external/type/{apiName}.json
 
 ### 建立屬性
 
-建立屬性需要必要的`apiName`路徑引數。 `name`和`dataType`引數也是必要的。` The description and` `isPrimary`引數是選用的。
+建立屬性需要必要的`apiName`路徑引數。 `name`和`dataType`引數也是必要的。`The description and` `isPrimary`引數是選用的。
 
 ```
 POST /rest/v1/activities/external/type/{apiName}/attributes/create.json
@@ -709,5 +708,5 @@ POST /rest/v1/activities/external.json
 
 除非在下面註明，否則活動端點的逾時值為30秒。
 
-* 取得分頁權杖： 300秒 
+* 取得分頁權杖： 300秒
 * 新增自訂活動：90秒

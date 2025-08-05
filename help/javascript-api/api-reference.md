@@ -3,7 +3,7 @@ title: Munchkin API參考
 description: 使用Munchkin Javascript API來自訂您的Munchkin資料。
 feature: Munchkin Tracking Code, Javascript
 exl-id: e9727691-5501-4223-bc98-2b4bacc33513
-source-git-commit: 1ad2d793832d882bb32ebf7ef1ecd4148a6ef8d5
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '414'
 ht-degree: 7%
@@ -27,7 +27,7 @@ Munchkin API由下列函式組成： `init`、`createTrackingCookie`、`munchkin
 | 引數名稱 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
 | Munchkin ID | 必要 | 字串 | 「管理員>整合> Munchkin」功能表之下的Munchkin帳戶ID。 設定活動傳送到的目標執行個體。 |
-| [組態設定](configuration.md) | 選填 | 物件 | 啟用Munchkin的替代行為設定。 |
+| [組態設定](configuration.md) | 選用 | 物件 | 啟用Munchkin的替代行為設定。 |
 
 ```javascript
 Munchkin.init('299-BYM-827');
@@ -40,7 +40,6 @@ Munchkin.init('299-BYM-827');
 | 引數名稱 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
 | forceCreate | 必要 | 布林值 | 即使`cookieAnon`設為false，仍要建立Cookie。 |
-
 
 ```javascript
 Munchkin.createTrackingCookie(true);
@@ -57,12 +56,12 @@ Munchkin.createTrackingCookie(true);
 
 #### visitWebPage
 
-使用`visitWebPage`呼叫`munchkinFunction()`會將目前使用者的「造訪」活動傳送至Marketo。 您可以自訂URL和`querystring`，它們會與第二個引數中的資料物件一起傳送。
+使用`munchkinFunction()`呼叫`visitWebPage`會將目前使用者的「造訪」活動傳送至Marketo。 您可以自訂URL和`querystring`，它們會與第二個引數中的資料物件一起傳送。
 
 | 資料屬性名稱 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
 | url | 必要 | 字串 | 用來記錄頁面瀏覽的URL檔案路徑。  此值會附加至目前的網域名稱，以建立完整頁面名稱。 例如，如果url為`/index.html`且網域名稱為`www.example.com`，則造訪的頁面會記錄為`www.example.com/index.html`。 |
-| 引數 | 選填 | 字串 | 要記錄的所需引數的查詢字串。 |
+| 參數 | 選用 | 字串 | 要記錄的所需引數的查詢字串。 |
 
 例如 `foo=bar&biz=baz`。
 
@@ -76,7 +75,7 @@ Munchkin.munchkinFunction('visitWebPage', {
 
 #### clickLink
 
-使用`clickLink`呼叫`munchkinFunction()`會將目前使用者的點選活動傳送至Marketo。 您可以使用資料物件中的`href`屬性自訂點按URL。
+使用`munchkinFunction()`呼叫`clickLink`會將目前使用者的點選活動傳送至Marketo。 您可以使用資料物件中的`href`屬性自訂點按URL。
 
 | 資料屬性名稱 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |

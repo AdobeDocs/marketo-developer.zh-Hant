@@ -3,7 +3,7 @@ title: 多媒體推薦
 description: 多媒體推薦
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '812'
 ht-degree: 4%
@@ -21,7 +21,7 @@ ht-degree: 4%
 1. 在頁面本文中
    1. 將範本標籤（div類別）放置在您要顯示範本的位置
 
-[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)提供詳細資訊。
+[此處](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)提供詳細資訊。
 
 ## 範本標籤
 
@@ -66,7 +66,6 @@ ht-degree: 4%
 | &#39;rcmd&#39; | 必要 | 字串 | 方法名稱。 |
 | &#39;富媒體&#39; | 必要 | 字串 | 子方法名稱。 |
 
-
 ## 變更範本組態
 
 此方法會變更範本的預設設定。
@@ -84,7 +83,6 @@ ht-degree: 4%
 | &#39;富媒體&#39; | 必要 | 字串 | 子方法名稱。 |
 | template_id | 選用 | 字串 | 用於設定變更的範本ID。 使用僅為一個範本指定設定變更。 |
 | conf_obj | 必要 | 物件 | 新設定。 物件會將所有設定儲存為索引鍵/值組。 |
-
 
 ### 範例
 
@@ -150,7 +148,6 @@ rtp("set", "rcmd", "richmedia",
 | rcmd.cta.font.color | &quot;rcmd.cta.font.color&quot; ： &quot;rgb(90， 84， 164)&quot; | 變更按鈕字型顏色。 此屬性支援所有字型色彩值（rgb、十六進位……） |
 | rcmd.cta.text | &quot;rcmd.cta.text&quot; ： &quot;推播&quot; | 變更按鈕文字。 所有按鈕的文字都相同。 |
 | 類別 | &quot;category&quot; ： [&quot;one category&quot;] | 變更此範本支援的建議類別。 範本只會顯示具有此組態所設定其中一個類別的建議。 |
-
 
 注意：組態支援可根據範本變更。
 

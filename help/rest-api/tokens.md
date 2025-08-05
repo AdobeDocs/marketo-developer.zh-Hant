@@ -3,7 +3,7 @@ title: Token
 feature: REST API, Tokens
 description: 在Marketo中管理Token。
 exl-id: 4f8d87d7-ba2a-4c90-8b39-4d20679d404a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '297'
 ht-degree: 2%
@@ -28,7 +28,6 @@ Marketo中的Token是類似短程式碼的特殊字串，在執行階段會由�
 | 分數 | 帶正負號的32位元整數 |
 | sfdc行銷活動 | 用於Salesforce行銷活動管理整合 |
 | 文字 | 文字字串 |
-
 
 透過API建立Token時，只有這些資料型別可以使用。
 
@@ -67,7 +66,7 @@ GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 
 ## 建立和更新
 
-[建立Token](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/addTokenTOFolderUsingPOST)端點會建立Token，或如果存在，會以提交的值更新它們。 代號會在資料夾或方案的內容中建立。 必要的`id`路徑引數為與權杖關聯的資料夾識別碼。 `name`、`type`、`value`和`folderType`都是權杖的必要引數。 資料以x-www-form-urlencodedPOST傳遞，而非以JSON格式傳遞。 權杖的`name`欄位不可超過50個字元。
+[建立Token](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/addTokenTOFolderUsingPOST)端點會建立Token，或如果存在，會以提交的值更新它們。 代號會在資料夾或方案的內容中建立。 必要的`id`路徑引數為與權杖關聯的資料夾識別碼。 `name`、`type`、`value`和`folderType`都是權杖的必要引數。 資料以POST x-www-form-urlencoded傳遞，而非以JSON傳遞。 權杖的`name`欄位不可超過50個字元。
 
 ```
 POST /rest/asset/v1/folder/{id}/tokens.json
@@ -108,7 +107,7 @@ name=April Fools&type=date&value=2015-04-01&folderType=Folder
 
 ## 刪除
 
-[依名稱刪除Token](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/deleteTokenByNameUsingPOST)會將ID當做Program或Folder型別的路徑引數。 此型別由`folderType`引數指定。 系統會根據其父資料夾、`name`和權杖的`type`刪除權杖，每個都是必要專案。 資料以x-www-form-urlencodedPOST傳遞，而非以JSON格式傳遞。
+[依名稱刪除Token](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens/operation/deleteTokenByNameUsingPOST)會將ID當做Program或Folder型別的路徑引數。 此型別由`folderType`引數指定。 系統會根據其父資料夾、`name`和權杖的`type`刪除權杖，每個都是必要專案。 資料以POST x-www-form-urlencoded傳遞，而非以JSON傳遞。
 
 ```
 POST /rest/asset/v1/folder/{id}/tokens/delete.json

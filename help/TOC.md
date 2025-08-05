@@ -5,10 +5,10 @@ breadcrumb-title: '[!DNL Marketo] 開發人員指南'
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 05f8966a2eafca71a00f1e22b6edd4d8dae6b6ac
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '247'
-ht-degree: 16%
+ht-degree: 24%
 
 ---
 
@@ -28,12 +28,12 @@ ht-degree: 16%
       - [設定](javascript-api/configuration.md)
       - [Munchkin API參考](javascript-api/api-reference.md)
    - [模式比對](javascript-api/pattern-match.md)
-   - [預測性內容](javascript-api/predictive-content.md)
+   - [預測內容](javascript-api/predictive-content.md)
    - [重新導向](javascript-api/redirect.md)
    - [多媒體建議](javascript-api/rich-media-recommendation.md)
    - [社交](javascript-api/social.md)
-   - [觸發器](javascript-api/triggers.md)
-   - [網頁Personalization](javascript-api/web-personalization.md)
+   - [觸發程序](javascript-api/triggers.md)
+   - [網頁個人化](javascript-api/web-personalization.md)
 - 行動 {#mobile}
    - [安裝 [!DNL Adobe Launch] 延伸](mobile/adobe-launch-extension-installation.md)
    - [[!DNL Adobe Launch] 擴充功能](mobile/adobe-launch-extension.md)
@@ -89,13 +89,13 @@ ht-degree: 16%
    - [資料擷取API](rest-api/data-ingestion.md)
    - [端點參考](rest-api/endpoint-reference.md)
    - [錯誤代碼](rest-api/error-codes.md)
-   - 潛在客戶資料庫 {#lead-database}
+   - 銷售機會資料庫 {#lead-database}
       - [活動](rest-api/activities.md)
       - [公司](rest-api/companies.md)
       - [自訂物件](rest-api/custom-objects.md)
       - [欄位清單](rest-api/fields.md)
       - [欄位型別](rest-api/field-types.md)
-      - [潛在客戶資料庫](rest-api/lead-database.md)
+      - [銷售機會資料庫](rest-api/lead-database.md)
       - [銷售機會](rest-api/leads.md)
       - [具名帳戶](rest-api/named-accounts.md)
       - [具名帳戶清單](rest-api/named-account-lists.md)

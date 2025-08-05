@@ -3,7 +3,7 @@ title: 大量潛在客戶擷取
 feature: REST API
 description: 潛在客戶資料的批次擷取。
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1173'
 ht-degree: 2%
@@ -33,19 +33,17 @@ REST API的「大量銷售機會擷取」集提供程式設計介面，可從Mar
 | 智慧型清單名稱* | 字串 | 接受智慧清單的名稱。 具有此篩選型別的工作會傳回工作開始處理時屬於智慧列示成員的所有可存取記錄。 使用「取得智慧列示」端點擷取智慧列示名稱。 |
 | smartListId* | 整數 | 接受智慧清單的識別碼。 具有此篩選型別的工作會傳回工作開始處理時屬於智慧列示成員的所有可存取記錄。 使用「取得智慧清單」端點擷取智慧清單ID。 |
 
-
 部分訂閱無法使用篩選器型別。 如果您的訂閱無法使用，您在呼叫「建立匯出潛在客戶工作」端點時會收到錯誤（「1035，目標訂閱不受支援的篩選器型別」）。 客戶可以聯絡Marketo支援，以便在他們的訂閱中啟用此功能。
 
 ## 選項
 
 「建立匯出潛在客戶工作」端點提供數個格式選項，讓使用者能在匯出的檔案中包含特定欄位、重新命名這些欄位的欄標題，以及匯出的檔案格式。
 
-| 引數 | 資料類型 | 必要 | 附註 |
+| 參數 | 資料類型 | 必要 | 附註 |
 |---|---|---|---|
 | 欄位 | 陣列[字串] | 是 | 欄位引數接受字串的JSON陣列。 每個字串都必須是Marketo潛在客戶欄位的REST API名稱。 列出的欄位會包含在匯出的檔案中。 除非以columnHeader覆寫，否則每個欄位的欄標題將是每個欄位的REST API名稱。 注意：啟用[!DNL Adobe Experience Cloud Audience Sharing]功能時，會發生Cookie同步程式，將[!DNL Adobe Experience Cloud] ID (ECID)與Marketo銷售機會建立關聯。 您可以指定「ecid」欄位，將ECID包含在匯出檔案中。 |
-| columnHeaderName | 物件 | 否 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 這是欄位的API名稱，可透過呼叫Describe Lead來擷取。 值是該欄位匯出的欄標題的名稱。 |
-| 格式 | 字串 | 否 | 接受以下其中之一：CSV、TSV、SSV。 匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（如果設定）。 如果未設定，則預設為CSV。 |
-
+| columnHeaderName | 物件 | 無 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 這是欄位的API名稱，可透過呼叫Describe Lead來擷取。 值是該欄位匯出的欄標題的名稱。 |
+| 格式 | 字串 | 無 | 接受以下其中之一：CSV、TSV、SSV。 匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（如果設定）。 如果未設定，則預設為CSV。 |
 
 ## 建立工作
 
@@ -151,7 +149,7 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 
 狀態列位可能會以下列任一專案回應：
 
-- 建立時間
+- 建立日期
 - 已排入佇列
 - 處理中
 - 已取消
@@ -160,7 +158,7 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 
 ## 正在擷取您的資料
 
-若要擷取已完成潛在客戶匯出的檔案，只要使用您的`exportId`呼叫[取得匯出潛在客戶檔案](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET)端點即可。
+若要擷取已完成潛在客戶匯出的檔案，只要使用您的[呼叫](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET)取得匯出潛在客戶檔案`exportId`端點即可。
 
 ```
 GET /bulk/v1/leads/export/{exportId}/file.json

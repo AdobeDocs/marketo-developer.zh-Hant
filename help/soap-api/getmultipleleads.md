@@ -3,9 +3,9 @@ title: getMultipleLead
 feature: SOAP
 description: getMultipleLeads SOAP呼叫
 exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '384'
+source-wordcount: '383'
 ht-degree: 3%
 
 ---
@@ -28,7 +28,7 @@ ht-degree: 3%
 | --- | --- | --- |
 | 銷售機會選擇器 | 必要 | 可以是下列3種型別之一：`LeadKeySelector`、`StaticListSelector`、`LastUpdateAtSelector` |
 | keyType | 必要 | 您要查詢的ID型別。 值包括IDNUM、COOKIE、電子郵件、LEADOWNEREMAIL、SFDCACCOUNTID、SFDCCONTACTID、SFDCLEADUDID、SFDCLEADOWNERID、SFDCOPTYID。 |
-| keyValues->stringItem | 必要 | 索引鍵值清單。 即&quot;lead@email.com&quot; |
+| keyValues->stringItem | 必要 | 索引鍵值清單。 即&quot;<lead@email.com>&quot; |
 | LastUpdateAtSelector： leadSelector->oldestUpdatedAt | 必要 | 用於指定「起始」條件的時間戳記。 也就是說，傳回自指定時間以來更新的所有銷售機會。 （W3C WSDL日期時間格式） |
 | LastUpdateAtSelector： leadSelector->latestUpdatedAt | 選用 | 指定「直到」條件的時間戳記。 也就是說，傳回所有更新至指定時間的銷售機會。 （W3C WSDL日期時間格式） |
 | StaticListSelector： leadSelector->staticListName | `leadSelector->staticListId`存在時為選用 | 靜態清單的名稱 |

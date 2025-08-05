@@ -3,7 +3,7 @@ title: 具名帳戶清單
 feature: REST API
 description: 設定具名帳戶清單。
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '696'
 ht-degree: 2%
@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [具名帳戶列出端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-Marketo中的[具名帳戶清單](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/target-account-management/target/account-lists)代表具名帳戶的集合。 它們可用於多種情況，包括分類、資料擴充和智慧型行銷活動篩選。 具名帳戶清單API允許從遠端管理這些清單資產及其成員資格。
+Marketo中的[具名帳戶清單](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists)代表具名帳戶的集合。 它們可用於多種情況，包括分類、資料擴充和智慧型行銷活動篩選。 具名帳戶清單API允許從遠端管理這些清單資產及其成員資格。
 `Content`
 
 ## 權限
@@ -33,7 +33,6 @@ Marketo中的[具名帳戶清單](https://experienceleague.adobe.com/zh-hant/doc
 | createdAt | 日期時間 | False | 建立清單的日期時間。 此欄位由系統管理，在建立或更新記錄時不允許作為欄位。 |
 | 更新時間 | 日期時間 | False | 清單最近更新的日期時間。 此欄位由系統管理，在建立或更新記錄時不允許作為欄位。 |
 | 類型 | 字串 | False | 清單型別。 的值可能是「預設」或「外部」。 外部清單是由CRM帳戶檢視建立的清單。 |
-
 
 ## 查詢
 
@@ -294,9 +293,9 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 ## 逾時
 
 - 具名帳戶清單端點的逾時為30秒，除非以下說明
-   - 同步命名帳戶清單： 60秒 
-   - 刪除具名帳戶清單： 60秒 
-   - 取得具名帳戶清單：60秒 
-   - 新增具名帳戶清單成員：60秒 
-   - 移除具名帳戶清單成員：60秒 
+   - 同步命名帳戶清單： 60秒
+   - 刪除具名帳戶清單： 60秒
+   - 取得具名帳戶清單：60秒
+   - 新增具名帳戶清單成員：60秒
+   - 移除具名帳戶清單成員：60秒
    - 取得具名帳戶清單成員：60秒

@@ -3,7 +3,7 @@ title: Authentication
 feature: REST API
 description: 驗證Marketo使用者的API使用情形。
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 206724e5177eb9040fa36202d91b2ed9daa734c3
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '609'
 ht-degree: 0%
@@ -16,13 +16,13 @@ Marketo的REST API已透過雙腿OAuth 2.0驗證。使用者端ID和使用者端
 
 ## 建立存取Token
 
-在&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL LaunchPoint]**&#x200B;功能表中找到`Client ID`和`Client Secret`，方法是選取自訂服務並按一下&#x200B;**[!UICONTROL View Details]**。
+在`Client ID` > `Client Secret` > **[!UICONTROL Admin]**&#x200B;功能表中找到&#x200B;**[!UICONTROL Integration]**&#x200B;和&#x200B;**[!UICONTROL LaunchPoint]**，方法是選取自訂服務並按一下&#x200B;**[!UICONTROL View Details]**。
 
 ![取得REST服務詳細資料](assets/authentication-service-view-details.png)
 
 ![啟動點認證](assets/admin-launchpoint-credentials.png)
 
-在REST API區段的&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**&#x200B;功能表中找到`Identity URL`。
+在REST API區段的`Identity URL` > **[!UICONTROL Admin]** > **[!UICONTROL Integration]**&#x200B;功能表中找到&#x200B;**[!UICONTROL Web Services]**。
 
 使用HTTP GET （或POST）要求建立存取權杖，如下所示：
 
@@ -55,10 +55,9 @@ GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client I
 
 >[!IMPORTANT]
 >
->2025年10月31日將移除使用`access_token`查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，應儘快更新以使用[授權標頭](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/authentication#using-an-access-token)。 新開發應僅使用`Authorization`標頭。
+>2025年10月31日將移除使用`access_token`查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，應儘快更新以使用[授權標頭](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/authentication#using-an-access-token)。 新開發應僅使用`Authorization`標頭。
 
 ### 切換至Authorization標題
-
 
 若要從使用`access_token`查詢引數切換為授權標頭，需要少量程式碼變更。
 

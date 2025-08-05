@@ -3,7 +3,7 @@ title: React Native
 feature: Mobile Marketing
 description: 安裝適用於Marketo的React Native
 exl-id: 462fd32e-91f1-4582-93f2-9efe4d4761ff
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '810'
 ht-degree: 0%
@@ -16,7 +16,7 @@ ht-degree: 0%
 
 ## 先決條件
 
-[在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (取得您的應用程式秘密金鑰和Munchkin ID)。
+[在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (取得您的應用程式秘密金鑰和Munchkin ID)。
 
 ## SDK整合
 
@@ -393,7 +393,7 @@ const { RNMarketoModule } = NativeModules;
 
 正確放置上述檔案後，我們就可以匯入任何js類別中的js模組，並直接呼叫其方法。 例如：
 
-請注意，我們必須傳遞「reactNative」作為React原生應用程式的框架型別。 
+請注意，我們必須傳遞「reactNative」作為React原生應用程式的框架型別。
 
 ```
 // Initialize marketo SDK with Munchkin & Seretkey you have from step 1.
@@ -489,7 +489,6 @@ RNMarketoModule.registerForRemoteNotifications();
 
 export { requestPermission, registerForRemoteNotifications };
 ```
-
 
 新增`App.tsx`以允許推播通知
 
@@ -595,7 +594,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 
 1. 包含`application:openURL:sourceApplication:annotation:`至`AppDelegate.m`檔案(Objective-C)
 
-**iOS — 處理AppDelegate**&#x200B;中的自訂Url型別/深層連結 
+**iOS — 處理AppDelegate**&#x200B;中的自訂Url型別/深層連結
 
 ```
 - (BOOL)application:(UIApplication *)app

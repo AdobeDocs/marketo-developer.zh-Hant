@@ -1,20 +1,20 @@
 ---
-title: 網頁Personalization
-description: 網頁Personalization
+title: 網頁個人化
+description: 網頁個人化
 feature: Web Personalization, Javascript
 exl-id: b2c26b28-e9bf-4faf-8b6e-c102f41aeaa1
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '401'
-ht-degree: 5%
+ht-degree: 6%
 
 ---
 
-# 網頁Personalization
+# 網頁個人化
 
 網路Personalization JavaScript API擴充了平台的自動個人化功能。 它允許事件追蹤和網頁的動態自訂。 其他功能： [自訂資料事件](custom-data-events.md)、[動態內容](web-personalization.md)、[取得訪客資料](get-visitor-data.md)、[排除特定機器人的標籤](#exclude_tag_for_specific_bots)。
 
-- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - RTP不支援以帳戶為根據的行銷指定帳戶清單。 ABM清單和程式碼只與在RTP內管理的已上傳帳戶清單（CSV檔案）有關。
 
 ## 標籤設定
@@ -41,7 +41,6 @@ g.src=f;var b=h.getElementsByTagName("script")[0];b.parentNode.insertBefore(g,b)
 | &#39;setAccount&#39; | 必要 | 字串 | 方法名稱。 |
 | accountId | 必要 | 字串 | 帳戶ID。 |
 
-
 ```javascript
 var accountId = '561-HYG-937';
 rtp('setAccount', accountId);
@@ -58,7 +57,6 @@ rtp('setAccount', accountId);
 | &#39;傳送&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;檢視&#39; | 必要 | 字串 | 方法名稱。 |
 | 頁面 | 選用 | 字串 | 相對路徑或完整頁面URL。 |
-
 
 ```javascript
 // Example for Default Page
@@ -103,7 +101,6 @@ if(navigator.userAgent.match(/.(Googlebot|msnbot)./gi) == null){
 | jquery.min.js | v1.8.3 | 可透過聯絡Marketo客戶支援來停用 |
 | jquery-custom-ui-min.js | v1.9.2 | 可透過聯絡Marketo客戶支援來停用 |
 | query-ui-1.8.17-dialog.js | v1.9.2* | 可透過聯絡Marketo客戶支援來停用 |
-
 
 *僅在jQuery UI缺少對話方塊時使用
 

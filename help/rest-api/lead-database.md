@@ -1,16 +1,16 @@
 ---
-title: 潛在客戶資料庫
+title: 銷售機會資料庫
 feature: REST API, Database
 description: 操控主要銷售機會資料庫。
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1342'
 ht-degree: 0%
 
 ---
 
-# 潛在客戶資料庫
+# 銷售機會資料庫
 
 Marketo Lead Database API是Marketo最常使用的API，可用於從Marketo交換人員和人員相關資料，例如活動、商機和公司。
 
@@ -245,7 +245,7 @@ JSON物件的結構大部分是平面的，而且具有簡單索引鍵的查詢�
 
 潛在客戶資料庫記錄的建立和更新都是透過具有JSON本文的POST執行的。 商機、角色、自訂物件、公司和SalesPerson的介面都相同。 Lead的介面稍有不同，您可以在此處閱讀更多相關資訊。
 
-唯一需要的引數是名為`input`的陣列，最多包含300個物件，每個物件都有您要插入/更新為成員的欄位。 您也可以選擇加入`action`引數，可以是： `createOnly`、`updateOnly`或`createOrUpdate`其中之一。 如果省略動作，則模式預設為`createOrUpdate`。 `dedupeBy`是另一個可選引數，當動作設為createOnly或`createOrUpdate`時可使用。 ` dedupeBy`可以是`idField`或`dedupeFields`。 如果選取`idField`，則說明中列出的`idField`會用於重複資料刪除，且必須包含在每個記錄中。 `idField`模式與`createOnly`模式不相容。 如果選取`dedupeFields`，則在使用的物件描述中列出`dedupeFields`，每個記錄中都必須包含每個物件。 如果省略`dedupeBy`引數，則模式預設為`dedupeFields`。
+唯一需要的引數是名為`input`的陣列，最多包含300個物件，每個物件都有您要插入/更新為成員的欄位。 您也可以選擇加入`action`引數，可以是： `createOnly`、`updateOnly`或`createOrUpdate`其中之一。 如果省略動作，則模式預設為`createOrUpdate`。 `dedupeBy`是另一個可選引數，當動作設為createOnly或`createOrUpdate`時可使用。 `dedupeBy`可以是`idField`或`dedupeFields`。 如果選取`idField`，則說明中列出的`idField`會用於重複資料刪除，且必須包含在每個記錄中。 `idField`模式與`createOnly`模式不相容。 如果選取`dedupeFields`，則在使用的物件描述中列出`dedupeFields`，每個記錄中都必須包含每個物件。 如果省略`dedupeBy`引數，則模式預設為`dedupeFields`。
 
 傳遞欄位值清單時，`null`的值或空字串會寫入資料庫為`null`。
 

@@ -3,7 +3,7 @@ title: 大量程式成員擷取
 feature: REST API
 description: 批次處理成員資料擷取。
 exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '1142'
 ht-degree: 2%
@@ -235,7 +235,7 @@ GET /rest/v1/programs/members/describe.json
     <tr>
       <td>isExhausted</td>
       <td>布林值</td>
-      <td>接受用於篩選已用完內容<a href="https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">的</a>人之方案成員資格記錄的布林值。</td>
+      <td>接受用於篩選已用完內容<a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">的</a>人之方案成員資格記錄的布林值。</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>
@@ -285,7 +285,7 @@ GET /rest/v1/programs/members/describe.json
             <tr>
               <td>已傳送</td>
               <td>已訂閱</td>
-              <td>退訂</td>
+              <td>已取消訂閱</td>
             </tr>
             <tr>
               <td>已檢視</td>
@@ -323,7 +323,6 @@ GET /rest/v1/programs/members/describe.json
 | 欄位 | 陣列[字串] | 是 | 欄位引數接受字串的JSON陣列。 列出的欄位會包含在匯出的檔案中。 下列欄位型別可以匯出： `LeadCustom` `LeadProgram` MemberCustom `ProgramMember`。 使用REST API名稱來指定欄位，您可以使用「描述銷售機會2」和/或「描述方案成員」端點來擷取該欄位。 |
 | columnHeaderName | 物件 | 無 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 值是該欄位匯出的欄標題的名稱。 |
 | 格式 | 字串 | 無 | 接受以下其中之一：CSV、TSV、SSV。 匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（如果設定）。 如果未設定，則預設為CSV。 |
-
 
 ## 建立工作
 

@@ -3,7 +3,7 @@ title: 大量匯入
 feature: REST API
 description: 批次匯入人員資料。
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
 source-wordcount: '592'
 ht-degree: 1%
@@ -22,7 +22,7 @@ Marketo提供介面，用於插入大型人員及人員相關資料集，稱為�
 
 大量API端點沒有像其他端點一樣以「/rest」為前置詞。
 
-## 驗證
+## Authentication
 
 大量匯入API使用與其他Marketo REST API相同的OAuth 2.0驗證方法。  這需要有效的存取權杖作為HTTP標頭`Authorization: Bearer {_AccessToken_}`傳送。
 
@@ -96,7 +96,6 @@ Easy,Fox,easyfox@marketo.com
 |---|---|---|
 | 格式 | 字串 | 使用逗號分隔值、定位字元分隔值和分號分隔值的選項，決定匯入資料的檔案格式。 接受以下其中之一：CSV、SSV、TSV。 格式預設為CSV。 |
 | 檔案 | 字串 | 透過檔案中的多部分表單資料指定資料。 |
-
 
 ## 輪詢工作狀態
 

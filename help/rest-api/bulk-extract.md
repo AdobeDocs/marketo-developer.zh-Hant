@@ -3,9 +3,9 @@ title: 大量擷取
 feature: REST API
 description: 擷取Marketo資料的批次作業。
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: e7d893a81d3ed95e34eefac1ee8f1ddd6852f5cc
+source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
 workflow-type: tm+mt
-source-wordcount: '1683'
+source-wordcount: '1682'
 ht-degree: 0%
 
 ---
@@ -23,7 +23,7 @@ Marketo提供的介面可擷取大量人員和人員相關資料，稱為大量�
 
 `Note:`大量API端點未像其他端點一樣加上前置詞「/rest」。
 
-## 驗證
+## Authentication
 
 大量擷取API會使用與其他Marketo REST API相同的OAuth 2.0驗證方法。 這需要有效的存取權杖才能作為HTTP標頭`Authorization: Bearer {_AccessToken_}`傳送。
 
@@ -36,7 +36,7 @@ Marketo提供的介面可擷取大量人員和人員相關資料，稱為大量�
 - 最大並行匯出作業數：2
 - 已排入佇列的匯出作業數上限（包含目前匯出的作業）：10
 - 檔案保留期：7天
-- 預設每日匯出配置：500MB （於每日中部時間午夜12:00重設）。 增加可購買專案。
+- 預設每日匯出配置： 500MB （會在12:00AM CST每日重設）。 增加可購買專案。
 - 日期範圍篩選器的最大時間範圍（createdAt或updatedAt）： 31天
 
 UpdatedAt和智慧清單的大量潛在客戶擷取篩選器不適用於某些訂閱型別。 如果無法取得，對Create Export Lead Job端點的呼叫會傳回錯誤「1035， Unsupported filter type for target subscription」。 客戶可以聯絡Marketo支援，以便在他們的訂閱中啟用此功能。
@@ -123,7 +123,6 @@ POST /bulk/v1/leads/export/create.json
 | columnHeaderName | 物件 | 允許設定傳回檔案中欄標題的名稱。 每個成員索引鍵都是要重新命名的欄標題名稱，值是欄標題的新名稱。 例如，「columnHeaderNames」：{ &quot;firstName&quot;： &quot;First Name&quot;， &quot;lastName&quot;： &quot;Last Name&quot; }， |
 | 篩選 | 物件 | 套用至擷取作業的篩選器。 型別和選項因工作型別而異。 |
 
-
 ## 正在擷取作業
 
 有時候，您必須擷取最近的工作。 使用對應物件型別的「取得匯出作業」可輕鬆完成這項作業。 每個Get Export Jobs端點都支援`status`篩選欄位，  `batchSize`用來限制傳回的工作數目，以及`nextPageToken`用來分頁大型結果集。 狀態篩選器支援匯出作業的每個有效狀態：已建立、已排入佇列、正在處理、已取消、已完成和失敗。 batchSize的最大值和預設值是300。 讓我們取得潛在客戶匯出工作清單：
@@ -209,7 +208,7 @@ GET /bulk/v1/leads/export/{exportId}/file.json
 
 回應包含以設定作業方式格式化的檔案。 端點會以檔案內容回應。 與大多數其他Marketo REST端點不同，如果作業尚未完成或傳遞了錯誤的作業ID，檔案端點會以「404找不到」狀態回應，並以純文字錯誤訊息作為裝載。
 
-為了支援擷取資料的部分和復原友好擷取，檔案端點可選擇性地支援型別`bytes` （每[RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)）的HTTP標頭`Range`。 如果未設定標頭，將會傳回所有內容。 若要擷取檔案的前10,000個位元組，您必須將下列標題作為GET要求的一部分傳遞給端點，從位元組0開始：
+為了支援擷取資料的部分和復原友好擷取，檔案端點可選擇性地支援型別`Range` （每`bytes`RFC 7233[）的HTTP標頭](https://datatracker.ietf.org/doc/html/rfc7233)。 如果未設定標頭，將會傳回所有內容。 若要擷取檔案的前10,000個位元組，您必須將下列標題當作GET請求的一部分傳遞至端點，從位元組0開始：
 
 ```
 Range: bytes=0-9999
@@ -235,7 +234,7 @@ Range: bytes 724-999
 
 #### 檔案完整性驗證
 
-當`status`為「已完成」時，工作狀態端點會在`fileChecksum`屬性中傳回總和檢查碼。 總和檢查碼是匯出檔案的SHA-256雜湊。 您可以將總和檢查碼與擷取之檔案的SHA-256雜湊進行比較，以確認其已完成。
+當`fileChecksum`為「已完成」時，工作狀態端點會在`status`屬性中傳回總和檢查碼。 總和檢查碼是匯出檔案的SHA-256雜湊。 您可以將總和檢查碼與擷取之檔案的SHA-256雜湊進行比較，以確認其已完成。
 
 以下是包含總和檢查碼的範例回應：
 
