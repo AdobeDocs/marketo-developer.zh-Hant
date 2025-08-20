@@ -5,10 +5,10 @@ breadcrumb-title: '[!DNL Marketo] 開發人員指南'
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: f269cbe6edbd6d3fd5b579b1ea03bab8b99208be
 workflow-type: tm+mt
-source-wordcount: '247'
-ht-degree: 24%
+source-wordcount: '252'
+ht-degree: 28%
 
 ---
 
@@ -63,12 +63,12 @@ ht-degree: 24%
       - [登陸頁面重新導向規則](rest-api/landing-page-redirect-rules.md)
       - [登陸頁面範本](rest-api/landing-page-templates.md)
       - [標準欄位清單](rest-api/list-of-standard-fields.md)
-      - [計畫](rest-api/programs.md)
-      - [Smart Campaign](rest-api/smart-campaigns.md)
+      - [方案](rest-api/programs.md)
+      - [智慧行銷活動](rest-api/smart-campaigns.md)
       - [智慧清單](rest-api/smart-lists.md)
       - [程式碼片段](rest-api/snippets.md)
       - [靜態清單](rest-api/static-lists.md)
-      - [Token](rest-api/tokens.md)
+      - [權杖](rest-api/tokens.md)
       - [異動電子郵件](rest-api/transactional-email.md)
    - [Authentication](rest-api/authentication.md)
    - [基礎 URL](rest-api/base-url.md)
@@ -89,15 +89,15 @@ ht-degree: 24%
    - [資料擷取API](rest-api/data-ingestion.md)
    - [端點參考](rest-api/endpoint-reference.md)
    - [錯誤代碼](rest-api/error-codes.md)
-   - 銷售機會資料庫 {#lead-database}
+   - 商機資料庫 {#lead-database}
       - [活動](rest-api/activities.md)
       - [公司](rest-api/companies.md)
       - [自訂物件](rest-api/custom-objects.md)
       - [欄位清單](rest-api/fields.md)
       - [欄位型別](rest-api/field-types.md)
-      - [銷售機會資料庫](rest-api/lead-database.md)
+      - [商機資料庫](rest-api/lead-database.md)
       - [銷售機會](rest-api/leads.md)
-      - [具名帳戶](rest-api/named-accounts.md)
+      - [已命名帳戶](rest-api/named-accounts.md)
       - [具名帳戶清單](rest-api/named-account-lists.md)
       - [機會](rest-api/opportunities.md)
       - [機會角色](rest-api/opportunity-roles.md)
@@ -142,7 +142,7 @@ ht-degree: 24%
       - [Marketo物件](soap-api/marketo-objects.md)
       - [[!DNL syncMObjects]](soap-api/syncmobjects.md)
    - [移轉至REST API](soap-api/migration.md)
-   - 計畫 {#programs}
+   - 方案 {#programs}
       - [[!DNL getChannels]](soap-api/getchannels.md)
       - [[!DNL getTags]](soap-api/gettags.md)
    - [SOAP API](soap-api/soap-api.md)
@@ -159,6 +159,8 @@ ht-degree: 24%
 - [使用者端資料庫](https://github.com/Marketo/Community-Supported-Client-Libraries)
 - [資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams)
 - [電子郵件指令碼](email-scripting.md)
+- [電子郵件指令碼範例](examples.md)
+- [Marketo物件](marketo-objects.md)
 - [授權](api-license.md)
 - [合作夥伴沙箱](partner-sandbox.md)
 - [自助服務流程步驟](self-service-flow-steps.md)

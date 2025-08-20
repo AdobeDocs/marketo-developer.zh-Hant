@@ -3,7 +3,7 @@ title: 資料攝取
 feature: REST API, Dynamic Content
 description: 使用Marketo API使用資料。
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 4bac6968867f1fbee0846b1bcd75b5e34ad91dee
 workflow-type: tm+mt
 source-wordcount: '965'
 ht-degree: 10%
@@ -18,7 +18,9 @@ ht-degree: 10%
 
 介面提供兩種物件型別：人員、自訂物件。 記錄作業僅限「插入或更新」。
 
-資料擷取API目前處於私人測試階段。  受邀者必須擁有[Marketo Engage效能階層](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835)套件的權益。
+>[!NOTE]
+>
+>資料擷取API目前處於私人測試階段。  受邀者必須擁有[Marketo Engage效能階層](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835)套件的權益。
 
 ## Authentication
 
