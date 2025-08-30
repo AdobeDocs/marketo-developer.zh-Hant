@@ -3,10 +3,10 @@ title: JAVASCRIPT API
 description: Javascript API
 feature: Munchkin Tracking Code, Forms, Web Personalization, Predictive Content, Social, Javascript
 exl-id: 6129a467-be44-44bd-9e02-62009070c318
-source-git-commit: e63db409981d10cfea6206cf91340428e5d0b17f
+source-git-commit: f314f153c80416bbccc4328756e71c07e696dd00
 workflow-type: tm+mt
-source-wordcount: '337'
-ht-degree: 0%
+source-wordcount: '289'
+ht-degree: 1%
 
 ---
 
@@ -24,14 +24,11 @@ Marketo的[Munchkin JavaScript追蹤代碼](lead-tracking.md)是Marketo功能的
 
 [Forms 2.0](forms-api-reference.md)可讓行銷人員在不具備程式設計知識的情況下，建立美觀、穩定且彈性的網路表單。 Forms可位於Marketo登陸頁面，並內嵌於您網站的任何頁面上。 Marketo網路表單的核心功能可使用Forms 2.0 JavaScript API進行擴充。
 
-## 網頁Personalization
+## 網頁個人化
 
 [Marketo Web Personalization](web-personalization.md)是一個目標定位和Personalization平台，可協助您根據潛在客戶的身分和行為，即時與網站上的數千名潛在客戶互動。
 
-## 預測性  內容
+## 預測內容
 
 [Marketo預測性內容](predictive-content.md)可讓您透過機器學習和預測性分析所提供的功能，讓網頁訪客參與最相關的內容。 使用文字說明和影像來增強您的內容，並在您的網站上內嵌多個內容建議。
 
-## 社交行銷
-
-[Marketo社交行銷](social.md)可讓行銷人員將社交Widget內嵌在網站和登陸頁面中。 社交Widget包括投票、社交分享按鈕、影片、抽獎和類似轉介優惠的促銷活動。 這些Widget的顯示方式可以自訂，也可以擷取事件來建立獨特的使用者體驗。
