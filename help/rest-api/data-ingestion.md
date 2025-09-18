@@ -3,9 +3,9 @@ title: 資料攝取
 feature: REST API, Dynamic Content
 description: 使用Marketo API使用資料。
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 4bac6968867f1fbee0846b1bcd75b5e34ad91dee
+source-git-commit: af2d0f266a271696dbf7d334f23bcd9962b9eba4
 workflow-type: tm+mt
-source-wordcount: '965'
+source-wordcount: '957'
 ht-degree: 10%
 
 ---
@@ -14,13 +14,13 @@ ht-degree: 10%
 
 資料擷取API是一項高容量、低延遲、高可用性的服務，專門用於以最低延遲有效處理大量與人員相關的資料擷取。
 
-透過提交非同步執行的請求來內嵌資料。 訂閱來自[Marketo可觀察性資料流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup)的事件，即可擷取要求狀態&#x200B;。
+透過提交非同步執行的請求來內嵌資料。 訂閱來自[Marketo可觀察性資料流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup)的事件，即可擷取要求狀態。
 
 介面提供兩種物件型別：人員、自訂物件。 記錄作業僅限「插入或更新」。
 
 >[!NOTE]
 >
->資料擷取API目前處於私人測試階段。  受邀者必須擁有[Marketo Engage效能階層](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835)套件的權益。
+>存取資料擷取API需要取得[Marketo Engage效能層](https://nation.marketo.com/t5/product-documents/marketo-engage-performance-tiers/ta-p/328835)套件的許可權。
 
 ## Authentication
 
@@ -45,14 +45,14 @@ ht-degree: 10%
 
 ### 請求
 
-| 索引鍵 | 值 | 必要 | 說明 |
+| 索引鍵 | 價值 | 必要 | 說明 |
 | - | - | - | - |
 | X-Correlation-Id | 任意字串（長度上限為255個字元）。 | 無 | 可用於透過系統追蹤請求。  請參閱Marketo可觀察性資料流 |
 | X-Request-Source | 任意字串（長度上限為50個字元）。 | 無 | 可用來透過系統追蹤要求的來源。  請參閱Marketo可觀察性資料流 |
 
 ### 回應
 
-| 索引鍵 | 值 | 必要 |
+| 索引鍵 | 價值 | 必要 |
 | - | - | - |
 | X-Request-Id | 唯一請求識別碼。 | 是 |
 
@@ -136,14 +136,14 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 #### 標頭
 
-| 索引鍵 | 值 |
+| 索引鍵 | 價值 |
 | - | - |
 | Content-Type | application/json |
 | X-Mkto-User-Token | {accessToken} |
 
 #### 要求內文
 
-| 索引鍵 | 資料類型 | 必要 | 值 | 預設值 |
+| 索引鍵 | 資料類型 | 必要 | 價值 | 預設值 |
 | - | - | - | - | - |
 | 優先順序 | 字串 | 無 | 請求的優先順序：正常或高 | 一般 |
 | partitionName | 字串 | 無 | 個人資料分割的名稱 | 預設 |
@@ -203,14 +203,14 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 #### 標頭
 
-| 索引鍵 | 值 |
+| 索引鍵 | 價值 |
 | - | - |
 | Content-Type | application/json |
 | X-Mkto-User-Token | {accessToken} |
 
 #### 要求內文
 
-| 索引鍵 | 資料類型 | 必要 | 值 | 預設值 |
+| 索引鍵 | 資料類型 | 必要 | 價值 | 預設值 |
 | - |- | - | - | - |
 | 優先順序 | 字串 | 無 | 請求的優先順序：正常、高 | 一般 |
 | dedupeBy | 字串 | 無 | 要重複資料刪除的屬性： dedupeFields、marketoGUID | dedupeField |
