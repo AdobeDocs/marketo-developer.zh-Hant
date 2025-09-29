@@ -109,7 +109,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     <tr>
       <td><a name="603"></a>603</td>
       <td>存取遭拒</td>
-      <td>驗證成功，但使用者沒有足夠的許可權呼叫此API。 [其他許可權](custom-services.md)可能需要指派給使用者角色，或可能啟用<a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">IP型API存取的允許清單</a>。</td>
+      <td>驗證成功，但使用者沒有足夠的許可權呼叫此API。 [其他許可權](custom-services.md)可能需要指派給使用者角色，或可能啟用<a href="https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">IP型API存取的允許清單</a>。</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
