@@ -1,11 +1,11 @@
 ---
 title: 範例
-description: 用於設定表單動作的Marketo程式碼範例
+description: Marketo Forms 2.0 JavaScript範例，可在提交、設定和讀取欄位時隱藏或重新導向，並使用自訂錯誤、Lightbox和外部觸發器驗證。
 feature: Javascript
 exl-id: dc5f0cc5-ff5a-48b0-be36-52c10e56f798
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '211'
+source-wordcount: '226'
 ht-degree: 0%
 
 ---

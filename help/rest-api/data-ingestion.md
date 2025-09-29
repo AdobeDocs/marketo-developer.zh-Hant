@@ -1,11 +1,11 @@
 ---
 title: 資料攝取
 feature: REST API, Dynamic Content
-description: 使用Marketo API使用資料。
+description: 使用Marketo Data Ingestion API進行高容量、低延遲的人員和具有OAuth標題驗證、非同步狀態事件和重試的自訂物件更新。
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: af2d0f266a271696dbf7d334f23bcd9962b9eba4
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '957'
+source-wordcount: '978'
 ht-degree: 10%
 
 ---

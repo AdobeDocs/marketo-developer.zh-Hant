@@ -1,11 +1,11 @@
 ---
 title: 大量活動擷取
 feature: REST API
-description: 從Marketo批次處理活動資料。
+description: Marketo大量活動擷取REST API ，使用31天的日期範圍、活動和主要屬性篩選器為ETL和CRM匯出大量活動資料。
 exl-id: 6bdfa78e-bc5b-4eea-bcb0-e26e36cf6e19
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1332'
+source-wordcount: '1351'
 ht-degree: 4%
 
 ---

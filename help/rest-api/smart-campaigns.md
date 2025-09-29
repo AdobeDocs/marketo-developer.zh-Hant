@@ -1,16 +1,16 @@
 ---
-title: Smart Campaign
+title: 智慧行銷活動
 feature: REST API, Smart Campaigns
-description: Smart Campaign概述
+description: 瞭解如何將Marketo REST API用於Smart Campaigns，包括依ID或名稱查詢、瀏覽篩選器、建立複製刪除，以及排程或請求觸發程式
 exl-id: 540bdf59-b102-4081-a3d7-225494a19fdd
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '989'
+source-wordcount: '1012'
 ht-degree: 1%
 
 ---
 
-# Smart Campaign
+# 智慧行銷活動
 
 [智慧行銷活動端點參考（資產）](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns)
 
@@ -185,7 +185,7 @@ GET /rest/asset/v1/smartCampaigns.json?earliestUpdatedAt=2016-09-10T23:15:00-00:
 
 ## 建立
 
-[建立Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST)端點是使用具有兩個必要引數的application/x-www-form-urlencodedPOST執行。 `name`引數指定要建立的智慧行銷活動的名稱。 `folder`引數會指定智慧行銷活動建立所在的父資料夾。 格式為包含`id`和`type`屬性的JSON區塊。
+[建立Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST)端點是使用具有兩個必要引數的application/x-www-form-urlencoded POST執行。 `name`引數指定要建立的智慧行銷活動的名稱。 `folder`引數會指定智慧行銷活動建立所在的父資料夾。 格式為包含`id`和`type`屬性的JSON區塊。
 
 您可以選擇使用`description`引數（最多2,000個字元）描述智慧行銷活動。
 
@@ -239,7 +239,7 @@ name=Smart Campaign 02&folder={"type": "folder","id": 640}&description=This is a
 
 ## 更新
 
-[Update Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/)端點使用application/x-www-form-urlencodedPOST執行。 它以單一智慧行銷活動`id`作為路徑引數。 您可以使用`name`引數來更新智慧行銷活動的名稱，或使用`description`引數來更新智慧行銷活動的說明。
+[Update Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/)端點使用application/x-www-form-urlencoded POST執行。 它以單一智慧行銷活動`id`作為路徑引數。 您可以使用`name`引數來更新智慧行銷活動的名稱，或使用`description`引數來更新智慧行銷活動的說明。
 
 ```
 POST /rest/asset/v1/smartCampaign/{id}.json
@@ -291,7 +291,7 @@ name=Smart Campaign 02 Update&description=This is a smart campaign update test.
 
 ## 原地複製
 
-[仿製智慧型行銷活動](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5)端點是使用具有三個必要引數的application/x-www-form-urlencodedPOST執行。 它需要指定要複製的智慧行銷活動的`id`引數、指定新智慧行銷活動名稱的`name`引數，以及指定建立新智慧行銷活動的父資料夾的`folder`引數。 格式為包含`id`和`type`屬性的JSON區塊。
+[仿製智慧型行銷活動](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5)端點是使用具有三個必要引數的application/x-www-form-urlencoded POST執行。 它需要指定要複製的智慧行銷活動的`id`引數、指定新智慧行銷活動名稱的`name`引數，以及指定建立新智慧行銷活動的父資料夾的`folder`引數。 格式為包含`id`和`type`屬性的JSON區塊。
 
 您可以選擇使用`description`引數（最多2,000個字元）描述智慧行銷活動。
 
@@ -416,7 +416,7 @@ POST /rest/v1/campaigns/{id}/schedule.json
 }
 ```
 
-## 觸發
+## 觸發程序
 
 觸發智慧型行銷活動會根據觸發的事件而一次影響一個人。
 
@@ -426,7 +426,7 @@ POST /rest/v1/campaigns/{id}/schedule.json
 
 此端點需要行銷活動`id`做為路徑引數，以及包含潛在客戶ID的`leads`整數陣列引數。 每次呼叫最多允許100個銷售機會。
 
-`tokens`陣列引數可選擇性用來覆寫促銷活動上層方案的本機My Token。 `tokens`接受最多100個權杖。 每個`tokens`陣列專案都包含一個名稱/值組。 權杖的名稱必須格式化為&quot;{{my.name}}&quot;。 如果您使用[新增系統權杖作為電子郵件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email)方法中的連結來新增「viewAsWebPageLink」系統權杖，則無法使用`tokens`覆寫它。 改為使用[將檢視新增為網頁連結至電子郵件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email)方法，可讓您使用`tokens`覆寫「viewAsWebPageLink」。
+`tokens`陣列引數可選擇性用來覆寫促銷活動上層方案的本機My Token。 `tokens`接受最多100個權杖。 每個`tokens`陣列專案都包含一個名稱/值組。 權杖的名稱必須格式化為&quot;{{my.name}}&quot;。 如果您使用[新增系統權杖作為電子郵件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email)方法中的連結來新增「viewAsWebPageLink」系統權杖，則無法使用`tokens`覆寫它。 改為使用[將檢視新增為網頁連結至電子郵件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email)方法，可讓您使用`tokens`覆寫「viewAsWebPageLink」。
 
 `leads`和`tokens`引數是以application/json的形式傳入要求內文中。
 
@@ -472,7 +472,7 @@ POST /rest/v1/campaigns/{id}/trigger.json
 }
 ```
 
-### 啟用
+### 啟動
 
 [啟動Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns/operation/activateSmartCampaignUsingPOST)端點很簡單。 需要`id`路徑引數。 若要成功啟用，行銷活動必須符合下列條件：
 

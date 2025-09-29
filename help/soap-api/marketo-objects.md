@@ -1,11 +1,11 @@
 ---
 title: Marketo物件
 feature: SOAP
-description: Marketo物件總覽
+description: Marketo物件的總覽，包括型別、屬性、外部金鑰行為，以及支援的SOAP API （適用於機會、計畫和相關記錄）。
 exl-id: 99b9aed4-94e8-46e8-84d9-2cc5215b0c13
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '249'
+source-wordcount: '265'
 ht-degree: 0%
 
 ---

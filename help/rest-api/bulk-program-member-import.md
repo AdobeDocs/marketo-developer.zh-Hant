@@ -1,11 +1,11 @@
 ---
 title: 大量程式成員匯入
 feature: REST API
-description: 批次匯入成員資料。
+description: 瞭解如何使用10MB以下的CSV TSV或SSV檔案、佇列限制、必要引數和輪詢工作狀態，透過Marketo REST API大量匯入方案成員。
 exl-id: b0e1039a-fe9b-4fb7-9aa6-9980a06da673
-source-git-commit: 8a785b0719e08544ed1a87772faf90bd9dda3077
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '837'
+source-wordcount: '860'
 ht-degree: 0%
 
 ---
@@ -139,7 +139,7 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 
 ## 失敗
 
-[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsFailed`屬性指出失敗。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。
+`numOfRowsFailed`取得匯入程式成員狀態[回應中的](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)屬性指出失敗。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。
 
 使用Get Import Program Member Failures端點傳遞`batchId`路徑引數，以擷取失敗資料列的記錄和原因。
 
@@ -193,7 +193,7 @@ Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTE
 
 ## 警告
 
-[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsWithWarning`屬性表示警告。 如果`numOfRowsWithWarning`大於零，則該值表示發生的警告數。
+`numOfRowsWithWarning`取得匯入程式成員狀態[回應中的](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)屬性表示警告。 如果`numOfRowsWithWarning`大於零，則該值表示發生的警告數。
 
 使用[取得匯入程式成員警告](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET)端點傳遞`batchId`路徑引數，以擷取記錄及警告資料列的原因。
 

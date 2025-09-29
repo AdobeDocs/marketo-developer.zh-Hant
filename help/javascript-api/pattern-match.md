@@ -1,12 +1,12 @@
 ---
 title: 模式比對
-description: 模式比對
+description: 使用RTP rtp.checkPattern公用程式來測試含百分比萬用字元的字串模式，請參閱同步限制、使用方式和URL範例，以及必要的RTP標籤設定。
 feature: Javascript
 exl-id: 4ebd13e3-375b-449b-850f-3b18f570ca75
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '133'
-ht-degree: 6%
+source-wordcount: '155'
+ht-degree: 5%
 
 ---
 
@@ -14,7 +14,7 @@ ht-degree: 6%
 
 RTP會公開公用程式函式，以檢查模式是否符合特定字串。 此公用程式無法用於非同步處理，因為它會傳回是否有相符專案的指示。
 
-您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 
 ## 使用情況
 

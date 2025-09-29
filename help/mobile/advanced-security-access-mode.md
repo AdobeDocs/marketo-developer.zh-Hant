@@ -1,18 +1,18 @@
 ---
 title: 進階安全性存取模式
 feature: Mobile Marketing
-description: 有關進階安全性存取模式的詳細資料
+description: 瞭解Marketo Mobile SDK的進階安全性存取模式，包括HMAC簽名產生、伺服器端點設定、裝置ID使用方式，以及iOS和Android範例
 exl-id: bd4730ff-708b-465e-b494-485a4dbf67ff
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '303'
+source-wordcount: '321'
 ht-degree: 0%
 
 ---
 
 # 進階安全性存取模式
 
-Marketo SDK會公開設定和移除安全性簽名的方法。 您也可以使用公用程式方法來擷取裝置ID。 登入時，裝置ID應隨電子郵件傳送至客戶伺服器，以用於計算安全性簽章。 SDK應使用指向上述演演算法的點選新端點，以擷取必要欄位來例項化簽名物件。 如果已在Marketo Mobile Admin中啟用安全性存取模式，則必須在SDK中設定此簽章。
+Marketo SDK會公開設定和移除安全性簽名的方法。 您也可以使用公用程式方法來擷取裝置ID。 登入時，裝置ID應隨電子郵件傳送至客戶伺服器，以用於計算安全性簽章。 SDK應該點選指向上述演演算法的新端點，以擷取必要欄位來例項化簽名物件。 如果已在SDK Mobile管理中啟用安全性存取模式，則在Marketo中設定此簽名是必要的步驟。
 
 ## 安全存取模式設定
 
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     print 'HMAC is ', hmac_string
 ```
 
-Marketo SDK公開新的方法來設定和移除安全性簽章。 您也可以使用公用程式方法來擷取裝置ID。 登入時，裝置ID應隨電子郵件傳送至客戶伺服器，以用於計算安全性簽章。 SDK應使用指向上述演演算法的點選新端點，以擷取必要欄位來例項化簽名物件。 如果已在Marketo Mobile Admin中啟用安全性存取模式，則必須在SDK中設定此簽章。
+Marketo SDK公開新的方法來設定和移除安全性簽章。 您也可以使用公用程式方法來擷取裝置ID。 登入時，裝置ID應隨電子郵件傳送至客戶伺服器，以用於計算安全性簽章。 SDK應該點選指向上述演演算法的新端點，以擷取必要欄位來例項化簽名物件。 如果已在SDK Mobile管理中啟用安全性存取模式，則在Marketo中設定此簽名是必要的步驟。
 
 ### iOS
 

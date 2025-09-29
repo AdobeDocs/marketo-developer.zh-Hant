@@ -1,11 +1,11 @@
 ---
 title: 機會角色
 feature: REST API
-description: 在Marketo中處理機會角色。
+description: 透過REST API管理Marketo商機角色，包括說明、使用複合重複資料刪除欄位進行查詢、建立更新刪除、逾時和無CRM同步。
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '253'
+source-wordcount: '270'
 ht-degree: 0%
 
 ---

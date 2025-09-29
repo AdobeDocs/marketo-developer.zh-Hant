@@ -1,11 +1,11 @@
 ---
 title: 大量自訂物件匯入
 feature: Custom Objects
-description: 批次匯入自訂物件。
+description: 瞭解如何使用CSV、TSV或SSV檔案，透過REST大量匯入Marketo自訂物件。
 exl-id: e795476c-14bc-4e8c-b611-1f0941a65825
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '855'
+source-wordcount: '866'
 ht-degree: 0%
 
 ---
@@ -22,7 +22,7 @@ ht-degree: 0%
 
 ## 自訂物件範例
 
-使用大量API之前，您必須先使用Marketo管理UI來[建立自訂物件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects)。 例如，假設我們已建立具有「顏色」、「製作」、「模型」和「VIN」欄位的「Car」自訂物件。 以下是顯示自訂物件的管理員UI畫面。 您可以看到我們使用VIN欄位進行重複資料刪除。 這些API名稱會強調顯示，因為在呼叫大量API相關端點時必須使用這些名稱。
+使用大量API之前，您必須先使用Marketo管理UI來[建立自訂物件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects)。 例如，假設我們已建立具有「顏色」、「製作」、「模型」和「VIN」欄位的「Car」自訂物件。 以下是顯示自訂物件的管理員UI畫面。 您可以看到我們使用VIN欄位進行重複資料刪除。 這些API名稱會強調顯示，因為在呼叫大量API相關端點時必須使用這些名稱。
 
 ![插入自訂物件](assets/bulk-insert-co-car-1.png)
 
@@ -190,7 +190,7 @@ blue,bmw,325i,WBS3U9C52HP970604
 
 ## 輪詢工作狀態
 
-建立匯入工作之後，您必須查詢其狀態。 最佳實務是每5到30秒輪詢匯入工作。 若要這麼做，請在[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)端點的路徑中傳遞自訂物件的API名稱和`batchId`。
+建立匯入工作之後，您必須查詢其狀態。 最佳實務是每5到30秒輪詢匯入工作。 若要這麼做，請在`batchId`取得匯入自訂物件狀態[端點的路徑中傳遞自訂物件的API名稱和](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)。
 
 ```
 GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
@@ -220,7 +220,7 @@ GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
 
 ## 失敗
 
-失敗由[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)回應中的`numOfRowsFailed`屬性所指示。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。 呼叫[取得匯入自訂物件失敗](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET)端點以取得包含失敗詳細資料的檔案。 同樣地，您必須在路徑中傳遞自訂物件API名稱和`batchId`。 如果不存在失敗檔案，則會傳回HTTP 404狀態代碼。
+失敗由`numOfRowsFailed`取得匯入自訂物件狀態[回應中的](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)屬性所指示。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。 呼叫[取得匯入自訂物件失敗](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET)端點以取得包含失敗詳細資料的檔案。 同樣地，您必須在路徑中傳遞自訂物件API名稱和`batchId`。 如果不存在失敗檔案，則會傳回HTTP 404狀態代碼。
 
 繼續此範例，我們可以修改標題並將「vin」變更為「vin」（在逗號和「vin」之間新增空格）以強制失敗。
 

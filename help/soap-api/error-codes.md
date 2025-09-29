@@ -1,12 +1,12 @@
 ---
 title: 錯誤代碼
 feature: SOAP
-description: SOAP呼叫的錯誤代碼
+description: Marketo SOAP API錯誤碼的參考指南，包含訊息和備註，其中涵蓋驗證失敗、速率和並行限制，以及請求問題。
 exl-id: 71796520-7bd6-4a37-94e7-b073d17df06f
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '390'
-ht-degree: 10%
+source-wordcount: '407'
+ht-degree: 9%
 
 ---
 

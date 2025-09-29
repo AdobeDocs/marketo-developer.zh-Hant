@@ -1,11 +1,11 @@
 ---
 title: 欄位
 feature: REST API, Field Management
-description: 支援的欄位名稱清單。
+description: 瞭解REST和SOAP銷售機會欄位命名、透過REST列出欄位說明銷售機會、功能對應、為何sfdcId為Null，以及使用sfdcLeadId或sfdcContactId。
 exl-id: 9033f32a-c7cb-4bbf-abcf-38ca4112139f
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '194'
+source-wordcount: '212'
 ht-degree: 2%
 
 ---
@@ -20,7 +20,7 @@ REST API和SOAP API對潛在客戶欄位使用不同的命名慣例。
 
 ## 在何處使用哪個欄位名稱型別？
 
-有時很難知道您運用特定整合相關功能時必須使用的欄位名稱型別。 以下為快速參照，其功能使用REST或SOAP欄位名稱型別。
+有時很難知道您運用特定整合相關功能時必須使用的欄位名稱型別。 以下為功能使用REST或SOAP欄位名稱型別的快速參考。
 
 | 功能 | 要使用的欄位名稱型別 |
 |--- |--- |

@@ -1,16 +1,16 @@
 ---
-title: 計畫
+title: 方案
 feature: REST API, Programs
-description: 建立和編輯計畫資訊。
+description: Marketo的Asset REST API方案指南涵蓋型別、管道、標籤、成員狀態和端點，可依ID或名稱取得、瀏覽及依狀態篩選。
 exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
-source-git-commit: f28aa6daf53063381077b357061fe7813c64b5de
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '848'
+source-wordcount: '870'
 ht-degree: 1%
 
 ---
 
-# 計畫
+# 方案
 
 [程式端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs)
 
@@ -21,7 +21,7 @@ ht-degree: 1%
 Marketo中有五種核心型別的計畫：
 
 - 預設
-- 活動
+- 事件
 - 含網路研討會的事件
 - 參與度
 - 電子郵件
@@ -187,7 +187,7 @@ GET /rest/asset/v1/programs.json
 
 ### 依日期範圍
 
-我們的[取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5)端點的`earliestUpdatedAt`和`latestUpdatedAt`引數可讓您為傳回在指定範圍內更新或最初建立的程式設定低和高的日期時間浮水印。
+我們的`earliestUpdatedAt`取得程式`latestUpdatedAt`端點的[和](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5)引數可讓您為傳回在指定範圍內更新或最初建立的程式設定低和高的日期時間浮水印。
 
 ```
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
@@ -379,7 +379,7 @@ name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API 
 
 ### 更新
 
-更新程式成本時，若要附加新成本，只需將其新增至您的`costs`陣列即可。 若要執行破壞性更新，請傳遞您的新成本，以及設定為`true`的引數`costsDestructiveUpdate`。 若要清除程式的所有成本，請勿傳遞`costs`引數，只傳遞`costsDestructiveUpdate`設定為`true`。
+更新程式成本時，若要附加新成本，只需將其新增至您的`costs`陣列即可。 若要執行破壞性更新，請傳遞您的新成本，以及設定為`costsDestructiveUpdate`的引數`true`。 若要清除程式的所有成本，請勿傳遞`costs`引數，只傳遞`costsDestructiveUpdate`設定為`true`。
 
 ```
 POST /rest/asset/v1/program/{id}.json

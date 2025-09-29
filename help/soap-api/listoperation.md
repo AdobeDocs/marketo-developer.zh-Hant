@@ -1,11 +1,11 @@
 ---
 title: listOperation
 feature: SOAP
-description: listOperation SOAP呼叫
+description: Marketo SOAP listOperation ，用於新增移除或檢查靜態清單成員資格。 透過嚴格模式、XML範例、PHP和Java程式碼，支援每個呼叫最多1000個銷售機會。
 exl-id: 8332cc22-c5a9-43d6-9e92-8d62265cfab2
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '187'
+source-wordcount: '211'
 ht-degree: 6%
 
 ---

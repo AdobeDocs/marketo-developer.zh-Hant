@@ -1,11 +1,11 @@
 ---
 title: REST API
 feature: REST API
-description: REST API總覽
+description: 瞭解如何使用Marketo REST API、設定API使用者和LaunchPoint、檢視配額和限制、使用授權標頭驗證以及擷取銷售機會。
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '770'
+source-wordcount: '790'
 ht-degree: 1%
 
 ---
@@ -20,7 +20,7 @@ Marketo公開REST API，允許從遠端執行系統的許多功能。 從建立�
 >SOAP API即將淘汰，自2025年10月31日起不再提供。 所有新的開發應使用Marketo [REST API](./rest-api.md)完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱SOAP API [移轉指南](../soap-api/migration.md)以瞭解如何移轉的資訊。
 >
 
-- **每日配額：**&#x200B;訂閱每天會配置50,000個API呼叫（這會在每日中午12:00CST重設）。 您可以透過帳戶管理員增加每日配額。
+- **每日配額：**&#x200B;訂閱每天會配置50,000個API呼叫（這會在每日的12:00AM CST重設）。 您可以透過帳戶管理員增加每日配額。
 - **速率限制：**&#x200B;每個執行個體的API存取限製為每20秒100次呼叫。
 - **並行限制：**  最多十個同時進行的API呼叫。
 
@@ -54,7 +54,7 @@ Marketo公開REST API，允許從遠端執行系統的許多功能。 從建立�
 
 ![啟動點](assets/admin-launchpoint.png)
 
-按一下&#x200B;**[!UICONTROL New]**&#x200B;功能表並選取&#x200B;**[!UICONTROL New Service]**。 提供描述性服務名稱，並從[!UICONTROL Service]下拉式功能表中選取&#x200B;**[!UICONTROL Custom]**。 提供說明，然後從[!UICONTROL API Only User]下拉式功能表中選取您的新使用者，並按一下&#x200B;**[!UICONTROL Create]**。
+按一下&#x200B;**[!UICONTROL New]**&#x200B;功能表並選取&#x200B;**[!UICONTROL New Service]**。 提供描述性服務名稱，並從&#x200B;**[!UICONTROL Custom]**&#x200B;下拉式功能表中選取[!UICONTROL Service]。 提供說明，然後從[!UICONTROL API Only User]下拉式功能表中選取您的新使用者，並按一下&#x200B;**[!UICONTROL Create]**。
 
 ![新的Launchpoint服務](assets/admin-launchpoint-new-service.png)
 

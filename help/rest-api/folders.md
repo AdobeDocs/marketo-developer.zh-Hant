@@ -1,12 +1,12 @@
 ---
 title: 資料夾
 feature: REST API
-description: 使用Marketo API操控資料夾。
+description: Marketo REST API指南涵蓋建立、更新、刪除、依ID和名稱查詢、使用根、工作區、maxDepth和分頁大量瀏覽的資料夾。
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1008'
-ht-degree: 0%
+source-wordcount: '1025'
+ht-degree: 1%
 
 ---
 
@@ -211,7 +211,7 @@ GET /rest/asset/v1/folders.json?root={"id":14,"type":"Folder"}
 
 ## 建立和更新
 
-[建立資料夾](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST)非常簡單，而且會以application/x-www-form-urlencodedPOST執行，其中包含兩個必要的引數：「name」（名稱）、「string」（字串）和「parent」（父項），以建立資料夾，這是內嵌JSON物件，具有兩個成員： ID和型別：「資料夾」或「程式」（視目標資料夾的型別而定）。 也可選擇加入字串「description」，最多2000個字元。
+[建立資料夾](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders/operation/createFolderUsingPOST)非常簡單，而且會以application/x-www-form-urlencoded POST執行，其中有兩個必要的引數：「name」（名稱）、字串（字串）和「parent」（建立資料夾的父項），這是內嵌的JSON物件，具有兩個成員，ID和型別：「資料夾」或「程式」（視目標資料夾的型別而定）。 也可選擇加入字串「description」，最多2000個字元。
 
 ```
 POST /rest/asset/v1/folders.json

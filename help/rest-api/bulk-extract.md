@@ -1,11 +1,11 @@
 ---
 title: 大量擷取
 feature: REST API
-description: 擷取Marketo資料的批次作業。
+description: 瞭解如何使用Marketo大量擷取REST API匯出銷售機會、活動、方案成員和自訂物件，並具備OAuth、工作佇列和500MB每日限制。
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1682'
+source-wordcount: '1702'
 ht-degree: 0%
 
 ---

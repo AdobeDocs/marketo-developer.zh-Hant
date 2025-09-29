@@ -1,11 +1,11 @@
 ---
 title: 銷售機會
 feature: REST API
-description: 潛在客戶API呼叫的詳細資訊
+description: 探索Marketo銷售機會REST API功能，包括說明、依ID或篩選器查詢、預設欄位、限制和擷取ECID。
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '3338'
+source-wordcount: '3351'
 ht-degree: 2%
 
 ---
@@ -814,7 +814,7 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 您也可以根據靜態清單或計畫中的成員資格來擷取潛在客戶記錄。 此外，您可以擷取潛在客戶所屬的所有靜態清單、方案或智慧行銷活動。
 
 回應結構和選用引數與「依篩選型別取得銷售機會」的相同，不過filterType和filterValues不能與此API搭配使用。
-若要透過Marketo UI存取清單ID，請導覽至清單。 清單`id`位於靜態清單`https://app-**&#x200B;**.marketo.com/#ST1001A1`的URL中。 在此範例中，1001是清單的`id`。
+若要透過Marketo UI存取清單ID，請導覽至清單。 清單`id`位於靜態清單`https://app-****.marketo.com/#ST1001A1`的URL中。 在此範例中，1001是清單的`id`。
 
 ### 請求
 
@@ -889,7 +889,7 @@ GET /rest/v1/leads/{id}/listMembership.json?batchSize=3
 }
 ```
 
-## 計畫
+## 方案
 
 可以類似清單的方式擷取方案會籍。 呼叫Get Leads by Program Id端點並傳遞`programId`路徑引數時，可以使用相同的選用要求引數。
 
@@ -998,7 +998,7 @@ GET /rest/v1/leads/{id}/programMembership.json
 }
 ```
 
-## Smart Campaign
+## 智慧行銷活動
 
 「依銷售機會ID取得智慧型促銷活動」端點採用銷售機會記錄ID路徑引數，並傳回該銷售機會所屬的所有智慧型促銷活動記錄。
 

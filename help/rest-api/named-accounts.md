@@ -1,16 +1,16 @@
 ---
-title: 具名帳戶
+title: 已命名帳戶
 feature: REST API
-description: 透過API操控具名帳戶。
+description: Marketo REST指南，針對ABM的具名帳戶執行CRUD，其中包含說明、查詢、建立更新範例、可搜尋欄位、重複資料刪除規則，以及無銷售機會連結。
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '679'
-ht-degree: 0%
+source-wordcount: '697'
+ht-degree: 1%
 
 ---
 
-# 具名帳戶
+# 已命名帳戶
 
 [具名帳戶端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts)
 

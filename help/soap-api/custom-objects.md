@@ -1,11 +1,11 @@
 ---
 title: 自訂物件
 feature: SOAP
-description: 建立自訂物件。
+description: 瞭解Marketo自訂物件如何連結一個指向許多記錄，具有結構、限制，以及用於取得、同步、刪除以及智慧清單和電子郵件使用的SOAP API呼叫。
 exl-id: 29d65841-4b44-4d94-b14e-c583d433d015
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '231'
+source-wordcount: '256'
 ht-degree: 0%
 
 ---

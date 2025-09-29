@@ -1,12 +1,12 @@
 ---
 title: 使用者設定檔
 feature: Mobile Marketing, Users and Roles
-description: 在Marketo Mobile中使用使用者設定檔
+description: 瞭解如何使用Objective C Swift和Java、標準和自訂欄位、associateLead，在iOS和Android上的Marketo Mobile SDK中建立和更新使用者設定檔
 exl-id: 1b2cfb7f-d678-4022-8cd9-a56004a1ac46
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '83'
-ht-degree: 0%
+source-wordcount: '103'
+ht-degree: 1%
 
 ---
 

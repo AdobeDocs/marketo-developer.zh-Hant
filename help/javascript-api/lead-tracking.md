@@ -1,11 +1,11 @@
 ---
 title: 銷售機會追蹤
-description: 潛在客戶追蹤API
+description: 瞭解如何內嵌Marketo Munchkin JavaScript、追蹤瀏覽和點按、管理已知和匿名的銷售機會、跨網域Cookie，以及選擇退出Smart Campaigns。
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-source-git-commit: 8ad3e3f0958ea705375651b1c8a75967d807ca80
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '764'
+source-wordcount: '784'
 ht-degree: 0%
 
 ---
@@ -66,7 +66,7 @@ Marketo Munchkin的預設行為是在頁面載入時執行以下操作：
 1. 使用目前頁面和瀏覽器的資訊，將「造訪網頁」事件傳送至指定的Marketo執行個體。 這會將活動記錄到Marketo中的對應記錄。
 1. 針對使用者在連結上所點選的任何專案，傳送「網頁上的點選連結」事件。
 
-Munchkin的行為可透過使用Munchkin [組態設定](configuration.md)來修改，例如是否使用`cookieAnon`設定造訪頁面時為所有潛在客戶建立Cookie，或使用`clickTime`設定修改點選延遲。 您可將apiOnly設定設為true，以停用造訪活動的傳送。 自162版（2022年8月）起，除了`http/s`個連結外，還會追蹤`tel`點按和`mailto`個連結。
+Munchkin的行為可透過使用Munchkin [組態設定](configuration.md)來修改，例如是否使用`cookieAnon`設定造訪頁面時為所有潛在客戶建立Cookie，或使用`clickTime`設定修改點選延遲。 您可將apiOnly設定設為true，以停用造訪活動的傳送。 自162版（2022年8月）起，除了`tel`個連結外，還會追蹤`mailto`點按和`http/s`個連結。
 
 ## 已知和匿名銷售機會
 
@@ -100,7 +100,7 @@ Munchkin Cookie是每個第二層網域（即`example.com`）專屬的。 Cookie
 
 ## Beta
 
-若要選擇加入登陸頁面的Munchkin測試版管道，請前往您的[管理員 — > Treasure Chest](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features)功能表，並啟用「登陸頁面上的Munchkin Beta」設定。 這會提供&#x200B;**[!UICONTROL Admin]** ->中的新程式碼片段  **[!UICONTROL Munchkin]**&#x200B;功能表可讓您在外部網站上使用測試版。
+若要選擇加入登陸頁面的Munchkin測試版管道，請前往您的[管理員 — > Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features)功能表，並啟用「登陸頁面上的Munchkin Beta」設定。 這會提供&#x200B;**[!UICONTROL Admin]** ->中的新程式碼片段  **[!UICONTROL Munchkin]**&#x200B;功能表可讓您在外部網站上使用測試版。
 
 ## 選擇退出
 

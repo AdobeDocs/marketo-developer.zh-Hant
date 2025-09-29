@@ -1,10 +1,10 @@
 ---
 title: 自助服務流程步驟
-description: 自助服務流程步驟概述
+description: 自助服務流程步驟可讓整合經銷商將Web API部署為Marketo流程步驟，以處理銷售機會資料、呼叫服務，以及將銷售機會和活動資料寫回
 exl-id: f4353692-9e6c-431c-b8b7-3ae96040cf3a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '80'
+source-wordcount: '101'
 ht-degree: 0%
 
 ---

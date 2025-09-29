@@ -1,11 +1,11 @@
 ---
 title: 表單
 feature: REST API, Forms
-description: 透過API建立和管理表單。
+description: Marketo Forms REST API指南可建立和管理表單、依id或名稱擷取、使用狀態篩選器瀏覽，以及管理欄位、欄位集和規則。
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1598'
+source-wordcount: '1616'
 ht-degree: 1%
 
 ---

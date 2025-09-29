@@ -1,12 +1,12 @@
 ---
 title: mergeLead
 feature: SOAP
-description: mergeLeads SOAP呼叫
+description: 將mergeLeads與Marketo SOAP搭配使用，以合併獲勝和失敗的潛在客戶記錄。 包括請求欄位、XML請求和回應，以及PHP和Java範例。
 exl-id: a667cb76-525d-4583-b26a-1181d320a68c
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '83'
-ht-degree: 8%
+source-wordcount: '104'
+ht-degree: 6%
 
 ---
 

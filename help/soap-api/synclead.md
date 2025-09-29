@@ -1,11 +1,11 @@
 ---
 title: syncLead
 feature: SOAP
-description: syncLead SOAP呼叫
+description: 瞭解如何使用Marketo SOAP syncLead插入或更新單一銷售機會、處理識別碼和工作區，以及請求欄位、XML和PHP範例。
 exl-id: e6cda794-a9d4-4153-a5f3-52e97a506807
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '518'
+source-wordcount: '540'
 ht-degree: 2%
 
 ---

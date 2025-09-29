@@ -1,11 +1,11 @@
 ---
 title: 檔案
 feature: REST API
-description: 儲存和操作Marketo檔案。
+description: 依ID或名稱查詢Marketo REST API檔案、瀏覽資料夾和位移、透過多部分上傳建立或更新、insertOnly、MIME型別、無串流
 exl-id: 17361cdc-2309-442c-803c-34ce187aee1a
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '267'
+source-wordcount: '289'
 ht-degree: 1%
 
 ---

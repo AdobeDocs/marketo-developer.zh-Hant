@@ -1,10 +1,11 @@
 ---
 title: Marketo物件
 feature: Email Programs
-description: 搭配Velocity指令碼使用Marketo物件的概觀
-source-git-commit: 3ccb27a0d184e0c1314979d404022bc4e0794f7b
+description: 使用Marketo Velocity搭配銷售機會、商機和自訂物件、載入欄位、前10名清單存取權、SFDC關係和$TriggerObject的指南。
+exl-id: 88c63d72-7aa5-4550-9e1a-887a479872e1
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '518'
+source-wordcount: '530'
 ht-degree: 0%
 
 ---

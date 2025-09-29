@@ -1,11 +1,11 @@
 ---
 title: SOAP常見問題集
 feature: SOAP
-description: SOAP常見問題集
+description: 瞭解如何透過Marketo SOAP API列出具有getMoBjects的方案、最佳化getMultipleLeads、建立機會，以及傳送或排程個人化電子郵件。
 exl-id: a2d8f144-cd5f-41bc-8231-29c42af935b8
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '333'
+source-wordcount: '353'
 ht-degree: 0%
 
 ---
@@ -20,9 +20,9 @@ ht-degree: 0%
 
 **A：**&#x200B;有幾個選項可以加快getMultipleLeads呼叫的效能。 第一個是減少您對每個呼叫請求的batchSize。 200是建議的批次大小。 第二個選項是使用includeAttributes篩選條件來指定您感興趣的欄位。 這可加快查詢速度，並減少您收到的回應負載。 最後的方法是使用LastUpdateAtSelector並指定oldestUpdatedAt和latestUpdatedAt。 您可以指定不同的日期範圍，然後同時執行多個請求。 如果使用執行緒方法，請確定您的SOAP/WSDL使用者端支援[持續連線](https://www.w3.org/Protocols/rfc2616/rfc2616-sec8.html)。
 
-**問：**&#x200B;未與SalesForce或Microsoft Dynamics等CRM整合時，如何透過SOAP API建立商機？
+**問：**&#x200B;未與Salesforce或Microsoft Dynamics等CRM整合時，如何透過SOAP API建立機會？
 
-**A：**&#x200B;您可以使用寫入OpportunityPersonRole和機會[MObject](marketo-objects.md)型別的[syncMObjects](syncmobjects.md)呼叫，以SOAP API建立機會。
+**A：**&#x200B;您可以使用SOAP API建立機會，使用寫入OpportunityPersonRole和機會[MObject](syncmobjects.md)型別的[syncMObjects](marketo-objects.md)呼叫。
 
 **問：**&#x200B;我是否可透過Marketo以程式設計方式傳送電子郵件？ 如果是，如何傳送每個電子郵件收件者的自訂內容？
 

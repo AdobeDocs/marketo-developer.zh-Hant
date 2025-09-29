@@ -1,11 +1,11 @@
 ---
 title: Webhooks
 feature: Webhooks
-description: Webhooks概觀
+description: 瞭解如何設定Marketo Webhook以呼叫協力廠商服務、設定裝載範本、編碼、回應對應、Token、自訂標題和提示。
 exl-id: fd283c66-05a1-4aa4-8412-0d41b8d1e3c8
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '562'
+source-wordcount: '580'
 ht-degree: 0%
 
 ---
@@ -14,9 +14,9 @@ ht-degree: 0%
 
 Marketo允許使用Webhook與協力廠商Web服務通訊。 Webhook支援使用GET或POST HTTP動詞來推送或擷取特定URL的資料。 如需應用程式內建立Webhook以及如何將其新增到Smart Campaigns的詳細指示，請參閱下列文章：
 
-- [建立Webhook](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
-- [呼叫Webhook](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
-- [在智慧行銷活動中使用Webhook](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
+- [建立Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
+- [呼叫Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
+- [在智慧行銷活動中使用Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
 
 每個單獨的webhook都有以下屬性：
 
@@ -29,13 +29,13 @@ Marketo允許使用Webhook與協力廠商Web服務通訊。 Webhook支援使用G
 
 可以使用[回應對應](response-mappings.md)，將資料從Web服務回應寫入潛在客戶
 
-## Token
+## 權杖
 
 Webhook中的所有傳出欄位（URL、範本和自訂標題）都會在流程步驟的相同內容中填入權杖的內容。 也就是說，銷售機會和系統代號永遠都可使用，而觸發器、促銷活動和方案代號則可在各自的範圍中使用。 請參閱權杖相關文章：
 
-- [Token概述](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
-- [系統權杖字彙表](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
-- [有趣時刻的Token](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
+- [Token概述](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
+- [系統權杖字彙表](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
+- [有趣時刻的Token](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
 
 常見的情況是，方案或行銷活動明確對應至協力廠商資源。 ID可在程式層級設定為`My Token`，然後作為Token傳遞至Webhook要求。
 

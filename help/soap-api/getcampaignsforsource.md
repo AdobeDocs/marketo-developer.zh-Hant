@@ -1,11 +1,11 @@
 ---
 title: getCampaignsForSource
 feature: SOAP
-description: getCampaignsForSource SOAP呼叫
+description: Marketo SOAP getCampaignsForSource會依來源傳回requestCampaign的合格Smart Campaigns，需要Campaign is Requested觸發程式、XML和PHP範例。
 exl-id: bd8803ef-f462-4346-a381-73f40dc5d9ee
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '131'
+source-wordcount: '148'
 ht-degree: 6%
 
 ---

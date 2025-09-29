@@ -1,11 +1,11 @@
 ---
 title: PhoneGap
 feature: Mobile Marketing
-description: 在行動裝置上搭配使用PhoneGap與Marketo
+description: 使用Cordova設定Marketo PhoneGap外掛程式、設定Firebase雲端訊息、啟用iOS和Android推播、追蹤通知，以及初始化SDK。
 exl-id: 99f14c76-9438-4942-9309-643bca434d07
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '797'
+source-wordcount: '813'
 ht-degree: 1%
 
 ---
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 ## 先決條件
 
-1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (取得您的應用程式秘密金鑰和Munchkin ID)。
+1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (取得您的應用程式秘密金鑰和Munchkin ID)。
 1. 設定推播通知([iOS](push-notifications.md) | [Android](push-notifications.md))。
 1. [安裝PhoneGap/Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/)。
 
@@ -66,7 +66,7 @@ repositories{
 1. Firebase Cloud Messaging支援
 
 1. 在Firebase主控台上設定Firebase應用程式。
-   1. 在[&#128279;](https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
+   1. 在[](https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
       1. 在[Firebase主控台](https://console.firebase.google.com/)中，選取&#x200B;**[!UICONTROL Add Project]**。
       1. 從現有Google Cloud專案清單中選取您的GCM專案，然後選取&#x200B;**[!UICONTROL Add Firebase]**。
       1. 在Firebase歡迎畫面中，選取「將Firebase新增至Android應用程式」。

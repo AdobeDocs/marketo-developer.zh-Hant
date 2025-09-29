@@ -1,11 +1,11 @@
 ---
 title: 分頁權杖
 feature: REST API
-description: 檢視分頁權杖資料。
+description: 使用Marketo REST API分頁權杖來擷取活動和銷售機會，包括以日期和位置為基礎的權杖、ISO 8601 sinceDatetime和414錯誤。
 exl-id: 63fbbf03-8daf-4add-85b0-a8546c825e5b
-source-git-commit: a00583f367c2da36d9d1d6e0b05bfd4216573fbb
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '352'
+source-wordcount: '370'
 ht-degree: 0%
 
 ---

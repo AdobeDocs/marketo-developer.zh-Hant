@@ -1,11 +1,11 @@
 ---
 title: getLeadActivity
 feature: SOAP
-description: getLeadActivity SOAP呼叫
+description: 使用getLeadActivity SOAP，依索引鍵擷取銷售機會活動歷史記錄、篩選活動型別、設定批次大小、透過XML範例的資料流位置進行分頁。
 exl-id: f38dee95-235f-4dc2-8839-61d6008132a5
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '346'
+source-wordcount: '366'
 ht-degree: 3%
 
 ---

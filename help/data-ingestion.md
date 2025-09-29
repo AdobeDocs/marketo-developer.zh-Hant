@@ -1,9 +1,9 @@
 ---
 title: 資料攝取
-description: 資料擷取API概觀
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+description: Marketo Data Ingestion API適用於人員和自訂物件的高容量低延遲更新、透過可觀察性的非同步狀態、OAuth標題驗證、私人測試版。
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '940'
+source-wordcount: '960'
 ht-degree: 10%
 
 ---
@@ -42,14 +42,14 @@ ht-degree: 10%
 
 ### 請求
 
-| 索引鍵 | 值 | 必要 | 說明 |
+| 索引鍵 | 價值 | 必要 | 說明 |
 |---|---|---|---|
 | X-Correlation-Id | 任意字串（長度上限為255個字元）。 | 無 | 可用於透過系統追蹤請求。 請參閱Marketo可觀察性資料流 |
 | X-Request-Source | 任意字串（長度上限為50個字元）。 | 無 | 可用於透過系統追蹤要求的來源。 請參閱Marketo可觀察性資料流 |
 
 ### 回應
 
-| 索引鍵 | 值 | 必要 | 說明 |
+| 索引鍵 | 價值 | 必要 | 說明 |
 |---|---|---|---|
 | X-Request-Id | 唯一請求識別碼。 | 是 | |
 
@@ -134,14 +134,14 @@ ht-degree: 10%
 |---|
 | `/subscriptions/{munchkinId}/persons` |
 
-| HeadersKey | 值 |
+| HeadersKey | 價值 |
 |---|---|
 | Content-Type | application/json |
 | X-Mkto-User-Token | {accessToken} |
 
 要求內文
 
-| 索引鍵 | 資料類型 | 必要 | 值 | 預設值 |
+| 索引鍵 | 資料類型 | 必要 | 價值 | 預設值 |
 |---|---|---|---|---|
 | 優先順序 | 字串 | 無 | 要求的優先順序:normalhigh | 一般 |
 | partitionName | 字串 | 無 | 個人資料分割的名稱 | 預設 |
@@ -205,14 +205,14 @@ X-Request-ID: WOUBf3fHJNU6sTmJqLL281lOmAEpMZFw
 
 標頭
 
-| 索引鍵 | 值 |
+| 索引鍵 | 價值 |
 |---|---|
 | Content-Type | application/json |
 | X-Mkto-User-Token | {accessToken} |
 
 要求內文
 
-| 索引鍵 | 資料類型 | 必要 | 值 | 預設值 |
+| 索引鍵 | 資料類型 | 必要 | 價值 | 預設值 |
 |---|---|---|---|---|
 | 優先順序 | 字串 | 無 | 要求的優先順序:normalhigh | 一般 |
 | dedupeBy | 字串 | 無 | 要對:dedupeFieldsmarketoGUID進行重複資料刪除的屬性 | dedupeField |

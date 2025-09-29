@@ -1,11 +1,11 @@
 ---
 title: 自訂服務
 feature: REST API
-description: 使用Marketo的驗證認證。
+description: 建立Marketo自訂服務、設定僅限API的角色和許可權、在LaunchPoint中取得使用者端ID和使用者端密碼，以及取得存取權杖。
 exl-id: 38b05c4c-4404-4c30-a7cb-d31b28a3a72e
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '968'
+source-wordcount: '985'
 ht-degree: 0%
 
 ---

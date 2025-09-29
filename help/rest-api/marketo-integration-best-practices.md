@@ -1,11 +1,11 @@
 ---
 title: Marketo整合最佳實務
 feature: REST API
-description: 使用Marketo API的最佳實務。
+description: Marketo API整合的最佳實務涵蓋配額、速率和並行限制、批次、大量匯入和匯出、快取和延遲計畫。
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '952'
+source-wordcount: '966'
 ht-degree: 0%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 0%
 
 ## API限制
 
-- **每日配額：**&#x200B;大部分的訂閱每天會配置50,000個API呼叫（這會在每日中午12:00CST重設）。 您可以透過帳戶管理員增加每日配額。
+- **每日配額：**&#x200B;大部分的訂閱每天會配置50,000個API呼叫（這會在每日的12:00AM CST重設）。 您可以透過帳戶管理員增加每日配額。
 - **速率限制：**&#x200B;每個執行個體的API存取限製為每20秒100次呼叫。
 - **並行限制：**  最多十個同時進行的API呼叫。
 - **批次大小：**&#x200B;潛在客戶資料庫 — 300筆記錄；資產查詢 — 200筆記錄

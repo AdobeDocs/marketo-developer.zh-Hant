@@ -1,12 +1,12 @@
 ---
 title: 靜態清單
 feature: REST API, Static Lists
-description: 對靜態清單執行CRUD作業。
+description: 使用Marketo REST API來查詢、建立、更新和刪除靜態清單，其端點包括ID、名稱和瀏覽、資料夾範圍設定、分頁和日期篩選器。
 exl-id: 20679fd2-fae2-473e-84bc-cb4fdf2f5151
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '741'
-ht-degree: 0%
+source-wordcount: '760'
+ht-degree: 1%
 
 ---
 
@@ -82,7 +82,7 @@ GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
 
 #### 瀏覽
 
-靜態清單也可以以批次[&#128279;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET)擷取。 `folder`引數可用來指定要在其中執行查詢的父資料夾，並將其格式化為包含ID和型別的JSON物件。 如同其他大量資產擷取端點，`offset`和`maxReturn`是可用於分頁的選用引數。 `earliestUpdatedAt`和`latestUpdatedAt`引數可讓您設定低日期時間與高日期時間浮水印，以傳回在指定範圍內建立或更新之靜態清單。 日期時間值必須是有效的ISO-8601字串，而且不應該包含毫秒
+靜態清單也可以以批次[擷取](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET)。 `folder`引數可用來指定要在其中執行查詢的父資料夾，並將其格式化為包含ID和型別的JSON物件。 如同其他大量資產擷取端點，`offset`和`maxReturn`是可用於分頁的選用引數。 `earliestUpdatedAt`和`latestUpdatedAt`引數可讓您設定低日期時間與高日期時間浮水印，以傳回在指定範圍內建立或更新之靜態清單。 日期時間值必須是有效的ISO-8601字串，而且不應該包含毫秒
 
 ```
 GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
@@ -133,7 +133,7 @@ GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
 
 ## 建立和更新
 
-[建立靜態清單](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST)是以application/x-www-form-urlencodedPOST執行，其中包含兩個必要的引數。 `folder`引數是用來指定要在其中建立靜態清單的父資料夾，且會格式化為包含ID和型別的JSON物件。 `name`引數是用來命名靜態清單，而且必須是唯一的。 可選擇使用`description`引數描述靜態清單。
+[建立靜態清單](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/createStaticListUsingPOST)是使用application/x-www-form-urlencoded POST執行，其中包含兩個必要的引數。 `folder`引數是用來指定要在其中建立靜態清單的父資料夾，且會格式化為包含ID和型別的JSON物件。 `name`引數是用來命名靜態清單，而且必須是唯一的。 可選擇使用`description`引數描述靜態清單。
 
 ```
 POST /rest/asset/v1/staticLists.json
@@ -262,7 +262,7 @@ POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 }
 ```
 
-### 從清單移除
+### 從清單中移除
 
 已從清單中移除[從清單](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE)端點移除一或多個成員。 端點採用必要的`listId`路徑引數，以及一或多個包含潛在客戶ID的`id`查詢引數（允許的最大值為300）。
 
@@ -351,7 +351,7 @@ GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 
 #### 依銷售機會Id查詢清單成員資格
 
-清單[&#128279;](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET)端點的成員用於檢視一個或多個潛在客戶是否為清單的成員。 端點採用必要的`listId`路徑引數，以及一或多個包含潛在客戶ID的`id`查詢引數（允許的最大值為300）。
+清單[端點的](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET)成員用於檢視一個或多個潛在客戶是否為清單的成員。 端點採用必要的`listId`路徑引數，以及一或多個包含潛在客戶ID的`id`查詢引數（允許的最大值為300）。
 
 回應包含`result`陣列，由JSON物件組成，要求中指定的每個潛在客戶ID都具有狀態。
 

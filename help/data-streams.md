@@ -1,10 +1,10 @@
 ---
 title: 資料串流
-description: 資料串概述
+description: Marketo Engage資料串流概觀，實現近乎即時的銷售機會活動和使用者稽核事件，放寬效能層級客戶的API限制
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1596'
+source-wordcount: '1615'
 ht-degree: 1%
 
 ---
@@ -93,9 +93,9 @@ ht-degree: 1%
 | 登陸頁面範本 | 核准、複製、建立、刪除、草稿建立、草稿捨棄、編輯、重新命名、取消核准 |
 | 智慧清單 | 原地複製、建立、刪除、編輯、匯出、修改智慧清單設定、重新命名 |
 | 行銷資料夾 | 建立、編輯、刪除 |
-| Nurture計畫 | 複製、建立、刪除、編輯頻道、修改方案設定、修改方案流、修改方案權杖、重新命名 |
+| 培養方案 | 複製、建立、刪除、編輯頻道、修改方案設定、修改方案流、修改方案權杖、重新命名 |
 | 區段 | 建立、刪除、編輯、重新命名 |
-| 分段 | 核准、建立、刪除、draftCreated、draftDiscarded、重新命名、取消核准 |
+| 細分 | 核准、建立、刪除、draftCreated、draftDiscarded、重新命名、取消核准 |
 | 智慧行銷活動 | 中止、啟動、複製、建立、停用、刪除、編輯、修改行銷活動排程、修改流程步驟動作、修改智慧列示設定、移動、重新命名 |
 | 程式碼片段 | 核准、核准且無草稿、複製、建立、刪除、編輯、重新命名、取消核准 |
 | 管理UI -> Launchpoint ->整合 | 建立、刪除、編輯 |
@@ -262,7 +262,7 @@ app.listen(port,()=>{
 
 ### 在Marketo中設定使用者稽核資料流
 
-「使用者稽核資料流」目前可與其他3個「資料流」一起作為「效能」套裝程式的一部分使用。 如需封裝的詳細資訊，請參閱[產品說明頁面](https://helpx.adobe.com/tw/legal/product-descriptions/adobe-marketo-engage---product-description.html)以瞭解產品限制和功能。
+「使用者稽核資料流」目前可與其他3個「資料流」一起作為「效能」套裝程式的一部分使用。 如需封裝的詳細資訊，請參閱[產品說明頁面](https://helpx.adobe.com/legal/product-descriptions/adobe-marketo-engage---product-description.html)以瞭解產品限制和功能。
 
 ### 設定Adobe I/O
 

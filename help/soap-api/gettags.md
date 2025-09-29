@@ -1,12 +1,12 @@
 ---
 title: getTags
 feature: SOAP, Tags
-description: getTags SOAP呼叫
+description: Marketo SOAP getTags會使用選用的標籤篩選器，加上請求欄位和完整的XML請求回應範例，來擷取非管道標籤型別和值。
 exl-id: 4fd9de1a-9362-479a-afe1-09ef0aaf5e6e
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '94'
-ht-degree: 5%
+source-wordcount: '113'
+ht-degree: 4%
 
 ---
 

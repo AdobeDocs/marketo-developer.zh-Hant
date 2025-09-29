@@ -1,16 +1,16 @@
 ---
-title: 銷售機會資料庫
+title: 商機資料庫
 feature: REST API, Database
-description: 操控主要銷售機會資料庫。
+description: Marketo銷售機會資料庫API的指南，涵蓋物件、CRUD和描述方法、查詢模式、批次限制和CRM整合限制。
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: 3649db037a95cfd20ff0a2c3d81a3b40d0095c39
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '1342'
+source-wordcount: '1357'
 ht-degree: 0%
 
 ---
 
-# 銷售機會資料庫
+# 商機資料庫
 
 Marketo Lead Database API是Marketo最常使用的API，可用於從Marketo交換人員和人員相關資料，例如活動、商機和公司。
 
@@ -20,7 +20,7 @@ Lead Database物件包括：
 
 - 銷售機會
 - 公司/帳戶
-- 具名帳戶
+- 已命名帳戶
 - 機會
 - 機會角色
 - SalesPerson

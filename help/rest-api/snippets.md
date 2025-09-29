@@ -1,16 +1,16 @@
 ---
-title: 代碼片段
+title: 程式碼片段
 feature: REST API, Snippets
-description: 透過Marketo API管理代碼片段。
+description: Marketo Asset REST API適用於程式碼片段，可依ID涵蓋查詢、使用狀態瀏覽、取得內容、建立和更新HTML、文字及動態內容。
 exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
-source-git-commit: 66add4c38d0230c36d57009de985649bb67fde3e
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '438'
+source-wordcount: '456'
 ht-degree: 1%
 
 ---
 
-# 代碼片段
+# 程式碼片段
 
 [程式碼片段端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets)
 
@@ -139,7 +139,7 @@ GET /rest/asset/v1/snippet/{id}/content.json
 }
 ```
 
-呼叫會傳回內容區段的清單，  包含型別HTML或型別DynamicContent的區段，以及選擇性包含型別Text的區段。
+呼叫會傳回內容區段的清單，  包含HTML型別或型別DynamicContent的區段，以及選擇性包含文字型別的區段。
 
 ## 建立和更新
 
@@ -183,7 +183,7 @@ name=Test Snippet 09 - deverly&folder={"id":395,"type":"Folder"}&description=Thi
 }
 ```
 
-在程式碼片段中新增或取代內容是透過id完成。 內容可以是Text、HTML或DynamicContent型別。 如果型別是文字，則內容引數為純文字端點，如果是HTML，則為所要的標示文字。 如果型別設為DynamicContent，則內容引數應設為，與程式碼片段關聯的區段ID。
+在程式碼片段中新增或取代內容是透過id完成。 內容可以是Text、HTML或DynamicContent型別。 如果型別是文字，則內容引數為純文字端點，如果型別是HTML，則為所要的標示文字。 如果型別設為DynamicContent，則內容引數應設為，與程式碼片段關聯的區段ID。
 
 ```
 POST /rest/asset/v1/snippet/{id}/content.json

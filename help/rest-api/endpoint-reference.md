@@ -1,12 +1,12 @@
 ---
 title: 端點參考
 feature: REST API
-description: Marketo API端點參考
+description: 全方位的Marketo REST API端點清單，包含方法、URI和跨活動、大量匯出、身分、銷售機會、資產、使用者的必要許可權。
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 981ed9b254f277d647a844803d05a1a2549cbaed
+source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
 workflow-type: tm+mt
-source-wordcount: '4448'
-ht-degree: 5%
+source-wordcount: '4464'
+ht-degree: 7%
 
 ---
 
@@ -247,12 +247,12 @@ ht-degree: 5%
 | 取得具名帳戶清單 | 具名帳戶清單 | GET | /rest/v1/namedaccountlists.json | 唯讀具名帳戶清單 |
 | 移除具名帳戶清單成員 | 具名帳戶清單 | POST | /rest/v1/namedaccountlist/{id}/namedaccounts/remove.json | 讀寫具名帳戶 |
 | 同步具名帳戶清單 | 具名帳戶清單 | POST | /rest/v1/namedaccountlists.json | 讀寫具名帳戶清單 |
-| 刪除具名帳戶 | 具名帳戶 | POST | /rest/v1/namedaccounts/delete.json | 讀寫具名帳戶 |
-| 說明具名帳戶 | 具名帳戶 | GET | /rest/v1/namedaccounts/describe.json | 唯讀具名帳戶 |
-| 取得具名帳戶 | 具名帳戶 | GET | /rest/v1/namedaccounts.json | 唯讀具名帳戶 |
-| 同步已命名的帳戶 | 具名帳戶 | POST | /rest/v1/namedaccounts.json | 讀寫具名帳戶 |
-| 依名稱取得具名帳戶欄位 | 具名帳戶 | GET | /rest/v1/namedaccounts/schema/fields/{fieldApiName}.json | 讀寫結構描述自訂欄位 |
-| 取得具名帳戶欄位 | 具名帳戶 | GET | /rest/v1/namedaccounts/schema/fields.json | 讀寫結構描述自訂欄位 |
+| 刪除具名帳戶 | 已命名帳戶 | POST | /rest/v1/namedaccounts/delete.json | 讀寫具名帳戶 |
+| 說明具名帳戶 | 已命名帳戶 | GET | /rest/v1/namedaccounts/describe.json | 唯讀具名帳戶 |
+| 取得具名帳戶 | 已命名帳戶 | GET | /rest/v1/namedaccounts.json | 唯讀具名帳戶 |
+| 同步已命名的帳戶 | 已命名帳戶 | POST | /rest/v1/namedaccounts.json | 讀寫具名帳戶 |
+| 依名稱取得具名帳戶欄位 | 已命名帳戶 | GET | /rest/v1/namedaccounts/schema/fields/{fieldApiName}.json | 讀寫結構描述自訂欄位 |
+| 取得具名帳戶欄位 | 已命名帳戶 | GET | /rest/v1/namedaccounts/schema/fields.json | 讀寫結構描述自訂欄位 |
 | 刪除機會 | 機會 | POST | /rest/v1/opportunities/delete.json | 讀寫機會 |
 | 刪除機會角色 | 機會 | POST | /rest/v1/opportunities/roles/delete.json | 讀寫機會 |
 | 描述商機 | 機會 | GET | /rest/v1/opportunities/describe.json | 唯讀機會 |
@@ -272,35 +272,35 @@ ht-degree: 5%
 | 取得方案成員欄位 | 計畫成員 | GET | /rest/v1/programs/members/schema/fields.json | 讀寫結構描述自訂欄位 |
 | 建立方案成員欄位 | 計畫成員 | POST | /rest/v1/programs/members/schema/fields.json | 讀寫結構描述自訂欄位 |
 | 更新計畫成員欄位 | 計畫成員 | POST | /rest/v1/programs/members/schema/fields/{fieldApiName}.json | 讀寫結構描述自訂欄位 |
-| 核准計畫 | 計畫 | POST | /rest/asset/v1/program/{id}/approve.json | 讀寫資產 |
-| 復製程式 | 計畫 | POST | /rest/asset/v1/program/{id}/clone.json | 讀寫資產 |
-| 建立方案 | 計畫 | POST | /rest/asset/v1/programs.json | 讀寫資產 |
-| 刪除程式 | 計畫 | POST | /rest/asset/v1/program/{id}/delete.json | 讀寫資產 |
-| 依ID取得計畫 | 計畫 | GET | /rest/asset/v1/program/{id}.json | 唯讀資產 |
-| 依名稱取得計畫 | 計畫 | GET | /rest/asset/v1/program/byName.json | 唯讀資產 |
-| 取得計畫 | 計畫 | GET | /rest/asset/v1/programs.json | 唯讀資產 |
-| 按標籤取得計畫 | 計畫 | GET | /rest/asset/v1/program/byTag.json | 唯讀資產 |
-| 依程式ID取得智慧清單 | 計畫 | GET | /rest/asset/v1/program/{id}/smartList.json | 唯讀資產 |
-| 取消核准計畫 | 計畫 | POST | /rest/asset/v1/program/{id}/unapprove.json | 讀寫資產 |
-| 更新程式中繼資料 | 計畫 | POST | /rest/asset/v1/program/{id}.json | 讀寫資產 |
-| 更新計畫標籤 | 計畫 | POST | /rest/asset/v1/program/{id}/tag/{tagType}.json | 讀寫資產 |
-| 刪除計畫標籤 | 計畫 | POST | /rest/asset/v1/program/{id}/tag/{tagType}/delete.json | 讀寫資產 |
+| 核准計畫 | 方案 | POST | /rest/asset/v1/program/{id}/approve.json | 讀寫資產 |
+| 復製程式 | 方案 | POST | /rest/asset/v1/program/{id}/clone.json | 讀寫資產 |
+| 建立方案 | 方案 | POST | /rest/asset/v1/programs.json | 讀寫資產 |
+| 刪除程式 | 方案 | POST | /rest/asset/v1/program/{id}/delete.json | 讀寫資產 |
+| 依ID取得計畫 | 方案 | GET | /rest/asset/v1/program/{id}.json | 唯讀資產 |
+| 依名稱取得計畫 | 方案 | GET | /rest/asset/v1/program/byName.json | 唯讀資產 |
+| 取得計畫 | 方案 | GET | /rest/asset/v1/programs.json | 唯讀資產 |
+| 按標籤取得計畫 | 方案 | GET | /rest/asset/v1/program/byTag.json | 唯讀資產 |
+| 依程式ID取得智慧清單 | 方案 | GET | /rest/asset/v1/program/{id}/smartList.json | 唯讀資產 |
+| 取消核准計畫 | 方案 | POST | /rest/asset/v1/program/{id}/unapprove.json | 讀寫資產 |
+| 更新程式中繼資料 | 方案 | POST | /rest/asset/v1/program/{id}.json | 讀寫資產 |
+| 更新計畫標籤 | 方案 | POST | /rest/asset/v1/program/{id}/tag/{tagType}.json | 讀寫資產 |
+| 刪除計畫標籤 | 方案 | POST | /rest/asset/v1/program/{id}/tag/{tagType}/delete.json | 讀寫資產 |
 | 刪除SalesPerson | 銷售人員 | POST | /rest/v1/salespersons/delete.json | 讀寫銷售人員 |
 | 描述SalesPerson | 銷售人員 | GET | /rest/v1/salespersons/describe.json | 唯讀銷售人員 |
 | 取得SalesPerson | 銷售人員 | GET | /rest/v1/salespersons.json | 唯讀銷售人員 |
 | 同步SalesPerson | 銷售人員 | POST | /rest/v1/salespersons.json | 讀寫銷售人員 |
 | 取得區段 | 區段 | GET | /rest/asset/v1/segmentation.json | 唯讀資產 |
 | 取得區段的區段 | 區段 | GET | /rest/asset/v1/segmentation/{id}/segments.json | 唯讀資產 |
-| 啟動Smart Campaign | Smart Campaign | POST | /rest/asset/v1/smartCampaign/{id}/activate.json | 啟動行銷活動 |
-| 仿製智慧型行銷活動 | Smart Campaign | POST | /rest/asset/v1/smartCampaign/{id}/clone.json | 讀寫資產 |
-| 建立智慧型行銷活動 | Smart Campaign | POST | /rest/asset/v1/smartCampaigns.json | 讀寫資產 |
-| 停用Smart Campaign | Smart Campaign | POST | /rest/asset/v1/smartCampaign/{id}/deactivate.json | 停用行銷活動 |
-| 刪除Smart Campaign | Smart Campaign | POST | /rest/asset/v1/smartCampaign/{id}/delete.json | 讀寫資產 |
-| 取得智慧行銷活動 | Smart Campaign | GET | /rest/asset/v1/smartCampaigns.json | 唯讀資產 |
-| 依ID取得Smart Campaign | Smart Campaign | GET | /rest/asset/v1/smartCampaign/{id}.json | 唯讀資產 |
-| 依名稱取得智慧行銷活動 | Smart Campaign | GET | /rest/asset/v1/smartCampaign/byName.json | 唯讀資產 |
-| 依Smart Campaign ID取得智慧清單 | Smart Campaign | GET | /rest/asset/v1/smartCampaign/{id}/smartList.json | 唯讀資產 |
-| 更新Smart Campaign | Smart Campaign | POST | /rest/asset/v1/smartCampaign/{id}.json | 讀寫資產 |
+| 啟動Smart Campaign | 智慧行銷活動 | POST | /rest/asset/v1/smartCampaign/{id}/activate.json | 啟動行銷活動 |
+| 仿製智慧型行銷活動 | 智慧行銷活動 | POST | /rest/asset/v1/smartCampaign/{id}/clone.json | 讀寫資產 |
+| 建立智慧型行銷活動 | 智慧行銷活動 | POST | /rest/asset/v1/smartCampaigns.json | 讀寫資產 |
+| 停用Smart Campaign | 智慧行銷活動 | POST | /rest/asset/v1/smartCampaign/{id}/deactivate.json | 停用行銷活動 |
+| 刪除Smart Campaign | 智慧行銷活動 | POST | /rest/asset/v1/smartCampaign/{id}/delete.json | 讀寫資產 |
+| 取得智慧行銷活動 | 智慧行銷活動 | GET | /rest/asset/v1/smartCampaigns.json | 唯讀資產 |
+| 依ID取得Smart Campaign | 智慧行銷活動 | GET | /rest/asset/v1/smartCampaign/{id}.json | 唯讀資產 |
+| 依名稱取得智慧行銷活動 | 智慧行銷活動 | GET | /rest/asset/v1/smartCampaign/byName.json | 唯讀資產 |
+| 依Smart Campaign ID取得智慧清單 | 智慧行銷活動 | GET | /rest/asset/v1/smartCampaign/{id}/smartList.json | 唯讀資產 |
+| 更新Smart Campaign | 智慧行銷活動 | POST | /rest/asset/v1/smartCampaign/{id}.json | 讀寫資產 |
 | 複製智慧清單 | 智慧清單 | POST | /rest/asset/v1/smartList/{id}/clone.json | 讀寫資產 |
 | 刪除智慧清單 | 智慧清單 | POST | /rest/asset/v1/smartList/{id}/delete.json | 讀寫資產 |
 | 依ID取得智慧清單 | 智慧清單 | GET | /rest/asset/v1/smartList/{id}.json | 唯讀資產 |
@@ -333,9 +333,9 @@ ht-degree: 5%
 | 更新靜態清單中繼資料 | 靜態清單 | POST | /asset/v1/staticList/{id}.json | 讀寫資產 |
 | 依名稱取得標籤 | 標記 | GET | /rest/asset/v1/tagType/byName.json | 唯讀資產 |
 | 取得標籤型別 | 標記 | GET | /rest/asset/v1/tagTypes.json | 唯讀資產 |
-| 建立代號 | Token | POST | /rest/asset/v1/folder/{id}/tokens.json | 讀寫資產 |
-| 依名稱刪除Token | Token | POST | /rest/asset/v1/folder/{id}/tokens/delete.json | 讀寫資產 |
-| 依資料夾ID取得權杖 | Token | GET | /rest/asset/v1/folder/{id}/tokens.json | 唯讀資產 |
+| 建立代號 | 權杖 | POST | /rest/asset/v1/folder/{id}/tokens.json | 讀寫資產 |
+| 依名稱刪除Token | 權杖 | POST | /rest/asset/v1/folder/{id}/tokens/delete.json | 讀寫資產 |
+| 依資料夾ID取得權杖 | 權杖 | GET | /rest/asset/v1/folder/{id}/tokens.json | 唯讀資產 |
 | 新增角色 | User Management | POST | /userservice/management/v1/users/{userid}/roles/create.json | 存取使用者管理Api |
 | 刪除受邀使用者 | User Management | POST | /userservice/management/v1/users/{userId}/invite/delete.json | 存取使用者管理Api |
 | 刪除角色 | User Management | POST | /userservice/management/v1/users/{userid}/roles/delete.json | 存取使用者管理Api |
