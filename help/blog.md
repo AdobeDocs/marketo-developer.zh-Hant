@@ -14,7 +14,7 @@ ht-degree: 0%
 >[!INFO]
 >
 >這是Marketo部落格的封存，橫跨2014年至2023年。 此處僅提供歷史參考資料。
->>部分資訊可能已過期。  請務必檢視目前的檔案，以瞭解最新功能。
+>&#x200B;>部分資訊可能已過期。  請務必檢視目前的檔案，以瞭解最新功能。
 >
 
 >[!IMPORTANT]
@@ -1088,8 +1088,8 @@ puts response
 
 **注意：這是Fab Capodicasa的訪客部落格。 他是[Hoosh Marketing](http://hooshmarketing.com.au/)的Marketo認證顧問，此為Marketo LaunchPoint代理合作夥伴，專長於B2C。 過去13年，他同時在SaaS和行銷部門工作。 他的背景是結合核心IT、直銷和企業銷售。 Fab也是前Marketo員工。**
 
-**概述**在本文中，我們將示範如何整合熱門登陸頁面工具Unbounce與Marketo。 我們會先說明如何將Marketo追蹤插入「彈回」，然後說明如何修改「彈回」表單，將資料直接插入Marketo。 整合彈回與Marketo的挑戰在於「彈回」不允許重新命名預設欄位（例如，first_name無法變更為FirstName）。 也不允許欄位標籤與欄位名稱不同。 這項整合涉及JavaScript，它會調整現有表單，使其與Marketo相容。 建議您至少具備JavaScript初學者層級和中級的Marketo知識，才能完成本文所述工作。
-**第1部分：將Marketo追蹤程式碼新增至退信**若要讓Analytics和表單整合運作，必須將Marketo的Munchkin追蹤指令碼新增至退信頁面。 請依照下列步驟操作：從Marketo複製Munchkin程式碼：導覽至「管理員 — > Munchkin」，並複製JavaScript的「簡單」版本。 開啟「反彈」登陸頁面，然後按一下「JavaScript->新增JavaScript」 。  按一下「新增」，呼叫指令碼「Munchkin」，選取「在Body結尾標籤之前」，然後貼上Munchkin程式碼。 按一下完成按鈕。 針對未來的退信頁面，您需前往JavaScript並啟用我們建立的Munchkin指令碼。 不需要重新建立。
+**概述**&#x200B;在本文中，我們將示範如何整合熱門登陸頁面工具Unbounce與Marketo。 我們會先說明如何將Marketo追蹤插入「彈回」，然後說明如何修改「彈回」表單，將資料直接插入Marketo。 整合彈回與Marketo的挑戰在於「彈回」不允許重新命名預設欄位（例如，first_name無法變更為FirstName）。 也不允許欄位標籤與欄位名稱不同。 這項整合涉及JavaScript，它會調整現有表單，使其與Marketo相容。 建議您至少具備JavaScript初學者層級和中級的Marketo知識，才能完成本文所述工作。
+**第1部分：將Marketo追蹤程式碼新增至退信**&#x200B;若要讓Analytics和表單整合運作，必須將Marketo的Munchkin追蹤指令碼新增至退信頁面。 請依照下列步驟操作：從Marketo複製Munchkin程式碼：導覽至「管理員 — > Munchkin」，並複製JavaScript的「簡單」版本。 開啟「反彈」登陸頁面，然後按一下「JavaScript->新增JavaScript」 。  按一下「新增」，呼叫指令碼「Munchkin」，選取「在Body結尾標籤之前」，然後貼上Munchkin程式碼。 按一下完成按鈕。 針對未來的退信頁面，您需前往JavaScript並啟用我們建立的Munchkin指令碼。 不需要重新建立。
 **第2部分：將「退信」表單轉換為Marketo表單**&#x200B;現在我們需要修改「退信」表單，新增一些隱藏欄位和JavaScript以允許您的「退信」登陸頁面直接將潛在客戶資訊提交至Marketo。 我們會先建立Marketo預留位置表單。 在Marketo中建立空白表單並核准。
 
 這是Marketo中代表「反彈」表單的Proxy表單。 新增隱藏欄位至取消退回表單。 Marketo需要這些隱藏欄位來決定此表單提交將套用至哪個Marketo例項、哪個表單和使用者工作階段。 在「退回」中，按兩下以開啟您的表單。 新增名為`_mkt_trk`的隱藏欄位。 新增名為`formid`的第二個隱藏欄位。  233需要以您表單的id取代，您可在Marketo的Marketo表單內嵌程式碼中找到。 在Marketo中，開啟您的表單，選取「表單動作 — >內嵌程式碼」。 新增名為`returnurl`的隱藏欄位。 `http://hooshmarketing.com.au/thank-you`需要取代為後續追蹤URL，這是您希望在提交表單後重新導向使用者的URL。 例如，這可能是您的感謝頁面。
@@ -1366,7 +1366,7 @@ Marketo中的自訂服務可讓您說明和定義應用程式可存取的資料�
 
 ## 透過Marketo REST API依全名搜尋
 
-**問題：**是否只要使用潛在客戶的全名，就能使用Marketo API來查詢潛在客戶？
+**問題：**&#x200B;是否只要使用潛在客戶的全名，就能使用Marketo API來查詢潛在客戶？
 **答案：**&#x200B;無法直接進行。 不過，下述的因應措施可讓您進行此作業。
 
 1. 在Marketo中建立名為「Fullname」的自訂欄位。
@@ -2259,7 +2259,7 @@ end
 
 本文會討論改善向Marketo API要求資料時效能的策略。 不過，您必須將這些策略的好處與Marketo API的每日限制的作業限制進行權衡。
 **策略1 — 在每個API呼叫中要求較少的資料**&#x200B;一般而言，當您在API呼叫中要求更多資料時，Marketo伺服器查詢資料庫中的資料所花的時間會增加。 如果您使用日期範圍進行API呼叫，例如[getMultipleLeads SOAP API](/help/soap-api/getmultipleleads.md)，請縮短每次呼叫的時間範圍，並使用更多呼叫進行補償。 例如，與其請求6月1日至7月1日的資料，不如一次請求一天，例如6月1日至2日的一個呼叫，然後是6月2日至1日的另一個呼叫。 如果您要進行API呼叫以從Marketo銷售機會欄位傳回資料，請僅請求這些必要的欄位。 每個額外的潛在客戶欄位都會逐步增加API呼叫所需的時間。 另一種方法是減少批次大小，或減少每次呼叫請求的潛在客戶數。
-**策略2 — 提出並行要求**以提升效能並一次提取更多資料。 您可以同時向API提出請求。 此方法可減少線API請求總計花費的時間。 例如，假設您向「依篩選型別取得多個銷售機會」提出請求。 您可以針對查詢銷售機會1到300的一個請求發出並行請求，針對查詢銷售機會301到600的另一個請求發出並行請求。
+**策略2 — 提出並行要求**&#x200B;以提升效能並一次提取更多資料。 您可以同時向API提出請求。 此方法可減少線API請求總計花費的時間。 例如，假設您向「依篩選型別取得多個銷售機會」提出請求。 您可以針對查詢銷售機會1到300的一個請求發出並行請求，針對查詢銷售機會301到600的另一個請求發出並行請求。
 **策略3 — 快取資料** Marketo中某些資料（例如潛在客戶欄位清單）的變更頻率低於其他資料（例如潛在客戶活動資料）。 如果您快取較不經常更新的資料，則可以減少必須進行的API呼叫數。 一般來說，在本機查詢資料的速度會比從遠端Web服務存取資料的速度更快，因此您也能獲得更優異的效能。
 
 由&#x200B;_Murta_&#x200B;張貼於&#x200B;_2014-12-05_
@@ -2304,8 +2304,8 @@ pushFormDataToGa({
 
 我們知道較短的網路表單可提高轉換率。 下列JavaScript程式碼範例可讓您將名字和姓氏欄位合併為一個全名欄位，讓您的表單變得更短。 當訪客輸入全名時，指令碼會自動將文字分成名字和姓氏欄位。 對於已知訪客，指令碼會加入名字和姓氏，然後將它們複製到新欄位，這樣他們就不需要再次填寫欄位。 以下說明設定方法。
 
-**步驟一**在Marketo中建立稱為「全名」的新自訂欄位。 不需要在您的CRM平台中建立它，因為指令碼只會使用此欄位來顯示全名。
-**步驟二**將此欄位新增至您的所有網路表單。 將您的名字和姓氏欄位設定為隱藏。 在JavaScript中，變更「splitFullName」設定以包含3個欄位名稱。 注意：請確定這些名稱未出現在頁面上的其他任何位置。
+**步驟一**&#x200B;在Marketo中建立稱為「全名」的新自訂欄位。 不需要在您的CRM平台中建立它，因為指令碼只會使用此欄位來顯示全名。
+**步驟二**&#x200B;將此欄位新增至您的所有網路表單。 將您的名字和姓氏欄位設定為隱藏。 在JavaScript中，變更「splitFullName」設定以包含3個欄位名稱。 注意：請確定這些名稱未出現在頁面上的其他任何位置。
 **步驟三**&#x200B;將JavaScript插入程式碼底部的所有登陸頁面中，在標籤之前。
 
 ```javascript
@@ -2917,7 +2917,7 @@ break;
 
 注意：這是訪客部落格。 [Ed Blachman是](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fprofile%2Fview%3Fid%3D2777965)TIBCO Software （知名企業軟體廠商[）的資深架構師](https://exchange.adobe.com/apps/browse/ec?product=MRKTO)。 Ed正在研發的產品可讓Gartner所謂的「公民開發人員」整合他們使用的雲端服務，而不需自行進行任何程式設計。 [Marketo的SOAP API](/help/soap-api/soap-api.md)是功能強大的工具，開發人員可藉此運用Marketo的強大功能，並將其與我們自己的應用程式整合。 在[正式檔案](./getting-started.md)和[社群資源](https://nation.marketo.com/)之間，有許多有關如何使用的資訊。 剛開始使用時，我高度依賴這些資訊，並發現其價值難以估量。 不過，在此過程中，我累積了一些在上述任何地方都未見過的秘訣和技巧。 以下是我想到的部分內容。
 
-**開發人員的沙箱**沙箱當然是API開發人員的絕佳資源：您可以在此安全的地方試驗Marketo功能，新增和移除物件，而不會干擾貴組織的實際Marketo使用者進行的真實行銷活動。 不過，沙箱並非萬能藥。
+**開發人員的沙箱**&#x200B;沙箱當然是API開發人員的絕佳資源：您可以在此安全的地方試驗Marketo功能，新增和移除物件，而不會干擾貴組織的實際Marketo使用者進行的真實行銷活動。 不過，沙箱並非萬能藥。
 例如，我需要和其他開發群組共用我們的沙箱，這需要花一些時間，因為他們已經習慣了擁有沙箱的觀念。 最終，我們提出了幾個分享的最佳實務： — 請勿撰寫依賴完全瞭解沙箱內容的測試。 作為共用資源，結構描述可能會隨時變更，恕不另行通知，潛在客戶資料庫或方案或其他實體中的完整專案也可能隨時變更。 如果您的測試假設您完全瞭解沙箱，則開發週期會為您共用該沙箱的群組建立中斷期間。 由於它們的開發週期通常不會與您的週期一致，因此這相當於佔用了資源，而不是酷。 如果您仔細想一想，也沒必要。  — 請使用慣例來標示您所有的東西 — 您的銷售機會、您的銷售機會結構描述欄位、您的計畫，等等。 如果您每個人都可以識別自己的物件，而且如果您同意共同租使用者的意見，即您每個人都將保留其他人的物件，那麼您應該有穩固的共用基礎。 對於銷售機會，您可以建立一個自訂欄位，並使用此自訂欄位建立一個慣例，以識別這些銷售機會作為您的測試銷售機會。 對於清單或程式，您可能會以某些字串來開始物件的名稱，這些字串會將這些物件識別為您所屬。  — 請考慮撰寫可自我清理的測試，先建立您感興趣的物件，然後存取或更新或選擇性地刪除物件，最後移除物件。 (請注意，這在SOAP API中無法一律實現，因為並非沙箱或就此而言的實際執行個體中的所有專案都能透過SOAP API管理。 即使如此，您還是有必要儘可能多地做這件事。)
 
 **實際執行個體**&#x200B;沙箱的問題在於它並未在生產環境中使用，因此很難瞭解Marketo執行個體中的實際使用情形。 現在，如果您幸運地擁有團隊中的Marketo進階使用者，或者您正在執行針對內部Marketo使用者的客製化開發，則這並不是問題。 但就我的團隊而言，這確實是一筆大買賣。 我們誰也不是Marketo專家，而且因為被要求瞭解大量雲端服務，我們只是沒有人數成為任何方面的專家。 以下是我們從存取實際執行個體中收集的一些見解： — 大型潛在客戶結構描述。 我們存取的生產執行個體中的潛在客戶結構描述有超過200個欄位。 這清楚地向我們的UI設計人員說明他們設計的UI必須容納該大小（或更大）的結構描述。  — 大量使用。 我們看到最高使用時間和低使用時間之間兩個數量級的差異（就建立或更新潛在客戶數量而言）。 這會影響我們從API呼叫傳回的資料量（顯而易見），以及API呼叫回應所需的時間（可能不太明顯）。
@@ -3828,7 +3828,7 @@ Android 0.3.3
 1. 選取&#x200B;**促銷活動 — 已點按。**&#x200B;將&#x200B;**行銷活動ID**&#x200B;設定為行銷活動的ID。 （請參閱下方的附註，瞭解如何尋找Campaign ID。）
 1. 按一下&#x200B;**儲存並定義行銷活動**&#x200B;以建立行銷活動創意。
 
-整體而言，如果訪客與等於Enterprise的自訂變數（訂閱型別）相關聯，且在上次造訪中點選了促銷活動（識別碼：5390），則此區段相符。 下一步是定義此區段的個人化行銷活動。 底下熒幕擷圖顯示「我的Marketo」頁面上出現的RTP對話方塊促銷活動（左下方），此促銷活動可為Enterprise使用者推廣網路研討會。  **注意：** **找到行銷活動ID**&#x200B;移至&#x200B;**行銷活動**，將游標停留在&#x200B;**行銷活動名稱**上以找到行銷活動ID。
+整體而言，如果訪客與等於Enterprise的自訂變數（訂閱型別）相關聯，且在上次造訪中點選了促銷活動（識別碼：5390），則此區段相符。 下一步是定義此區段的個人化行銷活動。 底下熒幕擷圖顯示「我的Marketo」頁面上出現的RTP對話方塊促銷活動（左下方），此促銷活動可為Enterprise使用者推廣網路研討會。  **注意：** **找到行銷活動ID**&#x200B;移至&#x200B;**行銷活動**，將游標停留在&#x200B;**行銷活動名稱**&#x200B;上以找到行銷活動ID。
 由_David_&#x200B;張貼於&#x200B;_2015-06-17_
 
 ## 使用Marketo REST API傳送交易式電子郵件：第1部分
@@ -6742,8 +6742,8 @@ public class RequestCampaign {
 **如何使用Marketo中的API傳遞動態內容**，我的Token是您可在程式中使用的變數。 我的Token可讓您在一個位置輸入與方案相關的資訊、以您指定的值取代該資訊，以及在應用程式的其他部分（例如電子郵件範本）中擷取此資訊。 使用requestCampaign SOAP API，您可以傳遞一系列方案代號，以覆寫現有代號。 行銷活動執行後，會捨棄代號。 您可以在Campaign資料夾層級或方案層級建立My Token。 Campaign資料夾層級的Token會繼承至Campaign資料夾內包含的所有方案。 如果您在Campaign資料夾層級建立My Token，則可以在方案層級覆寫繼承的值。 例如，如果您在Campaign檔案夾層級定義「方案日期」和「方案說明」的代號，則可以在個別「方案」層級覆寫這些值。
 
 以下是其操作方式。 1.從「行銷活動」樹狀結構中，選取您要建立代號的「促銷活動」資料夾或方案。 從頂端功能表列中，選取「我的Token」 。 接著會顯示「我的Token」畫布。 從右側樹狀結構拖曳權杖型別至畫布，此例中為「文字」。 在Token Name欄位中，反白顯示My Token並輸入唯一的Token Name，在此例中為「my.conversationtopic」。 在「值」欄位中，輸入Token的相關值，在此案例中為「感謝您今天與我們通話」。 請注意，我們將透過API覆寫預設的「我的Token」值。 按一下「儲存」以儲存自訂Token。  1.按一下[新增]以建立新電子郵件。 然後按一下「新增本機Assets」並選取「電子郵件」。 接著，填寫相關欄位，為您的電子郵件命名。 起草電子郵件時，請按一下「代號」圖示，將代號加入電子郵件中。 現在您已使用Token建立範本電子郵件，我們將在後續步驟中新增該電子郵件，作為Campaign的流程動作。 因此，當您透過API呼叫行銷活動時，將會傳送電子郵件。
-**如何在行銷活動上建立電子郵件流程動作**電子郵件與Smart Campaign的關聯可讓行銷人員管理想要電子郵件的外觀，並允許協力廠商應用程式決定接收者與接收時間。 將電子郵件建立為新的本機資產後，您可以在行銷活動中將其設定為流量動作。 尋找並選取您要傳送的電子郵件。
-**呼叫requestCampaign API的程式碼範例**&#x200B;在Marketo介面中設定行銷活動和觸發器後，我們會示範如何使用API傳送電子郵件。 第一個範例是XML要求，第二個範例是XML回應，最後一個範例是可用來產生XML要求的Java程式碼範例。 我們也會說明如何尋找在呼叫requestCampaign API時使用的促銷活動ID。 此API呼叫也要求您預先知道Marketo促銷活動的ID。 您可以使用下列其中一種方法來判斷促銷活動ID： 1. 使用[getCampaignsForSource](/help/soap-api/getcampaignsforsource.md) API 1。 在瀏覽器中開啟Marketo促銷活動，並檢視URL位址列。 行銷活動ID （以4位數的整數表示）可在「SC」後面立即找到。 例如 `<https://app-stage.marketo.com/#SC**1025**A1>`。粗體部分是促銷活動ID - &quot;1025&quot;。 SOAP的requestCampaign
+**如何在行銷活動上建立電子郵件流程動作**&#x200B;電子郵件與Smart Campaign的關聯可讓行銷人員管理想要電子郵件的外觀，並允許協力廠商應用程式決定接收者與接收時間。 將電子郵件建立為新的本機資產後，您可以在行銷活動中將其設定為流量動作。 尋找並選取您要傳送的電子郵件。
+**呼叫requestCampaign API的程式碼範例**&#x200B;在Marketo介面中設定行銷活動和觸發器後，我們會示範如何使用API傳送電子郵件。 第一個範例是XML要求，第二個範例是XML回應，最後一個範例是可用來產生XML要求的Java程式碼範例。 我們也會說明如何尋找在呼叫requestCampaign API時使用的促銷活動ID。 此API呼叫也要求您預先知道Marketo促銷活動的ID。 您可以使用下列其中一種方法來判斷促銷活動ID： 1. 使用[getCampaignsForSource](/help/soap-api/getcampaignsforsource.md) API 1。 在瀏覽器中開啟Marketo促銷活動，並檢視URL位址列。 行銷活動ID （以4位數的整數表示）可在「SC」後面立即找到。 例如 `<https://app-stage.marketo.com/#SC&#x200B;**1025**&#x200B;A1>`。粗體部分是促銷活動ID - &quot;1025&quot;。 SOAP的requestCampaign
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -7248,7 +7248,7 @@ Personalization無所不包 — 我們很久以前就知道了。 話雖如此�
 
   `{"access_token":"{{access_token}}"}`
 
-* 存取Token位置**：Querystring中的** Token
+* 存取Token位置&#x200B;**：Querystring中的** Token
 
 建立Marketo自訂服務後，使用者端ID和使用者端密碼即可使用。 我們使用使用者端識別碼和使用者端密碼，透過REST API [驗證](/help/rest-api/authentication.md)端點產生存取權杖。 我們隨後可以使用此存取權杖向REST API提出後續請求。 代號會在一小時後到期，必須重新產生才能繼續呼叫REST API。 我們選擇驗證型別=「工作階段驗證」，因為它可讓我們在工作階段權杖過期時執行自訂驗證指令碼。 我們將在「指令碼API」一節中瞭解如何實作此機制，其只能用於此型別的驗證。
 **觸發器** Zapier觸發器可將資料帶入Zapier。 我們的使用案例不需要URL，因為我們將改用Marketo Webhook。 不過，我們仍需編寫虛擬觸發程式，作為Marketo聯結器的強制測試。 我們將建立呼叫Marketo REST API [取得每日使用量](https://developer.adobe.com/marketo-apis/api/mapi/#operation/getDailyUsageUsingGET)端點的測試觸發器。 按一下&#x200B;**新增觸發器**&#x200B;以啟動精靈並填入下列欄位（未提及的欄位可保留空白）：名稱和說明
@@ -7404,7 +7404,7 @@ var Zap = {
 
 針對這項整合，我們從FullContact建立單一Zap至Marketo。 有了此Zap，您就能使用FullContact行動卡Reader掃描名片，並將銷售機會推送至Marketo。   Marketo **Zap FullContact ->從Zapier儀表板按一下[建立新的Zap]按鈕。**
 
-在Zapier中觸發&#x200B;****
+在Zapier中觸發&#x200B;**&#x200B;**
 
 * 挑選應用程式FullContact
 * 選擇FullContact觸發器[新名片]
@@ -7495,7 +7495,7 @@ Zapier中的&#x200B;**動作**
 
 在Zapier控制面板中，按一下「製作新的Zap」按鈕。
 
-在Zapier中觸發&#x200B;****
+在Zapier中觸發&#x200B;**&#x200B;**
 
 * 挑選「Google工作表」觸發應用程式
 * 勾選在試算表中新增或修改新列時觸發的「更新試算表列」
@@ -8135,7 +8135,7 @@ in
 
 ### 資料分析運算式(DAX)
 
-我們需要擴充或重新格式化某些報表的資料。 讓我們使用Power Pivot資料分析運算式(DAX)來定義某些自訂計算，如計算欄和測量（也稱為計算欄位）。 請參閱「參考」區段中的「Power Pivot中的DAX」連結，瞭解更多有關DAX的資訊。 確定計算區域顯示在Power Pivot視窗中；如果沒有，請從Power Pivot首頁功能表啟用它。  選取&#x200B;**MktoLeads**&#x200B;索引標籤，並將&#x200B;**Leads Count**&#x200B;量值新增至Leads計算區域中的任意位置： **Leads Count：=****DISTINCTCOUNT****([id])**。 此測量方式會根據其ID計算清單中可用的不同潛在客戶。 它也會考慮報表內容中已有的最終篩選器。 此量度並非真正必要，因為報表可彙總銷售機會數量，但我們這麼做是為了讓銷售機會計數具有比「MktoLeads總和」更好的名稱。 這也是一個簡單的範例，可讓您輕鬆想像一些更複雜的測量，針對特定型別的資料輸入進行平均、最小值、最大值等操作（例如分數高於50的所有潛在客戶、平均分數等）。 ...)。  現在來選取&#x200B;**MktoWebActivities**&#x200B;索引標籤，並建立三個計算資料行。 捲動至表格的最右側，並按一下欄「新增欄」，插入下列計算欄。 **活動：**&#x200B;在表格MktoActivityTypes中查詢活動ID，取得使用者易記的活動標籤。 **\=****LOOKUPVALUE****（MktoActivityTypes[名稱]，MktoActivityTypes[id]，[activityTypeId]）** **年 — 月：**&#x200B;以更適合某些報表的模式「YYYYmm」重新格式化活動日期。 **\=****LEFT****([activityDate]，4)&amp;****MID****([activityDate]，6,2)** **日期：**&#x200B;活動日期只是原始查詢的字串，請將其轉換為適當的日期。 **\=****日期****(****LEFT****([activityDate]，4)，****MID****([activityDate]，6,2)，****MID****([activityDate]，9,2))**&#x200B;現在讓我們為&#x200B;**MktoEmailActivities**&#x200B;索引標籤建立三個相同的測量，以及兩個其他測量：**促銷活動：**&#x200B;通過在MktoCampaigns表中查詢行銷活動ID，獲取使用者友好的行銷活動名稱。 **\=****LOOKUPVALUE****(MktoCampaigns[name]，MktoCampaigns[id]，[campaignId])** **方案：**&#x200B;在表格MktoCampaigns中查詢促銷活動ID，取得好記的方案名稱。 MktoPrograms表格可提供有關程式的更多詳細資料，例如資料夾、工作區等。 **\=****LOOKUPVALUE****(MktoCampaigns[programName]，MktoCampaigns[id]，[campaignId])**
+我們需要擴充或重新格式化某些報表的資料。 讓我們使用Power Pivot資料分析運算式(DAX)來定義某些自訂計算，如計算欄和測量（也稱為計算欄位）。 請參閱「參考」區段中的「Power Pivot中的DAX」連結，瞭解更多有關DAX的資訊。 確定計算區域顯示在Power Pivot視窗中；如果沒有，請從Power Pivot首頁功能表啟用它。  選取&#x200B;**MktoLeads**&#x200B;索引標籤，並將&#x200B;**Leads Count**&#x200B;量值新增至Leads計算區域中的任意位置： **Leads Count：=**&#x200B;**DISTINCTCOUNT**&#x200B;**([id])**。 此測量方式會根據其ID計算清單中可用的不同潛在客戶。 它也會考慮報表內容中已有的最終篩選器。 此量度並非真正必要，因為報表可彙總銷售機會數量，但我們這麼做是為了讓銷售機會計數具有比「MktoLeads總和」更好的名稱。 這也是一個簡單的範例，可讓您輕鬆想像一些更複雜的測量，針對特定型別的資料輸入進行平均、最小值、最大值等操作（例如分數高於50的所有潛在客戶、平均分數等）。 ...)。  現在來選取&#x200B;**MktoWebActivities**&#x200B;索引標籤，並建立三個計算資料行。 捲動至表格的最右側，並按一下欄「新增欄」，插入下列計算欄。 **活動：**&#x200B;在表格MktoActivityTypes中查詢活動ID，取得使用者易記的活動標籤。 **\=**&#x200B;**LOOKUPVALUE**&#x200B;**（MktoActivityTypes[名稱]，MktoActivityTypes[id]，[activityTypeId]）** **年 — 月：**&#x200B;以更適合某些報表的模式「YYYYmm」重新格式化活動日期。 **\=**&#x200B;**LEFT**&#x200B;**([activityDate]，4)&amp;**&#x200B;**MID**&#x200B;**([activityDate]，6,2)** **日期：**&#x200B;活動日期只是原始查詢的字串，請將其轉換為適當的日期。 **\=**&#x200B;**日期**&#x200B;**(**&#x200B;**LEFT**&#x200B;**([activityDate]，4)，**&#x200B;**MID**&#x200B;**([activityDate]，6,2)，**&#x200B;**MID**&#x200B;**([activityDate]，9,2))**&#x200B;現在讓我們為&#x200B;**MktoEmailActivities**&#x200B;索引標籤建立三個相同的測量，以及兩個其他測量：**促銷活動：**&#x200B;通過在MktoCampaigns表中查詢行銷活動ID，獲取使用者友好的行銷活動名稱。 **\=**&#x200B;**LOOKUPVALUE**&#x200B;**(MktoCampaigns[name]，MktoCampaigns[id]，[campaignId])** **方案：**&#x200B;在表格MktoCampaigns中查詢促銷活動ID，取得好記的方案名稱。 MktoPrograms表格可提供有關程式的更多詳細資料，例如資料夾、工作區等。 **\=**&#x200B;**LOOKUPVALUE**&#x200B;**(MktoCampaigns[programName]，MktoCampaigns[id]，[campaignId])**
 
 ### Entity-Relationship
 
@@ -8392,7 +8392,7 @@ secret_key，使用您IFTT Maker Service的秘密金鑰
 
 ### IFTTT Applet
 
-在IFTTT入口網站中，選取主功能表中的「我的Applet」。  按一下[新增Applet]按鈕，然後按一下&#x200B;**+this**&#x200B;區段。  搜尋Maker服務。  建立觸發器，在Maker服務收到通知其發生事件的網路請求時引發。 使用與Marketo Webhook的URL中指定的相同事件名稱，例如「MarketoProgramSuccess」，然後按一下「建立觸發器」按鈕。  現在可以按一下&#x200B;**+該**區段來指定動作服務。  我們將以簡單的動作服務開始，任何人都可以測試此服務，而不需要投資任何IoT裝置：Notifications Service。 搜尋並選取通知服務。
+在IFTTT入口網站中，選取主功能表中的「我的Applet」。  按一下[新增Applet]按鈕，然後按一下&#x200B;**+this**&#x200B;區段。  搜尋Maker服務。  建立觸發器，在Maker服務收到通知其發生事件的網路請求時引發。 使用與Marketo Webhook的URL中指定的相同事件名稱，例如「MarketoProgramSuccess」，然後按一下「建立觸發器」按鈕。  現在可以按一下&#x200B;**+該**&#x200B;區段來指定動作服務。  我們將以簡單的動作服務開始，任何人都可以測試此服務，而不需要投資任何IoT裝置：Notifications Service。 搜尋並選取通知服務。
 選擇「傳送通知」動作，將通知傳送至您的裝置。  您可以善用您從Marketo傳送的3個值，將其新增為組成要素，以傳送有意義的通知給使用者，如以下範例一樣……然後按一下「建立動作」按鈕。 檢閱並完成IFTTT Applet。 請確定已啟用。
 
 ### 測試IFTTT Applet
@@ -9090,7 +9090,7 @@ Munchkin JavaScript網路追蹤程式碼已增強，包含下列與隱私權相�
 
 `GET /rest/v1/customobjects/session_c.json?filterType=subscriptionID&filterValues=4ad59184-6bf1-4eeb-a583-d82aeee68210,e5e0aba4-f27f-494d-93ed-9cb580989bf3,e65007cd-86b1-4c17-8d55-057c96e1788a,39d956b2-85e2-4c24-94e7-e9fa5a09d3d0,bf14218c-ae6a-42b3-a14e-f7182903cbcd`
 
-_註腳_ _1)**smartListName**和&#x200B;**smartListId**篩選型別不適用於部分訂閱。 如果您的訂閱無法使用，您在呼叫Create Export Lead Job端點時收到錯誤（**&quot;1035，目標訂閱&quot;**&quot;不支援的篩選器型別）。 客戶可以聯絡Marketo支援，以便在他們的訂閱中啟用此功能。_
+_註腳_ _1)**smartListName**&#x200B;和&#x200B;**smartListId**&#x200B;篩選型別不適用於部分訂閱。 如果您的訂閱無法使用，您在呼叫Create Export Lead Job端點時收到錯誤（**&quot;1035，目標訂閱&quot;**&quot;不支援的篩選器型別）。 客戶可以聯絡Marketo支援，以便在他們的訂閱中啟用此功能。_
 
 由&#x200B;_Tony_&#x200B;張貼於&#x200B;_2020-01-14_
 
@@ -9648,7 +9648,7 @@ Marketo中的「Lead」物件是主物件，其他所有物件都直接或間接
 
 ### 在外部頁面上停用Munchkin Beta
 
-如果您已將Beta版本的Munchkin JavaScript部署至外部網頁，並希望在正式推出前放棄此變更，則需變更Munchkin JS程式碼片段，以鎖定**munchkin。****js**&#x200B;檔案而非**munchkin-beta版。****js**&#x200B;檔案。 在下列範例中，這是第11行之&#x200B;**s.src**&#x200B;變數的值。 您的程式碼片段可能與以下範例不盡相同，或是由標籤管理員在您的外部頁面上部署，因此您可能需要聯絡IT資源或是在啟用Munchkin追蹤的情況下管理您網站的人員。
+如果您已將Beta版本的Munchkin JavaScript部署至外部網頁，並希望在正式推出前放棄此變更，則需變更Munchkin JS程式碼片段，以鎖定&#x200B;**munchkin。**&#x200B;**js**&#x200B;檔案而非&#x200B;**munchkin-beta版。**&#x200B;**js**&#x200B;檔案。 在下列範例中，這是第11行之&#x200B;**s.src**&#x200B;變數的值。 您的程式碼片段可能與以下範例不盡相同，或是由標籤管理員在您的外部頁面上部署，因此您可能需要聯絡IT資源或是在啟用Munchkin追蹤的情況下管理您網站的人員。
 
 ```javascript
 <script type="text/javascript">
