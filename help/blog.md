@@ -6975,7 +6975,7 @@ $(function(){
 
 ## 使用RTP動態變更本機電話號碼
 
-Personalization無所不包 — 我們很久以前就知道了。 話雖如此，我仍感到驚訝的是，每次需要立即協助時，很難在網站上找到相關的當地電話號碼。 好在我們[上安裝了](https://business.adobe.com/products/marketo/content-personalization.html)Marketo Real-Time Personalization<https://business.adobe.com/products/marketo/adobe-marketo.html> (RTP)。 我們可以運用[RTP訪客API](/help/javascript-api/web-personalization.md)，動態變更網站訪客在網站不同區段看到的電話號碼。 哇！ 您相信這點嗎？ 這道奇蹟如何運作？ 首先，您的網站上必須安裝RTP，如[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)所述。 接下來，請依照下列指示，在您的網站上實作JavaScript程式碼：
+Personalization無所不包 — 我們很久以前就知道了。 話雖如此，我仍感到驚訝的是，每次需要立即協助時，很難在網站上找到相關的當地電話號碼。 好在我們[上安裝了](https://business.adobe.com/tw/products/marketo/content-personalization.html)Marketo Real-Time Personalization<https://business.adobe.com/tw/products/marketo/adobe-marketo.html> (RTP)。 我們可以運用[RTP訪客API](/help/javascript-api/web-personalization.md)，動態變更網站訪客在網站不同區段看到的電話號碼。 哇！ 您相信這點嗎？ 這道奇蹟如何運作？ 首先，您的網站上必須安裝RTP，如[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)所述。 接下來，請依照下列指示，在您的網站上實作JavaScript程式碼：
 
 1. 在&#x200B;**defaultPhone**&#x200B;設定中插入您的國際電話號碼
 1. 在&#x200B;**divIds**&#x200B;設定中插入HTML元素ID
@@ -9772,7 +9772,7 @@ Munchkin 161版將於2021年9月7日開始推出，至啟用Munchkin Beta訂閱�
 
 ### 瑕疵解決方案
 
-* 已修正[使用者管理](/help/rest-api/user-management.md) API的問題。 屬於設定為可與[銷售Insight](https://business.adobe.com/products/marketo/sales-insight.html)搭配使用的Marketo使用者。 這些使用者現在由[取得使用者](https://developer.adobe.com/marketo-apis/api/user/#operation/getUsersUsingGET)端點傳回，現在可以使用[刪除使用者](https://developer.adobe.com/marketo-apis/api/user/#operation/deleteUserUsingPOST)端點刪除這些使用者。 [LM-155864]
+* 已修正[使用者管理](/help/rest-api/user-management.md) API的問題。 屬於設定為可與[銷售Insight](https://business.adobe.com/tw/products/marketo/sales-insight.html)搭配使用的Marketo使用者。 這些使用者現在由[取得使用者](https://developer.adobe.com/marketo-apis/api/user/#operation/getUsersUsingGET)端點傳回，現在可以使用[刪除使用者](https://developer.adobe.com/marketo-apis/api/user/#operation/deleteUserUsingPOST)端點刪除這些使用者。 [LM-155864]
 * 已修正新增[RTF欄位](https://developer.adobe.com/marketo-apis/api/asset/#tag/Form-Fields/addRichTextFieldUsingPOST)端點的問題。 將超過65,000個字元的RTF欄位新增至電子郵件、登陸頁面、程式碼片段或表單時，系統傳回「611，系統錯誤」。 現在會傳回錯誤「701，無法完成作業。 &#39;content&#39;超過65,535位元組的最大長度&#39;。
 
 由&#x200B;_David_&#x200B;張貼於&#x200B;_2021-10-25_
