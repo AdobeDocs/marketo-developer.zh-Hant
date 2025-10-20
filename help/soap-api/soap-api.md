@@ -3,7 +3,7 @@ title: SOAP API
 feature: SOAP
 description: Marketo SOAP API已於2025年10月31日後淘汰。 瞭解如何移轉至REST、擷取您的WSDL、參閱配額、速率限制和驗證設定。
 exl-id: 6618cc82-15ae-4030-aa00-438e635d8369
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 5f2dcb4864cdcd110ba9f199ef9c86dcee522335
 workflow-type: tm+mt
 source-wordcount: '249'
 ht-degree: 0%
@@ -12,7 +12,7 @@ ht-degree: 0%
 
 # SOAP API
 
-SOAP API即將淘汰，自2025年10月31日起不再提供。 所有新的開發應使用Marketo [REST API](../rest-api/rest-api.md)完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱SOAP API [移轉指南](./migration.md)以瞭解如何移轉的資訊。
+SOAP API即將淘汰，自2026年1月31日起將不再提供使用。 所有新的開發應使用Marketo [REST API](../rest-api/rest-api.md)完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱SOAP API [移轉指南](./migration.md)以瞭解如何移轉的資訊。
 
 ## SOAP WSDL
 

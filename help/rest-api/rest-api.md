@@ -3,10 +3,10 @@ title: REST API
 feature: REST API
 description: 瞭解如何使用Marketo REST API、設定API使用者和LaunchPoint、檢視配額和限制、使用授權標頭驗證以及擷取銷售機會。
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 5f2dcb4864cdcd110ba9f199ef9c86dcee522335
 workflow-type: tm+mt
-source-wordcount: '790'
-ht-degree: 1%
+source-wordcount: '806'
+ht-degree: 0%
 
 ---
 
@@ -17,7 +17,11 @@ Marketo公開REST API，允許從遠端執行系統的許多功能。 從建立�
 這些API通常分為兩大類： [潛在客戶資料庫](https://developer.adobe.com/marketo-apis/api/mapi/)和[資產](https://developer.adobe.com/marketo-apis/api/asset/)。 潛在客戶資料庫API可擷取Marketo個人記錄和相關物件型別（例如商機和公司）並與其互動。 資產API可與行銷宣傳品和工作流程相關記錄互動。
 
 >[!NOTE]
->SOAP API即將淘汰，自2025年10月31日起不再提供。 所有新的開發應使用Marketo [REST API](./rest-api.md)完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱SOAP API [移轉指南](../soap-api/migration.md)以瞭解如何移轉的資訊。
+>SOAP API即將淘汰，自2026年1月31日起將不再提供使用。 所有新的開發應使用Marketo [REST API](./rest-api.md)完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱SOAP API [移轉指南](../soap-api/migration.md)以瞭解如何移轉的資訊。
+>
+
+>[!IMPORTANT]
+>請參閱此[Nation貼文](https://nation.marketo.com/t5/product-blogs/rest-api-double-slash-deprecation/ba-p/358616)，瞭解API閘道URL中雙斜線是否被取代。
 >
 
 - **每日配額：**&#x200B;訂閱每天會配置50,000個API呼叫（這會在每日的12:00AM CST重設）。 您可以透過帳戶管理員增加每日配額。
