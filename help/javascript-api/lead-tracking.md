@@ -1,11 +1,11 @@
 ---
 title: 銷售機會追蹤
-description: 瞭解如何內嵌Marketo Munchkin JavaScript、追蹤瀏覽和點按、管理已知和匿名的銷售機會、跨網域Cookie，以及選擇退出Smart Campaigns。
+description: 瞭解如何內嵌Marketo Munchkin JavaScript、追蹤造訪和點按、管理已知和匿名的銷售機會、跨網域Cookie，以及選擇退出智慧行銷活動。
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: c1b9763835b25584f0c085274766b68ddf5c7ae2
 workflow-type: tm+mt
-source-wordcount: '784'
+source-wordcount: '785'
 ht-degree: 0%
 
 ---
@@ -70,13 +70,13 @@ Munchkin的行為可透過使用Munchkin [組態設定](configuration.md)來修�
 
 ## 已知和匿名銷售機會
 
-當潛在客戶第一次造訪您網域上的頁面時，系統會在Marketo中建立新的匿名潛在客戶記錄。 此記錄的主要索引鍵是在使用者的瀏覽器中建立的Munchkin Cookie (`_mkto_trk`)。 該瀏覽器上的所有後續網頁活動都會針對此匿名記錄進行記錄。 若要與Marketo中的已知記錄相關聯，必須發生以下任一情況：
+當潛在客戶第一次造訪您網域上的頁面時，系統會在Marketo中建立新的匿名潛在客戶記錄。 此記錄的主要索引鍵是在使用者的瀏覽器中建立的Munchkin Cookie (`_mkto_trk`)。 該瀏覽器上的所有後續網頁活動都會針對此匿名記錄進行記錄。 若要與Marketo中的已知記錄相關聯，您必須執行以下任一操作：
 
 - 潛在客戶必須從追蹤的Munchkin電子郵件連結，造訪在查詢字串中具有`mkt_tok`引數的Marketo追蹤頁面。
 - 潛在客戶必須填寫Marketo表單。
 - 必須傳送REST [關聯銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/associateLeadUsingPOST)呼叫。
 
-當其中一項條件達成時，Cookie和所有相關的網路活動都會與已知潛在客戶建立關聯。
+當滿足其中一項條件時，Cookie和所有關聯的網頁活動都會與已知潛在客戶相關聯。
 
 系統會為每個個別瀏覽器建立新的匿名網站活動記錄，因此如果潛在客戶第一次使用新電腦和/或瀏覽器造訪您的網域，則必須再次建立此關聯。
 
@@ -90,17 +90,17 @@ Munchkin會根據每個網域建立及追蹤個別Cookie，因此若要跨網域
 
 Munchkin Cookie使用索引鍵`_mkto_trk`，其值遵循此模式：
 
-`id:561\-HYG\-937&token:_mch\-marketo.com\-1374552656411\-90718`
+`id:561-HYG-937&token:_mch-marketo.com-1374552656411-90718`
 
 或
 
-`id:561\-HYG\-937&token:_mch\-marketo.com\-97bf4361ef4433921a6da262e8df45a`
+`id:561-HYG-937&token:_mch-marketo.com-97bf4361ef4433921a6da262e8df45a`
 
 Munchkin Cookie是每個第二層網域（即`example.com`）專屬的。 Cookie的預設有效期為2年（730天）。
 
 ## Beta
 
-若要選擇加入登陸頁面的Munchkin測試版管道，請前往您的[管理員 — > Treasure Chest](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features)功能表，並啟用「登陸頁面上的Munchkin Beta」設定。 這會提供&#x200B;**[!UICONTROL Admin]** ->中的新程式碼片段  **[!UICONTROL Munchkin]**&#x200B;功能表可讓您在外部網站上使用測試版。
+若要選擇加入登陸頁面的Munchkin測試版管道，請前往您的[管理員 — > Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features)功能表，並啟用「登陸頁面上的Munchkin Beta」設定。 這會提供&#x200B;**[!UICONTROL Admin]** ->中的新程式碼片段  **[!UICONTROL Munchkin]**&#x200B;功能表可讓您在外部網站上使用測試版。
 
 ## 選擇退出
 

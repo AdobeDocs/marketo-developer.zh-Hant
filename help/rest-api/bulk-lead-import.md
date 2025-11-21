@@ -3,9 +3,9 @@ title: 大量潛在客戶匯入
 feature: REST API
 description: 使用CSV TSV或SSV在Marketo中建立並監視非同步的大量潛在客戶匯入。
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: c1b9763835b25584f0c085274766b68ddf5c7ae2
 workflow-type: tm+mt
-source-wordcount: '812'
+source-wordcount: '795'
 ht-degree: 0%
 
 ---
@@ -18,13 +18,13 @@ ht-degree: 0%
 
 ## 處理限制
 
-您可以提交一個以上的大量匯入要求，但會有限制。 每個請求都會當作工作新增至FIFO佇列進行處理。 最多可同時處理兩個工作。 在任何指定時間，佇列中最多允許10個工作（包括目前處理的2個）。 如果超過十個作業的上限，則會傳回「1016，匯入次數過多」錯誤。
+您可以提交一個以上的大量匯入要求，但會有限制。 每個請求都會當作工作新增至FIFO佇列進行處理。 最多可同時處理兩個工作。 在任何指定時間，佇列中最多允許10個工作（包括目前處理中的兩個）。 如果超過十個作業的上限，則會傳回`1016, Too many imports`錯誤。
 
 ## 匯入檔案
 
 檔案的第一列必須是標頭，其中列出要將每列的值對應到的對應REST API欄位。 典型的檔案會遵循此基本模式：
 
-```
+```csv
 email,firstName,lastName
 test@example.com,John,Doe
 ```
@@ -37,7 +37,7 @@ test@example.com,John,Doe
 
 ## 建立工作
 
-若要提出大量匯入請求，您必須將內容型別標頭設為「multipart/form-data」，並包含至少一個檔案引數及檔案內容，以及值為「csv」、「tsv」或「ssv」的格式引數，以表示檔案格式。
+若要提出大量匯入要求，您必須將內容型別標頭設為`multipart/form-data`，並包含檔案內容中的至少`file`引數，以及值為`format`、`csv`或`tsv`的`ssv`引數，以表示您的檔案格式。
 
 ```
 POST /bulk/v1/leads.json?format=csv
@@ -54,7 +54,7 @@ Host: <munchkinId>.mktorest.com
 Content-Disposition: form-data; name="file"; filename="leads.csv"
 Content-Type: text/csv
 
-FirstName,LastName,Email,Company
+firstName,lastName,email,company
 Able,Baker,ablebaker@marketo.com,Marketo
 Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
@@ -75,16 +75,16 @@ Easy,Fox,easyfox@marketo.com,Marketo
 }
 ```
 
-此端點使用[multipart/form-data做為content-type](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html)。 這可能很難對付，因此最佳實務是為您選擇的語言使用HTTP支援程式庫。 從命令列對cURL執行此動作的簡單方法如下所示：
+此端點使用[multipart/form-data做為content-type](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html)。 最佳實務是為您選擇的語言使用HTTP支援程式庫，以確保正確使用。 以下範例是從命令列對cURL執行此作業的簡單方法：
 
 ```
 curl -i -F format=csv -F file=@lead_data.csv -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/leads.json
 ```
 
-其中匯入檔案「lead_data.csv」包含以下內容：
+其中匯入檔案`lead_data.csv`包含下列專案：
 
 ```
-FirstName,LastName,Email,Company
+firstName,lastName,email,company
 Able,Baker,ablebaker@marketo.com,Marketo
 Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
@@ -130,19 +130,19 @@ GET /bulk/v1/leads/batch/{id}.json
 
 ## 失敗
 
-失敗由Get Import Lead Status回應中的「numOfRowsFailed」屬性表示。 如果「numOfRowsFailed」大於零，則該值表示發生的失敗次數。
+失敗由Get Import Lead Status回應中的`numOfRowsFailed`屬性指示。 如果`numOfRowsFailed`大於零，則該值表示發生的失敗次數。
 
-若要擷取失敗列的記錄和原因，您必須擷取失敗檔案：
+若要擷取失敗資料列的記錄和原因，您必須擷取失敗檔案：
 
 ```
 GET /bulk/v1/leads/batch/{id}/failures.json
 ```
 
-API會以指出哪些列失敗的檔案回應，並顯示指出記錄失敗原因的訊息。 檔案的格式與工作建立期間在「format」引數中指定的格式相同。 附加欄位會附加至每個記錄並附有失敗說明。
+API會以指出哪些列失敗的檔案回應，並顯示指出記錄失敗原因的訊息。 檔案的格式與工作建立期間在`format`引數中指定的格式相同。 附加欄位會附加至每個記錄並附有失敗說明。
 
 ## 警告
 
-在Get Import Lead Status回應中，警告由「numOfRowsWithWarning」屬性表示。 如果「numOfRowsWithWarning」大於零，則該值表示警告發生的次數。
+在Get Import Lead Status回應中，`numOfRowsWithWarning`屬性會指出警告。 如果`numOfRowsWithWarning`大於零，該值表示發生的警告數。
 
 若要擷取記錄以及警告列的原因，請擷取警告檔案：
 
@@ -150,4 +150,4 @@ API會以指出哪些列失敗的檔案回應，並顯示指出記錄失敗原�
 GET /bulk/v1/leads/batch/{id}/warnings.json
 ```
 
-API會以檔案回應，指出哪些列產生警告，以及指出記錄失敗原因的訊息。 檔案的格式與工作建立期間在「format」引數中指定的格式相同。 附加欄位會附加至每個記錄，並附有警告的說明。
+API會以檔案回應，指出哪些列產生警告，以及指出記錄失敗原因的訊息。 檔案的格式與工作建立期間在`format`引數中指定的格式相同。 附加欄位會附加至每個記錄，並附有警告的說明。
