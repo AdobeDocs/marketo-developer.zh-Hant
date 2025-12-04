@@ -2,7 +2,9 @@
 title: API授權
 description: Marketo API授權合約書，適用於內部開發及測試，詳述API限制、與Marketo解決方案的互用性，以及非商業用途。
 exl-id: f0720ba7-b15d-40c8-9145-d3fa3e064a0b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+hide: true
+hidefromtoc: true
+source-git-commit: 367d10df0fce229d7e0cf21d170acde3935350d3
 workflow-type: tm+mt
 source-wordcount: '3092'
 ht-degree: 0%
