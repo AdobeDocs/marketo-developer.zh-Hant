@@ -3,9 +3,9 @@ title: 銷售機會
 feature: REST API
 description: 探索Marketo銷售機會REST API功能，包括說明、依ID或篩選器查詢、預設欄位、限制和擷取ECID。
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: cc4bd7c18124bb039386a1cec06b9f1da0d047cb
+source-git-commit: 37973f51f1f0a08da967bdd07aaa47188b208adb
 workflow-type: tm+mt
-source-wordcount: '3411'
+source-wordcount: '3409'
 ht-degree: 2%
 
 ---
@@ -769,7 +769,7 @@ Content-Type: application/json
 ## 合併
 
 >[!NOTE]
->從2026年3月31日開始，在合併潛在客戶API呼叫的`leadIds`引數中包含超過25個ID的呼叫將導致1080錯誤代碼，並將略過該呼叫。 需要將超過25筆記錄合併為一份的工作，應分割為多項工作，以確保這些呼叫成功。
+>自2026年3月31日起，合併銷售機會API呼叫的`leadIds`引數中包含超過25個ID的呼叫將導致1080錯誤代碼，該呼叫將被跳過。 需要將超過25筆記錄合併為一份的工作，應分割為多項工作，以確保這些呼叫成功。
 >
 
 有時候，您必須合併重複記錄，Marketo會透過合併銷售機會API協助執行此操作。 合併潛在客戶將會結合其活動記錄、方案、行銷活動、清單成員資格和CRM資訊，並將其所有欄位值合併為單一記錄。 合併銷售機會以銷售機會ID作為路徑引數，單一`leadId`作為查詢引數，或`leadIds`引數中逗號分隔的25個或更少的ID清單
@@ -819,7 +819,7 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 您也可以根據靜態清單或計畫中的成員資格來擷取潛在客戶記錄。 此外，您可以擷取潛在客戶所屬的所有靜態清單、方案或智慧行銷活動。
 
 回應結構和選用引數與「依篩選型別取得銷售機會」的相同，不過filterType和filterValues不能與此API搭配使用。
-若要透過Marketo UI存取清單ID，請導覽至清單。 清單`id`位於靜態清單`https://app-**&#x200B;**.marketo.com/#ST1001A1`的URL中。 在此範例中，1001是清單的`id`。
+若要透過Marketo UI存取清單ID，請導覽至清單。 清單`id`位於靜態清單`https://app-****.marketo.com/#ST1001A1`的URL中。 在此範例中，1001是清單的`id`。
 
 ### 請求
 
