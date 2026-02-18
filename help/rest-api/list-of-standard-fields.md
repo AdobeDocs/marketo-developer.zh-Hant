@@ -3,10 +3,10 @@ title: 標準欄位
 feature: REST API, Field Management
 description: 瀏覽Marketo標準銷售機會欄位的完整清單，其中包含REST和SOAP名稱、標籤和說明，以及如何透過Describe Lead API擷取它們。
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
 workflow-type: tm+mt
-source-wordcount: '1161'
-ht-degree: 11%
+source-wordcount: '727'
+ht-degree: 16%
 
 ---
 
@@ -41,45 +41,18 @@ ht-degree: 11%
 | inferredCountry | 推斷的國家 | 推斷的國家 | 透過潛在客戶第一個有紀錄的網頁造訪進行的反向IP查詢所推斷出的國家/地區 |
 | 姓氏 | 姓氏 | 姓氏 | 潛在客戶姓氏 |
 | leadRole | 潛在客戶角色 | 角色 | 潛在客戶在其公司中的角色 |
-| 銷售機會分數 | 潛在客戶分數 | 銷售機會分數 | 透過評分行銷活動和方案授予潛在客戶的整數分數 |
-| leadSource | 潛在客戶來源 | 銷售機會來源 | 記錄潛在客戶來源的欄位 |
-| 潛在客戶狀態 | 潛在客戶狀態 | 銷售機會狀態 | 記錄潛在客戶目前行銷/銷售狀態的欄位 |
+| 銷售機會分數 | 潛在客戶分數 | 銷售線索分數 | 透過評分行銷活動和方案授予潛在客戶的整數分數 |
+| leadSource | 潛在客戶來源 | 銷售線索來源 | 記錄潛在客戶來源的欄位 |
+| 潛在客戶狀態 | 潛在客戶狀態 | 銷售線索狀態 | 記錄潛在客戶目前行銷/銷售狀態的欄位 |
 | mainPhone | 主要電話 | 主要電話 | 潛在客戶公司的主要電話號碼 |
 | jigsawContactId | Marketo拼圖連絡人ID | MARKETO Data.com ID | 潛在客戶的Data.com ID （若有） |
 | Jigsawcontactstatus | Marketo拼圖連絡人狀態 | Marketo Data.com狀態 | 潛在客戶的Data.com狀態（若有） |
-| facebookDisplayName | MarketoSocialFacebookDisplayName | Marketo Social Facebook顯示名稱 | 潛在客戶的Facebook顯示名稱。 系統已在社交登入期間填入 |
-| facebookId | MarketoSocialFacebookId | Marketo社交Facebook Id | 潛在客戶的Facebook ID。 系統已在社交登入期間填入 |
-| facebookPhotoURL | MarketoSocialFacebookPhotoURL | Marketo社交Facebook像片URL | 潛在客戶的Facebook個人資料像片的URL。 系統已在社交登入期間填入 |
-| facebookProfileURL | MarketoSocialFacebookProfileURL | Marketo社交Facebook個人資料URL | 潛在客戶的Facebook個人資料的URL。 系統已在社交登入期間填入 |
-| facebookReach | MarketoSocialFacebookReach | Marketo Social Facebook觸及 | 潛在客戶在Facebook上的觸角。 系統已在社交登入期間填入 |
-| facebookReferredEnrollments | MarketoSocialFacebookReferredEnrollments | Marketo Social Facebook轉介註冊 | 透過Facebook歸因於潛在客戶的轉介註冊數。 系統管理 |
-| facebookReferredVisits | MarketoSocialFacebookReferredVisits | Marketo Social Facebook反向造訪 | 透過Facebook歸因於潛在客戶的轉介造訪次數。 系統管理 |
-| 性別 | MarketoSocialGender | Marketo社交性別 | 潛在客戶的性別。 系統已在社交登入期間填入 |
-| lastReferredEnrollment | MarketoSocialLastReferredEnrollment | Marketo社交上次反向連結註冊 | 上次完成轉介的日期。 系統管理 |
-| lastReferredVisit | MarketoSocialLastReferredVisit | Marketo Social上次轉介的造訪 | 上次參照造訪的日期。 系統管理 |
-| linkedInDisplayName | MarketoSocialLinkedInDisplayName | Marketo Social LinkedIn顯示名稱 | 潛在客戶的LinkedIn顯示名稱。 系統已在社交登入期間填入 |
-| linkedInId | MarketoSocialLinkedInId | Marketo Social LinkedIn Id | 潛在客戶的LinkedIn Id。 系統已在社交登入期間填入 |
-| linkedInPhotoURL | MarketoSocialLinkedInPhotoURL | Marketo Social LinkedIn照片URL | 潛在客戶的LinkedIn像片URL。 系統已在社交登入期間填入 |
-| linkedinprofileURL | MarketoSocialLinkedInProfileURL | Marketo Social LinkedIn設定檔URL | 潛在客戶的LinkedIn設定檔。 系統已在社交登入期間填入 |
-| linkedInReach | MarketoSocialLinkedInReach | Marketo Social LinkedIn Reach | 潛在客戶的LinkedIn觸及。 系統已在社交登入期間填入 |
-| linkedInReferredEnrollments | MarketoSocialLinkedInReferredEnrollments | Marketo Social LinkedIn引用的註冊 | 透過LinkedIn歸因於潛在客戶的轉介註冊數。 系統管理 |
-| linkedInReferredVisits | MarketoSocialLinkedInReferredVisits | Marketo Social LinkedIn反向造訪 | 透過LinkedIn歸因於潛在客戶的被轉介造訪次數。 系統管理 |
-| syndicationId |  - | Marketo社交整合ID | 潛在客戶的內部Marketo社交ID。 系統管理 |
-| totalReferredEnrollments | MarketoSocialTotalReferredEnrollments | Marketo 社交轉介註冊總次數 | 歸因於潛在客戶的已完成轉介註冊總數 |
-| totalReferredVisits | MarketoSocialTotalReferredVisits | Marketo 社交轉介造訪總次數 | 歸因於潛在客戶的被轉介造訪總數 |
-| twitterDisplayName | MarketoSocialTwitterDisplayName | Marketo社交Twitter顯示名稱 | 潛在客戶的Twitter顯示名稱。 系統已在社交登入期間填入 |
-| twitterId | MarketoSocialTwitterId | Marketo社交Twitter Id | 潛在客戶的Twitter Id。 系統已在社交登入期間填入 |
-| twitterPhotoURL | MarketoSocialTwitterPhotoURL | Marketo社交Twitter像片URL | 潛在客戶的Twitter像片URL。 系統已在社交登入期間填入 |
-| twitterProfileURL | MarketoSocialTwitterProfileURL | Marketo社交Twitter設定檔URL | 潛在客戶的Twitter設定檔URL。 系統已在社交登入期間填入 |
-| twitterReach | MarketoSocialTwitterReach | Marketo社交Twitter觸及 | 潛在客戶的Twitter觸及率。 系統已在社交登入期間填入 |
-| twitterReferredEnrollments | MarketoSocialTwitterReferredEnrollments | Marketo Social Twitter轉介註冊 | 透過Twitter歸因於潛在客戶的轉介註冊數。 系統管理 |
-| twitterReferredVisits | MarketoSocialTwitterReferredVisits | Marketo社交Twitter反向造訪 | 透過Twitter歸因於潛在客戶的轉介造訪次數。 系統管理 |
 | 中間名 | 中間名 | 中間名 | 潛在客戶的中間名 |
 | 行動電話 | 行動電話 | 手機號碼 | 潛在客戶的行動電話號碼 |
 | numberOfEmployees | 員工人數 | 員工人數 | 潛在客戶公司的員工人數 |
 | 電話 | 電話 | 電話號碼 | 潛在客戶的電話號碼 |
 | postalCode | 郵遞區號 | 郵遞區號 | 潛在客戶的郵遞區號 |
-| 評等 | 評等 | 銷售機會評等 | 潛在客戶的行銷/銷售評等 |
+| 評等 | 評等 | 銷售線索評等 | 潛在客戶的行銷/銷售評等 |
 | salutation | 問候語 | 問候語 | 潛在客戶偏好的稱呼，例如「先生」、「未接電話」等。 |
 | sicCode | SICCode | SIC 代碼 | 潛在客戶公司的標準產業分類代碼 |
 | 網站 | 地點 | 地點 |  |

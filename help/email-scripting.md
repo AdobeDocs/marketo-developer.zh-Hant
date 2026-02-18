@@ -3,9 +3,9 @@ title: 電子郵件指令碼
 feature: Email Programs
 description: 瞭解如何使用Apache Velocity權杖、變數、Velocity工具編寫動態Marketo電子郵件的指令碼，以及使用「傳送範例」和「電子郵件預覽」進行測試。
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
 workflow-type: tm+mt
-source-wordcount: '965'
+source-wordcount: '953'
 ht-degree: 0%
 
 ---
@@ -14,26 +14,7 @@ ht-degree: 0%
 
 注意：強烈建議您閱讀[Velocity使用手冊](https://velocity.apache.org/engine/devel/user-guide.html)，以深入瞭解Velocity範本語言的行為。
 
-[Apache Velocity](https://velocity.apache.org/)是以Java建置的語言，專為範本化和指令碼HTML內容而設計。 Marketo可讓您使用指令碼代號，將其用於電子郵件內容中。 如此可存取儲存在「機會」和「自訂物件」中的資料，並可在電子郵件中建立動態內容。 Velocity提供標準高階控制流程，其中包含if/else、for和for each ，以允許對內容進行條件式和反複式操控。 以下是一個列印問候語和正確問候語的簡單範例：
-
-```java
-##check if the lead is male
-#if(${lead.MarketoSocialGender} == "Male")
-    ##if the lead is male, use the salutation 'Mr.'
-    #set($greeting = "Dear Mr. ${lead.LastName},")
-##check is the lead is female
-#elseif(${lead.MarketoSocialGender} == "Female")
-    ##if female, use the salutation 'Ms.'
-    #set($greeting = "Dear Ms. ${lead.LastName},")
-#else
-    ##otherwise, use the first name
-    #set($greeting = "Dear ${lead.FirstName},")
-#end
-##print the greeting and some content
-${greeting}
-
-    Lorem ipsum dolor sit amet...
-```
+[Apache Velocity](https://velocity.apache.org/)是以Java建置的語言，專為範本化和指令碼HTML內容而設計。 Marketo可讓您使用指令碼代號，將其用於電子郵件內容中。 如此可存取儲存在「機會」和「自訂物件」中的資料，並可在電子郵件中建立動態內容。 Velocity提供標準高階控制流程，其中包含if/else、for和for each ，以允許對內容進行條件式和反複式操控。
 
 ## 變數
 
@@ -130,7 +111,7 @@ $date.whenIs($birthday).days ##outputs 1
 - 您可以參照連線至Lead、Contact或Account的自訂物件，但不能參照多個物件。
 - 自訂物件只能透過單一連線、銷售機會、連絡人或帳戶參照
 - 您必須在指令碼編輯器中勾選目前使用之欄位的方塊，否則這些欄位將不會處理
-- 對於每個自訂物件，每個人員/連絡人最近更新的10筆記錄可在執行階段使用，並依照最近更新（於0）到最舊更新（於9）的順序排列。 您可以依照指示[增加](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting)可用的記錄數。
+- 對於每個自訂物件，每個人員/連絡人最近更新的10筆記錄可在執行階段使用，並依照最近更新（於0）到最舊更新（於9）的順序排列。 您可以依照指示[增加](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting)可用的記錄數。
 - 如果您在電子郵件中包含多個電子郵件指令碼，這些指令碼會由上到下執行。 第一個要執行的指令碼中所定義的變數範圍，可在後續指令碼中使用。
 - 工具參考： [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - 有關包含新行字元「\\n」或「\\r\\n」的權杖的備註。 當透過傳送範例或批次促銷活動傳送電子郵件時，代號中的新行字元會被替換為空格。 透過「觸發器促銷活動」傳送電子郵件時，新行字元保持不變。
