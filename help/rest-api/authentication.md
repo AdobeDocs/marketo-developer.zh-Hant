@@ -3,26 +3,26 @@ title: Authentication
 feature: REST API
 description: 使用2條腿OAuth 2.0驗證Marketo REST API、建立和使用存取權杖、切換至授權標頭、管理過期、處理601和602錯誤。
 exl-id: f89a8389-b50c-4e86-a9e4-6f6acfa98e7e
-source-git-commit: 37973f51f1f0a08da967bdd07aaa47188b208adb
+source-git-commit: a0901d2c67aa42368f03494dc8157d2ae93b3dce
 workflow-type: tm+mt
-source-wordcount: '628'
+source-wordcount: '657'
 ht-degree: 0%
 
 ---
 
 # Authentication
 
-Marketo的REST API已透過雙腿OAuth 2.0驗證。使用者端ID和使用者端密碼由您定義的自訂服務提供。 每個自訂服務都由僅限API的使用者擁有，該使用者擁有一組可授權服務執行特定動作的角色和許可權。 存取權杖與單一自訂服務相關聯。 存取權杖到期與執行個體中可能存在之其他自訂服務相關聯的權杖無關。
+Marketo的REST API已透過雙腿OAuth 2.0驗證。 使用者端ID和使用者端密碼由您定義的自訂服務提供。 每個自訂服務都由僅限API的使用者擁有，該使用者擁有一組可授權服務執行特定動作的角色和許可權。 存取權杖與單一自訂服務相關聯。 存取權杖到期與執行個體中可能存在之其他自訂服務相關聯的權杖無關。
 
 ## 建立存取Token
 
-在`Client ID` > `Client Secret` > **[!UICONTROL Admin]**&#x200B;功能表中找到&#x200B;**[!UICONTROL Integration]**&#x200B;和&#x200B;**[!UICONTROL LaunchPoint]**，方法是選取自訂服務並按一下&#x200B;**[!UICONTROL View Details]**。
+在&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL LaunchPoint]**&#x200B;功能表中找到`Client ID`和`Client Secret`，方法是選取自訂服務並按一下&#x200B;**[!UICONTROL View Details]**。
 
 ![取得REST服務詳細資料](assets/authentication-service-view-details.png)
 
 ![啟動點認證](assets/admin-launchpoint-credentials.png)
 
-在REST API區段的`Identity URL` > **[!UICONTROL Admin]** > **[!UICONTROL Integration]**&#x200B;功能表中找到&#x200B;**[!UICONTROL Web Services]**。
+在REST API區段的&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**&#x200B;功能表中找到`Identity URL`。
 
 使用HTTP GET （或POST）要求建立存取權杖，如下所示：
 
@@ -55,7 +55,7 @@ GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client I
 
 >[!IMPORTANT]
 >
->自2026年3月31日起，將移除對使用`access_token`查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，應儘快更新以使用[授權標頭](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/authentication#using-an-access-token)。 新開發應僅使用`Authorization`標頭。
+>2026年7月31日將移除使用`access_token`查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，應儘快更新以使用[授權標頭](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/authentication#using-an-access-token)。 新開發應僅使用`Authorization`標頭。
 
 ### 切換至Authorization標題
 
