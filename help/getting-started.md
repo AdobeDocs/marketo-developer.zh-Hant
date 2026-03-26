@@ -31,7 +31,7 @@ Marketo Engage是行銷自動化平台，可讓行銷人員管理針對潛在客
 
 潛在客戶與您的組織互動的方式有幾種。 潛在客戶可以造訪您公司網站上的頁面、參加貿易展會或下載白皮書。 您可以在Marketo中擷取這些動作的各個專案，協助行銷人員更清楚瞭解潛在客戶已執行哪些活動以及何時執行，以便他們能夠協調及時且相關的通訊。 活動一律會依leadId重新關聯至銷售機會。
 
-您可以定義自己的自訂活動。 在您建立並發佈自訂活動後，可以透過Marketo API新增自訂活動。 自訂活動的詳細資訊可在[這裡](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities)找到。
+您可以定義自己的自訂活動。 在您建立並發佈自訂活動後，可以透過Marketo API新增自訂活動。 自訂活動的詳細資訊可在[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities)找到。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities)，[JavaScript](javascript-api/lead-tracking.md#munchkin-behavior)
 
@@ -49,7 +49,7 @@ Marketo Engage是行銷自動化平台，可讓行銷人員管理針對潛在客
 
 身為Marketo管理員，您可以在Marketo使用者建立方案時，建立必要和選用的標籤型別以供選擇。 您會定義每種標籤型別的可能值，且會反映貴公司想要用於報表用途的自訂標籤方式。
 
-例如，您可以建立具有多個標籤值（例如，Northeast、Southeast）的自訂「區域」標籤型別，以讓您分析哪個區域產生最多銷售機會。 或者，舉例來說，您可以建立「擁有者」標籤型別，讓您評估並瞭解哪些計畫擁有者（例如Maria、David或John）對建立銷售機會和機會的影響最大。 您可以在[這裡](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags)找到更多關於標籤的資訊。
+例如，您可以建立具有多個標籤值（例如，Northeast、Southeast）的自訂「區域」標籤型別，以讓您分析哪個區域產生最多銷售機會。 或者，舉例來說，您可以建立「擁有者」標籤型別，讓您評估並瞭解哪些計畫擁有者（例如Maria、David或John）對建立銷售機會和機會的影響最大。 您可以在[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags)找到更多關於標籤的資訊。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/asset/)
 
@@ -85,7 +85,7 @@ Assets是指程式中使用的登入頁面、電子郵件、表單和影像。 A
 
 在特定行銷活動資料夾或方案中本機建立的My Token，可用於該特定方案或行銷活動資料夾（本機）。 在行銷活動資料夾層級建立的My Token可用於該行銷活動資料夾內包含的所有方案（繼承）。 使用自訂值在程式層級修改的「我的Token」不會變更程式資料夾層級權杖的父「我的Token」值（已覆寫）。
 
-我的Token使用命名慣例{{my.My Token}}，並在該Token名稱開頭新增「my」一詞。 例如，如果您建立名為EventDate的日期型別My Token，則該Token的名稱為{{my.EventDate}}。 有關「我的Token」的詳細資訊，請參閱[這裡](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program)。
+我的Token使用命名慣例{{my.My Token}}，並在該Token名稱開頭新增「my」一詞。 例如，如果您建立名為EventDate的日期型別My Token，則該Token的名稱為{{my.EventDate}}。 有關「我的Token」的詳細資訊，請參閱[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program)。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens)
 
