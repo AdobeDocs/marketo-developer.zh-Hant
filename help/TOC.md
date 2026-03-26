@@ -5,10 +5,10 @@ breadcrumb-title: '[!DNL Marketo] 開發人員指南'
 role: Admin
 feature-set: "Marketo Engage"
 index: true
-source-git-commit: f314f153c80416bbccc4328756e71c07e696dd00
+source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
 workflow-type: tm+mt
-source-wordcount: '251'
-ht-degree: 28%
+source-wordcount: '277'
+ht-degree: 29%
 
 ---
 
@@ -71,7 +71,7 @@ ht-degree: 28%
       - [異動電子郵件](rest-api/transactional-email.md)
    - [Authentication](rest-api/authentication.md)
    - [基礎 URL](rest-api/base-url.md)
-   - [最佳實務](rest-api/marketo-integration-best-practices.md)
+   - [最佳做法](rest-api/marketo-integration-best-practices.md)
    - 大量擷取 {#bulk-extract}
       - [大量活動](rest-api/bulk-activity-extract.md)
       - [大量自訂物件](rest-api/bulk-custom-object-extract.md)
@@ -102,13 +102,15 @@ ht-degree: 28%
       - [機會角色](rest-api/opportunity-roles.md)
       - [計畫成員](rest-api/program-members.md)
       - [銷售人員](rest-api/sales-persons.md)
+      - [靜態清單](rest-api/list-membership.md)
+      - [使用情況](rest-api/usage.md)
    - [分頁權杖](rest-api/paging-tokens.md)
-   - [效能](rest-api/performance.md)
+   - [績效](rest-api/performance.md)
    - [參考架構](rest-api/reference-architectures.md)
-   - [範例程式碼](https://github.com/Marketo/REST-Sample-Code)
+   - [程式碼範例](https://github.com/Marketo/REST-Sample-Code)
    - [標記](rest-api/tags.md)
    - [使用者內容](rest-api/user-context.md)
-   - [User Management](rest-api/user-management.md)
+   - [使用者管理](rest-api/user-management.md)
 - SOAP {#soap}
    - 活動 {#activities}
       - [活動](soap-api/activities.md)

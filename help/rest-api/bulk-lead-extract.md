@@ -3,9 +3,9 @@ title: 大量潛在客戶擷取
 feature: REST API
 description: 瞭解如何使用Marketo大量銷售機會擷取REST API，以大量匯出具有日期、清單和智慧清單篩選器、自訂欄位和CSV/TSV格式的銷售機會。
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1195'
+source-wordcount: '1273'
 ht-degree: 2%
 
 ---
@@ -25,9 +25,9 @@ REST API的「大量銷售機會擷取」集提供程式設計介面，可從Mar
 潛在客戶支援各種篩選器選項。 某些篩選器（包括`updatedAt`、`smartListName`和`smartListId`）需要額外的基礎結構元件，這些元件尚未推出至所有訂閱。 每個匯出作業只能指定一個篩選器型別。
 
 | 篩選器型別 | 資料類型 | 附註 |
-|---|---|---|
-| createdAt | 日期範圍 | 接受具有成員`startAt`和`endAt`的JSON物件。 `startAt`接受代表低浮水印的日期時間，而`endAt`接受代表高浮水印的日期時間。 範圍必須為31天或更少。 日期時間應採用ISO-8601格式，不含毫秒。 具有此篩選型別的工作會傳回在日期範圍內建立的所有可存取記錄。 |
-| 更新時間* | 日期範圍 | 接受具有成員`startAt`和`endAt`的JSON物件。 `startAt`接受代表低浮水印的日期時間，而`endAt`接受代表高浮水印的日期時間。 範圍必須為31天或更少。 日期時間應採用ISO-8601格式，不含毫秒。 注意：此篩選器不會篩選可見的「updatedAt」欄位，這僅反映標準欄位的更新。 它會根據上次對潛在客戶記錄進行欄位更新的時間進行篩選。具有此篩選型別的工作會傳回日期範圍內最近更新的所有可存取記錄。 |
+| --- | --- | --- |
+| createdAt | 日期範圍 | 接受具有成員`startAt`和`endAt`的JSON物件。`startAt` 接受代表低浮水印的日期時間，且`endAt`接受代表高浮水印的日期時間。 範圍必須為31天或更少。 日期時間應採用ISO-8601格式，不含毫秒。 具有此篩選型別的工作會傳回在日期範圍內建立的所有可存取記錄。 |
+| 更新時間* | 日期範圍 | 接受具有成員`startAt`和`endAt`的JSON物件。`startAt` 接受代表低浮水印的日期時間，且`endAt`接受代表高浮水印的日期時間。 範圍必須為31天或更少。 日期時間應採用ISO-8601格式，不含毫秒。 注意：此篩選器不會篩選可見的「updatedAt」欄位，這僅反映標準欄位的更新。 它會根據上次對潛在客戶記錄進行欄位更新的時間進行篩選。具有此篩選型別的工作會傳回日期範圍內最近更新的所有可存取記錄。 |
 | staticListName | 字串 | 接受靜態清單的名稱。 具有此篩選型別的工作會在工作開始處理時，傳回屬於靜態清單成員的所有可存取記錄。 使用取得清單端點擷取靜態清單名稱。 |
 | staticListId | 整數 | 接受靜態清單的識別碼。 具有此篩選型別的工作會在工作開始處理時，傳回屬於靜態清單成員的所有可存取記錄。 使用「取得清單」端點擷取靜態清單ID。 |
 | 智慧型清單名稱* | 字串 | 接受智慧清單的名稱。 具有此篩選型別的工作會傳回工作開始處理時屬於智慧列示成員的所有可存取記錄。 使用「取得智慧列示」端點擷取智慧列示名稱。 |
@@ -40,7 +40,7 @@ REST API的「大量銷售機會擷取」集提供程式設計介面，可從Mar
 「建立匯出潛在客戶工作」端點提供數個格式選項，讓使用者能在匯出的檔案中包含特定欄位、重新命名這些欄位的欄標題，以及匯出的檔案格式。
 
 | 參數 | 資料類型 | 必要 | 附註 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 欄位 | 陣列[字串] | 是 | 欄位引數接受字串的JSON陣列。 每個字串都必須是Marketo潛在客戶欄位的REST API名稱。 列出的欄位會包含在匯出的檔案中。 除非以columnHeader覆寫，否則每個欄位的欄標題將是每個欄位的REST API名稱。 注意：啟用[!DNL Adobe Experience Cloud Audience Sharing]功能時，會發生Cookie同步程式，將[!DNL Adobe Experience Cloud] ID (ECID)與Marketo銷售機會建立關聯。 您可以指定「ecid」欄位，將ECID包含在匯出檔案中。 |
 | columnHeaderName | 物件 | 無 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 這是欄位的API名稱，可透過呼叫Describe Lead來擷取。 值是該欄位匯出的欄標題的名稱。 |
 | 格式 | 字串 | 無 | 接受以下其中之一：CSV、TSV、SSV。 匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（如果設定）。 如果未設定，則預設為CSV。 |
@@ -158,7 +158,7 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 
 ## 正在擷取您的資料
 
-若要擷取已完成潛在客戶匯出的檔案，只要使用您的[呼叫](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET)取得匯出潛在客戶檔案`exportId`端點即可。
+若要擷取已完成潛在客戶匯出的檔案，只要使用您的`exportId`呼叫[取得匯出潛在客戶檔案](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET)端點即可。
 
 ```
 GET /bulk/v1/leads/export/{exportId}/file.json

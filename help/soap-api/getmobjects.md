@@ -3,10 +3,10 @@ title: getMObjects
 feature: SOAP
 description: 使用getMObjects可依ID、屬性或關聯擷取Marketo MObjects，每批次最多100個，以streamPosition分頁，並提供XML範例。
 exl-id: 5cf18161-f590-4dc3-bba1-ee3ed9fd7e9f
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '245'
-ht-degree: 6%
+source-wordcount: '246'
+ht-degree: 7%
 
 ---
 

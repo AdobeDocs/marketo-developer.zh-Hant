@@ -3,9 +3,9 @@ title: 端點參考
 feature: REST API
 description: 全方位的Marketo REST API端點清單，包含方法、URI和跨活動、大量匯出、身分、銷售機會、資產、使用者的必要許可權。
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '4464'
+source-wordcount: '4793'
 ht-degree: 7%
 
 ---
@@ -16,15 +16,15 @@ ht-degree: 7%
 
 - [資產](https://developer.adobe.com/marketo-apis/api/asset/)
 - [身分識別](https://developer.adobe.com/marketo-apis/api/identity/)
-- [潛在客戶資料庫](https://developer.adobe.com/marketo-apis/api/mapi/)
-- [用戶管理](https://developer.adobe.com/marketo-apis/api/user/)
+- [商機資料庫](https://developer.adobe.com/marketo-apis/api/mapi/)
+- [使用者管理](https://developer.adobe.com/marketo-apis/api/user/)
 
 ## 端點清單 {#endpoint_list}
 
 以下是REST API端點的完整清單。
 
 | 名稱 | 群組 | 方法 | URI | 必要許可權 |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | 新增自訂活動 | 活動 | POST | /rest/v1/activities/external.json | 讀寫活動 |
 | 核准自訂活動型別 | 活動 | POST | /rest/v1/activities/external/type/{apiName}/approve.json | 讀寫活動中繼資料 |
 | 建立自訂活動型別屬性 | 活動 | POST | /rest/v1/activities/external/type/{apiName}/attributes/create.json | 讀寫活動中繼資料 |
@@ -336,15 +336,15 @@ ht-degree: 7%
 | 建立代號 | 權杖 | POST | /rest/asset/v1/folder/{id}/tokens.json | 讀寫資產 |
 | 依名稱刪除Token | 權杖 | POST | /rest/asset/v1/folder/{id}/tokens/delete.json | 讀寫資產 |
 | 依資料夾ID取得權杖 | 權杖 | GET | /rest/asset/v1/folder/{id}/tokens.json | 唯讀資產 |
-| 新增角色 | User Management | POST | /userservice/management/v1/users/{userid}/roles/create.json | 存取使用者管理Api |
-| 刪除受邀使用者 | User Management | POST | /userservice/management/v1/users/{userId}/invite/delete.json | 存取使用者管理Api |
-| 刪除角色 | User Management | POST | /userservice/management/v1/users/{userid}/roles/delete.json | 存取使用者管理Api |
-| 刪除使用者 | User Management | POST | /userservice/management/v1/users/{userId}/delete.json | 存取使用者管理Api |
-| 依Id取得受邀使用者 | User Management | GET | /userservice/management/v1/users/{userid}/invite.json | 存取使用者管理Api |
-| 取得角色 | User Management | GET | /userservice/management/v1/users/roles.json | 存取使用者管理Api |
-| 依Id取得角色和工作區 | User Management | GET | /userservice/management/v1/users/{userid}/roles.json | 存取使用者管理Api |
-| 取得使用者 | User Management | GET | /userservice/management/v1/users/allusers.json | 存取使用者管理Api |
-| 依ID取得使用者 | User Management | GET | /userservice/management/v1/users/{userid}/user.json | 存取使用者管理Api |
-| 取得工作區 | User Management | GET | /userservice/management/v1/users/workspaces.json | 存取使用者管理Api |
-| 邀請使用者 | User Management | POST | /userservice/management/v1/users/invite.json | 存取使用者管理Api |
-| 更新使用者屬性 | User Management | POST | /userservice/management/v1/users/{userId}/update.json | 存取使用者管理Api |
+| 新增角色 | 使用者管理 | POST | /userservice/management/v1/users/{userid}/roles/create.json | 存取使用者管理Api |
+| 刪除受邀使用者 | 使用者管理 | POST | /userservice/management/v1/users/{userId}/invite/delete.json | 存取使用者管理Api |
+| 刪除角色 | 使用者管理 | POST | /userservice/management/v1/users/{userid}/roles/delete.json | 存取使用者管理Api |
+| 刪除使用者 | 使用者管理 | POST | /userservice/management/v1/users/{userId}/delete.json | 存取使用者管理Api |
+| 依Id取得受邀使用者 | 使用者管理 | GET | /userservice/management/v1/users/{userid}/invite.json | 存取使用者管理Api |
+| 取得角色 | 使用者管理 | GET | /userservice/management/v1/users/roles.json | 存取使用者管理Api |
+| 依Id取得角色和工作區 | 使用者管理 | GET | /userservice/management/v1/users/{userid}/roles.json | 存取使用者管理Api |
+| 取得使用者 | 使用者管理 | GET | /userservice/management/v1/users/allusers.json | 存取使用者管理Api |
+| 依ID取得使用者 | 使用者管理 | GET | /userservice/management/v1/users/{userid}/user.json | 存取使用者管理Api |
+| 取得工作區 | 使用者管理 | GET | /userservice/management/v1/users/workspaces.json | 存取使用者管理Api |
+| 邀請使用者 | 使用者管理 | POST | /userservice/management/v1/users/invite.json | 存取使用者管理Api |
+| 更新使用者屬性 | 使用者管理 | POST | /userservice/management/v1/users/{userId}/update.json | 存取使用者管理Api |

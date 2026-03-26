@@ -3,7 +3,7 @@ title: 活動型別篩選器
 feature: SOAP
 description: 瀏覽所有支援的SOAP呼叫活動型別篩選器，從電子郵件點按和表單填寫到SFDC行銷活動變更和機會更新。
 exl-id: d661bb41-5615-4394-ade0-29254e48f7eb
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
 source-wordcount: '226'
 ht-degree: 23%
@@ -13,7 +13,7 @@ ht-degree: 23%
 # 活動型別篩選器
 
 | 新增至清單 |
-|-------------------------------------|
+| --- |
 | 新增至Nurture |
 | 新增至商機 |
 | 新增到區段 |

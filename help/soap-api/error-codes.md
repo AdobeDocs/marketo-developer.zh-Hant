@@ -3,9 +3,9 @@ title: 錯誤代碼
 feature: SOAP
 description: Marketo SOAP API錯誤碼的參考指南，包含訊息和備註，其中涵蓋驗證失敗、速率和並行限制，以及請求問題。
 exl-id: 71796520-7bd6-4a37-94e7-b073d17df06f
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '407'
+source-wordcount: '408'
 ht-degree: 9%
 
 ---
@@ -17,7 +17,7 @@ ht-degree: 9%
 以下是SOAP API錯誤碼清單。
 
 | 程式碼 | 訊息 | 附註 |
-|--- |--- |--- |
+| --- | --- | --- |
 | 10001 | 內部錯誤 | 嚴重系統失敗 |
 | 20011 | 內部錯誤 | API服務失敗 |
 | 20012 | 無法理解請求 | 未預期的SOAP訊息 |

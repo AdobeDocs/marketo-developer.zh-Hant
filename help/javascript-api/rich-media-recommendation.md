@@ -3,10 +3,10 @@ title: 多媒體推薦
 description: 使用Marketo預測性內容RTP標籤、template1 template2 template3 div、GET來設定豐富媒體建議（要填入）、設定為設定類別。
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '831'
-ht-degree: 4%
+source-wordcount: '854'
+ht-degree: 3%
 
 ---
 
@@ -21,12 +21,12 @@ ht-degree: 4%
 1. 在頁面本文中
    1. 將範本標籤（div類別）放置在您要顯示範本的位置
 
-[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)提供詳細資訊。
+[此處](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)提供詳細資訊。
 
 ## 範本標籤
 
 | 屬性 | 選用/必要 | 說明 |
-|---|---|---|
+| --- | --- | --- |
 | 類別 | 必要 | 指定此div HTML元素為RTP建議div。 |
 | data-rtp-template-id | 必要 | 範本識別碼。 這會決定建議的對齊方式。 使用「template1」進行水準對齊、「template2」進行垂直對齊，或「template3」進行僅包含標題和說明的垂直對齊。 指令碼會將相符的範本插入這個`div.Permissible`值：template1、template2、template3。 |
 
@@ -61,7 +61,7 @@ ht-degree: 4%
 `rtp('get', 'rcmd', 'richmedia');`
 
 | 參數 | 選用/必要 | 類型 | 說明 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | &#39;get&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;rcmd&#39; | 必要 | 字串 | 方法名稱。 |
 | &#39;富媒體&#39; | 必要 | 字串 | 子方法名稱。 |
@@ -77,7 +77,7 @@ ht-degree: 4%
 `rtp('set', 'rcmd', 'richmedia', 'template_id', conf_obj);`
 
 | 參數 | 選用/必要 | 類型 | 說明 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | &#39;設定&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;rcmd&#39; | 必要 | 字串 | 方法名稱。 |
 | &#39;富媒體&#39; | 必要 | 字串 | 子方法名稱。 |
@@ -136,7 +136,7 @@ rtp("set", "rcmd", "richmedia",
 #### 設定屬性
 
 | 設定 | 範例 | 說明 |
-|---|---|---|
+| --- | --- | --- |
 | rcmd.general.font.family | &quot;rcmd.general.font.family&quot; ： &quot;arial&quot; | 變更範本中所有文字的字型系列。 此屬性支援瀏覽器型別提供的所有CSS值。 如果自訂字型系列存在於頁面上，則可以使用自訂字型系列。 |
 | rcmd.content.background.color | &quot;rcmd.content.background.color&quot; ： &quot;black&quot; | 變更範本內部方塊的背景顏色。 此屬性支援所有瀏覽器型別的CSS值。 |
 | rcmd.title.text | &quot;rcmd.title.text&quot; ：&quot;建議內容&quot; | 變更範本標題。 |
@@ -241,4 +241,4 @@ rtp('get','rcmd', 'richmedia');
 
 #### 多媒體建議範本范#3範例
 
-**名稱**：範本3 **描述**：僅包含標題和描述的垂直內容。 滑鼠懸停時，標題會變更顏色，並超連結至內容URL。 說明也連結至不變更顏色的內容。 ![多媒體範本](assets/rich-media-template3.png)
+**名稱**：範本3 **描述**：僅包含標題和描述的垂直內容。 滑鼠懸停時，標題會變更顏色，並超連結至內容URL。 說明也連結至不變更顏色的內容。![多媒體範本](assets/rich-media-template3.png)

@@ -3,9 +3,9 @@ title: Munchkin API參考
 description: 使用Munchkin Javascript API透過init、createTrackingCookie和munchkinFunction方法追蹤頁面造訪、連結點選和自訂事件。
 feature: Munchkin Tracking Code, Javascript
 exl-id: e9727691-5501-4223-bc98-2b4bacc33513
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '424'
+source-wordcount: '426'
 ht-degree: 7%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 7%
 
 Munchkin提供數個可透過Javascript手動呼叫的功能。 這些專案可允許自訂追蹤瀏覽器事件，例如視訊播放或非連結上的點選次數。
 
-## 函式
+## 函數
 
 Munchkin API由下列函式組成： `init`、`createTrackingCookie`、`munchkinFunction`。
 
@@ -56,7 +56,7 @@ Munchkin.createTrackingCookie(true);
 
 #### visitWebPage
 
-使用`munchkinFunction()`呼叫`visitWebPage`會將目前使用者的「造訪」活動傳送至Marketo。 您可以自訂URL和`querystring`，它們會與第二個引數中的資料物件一起傳送。
+使用`visitWebPage`呼叫`munchkinFunction()`會將目前使用者的「造訪」活動傳送至Marketo。 您可以自訂URL和`querystring`，它們會與第二個引數中的資料物件一起傳送。
 
 | 資料屬性名稱 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
@@ -75,7 +75,7 @@ Munchkin.munchkinFunction('visitWebPage', {
 
 #### clickLink
 
-使用`munchkinFunction()`呼叫`clickLink`會將目前使用者的點選活動傳送至Marketo。 您可以使用資料物件中的`href`屬性自訂點按URL。
+使用`clickLink`呼叫`munchkinFunction()`會將目前使用者的點選活動傳送至Marketo。 您可以使用資料物件中的`href`屬性自訂點按URL。
 
 | 資料屬性名稱 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |

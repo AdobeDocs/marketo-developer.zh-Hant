@@ -3,9 +3,9 @@ title: 重新導向
 description: 實作RTP重新導向API ，使用ABM、組織、位置和區段等欄位，將分段訪客傳送至目標URL，並附上範例和秘訣。
 feature: Javascript
 exl-id: bbf91245-42e5-47ae-a561-e522cc65ff49
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '480'
+source-wordcount: '500'
 ht-degree: 7%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 7%
 
 RTP重新導向API可讓您將分段的對象重新導向至目標URL。
 
-- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - RTP不支援以帳戶為根據的行銷指定帳戶清單。 ABM清單和程式碼只與在RTP內管理的已上傳帳戶清單（CSV檔案）有關。
 
 ## 使用情況
@@ -22,7 +22,7 @@ RTP重新導向API可讓您將分段的對象重新導向至目標URL。
 `rtp('send' , 'redirect' , 'field_name' , [ 'values_array' , '...' , '...' ] , 'www.redirect_url.com' , true/false )`
 
 | 參數 | 選用/必要 | 類型 | 說明 |
-|---------------------------|-------------------|---------|-----------------------------|
+| --- | --- | --- | --- |
 | &#39;傳送&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;重新導向&#39; | 必要 | 字串 | 方法名稱。 |
 | field_name | 必要 | 字串 | 要比對的欄位名稱。 範例： &#39;abm.name&#39; （請參閱下文）。 |
@@ -33,7 +33,7 @@ RTP重新導向API可讓您將分段的對象重新導向至目標URL。
 組織、產業、ABM清單、地點、ISP、相符區段
 
 | 條件 | 資料階層 | 範例 |
-|-------------------------------------------------|----------------------|------------------------------------------------------------------------------------------------------------------|
+| --- | --- | --- |
 | 相符的區段（僅在首次點按後運作） | matchedSegments.name | rtp( &#39;send&#39;， &#39;redirect&#39; ， &#39;matchedSegments.name&#39; ， [&#39;Fortune 1,000&#39; ， &#39;Enterprise&#39;] ， &#39;<http://www.marketo.com>&#39;)； |
 | 相符的區段（僅在首次點按後運作） | matchedSegments.id | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;matchedSegments.id&#39;， [106， 107， 190]， &#39;<http://www.marketo.com>&#39;)； |
 | ABM清單 | abm.name | rtp( &#39;send&#39;， &#39;redirect&#39;， &#39;abm.name&#39; ， [&#39;top_key_accounts&#39;， &#39;active_customers&#39;]， &#39;<http://www.marketo.com>&#39;)； |
@@ -101,7 +101,7 @@ rtp('get','campaign');
 `rtp('send', 'redirect', field_name, url_values_map);`
 
 | 參數 | 選用/必要 | 類型 | 說明 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | &#39;傳送&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;重新導向&#39; | 必要 | 字串 | 方法名稱。 |
 | field_name | 必要 | 字串 | 要比對的欄位名稱。 範例： &#39;abm.name&#39; （請參閱上文）。 |

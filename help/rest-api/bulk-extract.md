@@ -3,9 +3,9 @@ title: 大量擷取
 feature: REST API
 description: 瞭解如何使用Marketo大量擷取REST API匯出銷售機會、活動、方案成員和自訂物件，並具備OAuth、工作佇列和500MB每日限制。
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1702'
+source-wordcount: '1723'
 ht-degree: 0%
 
 ---
@@ -118,7 +118,7 @@ POST /bulk/v1/leads/export/create.json
 每個工作建立端點會共用一些通用引數，用於設定檔案格式、欄位名稱和大量擷取工作的篩選器。 每個擷取作業的子型別都可能有其他引數：
 
 | 參數 | 資料類型 | 附註 |
-|---|---|---|
+| --- | --- | --- |
 | 格式 | 字串 | 使用逗號分隔值、定位字元分隔值和分號分隔值的選項，決定擷取資料的檔案格式。 接受以下其中之一：CSV、SSV、TSV。 格式預設為CSV。 |
 | columnHeaderName | 物件 | 允許設定傳回檔案中欄標題的名稱。 每個成員索引鍵都是要重新命名的欄標題名稱，值是欄標題的新名稱。 例如，「columnHeaderNames」：{ &quot;firstName&quot;： &quot;First Name&quot;， &quot;lastName&quot;： &quot;Last Name&quot; }， |
 | 篩選 | 物件 | 套用至擷取作業的篩選器。 型別和選項因工作型別而異。 |
@@ -208,7 +208,7 @@ GET /bulk/v1/leads/export/{exportId}/file.json
 
 回應包含以設定作業方式格式化的檔案。 端點會以檔案內容回應。 與大多數其他Marketo REST端點不同，如果作業尚未完成或傳遞了錯誤的作業ID，檔案端點會以「404找不到」狀態回應，並以純文字錯誤訊息作為裝載。
 
-為了支援擷取資料的部分和復原友好擷取，檔案端點可選擇性地支援型別`Range` （每`bytes`RFC 7233[）的HTTP標頭](https://datatracker.ietf.org/doc/html/rfc7233)。 如果未設定標頭，將會傳回所有內容。 若要擷取檔案的前10,000個位元組，您必須將下列標題當作GET請求的一部分傳遞至端點，從位元組0開始：
+為了支援擷取資料的部分和復原友好擷取，檔案端點可選擇性地支援型別`bytes` （每[RFC 7233](https://datatracker.ietf.org/doc/html/rfc7233)）的HTTP標頭`Range`。 如果未設定標頭，將會傳回所有內容。 若要擷取檔案的前10,000個位元組，您必須將下列標題當作GET請求的一部分傳遞至端點，從位元組0開始：
 
 ```
 Range: bytes=0-9999
@@ -234,7 +234,7 @@ Range: bytes 724-999
 
 #### 檔案完整性驗證
 
-當`fileChecksum`為「已完成」時，工作狀態端點會在`status`屬性中傳回總和檢查碼。 總和檢查碼是匯出檔案的SHA-256雜湊。 您可以將總和檢查碼與擷取之檔案的SHA-256雜湊進行比較，以確認其已完成。
+當`status`為「已完成」時，工作狀態端點會在`fileChecksum`屬性中傳回總和檢查碼。 總和檢查碼是匯出檔案的SHA-256雜湊。 您可以將總和檢查碼與擷取之檔案的SHA-256雜湊進行比較，以確認其已完成。
 
 以下是包含總和檢查碼的範例回應：
 

@@ -3,9 +3,9 @@ title: getleadchanges
 feature: SOAP
 description: 瞭解如何使用Marketo SOAP getLeadChanges API來擷取具有篩選器、leadSelector、分頁和XML範例的銷售機會變更活動。
 exl-id: 23445684-d8d9-407b-8f19-cb69e806795c
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '419'
+source-wordcount: '418'
 ht-degree: 3%
 
 ---
@@ -22,7 +22,7 @@ ht-degree: 3%
 
 在SOAP API 2_2版之後，您可以包含`leadSelector`。
 
-對於`LastUpdateAtSelector`，`oldestUpdatedAt`值將對應至`oldestCreatedAt`中的`startPosition`值。 而`latestUpdatedAt`值會對應至`latestCreatedAt`中的`startPosition`值。
+對於`LastUpdateAtSelector`，`oldestUpdatedAt`值將對應至`startPosition`中的`oldestCreatedAt`值。 而`latestUpdatedAt`值會對應至`startPosition`中的`latestCreatedAt`值。
 
 注意： `LeadKeySelector`中支援的潛在客戶數量限製為100。 如果銷售機會數量超過100，API會擲回錯誤的引數例外狀況並傳回SOAP錯誤。
 

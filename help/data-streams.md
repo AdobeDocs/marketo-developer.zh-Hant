@@ -2,10 +2,10 @@
 title: 資料串流
 description: Marketo Engage資料串流概觀，實現近乎即時的銷售機會活動和使用者稽核事件，放寬效能層級客戶的API限制
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '1615'
-ht-degree: 1%
+source-wordcount: '1714'
+ht-degree: 3%
 
 ---
 
@@ -44,7 +44,7 @@ ht-degree: 1%
 串流活動清單：
 
 | AchieveGoalInReferral | ClickPredictiveContent | ReceivedForwardToFriendEmail |
-|--- |--- |--- |
+| --- | --- | --- |
 | AddToList | ClickRTPCallToAction | ReceiveSalesEmail |
 | AddToNurture | ClickSalesEmail | ReferToSocialApp |
 | AddToOpportunity | ClickShareLink | RemoveFromList |
@@ -74,12 +74,12 @@ ht-degree: 1%
 
 訂閱此資料流的適合使用案例是：
 
-- 使用多個行銷系統時追蹤變更：有些客戶也會在其他系統(例如CRM (例如Salesforce)中執行某個層級的行銷活動，然後將銷售機會傳遞至Marketo。 Lead有時會更新並前後同步，因此必須追蹤哪個系統最近進行了變更。
+- 使用多個行銷系統時追蹤變更：有些客戶也會在其他系統(例如CRM （例如Salesforce）中執行某個層級的行銷活動，然後將銷售機會傳遞至Marketo。 Lead有時會更新並前後同步，因此必須追蹤哪個系統最近進行了變更。
 
 串流使用者稽核事件清單：
 
 | 元件 | 事件型別清單 |
-|--- |--- |
+| --- | --- |
 | 預設方案 | 原地複製、建立、刪除、編輯頻道、匯出、修改程式設定、修改程式權杖、重新命名 |
 | 電子郵件 | 核准、原地複製、建立、刪除、編輯、移動、重新命名、取消核准 |
 | 電子郵件批次程式 | 核准，子更新，複製，建立，刪除，編輯，編輯頻道，修改方案排程，修改方案設定，修改方案權杖，重新命名，取消核准 |
@@ -139,7 +139,7 @@ ht-degree: 1%
 通知事件清單：
 
 | 元件 | 事件型別清單 |
-|--- |--- |
+| --- | --- |
 | 通知 | campaign中止、campaign失敗、nurture （程式已耗盡）、salesforce同步失敗、測試群組（A/B測試結果）、網站服務（每日配額） |
 
 通知事件範例：

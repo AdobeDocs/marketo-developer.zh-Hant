@@ -3,9 +3,9 @@ title: 大量匯入
 feature: REST API
 description: Marketo大量匯入，用於透過多部分上傳載入銷售機會、自訂物件和程式成員，建立非同步工作、輪詢狀態和處理失敗。
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '610'
+source-wordcount: '660'
 ht-degree: 1%
 
 ---
@@ -93,7 +93,7 @@ Easy,Fox,easyfox@marketo.com
 每個工作建立端點會共用一些通用引數，用於設定檔案格式、欄位名稱和大量擷取工作的篩選器。  每個擷取作業的子型別都可能有其他引數：
 
 | 參數 | 資料類型 | 附註 |
-|---|---|---|
+| --- | --- | --- |
 | 格式 | 字串 | 使用逗號分隔值、定位字元分隔值和分號分隔值的選項，決定匯入資料的檔案格式。 接受以下其中之一：CSV、SSV、TSV。 格式預設為CSV。 |
 | 檔案 | 字串 | 透過檔案中的多部分表單資料指定資料。 |
 

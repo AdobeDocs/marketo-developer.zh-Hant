@@ -3,9 +3,9 @@ title: 網頁個人化
 description: Web Personalization JavaScript API和RTP標籤的指南，涵蓋頁面檢視事件、帳戶設定、機器人排除以及核心和隨選指令碼
 feature: Web Personalization, Javascript
 exl-id: b2c26b28-e9bf-4faf-8b6e-c102f41aeaa1
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
 workflow-type: tm+mt
-source-wordcount: '422'
+source-wordcount: '452'
 ht-degree: 5%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 5%
 
 網路Personalization JavaScript API擴充了平台的自動個人化功能。 它允許事件追蹤和網頁的動態自訂。 其他功能： [自訂資料事件](custom-data-events.md)、[動態內容](web-personalization.md)、[取得訪客資料](get-visitor-data.md)、[排除特定機器人的標籤](#exclude_tag_for_specific_bots)。
 
-- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - RTP不支援以帳戶為根據的行銷指定帳戶清單。 ABM清單和程式碼只與在RTP內管理的已上傳帳戶清單（CSV檔案）有關。
 
 ## 標籤設定
@@ -37,7 +37,7 @@ g.src=f;var b=h.getElementsByTagName("script")[0];b.parentNode.insertBefore(g,b)
 系統會在標籤層級自動呼叫此方法，以設定相關的帳戶ID。 當您想要在不同網域之間分割時，可以設定帳戶ID。
 
 | 參數 | 選用/必要 | 類型 | 說明 |
-|--------------|-------------------|--------|--------------|
+| --- | --- | --- | --- |
 | &#39;setAccount&#39; | 必要 | 字串 | 方法名稱。 |
 | accountId | 必要 | 字串 | 帳戶ID。 |
 
@@ -53,7 +53,7 @@ rtp('setAccount', accountId);
 透過在此方法中傳遞選用的「page」引數，可以覆寫目前頁面。
 
 | 參數 | 選用/必要 | 類型 | 說明 |
-|-----------|-------------------|--------|---------------------------------|
+| --- | --- | --- | --- |
 | &#39;傳送&#39; | 必要 | 字串 | 方法動作。 |
 | &#39;檢視&#39; | 必要 | 字串 | 方法名稱。 |
 | 頁面 | 選用 | 字串 | 相對路徑或完整頁面URL。 |
@@ -96,7 +96,7 @@ if(navigator.userAgent.match(/.(Googlebot|msnbot)./gi) == null){
 ### 核心/相依JavaScript
 
 | 名稱 | 說明 | 控制 |
-|---------------------------|-------------|--------------------------------------------------------|
+| --- | --- | --- |
 | rtp.js | - | 由Marketo控制 |
 | jquery.min.js | v1.8.3 | 可透過聯絡Marketo客戶支援來停用 |
 | jquery-custom-ui-min.js | v1.9.2 | 可透過聯絡Marketo客戶支援來停用 |
@@ -107,8 +107,8 @@ if(navigator.userAgent.match(/.(Googlebot|msnbot)./gi) == null){
 ### 隨選JavaScript
 
 | 名稱 | 說明 | 控制 |
-|-------------------------|-----------------------------------------------------------------------|-----------------------|
+| --- | --- | --- |
 | ga-integration-2.0.1.js | 在啟用Google Analytics/Facebook/SiteCatalyst整合時使用 | 由Marketo控制 |
 | insightera-bar-2.1.js | 在預測性內容推薦列已啟用時使用 | 由Marketo控制 |
-| froogaloop2.min.js | 在啟用內容追蹤且頁面上存在Vimeo播放器時使用 | - |
+| froogalop2.min.js | 在啟用內容追蹤且頁面上存在Vimeo播放器時使用 | - |
 | iframe-api-v1.js | 用於已啟用內容追蹤，且頁面上存在YouTube播放器的情況 | - |
