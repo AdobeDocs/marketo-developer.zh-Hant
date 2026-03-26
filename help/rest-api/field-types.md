@@ -12,7 +12,7 @@ ht-degree: 8%
 
 # 欄位型別
 
-以下是Marketo中欄位型別的說明。 有關欄位型別的其他資訊可在[這裡](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary)找到。 有關欄位型別限制的其他資訊可在[這裡](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613)找到。
+以下是Marketo中欄位型別的說明。 有關欄位型別的其他資訊可在[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary)找到。 有關欄位型別限制的其他資訊可在[這裡](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613)找到。
 
 | 欄位型別 | 說明 | 範例 |
 | --- | --- | --- |
@@ -20,7 +20,7 @@ ht-degree: 8%
 | 電子郵件 | 接受電子郵件地址的字串欄位 | <example@example.com> |
 | 浮點數 | 包含實數且可以使用小數位的數字欄位。 | 10.4 |
 | 整數 | 整數 | 10 |
-| 公式 | 透過操控潛在客戶記錄上呈現之其他欄位的資料而產生值的欄位。 它們不會匯出，且無法用於Smart Campaigns。 | 檢視此[文章](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
+| 公式 | 透過操控潛在客戶記錄上呈現之其他欄位的資料而產生值的欄位。 它們不會匯出，且無法用於Smart Campaigns。 | 檢視此[文章](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
 | 百分比 | 以整數表示的百分比 | 30 |
 | URL | 限制輸入至URL （包括URL的通訊協定）的文字欄位。 | <http://example.com/> |
 | 電話 | 電話號碼 | 111-111-1111 |
