@@ -3,9 +3,9 @@ title: 資料夾
 feature: REST API
 description: Marketo REST API指南涵蓋建立、更新、刪除、依ID和名稱查詢、使用根、工作區、maxDepth和分頁大量瀏覽的資料夾。
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 31a503b3892ed41b3defe3f4956cb5ee0c3d4c3e
 workflow-type: tm+mt
-source-wordcount: '1025'
+source-wordcount: '1099'
 ht-degree: 1%
 
 ---
@@ -59,7 +59,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 }
 ```
 
-type引數為必要項，且必須是「資料夾」或「程式」其中之一。  型別會指定對資料夾的查閱是根據資料夾ID或方案ID完成。 對於此端點，結果陣列中只傳回單一記錄。 請注意回應中的folderType引數。 這可能表示許多不同型別的資料夾。 「Marketo活動」資料夾有行銷資料夾或方案的型別，其中可包含許多不同型別的資產，而Design Studio資料夾則有與其可保留的資產型別相對應的型別。 例如，folderType為「電子郵件」的資料夾可能僅包含電子郵件或其他子資料夾，這些子資料夾可能具有folderType為「電子郵件」或「電子郵件範本」。 型別可能包括：
+type引數為必要項，且必須是「資料夾」或「程式」其中之一。  型別會指定對資料夾的查閱是根據資料夾ID或方案ID完成。 對於此端點，結果陣列中只傳回單一記錄。 記下回應中的`folderType`引數。 這可能表示許多不同型別的資料夾。 「Marketo活動」資料夾有行銷資料夾或方案的型別，其中可包含許多不同型別的資產，而Design Studio資料夾則有與其可保留的資產型別相對應的型別。 例如，包含`folderType`個「電子郵件」的資料夾可能僅包含電子郵件或其他子資料夾，其中可能包含`folderType`個電子郵件或電子郵件範本。 型別可能包括：
 
 - 電子郵件
 - 電子郵件範本

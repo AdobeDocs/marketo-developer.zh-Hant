@@ -3,10 +3,10 @@ title: 標記
 feature: REST API, Tags
 description: 查詢標籤型別、依名稱取得允許的值、透過REST Asset API更新或刪除Marketo中的程式標籤，並附上請求範例。
 exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
 workflow-type: tm+mt
-source-wordcount: '221'
-ht-degree: 2%
+source-wordcount: '258'
+ht-degree: 1%
 
 ---
 
@@ -97,7 +97,7 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-可以使用[更新程式中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST)端點大量更新標籤。 [此處](programs.md#update)提供範例。
+可以使用[更新程式中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST)端點大量更新標籤。 [程式更新區段](programs.md#update)中提供了範例。
 
 ## 刪除
 

@@ -3,9 +3,9 @@ title: 資料攝取
 feature: REST API, Dynamic Content
 description: 使用Marketo Data Ingestion API大量擷取人員、自訂物件、公司和方案成員資料，並降低延遲擷取次數。
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
 workflow-type: tm+mt
-source-wordcount: '1786'
+source-wordcount: '1789'
 ht-degree: 13%
 
 ---
@@ -116,7 +116,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ### 錯誤
 
-當呼叫產生錯誤時，會傳回非202狀態以及包含其他錯誤詳細資料的回應內文。  回應內文為application/json，且包含單一物件，內含成員error_code和message。
+當呼叫產生錯誤時，會傳回非202狀態以及包含其他錯誤詳細資料的回應內文。 回應本文是`application/json`，且包含具有成員`error_code`與`message`的單一物件。
 
 以下是來自Adobe Developer閘道的可重複使用的錯誤代碼。
 
@@ -139,7 +139,16 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ## 重試次數
 
-偵測到暫時性錯誤時，服務會重試作業三次。  第一次重試在5分鐘的等待期間後發生，第二次在30分鐘後發生，最後第三次在30分鐘後發生。  重試的原因有很多，主要是相依服務逾時或暫時無法使用時。
+偵測到暫時性錯誤時，服務會重試操作。 重試的原因有很多，主要是相依服務逾時或暫時無法使用時。
+
+重試間隔：
+
+* 初始操作和第一次重試：5分鐘
+* 第1和第2:15分鐘
+* 第2和第3:20分鐘
+* 第3和第4:20分鐘
+* 第4和第5 ：2小時
+* 第5次重試後 — > 3小時
 
 ## 端點
 
@@ -166,7 +175,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 | --- | --- | --- | --- | --- |
 | `priority` | 字串 | 無 | 請求的優先順序：正常或高 | 一般 |
 | `partitionName` | 字串 | 無 | 個人資料分割的名稱 | 預設 |
-| `dedupeFields` | 物件 | 無 | 要取消重複資料刪除的屬性。 允許一或兩個屬性名稱。<br/> 在AND作業中使用兩個屬性。 例如，如果同時指定`email`和`firstName`，它們都會用來使用AND作業來查詢人員。<br/>支援的屬性為： `id`、`email`、`sfdcAccountId`、`sfdcContactId`、`sfdcLeadId` `sfdcLeadOwnerId`、自訂屬性（僅限「字串」和「整數」型別）、`email` |  |
+| `dedupeFields` | 物件 | 無 | 要取消重複資料刪除的屬性。 允許一或兩個屬性名稱。<br/> 在AND作業中使用兩個屬性。 例如，如果同時指定`email`和`firstName`，它們都會用來使用AND作業來查詢人員。 <br/>支援的屬性為： `id`、`email`、`sfdcAccountId`、`sfdcContactId`、`sfdcLeadId` `sfdcLeadOwnerId`、自訂屬性（僅限「字串」和「整數」型別）、`email` |  |
 | `persons` | 物件陣列 | 是 | 個人的屬性名稱 — 值組清單 | - |
 
 所需的許可權為`Read-Write Lead`。
@@ -239,7 +248,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 必要的許可權為`Read-Write Custom Object`。
 
-如果在請求中指定了某個「人員」的連結欄位，但該「人員」不存在，則會發生多次重試。 若在重試期間（65分鐘）新增該人員，則更新成功。 例如，如果連結欄位是「人員」的電子郵件，而「人員」不存在，則會發生重試。
+如果在請求中指定了某個「人員」的連結欄位，但該「人員」不存在，則會發生多次重試。 若在重試期間（65分鐘）新增該人員，則更新成功。 例如，如果Person的連結欄位為`email`，且Person不存在，則會發生重試。
 
 ### 自訂物件範例
 
@@ -380,7 +389,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 | --- | --- |
 | 動作 | 必須是： `createOnly`、`updateOnly`、`createOrUpdate`其中之一。 區分大小寫。 |
 | dedupeBy | 必須是`dedupeFields`或`idField` （不區分大小寫）。 預設為`dedupeFields`。 |
-| dedupeBy +動作 | `createOnly`和`createOrUpdate`僅允許`dedupeFields`。`updateOnly` 允許`dedupeFields`和`idField`。 |
+| dedupeBy +動作 | `createOnly`和`createOrUpdate`僅允許`dedupeFields`。 `updateOnly`同時允許`dedupeFields`和`idField`。 |
 | 當`dedupeBy=dedupeFields` | 每個公司都必須有`externalCompanyId`。 欄位`id`不得存在。 |
 | 當`dedupeBy=idField` | 每個公司都必須有`id`。 欄位`externalCompanyId`不得存在。 |
 | `input` / `companies` | 不得為Null或空白。 |

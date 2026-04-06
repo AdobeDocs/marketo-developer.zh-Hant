@@ -3,9 +3,9 @@ title: 銷售機會
 feature: REST API
 description: 探索Marketo銷售機會REST API功能，包括說明、依ID或篩選器查詢、預設欄位、限制和擷取ECID。
 exl-id: 0a2f7c38-02ae-4d97-acfe-9dd108a1f733
-source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
+source-git-commit: 66154fa4aa37190a49dcc62f57debef5e1e829a1
 workflow-type: tm+mt
-source-wordcount: '3409'
+source-wordcount: '3457'
 ht-degree: 2%
 
 ---
@@ -58,7 +58,7 @@ GET /rest/v1/leads/describe.json
 }
 ```
 
-一般而言，回應在結果陣列中包含一組更大的欄位，但我們出於示範目的而略過這些欄位。 結果陣列中的每個專案都對應到潛在客戶記錄上的可用欄位，並且至少會有id、displayName和資料型別。 特定欄位可能存在rest和soap子物件，也可能不存在，如果存在，則表示該欄位在REST或SOAP API中是否有效。 `readOnly`屬性會透過對應的API (REST或SOAP)指出欄位是否為唯讀。 length屬性指出欄位的最大長度（如果存在）。 dataType屬性指出欄位的資料型別。
+一般而言，回應在結果陣列中包含一組更大的欄位，但我們出於示範目的而略過這些欄位。 結果陣列中的每個專案都對應到潛在客戶記錄上的可用欄位，並且至少會有id、displayName和資料型別。 特定欄位可能存在rest和soap子物件，也可能不存在，如果存在，則表示該欄位在REST或SOAP API中是否有效。 `readOnly`屬性會透過對應的API （REST或SOAP）指出欄位是否為唯讀。 length屬性指出欄位的最大長度（如果存在）。 dataType屬性指出欄位的資料型別。
 
 ## 查詢
 
@@ -95,7 +95,7 @@ GET /rest/v1/lead/{id}.json
 
 依篩選器型別取得銷售機會將傳回相同型別的記錄，但每頁最多可傳回300筆記錄。 它需要`filterType`和`filterValues`查詢引數。
 
-`filterType`接受任何自訂欄位，或大部分常用的欄位。 呼叫`Describe2`端點以取得允許在`filterType`中使用之可搜尋欄位的完整清單。 依自訂欄位搜尋時，僅支援下列資料型別： `string`、`email`、`integer`。 您可以使用上述的Describe方法取得欄位詳細資訊（說明、型別等）。
+`filterType`接受任何自訂欄位，或大部分常用的欄位。 呼叫`Describe2`端點以取得允許在`filterType`中使用之可搜尋欄位的完整清單。 依自訂欄位搜尋時，僅支援下列資料型別： `string`、`email`、`integer`。 您可以取得欄位詳細資訊（說明、型別等） 使用上述的Describe方法。
 
 `filterValues`接受最多300個逗號分隔格式的值。 通話會搜尋潛在客戶欄位符合其中一個所包含`filterValues`的記錄。 如果符合潛在客戶篩選器的潛在客戶數量大於1,000，則會傳回錯誤：「1003，有太多結果符合篩選器」。
 
@@ -221,11 +221,11 @@ POST /rest/v1/leads.json
 }
 ```
 
-在此請求中，您會看到兩個重要欄位，`action`和`lookupField`。  `action`指定要求的作業型別，可以是`createOrUpdate`、`createOnly`、`updateOnly`或`createDuplicate`。 如果省略，動作會預設為`createOrUpdate`。  `lookupField`引數指定當動作為`createOrUpdate`或`updateOnly`時要使用的金鑰。 若省略`lookupField`，預設金鑰為`email`。
+在此要求中，您會看到兩個重要欄位，`action`和`lookupField`。`action`指定要求的作業型別，可以是`createOrUpdate`、`createOnly`、`updateOnly`或`createDuplicate`。 如果省略，動作會預設為`createOrUpdate`。  `lookupField`引數指定當動作為`createOrUpdate`或`updateOnly`時要使用的金鑰。 若省略`lookupField`，預設金鑰為`email`。
 
 依預設，會使用預設分割區。 您可以選擇指定`partitionName`引數，這只有在動作為`createOnly`或`createOrUpdate`時才有效。 若要讓`partitionName`做為其他重複資料刪除條件，它必須是自訂重複資料刪除規則中來源型別的一部分。 在更新作業期間，如果指定的資料分割中不存在潛在客戶，則會傳回錯誤。 如果僅限API的使用者沒有存取指定之分割區的許可權，則會傳回錯誤。
 
-使用`id`動作時，`updateOnly`欄位只能包含為引數，因為`id`是系統管理的唯一索引鍵。
+使用`updateOnly`動作時，`id`欄位只能包含為引數，因為`id`是系統管理的唯一索引鍵。
 
 要求也必須有`input`引數，這是潛在客戶記錄的陣列。 每個潛在客戶記錄都是一個JSON物件，具有任意數量的潛在客戶欄位。 記錄中包含的索引鍵對該記錄而言應該是唯一的，並且所有JSON字串都應該使用UTF-8編碼。 `externalCompanyId`欄位可用來將潛在客戶記錄連結至公司記錄。 `externalSalesPersonId`欄位可用來將潛在客戶記錄連結至銷售人員記錄。
 
@@ -592,9 +592,9 @@ POST /rest/v1/leads/schema/fields/{fieldApiName}.json
 
 ## 將銷售機會推送至Marketo
 
-推播銷售機會是同步銷售機會至Marketo的替代方法，其主要設計旨在允許比標準同步銷售機會更大的觸發能力(類似於Marketo表單的使用方式)。 除了同步銷售機會欄位之外，此端點還可根據傳遞至端點的Cookie值，允許銷售機會關聯。 若要這麼做，請傳遞透過點進Marketo電子郵件產生的`mkt_tok`值，或在呼叫中傳遞程式名稱。 此端點也會建立與Marketo中的方案及/或行銷活動相關聯的單一可觸發活動。 這允許在歸因於特定促銷活動或方案的潛在客戶擷取事件上觸發，以從Marketo內啟動關聯的工作流程。
+推播銷售機會是同步銷售機會至Marketo的替代方法，其主要設計旨在允許比標準同步銷售機會更大的觸發能力（類似於Marketo表單的使用方式）。 除了同步銷售機會欄位之外，此端點還可根據傳遞至端點的Cookie值，允許銷售機會關聯。 若要這麼做，請傳遞透過點進Marketo電子郵件產生的`mkt_tok`值，或在呼叫中傳遞程式名稱。 此端點也會建立與Marketo中的方案及/或行銷活動相關聯的單一可觸發活動。 這允許在歸因於特定促銷活動或方案的潛在客戶擷取事件上觸發，以從Marketo內啟動關聯的工作流程。
 
-Push Lead介面與Sync Leads非常類似。 所有相同的主要金鑰都有效，且欄位使用相同的API名稱（沒有動作引數，因為這永遠是更新插入作業）。 `programName`和輸入引數為必要項，而`lookupField`、`source`和`reason`引數為選用項。 輸入引數是lead物件的陣列。 產生的活動會歸因於對應的已命名方案。 `source`和`reason`引數是任意字串欄位，可新增至請求，以將這些值內嵌在產生的活動中。 這些可作為對應觸發程式(潛在客戶被推送至Marketo)和篩選器(潛在客戶被推送至Marketo)中的限制。
+Push Lead介面與Sync Leads非常類似。 所有相同的主要金鑰都有效，且欄位使用相同的API名稱（沒有動作引數，因為這永遠是更新插入作業）。 `programName`和輸入引數為必要項，而`lookupField`、`source`和`reason`引數為選用項。 輸入引數是lead物件的陣列。 產生的活動會歸因於對應的已命名方案。 `source`和`reason`引數是任意字串欄位，可新增至請求，以將這些值內嵌在產生的活動中。 這些可作為對應觸發程式（潛在客戶被推送至Marketo）和篩選器（潛在客戶被推送至Marketo）中的限制。
 
 有關匿名活動的備註。 如果您想要將先前的匿名活動與新建立的銷售機會建立關聯，則請勿在銷售機會物件中指定Cookie屬性，並在推播銷售機會之後呼叫Associate Lead 。 如果您想建立沒有活動歷史記錄的新銷售機會，則只需在銷售機會物件中指定Cookie屬性即可。
 
@@ -816,8 +816,10 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 
 您也可以根據靜態清單或計畫中的成員資格來擷取潛在客戶記錄。 此外，您可以擷取潛在客戶所屬的所有靜態清單、方案或智慧行銷活動。
 
-回應結構和選用引數與「依篩選型別取得銷售機會」的相同，不過filterType和filterValues不能與此API搭配使用。
-若要透過Marketo UI存取清單ID，請導覽至清單。 清單`id`位於靜態清單`https://app-**&#x200B;**.marketo.com/#ST1001A1`的URL中。 在此範例中，1001是清單的`id`。
+回應結構和選用引數與Get Leads by Filter Type相同，不過`filterType`和`filterValues`無法與此API搭配使用。
+若要透過Marketo UI存取清單ID，請導覽至清單。 清單`id`位於靜態清單`https://app-****.marketo.com/#ST1001A1`的URL中。 在此範例中，1001是清單的`id`。
+
+## 依銷售機會Id取得計畫
 
 ### 請求
 
@@ -855,6 +857,8 @@ GET /rest/v1/list/{listId}/leads.json?batchSize=3
     ]
 }
 ```
+
+## 依銷售機會Id取得清單
 
 Get Lists by Lead Id端點取得潛在客戶記錄`id`路徑引數，並傳回該潛在客戶所屬的所有靜態清單記錄。
 

@@ -3,9 +3,9 @@ title: 推播通知
 feature: Mobile Marketing
 description: 指南可讓您透過Marketo啟用iOS推播通知，範圍包括APNs憑證和Xcode設定、Marketo SDK整合、權杖註冊、處理等。
 exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 9002bcd494ba125fdc7d3ef5f02385465b6eb5a6
 workflow-type: tm+mt
-source-wordcount: '1344'
+source-wordcount: '1338'
 ht-degree: 0%
 
 ---
@@ -285,7 +285,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter,
    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
    ```
 
-1. 使用HTTPv1設定FCM (Google在2023年6月12日有[已棄用的XMPP通訊協定](https://firebase.google.com/docs/cloud-messaging/xmpp-server-ref)，並將在2024年6月移除)
+1. 使用HTTPv1設定FCM
 
 - 在Marketo功能管理員![](assets/feature-manager.png)中啟用MME FCM HTTPv1
    - 在MLM中上傳應用程式的服務帳戶Json檔案。

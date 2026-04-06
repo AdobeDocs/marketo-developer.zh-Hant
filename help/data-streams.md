@@ -2,7 +2,7 @@
 title: 資料串流
 description: Marketo Engage資料串流概觀，實現近乎即時的銷售機會活動和使用者稽核事件，放寬效能層級客戶的API限制
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
 workflow-type: tm+mt
 source-wordcount: '1714'
 ht-degree: 3%
@@ -12,7 +12,7 @@ ht-degree: 3%
 # 資料串流
 
 >[!NOTE]
-> 在[使用資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams/)找到目前關於資料串流的資訊。
+> 在[使用資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams#)找到目前關於資料串流的資訊。
 >
 
 我們客戶的行銷組織仰賴及時且重點突出的行銷活動，以掌握業務優勢並維持競爭力。 為了支援快節奏的決策並快速啟用策略變更，擁有資料以支援並推進那些提供重點且目標明確之行銷活動的關鍵決策非常重要。 還有一些客戶在Marketo Engage內外的客戶區段層級執行行銷工作。 為了支援這些不同的工作，Marketo已建立透過資料串流以近乎即時的方式取得大量資料的能力。
@@ -258,7 +258,7 @@ app.listen(port,()=>{
    1. 此步驟需要Adobe組織
    1. 需要Adobe組織使用者擁有開發人員或系統管理員角色
 
-若要設定Adobe IO，請參閱公開檔案區段中的[使用Adobe IO設定Marketo使用者稽核資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup/)。
+若要設定Adobe IO，請參閱公開檔案區段中的[使用Adobe IO設定Marketo使用者稽核資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-user-audit-data-stream-setup#)。
 
 ### 在Marketo中設定使用者稽核資料流
 
