@@ -3,7 +3,7 @@ title: 推播通知
 feature: Mobile Marketing
 description: 指南可讓您透過Marketo啟用iOS推播通知，範圍包括APNs憑證和Xcode設定、Marketo SDK整合、權杖註冊、處理等。
 exl-id: 41d657d8-9eea-4314-ab24-fd4cb2be7f61
-source-git-commit: 9002bcd494ba125fdc7d3ef5f02385465b6eb5a6
+source-git-commit: 14ca3ca1f1aa07bb3e54802003190a4a2b4fbcb9
 workflow-type: tm+mt
 source-wordcount: '1338'
 ht-degree: 0%
@@ -24,7 +24,7 @@ ht-degree: 0%
 
 ### 在Apple開發人員帳戶上設定推播通知
 
-1. 登入Apple開發人員[成員中心](http://developer.apple.com/membercenter)。
+1. 登入Apple開發人員[成員中心](https://developer.apple.com/membercenter)。
 1. 按一下「憑證、識別碼和設定檔」。
 1. 按一下「iOS， tvOS， watchOS」底下的「Certificates->All」資料夾。
 1. 選取憑證![](assets/certificates-plus.png)旁邊左上角畫面上的「+」
