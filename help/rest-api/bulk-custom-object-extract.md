@@ -16,7 +16,7 @@ ht-degree: 1%
 
 REST API的批次自訂物件擷取集合提供程式設計介面，可從Marketo中擷取大型自訂物件記錄集合。 此為建議使用的介面，用於需要在Marketo與一或多個外部系統之間持續交換資料（用於ETL、資料倉儲和封存）的使用案例。
 
-此API支援匯出直接連結至潛在客戶的第一層Marketo自訂物件記錄。 傳入自訂物件的名稱，以及物件連結到的潛在客戶清單。 對於清單中的每個潛在客戶，符合指定自訂物件名稱的連結自訂物件記錄會以列寫入匯出檔案中。 可以在Marketo UI[&#128279;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects)中潛在客戶詳細資訊頁面的自訂物件標籤中檢視自訂物件資料。
+此API支援匯出直接連結至潛在客戶的第一層Marketo自訂物件記錄。 傳入自訂物件的名稱，以及物件連結到的潛在客戶清單。 對於清單中的每個潛在客戶，符合指定自訂物件名稱的連結自訂物件記錄會以列寫入匯出檔案中。 可以在Marketo UI[&#128279;](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects)中潛在客戶詳細資訊頁面的自訂物件標籤中檢視自訂物件資料。
 
 ## 權限
 
