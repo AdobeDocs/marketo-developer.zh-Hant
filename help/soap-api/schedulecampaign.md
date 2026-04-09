@@ -3,10 +3,10 @@ title: scheduleCampaign
 feature: SOAP, Smart Campaigns
 description: 使用scheduleCampaign立即或稍後執行Marketo批次智慧行銷活動、覆寫權杖、複製方案，並透過SOAP XML使用PHP和Java範例實作。
 exl-id: a9ef2c16-34ef-4e0f-b765-e332335b0b81
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
 workflow-type: tm+mt
 source-wordcount: '274'
-ht-degree: 3%
+ht-degree: 4%
 
 ---
 
@@ -32,7 +32,7 @@ ht-degree: 3%
 | campaignName | 必要 | 智慧行銷活動的名稱 |
 | campaignRunAt | 選用 | 執行已排程行銷活動的時間（W3C WSDL日期格式）。 |
 | cloneToProgramName | 選用 | 此屬性出現時，會複製行銷活動的父級方案，並排程新建立的行銷活動。 屬性會為產生的程式指定所需的名稱。 注意：使用此欄位時，每天僅允許10次呼叫。 |
-| programTokenList->attrib->name | 選用 | 您要為其傳送新值的Token名稱。 使用完整的Token格式，就像在Marketo UI中一樣。 即&quot;{{my.message}}&quot; |
+| programTokenList->attrib->name | 選用 | 您要為其傳送新值的Token名稱。 使用完整的Token格式，就像在Marketo UI中一樣。 即&quot;`{{my.message}}`&quot; |
 | programTokenList->attrib->value | 選用 | 關聯權杖名稱的值。 |
 
 ## 請求XML

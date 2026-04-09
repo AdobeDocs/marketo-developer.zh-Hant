@@ -3,9 +3,9 @@ title: 智慧行銷活動
 feature: REST API, Smart Campaigns
 description: 瞭解如何將Marketo REST API用於Smart Campaigns，包括依ID或名稱查詢、瀏覽篩選器、建立複製刪除，以及排程或請求觸發程式
 exl-id: 540bdf59-b102-4081-a3d7-225494a19fdd
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
 workflow-type: tm+mt
-source-wordcount: '1012'
+source-wordcount: '1196'
 ht-degree: 1%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 1%
 
 [智慧行銷活動端點參考（資產）](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns)
 
-[行銷活動端點參考（潛在客戶）](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns)
+[行銷活動端點參考（銷售機會）](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns)
 
 Marketo提供了一組REST API，可用於對智慧行銷活動執行操作。 這些API遵循資產API的標準介面模式，提供查詢、建立、複製和刪除選項。 此外，您也可以排程批次行銷活動或請求觸發行銷活動，以管理智慧行銷活動的執行。
 
@@ -373,7 +373,7 @@ POST /rest/asset/v1/smartCampaign/{id}/delete.json
 
 使用[排程行銷活動](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Campaigns/operation/scheduleCampaignUsingPOST)端點來排程要立即執行或在未來日期執行的批次行銷活動。 行銷活動`id`是必要的路徑引數。 選用引數是`tokens`、`runAt`和`cloneToProgram`，它們會在要求內文中以application/json形式傳遞。
 
-Token陣列引數是My Token的陣列，可覆寫現有的程式Token。 行銷活動執行後，會捨棄代號。  每個權杖陣列專案都包含名稱/值配對。 權杖的名稱必須格式化為&quot;{{my.name}}&quot;。
+Token陣列引數是My Token的陣列，可覆寫現有的程式Token。 行銷活動執行後，會捨棄代號。  每個權杖陣列專案都包含名稱/值配對。 權杖的名稱必須格式化為&quot;`{{my.name}}`&quot;。
 
 runAt日期時間引數會指定執行促銷活動的時間。 如果未指定，行銷活動將在呼叫端點後5分鐘執行。 日期時間值在未來的兩年內不得超過。
 
@@ -426,7 +426,7 @@ POST /rest/v1/campaigns/{id}/schedule.json
 
 此端點需要行銷活動`id`做為路徑引數，以及包含潛在客戶ID的`leads`整數陣列引數。 每次呼叫最多允許100個銷售機會。
 
-`tokens`陣列引數可選擇性用來覆寫促銷活動上層方案的本機My Token。 `tokens`接受最多100個權杖。 每個`tokens`陣列專案都包含一個名稱/值組。 權杖的名稱必須格式化為&quot;{{my.name}}&quot;。 如果您使用[新增系統權杖作為電子郵件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email)方法中的連結來新增「viewAsWebPageLink」系統權杖，則無法使用`tokens`覆寫它。 改為使用[將檢視新增為網頁連結至電子郵件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email)方法，可讓您使用`tokens`覆寫「viewAsWebPageLink」。
+`tokens`陣列引數可選擇性用來覆寫促銷活動上層方案的本機My Token。 `tokens`接受最多100個權杖。 每個`tokens`陣列專案都包含一個名稱/值組。 權杖的名稱必須格式化為&quot;`{{my.name}}`&quot;。 如果您使用[新增系統權杖作為電子郵件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email)方法中的連結來新增「viewAsWebPageLink」系統權杖，則無法使用`tokens`覆寫它。 改為使用[將檢視新增為網頁連結至電子郵件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email)方法，可讓您使用`tokens`覆寫「viewAsWebPageLink」。
 
 `leads`和`tokens`引數是以application/json的形式傳入要求內文中。
 

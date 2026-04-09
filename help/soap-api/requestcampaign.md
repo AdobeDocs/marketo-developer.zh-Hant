@@ -3,7 +3,7 @@ title: requestCampaign
 feature: SOAP, Smart Campaigns
 description: 透過Marketo requestCampaign在SOAP智慧行銷活動中執行銷售機會，包括引數集、代號處理、100個銷售機會限制、XML要求和PHP Java範例。
 exl-id: b5367eb9-4f4c-4e1d-8b6d-36de8f134f0e
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
 workflow-type: tm+mt
 source-wordcount: '298'
 ht-degree: 3%
@@ -29,7 +29,7 @@ ht-degree: 3%
 | campaignName | 當campaignId存在時為選用；否則在集合中必須是`campaignName`、programName和programTokenList | 行銷活動的名稱 |
 | programName | 當campaignId存在時為選用；否則在集合中必須是`campaignName`、programName和programTokenList | 方案的名稱 |
 | programTokenList | 當campaignId存在時為選用；否則在集合中必須是`campaignName`、`programName`和`programTokenList` | 用於行銷活動中的權杖陣列。 指定權杖時，需要programName和`campaignName`。 |
-| programTokenList->attrib->name | 選用 | 您要傳遞其值的程式權杖名稱。 例如：{{my.message}} |
+| programTokenList->attrib->name | 選用 | 您要傳遞其值的程式權杖名稱。 例如： `{{my.message}}` |
 | programTokenList->attrib->value | 選用 | 指定Token名稱的值。 |
 
 ## 請求XML

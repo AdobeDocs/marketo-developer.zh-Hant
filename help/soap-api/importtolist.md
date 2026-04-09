@@ -3,9 +3,9 @@ title: importToList
 feature: SOAP
 description: 瞭解如何在Marketo SOAP中使用importToList，以匯入具有CSV標題、權杖覆寫、XML範例和狀態檢查的靜態清單。
 exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
 workflow-type: tm+mt
-source-wordcount: '409'
+source-wordcount: '410'
 ht-degree: 3%
 
 ---
@@ -28,7 +28,7 @@ ht-degree: 3%
 
 **動態電子郵件內容：**&#x200B;您可以選擇性地以每個潛在客戶為基礎傳遞值，作為電子郵件中「我的Token」的取代。
 
-| 電子郵件 | 第一 | 上次 | {{my.specialToken}} | {{my.otherToken}} |
+| 電子郵件 | 第一 | 上次 | `{{my.specialToken}}` | `{{my.otherToken}}` |
 | --- | --- | --- | --- | --- |
 | <joe@company.com> | Joe | Smith | 魚 | 藍色 |
 | <mary@company.com> | Mary | 分類帳 | 雞肉 | 棕色 |
