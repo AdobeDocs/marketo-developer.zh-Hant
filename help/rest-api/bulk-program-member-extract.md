@@ -235,7 +235,7 @@ GET /rest/v1/programs/members/describe.json
     <tr>
       <td>isExhausted</td>
       <td>布林值</td>
-      <td>接受用於篩選已用完內容</a>的<a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">人之方案成員資格記錄的布林值。</td>
+      <td>接受用於篩選已用完內容</a>的<a href="https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">人之方案成員資格記錄的布林值。</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>
