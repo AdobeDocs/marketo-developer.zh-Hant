@@ -597,7 +597,7 @@ GET /rest/v1/programs/members/schema/fields.json?batchSize=5
 
 ### 建立欄位
 
-[建立程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/createProgramMemberFieldUsingPOST)端點會在程式成員物件上建立一或多個自訂欄位。 此端點提供的功能與Marketo Engage UI](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields)中的[可用功能相當。 您可以使用此端點建立最多20個自訂欄位。
+[建立程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Program-Members/operation/createProgramMemberFieldUsingPOST)端點會在程式成員物件上建立一或多個自訂欄位。 此端點提供的功能與Marketo Engage UI[&#128279;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields)中的可用功能相當。 您可以使用此端點建立最多20個自訂欄位。
 
 請仔細考慮您在使用API的Marketo Engage生產執行個體中建立的每個欄位。 欄位建立後，您就無法刪除（[您只能隱藏它](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)）。 未使用欄位數量激增是壞做法，會增加執行個體的雜亂。
 

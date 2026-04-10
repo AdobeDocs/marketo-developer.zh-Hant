@@ -82,7 +82,7 @@ GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
 
 #### 瀏覽
 
-靜態清單也可以以批次](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET)擷取[。 `folder`引數可用來指定要在其中執行查詢的父資料夾，並格式化為包含`id`和`type`的JSON物件。 如同其他大量資產擷取端點，`offset`和`maxReturn`是可用於分頁的選用引數。 `earliestUpdatedAt`和`latestUpdatedAt`引數可讓您設定低日期時間與高日期時間浮水印，以傳回在指定範圍內建立或更新之靜態清單。 日期時間值必須是有效的ISO-8601字串，而且不應該包含毫秒。
+靜態清單也可以以批次[&#128279;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET)擷取。 `folder`引數可用來指定要在其中執行查詢的父資料夾，並格式化為包含`id`和`type`的JSON物件。 如同其他大量資產擷取端點，`offset`和`maxReturn`是可用於分頁的選用引數。 `earliestUpdatedAt`和`latestUpdatedAt`引數可讓您設定低日期時間與高日期時間浮水印，以傳回在指定範圍內建立或更新之靜態清單。 日期時間值必須是有效的ISO-8601字串，而且不應該包含毫秒。
 
 ```http
 GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}

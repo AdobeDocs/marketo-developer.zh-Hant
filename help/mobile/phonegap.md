@@ -66,7 +66,7 @@ repositories{
 1. Firebase Cloud Messaging支援
 
 1. 在Firebase主控台上設定Firebase應用程式。
-   1. 在[](https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
+   1. 在[&#128279;](https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
       1. 在[Firebase主控台](https://console.firebase.google.com/)中，選取&#x200B;**[!UICONTROL Add Project]**。
       1. 從現有Google Cloud專案清單中選取您的GCM專案，然後選取&#x200B;**[!UICONTROL Add Firebase]**。
       1. 在Firebase歡迎畫面中，選取「將Firebase新增至Android應用程式」。
