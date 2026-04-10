@@ -3,9 +3,9 @@ title: 安裝
 feature: Mobile Marketing
 description: 使用CocoaPods、Swift Package Manager或Gradle在iOS和Android上安裝及初始化Marketo Mobile SDK，啟用推送和應用程式內訊息的指南。
 exl-id: e0b79d85-3509-46d2-a77d-cee211c5ec7f
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '774'
+source-wordcount: '850'
 ht-degree: 0%
 
 ---
@@ -18,7 +18,7 @@ Marketo Mobile SDK的安裝指示。 傳送推播通知及/或應用程式內訊
 
 ### 先決條件
 
-1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (取得您的應用程式秘密金鑰和Munchkin ID)
+1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）
 1. [設定推播通知](push-notifications.md) （選擇性）
 
 ### 透過CocoaPods安裝框架
@@ -59,7 +59,7 @@ Marketo Mobile SDK的安裝指示。 傳送推播通知及/或應用程式內訊
 
 ## 初始化SDK
 
-您必須先使用Marketo iOS SDKMunchkin帳戶ID和應用程式秘密金鑰將其初始化，才能使用。 您可以在Marketo管理區域的「行動應用程式和裝置」下方找到這些應用程式。
+您必須先使用Marketo iOS SDK帳戶ID和應用程式秘密金鑰將其初始化，才能使用。 您可以在Marketo管理區域的「行動應用程式和裝置」下方找到這些應用程式。
 
 1. 開啟您的AppDelegate.m檔案(Objective-C)或橋接檔案(Swift)，並匯入Marketo.h標題檔案。
 
@@ -75,7 +75,7 @@ Marketo Mobile SDK的安裝指示。 傳送推播通知及/或應用程式內訊
 
 >[!TAB 目標C]
 
-```
+```objectivec
 Marketo *sharedInstance = [Marketo sharedInstance];
 
 [sharedInstance initializeWithMunchkinID:@"munchkinAccountId" appSecret:@"secretKey" mobileFrameworkType:@"native" launchOptions:launchOptions];
@@ -83,7 +83,7 @@ Marketo *sharedInstance = [Marketo sharedInstance];
 
 >[!TAB Swift]
 
-```
+```swift
 let sharedInstance: Marketo = Marketo.sharedInstance()
 
 sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secretKey", mobileFrameworkType: "native", launchOptions: launchOptions)
@@ -91,7 +91,7 @@ sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secre
 
 >[!ENDTABS]
 
-1. 使用您在Marketo `munkinAccountId` > `secretKey`區段找到的「Munchkin帳戶ID」和「秘密金鑰」，取代上方的&#x200B;**[!UICONTROL Admin]**&#x200B;和&#x200B;**[!UICONTROL Mobile Apps and Devices]**。
+1. 使用您在Marketo **[!UICONTROL Admin]** > **[!UICONTROL Mobile Apps and Devices]**&#x200B;區段找到的「Munchkin帳戶ID」和「秘密金鑰」，取代上方的`munkinAccountId`和`secretKey`。
 
 ## iOS測試裝置
 
@@ -106,7 +106,7 @@ sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secre
 
 >[!TAB 目標C]
 
-```
+```objectivec
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
@@ -119,7 +119,7 @@ sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secre
 
 >[!TAB Swift]
 
-```
+```swift
 private func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool
     {
         return Marketo.sharedInstance().application(app, open: url, options: options)
@@ -132,7 +132,7 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 ### 先決條件
 
-1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (取得您的應用程式秘密金鑰和Munchkin ID)
+1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）
 1. [設定推播通知](push-notifications.md#android_setup_push) （選擇性）
 1. [下載適用於Android的Marketo SDK](https://codeload.github.com/Marketo/android-sdk/zip/refs/heads/master)
 
@@ -208,7 +208,7 @@ Android應用程式開發人員現在可以直接將Google的[Firebase Cloud Mes
 
 1. 在Android應用程式中整合最新的Marketo Android SDK 。  步驟可在[GitHub](https://github.com/Marketo/android-sdk)取得。
 1. 在Firebase主控台上設定Firebase應用程式。
-   1. 在[&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
+   1. 在[](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
       1. 在[Firebase主控台](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)中，選取`Add Project`。
       1. 從現有Google Cloud專案清單中選取您的GCM專案，然後選取`Add Firebase`。
       1. 在Firebase歡迎畫面中，選取`Add Firebase to your Android App`。

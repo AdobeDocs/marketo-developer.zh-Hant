@@ -3,7 +3,7 @@ title: 具名帳戶清單
 feature: REST API
 description: 瞭解如何使用REST API管理Marketo具名帳戶清單，包括查詢、建立、更新和刪除的許可權、欄位、篩選條件和端點。
 exl-id: 98f42780-8329-42fb-9cd8-58e5dbea3809
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '746'
 ht-degree: 2%
@@ -14,7 +14,7 @@ ht-degree: 2%
 
 [具名帳戶列出端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Account-Lists)
 
-Marketo中的[具名帳戶清單](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/target-account-management/target/account-lists)代表具名帳戶的集合。 它們可用於多種情況，包括分類、資料擴充和智慧型行銷活動篩選。 具名帳戶清單API允許從遠端管理這些清單資產及其成員資格。
+Marketo中的[具名帳戶清單](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists)代表具名帳戶的集合。 它們可用於多種情況，包括分類、資料擴充和智慧型行銷活動篩選。 具名帳戶清單API允許從遠端管理這些清單資產及其成員資格。
 `Content`
 
 ## 權限
@@ -38,7 +38,7 @@ Marketo中的[具名帳戶清單](https://experienceleague.adobe.com/zh-hant/doc
 
 查詢帳戶清單簡單明瞭。 目前，查詢具名帳戶清單的有效filterTypes只有兩種：&quot;dedupeFields&quot;和&quot;idField&quot;。 要篩選的欄位設定在查詢的`filterType`引數中，而值設定在`filterValues as`中以逗號分隔的清單中。 `nextPageToken`和`batchSize`篩選器也是選用引數。
 
-```
+```http
 GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fb,dff23271-f996-47d7-984f-f2676861b5fc
 ```
 
@@ -77,7 +77,7 @@ GET /rest/v1/namedAccountLists.json?filterType=idField&filterValues=dff23271-f99
 
 如果動作為`updateOnly`，則可指定選擇性`dedupeBy parameter`。  允許的值是&quot;dedupeFields&quot; （對應至&quot;name&quot;）或&quot;idField&quot; （對應至&quot;marketoGUID&quot;）。  在`createOnly`模式中，`dedupeBy`欄位僅允許&quot;name&quot;。 您一次最多可以提交300筆記錄。
 
-```
+```http
 POST /rest/v1/namedAccountLists.json
 ```
 
@@ -119,7 +119,7 @@ POST /rest/v1/namedAccountLists.json
 
 刪除具名帳戶清單非常簡單，您可以根據`name`或清單的`marketoGUID`完成。 若要選取您要使用的金鑰，請在請求的`deleteB`成員中，為name傳遞「dedupeFields」，或為marketoGUID傳遞「idField」。 如果未設定，則預設為dedupeFields。 您一次最多可以刪除300筆記錄。
 
-```
+```http
 POST /rest/v1/namedAccountLists/delete.json
 ```
 
@@ -183,7 +183,7 @@ POST /rest/v1/namedAccountLists/delete.json
 
 如果未設定`field`，則會傳回`marketoGUI`、`nam`、`createdA`和`updatedA`。 `batchSiz`的最大值和預設值為300。
 
-```
+```http
 GET /rest/v1/namedAccountList/{id}/namedAccounts.json
 ```
 
@@ -214,7 +214,7 @@ GET /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 可將具名帳戶輕鬆新增至具名帳戶清單。 只能使用其marketoGUID新增帳戶。 您一次最多可以新增300筆記錄。
 
-```
+```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 ```
 
@@ -254,7 +254,7 @@ POST /rest/v1/namedAccountList/{id}/namedAccounts.json
 
 從帳戶清單移除記錄有不同的路徑，但介面相同，您想要刪除的每個記錄都需要`marketoGUI`。 您一次最多可以移除300筆記錄。
 
-```
+```http
 POST /rest/v1/namedAccountList/{id}/namedAccounts/remove.json
 ```
 

@@ -3,9 +3,9 @@ title: 機會角色
 feature: REST API
 description: 透過REST API管理Marketo商機角色，包括說明、使用複合重複資料刪除欄位進行查詢、建立更新刪除、逾時和無CRM同步。
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '270'
+source-wordcount: '279'
 ht-degree: 0%
 
 ---
@@ -22,7 +22,7 @@ ht-degree: 0%
 
 和機會一樣，說明呼叫和CRUD作業也會針對機會角色公開。
 
-```
+```http
 GET /rest/v1/opportunities/roles/describe.json
 ```
 
@@ -108,7 +108,7 @@ GET /rest/v1/opportunities/roles/describe.json
 
 請注意，`dedupeFields`和`searchableFields`與機會都有點不同。 `dedupeFields`實際上提供了複合金鑰，其中需要`externalOpportunityId`、`leadId`和`role`的所有三項。 目的地執行個體中必須有識別碼欄位的機會和潛在客戶連結，才能成功建立記錄。 對於`searchableFields`、`marketoGUID`、`leadId`和`externalOpportunityId`，它們都自己對查詢有效，並使用與Opportunities相同的模式，但有一個額外的選項可使用複合索引鍵進行查詢，這要求透過POST提交JSON物件，連同額外的查詢引數`_method=GET`。
 
-```
+```http
 POST /rest/v1/opportunities/roles.json?_method=GET
 ```
 
@@ -147,7 +147,7 @@ POST /rest/v1/opportunities/roles.json?_method=GET
 
 商機角色的介面與用來建立及更新商機記錄的介面相同。
 
-```
+```http
 POST /rest/v1/opportunities/roles.json
 ```
 
@@ -195,7 +195,7 @@ POST /rest/v1/opportunities/roles.json
 
 您可以依重複資料刪除欄位或ID欄位來刪除商機角色。 使用deleteBy引數以及值dedupeFields或idField來指定。 如果未指定，預設值為dedupeFields。 請求內文包含要刪除的機會角色的輸入陣列。 每個呼叫最多允許300個機會角色。
 
-```
+```http
 POST /rest/v1/opportunities/roles/delete.json
 ```
 

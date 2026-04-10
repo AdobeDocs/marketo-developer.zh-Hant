@@ -3,9 +3,9 @@ title: 方案
 feature: REST API, Programs
 description: Marketo的Asset REST API方案指南涵蓋型別、管道、標籤、成員狀態和端點，可依ID或名稱取得、瀏覽及依狀態篩選。
 exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '870'
+source-wordcount: '979'
 ht-degree: 1%
 
 ---
@@ -40,7 +40,7 @@ Marketo中有五種核心型別的計畫：
 
 程式識別碼可從UI中程式的URL取得，其中該URL類似於`https://app-\*\*\*.marketo.com/#PG1001A1`。 在此URL中，`id`為1001。 它永遠介於URL中的第一組字母和第二組字母之間。
 
-```
+```http
 GET /rest/asset/v1/program/{id}.json
 ```
 
@@ -84,7 +84,7 @@ GET /rest/asset/v1/program/{id}.json
 
 [Get Program by Name](https://developer.adobe.com/marketo-apis/api/asset/)端點需要`name`查詢引數。 選用布林查詢引數是`includeTags`和`includeCosts`，分別用來傳回程式標籤和程式成本。
 
-```
+```http
 GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 ```
 
@@ -134,7 +134,7 @@ GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 
 請注意，此端點不會傳回與方案相關聯的標籤。 可以使用[依ID取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByIdUsingGET)或[依名稱取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/getProgramByNameUsingGET)來擷取程式標籤。
 
-```
+```http
 GET /rest/asset/v1/programs.json
 ```
 
@@ -187,9 +187,9 @@ GET /rest/asset/v1/programs.json
 
 ### 依日期範圍
 
-我們的`earliestUpdatedAt`取得程式`latestUpdatedAt`端點的[和](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5)引數可讓您為傳回在指定範圍內更新或最初建立的程式設定低和高的日期時間浮水印。
+我們的[取得程式](https://developer.adobe.com/marketo-apis/api/asset/#tag/Sales-Persons/operation/describeUsingGET_5)端點的`earliestUpdatedAt`和`latestUpdatedAt`引數可讓您為傳回在指定範圍內更新或最初建立的程式設定低和高的日期時間浮水印。
 
-```
+```http
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
 ```
 
@@ -282,7 +282,7 @@ GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&lat
 
 有兩個必要的引數，`tagType`是要篩選的標籤型別，`tagValue`是要篩選的標籤值。  有一個可選整數`maxReturn`引數可控制要傳回的程式數目（最大值為200，預設值為20），以及一個可選整數`offset`引數用於分頁結果（預設值為0）。  結果會以隨機順序傳回。
 
-```
+```http
 GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 ```
 
@@ -329,15 +329,15 @@ GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 
 ### 建立
 
-```
+```http
 POST /rest/asset/v1/programs.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API Program&type=Default&channel=Email Blast&costs=[{"startDate":"2015-01-01","cost":2000}]
 ```
 
@@ -379,17 +379,17 @@ name=API Test Program&folder={"id":1035,"type":"Folder"}&description=Sample API 
 
 ### 更新
 
-更新程式成本時，若要附加新成本，只需將其新增至您的`costs`陣列即可。 若要執行破壞性更新，請傳遞您的新成本，以及設定為`costsDestructiveUpdate`的引數`true`。 若要清除程式的所有成本，請勿傳遞`costs`引數，只傳遞`costsDestructiveUpdate`設定為`true`。
+更新程式成本時，若要附加新成本，只需將其新增至您的`costs`陣列即可。 若要執行破壞性更新，請傳遞您的新成本，以及設定為`true`的引數`costsDestructiveUpdate`。 若要清除程式的所有成本，請勿傳遞`costs`引數，只傳遞`costsDestructiveUpdate`設定為`true`。
 
-```
+```http
 POST /rest/asset/v1/program/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 description=This is an updated description&name=Updated Program Name&costs=[{"startDate":"2016-01-01","cost":200,"note":"Google Adwords"}]
 ```
 
@@ -445,7 +445,7 @@ description=This is an updated description&name=Updated Program Name&costs=[{"st
 
 ### 核准
 
-```
+```http
 POST /rest/asset/v1/program/{id}/approve.json
 ```
 
@@ -465,7 +465,7 @@ POST /rest/asset/v1/program/{id}/approve.json
 
 ### 取消核准
 
-```
+```http
 POST /rest/asset/v1/program/{id}/unapprove.json
 ```
 
@@ -489,15 +489,15 @@ POST /rest/asset/v1/program/{id}/unapprove.json
 
 包含特定資產型別的程式可能無法透過此API進行複製，包括推送通知、應用程式內訊息、報表和社交Assets。 應用程式內程式可能無法透過此API進行複製。
 
-```
+```http
 POST /rest/asset/v1/program/{id}/clone.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Cloned Program - PHP&folder={"id":5562,"type":"Folder"}&description=Description
 ```
 
@@ -536,7 +536,7 @@ name=Cloned Program - PHP&folder={"id":5562,"type":"Folder"}&description=Descrip
 
 刪除計畫會遵循標準資產刪除模式。
 
-```
+```http
 POST /rest/asset/v1/program/{id}/delete.json
 ```
 

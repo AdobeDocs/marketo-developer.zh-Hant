@@ -3,9 +3,9 @@ title: 管道
 feature: REST API
 description: 瞭解如何透過Asset REST API查詢Marketo管道、使用分頁功能瀏覽或依名稱擷取、檢視進度狀態，以及瞭解程式型別規則。
 exl-id: ec6c279f-a7b4-4a7c-b980-1a68045f37ce
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '144'
+source-wordcount: '151'
 ht-degree: 2%
 
 ---
@@ -22,7 +22,7 @@ ht-degree: 2%
 
 ### 瀏覽
 
-```
+```http
 GET /rest/asset/v1/channels.json?offset=10
 ```
 
@@ -120,7 +120,7 @@ GET /rest/asset/v1/channels.json?offset=10
 
 ### 依名稱
 
-```
+```http
 GET /rest/asset/v1/channel/byName.json?name=Online Advertising
 ```
 

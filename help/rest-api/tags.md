@@ -3,7 +3,7 @@ title: 標記
 feature: REST API, Tags
 description: 查詢標籤型別、依名稱取得允許的值、透過REST Asset API更新或刪除Marketo中的程式標籤，並附上請求範例。
 exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
-source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '258'
 ht-degree: 1%
@@ -22,7 +22,7 @@ ht-degree: 1%
 
 ### 取得標籤
 
-```
+```http
 GET /rest/asset/v1/tagTypes.json
 ```
 
@@ -54,7 +54,7 @@ GET /rest/asset/v1/tagTypes.json
 
 ### 依名稱
 
-```
+```http
 GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 ```
 
@@ -79,7 +79,7 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 
 [更新程式標籤](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST)端點可讓您更新指定標籤型別的值。 端點採用`id`和`tagType`路徑引數，這些引數指定程式ID以及要更新的標籤型別。 使用`tagValue`查詢引數來指定標籤型別的新值。 所有引數皆為必要項。
 
-```
+```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 ```
 
@@ -103,7 +103,7 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 
 [刪除程式標籤](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/deleteProgramUsingPOST)端點可讓您刪除不需要的標籤型別。 端點採用`id`和`tagType`路徑引數，這些引數指定程式識別碼以及要刪除的標籤型別。
 
-```
+```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}/delete.json
 ```
 

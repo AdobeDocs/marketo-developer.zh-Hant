@@ -3,9 +3,9 @@ title: 大量程式成員匯入
 feature: REST API
 description: 瞭解如何使用10MB以下的CSV TSV或SSV檔案、佇列限制、必要引數和輪詢工作狀態，透過Marketo REST API大量匯入方案成員。
 exl-id: b0e1039a-fe9b-4fb7-9aa6-9980a06da673
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '860'
+source-wordcount: '962'
 ht-degree: 0%
 
 ---
@@ -26,7 +26,7 @@ ht-degree: 0%
 
 典型的檔案會遵循此基本模式：
 
-```
+```text
 email,firstName,lastName
 test@example.com,John,Doe
 ```
@@ -43,17 +43,17 @@ test@example.com,John,Doe
 
 有三個必要的查詢引數。 `format`引數指定匯入檔案格式（CSV、TSV或SSV），`programMemberStatus`引數指定正在加入程式的成員的程式狀態，而`file`引數包含包含包含程式成員記錄的匯入檔案名稱。
 
-```
+```http
 POST /bulk/v1/program/{programId}/members/import.json?format=csv&programMemberStatus=On List
 ```
 
-```
+```text
 Content-Type: multipart/form-data; boundary=--------------------------118046853683028616211319
 Content-Length: 772
 Host: <munchkinId>.mktorest.com
 ```
 
-```
+```text
 ----------------------------118046853683028616211319
 Content-Disposition: form-data; name="file"; filename="Lead-House-Lannister.csv"
 Content-Type: text/csv
@@ -95,7 +95,7 @@ curl -i -F format='csv' -F programMemberStatus='On List' -F file='@Lead-House-La
 
 其中匯入檔案「Lead-House-Lannister.csv」包含下列內容：
 
-```
+```text
 firstName,lastName,email,title,company,leadScore
 Joanna,Lannister,Joanna@Lannister.com,Lannister,House Lannister,0
 Tywin,Lannister,Tywin@Lannister.com,Lannister,House Lannister,0
@@ -111,7 +111,7 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 
 建立匯入工作之後，您必須查詢其狀態。 最佳實務是每5到30秒輪詢匯入工作。 若要這麼做，請將`batchId`路徑引數傳遞至[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)端點。
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
 ```
 
@@ -139,11 +139,11 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 
 ## 失敗
 
-`numOfRowsFailed`取得匯入程式成員狀態[回應中的](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)屬性指出失敗。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。
+[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsFailed`屬性指出失敗。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。
 
 使用Get Import Program Member Failures端點傳遞`batchId`路徑引數，以擷取失敗資料列的記錄和原因。
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/failures.json
 ```
 
@@ -151,14 +151,14 @@ GET /bulk/v1/program/members/import/{batchId}/failures.json
 
 例如，假設您匯入下列潛在客戶分數無效的檔案：
 
-```
+```text
 firstName,lastName,email,title,company,leadScore
 Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTEGER_FIELD
 ```
 
 當您檢查工作狀態時，您會看到`numOfRowsFailed`為1，表示發生失敗：
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
 ```
 
@@ -182,22 +182,22 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 
 然後擷取失敗檔案以取得失敗的其他詳細資訊：
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/failures.json
 ```
 
-```
+```text
 firstName,lastName,email,title,company,leadScore,Import Failure Reason
 Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTEGER_FIELD,Invalid data type in field Lead Score
 ```
 
 ## 警告
 
-`numOfRowsWithWarning`取得匯入程式成員狀態[回應中的](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)屬性表示警告。 如果`numOfRowsWithWarning`大於零，則該值表示發生的警告數。
+[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsWithWarning`屬性表示警告。 如果`numOfRowsWithWarning`大於零，則該值表示發生的警告數。
 
 使用[取得匯入程式成員警告](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET)端點傳遞`batchId`路徑引數，以擷取記錄及警告資料列的原因。
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/warnings.json
 ```
 
@@ -205,14 +205,14 @@ GET /bulk/v1/program/members/import/{batchId}/warnings.json
 
 例如，假設您匯入下列電子郵件地址無效的檔案：
 
-```
+```text
 firstName,lastName,email,title,company,leadScore
 Aerys,Targaryen,INVALID_EMAIL,Targaryen,House Targaryen,0
 ```
 
 當您檢查工作狀態時，您會看到`numOfRowsWithWarning`為1，表示發生警告：
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
 ```
 
@@ -236,11 +236,11 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 
 然後，您可以擷取警告檔案，以取得有關警告的其他詳細資訊：
 
-```
+```http
 GET /bulk/v1/program/members/import/{batchId}/warnings.json
 ```
 
-```
+```text
 firstName,lastName,email,title,company,leadScore,Import Warning Reason
 Aerys,Targaryen,INVALID_EMAIL,Targaryen,House Targaryen,0,Invalid email address
 ```

@@ -3,7 +3,7 @@ title: 靜態清單
 feature: REST API, Static Lists
 description: 使用Marketo REST API來查詢、建立、更新和刪除靜態清單，其端點包括ID、名稱和瀏覽、資料夾範圍設定、分頁和日期篩選器。
 exl-id: 20679fd2-fae2-473e-84bc-cb4fdf2f5151
-source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '496'
 ht-degree: 1%
@@ -26,7 +26,7 @@ Marketo提供了一組REST API，可用於對靜態清單執行CRUD操作。 這
 
 [依ID](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByIdUsingGET)的查詢，以單一靜態清單`id`作為路徑引數，並傳回單一靜態清單記錄。
 
-```
+```http
 GET /rest/asset/v1/staticList/{id}.json
 ```
 
@@ -55,7 +55,7 @@ GET /rest/asset/v1/staticList/{id}.json
 
 [依名稱查詢](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListByNameUsingGET)以靜態清單`name`作為引數，並傳回單一靜態清單記錄。 會針對執行個體中的所有靜態清單名稱執行完全相符的字串，並傳回符合該名稱的靜態清單結果。
 
-```
+```http
 GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
 ```
 
@@ -82,9 +82,9 @@ GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
 
 #### 瀏覽
 
-靜態清單也可以以批次[&#128279;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET)擷取。 `folder`引數可用來指定要在其中執行查詢的父資料夾，並格式化為包含`id`和`type`的JSON物件。 如同其他大量資產擷取端點，`offset`和`maxReturn`是可用於分頁的選用引數。 `earliestUpdatedAt`和`latestUpdatedAt`引數可讓您設定低日期時間與高日期時間浮水印，以傳回在指定範圍內建立或更新之靜態清單。 日期時間值必須是有效的ISO-8601字串，而且不應該包含毫秒。
+靜態清單也可以以批次](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/getStaticListsUsingGET)擷取[。 `folder`引數可用來指定要在其中執行查詢的父資料夾，並格式化為包含`id`和`type`的JSON物件。 如同其他大量資產擷取端點，`offset`和`maxReturn`是可用於分頁的選用引數。 `earliestUpdatedAt`和`latestUpdatedAt`引數可讓您設定低日期時間與高日期時間浮水印，以傳回在指定範圍內建立或更新之靜態清單。 日期時間值必須是有效的ISO-8601字串，而且不應該包含毫秒。
 
-```
+```http
 GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
 ```
 
@@ -135,15 +135,15 @@ GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
 
 [建立靜態清單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/createStaticListUsingPOST)是使用`application/x-www-form-urlencoded` POST及兩個必要引數執行。 `folder`引數是用來指定要在其中建立靜態清單的父資料夾，且會格式化為包含`id`和`type`的JSON物件。 `name`引數是用來命名靜態清單，而且必須是唯一的。 可選擇使用`description`引數描述靜態清單。
 
-```
+```http
 POST /rest/asset/v1/staticLists.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 folder={"id":1034,"type":"Program"}&name=My Static List
 ```
 
@@ -170,15 +170,15 @@ folder={"id":1034,"type":"Program"}&name=My Static List
 
 [更新靜態清單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/updateStaticListUsingPOST)是透過具有兩個選擇性引數的個別端點完成的。 `description`引數可用來更新靜態清單描述。 `name`引數可用來更新靜態清單名稱，而且必須是唯一的。
 
-```
+```http
 POST /rest/asset/v1/staticList/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 description=This is a static list used for testing
 ```
 
@@ -208,7 +208,7 @@ description=This is a static list used for testing
 
 [刪除靜態清單](https://developer.adobe.com/marketo-apis/api/asset/#tag/Static-Lists/operation/deleteStaticListByIdUsingPOST)會以單一靜態清單`id`作為路徑引數。 無法刪除匯入或匯出操作正在使用的靜態清單，或其他資產正在使用的靜態清單。
 
-```
+```http
 POST /rest/asset/v1/staticList/{id}/delete.json
 ```
 

@@ -3,9 +3,9 @@ title: 分頁權杖
 feature: REST API
 description: 使用Marketo REST API分頁權杖來擷取活動和銷售機會，包括以日期和位置為基礎的權杖、ISO 8601 sinceDatetime和414錯誤。
 exl-id: 63fbbf03-8daf-4add-85b0-a8546c825e5b
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '370'
+source-wordcount: '424'
 ht-degree: 0%
 
 ---
@@ -29,7 +29,7 @@ Marketo提供兩種相關但相異的分頁權杖型別：
 
 第一個是代表日期的分頁權杖。 這些可用來擷取活動、資料值變更，以及分頁Token所代表的日期之後發生的已刪除潛在客戶。 此型別的分頁權杖是透過呼叫[取得分頁權杖](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getActivitiesPagingTokenUsingGET)端點並包含日期時間所產生。
 
-```
+```http
 GET /rest/v1/activities/pagingtoken.json?sinceDatetime=2014-10-06T13:22:17-08:00
 ```
 
@@ -59,7 +59,7 @@ GET /rest/v1/activities/pagingtoken.json?sinceDatetime=2014-10-06T13:22:17-08:00
 
 然後會將`nextPageToken`字串提供給[取得銷售機會活動](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadActivitiesUsingGET)、[取得銷售機會變更](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getLeadChangesUsingGET)或[取得已刪除的銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getDeletedLeadsUsingGET)呼叫，而活動會在提供給Get Paging Token API的日期時間之後擷取。
 
-```
+```http
 GET /rest/v1/activities.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ&activityTypeIds=1&activityTypeIds=12
 ```
 

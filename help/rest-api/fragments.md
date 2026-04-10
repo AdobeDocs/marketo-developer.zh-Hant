@@ -3,7 +3,7 @@ title: 片段
 feature: REST API
 description: 使用Marketo Asset REST API來查詢、建立、更新、複製、刪除、核准和檢查片段的相依性。
 exl-id: 9dd532d1-1dd7-4581-86dd-1943fab66cbb
-source-git-commit: 0e0a3e5a08e81f349044cbc327d1aba963ab30e4
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '272'
 ht-degree: 9%
@@ -36,7 +36,7 @@ x-app-type: <app-type>
 
 #### 請求
 
-```text
+```http
 GET /rest/asset/v2/fragment/{id}
 ```
 
@@ -68,7 +68,7 @@ todo：讓此為表格
 
 #### 請求
 
-```text
+```http
 GET /rest/asset/v2/fragment/filter?workspaceId=1001&fragmentType=email&pageIndex=0&pageSize=20
 ```
 
@@ -98,7 +98,7 @@ GET /rest/asset/v2/fragment/filter?workspaceId=1001&fragmentType=email&pageIndex
 
 ### 請求
 
-```text
+```http
 POST /rest/asset/v2/fragment
 Content-Type: application/json
 ```
@@ -155,7 +155,7 @@ Content-Type: application/json
 
 ### 請求
 
-```text
+```http
 POST /rest/asset/v2/fragment/{id}/update
 Content-Type: application/json
 ```
@@ -202,7 +202,7 @@ Content-Type: application/json
 
 ### 請求
 
-```text
+```http
 POST /rest/asset/v2/fragment/state/transition
 Content-Type: application/json
 ```
@@ -222,7 +222,7 @@ Content-Type: application/json
 
 ### 請求
 
-```text
+```http
 POST /rest/asset/v2/fragment/clone
 Content-Type: application/json
 ```
@@ -245,7 +245,7 @@ Content-Type: application/json
 
 ### 請求
 
-```text
+```http
 POST /rest/asset/v2/fragment/{id}/delete
 Content-Type: application/json
 ```
@@ -258,7 +258,7 @@ Content-Type: application/json
 
 ### 請求
 
-```text
+```http
 POST /rest/asset/v2/fragment/usedby
 Content-Type: application/json
 ```

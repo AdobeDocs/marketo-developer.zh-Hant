@@ -3,9 +3,9 @@ title: 程式碼片段
 feature: REST API, Snippets
 description: Marketo Asset REST API適用於程式碼片段，可依ID涵蓋查詢、使用狀態瀏覽、取得內容、建立和更新HTML、文字及動態內容。
 exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '456'
+source-wordcount: '511'
 ht-degree: 1%
 
 ---
@@ -22,7 +22,7 @@ ht-degree: 1%
 
 ### 依Id
 
-```
+```http
 GET /rest/asset/v1/snippet/{id}.json?status=approved
 ```
 
@@ -52,7 +52,7 @@ GET /rest/asset/v1/snippet/{id}.json?status=approved
 
 ### 瀏覽
 
-```
+```http
 GET /rest/asset/v1/snippets.json?maxReturn=3
 ```
 
@@ -116,7 +116,7 @@ GET /rest/asset/v1/snippets.json?maxReturn=3
 
 可以根據程式碼片段ID擷取指定程式碼片段的內容。
 
-```
+```http
 GET /rest/asset/v1/snippet/{id}/content.json
 ```
 
@@ -145,15 +145,15 @@ GET /rest/asset/v1/snippet/{id}/content.json
 
 程式碼片段會遵循複雜的資產建立模式，也就是呼叫[建立程式碼片段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST)，而且其內容會個別進行，因此第一個呼叫必須是建立端點，並附上選用的說明。   資料以x-www-form-urlencoded傳遞，而非以JSON傳遞。
 
-```
+```http
 POST /rest/asset/v1/snippets.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Test Snippet 09 - deverly&folder={"id":395,"type":"Folder"}&description=This is a test snippet
 ```
 
@@ -185,15 +185,15 @@ name=Test Snippet 09 - deverly&folder={"id":395,"type":"Folder"}&description=Thi
 
 在程式碼片段中新增或取代內容是透過id完成。 內容可以是Text、HTML或DynamicContent型別。 如果型別是文字，則內容引數為純文字端點，如果型別是HTML，則為所要的標示文字。 如果型別設為DynamicContent，則內容引數應設為，與程式碼片段關聯的區段ID。
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}/content.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 ```
 
@@ -213,15 +213,15 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 
 [中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST)的更新也由ID完成。 只能更新名稱和說明：
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Test Snippet&description=New Description
 ```
 
@@ -255,7 +255,7 @@ name=Test Snippet&description=New Description
 
 程式碼片段遵循動態內容的標準模式，但本身僅代表一個完整內容區段，因此每個程式碼片段可能僅包含一個動態區段，以及所選用於細分中每個區段的內部區段清單。 動態內容可單獨透過代碼片段ID進行查詢，因為代碼片段中可能只有一個動態內容區段。
 
-```
+```http
 GET /rest/asset/v1/snippet/{id}/dynamicContent.json
 ```
 
@@ -312,7 +312,7 @@ GET /rest/asset/v1/snippet/{id}/dynamicContent.json
 
 ### 核准
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}/approveDraft.json
 ```
 
@@ -346,7 +346,7 @@ POST /rest/asset/v1/snippet/{id}/approveDraft.json
 
 `unapprove`端點只能用於已核准的程式碼片段。
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}/unapprove.json
 ```
 
@@ -380,7 +380,7 @@ POST /rest/asset/v1/snippet/{id}/unapprove.json
 
 程式碼片段必須處於草稿狀態才能捨棄。  無法捨棄已核准的程式碼片段。
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}/discardDraft.json
 ```
 
@@ -402,15 +402,15 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 [使用API復製程式碼片段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST)很簡單，並遵循標準模式，具有必要名稱、原始程式碼片段和資料夾的識別碼，以及選用的說明。  如果不存在核准的版本，則會複製草稿版本。
 
-```
+```http
 POST /rest/asset/v1/snippet/{id}/clone.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=Test Snippet Clone 3 - deverly&folder={"id":395,"type":"Folder"}&description=This is a test snippet
 ```
 

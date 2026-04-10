@@ -3,10 +3,10 @@ title: PhoneGap
 feature: Mobile Marketing
 description: 使用Cordova設定Marketo PhoneGap外掛程式、設定Firebase雲端訊息、啟用iOS和Android推播、追蹤通知，以及初始化SDK。
 exl-id: 99f14c76-9438-4942-9309-643bca434d07
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '813'
-ht-degree: 1%
+source-wordcount: '841'
+ht-degree: 2%
 
 ---
 
@@ -16,7 +16,7 @@ ht-degree: 1%
 
 ## 先決條件
 
-1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) (取得您的應用程式秘密金鑰和Munchkin ID)。
+1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）。
 1. 設定推播通知([iOS](push-notifications.md) | [Android](push-notifications.md))。
 1. [安裝PhoneGap/Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/)。
 
@@ -48,9 +48,9 @@ ht-degree: 1%
 
 **Cordova 8.0.0版(Cordova@Android7.0.0)及更高版本**
 
-建置Cordova Android平台之後，請使用Android Studio開啟應用程式，並更新`dirs`資料夾中找到`Marketo.gradle`檔案的`com.marketo.plugin`值。
+建置Cordova Android平台之後，請使用Android Studio開啟應用程式，並更新`com.marketo.plugin`資料夾中找到`Marketo.gradle`檔案的`dirs`值。
 
-```
+```groovy
 repositories{
   jcenter()
   flatDir{
@@ -66,12 +66,12 @@ repositories{
 1. Firebase Cloud Messaging支援
 
 1. 在Firebase主控台上設定Firebase應用程式。
-   1. 在[&#128279;](https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
+   1. 在[](https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
       1. 在[Firebase主控台](https://console.firebase.google.com/)中，選取&#x200B;**[!UICONTROL Add Project]**。
       1. 從現有Google Cloud專案清單中選取您的GCM專案，然後選取&#x200B;**[!UICONTROL Add Firebase]**。
       1. 在Firebase歡迎畫面中，選取「將Firebase新增至Android應用程式」。
       1. 提供您的封裝名稱和SHA-1，然後選取&#x200B;**[!UICONTROL Add App]**。 已下載您Firebase應用程式的新`google-services.json`檔案。
-   1. 在&#x200B;**[!UICONTROL Project Settings]**&#x200B;中導覽至[!UICONTROL Project Overview]
+   1. 在[!UICONTROL Project Overview]中導覽至&#x200B;**[!UICONTROL Project Settings]**
       1. 按一下「**[!UICONTROL General]**」標籤。 下載「google-services.json」檔案。
       1. 按一下「**[!UICONTROL Cloud Messaging]**」標籤。 複製[!UICONTROL Server Key]和[!UICONTROL Sender ID]。 提供這些[!UICONTROL Server Key]和[!UICONTROL Sender ID]給Marketo。
    1. 在Phonegap應用程式中設定FCM變更
@@ -113,11 +113,11 @@ repositories{
             fs.writeFileSync("platforms/android/app/src/main/res/values/strings.xml", strings);
             ```
 
-### 3.在xCode中啟用推播通知
+### &#x200B;3. 在xCode中啟用推播通知
 
 在xCode專案中開啟推播通知功能。
 
-### 4.追蹤推播通知
+### &#x200B;4. 追蹤推播通知
 
 將下列程式碼貼入`application:didFinishLaunchingWithOptions:`函式中。
 
@@ -127,7 +127,7 @@ repositories{
 
 更新`applicationDidBecomeActive`方法，如下所示
 
-```
+```objectivec
 Marketo *sharedInstance = [Marketo sharedInstance];
 
 [sharedInstance trackPushNotification:launchOptions];
@@ -137,7 +137,7 @@ Marketo *sharedInstance = [Marketo sharedInstance];
 
 更新`applicationDidBecomeActive`方法，如下所示
 
-```
+```swift
 let sharedInstance: Marketo = Marketo.sharedInstance()
 
 sharedInstance.trackPushNotification(launchOptions)
@@ -145,7 +145,7 @@ sharedInstance.trackPushNotification(launchOptions)
 
 >[!ENDTABS]
 
-### 5.初始化Marketo架構
+### &#x200B;5. 初始化Marketo框架
 
 若要確保在應用程式啟動時起始Marketo架構，請在主要JavaScript檔案的`onDeviceReady`函式下新增下列程式碼。
 
@@ -153,7 +153,7 @@ sharedInstance.trackPushNotification(launchOptions)
 
 ### 語法
 
-```
+```javascript
 // This method will Initialize the Marketo Framework using Your MunchkinId and Secret Key
 marketo.initialize(
   function() { console.log("MarketoSDK Init done."); },
@@ -177,13 +177,13 @@ marketo.onStart(
 - Munchkin ID ：註冊時從Marketo收到的Munchkin ID。
 - 秘密金鑰：註冊時從Marketo收到的秘密金鑰。
 
-### 6.初始化Marketo推播通知
+### &#x200B;6. 初始化Marketo推播通知
 
 若要確保Marketo推播通知已啟動，請在主要JavaScript檔案中的初始化函式後新增下列程式碼。
 
 ### 語法
 
-```
+```javascript
 // This function will Enable user notifications (prompts the user to accept push notifications in iOS)
 marketo.initializeMarketoPush(
     function() { console.log("Marketo push successfully initialized."); },
@@ -200,7 +200,7 @@ marketo.initializeMarketoPush(
 
 登出時也可以取消註冊權杖。
 
-```
+```javascript
 marketo. uninitializeMarketoPush(
   function() { console.log("Marketo push successfully uninitialized."); } ,
   function(error) { console.log("an error occurred:" + error); }
@@ -213,7 +213,7 @@ marketo. uninitializeMarketoPush(
 
 ### 語法
 
-```
+```javascript
 marketo.associateLead(
   function(){ console.log("MarketoSDK : Lead Added"); },
   function(error){ console.log("an error occurred:" + error); },
@@ -229,7 +229,7 @@ marketo.associateLead(
 
 ### 範例
 
-```
+```javascript
 // First create a lead as shown below
 var lead = {};
 lead[marketo.KEY_FIRST_NAME] = "Phone";
@@ -258,7 +258,7 @@ marketo.associateLead(
 
 ### 語法
 
-```
+```javascript
 marketo.reportaction(
   function(){ console.log("MarketoSDK : New event sent "); },
   function(error){ console.log("an error occurred:" + error); },
@@ -276,7 +276,7 @@ marketo.reportaction(
 
 ### 範例
 
-```
+```javascript
 // First create an event as below
 var event = {
     "Action Type":"Add To Cart",
@@ -297,7 +297,7 @@ marketo.reportaction(
 
 繫結「暫停」和「繼續」事件型別，如下所示，以報告「開始」和「停止」事件。  這可用來追蹤您在行動應用程式中花費的時間。 注意：這在Android中是必要的。
 
-```
+```javascript
 //Add the following code in your www/js/index.js
 
 bindEvents: function() {

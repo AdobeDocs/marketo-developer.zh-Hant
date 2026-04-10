@@ -2,7 +2,8 @@
 title: 使用情況
 feature: REST API
 description: 使用每日和過去7天的統計端點監視Marketo REST API使用情況和錯誤，包括每位使用者的計數和錯誤碼總計。
-source-git-commit: 73fa4c85ecabd4cfd24bc6591aad11dc4e75010a
+exl-id: 935a00a4-1e1e-4b48-ae9c-72c5e578312a
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '393'
 ht-degree: 8%
@@ -32,7 +33,7 @@ ht-degree: 8%
 
 擷取當天API使用狀況。
 
-```
+```http
 GET /rest/v1/stats/usage.json
 ```
 
@@ -69,7 +70,7 @@ GET /rest/v1/stats/usage.json
 
 擷取過去7天的API使用狀況。 `result`陣列中的每個元素代表一天。
 
-```
+```http
 GET /rest/v1/stats/usage/last7days.json
 ```
 
@@ -77,7 +78,7 @@ GET /rest/v1/stats/usage/last7days.json
 
 擷取當天的API錯誤。
 
-```
+```http
 GET /rest/v1/stats/errors.json
 ```
 
@@ -114,7 +115,7 @@ GET /rest/v1/stats/errors.json
 
 擷取過去7天的API錯誤。 `result`陣列中的每個元素代表一天。
 
-```
+```http
 GET /rest/v1/stats/errors/last7days.json
 ```
 

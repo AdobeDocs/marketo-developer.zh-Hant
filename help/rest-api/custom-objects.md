@@ -3,16 +3,16 @@ title: 自訂物件
 feature: REST API, Custom Objects
 description: 瞭解如何透過REST API建立和管理Marketo自訂物件，包括清單和說明端點、中繼資料、關係、欄位和查詢。
 exl-id: 88e8829b-f8f1-46d7-a753-5aa6e20e2c40
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
-source-wordcount: '2925'
+source-wordcount: '3344'
 ht-degree: 0%
 
 ---
 
 # 自訂物件
 
-[**自訂物件端點參考**](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects) Marketo可讓使用者定義與Marketo標準物件（銷售機會、公司）或其他Marketo自訂物件相關的Marketo自訂物件。  Marketo自訂物件可依照[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects)所述，使用Marketo UI建立，或依照以下所述使用自訂物件中繼資料API建立。
+[**自訂物件端點參考**](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects) Marketo可讓使用者定義與Marketo標準物件（銷售機會、公司）或其他Marketo自訂物件相關的Marketo自訂物件。  Marketo自訂物件可依照[此處](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects)所述，使用Marketo UI建立，或依照以下所述使用自訂物件中繼資料API建立。
 
 必須有適當的Marketo訂閱型別才能存取自訂物件中繼資料API。  如需詳細資訊，請洽詢您的CSM。
 
@@ -20,7 +20,7 @@ ht-degree: 0%
 
 除了可用於潛在客戶資料庫物件的標準說明、查詢、更新及刪除呼叫之外，自訂物件還有[清單呼叫](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectsUsingGET)可用。  呼叫此端點將會傳回回應，其中包含目的地執行個體中可用的自訂物件清單，以及有關物件的其他中繼資料。
 
-```
+```http
 GET /rest/v1/customobjects.json
 ```
 
@@ -63,7 +63,7 @@ GET /rest/v1/customobjects.json
 
 自訂物件的[describe呼叫](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/describeUsingGET_1)遵循與Opportunities和Companies相同的模式，在回應中加上`relationships`陣列，並在URI中加入`apiName`路徑引數，該引數採用要描述之自訂物件型別的API名稱。  就像清單呼叫一樣，這會列出此自訂物件型別可用的任何關係。
 
-```
+```http
 GET /rest/v1/customobjects/{apiName}/describe.json
 ```
 
@@ -170,11 +170,11 @@ GET /rest/v1/customobjects/{apiName}/describe.json
 
 [查詢自訂物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectsUsingGET)與其他Lead Database API稍有不同，且採用`apiName`路徑引數，如describe。  對於一般的filterType引數，查詢是類似其他記錄型別的查詢的簡單GET，需要`filterType`和`filterValues`。  它會選擇性地接受`**fields**`、`batchSize`和`nextPageToken`引數。  請求欄位清單時，如果請求了特定欄位但未傳回，則值會隱含為空值。
 
-```
+```http
 GET /rest/v1/customobjects/{apiName}.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fa,dff23271-f996-47d7-984f-f2676861b5fb
 ```
 
-```
+```json
 {
    "requestId":"e42b#14272d07d78",
    "success":true,
@@ -199,7 +199,7 @@ GET /rest/v1/customobjects/{apiName}.json?filterType=idField&filterValues=dff232
 
 或者，使用複合金鑰進行查詢時，API的行為類似機會角色API，接受具有JSON內文的POST。  JSON內文可能有與GET查詢相同的成員，但`filterValues`除外。  有一個`input`陣列取代篩選值，它採用物件，其中包含每個物件型別`dedupeFields`的命名成員。
 
-```
+```http
 POST /rest/v1/customobjects/{apiName}.json?_method=GET
 ```
 
@@ -263,9 +263,9 @@ POST /rest/v1/customobjects/{apiName}.json?_method=GET
 
 ## 建立和更新
 
-使用[同步自訂物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST)端點來建立或更新自訂物件，您可以使用`action`引數指定作業。  在一次呼叫中可建立或更新最多300筆記錄。  `input`陣列中使用的值主要是以[描述自訂物件](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/endpoint-reference#!/Custom_Objects/describeUsingGET_1)端點傳回的資訊為基礎。 在範例car物件中，只有一個重複資料刪除欄位，`vin`。  若要在使用dedupeFields模式時更新或建立記錄，輸入陣列中的每個記錄都必須至少包含一個`vin`欄位。
+使用[同步自訂物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST)端點來建立或更新自訂物件，您可以使用`action`引數指定作業。  在一次呼叫中可建立或更新最多300筆記錄。  `input`陣列中使用的值主要是以[描述自訂物件](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/endpoint-reference#!/Custom_Objects/describeUsingGET_1)端點傳回的資訊為基礎。 在範例car物件中，只有一個重複資料刪除欄位，`vin`。  若要在使用dedupeFields模式時更新或建立記錄，輸入陣列中的每個記錄都必須至少包含一個`vin`欄位。
 
-```
+```http
 POST /rest/v1/customobjects/{apiName}.json
 ```
 
@@ -334,7 +334,7 @@ POST /rest/v1/customobjects/{apiName}.json
 
 [刪除記錄](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/deleteCustomObjectsUsingPOST)非常簡單。  只要選取您的`deleteBy`模式（`idField`或`dedupeFields`），並在`input`陣列中的每個記錄中包含對應的欄位。 每個呼叫最多允許300筆記錄。
 
-```
+```http
 POST /rest/v1/customobjects/{apiName}/delete.json
 ```
 
@@ -401,7 +401,7 @@ POST /rest/v1/customobjects/{apiName}/delete.json
 
 [Describe自訂物件型別](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/describeUsingGET_1)端點傳回單一自訂物件型別的中繼資料。 所需的`apiName`路徑引數是說明的自訂物件型別的API名稱。  如果核准版本存在，則會傳回該版本。  否則會傳回草稿版本。  選用的`state`引數用於指定要傳回的版本： `draft`、`approved`或`approvedWithDraft`。
 
-```
+```http
 GET /rest/v1/customobjects/schema/{apiName}/describe.json?state=approved
 ```
 
@@ -518,9 +518,9 @@ GET /rest/v1/customobjects/schema/{apiName}/describe.json?state=approved
 
 ### 清單型別
 
-[清單自訂物件型別](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/listCustomObjectTypesUsingGET)端點會傳回目的地執行個體中所有可用自訂物件型別的中繼資料。  請注意，此端點類似於[清單自訂物件](https://experienceleague.adobe.com/docs/marketo-developer/marketo/soap/custom-objects/custom-objects.html?lang=zh-Hant)，但更全面，並包含其他中繼資料，例如狀態、關聯性和欄位。 如果核准版本存在，則會傳回該版本。  否則會傳回草稿版本。  選用的&#x200B;**state**&#x200B;引數用於指定要傳回的自訂物件型別的版本： **草稿**、**已核准**&#x200B;或&#x200B;**已核准並具草稿**。  選用的&#x200B;**names**&#x200B;引數用於指定要傳回的特定自訂物件型別名稱；其結構為API名稱清單（以逗號分隔）。
+[清單自訂物件型別](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/listCustomObjectTypesUsingGET)端點會傳回目的地執行個體中所有可用自訂物件型別的中繼資料。  請注意，此端點類似於[清單自訂物件](https://experienceleague.adobe.com/docs/marketo-developer/marketo/soap/custom-objects/custom-objects.html?lang=en)，但更全面，並包含其他中繼資料，例如狀態、關聯性和欄位。 如果核准版本存在，則會傳回該版本。  否則會傳回草稿版本。  選用的&#x200B;**state**&#x200B;引數用於指定要傳回的自訂物件型別的版本： **草稿**、**已核准**&#x200B;或&#x200B;**已核准並具草稿**。  選用的&#x200B;**names**&#x200B;引數用於指定要傳回的特定自訂物件型別名稱；其結構為API名稱清單（以逗號分隔）。
 
-```
+```http
 GET /rest/v1/customobjects/schema.json?names=purchaseHistory
 ```
 
@@ -703,7 +703,7 @@ GET /rest/v1/customobjects/schema.json?names=purchaseHistory
 
 以下是使用API建立新自訂物件型別的範例  名稱「transaction」。
 
-```
+```http
 POST /rest/v1/customobjects/schema.json
 ```
 
@@ -726,7 +726,7 @@ POST /rest/v1/customobjects/schema.json
 
 以下為後續呼叫，說明新建立的型別。
 
-```
+```http
 GET /rest/v1/customobjects/schema/transaction/describe.json
 ```
 
@@ -786,7 +786,7 @@ GET /rest/v1/customobjects/schema/transaction/describe.json
 
 以下範例說明如何更新API名稱為「transaction」之現有型別的說明。  **apiName**&#x200B;屬性為必要項。  在此處，我們將假設該型別已經存在，並對選用的&#x200B;**action**&#x200B;屬性使用updateOnly。  除了&#x200B;**apiName**&#x200B;之外，可用於建立的屬性也可能會更新。
 
-```
+```http
 POST /rest/v1/customobjects/schema.json
 ```
 
@@ -808,7 +808,7 @@ POST /rest/v1/customobjects/schema.json
 
 ## 核准型別
 
-自訂物件型別必須先經過核准，才能使用。 使用[同步自訂物件型別](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/syncCustomObjectTypeUsingPOST)端點建立新的自訂物件型別時，會建立為草稿版本。 新增完自訂欄位後，您必須核准草稿版本。 這樣會建立核准版本並刪除草稿版本。 當使用「同步自訂物件型別」端點或使用「新增/更新/刪除自訂物件型別」欄位端點修改現有自訂物件型別時，會建立草稿版本。 對型別或其欄位的所有修改只會影響草稿版本。 完成修改後，您必須核准草稿版本。 這會將核准的版本替換為草稿版本，並刪除草稿版本。 如需自訂物件核准的詳細資訊，請參閱產品檔案[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object)。
+自訂物件型別必須先經過核准，才能使用。 使用[同步自訂物件型別](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/syncCustomObjectTypeUsingPOST)端點建立新的自訂物件型別時，會建立為草稿版本。 新增完自訂欄位後，您必須核准草稿版本。 這樣會建立核准版本並刪除草稿版本。 當使用「同步自訂物件型別」端點或使用「新增/更新/刪除自訂物件型別」欄位端點修改現有自訂物件型別時，會建立草稿版本。 對型別或其欄位的所有修改只會影響草稿版本。 完成修改後，您必須核准草稿版本。 這會將核准的版本替換為草稿版本，並刪除草稿版本。 如需自訂物件核准的詳細資訊，請參閱產品檔案[這裡](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object)。
 
 在核准自訂物件型別後，您無法：
 
@@ -820,9 +820,9 @@ POST /rest/v1/customobjects/schema.json
 
 ### 核准型別
 
-使用[核准自訂物件型別](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/approveCustomObjectTypeUsingPOST)端點將草稿版本發佈為新核准版本。  **apiName**&#x200B;是唯一可作為路徑引數的必要引數。  除非型別處於草稿狀態，且符合描述為[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object)的一組驗證規則，否則無法核准型別。
+使用[核准自訂物件型別](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/approveCustomObjectTypeUsingPOST)端點將草稿版本發佈為新核准版本。  **apiName**&#x200B;是唯一可作為路徑引數的必要引數。  除非型別處於草稿狀態，且符合描述為[此處](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/approve-a-custom-object)的一組驗證規則，否則無法核准型別。
 
-```
+```http
 POST /rest/v1/customobjects/schema/{apiName}/approve.json
 ```
 
@@ -838,7 +838,7 @@ POST /rest/v1/customobjects/schema/{apiName}/approve.json
 
 使用[捨棄自訂物件型別草稿](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/discardCustomObjectTypeUsingPOST)端點來刪除草稿版本。 `apiName`是唯一需要的引數做為路徑引數。 型別必須處於草稿狀態才能捨棄，亦即無法捨棄已核准的型別。
 
-```
+```http
 POST /rest/v1/customobjects/schema/{apiName}/discardDraft.json
 ```
 
@@ -879,23 +879,23 @@ POST /rest/v1/customobjects/schema/{apiName}/delete.json
 * 至少需要1個重複資料刪除欄位，最多允許3個
 * 欄位API名稱和顯示名稱可能包含英數字元和底線「_」
 
-如需自訂物件欄位的詳細資訊，請參閱產品檔案[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields)。
+如需自訂物件欄位的詳細資訊，請參閱產品檔案[這裡](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields)。
 
 ### 新增欄位
 
-[新增自訂物件型別欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/addCustomObjectTypeFieldsUsingPOST)端點可讓您新增一或多個欄位至自訂物件。  要求內文包含具有一或多個元素的`input`陣列。  每個元素都是一個JSON物件，其屬性用於描述欄位。 必要的`name`屬性是欄位的API名稱，且必須是自訂物件唯一的。   慣例是使用小寫或駝峰式大小寫來協助區分其他文字字串。 必要的`displayName`屬性是使用者可讀取的欄位名稱，且必須是自訂物件的唯一名稱。 必要的`dataType`屬性是欄位的資料型別。  A  呼叫[取得自訂物件型別欄位資料型別](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectTypeFieldDataTypesUsingGET)端點，即可取得允許的資料型別清單。  自訂物件可包含資料型別為「連結」的欄位。  連結欄位可用來建立自訂物件與系統中其他物件型別（例如銷售機會、公司）之間的關係。  連結欄位的詳細資訊可在[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields)找到。 選用的`description`屬性是欄位的描述。 選用的`isDedupeField`布林值屬性會指定在自訂物件更新作業期間是否使用欄位進行重複資料刪除。  預設設定為false。  對於一對多關係，需要重複資料刪除欄位。 選用的`relatedTo`物件屬性指定了連結欄位。  對於一對多關係，此物件包含`name`屬性（要連結的「連結物件」或父物件）和`field`屬性（即「連結欄位」）。  或父物件內的欄位以用作索引鍵屬性。  呼叫[取得自訂物件可連結物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectTypeLinkableObjectsUsingGET)端點以擷取允許的連結物件清單。  如需連結欄位的詳細資訊，請參閱產品檔案[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields)。 自訂物件無法連結至具有現有連結欄位的另一個自訂物件。
+[新增自訂物件型別欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/addCustomObjectTypeFieldsUsingPOST)端點可讓您新增一或多個欄位至自訂物件。  要求內文包含具有一或多個元素的`input`陣列。  每個元素都是一個JSON物件，其屬性用於描述欄位。 必要的`name`屬性是欄位的API名稱，且必須是自訂物件唯一的。   慣例是使用小寫或駝峰式大小寫來協助區分其他文字字串。 必要的`displayName`屬性是使用者可讀取的欄位名稱，且必須是自訂物件的唯一名稱。 必要的`dataType`屬性是欄位的資料型別。  A  呼叫[取得自訂物件型別欄位資料型別](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectTypeFieldDataTypesUsingGET)端點，即可取得允許的資料型別清單。  自訂物件可包含資料型別為「連結」的欄位。  連結欄位可用來建立自訂物件與系統中其他物件型別（例如銷售機會、公司）之間的關係。  連結欄位的詳細資訊可在[這裡](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields)找到。 選用的`description`屬性是欄位的描述。 選用的`isDedupeField`布林值屬性會指定在自訂物件更新作業期間是否使用欄位進行重複資料刪除。  預設設定為false。  對於一對多關係，需要重複資料刪除欄位。 選用的`relatedTo`物件屬性指定了連結欄位。  對於一對多關係，此物件包含`name`屬性（要連結的「連結物件」或父物件）和`field`屬性（即「連結欄位」）。  或父物件內的欄位以用作索引鍵屬性。  呼叫[取得自訂物件可連結物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectTypeLinkableObjectsUsingGET)端點以擷取允許的連結物件清單。  如需連結欄位的詳細資訊，請參閱產品檔案[這裡](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields)。 自訂物件無法連結至具有現有連結欄位的另一個自訂物件。
 
 ### 一對多關係
 
-對於一對多自訂物件結構，請使用自訂物件中的連結欄位來將其連線到標準物件：潛在客戶或公司。 我們以Marketo產品檔案[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure)的汽車擁有者範例為例，建立包含汽車相關資訊的自訂物件來連線銷售機會。
+對於一對多自訂物件結構，請使用自訂物件中的連結欄位來將其連線到標準物件：潛在客戶或公司。 我們以Marketo產品檔案[這裡](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure)的汽車擁有者範例為例，建立包含汽車相關資訊的自訂物件來連線銷售機會。
 
 1. 建立&#x200B;**Car**&#x200B;物件
-1. 新增欄位至&#x200B;**Car**&#x200B;物件： **VIN**&#x200B;上的重複資料刪除，連結至&#x200B;**銷售機會**&#x200B;**/銷售機會ID**
+1. 新增欄位至&#x200B;**Car**&#x200B;物件： **VIN**&#x200B;上的重複資料刪除，連結至&#x200B;**銷售機會****/銷售機會ID**
 1. 核准&#x200B;**車**&#x200B;物件
 
 首先，建立自訂物件型別以包含車輛特定資訊。
 
-```
+```http
 POST /rest/v1/customobjects/schema.json
 ```
 
@@ -920,7 +920,7 @@ POST /rest/v1/customobjects/schema.json
 
 現在，新增欄位至Car自訂物件型別。 我們使用連結欄位來指定要連線的物件和欄位。 在此案例中，連結物件為銷售機會，連結欄位為ID。 使用字串欄位進行重複資料刪除(VIN)。  我們將新增三個欄位以儲存其他汽車屬性（製造商、型號、年份）。
 
-```
+```http
 POST /rest/v1/customobjects/schema/car/addField.json
 ```
 
@@ -974,7 +974,7 @@ POST /rest/v1/customobjects/schema/car/addField.json
 
 最後，核准自訂物件型別。
 
-```
+```http
 POST /rest/v1/customobjects/schema/course/approve.json
 ```
 
@@ -988,18 +988,18 @@ POST /rest/v1/customobjects/schema/course/approve.json
 
 ### 多對多關係
 
-多對多關係在標準自訂物件（如Lead或Company）與「邊緣」自訂物件之間使用「橋接器」或中介、自訂物件來表示。 Edge物件是包含描述性屬性（欄位）的主要實體。 橋接物件包含資料，可使用2個連結欄位來解析物件關係。  有一個連結欄位指向父標準物件，就像在  一對多關係設定。  另一個連結欄位指向邊緣物件，這是沒有連結的自訂物件。  橋接器物件也可能包含描述性屬性（欄位）。 我們使用Marketo產品檔案[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure)中的大學課程註冊範例，建立邊緣自訂物件以包含課程相關資訊，並建立註冊橋接物件，用於將課程與潛在客戶連線。 步驟如下：
+多對多關係在標準自訂物件（如Lead或Company）與「邊緣」自訂物件之間使用「橋接器」或中介、自訂物件來表示。 Edge物件是包含描述性屬性（欄位）的主要實體。 橋接物件包含資料，可使用2個連結欄位來解析物件關係。  有一個連結欄位指向父標準物件，就像在  一對多關係設定。  另一個連結欄位指向邊緣物件，這是沒有連結的自訂物件。  橋接器物件也可能包含描述性屬性（欄位）。 我們使用Marketo產品檔案[此處](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure)中的大學課程註冊範例，建立邊緣自訂物件以包含課程相關資訊，並建立註冊橋接物件，用於將課程與潛在客戶連線。 以下是步驟：
 
 1. 建立&#x200B;**課程**&#x200B;邊緣物件
 1. 在&#x200B;**課程ID**&#x200B;上新增欄位至&#x200B;**課程：**&#x200B;重複資料刪除
 1. 核准&#x200B;**課程**
 1. 建立&#x200B;**註冊**&#x200B;橋接器物件
-1. 新增欄位至&#x200B;**註冊：**&#x200B;註冊ID **上的**&#x200B;重複資料刪除、連結至&#x200B;**課程**&#x200B;**/課程ID**&#x200B;欄位，以及連結至&#x200B;**銷售機會**&#x200B;**/銷售機會ID**
+1. 新增欄位至&#x200B;**註冊：**&#x200B;註冊ID **上的**&#x200B;重複資料刪除、連結至&#x200B;**課程****/課程ID**&#x200B;欄位，以及連結至**銷售機會****/銷售機會ID**
 1. 核准&#x200B;**註冊**
 
 首先，建立Edge物件型別以包含課程特定資訊：
 
-```
+```http
 POST /rest/v1/customobjects/schema.json
 ```
 
@@ -1024,7 +1024,7 @@ POST /rest/v1/customobjects/schema.json
 
 接下來，我們將自訂欄位新增至邊緣物件型別。  在此範例中，我們將新增下列四個自訂欄位來模型化大學課程：課程ID、課程講師、課程位置、課程名稱。  請注意，由於至少需要一個重複資料刪除欄位，因此我們指定課程ID作為重複資料刪除欄位。
 
-```
+```http
 POST /rest/v1/customobjects/schema/course/addField.json
 ```
 
@@ -1056,7 +1056,7 @@ POST /rest/v1/customobjects/schema/course/addField.json
 }
 ```
 
-```
+```json
 {
     "requestId": "cc36#16895b82a41",
     "result": [],
@@ -1066,7 +1066,7 @@ POST /rest/v1/customobjects/schema/course/addField.json
 
 現在，我們需要核准Edge物件型別，以便稍後在連結至Bridge物件型別時可以參考它。  請注意，自訂物件型別必須經過核准，才能選取為連結物件。
 
-```
+```http
 POST /rest/v1/customobjects/schema/course/approve.json
 ```
 
@@ -1080,7 +1080,7 @@ POST /rest/v1/customobjects/schema/course/approve.json
 
 邊緣物件已完成。  現在，讓我們繼續建立橋接器物件型別，以包含註冊特定資訊。
 
-```
+```http
 POST /rest/v1/customobjects/schema.json
 ```
 
@@ -1105,7 +1105,7 @@ POST /rest/v1/customobjects/schema.json
 
 若要將自訂欄位新增至橋接器物件型別，請新增兩個連結欄位：一個連結至Lead物件，另一個連結至我們剛建立的Course物件。 若要連結至銷售機會物件，請使用「銷售機會ID」欄位。 若要連結至課程物件，請使用「課程ID」欄位。  接著，新增註冊ID唯一識別碼作為重複資料刪除欄位，因為至少需要一個重複資料刪除欄位。 最後，新增「成績」欄位以追蹤學生的成績。
 
-```
+```http
 POST /rest/v1/customobjects/schema/enrollment/addField.json
 ```
 
@@ -1159,7 +1159,7 @@ POST /rest/v1/customobjects/schema/enrollment/addField.json
 
 最後，核准橋接器物件。
 
-```
+```http
 POST /rest/v1/customobjects/schema/enrollment/approve.json
 ```
 
@@ -1171,13 +1171,13 @@ POST /rest/v1/customobjects/schema/enrollment/approve.json
 }
 ```
 
-您可以使用[同步自訂物件](#create_and_update)或[大量自訂物件匯入](https://experienceleague.adobe.com/docs/marketo-developer/marketo/rest/bulk-import/bulk-custom-object-import.html?lang=zh-Hant)，以程式設計方式填入自訂物件記錄。 或者，您可以使用Marketo UI功能[匯入自訂物件資料](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/import-custom-object-data)。
+您可以使用[同步自訂物件](#create_and_update)或[大量自訂物件匯入](https://experienceleague.adobe.com/docs/marketo-developer/marketo/rest/bulk-import/bulk-custom-object-import.html?lang=en)，以程式設計方式填入自訂物件記錄。 或者，您可以使用Marketo UI功能[匯入自訂物件資料](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/import-custom-object-data)。
 
 ## 更新欄位
 
 [更新自訂物件型別欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/updateCustomObjectTypeFieldUsingPOST)端點可讓您更新草稿自訂物件中的欄位。  必要的路徑引數`apiName`是自訂物件型別的API名稱。  必要的路徑引數`fieldAPIName`是自訂物件型別欄位的API名稱。  請求內文包含JSON物件，其中包含指定要更新的欄位屬性的索引鍵/值組。
 
-```
+```http
 POST /rest/v1/customobjects/schema/{apiName}/{fieldApiName}/updateField.json
 ```
 
@@ -1200,7 +1200,7 @@ POST /rest/v1/customobjects/schema/{apiName}/{fieldApiName}/updateField.json
 
 [刪除自訂物件型別欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/deleteCustomObjectTypeFieldsUsingPOST)端點可讓您從自訂物件中刪除一或多個欄位。  必要的路徑引數`apiName`是自訂物件型別的API名稱。  要求內文包含的JSON物件具有`input`陣列以及一個或多個元素。  每個元素都是具有`name`屬性的JSON物件，其指定要刪除之欄位的API名稱。
 
-```
+```http
 POST /rest/v1/customobjects/schema/{apiName}/deleteField.json
 ```
 
@@ -1230,7 +1230,7 @@ POST /rest/v1/customobjects/schema/{apiName}/deleteField.json
 
 [取得自訂物件型別欄位資料型別](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectTypeFieldDataTypesUsingGET)端點傳回所有允許欄位資料型別的清單。 在為自訂物件型別建模以識別受支援的自訂欄位資料型別時，這非常有用。
 
-```
+```http
 GET /rest/v1/customobjects/schema/fieldDataTypes.json
 ```
 
@@ -1258,7 +1258,7 @@ GET /rest/v1/customobjects/schema/fieldDataTypes.json
 
 [取得自訂物件可連結物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectTypeLinkableObjectsUsingGET)端點傳回所有允許連結物件及其連結欄位的清單。  此清單將包含「標準物件」（銷售機會、公司），以及在執行個體中建立的任何「自訂物件」。
 
-```
+```http
 GET /rest/v1/customobjects/schema/linkableObjects.json
 ```
 
@@ -1448,7 +1448,7 @@ GET /rest/v1/customobjects/schema/linkableObjects.json
 
 [取得自訂物件相依Assets](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/getCustomObjectTypeDependentAssetsUsingGET)端點傳回自訂物件型別的相依資產清單，包括其執行個體內位置。  這在移除整合時相當實用，而且您需要識別正在使用自訂物件型別的每個位置。
 
-```
+```http
 GET /rest/v1/customobjects/schema/{apiName}/dependentAssets.json
 ```
 

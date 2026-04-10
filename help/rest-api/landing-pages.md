@@ -3,7 +3,7 @@ title: 登陸頁面
 feature: REST API, Landing Pages
 description: 使用Marketo REST API來查詢中繼資料和內容、建立、更新、核准、刪除和複製登入頁面，包括引導式和自由表單型別。
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
 workflow-type: tm+mt
 source-wordcount: '1221'
 ht-degree: 1%
@@ -18,11 +18,11 @@ ht-degree: 1%
 
 ## 查詢
 
-如同其他大部分資產，登入頁面可依名稱[&#x200B; &#x200B;](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages/operation/getLandingPageByNameUsingGET)、[依識別碼](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages/operation/getLandingPageByIdUsingGET)和[瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages/operation/browseLandingPagesUsingGET)查詢。 這些查詢將只會傳回中繼資料，而且登入頁面的內容區段清單必須依登入頁面的ID單獨查詢。
+如同其他大部分資產，登入頁面可依名稱[ ](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages/operation/getLandingPageByNameUsingGET)、[依識別碼](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages/operation/getLandingPageByIdUsingGET)和[瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Pages/operation/browseLandingPagesUsingGET)查詢。 這些查詢將只會傳回中繼資料，而且登入頁面的內容區段清單必須依登入頁面的ID單獨查詢。
 
 查詢登入頁面的內容將傳回登入頁面中可用的內容區段清單。 區段必須存在於頁面的內容清單中才能更新內容：
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/content.json
 ```
 
@@ -60,15 +60,15 @@ GET /rest/asset/v1/landingPage/{id}/content.json
 
 [登入頁面內容](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content)端點的有效內容型別為： rtf、HTML、Form、Image、Rectangle、Snippet。
 
-```
+```http
 POST rest/asset/v1/landingPages.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=createLandingPage&folder={"type": "Folder", "id": 11}&template=1&description=this is a test&workspace=default&title=test create&keywords=awesome&formPrefill=false
 ```
 
@@ -129,15 +129,15 @@ Marketo提供複製登入頁面的簡單方法。 這是application/x-www-url-f
 
 選用的`description`引數可用來說明新的登陸頁面。
 
-```
+```http
 POST /rest/asset/v1/landingPage/{id}/clone.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 name=MyNewLandingPage&folder={"type":"Program","id":1119}&template=57
 ```
 
@@ -195,7 +195,7 @@ name=MyNewLandingPage&folder={"type":"Program","id":1119}&template=57
 
 若要建立「動態內容」區段，該區段必須已存在於登入頁面的內容清單中。 然後，必須使用[更新登入頁面內容區段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST)端點將型別設定為&#39;DynamicContent&#39;。 當區段設為動態內容時，會在內容區段中建立基礎動態區段，這些區段都會繼承轉換元素的基本型別。 每個動態區段也會繼承已轉換區段的內容。
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/dynamicContent/RVMtNDg=.json
 ```
 
@@ -231,15 +231,15 @@ GET /rest/asset/v1/landingPage/{id}/dynamicContent/RVMtNDg=.json
 
 [每個個別區段的內容](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Content/operation/updateLandingPageDynamicContentUsingPOST)會根據區段ID進行更新。
 
-```
+```http
 POST /rest/asset/v1/landingPage/{id}/dynamicContent/{dynamicContentId}.json
 ```
 
-```
+```text
 Content-Type: application/x-www-form-urlencoded
 ```
 
-```
+```text
 segment=New Segment&value=New Content
 ```
 
@@ -274,13 +274,13 @@ segment=New Segment&value=New Content
 </head>
 ```
 
-如需詳細資訊，請參閱[建立引導式登陸頁面範本](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)檔案中的「可編輯變數」一節。
+如需詳細資訊，請參閱[建立引導式登陸頁面範本](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)檔案中的「可編輯變數」一節。
 
 ### 查詢
 
 將登陸頁面ID傳遞至「取得登陸頁面變數」端點，擷取引導式登陸頁面的變數。
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/variables.json
 ```
 
@@ -316,7 +316,7 @@ GET /rest/asset/v1/landingPage/{id}/variables.json
 
 將登陸頁面ID、變數ID和變數值傳遞至「更新登陸頁面變數」端點，以更新引導式登陸頁面的變數。
 
-```
+```http
 POST /rest/asset/v1/landingPage/{id}/variable/{variableId}.json?value={newValue}
 ```
 
@@ -343,7 +343,7 @@ Marketo提供[取得登陸頁面完整內容](https://developer.adobe.com/market
 - segmentation：接受包含segmentationId和segmentId屬性的JSON物件陣列。 設定後，會將您視為符合這些區段的潛在客戶來預覽登陸頁面。
 - 銷售機會ID：  接受潛在客戶的整數ID。 設定後，會預覽登入頁面，就像是由指定的潛在客戶檢視一樣。
 
-```
+```http
 GET /rest/asset/v1/landingPage/{id}/fullContent.json?leadId=1001&segmentation=[{"segmentationId":1030,"segmentId":1103}]
 ```
 
