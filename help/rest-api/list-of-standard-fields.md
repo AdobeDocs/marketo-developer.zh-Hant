@@ -3,9 +3,9 @@ title: 標準欄位
 feature: REST API, Field Management
 description: 瀏覽Marketo標準銷售機會欄位的完整清單，其中包含REST和SOAP名稱、標籤和說明，以及如何透過Describe Lead API擷取它們。
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
-source-git-commit: d674384b3ab979df2322ece3f02155259d05431a
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '727'
+source-wordcount: '742'
 ht-degree: 16%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 16%
 
 以下是可透過API存取的Marketo中可用標準欄位清單。
 
-您可以使用REST [Describe Lead](https://developer.adobe.com/marketo-apis/api/mapi/)端點來擷取潛在客戶記錄上所有支援的欄位名稱清單。
+您可以使用REST [Describe Lead](https://developer.adobe.com/marketo-apis/api/mapi)端點來擷取潛在客戶記錄上所有支援的欄位名稱清單。
 
 | REST API名稱 | SOAP API名稱 | 易記標籤 | 說明 |
 | --- | --- | --- | --- |
@@ -53,7 +53,7 @@ ht-degree: 16%
 | 電話 | 電話 | 電話號碼 | 潛在客戶的電話號碼 |
 | postalCode | 郵遞區號 | 郵遞區號 | 潛在客戶的郵遞區號 |
 | 評等 | 評等 | 銷售線索評等 | 潛在客戶的行銷/銷售評等 |
-| salutation | 問候語 | 問候語 | 潛在客戶偏好的稱呼，例如「先生」、「未接電話」等。 |
+| salutation | 問候語 | 問候語 | 潛在客戶偏好的稱呼，即先生、未接電話……等等 |
 | sicCode | SICCode | SIC 代碼 | 潛在客戶公司的標準產業分類代碼 |
 | 網站 | 地點 | 地點 |  |
 | state | 狀態 | 狀態 | 潛在客戶狀態 |

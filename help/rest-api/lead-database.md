@@ -3,7 +3,7 @@ title: 商機資料庫
 feature: REST API, Database
 description: Marketo銷售機會資料庫API的指南，涵蓋物件、CRUD和描述方法、查詢模式、批次限制和CRM整合限制。
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1373'
 ht-degree: 1%
@@ -32,7 +32,7 @@ Lead Database物件包括：
 
 ## API
 
-如需潛在客戶資料庫API端點的完整清單，包括引數和模型資訊，請參閱[潛在客戶資料庫API端點參考](https://developer.adobe.com/marketo-apis/api/mapi/)。
+如需潛在客戶資料庫API端點的完整清單，包括引數和模型資訊，請參閱[潛在客戶資料庫API端點參考](https://developer.adobe.com/marketo-apis/api/mapi)。
 
 若執行個體已啟用原生CRM整合（Microsoft Dynamics或Salesforce.com），則公司、機會、機會角色和銷售人員API都會停用。 記錄會在啟用時透過CRM管理，且無法透過Marketo的API存取或更新。
 

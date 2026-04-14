@@ -3,10 +3,10 @@ title: 端點參考
 feature: REST API
 description: 全方位的Marketo REST API端點清單，包含方法、URI和跨活動、大量匯出、身分、銷售機會、資產、使用者的必要許可權。
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: 9c10469ffa3b763552d176329a426ef51eebe0f1
 workflow-type: tm+mt
 source-wordcount: '4793'
-ht-degree: 7%
+ht-degree: 8%
 
 ---
 
@@ -14,9 +14,9 @@ ht-degree: 7%
 
 以下是Marketo REST API參考資料的連結。
 
-- [資產](https://developer.adobe.com/marketo-apis/api/asset/)
+- [資產](https://developer.adobe.com/marketo-apis/api/asset)
 - [身分識別](https://developer.adobe.com/marketo-apis/api/identity/)
-- [商機資料庫](https://developer.adobe.com/marketo-apis/api/mapi/)
+- [商機資料庫](https://developer.adobe.com/marketo-apis/api/mapi)
 - [使用者管理](https://developer.adobe.com/marketo-apis/api/user/)
 
 ## 端點清單 {#endpoint_list}
@@ -328,7 +328,7 @@ ht-degree: 7%
 | 依ID取得靜態清單 | 靜態清單 | GET | /asset/v1/staticList/{id}.json | 唯讀資產 |
 | 依名稱取得靜態清單 | 靜態清單 | GET | /asset/v1/staticList/byName.json | 唯讀資產 |
 | 取得靜態清單 | 靜態清單 | GET | /asset/v1/staticLists.json | 唯讀資產 |
-| 清單成員 | 靜態清單 | GET | /rest/v1/lists/{listId}/leads/ismember.json | 唯讀銷售機會 |
+| 清單的成員 | 靜態清單 | GET | /rest/v1/lists/{listId}/leads/ismember.json | 唯讀銷售機會 |
 | 從清單中移除 | 靜態清單 | DELETE | /rest/v1/lists/{listId}/leads.json | 讀寫潛在客戶 |
 | 更新靜態清單中繼資料 | 靜態清單 | POST | /asset/v1/staticList/{id}.json | 讀寫資產 |
 | 依名稱取得標籤 | 標記 | GET | /rest/asset/v1/tagType/byName.json | 唯讀資產 |

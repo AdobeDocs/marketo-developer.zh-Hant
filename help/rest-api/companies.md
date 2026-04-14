@@ -3,7 +3,7 @@ title: 公司
 feature: REST API
 description: 使用Marketo Companies REST API來說明、查詢及同步公司記錄、管理欄位並依externalCompanyId重複資料刪除，並注意CRM同步為唯讀。
 exl-id: 80e514a2-1c86-46a7-82bc-e4db702189b0
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '676'
 ht-degree: 1%
@@ -12,11 +12,11 @@ ht-degree: 1%
 
 # 公司
 
-[公司端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies)
+[公司端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies)
 
-公司代表潛在客戶記錄所屬的組織。 使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/syncLeadUsingPOST)或[大量銷售機會匯入](bulk-lead-import.md)端點填入其對應的`externalCompanyId`欄位，以將銷售機會新增到公司。 將潛在客戶新增至公司後，您即無法從該公司中刪除該潛在客戶（除非您將潛在客戶新增至其他公司）。 連結到公司記錄的銷售機會將直接繼承來自公司記錄的值，就像值存在於銷售機會自己的記錄上一樣。
+公司代表潛在客戶記錄所屬的組織。 使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST)或[大量銷售機會匯入](bulk-lead-import.md)端點填入其對應的`externalCompanyId`欄位，以將銷售機會新增到公司。 將潛在客戶新增至公司後，您即無法從該公司中刪除該潛在客戶（除非您將潛在客戶新增至其他公司）。 連結到公司記錄的銷售機會將直接繼承來自公司記錄的值，就像值存在於銷售機會自己的記錄上一樣。
 
-對於已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=zh-Hant)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=zh-Hant)的訂閱，公司API是唯讀存取權。
+對於已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en)的訂閱，公司API是唯讀存取權。
 
 ## 說明
 
@@ -98,7 +98,7 @@ GET /rest/v1/companies/describe.json
 
 ## 查詢
 
-[查詢公司](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompaniesUsingGET)的模式非常遵循潛在客戶API的模式，新增限製為`filterType`引數接受Describe Companies呼叫或dedupeFields的searchableFields陣列中所列的欄位。
+[查詢公司](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompaniesUsingGET)的模式非常遵循潛在客戶API的模式，新增限製為`filterType`引數接受Describe Companies呼叫或dedupeFields的searchableFields陣列中所列的欄位。
 
 `filterType`和`filterValues`是必要的查詢引數。  `fields`、`nextPageToken`和`batchSize`是選用引數。  這些引數的功能就像潛在客戶與商機API中的對應引數一樣。 請求`fields`的清單時，如果請求特定欄位但未傳回，則值會隱含為空值。
 
@@ -136,7 +136,7 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 
 ## 建立和更新
 
-[同步公司](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/syncCompaniesUsingPOST)端點接受包含公司物件陣列的必要`input`引數。 就像商機一樣，建立和更新公司有三種模式：createOnly、updateOnly和createOrUpdate。  在要求的`action`引數中指定模式。 `dedupeBy`和`action`引數都是選用引數，分別預設為dedupeFields和createOrUpdate模式。
+[同步公司](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST)端點接受包含公司物件陣列的必要`input`引數。 就像商機一樣，建立和更新公司有三種模式：createOnly、updateOnly和createOrUpdate。  在要求的`action`引數中指定模式。 `dedupeBy`和`action`引數都是選用引數，分別預設為dedupeFields和createOrUpdate模式。
 
 ```http
 POST /rest/v1/companies.json
@@ -194,7 +194,7 @@ Content-Type: application/json
 
 #### 依名稱
 
-[依名稱取得公司欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldByNameUsingGET)端點會擷取公司物件上單一欄位的中繼資料。 必要的`fieldApiName`路徑引數指定欄位的API名稱。 回應類似於Describe Company端點，但包含其他中繼資料，例如`isCustom`屬性，其代表欄位是否為自訂欄位。
+[依名稱取得公司欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldByNameUsingGET)端點會擷取公司物件上單一欄位的中繼資料。 必要的`fieldApiName`路徑引數指定欄位的API名稱。 回應類似於Describe Company端點，但包含其他中繼資料，例如`isCustom`屬性，其代表欄位是否為自訂欄位。
 
 ```http
 GET /rest/v1/companies/schema/fields/industry.json
@@ -223,7 +223,7 @@ GET /rest/v1/companies/schema/fields/industry.json
 
 #### 瀏覽
 
-[取得公司欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Companies/operation/getCompanyFieldsUsingGET)端點會擷取公司物件上所有欄位的中繼資料。 依預設，最多會傳回300筆記錄。 您可以使用`batchSize`查詢引數來減少此數目。 如果`moreResult`屬性為true，則表示有更多結果可用。 繼續呼叫此端點，直到moreResult屬性傳回false （表示沒有可用的結果）。 從此API傳回的`nextPageToken`應一律重複用於此呼叫的下一個反複專案。
+[取得公司欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldsUsingGET)端點會擷取公司物件上所有欄位的中繼資料。 依預設，最多會傳回300筆記錄。 您可以使用`batchSize`查詢引數來減少此數目。 如果`moreResult`屬性為true，則表示有更多結果可用。 繼續呼叫此端點，直到moreResult屬性傳回false （表示沒有可用的結果）。 從此API傳回的`nextPageToken`應一律重複用於此呼叫的下一個反複專案。
 
 ```http
 GET /rest/v1/companies/schema/fields.json?batchSize=5

@@ -3,9 +3,9 @@ title: 資產
 feature: REST API
 description: Marketo Asset REST API概觀，可依ID或名稱查詢、使用分頁功能瀏覽，以及建立或更新資料夾、電子郵件、表單、範本、檔案和權杖。
 exl-id: 4273a5b1-1904-46e8-b583-fc6f46b388d2
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '898'
+source-wordcount: '899'
 ht-degree: 2%
 
 ---

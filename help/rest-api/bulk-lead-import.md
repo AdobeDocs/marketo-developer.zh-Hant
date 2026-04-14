@@ -3,7 +3,7 @@ title: 大量潛在客戶匯入
 feature: REST API
 description: 使用CSV TSV或SSV在Marketo中建立並監視非同步的大量潛在客戶匯入。
 exl-id: 615f158b-35f9-425a-b568-0a7041262504
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '825'
 ht-degree: 0%
@@ -12,9 +12,9 @@ ht-degree: 0%
 
 # 大量潛在客戶匯入
 
-[大量潛在客戶匯入端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads)
+[大量潛在客戶匯入端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads)
 
-針對大量潛在客戶記錄，可以使用[大量API](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)非同步匯入潛在客戶。 這可讓您使用含分隔字元（逗號、定位字元或分號）的平面檔案，將記錄清單匯入Marketo。 檔案可包含任意數量的記錄，只要檔案總計小於10MB即可。 記錄作業僅限「插入或更新」。
+針對大量潛在客戶記錄，可以使用[大量API](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)非同步匯入潛在客戶。 這可讓您使用含分隔字元（逗號、定位字元或分號）的平面檔案，將記錄清單匯入Marketo。 檔案可包含任意數量的記錄，只要檔案總計小於10MB即可。 記錄作業僅限「插入或更新」。
 
 ## 處理限制
 

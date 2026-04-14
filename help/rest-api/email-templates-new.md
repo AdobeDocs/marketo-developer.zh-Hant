@@ -3,7 +3,7 @@ title: 電子郵件範本
 feature: REST API
 description: 使用Marketo Asset REST API可查詢、建立、更新、複製、刪除、核准和檢查電子郵件範本的相依性。
 exl-id: 50bb0047-d6ea-4c94-a900-18c37b17a147
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '292'
 ht-degree: 9%
@@ -12,7 +12,7 @@ ht-degree: 9%
 
 # 電子郵件範本
 
-[電子郵件範本端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Email-Templates)
+[電子郵件範本端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Email-Templates)
 
 電子郵件範本定義建立電子郵件時使用的結構和可重複使用的版面。
 

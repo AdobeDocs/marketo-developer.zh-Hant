@@ -3,9 +3,9 @@ title: 自訂服務
 feature: REST API
 description: 建立Marketo自訂服務、設定僅限API的角色和許可權、在LaunchPoint中取得使用者端ID和使用者端密碼，以及取得存取權杖。
 exl-id: 38b05c4c-4404-4c30-a7cb-d31b28a3a72e
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+source-git-commit: 1f01457919b9fe110b98603f5b8c0996ba8aee4b
 workflow-type: tm+mt
-source-wordcount: '985'
+source-wordcount: '1031'
 ht-degree: 0%
 
 ---
@@ -18,7 +18,7 @@ ht-degree: 0%
 
 建立自訂服務的第一步是建立可套用至相關「僅限API」使用者的角色。 這是從&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Roles]**&#x200B;功能表完成的。
 
-角色是個別許可權的容器，可允許或限制存取特定功能。 在已啟用工作區與分割區的訂閱中，會根據工作區授予許可權。 如果使用者在一個工作區中擁有許可權，但在另一個工作區沒有許可權，則他們只能在該工作區中執行允許的動作。 若要建立角色，請按一下新增角色按鈕。
+角色是個別許可權的容器，可允許或限制存取特定功能。 在已啟用工作區與分割區的訂閱中，會根據工作區授予許可權。 如果使用者在一個工作區中擁有許可權，但在另一個工作區沒有許可權，則他們只能在該工作區中執行允許的動作。 若要建立角色，請選取&#x200B;**[!UICONTROL New Role]**。
 
 ![使用者和角色](assets/admin-users-and-roles-roles.png)
 
@@ -42,15 +42,15 @@ ht-degree: 0%
 
 >[!MORELIKETHIS]
 >
->若要建立僅限API的使用者，請前往「**[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Users]**」功能表並按一下「[!UICONTROL Invite New User]」。
+>若要建立僅限API的使用者，請前往「**[!UICONTROL Admin]** > **[!UICONTROL Users & Roles]** > **[!UICONTROL Users]**」功能表並選取「**[!UICONTROL Invite New User]**」。
 
 ![新使用者資訊](assets/new-user-info.png)
 
-根據使用者將使用的服務和應用程式，為使用者提供描述性名稱和電子郵件地址（不一定有效）。 填寫對話方塊選單中的必填欄位，按一下「僅限API」核取方塊，然後將您的其中一個API角色授予使用者。 這會將該角色的許可權集指派給使用者。
+根據使用者將使用的服務和應用程式，為使用者提供描述性名稱和電子郵件地址（不一定有效）。 填寫對話方塊功能表中的必填欄位，選取&#x200B;**[!UICONTROL API Only]**&#x200B;核取方塊，然後將您的其中一個API角色授予使用者。 這會將該角色的許可權集指派給使用者。
 
 ![新使用者許可權](assets/new-user-permissions.png)
 
-最後，按一下「傳送」以建立僅限API的使用者。
+最後，選取&#x200B;**[!UICONTROL Send]**&#x200B;以建立僅限API的使用者。
 
 在布建具有認證的新應用程式時，強烈考慮為該服務建立新的使用者，即使它具有與其他現有整合相同的許可權集。 系統會根據每位使用者來追蹤API呼叫使用量統計資料和錯誤，因此為每個應用程式布建使用者，可協助您隔離特定應用程式的使用量和問題。 如果您遇到達到每日API呼叫限制的問題，或整合所進行的API呼叫所造成的錯誤，這個方法就能派上用場。
 
@@ -58,7 +58,7 @@ ht-degree: 0%
 
 自訂服務會提供使用Marketo執行個體執行驗證所需的實際憑證（使用者端ID和使用者端密碼）。 若要布建一個，請移至您的&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integrations]** > **[!UICONTROL LaunchPoint]**&#x200B;功能表，然後選取&#x200B;**[!UICONTROL New Service]**。
 
-為服務指定描述性名稱，並從「服務」清單中選取「自訂」。 提供您服務的詳細描述，並從[僅限API使用者]清單中選取適當的使用者，然後按一下[!UICONTROL Create]。
+為服務指定描述性名稱，並從「服務」清單中選取「自訂」。 提供您服務的詳細描述，並從[僅限API使用者]清單中選取適當的使用者，然後選取&#x200B;**[!UICONTROL Create]**。
 
 ![新的自訂服務](assets/admin-launchpoint-new-service.png)
 

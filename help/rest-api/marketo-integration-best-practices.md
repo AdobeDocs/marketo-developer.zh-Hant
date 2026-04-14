@@ -3,9 +3,9 @@ title: Marketo整合最佳實務
 feature: REST API
 description: Marketo API整合的最佳實務涵蓋配額、速率和並行限制、批次、大量匯入和匯出、快取和延遲計畫。
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '1012'
+source-wordcount: '1013'
 ht-degree: 0%
 
 ---
@@ -48,15 +48,15 @@ ht-degree: 0%
 
 Marketo每個啟用API的執行個體每天至少會配置10,000個REST API呼叫，但通常為50,000個或更多，以及500MB或更多「大量擷取」容量。 雖然額外的每日容量可作為Marketo訂閱的一部分購買，但您的應用程式設計應考慮Marketo訂閱的共同限制。
 
-由於容量是在執行個體中的所有API服務和使用者之間共用，最佳實務是消除多餘的呼叫，並儘可能將記錄批次化為少數呼叫。 匯入記錄最有效率的呼叫方式是使用Marketo的大量匯入API，這些可供[銷售機會/人員](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)和[自訂物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Snippets/operation/createSnippetUsingPOST)使用。 Marketo也為[銷售機會](bulk-lead-extract.md)和[活動](bulk-activity-extract.md)提供大量擷取。
+由於容量是在執行個體中的所有API服務和使用者之間共用，最佳實務是消除多餘的呼叫，並儘可能將記錄批次化為少數呼叫。 匯入記錄最有效率的呼叫方式是使用Marketo的大量匯入API，這些可供[銷售機會/人員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)和[自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#tag/Snippets/operation/createSnippetUsingPOST)使用。 Marketo也為[銷售機會](bulk-lead-extract.md)和[活動](bulk-activity-extract.md)提供大量擷取。
 
 ### 快取
 
 下列作業的結果通常可以在使用者端快取一天以上，因為它們很少變更：
 
 - 說明作業的結果
-- [活動類型](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Activities/operation/getAllActivityTypesUsingGET)
-- [分割區](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/getLeadPartitionsUsingGET)
+- [活動類型](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)
+- [分割區](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadPartitionsUsingGET)
 
 快取特定資產型別（如程式、電子郵件和資料夾）也適用於特定使用案例，例如潛在客戶或活動記錄的資料擴充。
 

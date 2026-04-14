@@ -3,7 +3,7 @@ title: 大量自訂物件擷取
 feature: REST API, Custom Objects
 description: Marketo大量自訂物件擷取REST API的指南，用於匯出具有更新的At和清單篩選器、所選欄位和……的潛在客戶連結自訂物件
 exl-id: 86cf02b0-90a3-4ec6-8abd-b4423cdd94eb
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1473'
 ht-degree: 1%
@@ -12,11 +12,11 @@ ht-degree: 1%
 
 # 大量自訂物件擷取
 
-[大量自訂物件擷取端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects)
+[大量自訂物件擷取端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects)
 
 REST API的批次自訂物件擷取集合提供程式設計介面，可從Marketo中擷取大型自訂物件記錄集合。 此為建議使用的介面，用於需要在Marketo與一或多個外部系統之間持續交換資料（用於ETL、資料倉儲和封存）的使用案例。
 
-此API支援匯出直接連結至潛在客戶的第一層Marketo自訂物件記錄。 傳入自訂物件的名稱，以及物件連結到的潛在客戶清單。 對於清單中的每個潛在客戶，符合指定自訂物件名稱的連結自訂物件記錄會以列寫入匯出檔案中。 可以在Marketo UI[&#128279;](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects)中潛在客戶詳細資訊頁面的自訂物件標籤中檢視自訂物件資料。
+此API支援匯出直接連結至潛在客戶的第一層Marketo自訂物件記錄。 傳入自訂物件的名稱，以及物件連結到的潛在客戶清單。 對於清單中的每個潛在客戶，符合指定自訂物件名稱的連結自訂物件記錄會以列寫入匯出檔案中。 可以在Marketo UI](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects)中潛在客戶詳細資訊頁面的[自訂物件標籤中檢視自訂物件資料。
 
 ## 權限
 
@@ -38,7 +38,7 @@ REST API的批次自訂物件擷取集合提供程式設計介面，可從Market
 
 ## 選項
 
-[建立匯出自訂物件工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST)端點提供數個格式選項。 這些選項讓使用者能夠：
+[建立匯出自訂物件工作](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST)端點提供數個格式選項。 這些選項讓使用者能夠：
 
 - 指定要包含在匯出檔案中的欄位
 - 重新命名這些欄位的欄標題
@@ -52,9 +52,9 @@ REST API的批次自訂物件擷取集合提供程式設計介面，可從Market
 
 ## 建立工作
 
-使用[建立匯出自訂物件工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST)端點開始匯出之前，會先定義工作的引數。
+使用[建立匯出自訂物件工作](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST)端點開始匯出之前，會先定義工作的引數。
 
-必要的`apiName`路徑引數是[描述自訂物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/describeUsingGET_1)端點傳回的自訂物件名稱。 這會指定要匯出的Marketo自訂物件。 不允許CRM自訂物件。 必要的`filter`引數包含連結至自訂物件的潛在客戶清單。 這可以參考靜態清單或智慧清單。 必要的`fields`引數包含要包含在匯出檔案中的自訂物件屬性的API名稱。 我們可選擇定義檔案的`format`，以及`columnHeaderNames`。
+必要的`apiName`路徑引數是[描述自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/describeUsingGET_1)端點傳回的自訂物件名稱。 這會指定要匯出的Marketo自訂物件。 不允許CRM自訂物件。 必要的`filter`引數包含連結至自訂物件的潛在客戶清單。 這可以參考靜態清單或智慧清單。 必要的`fields`引數包含要包含在匯出檔案中的自訂物件屬性的API名稱。 我們可選擇定義檔案的`format`，以及`columnHeaderNames`。
 
 例如，假設我們已建立名為「Car」的自訂物件，其欄位如下：顏色、製作、模型、VIN。 連結欄位是銷售機會ID，重複資料刪除欄位是VIN。
 
@@ -66,7 +66,7 @@ REST API的批次自訂物件擷取集合提供程式設計介面，可從Market
 
 ![自訂物件欄位](assets/custom-object-car-fields.png)
 
-我們可以呼叫[描述自訂物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/describeUsingGET_1)，以程式設計方式檢查回應中`fields`屬性中所顯示的自訂物件屬性。
+我們可以呼叫[描述自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/describeUsingGET_1)，以程式設計方式檢查回應中`fields`屬性中所顯示的自訂物件屬性。
 
 ```http
 GET /rest/v1/customobjects/car_c/describe.json
@@ -176,7 +176,7 @@ GET /rest/v1/customobjects/car_c/describe.json
 }
 ```
 
-使用[同步自訂物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST)端點建立數個自訂物件記錄，並將每個記錄連結至不同的銷售機會。 一個銷售機會可以連結到許多自訂物件記錄。 這稱為「一對多」關係。
+使用[同步自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/syncCustomObjectsUsingPOST)端點建立數個自訂物件記錄，並將每個記錄連結至不同的銷售機會。 一個銷售機會可以連結到許多自訂物件記錄。 這稱為「一對多」關係。
 
 ```http
 POST /rest/v1/customobjects/car_c.json
@@ -235,7 +235,7 @@ POST /rest/v1/customobjects/car_c.json
 }
 ```
 
-上述三個銷售機會中的每一個都屬於名為「購車者」的靜態清單，其`id`為1081，如下表所示，請呼叫[依清單ID取得銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists/operation/getLeadsByListIdUsingGET_1)端點。
+上述三個銷售機會中的每一個都屬於名為「購車者」的靜態清單，其`id`為1081，如下表所示，請呼叫[依清單ID取得銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/getLeadsByListIdUsingGET_1)端點。
 
 ```http
 GET /rest/v1/lists/1081/leads.json
@@ -274,7 +274,7 @@ GET /rest/v1/lists/1081/leads.json
 }
 ```
 
-現在，讓我們建立匯出作業來擷取這些記錄。 我們使用[建立匯出自訂物件工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST)端點，在`fields`引數中指定自訂物件屬性，並在`filter`引數中指定靜態清單識別碼。
+現在，讓我們建立匯出作業來擷取這些記錄。 我們使用[建立匯出自訂物件工作](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/createExportCustomObjectsUsingPOST)端點，在`fields`引數中指定自訂物件屬性，並在`filter`引數中指定靜態清單識別碼。
 
 ```http
 POST /bulk/v1/customobjects/car_c/export/create.json
@@ -310,7 +310,7 @@ POST /bulk/v1/customobjects/car_c/export/create.json
 }
 ```
 
-這會在回應中傳回一個狀態，指出工作已建立。 工作已定義並建立，但尚未開始。 若要這麼做，必須使用`apiName`並從建立狀態回應呼叫[排入佇列匯出自訂物件工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects/operation/enqueueExportCustomObjectsUsingPOST)端點`exportId`。
+這會在回應中傳回一個狀態，指出工作已建立。 工作已定義並建立，但尚未開始。 若要這麼做，必須使用`apiName`並從建立狀態回應呼叫[排入佇列匯出自訂物件工作](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/enqueueExportCustomObjectsUsingPOST)端點`exportId`。
 
 ```http
 POST /bulk/v1/customobjects/car_c/export/f2c03f1d-226f-47c1-a557-357af8c2b32a/enqueue.json
@@ -338,7 +338,7 @@ POST /bulk/v1/customobjects/car_c/export/f2c03f1d-226f-47c1-a557-357af8c2b32a/en
 
 只能為同一API使用者建立的作業擷取狀態。
 
-由於這是非同步端點，在建立作業後，我們必須輪詢其狀態以判斷其進度。 使用[取得匯出自訂物件工作狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsStatusUsingGET)端點進行輪詢。 狀態只會每60秒更新一次，因此不建議使用低於此值的輪詢頻率，並且在幾乎所有情況下仍然會太高。 狀態列位可能會以下列任一專案回應：已建立、已排入佇列、正在處理、已取消、已完成或失敗。
+由於這是非同步端點，在建立作業後，我們必須輪詢其狀態以判斷其進度。 使用[取得匯出自訂物件工作狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsStatusUsingGET)端點進行輪詢。 狀態只會每60秒更新一次，因此不建議使用低於此值的輪詢頻率，並且在幾乎所有情況下仍然會太高。 狀態列位可能會以下列任一專案回應：已建立、已排入佇列、正在處理、已取消、已完成或失敗。
 
 ```http
 GET /bulk/v1/customobjects/{apiName}/export/{exportId}/status.json
@@ -386,7 +386,7 @@ GET /bulk/v1/customobjects/{apiName}/export/{exportId}/status.json
 
 ## 正在擷取您的資料
 
-若要擷取已完成自訂物件匯出的檔案，只要使用您的`apiName`和`exportId`呼叫[Get Export Custom Object File](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsFileUsingGET)端點即可。
+若要擷取已完成自訂物件匯出的檔案，只要使用您的`apiName`和`exportId`呼叫[Get Export Custom Object File](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsFileUsingGET)端點即可。
 
 回應包含以設定作業方式格式化的檔案。 端點會以檔案內容回應。 如果要求的自訂物件屬性是空的（不包含任何資料），則會將`null`放置在匯出檔案中的對應欄位中。
 
@@ -405,7 +405,7 @@ leadId,color,make,model,vIN
 
 ## 取消工作
 
-如果工作設定不正確或變得不必要，可以使用[取消匯出自訂物件工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsFileUsingPOST)端點輕鬆取消工作。 此回應中包含`status`，指出工作已取消。
+如果工作設定不正確或變得不必要，可以使用[取消匯出自訂物件工作](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Custom-Objects/operation/getExportCustomObjectsFileUsingPOST)端點輕鬆取消工作。 此回應中包含`status`，指出工作已取消。
 
 ```http
 POST /bulk/v1/customobjects/car_c/export/f2c03f1d-226f-47c1-a557-357af8c2b32a/cancel.json

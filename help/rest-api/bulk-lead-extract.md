@@ -3,7 +3,7 @@ title: 大量潛在客戶擷取
 feature: REST API
 description: 瞭解如何使用Marketo大量銷售機會擷取REST API，以大量匯出具有日期、清單和智慧清單篩選器、自訂欄位和CSV/TSV格式的銷售機會。
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '1273'
 ht-degree: 2%
@@ -12,7 +12,7 @@ ht-degree: 2%
 
 # 大量潛在客戶擷取
 
-[大量潛在客戶擷取端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads)
+[大量潛在客戶擷取端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads)
 
 REST API的「大量銷售機會擷取」集提供程式設計介面，可從Marketo擷取大量銷售機會/人員記錄。 此外，它可用於根據記錄的建立日期、最近更新、靜態清單成員資格或智慧清單成員資格，以增量方式擷取潛在客戶。 使用案例的建議介面，此介面需要在Marketo和一個或多個外部系統之間持續交換資料，用於ETL、資料倉儲和封存目的。
 
@@ -47,7 +47,7 @@ REST API的「大量銷售機會擷取」集提供程式設計介面，可從Mar
 
 ## 建立工作
 
-使用[建立匯出潛在客戶工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST)端點開始匯出之前，會定義工作的引數。 我們必須定義匯出所需的`fields`、`filter`的引數型別、檔案的`format`以及欄標題名稱（若有的話）。
+使用[建立匯出潛在客戶工作](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST)端點開始匯出之前，會定義工作的引數。 我們必須定義匯出所需的`fields`、`filter`的引數型別、檔案的`format`以及欄標題名稱（若有的話）。
 
 ```http
 POST /bulk/v1/leads/export/create.json
@@ -95,7 +95,7 @@ POST /bulk/v1/leads/export/create.json
 }
 ```
 
-這會傳回狀態回應，指出工作已建立。 工作已定義並建立，但尚未開始。 若要這麼做，必須使用建立狀態回應中的exportId來呼叫[Enqueue Export Lead Job](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST)端點：
+這會傳回狀態回應，指出工作已建立。 工作已定義並建立，但尚未開始。 若要這麼做，必須使用建立狀態回應中的exportId來呼叫[Enqueue Export Lead Job](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST)端點：
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
@@ -123,7 +123,7 @@ POST /bulk/v1/leads/export/{exportId}/enqueue.json
 
 只能為同一API使用者建立的作業擷取`Note:`狀態。
 
-由於這是非同步端點，在建立作業後，我們必須輪詢其狀態以判斷其進度。 使用[取得匯出潛在客戶工作狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET)端點進行輪詢。 狀態只會每60秒更新一次，因此不建議使用低於此值的輪詢頻率，並且在幾乎所有情況下仍然會太高。 讓我們來快速瞭解輪詢。
+由於這是非同步端點，在建立作業後，我們必須輪詢其狀態以判斷其進度。 使用[取得匯出潛在客戶工作狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET)端點進行輪詢。 狀態只會每60秒更新一次，因此不建議使用低於此值的輪詢頻率，並且在幾乎所有情況下仍然會太高。 讓我們來快速瞭解輪詢。
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/status.json
@@ -158,7 +158,7 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 
 ## 正在擷取您的資料
 
-若要擷取已完成潛在客戶匯出的檔案，只要使用您的`exportId`呼叫[取得匯出潛在客戶檔案](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET)端點即可。
+若要擷取已完成潛在客戶匯出的檔案，只要使用您的`exportId`呼叫[取得匯出潛在客戶檔案](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET)端點即可。
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/file.json
@@ -177,7 +177,7 @@ Russell,Wilson,null,_mch-localhost-1536605780000-12105
 
 ## 取消工作
 
-如果工作設定錯誤或變得不必要，可以使用[取消匯出潛在客戶工作](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST)端點輕鬆取消工作：
+如果工作設定錯誤或變得不必要，可以使用[取消匯出潛在客戶工作](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST)端點輕鬆取消工作：
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/cancel.json

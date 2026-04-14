@@ -3,7 +3,7 @@ title: 登陸頁面範本
 feature: REST API, Landing Pages
 description: 透過REST API端點管理自由格式和引導式型別的Marketo登陸頁面範本、依id或名稱查詢、建立、更新HTML、複製、Munchkin。
 exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '703'
 ht-degree: 1%
@@ -12,17 +12,17 @@ ht-degree: 1%
 
 # 登陸頁面範本
 
-[登陸頁面範本端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates)
+[登陸頁面範本端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates)
 
 登陸頁面範本是個別Marketo登陸頁面的上層資源和相依性。 登入頁面會從父範本衍生出其內容的骨架。
 
 ## 範本型別
 
-Marketo提供兩種型別的登陸頁面範本：自由格式和引導式。 自由表單登入頁面範本為衍生自這些範本的頁面提供鬆散結構的編輯體驗。 引導式範本提供高度結構化的體驗，可在範本層級限制元素型別和位置。 如需差異的詳細資訊，請參閱[此檔案](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages)。
+Marketo提供兩種型別的登陸頁面範本：自由格式和引導式。 自由表單登入頁面範本為衍生自這些範本的頁面提供鬆散結構的編輯體驗。 引導式範本提供高度結構化的體驗，可在範本層級限制元素型別和位置。 如需差異的詳細資訊，請參閱[此檔案](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/understanding-landing-pages/understanding-free-form-vs-guided-landing-pages)。
 
 ## 查詢
 
-登入頁面範本支援[依識別碼](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET)和[瀏覽](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET)之資產的標準查詢型別。 這些端點會傳回範本的中繼資料。 若要擷取範本的HTML內容，必須透過其ID為每個範本完成。
+登入頁面範本支援[依識別碼](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET)和[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET)之資產的標準查詢型別。 這些端點會傳回範本的中繼資料。 若要擷取範本的HTML內容，必須透過其ID為每個範本完成。
 
 ## 建立和更新
 
@@ -66,11 +66,11 @@ name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 }
 ```
 
-範本的內容必須透過[更新登陸頁面範本內容](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST)端點個別填入。
+範本的內容必須透過[更新登陸頁面範本內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST)端點個別填入。
 
 ### 更新中繼資料
 
-可透過[更新登入頁面範本中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST)端點更新登入頁面範本的中繼資料。 名稱、說明和enableMunchkin設定可透過此方式更新。
+可透過[更新登入頁面範本中繼資料](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST)端點更新登入頁面範本的中繼資料。 名稱、說明和enableMunchkin設定可透過此方式更新。
 
 ### 更新內容
 
@@ -167,9 +167,9 @@ name=Standard Template Clone&folder={"type": "Folder", "id": 732}
 
 若要核准範本，它必須符合其型別的規則，無論是以自由形式引導。 如需有關建立和核准各自型別範本之需求的詳細資訊，請參閱各自建立檔案：
 
-- [自由表單登陸頁面範本](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
-- [引導式登陸頁面範本](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
-- [引導式範本範例](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
+- [自由表單登陸頁面範本](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-free-form-landing-page-template)
+- [引導式登陸頁面範本](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/create-a-guided-landing-page-template)
+- [引導式範本範例](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-templates/guided-landing-page-template-list)
 
 ## 刪除
 

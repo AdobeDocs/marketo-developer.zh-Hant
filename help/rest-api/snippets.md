@@ -3,22 +3,22 @@ title: 程式碼片段
 feature: REST API, Snippets
 description: Marketo Asset REST API適用於程式碼片段，可依ID涵蓋查詢、使用狀態瀏覽、取得內容、建立和更新HTML、文字及動態內容。
 exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '511'
+source-wordcount: '512'
 ht-degree: 1%
 
 ---
 
 # 程式碼片段
 
-[程式碼片段端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets)
+[程式碼片段端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets)
 
 程式碼片段是可重複使用的HTML元件，可嵌入至電子郵件和登入頁面，且可針對動態內容分段。 程式碼片段沒有相關聯的範本，而且可以在Marketo內的其他資產中建立和部署。
 
 ## 查詢
 
-查詢代碼片段會遵循資產的標準模式，不過沒有By Name方法。 [By Id](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetByIdUsingGET)和[Browse](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/getSnippetUsingGET)方法都允許使用狀態列位來擷取已核准或草稿版本的程式碼片段。
+查詢代碼片段會遵循資產的標準模式，不過沒有By Name方法。 [By Id](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetByIdUsingGET)和[Browse](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetUsingGET)方法都允許使用狀態列位來擷取已核准或草稿版本的程式碼片段。
 
 ### 依Id
 
@@ -143,7 +143,7 @@ GET /rest/asset/v1/snippet/{id}/content.json
 
 ## 建立和更新
 
-程式碼片段會遵循複雜的資產建立模式，也就是呼叫[建立程式碼片段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/createSnippetUsingPOST)，而且其內容會個別進行，因此第一個呼叫必須是建立端點，並附上選用的說明。   資料以x-www-form-urlencoded傳遞，而非以JSON傳遞。
+程式碼片段會遵循複雜的資產建立模式，也就是呼叫[建立程式碼片段](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/createSnippetUsingPOST)，而且其內容會個別進行，因此第一個呼叫必須是建立端點，並附上選用的說明。   資料以x-www-form-urlencoded傳遞，而非以JSON傳遞。
 
 ```http
 POST /rest/asset/v1/snippets.json
@@ -211,7 +211,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-[中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/updateSnippetUsingPOST)的更新也由ID完成。 只能更新名稱和說明：
+[中繼資料](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/updateSnippetUsingPOST)的更新也由ID完成。 只能更新名稱和說明：
 
 ```http
 POST /rest/asset/v1/snippet/{id}.json
@@ -400,7 +400,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## 原地複製
 
-[使用API復製程式碼片段](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets/operation/cloneSnippetUsingPOST)很簡單，並遵循標準模式，具有必要名稱、原始程式碼片段和資料夾的識別碼，以及選用的說明。  如果不存在核准的版本，則會複製草稿版本。
+[使用API復製程式碼片段](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/cloneSnippetUsingPOST)很簡單，並遵循標準模式，具有必要名稱、原始程式碼片段和資料夾的識別碼，以及選用的說明。  如果不存在核准的版本，則會複製草稿版本。
 
 ```http
 POST /rest/asset/v1/snippet/{id}/clone.json

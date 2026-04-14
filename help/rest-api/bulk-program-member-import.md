@@ -3,7 +3,7 @@ title: 大量程式成員匯入
 feature: REST API
 description: 瞭解如何使用10MB以下的CSV TSV或SSV檔案、佇列限制、必要引數和輪詢工作狀態，透過Marketo REST API大量匯入方案成員。
 exl-id: b0e1039a-fe9b-4fb7-9aa6-9980a06da673
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '962'
 ht-degree: 0%
@@ -12,9 +12,9 @@ ht-degree: 0%
 
 # 大量程式成員匯入
 
-[大量程式成員匯入端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members)
+[大量程式成員匯入端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members)
 
-對於大量的程式成員記錄，可以使用[大量API](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members)非同步匯入程式成員。 這可讓您使用含分隔字元（逗號、定位字元或分號）的平面檔案，將記錄清單匯入Marketo。 檔案可包含任意數量的記錄，只要檔案總計小於10MB即可。 記錄作業僅限「插入或更新」。
+對於大量的程式成員記錄，可以使用[大量API](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members)非同步匯入程式成員。 這可讓您使用含分隔字元（逗號、定位字元或分號）的平面檔案，將記錄清單匯入Marketo。 檔案可包含任意數量的記錄，只要檔案總計小於10MB即可。 記錄作業僅限「插入或更新」。
 
 ## 處理限制
 
@@ -22,7 +22,7 @@ ht-degree: 0%
 
 ## 匯入檔案
 
-檔案的第一列必須是標題，標題會列出對應的REST API名稱，作為要將每列的值對應到的欄位。 可以使用[描述銷售機會](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeUsingGET_2)和/或[描述方案成員](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads/operation/describeProgramMemberUsingGET)端點來擷取REST API名稱。 記錄可包含潛在客戶欄位、自訂潛在客戶欄位和自訂方案成員欄位。
+檔案的第一列必須是標題，標題會列出對應的REST API名稱，作為要將每列的值對應到的欄位。 可以使用[描述銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeUsingGET_2)和/或[描述方案成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeProgramMemberUsingGET)端點來擷取REST API名稱。 記錄可包含潛在客戶欄位、自訂潛在客戶欄位和自訂方案成員欄位。
 
 典型的檔案會遵循此基本模式：
 
@@ -37,7 +37,7 @@ test@example.com,John,Doe
 
 ## 建立工作
 
-[匯入程式成員](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST)端點會讀取包含程式成員記錄的檔案，並將它們新增至具有指定狀態的程式。 記錄可以同時包含潛在客戶欄位和方案成員自訂欄位。 所有記錄都必須包含電子郵件欄位，用於重複資料刪除目的。
+[匯入程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST)端點會讀取包含程式成員記錄的檔案，並將它們新增至具有指定狀態的程式。 記錄可以同時包含潛在客戶欄位和方案成員自訂欄位。 所有記錄都必須包含電子郵件欄位，用於重複資料刪除目的。
 
 `programId`路徑引數指定成員加入的程式。
 
@@ -109,7 +109,7 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 
 ## 輪詢工作狀態
 
-建立匯入工作之後，您必須查詢其狀態。 最佳實務是每5到30秒輪詢匯入工作。 若要這麼做，請將`batchId`路徑引數傳遞至[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)端點。
+建立匯入工作之後，您必須查詢其狀態。 最佳實務是每5到30秒輪詢匯入工作。 若要這麼做，請將`batchId`路徑引數傳遞至[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)端點。
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -139,7 +139,7 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 
 ## 失敗
 
-[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsFailed`屬性指出失敗。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。
+[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsFailed`屬性指出失敗。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。
 
 使用Get Import Program Member Failures端點傳遞`batchId`路徑引數，以擷取失敗資料列的記錄和原因。
 
@@ -193,9 +193,9 @@ Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTE
 
 ## 警告
 
-[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsWithWarning`屬性表示警告。 如果`numOfRowsWithWarning`大於零，則該值表示發生的警告數。
+[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsWithWarning`屬性表示警告。 如果`numOfRowsWithWarning`大於零，則該值表示發生的警告數。
 
-使用[取得匯入程式成員警告](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET)端點傳遞`batchId`路徑引數，以擷取記錄及警告資料列的原因。
+使用[取得匯入程式成員警告](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET)端點傳遞`batchId`路徑引數，以擷取記錄及警告資料列的原因。
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/warnings.json

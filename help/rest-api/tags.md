@@ -3,7 +3,7 @@ title: 標記
 feature: REST API, Tags
 description: 查詢標籤型別、依名稱取得允許的值、透過REST Asset API更新或刪除Marketo中的程式標籤，並附上請求範例。
 exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '258'
 ht-degree: 1%
@@ -12,7 +12,7 @@ ht-degree: 1%
 
 # 標記
 
-[標籤端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags)
+[標籤端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags)
 
 標籤是使用者為方案定義的欄位。 每個標籤可套用至一或多個程式型別，且可以是必要或選用的，視標籤的定義方式而定。 標籤也可以提供允許值的清單，必須從中選擇這些值才能使用。
 
@@ -77,7 +77,7 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 
 ## 更新
 
-[更新程式標籤](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST)端點可讓您更新指定標籤型別的值。 端點採用`id`和`tagType`路徑引數，這些引數指定程式ID以及要更新的標籤型別。 使用`tagValue`查詢引數來指定標籤型別的新值。 所有引數皆為必要項。
+[更新程式標籤](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST)端點可讓您更新指定標籤型別的值。 端點採用`id`和`tagType`路徑引數，這些引數指定程式ID以及要更新的標籤型別。 使用`tagValue`查詢引數來指定標籤型別的新值。 所有引數皆為必要項。
 
 ```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
@@ -97,11 +97,11 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-可以使用[更新程式中繼資料](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/updateProgramUsingPOST)端點大量更新標籤。 [程式更新區段](programs.md#update)中提供了範例。
+可以使用[更新程式中繼資料](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST)端點大量更新標籤。 [程式更新區段](programs.md#update)中提供了範例。
 
 ## 刪除
 
-[刪除程式標籤](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs/operation/deleteProgramUsingPOST)端點可讓您刪除不需要的標籤型別。 端點採用`id`和`tagType`路徑引數，這些引數指定程式識別碼以及要刪除的標籤型別。
+[刪除程式標籤](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/deleteProgramUsingPOST)端點可讓您刪除不需要的標籤型別。 端點採用`id`和`tagType`路徑引數，這些引數指定程式識別碼以及要刪除的標籤型別。
 
 ```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}/delete.json

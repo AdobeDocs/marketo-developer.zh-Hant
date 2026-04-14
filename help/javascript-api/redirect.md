@@ -3,9 +3,9 @@ title: 重新導向
 description: 實作RTP重新導向API ，使用ABM、組織、位置和區段等欄位，將分段訪客傳送至目標URL，並附上範例和秘訣。
 feature: Javascript
 exl-id: bbf91245-42e5-47ae-a561-e522cc65ff49
-source-git-commit: 18d828b5d98c00f04739d417d043a33fcbb9c37a
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '500'
+source-wordcount: '502'
 ht-degree: 7%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 7%
 
 RTP重新導向API可讓您將分段的對象重新導向至目標URL。
 
-- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - RTP不支援以帳戶為根據的行銷指定帳戶清單。 ABM清單和程式碼只與在RTP內管理的已上傳帳戶清單（CSV檔案）有關。
 
 ## 使用情況
@@ -86,7 +86,7 @@ rtp('get','campaign');
 
 ## 如何重新導向追蹤的訪客
 
-1. 將引數附加至目標URL的結尾： &lt;www.marketo.com？rtp=redirect>
+1. 在目標URL的結尾附加引數：即&lt;www.marketo.com？rtp=redirect>
 1. 建立名為「由RTP重新導向」的區段
 1. 使用「特定頁面」引數，透過下列引數鎖定檢視任何頁面的訪客。
 

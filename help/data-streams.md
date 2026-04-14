@@ -2,9 +2,9 @@
 title: 資料串流
 description: Marketo Engage資料串流概觀，實現近乎即時的銷售機會活動和使用者稽核事件，放寬效能層級客戶的API限制
 exl-id: 5617b6a5-ebc8-4d97-a290-e3b87f83e360
-source-git-commit: 6dc068f92d5b0c94035ca484fd1508dfe87bbd76
+source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
 workflow-type: tm+mt
-source-wordcount: '1714'
+source-wordcount: '1716'
 ht-degree: 3%
 
 ---
@@ -12,7 +12,8 @@ ht-degree: 3%
 # 資料串流
 
 >[!NOTE]
-> 在[使用資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams#)找到目前關於資料串流的資訊。
+>
+>在[使用資料串流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-data-streams#)找到目前關於資料串流的資訊。
 >
 
 我們客戶的行銷組織仰賴及時且重點突出的行銷活動，以掌握業務優勢並維持競爭力。 為了支援快節奏的決策並快速啟用策略變更，擁有資料以支援並推進那些提供重點且目標明確之行銷活動的關鍵決策非常重要。 還有一些客戶在Marketo Engage內外的客戶區段層級執行行銷工作。 為了支援這些不同的工作，Marketo已建立透過資料串流以近乎即時的方式取得大量資料的能力。
@@ -34,7 +35,7 @@ ht-degree: 3%
 1. 銷售機會變更 — 所有欄位和新銷售機會的所有變更
 1. 潛在客戶活動 — 檔案中說明的所有潛在客戶活動型別
 1. 已刪除的銷售機會
-1. 潛在客戶的所有自訂物件（若有要求）。 目前完全或完全沒有。
+1. 潛在客戶的所有自訂物件（若有要求）。 目前是全部或無。
 
 透過提供潛在客戶變更的檢視，這可讓客戶更快決定其整體行銷策略，並建立更聚焦的目標行銷活動。 一些常見的使用案例是：
 

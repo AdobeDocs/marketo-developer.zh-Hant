@@ -3,7 +3,7 @@ title: 電子郵件
 feature: REST API
 description: 使用Marketo Asset REST API可查詢、建立、更新、複製、刪除、核准和檢查電子郵件資產的相依性。
 exl-id: b41a3ae5-2b25-4103-84b4-320fc2c44bd6
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '497'
 ht-degree: 5%
@@ -12,7 +12,7 @@ ht-degree: 5%
 
 # 電子郵件
 
-[電子郵件端點參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails_New)
+[電子郵件端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails_New)
 
 電子郵件是定義訊息中繼資料、內容設定、設定和核准狀態的資產記錄。
 

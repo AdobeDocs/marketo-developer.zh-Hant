@@ -3,9 +3,9 @@ title: 電子郵件指令碼
 feature: Email Programs
 description: 瞭解如何使用Apache Velocity權杖、變數、Velocity工具編寫動態Marketo電子郵件的指令碼，以及使用「傳送範例」和「電子郵件預覽」進行測試。
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '1099'
+source-wordcount: '1103'
 ht-degree: 0%
 
 ---
@@ -107,11 +107,11 @@ $date.whenIs($birthday).days ##outputs 1
 
 - 電子郵件指令碼中參照的變數必須存在於Marketo中指令碼可用的其中一個物件上。
 - 您可以參考源自您原生整合的CRM的第一層和第二層自訂物件，這些自訂物件直接連線至銷售機會或連絡人，但不包括第三層自訂物件。 自訂物件可能不是潛在客戶或公司的父級
-- 對於Marketo自訂物件，您可以參照具有父子關係的第二層自訂物件。 例如 `Lead <- Parent <- Child`. 您無法參考具有Edge-Bridge關係的第二層級自訂物件。 e.g.,  `Lead <- Bridge -> Edge`
+- 對於Marketo自訂物件，您可以參照具有父子關係的第二層自訂物件。 例如 `Lead <- Parent <- Child`. 您無法參考具有Edge-Bridge關係的第二層級自訂物件。 例如，`Lead <- Bridge -> Edge`
 - 您可以參照連線至Lead、Contact或Account的自訂物件，但不能參照多個物件。
 - 自訂物件只能透過單一連線、銷售機會、連絡人或帳戶參照
-- 您必須在指令碼編輯器中勾選目前使用之欄位的方塊，否則這些欄位將不會處理
-- 對於每個自訂物件，每個人員/連絡人最近更新的10筆記錄可在執行階段使用，並依照最近更新（於0）到最舊更新（於9）的順序排列。 您可以依照指示[&#128279;](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting)增加可用的記錄數。
+- 您必須勾選指令碼編輯器中正在使用或不會處理的欄位的方塊
+- 對於每個自訂物件，每個人員/連絡人最近更新的10筆記錄可在執行階段使用，並依照最近更新（於0）到最舊更新（於9）的順序排列。 您可以依照指示](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting)增加[可用的記錄數。
 - 如果您在電子郵件中包含多個電子郵件指令碼，這些指令碼會由上到下執行。 第一個要執行的指令碼中所定義的變數範圍，可在後續指令碼中使用。
 - 工具參考： [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - 有關包含新行字元「\\n」或「\\r\\n」的權杖的備註。 當透過傳送範例或批次促銷活動傳送電子郵件時，代號中的新行字元會被替換為空格。 透過「觸發器促銷活動」傳送電子郵件時，新行字元保持不變。

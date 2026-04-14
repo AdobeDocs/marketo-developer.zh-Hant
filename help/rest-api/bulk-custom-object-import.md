@@ -3,16 +3,16 @@ title: 大量自訂物件匯入
 feature: Custom Objects
 description: 瞭解如何使用CSV、TSV或SSV檔案，透過REST大量匯入Marketo自訂物件。
 exl-id: e795476c-14bc-4e8c-b611-1f0941a65825
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
-source-wordcount: '952'
+source-wordcount: '953'
 ht-degree: 0%
 
 ---
 
 # 大量自訂物件匯入
 
-[大量自訂物件匯入端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects)
+[大量自訂物件匯入端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects)
 
 當您有許多自訂物件記錄時  匯入時，最佳實務是使用大量API以非同步方式匯入它們。 這是透過匯入包含分隔記錄（逗號、定位字元或分號）的純文字檔案來完成的。 檔案可包含任意數量的記錄，但大小必須小於10MB （否則為HTTP）  413狀態碼已傳回)。 檔案的內容取決於您的自訂物件定義。 第一列一律包含標題，列出要將每列的值對應到的欄位。 標題中的所有欄位名稱都必須符合API名稱（如下所述）。 其餘的列包含要匯入的資料，每列有一筆記錄。 記錄作業僅限「插入或更新」。
 
@@ -22,7 +22,7 @@ ht-degree: 0%
 
 ## 自訂物件範例
 
-使用大量API之前，您必須先使用Marketo管理UI來[建立自訂物件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects)。 例如，假設我們已建立具有「顏色」、「製作」、「模型」和「VIN」欄位的「Car」自訂物件。 以下是顯示自訂物件的管理員UI畫面。 您可以看到我們使用VIN欄位進行重複資料刪除。 這些API名稱會強調顯示，因為在呼叫大量API相關端點時必須使用這些名稱。
+使用大量API之前，您必須先使用Marketo管理UI來[建立自訂物件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects)。 例如，假設我們已建立具有「顏色」、「製作」、「模型」和「VIN」欄位的「Car」自訂物件。 以下是顯示自訂物件的管理員UI畫面。 您可以看到我們使用VIN欄位進行重複資料刪除。 這些API名稱會強調顯示，因為在呼叫大量API相關端點時必須使用這些名稱。
 
 ![插入自訂物件](assets/bulk-insert-co-car-1.png)
 
@@ -45,7 +45,7 @@ ht-degree: 0%
         {
             "name": "car_c",
             "displayName": "Car",
-            "description": "It's a car.",
+            "description": "It is a car.",
             "createdAt": "2017-02-22T19:55:51Z",
             "updatedAt": "2017-02-22T19:55:51Z",
             "idField": "marketoGUID",
@@ -130,7 +130,7 @@ blue,bmw,325i,WBS3U9C52HP970604
 
 ## 建立工作
 
-若要提出大量匯入要求，您必須在[匯入自訂物件](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Identity/operation/identityUsingPOST)端點的路徑中包含自訂物件的API名稱。 您還必須包含參照匯入檔案名稱的「file」引數，以及指定匯入檔案分隔方式的「format」引數（「csv」、「tsv」或「ssv」）。
+若要提出大量匯入要求，您必須在[匯入自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#tag/Identity/operation/identityUsingPOST)端點的路徑中包含自訂物件的API名稱。 您還必須包含參照匯入檔案名稱的「file」引數，以及指定匯入檔案分隔方式的「format」引數（「csv」、「tsv」或「ssv」）。
 
 ```http
 POST /bulk/v1/customobjects/{apiName}/import.json?format=csv
@@ -190,7 +190,7 @@ blue,bmw,325i,WBS3U9C52HP970604
 
 ## 輪詢工作狀態
 
-建立匯入工作之後，您必須查詢其狀態。 最佳實務是每5到30秒輪詢匯入工作。 若要這麼做，請在[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)端點的路徑中傳遞自訂物件的API名稱和`batchId`。
+建立匯入工作之後，您必須查詢其狀態。 最佳實務是每5到30秒輪詢匯入工作。 若要這麼做，請在[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)端點的路徑中傳遞自訂物件的API名稱和`batchId`。
 
 ```http
 GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
@@ -220,7 +220,7 @@ GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
 
 ## 失敗
 
-失敗由[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)回應中的`numOfRowsFailed`屬性所指示。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。 呼叫[取得匯入自訂物件失敗](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET)端點以取得包含失敗詳細資料的檔案。 同樣地，您必須在路徑中傳遞自訂物件API名稱和`batchId`。 如果不存在失敗檔案，則會傳回HTTP 404狀態代碼。
+失敗由[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)回應中的`numOfRowsFailed`屬性所指示。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。 呼叫[取得匯入自訂物件失敗](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET)端點以取得包含失敗詳細資料的檔案。 同樣地，您必須在路徑中傳遞自訂物件API名稱和`batchId`。 如果不存在失敗檔案，則會傳回HTTP 404狀態代碼。
 
 繼續此範例，我們可以修改標題並將「vin」變更為「vin」（在逗號和「vin」之間新增空格）以強制失敗。
 
@@ -267,11 +267,11 @@ yellow,bmw,320i,WBA4R7C30HK896061,missing.dedupe.fields
 blue,bmw,325i,WBS3U9C52HP970604,missing.dedupe.fields
 ```
 
-我們可以看到我們缺少重複資料刪除欄位`vin`。
+我們可以看到我們遺漏了重複資料刪除欄位`vin`。
 
 ## 警告
 
-在Get Import Custom Object Status回應中，`numOfRowsWithWarning`屬性表示警告。 如果numOfRowsWithWarning大於零，則該值表示警告發生的次數。 呼叫[取得匯入自訂物件警告](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectWarningsUsingGET)端點以取得含有警告詳細資料的檔案。 同樣地，您必須在路徑中傳遞自訂物件API名稱和`batchId`。 如果警告檔案不存在，則會傳回HTTP 404狀態代碼。
+在Get Import Custom Object Status回應中，`numOfRowsWithWarning`屬性表示警告。 如果numOfRowsWithWarning大於零，則該值表示警告發生的次數。 呼叫[取得匯入自訂物件警告](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectWarningsUsingGET)端點以取得含有警告詳細資料的檔案。 同樣地，您必須在路徑中傳遞自訂物件API名稱和`batchId`。 如果警告檔案不存在，則會傳回HTTP 404狀態代碼。
 
 ```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/warnings.json

@@ -3,7 +3,7 @@ title: 已命名帳戶
 feature: REST API
 description: Marketo REST指南，針對ABM的具名帳戶執行CRUD，其中包含說明、查詢、建立更新範例、可搜尋欄位、重複資料刪除規則，以及無銷售機會連結。
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
 workflow-type: tm+mt
 source-wordcount: '730'
 ht-degree: 1%
@@ -12,7 +12,7 @@ ht-degree: 1%
 
 # 已命名帳戶
 
-[具名帳戶端點參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts)
+[具名帳戶端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts)
 
 Marketo提供了一組API，可在具名帳戶上執行CRUD作業，以與Marketo ABM搭配使用。 這些API遵循潛在客戶資料庫API的標準介面模式，提供「說明」、「建立/更新」、「刪除」和「查詢」選項。
 
@@ -224,7 +224,7 @@ Content-Type: application/json
 
 #### 依名稱
 
-[依名稱取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上單一欄位的中繼資料。 必要的fieldApiName路徑引數會指定欄位的API名稱。 回應類似於「描述具名帳戶」端點，但包含其他中繼資料，例如isCustom屬性，其代表欄位是否為自訂欄位。
+[依名稱取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上單一欄位的中繼資料。 必要的fieldApiName路徑引數會指定欄位的API名稱。 回應類似於「描述具名帳戶」端點，但包含其他中繼資料，例如isCustom屬性，其代表欄位是否為自訂欄位。
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
@@ -252,7 +252,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### 瀏覽
 
-[取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上所有欄位的中繼資料。 依預設，最多會傳回300筆記錄。 您可以使用batchSize查詢引數來減少此數目。 如果moreResult屬性為true，則表示有更多結果可用。 繼續呼叫此端點，直到moreResult屬性傳回false （表示沒有可用的結果）。 從此API傳回的nextPageToken一律應用於此呼叫的下一個反複專案。
+[取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上所有欄位的中繼資料。 依預設，最多會傳回300筆記錄。 您可以使用batchSize查詢引數來減少此數目。 如果moreResult屬性為true，則表示有更多結果可用。 繼續呼叫此端點，直到moreResult屬性傳回false （表示沒有可用的結果）。 從此API傳回的nextPageToken一律應用於此呼叫的下一個反複專案。
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
