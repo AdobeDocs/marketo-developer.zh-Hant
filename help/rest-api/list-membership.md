@@ -147,7 +147,7 @@ GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 
 ## 清單的成員
 
-清單](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET)端點的[成員用於檢視一個或多個潛在客戶是否為清單的成員。 端點採用必要的`listId`路徑引數，以及一或多個包含潛在客戶ID的`id`查詢引數（允許的最大值為300）。
+清單[&#128279;](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET)端點的成員用於檢視一個或多個潛在客戶是否為清單的成員。 端點採用必要的`listId`路徑引數，以及一或多個包含潛在客戶ID的`id`查詢引數（允許的最大值為300）。
 
 回應包含`result`陣列，由JSON物件組成，要求中指定的每個潛在客戶ID都具有狀態。
 
