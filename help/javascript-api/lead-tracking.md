@@ -100,7 +100,7 @@ Munchkin Cookie是每個第二層網域（即`example.com`）專屬的。 Cookie
 
 ## Beta
 
-若要選擇加入登陸頁面的Munchkin測試版管道，請前往您的[管理員 — > Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features)功能表，並啟用「登陸頁面上的Munchkin Beta」設定。 這會提供&#x200B;**[!UICONTROL Admin]** ->中的新程式碼片段  **[!UICONTROL Munchkin]**&#x200B;功能表可讓您在外部網站上使用測試版。
+若要選擇加入登陸頁面的Munchkin測試版管道，請前往您的[管理員 — > Treasure Chest](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features)功能表，並啟用「登陸頁面上的Munchkin Beta」設定。 這會提供&#x200B;**[!UICONTROL Admin]** ->中的新程式碼片段  **[!UICONTROL Munchkin]**&#x200B;功能表可讓您在外部網站上使用測試版。
 
 ## 選擇退出
 
