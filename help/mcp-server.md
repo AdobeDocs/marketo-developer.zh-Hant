@@ -4,9 +4,9 @@ description: 瞭解如何使用MCP伺服器將AI助理連線到Marketo。 使用
 hidefromtoc: true
 badgeBeta: label="Beta" type="informative" tooltip="此功能目前處於搶先測試階段"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: ad7c64f3e2cbc25db1c2ffe61e2d42b0acbbd573
+source-git-commit: b21ecb7a4dd2730807b0ad601b95fe387498f8f0
 workflow-type: tm+mt
-source-wordcount: '1272'
+source-wordcount: '1391'
 ht-degree: 1%
 
 ---
@@ -16,6 +16,12 @@ ht-degree: 1%
 模型上下文通訊協定(MCP)是一種開放標準，可讓AI工具與外部服務通訊。 [!DNL Marketo] MCP伺服器可作為您的AI助理與[!DNL Marketo]之間的橋樑。 它會公開超過100項操作，涵蓋表單、方案、智慧行銷活動、銷售機會、電子郵件、代碼片段、清單和資料夾。
 
 當您的AI工具呼叫MCP伺服器時，伺服器會使用您在每個請求中提供的認證，代表您執行相對應的REST API呼叫。 您不需要安裝、部署或執行任何伺服器端軟體。
+
+>[!IMPORTANT]
+>
+>模型內容通訊協定(MCP)是一種新興的開放原始碼標準，可能會帶來安全性或可靠性風險。 Adobe MCP伺服器整合和相關檔案係依「現況」提供，不提供任何形式的保證。
+>將MCP使用者端或伺服器連線至Adobe產品是客戶選擇的組態，客戶需負責評估任何MCP整合的安全性和適用性。 Adobe對於因設定錯誤、誤用MCP、協力廠商實作中的漏洞，或透過啟用MCP的工作流程執行的意外動作所引起的問題，概不負責。
+>為了降低風險，Adobe鼓勵您在有效使用之前在沙箱環境中測試整合，並在確認或依賴之前，仔細檢閱及驗證所有MCP啟動的動作和回應。
 
 ## 先決條件
 
