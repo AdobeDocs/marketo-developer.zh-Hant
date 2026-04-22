@@ -2,16 +2,20 @@
 title: MCP伺服器
 description: 瞭解如何使用MCP伺服器將AI助理連線到Marketo。 使用您的Marketo憑證設定Claude Desktop、Cursor、Claude Code或VS Code。
 hidefromtoc: true
-badgeBeta: label="Beta" type="informative" tooltip="此功能目前處於搶先測試階段"
+badgeBeta: label="Beta" type="informative" tooltip="此功能目前仍在封閉測試版中"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-source-git-commit: b21ecb7a4dd2730807b0ad601b95fe387498f8f0
+source-git-commit: c21ba0db3115c453f8ec35e18d4a8fd4c1ad8745
 workflow-type: tm+mt
-source-wordcount: '1391'
+source-wordcount: '1388'
 ht-degree: 1%
 
 ---
 
 # [!DNL Marketo] MCP伺服器
+
+>[!NOTE]
+>
+>MCP伺服器目前是封閉測試版。 目前並非所有使用者都可使用。
 
 模型上下文通訊協定(MCP)是一種開放標準，可讓AI工具與外部服務通訊。 [!DNL Marketo] MCP伺服器可作為您的AI助理與[!DNL Marketo]之間的橋樑。 它會公開超過100項操作，涵蓋表單、方案、智慧行銷活動、銷售機會、電子郵件、代碼片段、清單和資料夾。
 
@@ -222,7 +226,6 @@ claude mcp add --transport http marketo \
 
 | 錯誤 | 原因 | 修正 |
 | ------- | ------- | ----- |
-| 「未提供Marketo端點」 | 您的設定中缺少`X-Marketo-Endpoint`標頭。 | 重新檢查您的MCP設定，並確認所有四個標頭都存在。 |
 | 「未提供Marketo認證」 | 遺失一或多個`X-Marketo-Client-Id`、`X-Marketo-Client-Secret`或`X-Marketo-Munchkin-Id`。 | 確認設定中出現全部四個標題。 |
 | 「驗證錯誤」 | 您的認證無效或已過期。 | 在&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL LaunchPoint]**&#x200B;中重新檢查您的使用者端ID和使用者端密碼。 |
 | 「403禁止存取」 | 您的Munchkin ID不在伺服器允許清單上。 | 請連絡您的[!DNL Marketo] MCP管理員以新增您的Munchkin ID。 |
