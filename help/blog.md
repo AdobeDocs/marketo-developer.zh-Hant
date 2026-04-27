@@ -2,7 +2,7 @@
 title: 部落格封存
 description: Marketo開發人員部落格檔案2014-2023提供Forms 2.0、Zapier、API更新、SOAP淘汰和移轉至REST的歷史文章。
 exl-id: d7ae88dd-9938-4957-9798-db43090dab4e
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: 9c6aa420e451d529f3a1618fafe70b59392a4670
 workflow-type: tm+mt
 source-wordcount: '65019'
 ht-degree: 0%
@@ -1606,7 +1606,7 @@ Marketo已對Bash漏洞(也稱為[Shellshock (CVE-2014-6271)](https://nvd.nist.g
 
 ### 外部頁面預填
 
-在Marketo登陸頁面外部載入時，Marketo表單不提供原生預填功能。 不過，我們仍可使用[Marketo API](/help/rest-api/rest-api.md)和[Forms 2.0 JavaScript API](/help/javascript-api/forms-api-reference.md/)實作此專案。 第一步是透過伺服器的REST呼叫，從Marketo擷取銷售機會資料。 假設我們無法從伺服器立即交叉參考銷售機會ID或其他唯一識別碼，我們需要使用Munchkin Cookie &#39;_mkto_trk&#39;，透過[依篩選型別取得銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET)，從Marketo伺服器擷取資料。
+在Marketo登陸頁面外部載入時，Marketo表單不提供原生預填功能。 不過，我們仍可使用[Marketo API](/help/rest-api/rest-api.md)和[Forms 2.0 JavaScript API](/help/javascript-api/forms-api-reference.md)實作此專案。 第一步是透過伺服器的REST呼叫，從Marketo擷取銷售機會資料。 假設我們無法從伺服器立即交叉參考銷售機會ID或其他唯一識別碼，我們需要使用Munchkin Cookie &#39;_mkto_trk&#39;，透過[依篩選型別取得銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET)，從Marketo伺服器擷取資料。
 
 若要進行此呼叫，我們需要您執行個體的驗證和REST端點。 當您使用您的Marketo執行個體進行驗證後，我們需要在`https://<host>/rest/v1/leads.json`對銷售機會API進行呼叫。 然後，我們需要建立查詢字串以篩選Marketo Cookie，如下所示`?filterType=cookie&filterValues=`。 您必須從使用者端傳送給伺服器的&#39;_mkto_trk&#39;金鑰擷取特定值。 注意： _mkto_trk Cookie值包含&amp;符號，且必須將URL編碼為`%26`，才能讓Marketo端點正確接受。 根據預設，銷售機會API傳回四個欄位： `id`、`email`、`firstName`和`updatedAt`。 若要設定特定的欄位集，您必須包含`fields`查詢引數，其欄位名稱以逗號分隔，如下所示： `&fields=email,firstName,lastName,company`。 我們的最終通話將如下所示：
 
