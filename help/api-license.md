@@ -3,8 +3,7 @@ title: API授權
 description: Marketo API授權合約書，適用於內部開發及測試，詳述API限制、與Marketo解決方案的互用性，以及非商業用途。
 exl-id: f0720ba7-b15d-40c8-9145-d3fa3e064a0b
 hide: true
-hidefromtoc: true
-source-git-commit: 5260338681c4ea670f6f1b1a1603e30f6acc0865
+source-git-commit: 74f277aa200fa54bc386c067ec3302d144ec250a
 workflow-type: tm+mt
 source-wordcount: '3113'
 ht-degree: 0%
@@ -106,4 +105,4 @@ API授權合約
 
 [!DNL K]. 管轄法律；通知。 本協定受加州法律管轄，不論法律選擇或衝突規則為何。 與本協定相關之任何法律事項的專屬管轄權和地點應為加州聖馬特奧縣高級法院，或加州北部地區的美國地區法院。 本合約下的通知必須為書面通知，且在以下情況下視為已發出：(i)個人遞送，(ii)郵寄後的第三個營業日，(ii)以電子郵件傳送後的第一個營業日。 通知Marketo必須寄至：「Application Programming Interface License Agreement」和Marketo， Inc.， 901 Mariner&#39;s Island Boulevard， Suite 500， San Mateo， CA 94404，並在同一地址將副本送交我們的法律總顧問。
 
-Archived versions of the API License Agreement may be found at: [https://developers.marketo.com/api-license-archived](https://developers.marketo.com/api-license-archived)
+API授權合約的封存版本位於： [https://developers.marketo.com/api-license-archived](https://developers.marketo.com/api-license-archived)
