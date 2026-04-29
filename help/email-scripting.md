@@ -3,7 +3,7 @@ title: 電子郵件指令碼
 feature: Email Programs
 description: 瞭解如何使用Apache Velocity權杖、變數、Velocity工具編寫動態Marketo電子郵件的指令碼，以及使用「傳送範例」和「電子郵件預覽」進行測試。
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
-source-git-commit: c21ba0db3115c453f8ec35e18d4a8fd4c1ad8745
+source-git-commit: 6b813020fec6727dc2fe3b4dfe1c98146447e704
 workflow-type: tm+mt
 source-wordcount: '1100'
 ht-degree: 0%
@@ -32,7 +32,9 @@ $variablename ##outputs '$variablename'
 ${variable}name ##outputs 'valuename'
 ```
 
-也有無訊息參考標籤法，其中在`$`之後有`!`包含。 通常，當velocity遇到未定義的參照時，代表該參照的字串會保留在原處。 使用安靜參照標籤法，如果遇到未定義的參照，則不會發出任何值：
+
+
+也有無訊息參考標籤法，其中在`$`之後有`!`包含。 通常，當velocity遇到未定義的參照時，代表該參照的字串會保留在原處。 使用安靜的參考標籤法，如果遇到未定義的參考，則不會發出任何值：
 
 ```velocity
 ##Defined Reference
