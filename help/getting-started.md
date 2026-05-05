@@ -2,7 +2,7 @@
 title: 快速入門
 description: 開始使用Marketo Engage API和資料模型，包括銷售機會、活動、方案、標籤、清單、REST指引和SOAP淘汰通知。
 exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: e3fd965eb0c1fe0968933577963bc6a935c0f26d
 workflow-type: tm+mt
 source-wordcount: '1507'
 ht-degree: 1%
@@ -101,3 +101,4 @@ Marketo自訂物件允許在您的Marketo銷售機會和自訂物件記錄之間
 若未啟用原生CRM整合，則可在Marketo中管理銷售人員記錄和潛在客戶關係。 這些記錄包含有關銷售人員的基本資訊，例如名稱、電子郵件和職稱，當銷售機會屬於某人時，這些資訊可用於在Marketo中篩選和代號。 與銷售人員的關係是透過「externalSalesPersonId」欄位在銷售機會層級管理，該欄位必須透過[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) API更新。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
+
