@@ -3,7 +3,7 @@ title: Marketo物件
 feature: Email Programs
 description: 使用Marketo Velocity搭配銷售機會、商機和自訂物件、載入欄位、前10名清單存取權、SFDC關係和$TriggerObject的指南。
 exl-id: 88c63d72-7aa5-4550-9e1a-887a479872e1
-source-git-commit: ff0a95e838cecd1d8b1f90ca029a320043824242
+source-git-commit: a8bf6680a212dd665841896e4550a755dcdf745d
 workflow-type: tm+mt
 source-wordcount: '532'
 ht-degree: 0%
@@ -34,7 +34,7 @@ SFDC自訂物件與Marketo潛在客戶必須只有一個關係，才能使用。
 
 ## 觸發物件
 
-當透過「新增至機會」、「機會已更新」或「新增至`<Custom Object Name>`個觸發程式」觸發促銷活動時，在觸發程式促銷活動內容內執行的指令碼Token中會提供一個特殊變數： `$TriggerObject ` （不支援`<Custom Object Name>`為「已更新」觸發程式）。  如果批次行銷活動中使用使用`$TriggerObject`參考的Token，則電子郵件傳送將失敗，因為此物件無法用於任何型別的批次行銷活動。  這是觸發行銷活動的物件參考。 物件包含透過不同變數名稱存取記錄時該記錄擁有的所有資料。
+當透過「新增至機會」、「機會已更新」或「新增至`<Custom Object Name>`個觸發程式」觸發促銷活動時，在觸發程式促銷活動內容內執行的指令碼Token中會提供一個特殊變數： `$TriggerObject` （不支援`<Custom Object Name>`為「已更新」觸發程式）。  如果批次行銷活動中使用使用`$TriggerObject`參考的Token，則電子郵件傳送將失敗，因為此物件無法用於任何型別的批次行銷活動。  這是觸發行銷活動的物件參考。 物件包含透過不同變數名稱存取記錄時該記錄擁有的所有資料。
 
 例如，如果促銷活動是透過產品訂單的自訂物件所觸發，則要新增銷售機會的訂單會顯示在`$TriggerObject`變數中。
 
