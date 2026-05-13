@@ -3,9 +3,16 @@ title: requestCampaign
 feature: SOAP, Smart Campaigns
 description: 透過Marketo requestCampaign在SOAP智慧行銷活動中執行銷售機會，包括引數集、代號處理、100個銷售機會限制、XML要求和PHP Java範例。
 exl-id: b5367eb9-4f4c-4e1d-8b6d-36de8f134f0e
-source-git-commit: 74964e90ddc68a611706afcad1f6016d05b060d6
+TQID: https://experienceleague.adobe.com/8dl49g8pY0vcrXZnh5UwjqbhZiAzitG3Ar4KfhXoa7U
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: a7170d27-32ab-462b-a333-269abc654483
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '298'
+source-wordcount: 298
 ht-degree: 3%
 
 ---

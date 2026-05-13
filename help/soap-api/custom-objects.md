@@ -3,9 +3,14 @@ title: 自訂物件
 feature: SOAP
 description: 瞭解Marketo自訂物件如何連結一個指向許多記錄，具有結構、限制，以及用於取得、同步、刪除以及智慧清單和電子郵件使用的SOAP API呼叫。
 exl-id: 29d65841-4b44-4d94-b14e-c583d433d015
-source-git-commit: 9c10469ffa3b763552d176329a426ef51eebe0f1
+TQID: https://experienceleague.adobe.com/Fy3h8qfKs8gizeakXkhoj5mJhib-QA2kYOu41YMIEZs
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '286'
+source-wordcount: 286
 ht-degree: 1%
 
 ---

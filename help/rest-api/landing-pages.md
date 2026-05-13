@@ -3,9 +3,19 @@ title: 登陸頁面
 feature: REST API, Landing Pages
 description: 使用Marketo REST API來查詢中繼資料和內容、建立、更新、核准、刪除和複製登入頁面，包括引導式和自由表單型別。
 exl-id: 2f986fb0-0a6b-469f-b199-1c526cd5a882
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/NssOtB6BEMGOQzzauLI7AszLpN3fVcEeJcr9VNTkpJE
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1221'
+source-wordcount: 1221
 ht-degree: 1%
 
 ---
@@ -186,7 +196,7 @@ name=MyNewLandingPage&folder={"type":"Program","id":1119}&template=57
 | 矩形 | 空白。 |
 | RTF | 文字HTML內容。  只能包含RTF元素。 |
 | 程式碼片段 | 程式碼片段的ID。 |
-| 社交按鈕 | ID  社交按鈕。 |
+| 社交按鈕 | 社交按鈕的id。 |
 | 影片 | 視訊的ID。 |
 
 對於自由格式頁面，必須新增所有需要的內容區段，並將嵌入到ID為`mktoContent`的div元素中。 對於引導式頁面，預先定義的元素清單可能會出現在[取得登陸頁面內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET)端點的清單中。 可透過其各自的端點新增更多內容或更新其[內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST)。
@@ -310,7 +320,7 @@ GET /rest/asset/v1/landingPage/{id}/variables.json
 }
 ```
 
-在  此範例中，引導式登陸頁面包含3個變數：stringVar、colorVar、boolVar。
+在此範例中，引導式登陸頁面包含3個變數：stringVar、colorVar、boolVar。
 
 ### 更新
 
@@ -341,7 +351,7 @@ POST /rest/asset/v1/landingPage/{id}/variable/{variableId}.json?value={newValue}
 Marketo提供[取得登陸頁面完整內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageFullContentUsingGET)端點，以擷取登陸頁面的即時預覽，如同在瀏覽器中呈現一樣。 有一個必要的引數，`id`路徑引數，是您要預覽之登入頁面的ID。 還有兩個額外的選用查詢引數：
 
 - segmentation：接受包含segmentationId和segmentId屬性的JSON物件陣列。 設定後，會將您視為符合這些區段的潛在客戶來預覽登陸頁面。
-- 銷售機會ID：  接受潛在客戶的整數ID。 設定後，會預覽登入頁面，就像是由指定的潛在客戶檢視一樣。
+- leadId：接受潛在客戶的整數ID。 設定後，會預覽登入頁面，就像是由指定的潛在客戶檢視一樣。
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/fullContent.json?leadId=1001&segmentation=[{"segmentationId":1030,"segmentId":1103}]

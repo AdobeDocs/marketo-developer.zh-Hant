@@ -3,10 +3,17 @@ title: 啟用深層連結
 feature: Mobile Marketing
 description: 瞭解如何使用自訂URI配置，並搭配使用iOS、Android以及PhoneGap指引和最佳實務，在您的應用程式中為Marketo推送訊息啟用深層連結。
 exl-id: c3647416-d81d-4f15-b660-bcb3e54cb9bc
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/UswOvHXGlfTrTUqr4Gsf3j2Z7Xpv2FF2luXeygT4qE0
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '397'
-ht-degree: 0%
+source-wordcount: 420
+ht-degree: 1%
 
 ---
 

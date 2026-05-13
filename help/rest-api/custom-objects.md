@@ -3,9 +3,23 @@ title: 自訂物件
 feature: REST API, Custom Objects
 description: 瞭解如何透過REST API建立和管理Marketo自訂物件，包括清單和說明端點、中繼資料、關係、欄位和查詢。
 exl-id: 88e8829b-f8f1-46d7-a753-5aa6e20e2c40
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/NWm9CjFVqQdVDJRrnE4nA299-Lg53-JR7xvY-82dUqY
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+subfeature_v2:
+  - id: ea4e3ff5-e7b9-4b4c-a5a0-dc27cc3f4275
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '3346'
+source-wordcount: 3346
 ht-degree: 0%
 
 ---
@@ -395,7 +409,7 @@ POST /rest/v1/customobjects/{apiName}/delete.json
 
 ### 查詢型別
 
-有兩種方式可擷取自訂物件型別中繼資料：說明自訂物件型別，這會傳回  單一自訂物件型別的記錄，可依核准狀態篩選，以及清單自訂物件型別，其會傳回訂閱中所有自訂物件型別的清單，並可依名稱和核准狀態篩選。
+擷取自訂物件型別中繼資料的方法有兩種：說明自訂物件型別，可傳回單一自訂物件型別的記錄，並可依核准狀態篩選；清單自訂物件型別，可傳回訂閱中所有自訂物件型別的清單，並可依名稱和核准狀態篩選。
 
 ### 說明型別
 
@@ -514,7 +528,7 @@ GET /rest/v1/customobjects/schema/{apiName}/describe.json?state=approved
 
 * 中繼資料： state、displayName、description、apiName、idField、createdAt、updatedAt、dedupeFields、searchableFields、relationships
 * 標準欄位： marketoGUID、createdAt、updatedAt
-* 自訂欄位leadId、vin、make、  模型，年
+* 自訂欄位leadId、vin、make、model、year
 
 ### 清單型別
 
@@ -701,7 +715,7 @@ GET /rest/v1/customobjects/schema.json?names=purchaseHistory
 
 命名自訂物件時請小心。 建立新的自訂物件時，建議您在名稱前面加上字串，用以表示您的公司名稱（允許使用英數字元或底線）。 這可讓自訂物件在MLM UI中輕鬆搜尋，也有助於確定名稱是唯一的。
 
-以下是使用API建立新自訂物件型別的範例  名稱「transaction」。
+以下是使用API名稱「transaction」建立新自訂物件型別的範例。
 
 ```http
 POST /rest/v1/customobjects/schema.json
@@ -883,7 +897,7 @@ POST /rest/v1/customobjects/schema/{apiName}/delete.json
 
 ### 新增欄位
 
-[新增自訂物件型別欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/addCustomObjectTypeFieldsUsingPOST)端點可讓您新增一或多個欄位至自訂物件。  要求內文包含具有一或多個元素的`input`陣列。  每個元素都是一個JSON物件，其屬性用於描述欄位。 必要的`name`屬性是欄位的API名稱，且必須是自訂物件唯一的。   慣例是使用小寫或駝峰式大小寫來協助區分其他文字字串。 必要的`displayName`屬性是使用者可讀取的欄位名稱，且必須是自訂物件的唯一名稱。 必要的`dataType`屬性是欄位的資料型別。  A  呼叫[取得自訂物件型別欄位資料型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeFieldDataTypesUsingGET)端點，即可取得允許的資料型別清單。  自訂物件可包含資料型別為「連結」的欄位。  連結欄位可用來建立自訂物件與系統中其他物件型別（例如Lead、Company）之間的關係。  連結欄位的詳細資訊可在[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields)找到。 選用的`description`屬性是欄位的描述。 選用的`isDedupeField`布林值屬性會指定在自訂物件更新作業期間是否使用欄位進行重複資料刪除。  預設設定為false。  對於一對多關係，需要重複資料刪除欄位。 選用的`relatedTo`物件屬性指定了連結欄位。  對於一對多關係，此物件包含`name`屬性（要連結的「連結物件」或父物件）和`field`屬性（即「連結欄位」）。  或父物件內的欄位以用作索引鍵屬性。  呼叫[取得自訂物件可連結物件](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeLinkableObjectsUsingGET)端點以擷取允許的連結物件清單。  如需連結欄位的詳細資訊，請參閱產品檔案[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields)。 自訂物件無法連結至具有現有連結欄位的另一個自訂物件。
+[新增自訂物件型別欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/addCustomObjectTypeFieldsUsingPOST)端點可讓您新增一或多個欄位至自訂物件。  要求內文包含具有一或多個元素的`input`陣列。  每個元素都是一個JSON物件，其屬性用於描述欄位。 必要的`name`屬性是欄位的API名稱，且必須是自訂物件唯一的。   慣例是使用小寫或駝峰式大小寫來協助區分其他文字字串。 必要的`displayName`屬性是使用者可讀取的欄位名稱，且必須是自訂物件的唯一名稱。 必要的`dataType`屬性是欄位的資料型別。  呼叫[取得自訂物件型別欄位資料型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeFieldDataTypesUsingGET)端點，即可取得允許的資料型別清單。  自訂物件可包含資料型別為「連結」的欄位。  連結欄位可用來建立自訂物件與系統中其他物件型別（例如Lead、Company）之間的關係。  連結欄位的詳細資訊可在[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields)找到。 選用的`description`屬性是欄位的描述。 選用的`isDedupeField`布林值屬性會指定在自訂物件更新作業期間是否使用欄位進行重複資料刪除。  預設設定為false。  對於一對多關係，需要重複資料刪除欄位。 選用的`relatedTo`物件屬性指定了連結欄位。  對於一對多關係，此物件包含`name`屬性（要連結的「連結物件」或父物件）和`field`屬性（要作為索引鍵屬性的「連結欄位」或父物件中的欄位）。  呼叫[取得自訂物件可連結物件](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects/operation/getCustomObjectTypeLinkableObjectsUsingGET)端點以擷取允許的連結物件清單。  如需連結欄位的詳細資訊，請參閱產品檔案[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-fields)。 自訂物件無法連結至具有現有連結欄位的另一個自訂物件。
 
 ### 一對多關係
 
@@ -988,7 +1002,7 @@ POST /rest/v1/customobjects/schema/course/approve.json
 
 ### 多對多關係
 
-多對多關係在標準自訂物件（如Lead或Company）與「邊緣」自訂物件之間使用「橋接器」或中介、自訂物件來表示。 Edge物件是包含描述性屬性（欄位）的主要實體。 橋接物件包含資料，可使用2個連結欄位來解析物件關係。  有一個連結欄位指向父標準物件，就像在  一對多關係設定。  另一個連結欄位指向邊緣物件，這是沒有連結的自訂物件。  橋接器物件也可能包含描述性屬性（欄位）。 我們使用Marketo產品檔案[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure)中的大學課程註冊範例，建立邊緣自訂物件以包含課程相關資訊，並建立註冊橋接物件，用於將課程與潛在客戶連線。 以下是步驟：
+多對多關係在標準自訂物件（如Lead或Company）與「邊緣」自訂物件之間使用「橋接器」或中介、自訂物件來表示。 Edge物件是包含描述性屬性（欄位）的主要實體。 橋接物件包含資料，可使用2個連結欄位來解析物件關係。  一個連結欄位會指向父標準物件，就像一對多關係設定一樣。  另一個連結欄位指向邊緣物件，這是沒有連結的自訂物件。  橋接器物件也可能包含描述性屬性（欄位）。 我們使用Marketo產品檔案[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure)中的大學課程註冊範例，建立邊緣自訂物件以包含課程相關資訊，並建立註冊橋接物件，用於將課程與潛在客戶連線。 以下是步驟：
 
 1. 建立&#x200B;**課程**&#x200B;邊緣物件
 1. 在&#x200B;**課程ID**&#x200B;上新增欄位至&#x200B;**課程：**&#x200B;重複資料刪除

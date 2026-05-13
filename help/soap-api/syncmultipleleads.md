@@ -3,10 +3,15 @@ title: syncMultipleLeads
 feature: SOAP
 description: 瞭解如何使用syncMultipleLeads透過SOAP、索引鍵和重複資料刪除規則、批次大小限制以及範例XML、PHP和Java程式碼來更新插入多個Marketo銷售機會。
 exl-id: 91980b82-dff9-48a7-b03e-20dce9d0d046
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/wKdqd4hC3soaYoZ4-Vsx5JLL-me-7PmU-VUn-nXFDpw
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '244'
-ht-degree: 3%
+source-wordcount: 247
+ht-degree: 4%
 
 ---
 
@@ -22,7 +27,7 @@ ht-degree: 3%
 
 我們的建議為批次大小不得超過300。 不支援較大尺寸，這可能會導致逾時並在極端情況下進行節流。
 
-您可以使用此函式呼叫來關閉去重複化功能。 如果dedupEnabled設為true，但未提供其他唯一識別碼(`foreignSysPersonId`或Marketo銷售機會識別碼)，則會使用電子郵件地址來刪除銷售機會記錄的重複專案。 請記住，傳入false會在Marketo中建立重複專案。
+您可以使用此函式呼叫來關閉去重複化功能。 如果dedupEnabled設為true，但未提供其他唯一識別碼（`foreignSysPersonId`或Marketo銷售機會識別碼），則會使用電子郵件地址來刪除銷售機會記錄的重複專案。 請記住，傳入false會在Marketo中建立重複專案。
 
 ## 請求
 

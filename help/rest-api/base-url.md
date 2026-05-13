@@ -3,9 +3,14 @@ title: 基礎 URL
 feature: REST API
 description: 瞭解如何建立Marketo REST API要求、瞭解基本URL路徑資源和引數，並尋找您唯一的基本URL。
 exl-id: 6c3f122c-3ace-4ed3-bed0-a6b89cedc99a
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/NZisV6V-FMPi0RHpdaFrc1kZc3nb15YomwRgohaQmEE
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '152'
+source-wordcount: 153
 ht-degree: 2%
 
 ---
@@ -25,7 +30,7 @@ ht-degree: 2%
 - 資源： `318582.json`
 - 查詢引數： `fields=email,firstName,lastName`
 
-基礎URL包含帳戶ID (亦即Munchkin ID)，因此每個Marketo訂閱都是唯一的。 您的基底URL是登入Marketo並導覽至&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**&#x200B;功能表所找到。 如下列熒幕擷取畫面所示，「REST API」區段底下標示為「端點：」。
+基礎URL包含帳戶ID （亦即Munchkin ID），因此每個Marketo訂閱都是唯一的。 您的基底URL是登入Marketo並導覽至&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**&#x200B;功能表所找到。 如下列熒幕擷取畫面所示，「REST API」區段底下標示為「端點：」。
 
 ![Web服務基底URL端點](assets/rest-api-base-url-web-services.png)
 

@@ -3,9 +3,18 @@ title: 大量自訂物件匯入
 feature: Custom Objects
 description: 瞭解如何使用CSV、TSV或SSV檔案，透過REST大量匯入Marketo自訂物件。
 exl-id: e795476c-14bc-4e8c-b611-1f0941a65825
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/C1LKLZDEvv95XXH3AEoxIXsLK55tgKTrvyxvs4LnYWw
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '953'
+source-wordcount: 953
 ht-degree: 0%
 
 ---
@@ -14,7 +23,7 @@ ht-degree: 0%
 
 [大量自訂物件匯入端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects)
 
-當您有許多自訂物件記錄時  匯入時，最佳實務是使用大量API以非同步方式匯入它們。 這是透過匯入包含分隔記錄（逗號、定位字元或分號）的純文字檔案來完成的。 檔案可包含任意數量的記錄，但大小必須小於10MB （否則為HTTP）  413狀態碼已傳回)。 檔案的內容取決於您的自訂物件定義。 第一列一律包含標題，列出要將每列的值對應到的欄位。 標題中的所有欄位名稱都必須符合API名稱（如下所述）。 其餘的列包含要匯入的資料，每列有一筆記錄。 記錄作業僅限「插入或更新」。
+如果要匯入許多自訂物件記錄，最佳做法是使用大量API以非同步方式匯入它們。 這是透過匯入包含分隔記錄（逗號、定位字元或分號）的純文字檔案來完成的。 檔案可包含任意數量的記錄，但大小必須小於10MB （否則會傳回HTTP 413狀態代碼）。 檔案的內容取決於您的自訂物件定義。 第一列一律包含標題，列出要將每列的值對應到的欄位。 標題中的所有欄位名稱都必須符合API名稱（如下所述）。 其餘的列包含要匯入的資料，每列有一筆記錄。 記錄作業僅限「插入或更新」。
 
 ## 處理限制
 

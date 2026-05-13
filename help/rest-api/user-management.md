@@ -3,9 +3,20 @@ title: 使用者管理
 feature: REST API
 description: 適用於CRUD的Marketo使用者管理API指南，內容包括使用者、標頭型驗證、角色和工作區、狀態程式碼處理、日期時間格式及查詢端點。
 exl-id: 2a58f496-0fe6-4f7e-98ef-e9e5a017c2de
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+TQID: https://experienceleague.adobe.com/V1NzpIl-peHBi9rqy8YwdJDh3O-dViIdF0cBsDSI-w8
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+  - id: d65b4a73-87a3-4d56-b638-74e74d9939ce
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1581'
+source-wordcount: 1581
 ht-degree: 6%
 
 ---
@@ -429,7 +440,7 @@ POST /userservice/management/v1/users/{userid}/invite/delete.json
 
 ## 新增角色
 
-[新增角色](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/addRolesUsingPOST)端點採用單一`userid`路徑引數，並將一或多個使用者角色新增至對應的使用者。 請求內文包含一或多個物件的清單，每個物件都包含  `accessRoleId`和`workspaceId`屬性。 如果成功，則會傳回指定使用者的`accessRoleId/workspaceId`配對完整清單。
+[新增角色](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/addRolesUsingPOST)端點採用單一`userid`路徑引數，並將一或多個使用者角色新增至對應的使用者。 要求內文包含一或多個物件的清單，每個物件都包含`accessRoleId`和`workspaceId`屬性。 如果成功，則會傳回指定使用者的`accessRoleId/workspaceId`配對完整清單。
 
 ```http
 POST /userservice/management/v1/users/{userid}/roles/create.json
@@ -467,7 +478,7 @@ Content-Type: application/json
 
 ## 刪除角色
 
-[刪除角色](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/deleteRolesUsingPOST)端點採用單一`userid`路徑引數，並從對應的使用者中刪除一或多個使用者角色。 請求內文包含一或多個物件的清單，每個物件都包含  `accessRoleId`和`workspaceId`屬性。 如果成功，則會傳回指定使用者的accessRoleId/workspaceId配對的其餘清單。
+[刪除角色](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/deleteRolesUsingPOST)端點採用單一`userid`路徑引數，並從對應的使用者中刪除一或多個使用者角色。 要求內文包含一或多個物件的清單，每個物件都包含`accessRoleId`和`workspaceId`屬性。 如果成功，則會傳回指定使用者的accessRoleId/workspaceId配對的其餘清單。
 
 ```http
 POST /userservice/management/v1/users/{userid}/roles/delete.json

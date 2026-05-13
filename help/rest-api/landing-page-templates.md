@@ -3,9 +3,18 @@ title: 登陸頁面範本
 feature: REST API, Landing Pages
 description: 透過REST API端點管理自由格式和引導式型別的Marketo登陸頁面範本、依id或名稱查詢、建立、更新HTML、複製、Munchkin。
 exl-id: f9d1255e-ec13-4b75-96d5-b4cc9457a51b
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/U9K1MG-q2gIgJMgfM3lt1S4olETt8ln9seOIKZUncBY
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '703'
+source-wordcount: 703
 ht-degree: 1%
 
 ---
@@ -118,7 +127,7 @@ Marketo提供複製登入頁面範本的簡單方法。 這是application/x-www-
 
 `name`引數是用來指定新登入頁面範本的名稱。
 
-`folder`引數是用來指定新登入頁面範本所在的父資料夾。 其形式為內嵌JSON物件，包含  `id`和`type`。
+`folder`引數是用來指定新登入頁面範本所在的父資料夾。 這是內嵌JSON物件的形式，包含`id`和`type`。
 
 選用的`description`引數可用來說明新的登入頁面範本。
 

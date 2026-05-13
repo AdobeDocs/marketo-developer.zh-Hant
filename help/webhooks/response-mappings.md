@@ -3,9 +3,16 @@ title: 回應對應
 feature: Webhooks
 description: Marketo Webhook會對JSON和XML進行回應對應，將屬性對應至具有SOAP API名稱、點和陣列標籤法以及型別相容性的潛在客戶欄位。
 exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
-source-git-commit: d84b9d0f60734500f16bba237bdd95692d22abbb
+TQID: https://experienceleague.adobe.com/-OGDeKLPS1KmWGIKj6BGq5DGXoCSj5ip-dVr7-kKDro
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '484'
+source-wordcount: 484
 ht-degree: 0%
 
 ---
