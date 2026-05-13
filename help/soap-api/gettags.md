@@ -4,10 +4,14 @@ feature: SOAP, Tags
 description: Marketo SOAP getTags會使用選用的標籤篩選器，加上請求欄位和完整的XML請求回應範例，來擷取非管道標籤型別和值。
 exl-id: 4fd9de1a-9362-479a-afe1-09ef0aaf5e6e
 TQID: https://experienceleague.adobe.com/55CSoyxyyE1pAO5tdB9WmVudPo59ndDVS9pmY7onyBc
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: e1e0219c-f879-479f-8427-888ed2a6e9c2
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: e1e0219c-f879-479f-8427-888ed2a6e9c2
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 116

@@ -4,8 +4,10 @@ feature: SOAP
 description: 瞭解如何使用syncMultipleLeads透過SOAP、索引鍵和重複資料刪除規則、批次大小限制以及範例XML、PHP和Java程式碼來更新插入多個Marketo銷售機會。
 exl-id: 91980b82-dff9-48a7-b03e-20dce9d0d046
 TQID: https://experienceleague.adobe.com/wKdqd4hC3soaYoZ4-Vsx5JLL-me-7PmU-VUn-nXFDpw
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 247

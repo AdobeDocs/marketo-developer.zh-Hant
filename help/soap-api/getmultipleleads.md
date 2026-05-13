@@ -4,8 +4,10 @@ feature: SOAP
 description: 瞭解如何使用Marketo SOAP getMultipleLeads，依索引鍵、靜態清單或更新日期擷取最多1000個銷售機會、使用資料流位置分頁，以及篩選欄位。
 exl-id: db9aabec-8705-40c6-b264-740fdcef8a52
 TQID: https://experienceleague.adobe.com/JIeJVJjGzfbi4isERbo4AiwmDTxrB4JuJ7qttQg2u0Q
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 409

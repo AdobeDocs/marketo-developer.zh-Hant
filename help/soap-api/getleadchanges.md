@@ -4,8 +4,10 @@ feature: SOAP
 description: 瞭解如何使用Marketo SOAP getLeadChanges API來擷取具有篩選器、leadSelector、分頁和XML範例的銷售機會變更活動。
 exl-id: 23445684-d8d9-407b-8f19-cb69e806795c
 TQID: https://experienceleague.adobe.com/aPP14duN8rOf5Zr19VE-b183jL7RSqGOPEQjsi5OAIU
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 418

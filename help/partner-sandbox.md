@@ -3,9 +3,12 @@ title: 合作夥伴沙箱
 description: Marketo Engage合作夥伴沙箱概觀，包含布建資訊以及API呼叫、記錄、電子郵件傳送、自訂物件和使用者的限制。
 exl-id: a8f36cb5-d288-4b8b-b4bf-037faa3fe73f
 TQID: https://experienceleague.adobe.com/WsEGS1bb-bPo0zFj7XzwdtfuZMJ0-y1PPzvxiNceiFE
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 206

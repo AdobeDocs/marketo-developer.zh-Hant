@@ -4,9 +4,12 @@ feature: SOAP
 description: 瞭解如何在Marketo SOAP中使用importToList，以匯入具有CSV標題、權杖覆寫、XML範例和狀態檢查的靜態清單。
 exl-id: 7e4930a9-a78f-44a3-9e8c-eeca908080c8
 TQID: https://experienceleague.adobe.com/yOioersMnzB6rSHlLrHvGTG2HyLXvqF9y8yOLdN9anY
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: a7170d27-32ab-462b-a333-269abc654483
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: a7170d27-32ab-462b-a333-269abc654483
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
 source-wordcount: 410
