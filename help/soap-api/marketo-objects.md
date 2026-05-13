@@ -3,9 +3,12 @@ title: Marketo物件
 feature: SOAP
 description: Marketo物件的總覽，包括型別、屬性、外部金鑰行為，以及支援的SOAP API （適用於機會、計畫和相關記錄）。
 exl-id: 99b9aed4-94e8-46e8-84d9-2cc5215b0c13
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/-G3BW9oFhPZL68yBUy-aNYycmgADhQCo8OclQAierrU
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '274'
+source-wordcount: 274
 ht-degree: 0%
 
 ---
@@ -31,7 +34,7 @@ MObject包含：
 
 ### 外部索引鍵
 
-外部索引鍵是在Marketo物件（例如Lead或Opportunity）上定義的自訂欄位。 名稱是欄位名稱，值是在外部系統中產生的欄位值。**Marketo沒有對這些值強制唯一限制。** API使用者應負責確保值是唯一的。 如果發生重複，Marketo會使用最近新增的物件。 這類似於「電子郵件地址」標準欄位的行為。
+外部索引鍵是在Marketo物件（例如Lead或Opportunity）上定義的自訂欄位。 名稱是欄位名稱，值是在外部系統中產生的欄位值。 **Marketo未對這些值強制唯一條件約束。** API使用者應負責確保值是唯一的。 如果發生重複，Marketo會使用最近新增的物件。 這類似於「電子郵件地址」標準欄位的行為。
 
 ### 可用的API
 

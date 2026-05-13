@@ -3,9 +3,14 @@ title: 自訂動作
 feature: Mobile Marketing
 description: 瞭解如何使用適用於iOS和Android的Marketo Mobile SDK來傳送和報告自訂動作、將離線佇列、觸發Smart Campaigns，並符合20個字元的要求……
 exl-id: 8c2698ce-4e39-4b2b-9d36-0864c55be17a
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+TQID: https://experienceleague.adobe.com/yZKzdm-dH0cYPGGKE-Z-4KcbhGIwyFl0Z9vEqcv1QXI
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080b
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '336'
+source-wordcount: 336
 ht-degree: 1%
 
 ---
@@ -14,7 +19,7 @@ ht-degree: 1%
 
 您可以透過傳送自訂動作來追蹤使用者互動。 當您的行動應用程式呼叫Marketo SDK以傳送自訂動作時，自訂動作最初會儲存至裝置。 Marketo SDK在傳送自訂動作之前，會先檢查是否有足夠的網際網路連線。 因此，自訂動作的傳送時間與Marketo接收時間之間可能會有延遲。
 
-自訂動作可作為Smart Campaigns中的觸發器和篩選器。 如需詳細資訊，請參閱[行動應用程式活動](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns)。
+自訂動作可作為Smart Campaigns中的觸發器和篩選器。 如需詳細資訊，請參閱[行動應用程式活動](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns)。
 
 ## 在iOS上傳送自訂動作
 

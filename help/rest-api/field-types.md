@@ -3,16 +3,22 @@ title: 欄位型別
 feature: REST API
 description: 包含定義、範例和格式的Marketo欄位型別完整清單，包括ISO 8601日期時間、文字區域限制、貨幣和布林值。
 exl-id: a0ba9e02-ed42-4be3-9cdd-a97fee9a726e
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/Q-L1NCCS1caYip-niSrBAkp6k37ErzmsLCFvn7fRJW0
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: c5f60233-d5ea-4453-a799-0ad258b4d399id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+subfeature_v2: id: ad89fb33-8541-4339-afe7-bb13d1633714
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '373'
+source-wordcount: 373
 ht-degree: 8%
 
 ---
 
 # 欄位型別
 
-以下是Marketo中欄位型別的說明。 有關欄位型別的其他資訊可在[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary)找到。 有關欄位型別限制的其他資訊可在[這裡](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613)找到。
+以下是Marketo中欄位型別的說明。 有關欄位型別的其他資訊可在[這裡](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary)找到。 有關欄位型別限制的其他資訊可在[這裡](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613)找到。
 
 | 欄位型別 | 說明 | 範例 |
 | --- | --- | --- |
@@ -20,11 +26,11 @@ ht-degree: 8%
 | 電子郵件 | 接受電子郵件地址的字串欄位 | <example@example.com> |
 | 浮點數 | 包含實數且可以使用小數位的數字欄位。 | 10.4 |
 | 整數 | 整數 | 10 |
-| 公式 | 透過操控潛在客戶記錄上呈現之其他欄位的資料而產生值的欄位。 它們不會匯出，且無法用於Smart Campaigns。 | 檢視此[文章](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
+| 公式 | 透過操控潛在客戶記錄上呈現之其他欄位的資料而產生值的欄位。 它們不會匯出，且無法用於Smart Campaigns。 | 檢視此[文章](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/create-and-use-a-concatenated-string-formula-field) |
 | 百分比 | 以整數表示的百分比 | 30 |
 | URL | 限制輸入至URL （包括URL的通訊協定）的文字欄位。 | <http://example.com/> |
 | 電話 | 電話號碼 | 111-111-1111 |
-| 文字區域 | 較長的文字。 | 最多可支援30,000個位元組。 標準ASCII字元每個字元使用1個位元組（最多允許30,000個字元）。 Unicode字元每個字元最多可使用4個位元組(減少  字元數允許少於30,000個字元)。 |
+| 文字區域 | 較長的文字。 | 最多可支援30,000個位元組。 標準ASCII字元每個字元使用1個位元組（最多允許30,000個字元）。 Unicode字元每個字元最多可使用4個位元組（將允許的字元數減少到30,000個字元以下）。 |
 | 字串 | 較短的文字 | 文字最多255個字元 |
 | 分數 | 可使用「變更分數」流程步驟操作的整數欄位 | 10 |
 | 布林值（舊稱Checkbox） | 允許使用者選取True （核取）或False （未核取）值。 | True |

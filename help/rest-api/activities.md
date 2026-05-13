@@ -3,9 +3,14 @@ title: 活動
 feature: REST API
 description: 使用Marketo Engage活動REST API來列出活動型別、擷取具有分頁權杖的銷售機會活動，以及處理自訂和資料值的變更。
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
-source-git-commit: 5260338681c4ea670f6f1b1a1603e30f6acc0865
+TQID: https://experienceleague.adobe.com/62keaj4uNoxIPCzr9AQzKrIsfuHBvC25knYisZRUvF4
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '2218'
+source-wordcount: 2218
 ht-degree: 0%
 
 ---
@@ -75,13 +80,13 @@ GET /rest/v1/activities/types.json
 
 ## 查詢
 
-若要從Marketo擷取活動，請呼叫[取得潛在客戶活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET)端點。 You need to first retrieve a paging token for the datetime that you want to begin retrieving activities from. You then pass the paging token in the `nextPageToken` query parameter. In addition, you pass up to ten activity type Ids in the `activityTypeIds` query parameter as a comma-separated list.
+若要從Marketo擷取活動，請呼叫[取得潛在客戶活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET)端點。 您必須先擷取要開始擷取活動的日期時間的分頁Token。 然後在`nextPageToken`查詢引數中傳遞分頁權杖。 此外，您最多可在`activityTypeIds`查詢引數中傳入10個活動型別ID作為逗號分隔清單。
 
-You can optionally include either a `listId` query parameter to narrow your search to only those records included in a specific static list, or a `leadIds` query parameter and search for activities from only a specified set of leads. You can pass up to 30 `leadIds` as a comma separated list.
+您可以選擇加入`listId`查詢引數，將搜尋範圍縮小至特定靜態清單中所包含的記錄，或加入`leadIds`查詢引數，並僅從指定的潛在客戶集合中搜尋活動。 您最多可以將30個`leadIds`以逗號分隔的清單傳遞。
 
 >[!CAUTION]
 >
->Beginning 2026-12-30, calls to the `Get Lead Activities` and `Get Lead Changes` endpoints which includes the `listId` parameter will fail (error code 1003) if the target lists contain 10,000 or more leads. To avoid service disruptions, ensure that calls are properly scoped to avoid this limit.
+>從2026-12-30開始，如果目標清單包含10,000個或更多銷售機會，對`Get Lead Activities`和包含`listId`引數的`Get Lead Changes`端點的呼叫將失敗（錯誤碼1003）。 為避免服務中斷，請確保呼叫的範圍已設定妥當，以避免此限制。
 
 ```http
 GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK7JDSA3I3LCWXH3Y6IIZ7YSGQLXHCPVE5Q====
@@ -129,24 +134,24 @@ GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK
 }
 ```
 
-For the first call, use the Get Paging Token API to get `nextPageToken`. For subsequent calls to this endpoint, use the `nextPageToken returned` from the response. This endpoint always returns `the nextPageToken`.
+第一次呼叫時，請使用[取得分頁權杖API]取得`nextPageToken`。 對於對此端點的後續呼叫，請使用回應中的`nextPageToken returned`。 此端點一律會傳回`the nextPageToken`。
 
-If the `moreResult` attribute is true, this means more results are available. Continue to call this endpoint until the `moreResult` attribute returns false, which means there are no results available. The `nextPageToken` returned from this API should always be reused for the next iteration of this call.
+如果`moreResult`屬性為true，則表示有更多結果可用。 繼續呼叫此端點，直到`moreResult`屬性傳回false，這表示沒有可用的結果。 從此API傳回的`nextPageToken`應一律重複用於此呼叫的下一個反複專案。
 
-In some cases, this API may respond with fewer than 300 activity items, but also have the `moreResult` attribute set to true.  This indicates that there are more activities that can be returned and that the endpoint can be queried for more recent activities by including the returned `nextPageToken` in a subsequent call.
+在某些情況下，此API的回應可能會少於300個活動專案，但也會將`moreResult`屬性設定為true。  這表示有更多活動可傳回，而且將傳回的`nextPageToken`納入後續呼叫中，可查詢端點以取得較新的活動。
 
-Note that within each result array item, the `id` integer attribute is being replaced by the `marketoGUID` string attribute as unique identifier.
+請注意，在每個結果陣列專案中，`id`整數屬性會由`marketoGUID`字串屬性取代為唯一識別碼。
 
 ### 資料值變更
 
-For Data Value Change activities, a specialized version of the activities API is provided. The [Get Lead Changes](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET) endpoint only returns activities of Data Value Change records to lead fields. The interface is the same as the Get Lead Activities API with two differences:
+針對資料值變更活動，提供專門的活動API版本。 [Get Lead Changes](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET)端點只傳回資料值變更記錄到Lead欄位的活動。 此介面與Get Lead Activities API相同，有兩個差異：
 
-* There is no `activityTypeIds` parameter, since the endpoint only returns Data Value Change and New Lead activities.
-* The `fields` query parameter is required, where you can pass a comma-separated list of fields to indicate which fields you want to retrieve changes for.
+* 沒有`activityTypeIds`引數，因為端點只會傳回資料值變更和新潛在客戶活動。
+* `fields`查詢引數為必要項，您可以在此傳遞逗號分隔的欄位清單，以指出您要擷取變更的欄位。
 
 >[!CAUTION]
 >
->Beginning 2026-12-30, calls to the `Get Lead Activities` and `Get Lead Changes` endpoints which includes the `listId` parameter will fail (error code 1003) if the target lists contain 10,000 or more leads. To avoid service disruptions, ensure that calls are properly scoped to avoid this limit.
+>從2026-12-30開始，如果目標清單包含10,000個或更多銷售機會，對`Get Lead Activities`和包含`listId`引數的`Get Lead Changes`端點的呼叫將失敗（錯誤碼1003）。 為避免服務中斷，請確保呼叫的範圍已設定妥當，以避免此限制。
 
 ```http
 GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ&fields=firstName,lastName,department
@@ -192,9 +197,9 @@ GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQG
 }
 ```
 
-Each activity in the response has a fields array, including a list of changes in the activity, which will specify the `id` and `name` of the field changed, as well as the new and old values relative to the change.
+回應中的每個活動都有一個欄位陣列，包括活動中的變更清單，這會指定已變更欄位的`id`和`name`，以及與變更相關的新舊值。
 
-Note that within each result array item, the `id` integer attribute is being replaced by the `marketoGUID` string attribute as unique identifier.
+請注意，在每個結果陣列專案中，`id`整數屬性會由`marketoGUID`字串屬性取代為唯一識別碼。
 
 ### 已刪除的銷售機會
 
@@ -344,7 +349,7 @@ GET /rest/v1/activities/external/type/{apiName}/describe.json
 
 **觸發程式名稱：**&#x200B;每個活動型別都必須有唯一的、人類可讀的觸發程式名稱。 觸發程式名稱應以第三人稱現在時態顯示，例如「出席事件」。 LaunchPoint合作夥伴應在活動中加入其公司名稱，例如「Attends網路研討會 — Acme公司」。
 
-**篩選器名稱：**  每個活動型別都必須有人類看得懂的唯一篩選器名稱。 篩選器名稱應為第三人稱過去時，例如「已出席活動」。 LaunchPoint合作夥伴應在活動中加入其公司名稱，即「已出席的網路研討會 — Acme公司」。
+**篩選器名稱：**&#x200B;每個活動型別都必須有唯一的、人類看得懂的篩選器名稱。 篩選器名稱應為第三人稱過去時，例如「已出席活動」。 LaunchPoint合作夥伴應在活動中加入其公司名稱，即「已出席的網路研討會 — Acme公司」。
 
 **主要屬性：**&#x200B;自訂活動的主要屬性應該是活動型別的最重要欄位。 例如，對於「已出席事件」活動，這會是事件的名稱。 預設情況下，主要屬性會作為引數包含在該活動型別的每個觸發程式或篩選器中，該值會顯示在人員記錄的活動日誌中，而無需向下鑽研至活動。
 
@@ -627,15 +632,15 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/delete.json
 }
 ```
 
-## Add Custom Activities
+## 新增自訂活動
 
-Custom activities are write-once records of historical activities related to individual person records in Marketo. 這些活動有一個結構描述，可由Marketo管理員管理或透過API整合從遠端管理。 透過[新增自訂活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/addCustomActivityUsingPOST)端點將自訂活動新增到潛在客戶記錄中，並透過其`leadId`欄位與每個潛在客戶記錄相關聯。 自訂活動可透過潛在客戶的活動記錄在使用者介面中檢視，或透過指定自訂活動的型別ID透過「取得潛在客戶活動」端點來擷取。
+自訂活動是與Marketo中個別人員記錄相關的歷史活動的一次性寫入記錄。 這些活動有一個結構描述，可由Marketo管理員管理或透過API整合從遠端管理。 透過[新增自訂活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/addCustomActivityUsingPOST)端點將自訂活動新增到潛在客戶記錄中，並透過其`leadId`欄位與每個潛在客戶記錄相關聯。 自訂活動可透過潛在客戶的活動記錄在使用者介面中檢視，或透過指定自訂活動的型別ID透過「取得潛在客戶活動」端點來擷取。
 
 自訂活動適用於記錄與單一人員記錄相關的資料，且不需要更新或覆寫。 例如，將出席活動的人記錄為「已出席活動」活動。 對於與可能變更之人員（例如學生註冊）相關的記錄，應改用自訂物件，因為這些物件可以更新，而自訂活動則可能未更新。
 
-The input member is an array of activity objects. A maximum of 300 activity records can be submitted at a time.
+輸入成員是活動物件的陣列。 一次最多可提交300個活動記錄。
 
-The `leadId`, `activityDate`, `activityTypeId`, `primaryAttributeValue`, and attributes members are required. 屬性陣列必須包含非主要屬性。 可使用name （欄位名稱）或apiName （API名稱）以及與您設定之值對應的值來指定此專案。
+需要`leadId`、`activityDate`、`activityTypeId`、`primaryAttributeValue`和屬性成員。 屬性陣列必須包含非主要屬性。 可使用name （欄位名稱）或apiName （API名稱）以及與您設定之值對應的值來指定此專案。
 
 ```http
 POST /rest/v1/activities/external.json
@@ -716,5 +721,5 @@ POST /rest/v1/activities/external.json
 
 除非在下面註明，否則活動端點的逾時值為30秒。
 
-* Get Paging Token: 300s
+* 取得分頁權杖： 300秒
 * 新增自訂活動：90秒

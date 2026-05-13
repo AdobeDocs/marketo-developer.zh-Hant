@@ -3,9 +3,14 @@ title: 智慧清單
 feature: REST API
 description: 瞭解如何使用Marketo REST API來查詢、複製和刪除使用者建立的智慧清單，包括依ID、名稱、促銷活動和包含規則的程式的端點。
 exl-id: 4ba37e57-ee56-48c3-bb2b-b4ec8e907911
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/wQ2PQFabw8E5XYP4zJ2RMPcurRkoxA7UecpA-YuQuBc
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+subfeature_v2: id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '576'
+source-wordcount: 576
 ht-degree: 1%
 
 ---
@@ -16,7 +21,7 @@ ht-degree: 1%
 
 Marketo提供了一組REST API，可用於對智慧列示執行作業。 這些API遵循資產API的標準介面模式，提供查詢、刪除和複製選項。
 
-注意：這些API僅支援使用者建立的智慧列示。 無法用於[內建/系統智慧列示](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists)。
+注意：這些API僅支援使用者建立的智慧列示。 無法用於[內建/系統智慧列示](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists)。
 
 ## 查詢
 
@@ -191,7 +196,7 @@ GET /rest/asset/v1/smartList/byName.json?name=2018 Leads
 
 ### 瀏覽
 
-智慧列示也可以以批次[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListsUsingGET)擷取。 `folder`引數是用來指定執行查詢的父資料夾。 其格式為包含`id`和`type`的JSON物件。 如同其他大量資產擷取端點，`offset`和`maxReturn`是可用於分頁的選用引數。 選用的`earliestUpdatedAt`和`latestUpdatedAt`日期時間引數可用來依據UpdatedAt日期範圍篩選結果。
+智慧列示也可以以批次](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListsUsingGET)擷取[。 `folder`引數是用來指定執行查詢的父資料夾。 其格式為包含`id`和`type`的JSON物件。 如同其他大量資產擷取端點，`offset`和`maxReturn`是可用於分頁的選用引數。 選用的`earliestUpdatedAt`和`latestUpdatedAt`日期時間引數可用來依據UpdatedAt日期範圍篩選結果。
 
 ```http
 GET /rest/asset/v1/smartLists.json?folder={"id":31,"type":"Folder"}

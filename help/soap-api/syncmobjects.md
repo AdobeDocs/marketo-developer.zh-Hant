@@ -3,9 +3,13 @@ title: syncMObjects
 feature: SOAP
 description: Marketo SOAP syncMObjects ，可插入、更新或更新插入最多100個計畫、商機和OpportunityPersonRoles，傳回狀態和Marketo ID。
 exl-id: 68bb69ce-aa8c-40b7-8938-247f4fe97b5d
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/ykNOULRWSpc5T5DwO26RqdUpxId68Tho160sqOB9Yog
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '446'
+source-wordcount: 446
 ht-degree: 5%
 
 ---

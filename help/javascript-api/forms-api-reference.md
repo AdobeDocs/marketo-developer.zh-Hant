@@ -3,9 +3,13 @@ title: Forms API參考
 description: Marketo Forms 2.0 API的完整參考，詳細說明MktoForms2和Form方法、引數、回呼以及載入和轉譯表單的傳回。
 feature: Forms, Javascript
 exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/wLuN1H8tDFEihPqcAfoG-Y80d4Kw1BoSskVQu4Bgss0
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1345'
+source-wordcount: 1352
 ht-degree: 1%
 
 ---
@@ -177,12 +181,12 @@ ht-degree: 1%
     <tr valign="top">
       <td>.onSuccess(callback)</td>
       <td>新增回呼，此回呼會在表單成功提交後、潛在客戶轉送至後續追蹤頁面之前呼叫。 可用於防止在成功提交後將潛在客戶轉送到後續追蹤頁面。</td>
-      <td>callback — 成功提交表單時將呼叫的函式。 此回呼將傳遞兩個引數。 JS物件，其中包含已提交的值和使用者將轉送到的後續頁面的字串URL，如果沒有已設定的後續頁面，則為空字串或空字串。 特殊行為：如果此回呼傳回「false」(使用===測量)，則訪客「不會」轉送到後續頁面，「不會」重新載入頁面。 這可讓實作者對後續追蹤URL執行額外處理，或使用JavaScript在頁面上採取行動而非離開頁面。</td>
+      <td>callback — 成功提交表單時將呼叫的函式。 此回呼將傳遞兩個引數。 JS物件，其中包含已提交的值和使用者將轉送到的後續頁面的字串URL，如果沒有已設定的後續頁面，則為空字串或空字串。 特殊行為：如果此回呼傳回「false」（使用===測量），則訪客「不會」轉送到後續頁面，「不會」重新載入頁面。 這可讓實作者對後續追蹤URL執行額外處理，或使用JavaScript在頁面上採取行動而非離開頁面。</td>
       <td>表單物件 — 與呼叫方法的表單物件相同，以做為鏈結之用。</td>
     </tr>
     <tr valign="top">
       <td>.submittable(canSubmit) <em>也可用為：</em> <em>.submitable(canSubmit)</em></td>
-      <td>取得或設定是否可提交表單。 如果呼叫時沒有引數，它會取得值；如果呼叫時有一個引數，則會設定值。這可用來防止表單提交，同時必須符合一般表單之外的其他條件。</td>
+      <td>取得或設定是否可提交表單。 如果使用無引數呼叫，它會取得值；如果使用一個引數呼叫，則會設定值。這可用來防止提交表單，同時必須符合一般表單以外的其他條件。</td>
       <td>canSubmit （選用）（布林值） — 將表單設為可提交或不可提交。</td>
       <td>布林值或表單物件 — 如果呼叫時沒有引數，會傳回布林值，指出表單是否可提交。 若以一個引數呼叫，會傳回此表單物件以供鏈結之用。 </td>
     </tr>
@@ -219,7 +223,7 @@ ht-degree: 1%
     <tr valign="top">
       <td>.showErrorMessage(msg， elem)</td>
       <td>顯示錯誤訊息，指向專案。</td>
-      <td>msg (HTML的字串) — 包含您要顯示的錯誤文字的字串。</td>
+      <td>msg （HTML的字串） — 包含您要顯示的錯誤文字的字串。</td>
             <td>表單物件 — 此表單物件，用於鏈結。</td>
     </tr>
     <tr>

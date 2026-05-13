@@ -3,9 +3,12 @@ title: 資料攝取
 feature: REST API, Dynamic Content
 description: 使用Marketo Data Ingestion API大量擷取人員、自訂物件、公司和方案成員資料，並降低延遲擷取次數。
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1789'
+source-wordcount: 1789
 ht-degree: 13%
 
 ---
@@ -176,7 +179,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 | `priority` | 字串 | 無 | 請求的優先順序：正常或高 | 一般 |
 | `partitionName` | 字串 | 無 | 個人資料分割的名稱 | 預設 |
 | `dedupeFields` | 物件 | 無 | 要取消重複資料刪除的屬性。 允許一或兩個屬性名稱。<br/> 在AND作業中使用兩個屬性。 例如，如果同時指定`email`和`firstName`，它們都會用來使用AND作業來查詢人員。 <br/>支援的屬性為： `id`、`email`、`sfdcAccountId`、`sfdcContactId`、`sfdcLeadId` `sfdcLeadOwnerId`、自訂屬性（僅限「字串」和「整數」型別）、`email` |  |
-| `persons` | 物件陣列 | 是 | 個人的屬性名稱 — 值組清單 | - |
+| `persons` | 物件陣列 | 是 | 個人的屬性名稱 — 值組清單 | – |
 
 所需的許可權為`Read-Write Lead`。
 
@@ -244,7 +247,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 | --- | --- | --- | --- | --- |
 | `priority` | 字串 | 無 | 請求的優先順序：正常、高 | 一般 |
 | `dedupeBy` | 字串 | 無 | 要重複資料刪除的屬性： dedupeFields、marketoGUID | dedupeField |
-| `customObjects` | 物件陣列 | 是 | 物件的屬性名稱 — 值組清單。 | - |
+| `customObjects` | 物件陣列 | 是 | 物件的屬性名稱 — 值組清單。 | – |
 
 必要的許可權為`Read-Write Custom Object`。
 
@@ -314,7 +317,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 | --- | --- | --- | --- | --- |
 | `action` | 字串 | 無 | 同步動作： `createOnly`、`updateOnly`或`createOrUpdate` | `createOrUpdate` |
 | `dedupeBy` | 字串 | 無 | 要取消重複資料刪除的欄位： `dedupeFields`或`idField` （不區分大小寫）。 對於`createOnly`和`createOrUpdate`，只允許使用`dedupeFields`。 對於`updateOnly`，兩者皆可。 | `dedupeFields` |
-| `input` | 物件陣列 | 是 | 公司屬性名稱 — 值配對清單。 接受JSON索引鍵`input`或`companies`。 | - |
+| `input` | 物件陣列 | 是 | 公司屬性名稱 — 值配對清單。 接受JSON索引鍵`input`或`companies`。 | – |
 
 `input`陣列中的每個公司物件支援下列欄位：
 
@@ -416,7 +419,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 | 索引鍵 | 資料類型 | 必要 | 價值 | 預設值 |
 | --- | --- | --- | --- | --- |
-| 計畫 | 物件陣列 | 是 | 程式作業清單。 每個都會指定程式、目標狀態以及要同步處理的銷售機會。 | - |
+| 計畫 | 物件陣列 | 是 | 程式作業清單。 每個都會指定程式、目標狀態以及要同步處理的銷售機會。 | – |
 
 `programs`陣列中的每個物件都包含：
 
@@ -517,7 +520,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 | 索引鍵 | 資料類型 | 必要 | 價值 | 預設值 |
 | --- | --- | --- | --- | --- |
-| 計畫 | 物件陣列 | 是 | 程式刪除作業清單。 每個都指定計畫和要移除的潛在客戶。 | - |
+| 計畫 | 物件陣列 | 是 | 程式刪除作業清單。 每個都指定計畫和要移除的潛在客戶。 | – |
 
 `programs`陣列中的每個物件都包含：
 

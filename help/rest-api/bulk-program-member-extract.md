@@ -3,9 +3,14 @@ title: 大量程式成員擷取
 feature: REST API
 description: 使用Marketo大量程式成員擷取REST API ，匯出大型成員記錄以進行ETL、資料倉儲和封存，並包含許可權和欄位中繼資料。
 exl-id: 6e0a6bab-2807-429d-9c91-245076a34680
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/w4qaVTKSe0EORaSiURB6WbJXi29JUdEgfkb2dnfuVFw
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1294'
+source-wordcount: 1294
 ht-degree: 2%
 
 ---
@@ -235,7 +240,7 @@ GET /rest/v1/programs/members/describe.json
     <tr>
       <td>isExhausted</td>
       <td>布林值</td>
-      <td>接受用於篩選已用完內容</a>的<a href="https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">人之方案成員資格記錄的布林值。</td>
+      <td>接受用於篩選已用完內容</a>的<a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/drip-nurturing/using-engagement-programs/people-who-have-exhausted-content">人之方案成員資格記錄的布林值。</td>
     </tr>
     <tr>
       <td>nurtureCadence</td>

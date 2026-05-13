@@ -3,9 +3,13 @@ title: syncLead
 feature: SOAP
 description: 瞭解如何使用Marketo SOAP syncLead插入或更新單一銷售機會、處理識別碼和工作區，以及請求欄位、XML和PHP範例。
 exl-id: e6cda794-a9d4-4153-a5f3-52e97a506807
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/SecUbvn0SKgWEGHMKbSNJqMvy1QoM3u-4tVchq-T3xQ
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '540'
+source-wordcount: 540
 ht-degree: 2%
 
 ---
@@ -16,7 +20,7 @@ ht-degree: 2%
 
 - Marketo ID
 - 外部系統ID （實作為`foreignSysPersonId`）
-- Marketo Cookie (由Munchkin JS指令碼建立)
+- Marketo Cookie （由Munchkin JS指令碼建立）
 - 電子郵件
 
 如果找到現有的相符專案，呼叫會執行更新。 如果沒有，則會插入並建立銷售機會。 匿名潛在客戶可使用Marketo Cookie ID進行更新，並在更新後成為已知客戶。

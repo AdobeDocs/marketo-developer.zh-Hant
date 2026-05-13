@@ -3,9 +3,13 @@ title: describeMObject
 feature: SOAP
 description: 瞭解如何在Marketo SOAP中使用describeMObject來擷取ActivityRecord、LeadRecord、Opportunity和OpportunityPersonRole的中繼資料和欄位屬性。
 exl-id: a5ee60c4-b0ec-49a2-9a9d-22806ddde8f7
-source-git-commit: 6145067629ce78175af3b7464807a0fa100c7b57
+TQID: https://experienceleague.adobe.com/1Vp3iYux1Q10xogANCUW-tlyrQHGy5JUosS4hAp1DmQ
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '87'
+source-wordcount: 87
 ht-degree: 8%
 
 ---
@@ -18,7 +22,7 @@ ht-degree: 8%
 
 | 欄位名稱 | 必要/選用 | 說明 |
 | --- | --- | --- |
-| objectName | 必要 | 您要取得中繼資料的MO物件名稱。`objectName` 可以是： `ActivityRecord`、`LeadRecord`、`Opportunity`、`OpportunityPersonRole`之一 |
+| objectName | 必要 | 您要取得中繼資料的MO物件名稱。 `objectName`可以是：`ActivityRecord`、`LeadRecord`、`Opportunity`、`OpportunityPersonRole`其中之一 |
 
 ## 請求XML
 

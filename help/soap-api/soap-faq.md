@@ -3,9 +3,13 @@ title: SOAP常見問題集
 feature: SOAP
 description: 瞭解如何透過Marketo SOAP API列出具有getMoBjects的方案、最佳化getMultipleLeads、建立機會，以及傳送或排程個人化電子郵件。
 exl-id: a2d8f144-cd5f-41bc-8231-29c42af935b8
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/AWgJgPdDXmapXqvG-J93utvXGV8-zLnKO-DvWFzOYoI
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '353'
+source-wordcount: 360
 ht-degree: 0%
 
 ---
@@ -22,7 +26,7 @@ ht-degree: 0%
 
 **問：**&#x200B;未與Salesforce或Microsoft Dynamics等CRM整合時，如何透過SOAP API建立機會？
 
-**A：**&#x200B;您可以使用SOAP API建立機會，使用寫入OpportunityPersonRole和機會[MObject](syncmobjects.md)型別的[syncMObjects](marketo-objects.md)呼叫。
+**A：**&#x200B;您可以使用SOAP API建立機會，使用寫入OpportunityPersonRole和機會[MObject](marketo-objects.md)型別的[syncMObjects](syncmobjects.md)呼叫。
 
 **問：**&#x200B;我是否可透過Marketo以程式設計方式傳送電子郵件？ 如果是，如何傳送每個電子郵件收件者的自訂內容？
 

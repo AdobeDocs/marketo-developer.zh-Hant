@@ -3,9 +3,13 @@ title: 大量擷取
 feature: REST API
 description: 瞭解如何使用Marketo大量擷取REST API匯出銷售機會、活動、方案成員和自訂物件，並具備OAuth、工作佇列和500MB每日限制。
 exl-id: 6a15c8a9-fd85-4c7d-9f65-8b2e2cba22ff
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/ECSchsjqp8fyxXbUGl5DgXHUkXuN0sIUc3yJfVaIe1E
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1724'
+source-wordcount: 1724
 ht-degree: 0%
 
 ---
@@ -125,7 +129,7 @@ POST /bulk/v1/leads/export/create.json
 
 ## 正在擷取作業
 
-有時候，您必須擷取最近的工作。 使用對應物件型別的「取得匯出作業」可輕鬆完成這項作業。 每個Get Export Jobs端點都支援`status`篩選欄位，  `batchSize`用來限制傳回的工作數目，以及`nextPageToken`用來分頁大型結果集。 狀態篩選器支援匯出作業的每個有效狀態：已建立、已排入佇列、正在處理、已取消、已完成和失敗。 batchSize的最大值和預設值是300。 讓我們取得潛在客戶匯出工作清單：
+有時候，您必須擷取最近的工作。 使用對應物件型別的「取得匯出作業」可輕鬆完成這項作業。 每個Get Export Jobs端點都支援`status`篩選欄位、`batchSize`以限制傳回的作業數目，以及`nextPageToken`以分頁處理大型結果集。 狀態篩選器支援匯出作業的每個有效狀態：已建立、已排入佇列、正在處理、已取消、已完成和失敗。 batchSize的最大值和預設值是300。 讓我們取得潛在客戶匯出工作清單：
 
 ```http
 GET /bulk/v1/leads/export.json?status=Completed,Failed

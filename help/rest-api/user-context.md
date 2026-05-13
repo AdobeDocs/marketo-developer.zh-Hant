@@ -3,9 +3,15 @@ title: 使用者內容
 feature: REST API
 description: 瞭解如何啟用並使用Marketo RTP User Context API來設定自訂變數、跨造訪讀取使用者資料，以及追蹤已檢視和已點按的行銷活動。
 exl-id: b8daace2-07a5-4621-aa3a-03fa9f66ea73
-source-git-commit: b2b1027ccf8016c2e4c081753842a6febac832ec
+TQID: https://experienceleague.adobe.com/Ph0Tw-C9jzWaR4bYyUIXyzzoa2yjHQk2gt6tNA8H2mA
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+subfeature_v2: id: a1d50dda-6d94-4e16-8c30-5eb7181c4650
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87cid: e0eb8757-182f-49f3-94a4-1587d16f5094
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '296'
+source-wordcount: 296
 ht-degree: 5%
 
 ---
@@ -14,7 +20,7 @@ ht-degree: 5%
 
 使用者內容JavaScript API會公開多個工作階段中的使用者和訪客層級資料，以使用歷史使用者行為和資料啟用進階個人化功能。 此API超越了資料讀取與公開自訂變數的範圍，可讓您將有意義的資料和事件推送到RTP後端，以用於進階分段和個人化目的。 其他功能： [觸發器](../javascript-api/triggers.md)，[模式符合](../javascript-api/pattern-match.md)。
 
-- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - 使用者內容API是一項功能，必須由Marketo支援根據請求啟用。 啟用API時，RTP全域物件下的userContext物件將會公開。
 
 ## 使用者內容屬性

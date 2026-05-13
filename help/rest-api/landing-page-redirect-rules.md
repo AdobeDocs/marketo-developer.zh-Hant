@@ -3,9 +3,13 @@ title: 登陸頁面重新導向規則
 feature: REST API, Landing Pages
 description: 使用Marketo Asset REST API來建立、查詢、更新及刪除登陸頁面重新導向規則，並包含篩選器、分頁、主機名稱選項和非Marketo目標。
 exl-id: f63aa5ef-5872-4401-be75-6fb9b2977734
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/2gePbKA3xeoRdnL8mNnObN-GPTX00Ii4-zcM0lBjs-o
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '776'
+source-wordcount: 776
 ht-degree: 2%
 
 ---
@@ -16,7 +20,7 @@ ht-degree: 2%
 
 Marketo提供了一組REST API，可在登陸頁面重新導向URL上執行CRUD操作。 這些API遵循資產API的標準介面模式，提供查詢、建立、更新和刪除選項。
 
-登陸頁面重新導向規則提供將登陸頁面URL重新導向至其他頁面URL的功能。 您可以重新導向Marketo登陸頁面、非Marketo登陸頁面，或它們的組合。 如需重新導向登陸頁面規則的其他資訊，請參閱[這裡](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=zh-Hant)。
+登陸頁面重新導向規則提供將登陸頁面URL重新導向至其他頁面URL的功能。 您可以重新導向Marketo登陸頁面、非Marketo登陸頁面，或它們的組合。 如需重新導向登陸頁面規則的其他資訊，請參閱[這裡](https://experienceleague.adobe.com/docs/marketo/using/home.html)。
 
 ## 查詢
 
@@ -155,7 +159,7 @@ GET /rest/asset/v1/redirectRules.json&maxReturn=3
 | Marketo | landingPageId | {&quot;type&quot;：&quot;landingPageId&quot;，&quot;value&quot;：&quot;1774&quot;} |
 | 非Marketo | url | {&quot;type&quot;：&quot;url&quot;，&quot;value&quot;：&quot;www.contactLogs.com&quot;} |
 
-如需建立登入頁面重新導向規則的詳細資訊，請參閱[這裡](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=zh-Hant)。
+如需建立登入頁面重新導向規則的詳細資訊，請參閱[這裡](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html)。
 
 ```http
 POST /rest/asset/v1/redirectRules.json
@@ -245,7 +249,7 @@ redirectTo={"type":"landingPageId", "value":"5561"}
 
 ## 刪除
 
-依ID[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/deleteLandingPageRedirectRuleUsingPOST)端點的刪除登陸頁面重新導向規則採用單一登陸頁面規則重新導向`id`路徑引數。
+依ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Redirect-Rules/operation/deleteLandingPageRedirectRuleUsingPOST)端點的[刪除登陸頁面重新導向規則採用單一登陸頁面規則重新導向`id`路徑引數。
 
 ```http
 POST /rest/asset/v1/redirectRule/{id}/delete.json

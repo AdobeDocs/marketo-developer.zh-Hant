@@ -3,9 +3,14 @@ title: 機會
 feature: REST API
 description: Marketo REST API可說明、查詢、建立及更新商機、重複資料刪除及可搜尋的欄位、限制，以及使用SFDC或Dynamics同步的唯讀行為。
 exl-id: 46451285-4125-4857-890a-575069a68288
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/rBDJcXWQrN5qyKRWHyzVC-sc9BH2mQFLm7fKUk-NUn8
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '879'
+source-wordcount: 879
 ht-degree: 0%
 
 ---
@@ -16,7 +21,7 @@ ht-degree: 0%
 
 Marketo公開API以供讀取、寫入、建立和更新商機記錄。 在Marketo中，機會記錄會透過中繼機會角色物件連結至銷售線索和聯絡人記錄，因此機會可能會連結至許多個別銷售線索。  這兩種物件型別都會透過API公開，而且就像大多數Lead Database物件型別一樣，它們都有相對應的Describe呼叫，這會傳回有關物件型別的中繼資料。
 
-針對已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=zh-Hant)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=zh-Hant)的訂閱，機會API為唯讀存取。
+針對已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en)的訂閱，機會API為唯讀存取。
 
 ## 說明
 

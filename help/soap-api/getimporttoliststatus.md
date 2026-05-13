@@ -3,10 +3,13 @@ title: getimporttolstatus
 feature: SOAP
 description: 使用getImportToListStatus檢查Marketo靜態清單匯入狀態、必要欄位、XML請求和回應、PHP和Java程式碼，以及輪詢最佳實務。
 exl-id: 17a62f65-dfa0-4f40-89b2-154f7734a2dc
-source-git-commit: 7557b9957c87f63c2646be13842ea450035792be
+TQID: https://experienceleague.adobe.com/6pSW-VrcGNpPU5W2tRzwGsvmk7LwcYyfeMIPKh44Wz4
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '96'
-ht-degree: 6%
+source-wordcount: 96
+ht-degree: 8%
 
 ---
 

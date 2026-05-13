@@ -3,9 +3,14 @@ title: 智慧行銷活動
 feature: REST API, Smart Campaigns
 description: 瞭解如何將Marketo REST API用於Smart Campaigns，包括依ID或名稱查詢、瀏覽篩選器、建立複製刪除，以及排程或請求觸發程式
 exl-id: 540bdf59-b102-4081-a3d7-225494a19fdd
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+TQID: https://experienceleague.adobe.com/iysRjtqd9plkreyIMuNjAF3YVFHtDUIrc-GInB4V8mg
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+subfeature_v2: id: ad89fb33-8541-4339-afe7-bb13d1633714id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
 workflow-type: tm+mt
-source-wordcount: '1196'
+source-wordcount: 1196
 ht-degree: 1%
 
 ---
@@ -426,7 +431,7 @@ POST /rest/v1/campaigns/{id}/schedule.json
 
 此端點需要行銷活動`id`做為路徑引數，以及包含潛在客戶ID的`leads`整數陣列引數。 每次呼叫最多允許100個銷售機會。
 
-`tokens`陣列引數可選擇性用來覆寫促銷活動上層方案的本機My Token。 `tokens`接受最多100個權杖。 每個`tokens`陣列專案都包含一個名稱/值組。 權杖的名稱必須格式化為&quot;`{{my.name}}`&quot;。 如果您使用[新增系統權杖作為電子郵件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email)方法中的連結來新增「viewAsWebPageLink」系統權杖，則無法使用`tokens`覆寫它。 改為使用[將檢視新增為網頁連結至電子郵件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email)方法，可讓您使用`tokens`覆寫「viewAsWebPageLink」。
+`tokens`陣列引數可選擇性用來覆寫促銷活動上層方案的本機My Token。 `tokens`接受最多100個權杖。 每個`tokens`陣列專案都包含一個名稱/值組。 權杖的名稱必須格式化為&quot;`{{my.name}}`&quot;。 如果您使用[新增系統權杖作為電子郵件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email)方法中的連結來新增「viewAsWebPageLink」系統權杖，則無法使用`tokens`覆寫它。 改為使用[將檢視新增為網頁連結至電子郵件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email)方法，可讓您使用`tokens`覆寫「viewAsWebPageLink」。
 
 `leads`和`tokens`引數是以application/json的形式傳入要求內文中。
 
