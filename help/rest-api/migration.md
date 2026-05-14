@@ -26,7 +26,7 @@ ht-degree: 0%
 根據您的使用案例，有兩個基本選項可將您的應用程式移轉至：
 
 * 將您從中擷取活動的靜態清單限製為最多10,000個成員。 您可以將任何現有清單分割為較小的清單，以繼續輪詢相同對象的活動。
-* 使用大量活動擷取或資料串流擷取您的活動或資料值變更，並將這些結果加入具有[getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1)或[大量潛在客戶擷取](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract)的靜態清單成員資格
+* 使用大量活動擷取或資料串流擷取您的活動或資料值變更，並將這些結果加入具有[getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1)或[大量潛在客戶擷取](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract)的靜態清單成員資格
 
 ## 我若不採取任何動作，將會發生什麼事？
 
