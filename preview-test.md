@@ -1,10 +1,10 @@
 ---
 title: EXL預覽測試
 description: 測試擴充功能預覽的Adobe EXL Markdown語法範例。
-source-git-commit: 8f7ff2e1b6d0a4d8f63affb7bd1a2d0abbcc118c
+source-git-commit: 87d2584ed0ef2c1fa219f2a3ad120c91dc5491e0
 workflow-type: tm+mt
-source-wordcount: '334'
-ht-degree: 7%
+source-wordcount: '348'
+ht-degree: 11%
 
 ---
 
@@ -93,6 +93,14 @@ console.log(example);
 
 +++
 
+## 內容說明
+
+上下文說明在預覽中隱藏。 另請參閱！
+>[!CONTEXTUALHELP]
+>id="models_insights_undefinedchannels"
+>title="未定義的管道"
+>abstract="包含未定義的管道，但沒有歸因轉換。"
+
 ## 內嵌視訊
 
 >[!VIDEO](https://video.tv.adobe.com/v/3427028/?quality=12&learn=on)
@@ -173,5 +181,6 @@ function greet(name) {
 
 | 欄一 | 欄二 | 欄三 |
 | --- | --- | --- |
-| 第1列，儲存格1 | 第1列，儲存格2 | 第1列，儲存格3 |
+| [!UICONTROL Row 1]，儲存格1 | 第1列，儲存格2 | [!DNL Row 1, cell 3] |
 | 第2列，儲存格1 | 第2列，儲存格2 | 第2列，儲存格3 |
+
