@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
+source-git-commit: 1a8345909b679b5651c94a68f8d29950ed47f6ed
 workflow-type: tm+mt
-source-wordcount: 2178
+source-wordcount: 2191
 ht-degree: 14%
 
 ---
@@ -22,6 +22,8 @@ ht-degree: 14%
 透過提交非同步執行的請求來內嵌資料。 訂閱來自[Marketo可觀察性資料流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup)的事件，即可擷取要求狀態。
 
 介面提供五種物件型別：人員、自訂物件、公司、程式成員和清單（靜態清單）。 記錄作業僅限「插入或更新」，但同時支援刪除的「程式成員」和支援新增與移除作業的「清單」除外。
+
+閱讀[資料擷取API檔案](https://developer.adobe.com/marketo-apis/api/data-ingestion)。
 
 >[!NOTE]
 >
