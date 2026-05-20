@@ -4,8 +4,10 @@ feature: REST API, Dynamic Content, Static Lists
 description: 使用Marketo資料擷取API來擷取大量人員、自訂物件、公司、方案成員和清單，並降低延遲的資料擷取。
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
 TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
 workflow-type: tm+mt
 source-wordcount: 2178

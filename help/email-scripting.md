@@ -4,10 +4,15 @@ feature: Email Programs
 description: 瞭解如何使用Apache Velocity權杖、變數、Velocity工具編寫動態Marketo電子郵件的指令碼，以及使用「傳送範例」和「電子郵件預覽」進行測試。
 exl-id: ff396f8b-80c2-4c87-959e-fb8783c391bf
 TQID: https://experienceleague.adobe.com/xFDjbGWGoWg4Ik6xqoU4L51FG5-1STZ5a0x0KpmwGd4
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
 source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
 workflow-type: tm+mt
 source-wordcount: 1100
@@ -118,7 +123,7 @@ $date.whenIs($birthday).days ##outputs 1
 - 您可以參照連線至Lead、Contact或Account的自訂物件，但不能參照多個物件。
 - 自訂物件只能透過單一連線、銷售機會、連絡人或帳戶參照
 - 勾選指令碼編輯器中的方塊，找出您正在使用的欄位，或這些欄位未處理
-- 對於每個自訂物件，每個人員/連絡人的最近十個更新記錄可在執行階段使用，並依照最近更新（於0）到最舊更新（於9）的順序排列。 您可以依照指示](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting)增加[可用的記錄數。
+- 對於每個自訂物件，每個人員/連絡人的最近十個更新記錄可在執行階段使用，並依照最近更新（於0）到最舊更新（於9）的順序排列。 您可以依照指示[&#128279;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting)增加可用的記錄數。
 - 如果您在電子郵件中包含多個電子郵件指令碼，這些指令碼會由上到下執行。 第一個要執行的指令碼中所定義的變數範圍，可在後續指令碼中使用。
 - 工具參考： [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - 有關包含新行字元「\n」或「\r\n」的權杖的備註。 當透過傳送範例或批次促銷活動傳送電子郵件時，代號中的新行字元會被替換為空格。 透過「觸發器促銷活動」傳送電子郵件時，新行字元保持不變。
