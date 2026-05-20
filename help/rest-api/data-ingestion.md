@@ -1,17 +1,15 @@
 ---
 title: 資料攝取
-feature: REST API, Dynamic Content
-description: 使用Marketo Data Ingestion API大量擷取人員、自訂物件、公司和方案成員資料，並降低延遲擷取次數。
+feature: REST API, Dynamic Content, Static Lists
+description: 使用Marketo資料擷取API來擷取大量人員、自訂物件、公司、方案成員和清單，並降低延遲的資料擷取。
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
 TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
 workflow-type: tm+mt
-source-wordcount: 1789
-ht-degree: 13%
+source-wordcount: 2178
+ht-degree: 14%
 
 ---
 
@@ -21,7 +19,7 @@ ht-degree: 13%
 
 透過提交非同步執行的請求來內嵌資料。 訂閱來自[Marketo可觀察性資料流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup)的事件，即可擷取要求狀態。
 
-介面提供四種物件型別：人員、自訂物件、公司和程式成員。 記錄作業僅限「插入或更新」，但同時支援刪除的「程式成員」除外。
+介面提供五種物件型別：人員、自訂物件、公司、程式成員和清單（靜態清單）。 記錄作業僅限「插入或更新」，但同時支援刪除的「程式成員」和支援新增與移除作業的「清單」除外。
 
 >[!NOTE]
 >
@@ -45,6 +43,7 @@ ht-degree: 13%
 | 自訂物件 | 讀寫自訂物件 |
 | 公司 | 讀寫公司 |
 | 計畫成員 | 讀寫潛在客戶 |
+| 清單 | 讀寫潛在客戶 |
 
 ## 支援的物件型別
 
@@ -54,6 +53,7 @@ ht-degree: 13%
 | 自訂物件 | 更新插入（插入或更新） |
 | 公司 | 同步(`createOnly`， `updateOnly`， `createOrUpdate`) |
 | 計畫成員 | 同步（更新插入狀態）、刪除（從程式中移除） |
+| 清單 | 新增至清單、從清單移除 |
 
 ## 標頭
 
@@ -97,6 +97,10 @@ ht-degree: 13%
 方案成員的範例URL：
 
 `https://mkto-ingestion-api.adobe.io/subscriptions/556-RJS-213/programmembers`
+
+清單的範例URL：
+
+`https://mkto-ingestion-api.adobe.io/subscriptions/556-RJS-213/lists`
 
 ### 回應
 
@@ -157,7 +161,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ## 端點
 
-擷取端點適用於人員、自訂物件、公司和方案成員。
+擷取端點適用於人員、自訂物件、公司、方案成員和清單。
 
 ### 人員
 
@@ -593,6 +597,159 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 | leadId | 輸入陣列中的每個成員都需要。 |
 | 每個請求的最大潛在客戶 | 所有方案中共有1,000名成員。 |
 
+### 清單（新增至清單）
+
+用於將潛在客戶新增到靜態清單的端點。 銷售機會由其Marketo銷售機會ID識別。
+
+| 方法 | 路徑 |
+| --- | --- |
+| POST | `/subscriptions/{munchkinId}/lists` |
+
+#### 標頭
+
+| 索引鍵 | 價值 | 必要 |
+| --- | --- | --- |
+| `Content-Type` | application/json | 是 |
+| `X-Mkto-User-Token` | {accessToken} | 是 |
+| `X-Correlation-Id` | 任意字串（長度上限為255個字元） | 無 |
+| `X-Request-Source` | 任意字串（長度上限為50個字元） | 無 |
+
+#### 要求內文
+
+| 索引鍵 | 資料類型 | 必要 | 價值 | 預設值 |
+| --- | --- | --- | --- | --- |
+| `listId` | 長整數 | 是 | Marketo靜態清單識別碼。 必須是正整數。 | – |
+| `leads` | 物件陣列 | 是 | 要新增至清單的銷售機會參考清單。 接受JSON索引鍵`input`或`leads`。 | – |
+
+輸入陣列中的每個物件包含：
+
+| 索引鍵 | 資料類型 | 必要 | 說明 |
+| --- | --- | --- | --- |
+| `leadId` | 長整數 | 是 | Marketo銷售機會ID。 接受JSON索引鍵`leadId`或`id`。 |
+
+必要的許可權為`Read-Write Lead`。
+
+### 清單新增到清單範例
+
+#### 請求
+
+`POST /subscriptions/{munchkinId}/lists`
+
+#### 標頭
+
+`Content-Type: application/json`
+`X-Mkto-User-Token: {accessToken}`
+
+#### 內文
+
+```json
+{
+   "listId": 1001,
+   "leads": [
+      {
+         "leadId": 10001
+      },
+      {
+         "leadId": 10002
+      },
+      {
+         "leadId": 10003
+      }
+   ]
+}
+```
+
+#### 回應
+
+`HTTP/1.1 202`
+`X-Request-ID: WOUBf3fHJNU6sTmJqLL281lOmAEpMZFw`
+
+### 清單新增至清單驗證規則
+
+| 規則 | 詳細資料 |
+| --- | --- |
+| listId | 必填。 必須為正整數(> 0)。 |
+| 銷售機會 | 必填。 不得為Null或空白。 |
+| leadId | 輸入陣列中的每個潛在客戶都需要。 |
+| 每個請求的最大潛在客戶 | 在輸入陣列中總共1,000個銷售機會。 |
+
+### 清單（從清單中移除）
+
+用於從靜態清單中移除潛在客戶的端點。 銷售機會由其Marketo銷售機會ID識別。
+
+>[!NOTE]
+>
+>此端點使用POST而非DELETE，因為要求需要包含結構化資料的JSON內文。
+
+| 方法 | 路徑 |
+| --- | --- |
+| POST | `/subscriptions/{munchkinId}/lists/remove` |
+
+#### 標頭
+
+| 索引鍵 | 價值 | 必要 |
+| --- | --- | --- |
+| `Content-Type` | application/json | 是 |
+| `X-Mkto-User-Token` | {accessToken} | 是 |
+| `X-Correlation-Id` | 任意字串（長度上限為255個字元） | 無 |
+| `X-Request-Source` | 任意字串（長度上限為50個字元） | 無 |
+
+#### 要求內文
+
+| 索引鍵 | 資料類型 | 必要 | 價值 | 預設值 |
+| --- | --- | --- | --- | --- |
+| `listId` | 長整數 | 是 | Marketo靜態清單識別碼。 必須是正整數。 | – |
+| `leads` | 物件陣列 | 是 | 要從清單中移除的潛在客戶參照清單。 接受JSON索引鍵`input`或`leads`。 | – |
+
+輸入陣列中的每個物件包含：
+
+| 索引鍵 | 資料類型 | 必要 | 說明 |
+| --- | --- | --- | --- |
+| `leadId` | 長整數 | 是 | Marketo銷售機會ID。 接受JSON索引鍵`leadId`或`id`。 |
+
+必要的許可權為`Read-Write Lead`。
+
+### 從清單移除的清單範例
+
+#### 請求
+
+`POST /subscriptions/{munchkinId}/lists/remove`
+
+#### 標頭
+
+`Content-Type: application/json`
+`X-Mkto-User-Token: {accessToken}`
+
+#### 內文
+
+```json
+{
+   "listId": 1001,
+   "leads": [
+      {
+         "leadId": 10001
+      },
+      {
+         "leadId": 10002
+      }
+   ]
+}
+```
+
+#### 回應
+
+`HTTP/1.1 202`
+`X-Request-ID: e3d92152-0fb1-444a-8f8f-29d5a2338598`
+
+### 從清單驗證規則中移除的清單
+
+| 規則 | 詳細資料 |
+| --- | --- |
+| listId | 必填。 必須為正整數(> 0)。 |
+| 銷售機會 | 必填。 不得為Null或空白。 |
+| leadId | 輸入陣列中的每個潛在客戶都需要。 |
+| 每個請求的最大潛在客戶 | 在輸入陣列中總共1,000個銷售機會。 |
+
 ## 限制
 
 以下是護欄的更新清單：
@@ -602,7 +759,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 * 每個使用者端ID每秒的最大要求數： 5,000
 * 每日最大物件數： 10,000,000
 
-這些限制會統一套用至人員、自訂物件、公司和方案成員。 對於方案成員，「每個請求的物件」是單一請求中所有方案的潛在客戶參考總數。
+這些限制會統一套用至人員、自訂物件、公司、方案成員和清單。 對於方案成員，「每個請求的物件」是單一請求中所有方案的潛在客戶參考總數。 若為List，「每個請求的物件」為輸入陣列中的潛在客戶參考數。
 
 ## 資料擷取API與REST API
 
