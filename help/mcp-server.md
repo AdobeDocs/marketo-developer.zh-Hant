@@ -1,22 +1,20 @@
 ---
-title: MCP伺服器
-description: 瞭解如何使用MCP伺服器將AI助理連線到Marketo。 使用您的Marketo憑證設定Claude Desktop、Cursor、Claude Code或VS Code。
-badgeBeta: label="Beta" type="informative" tooltip="此功能目前仍在封閉測試版中"
+title: Marketo Engage MCP伺服器
+description: 瞭解如何使用Marketo Engage MCP伺服器將AI助理連線到Marketo。 使用您的Marketo憑證設定Claude Desktop、Cursor、Claude Code或VS Code。
+badgeBeta: label="有限可用性" type="informative" tooltip="此功能目前在有限測試版中提供"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
-hidefromtoc: true
-hide: true
-source-git-commit: a8bf6680a212dd665841896e4550a755dcdf745d
+source-git-commit: d481dc061cbb59139edf971915b13bd0c8e861d3
 workflow-type: tm+mt
-source-wordcount: '1447'
-ht-degree: 0%
+source-wordcount: '1388'
+ht-degree: 1%
 
 ---
 
-# [!DNL Marketo] MCP伺服器
+# [!DNL Marketo Engage] MCP伺服器
 
->[!NOTE]
+>[!AVAILABILITY]
 >
->MCP伺服器目前是封閉測試版。 目前並非所有使用者都可使用。
+> 此功能限時提供。 若要要求存取權，請填寫[此表單](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Wht7-jR7h0OUrtLBeN7O4Y-uSf63sAxCmWyqMJg8eMFUMVZSVExSNDA3T0I4SEcwRDFSVTBGWU01Uy4u&origin=QRCode){target="_blank"}。 請確定您已準備好訂閱的Munchkin ID。
 
 模型上下文通訊協定(MCP)是一種開放標準，可讓AI工具與外部服務通訊。 [!DNL Marketo] MCP伺服器可作為您的AI助理與[!DNL Marketo]之間的橋樑。 它會公開超過100項操作，涵蓋表單、方案、智慧行銷活動、銷售機會、電子郵件、代碼片段、清單和資料夾。
 
@@ -24,8 +22,8 @@ ht-degree: 0%
 
 >[!IMPORTANT]
 >
->模型內容通訊協定(MCP)是一種新興的開放原始碼標準，可能會帶來安全性或可靠性風險。 Adobe MCP伺服器整合和相關檔案係依「現況」提供，不提供任何形式的保證。
->將MCP使用者端或伺服器連線至Adobe產品是客戶選擇的組態，客戶需負責評估任何MCP整合的安全性和適用性。 Adobe對於因設定錯誤、誤用MCP、協力廠商實作中的漏洞，或透過啟用MCP的工作流程執行的意外動作所引起的問題，概不負責。
+>模型內容通訊協定(MCP)是一種新興的開放原始碼標準，可能會帶來安全性或可靠性風險。Adobe MCP伺服器整合和相關檔案係依「現況」提供，不提供任何形式的保證。
+>將MCP使用者端或伺服器連線至Adobe產品是客戶選擇的組態，客戶必須負責評估任何MCP整合的安全性和適用性。Adobe對於因設定錯誤、誤用MCP、協力廠商實作中的漏洞，或透過啟用MCP的工作流程執行的意外動作所引起的問題，概不負責。
 >為了降低風險，Adobe鼓勵您在有效使用之前在沙箱環境中測試整合，並在確認或依賴之前，仔細檢閱及驗證所有MCP啟動的動作和回應。
 
 ## MCP基本需知
@@ -40,7 +38,7 @@ MCP可讓AI工具同時連線至多個外部服務。 例如，AI助理可以：
 
 MCP是一種通訊協定，任何應用程式都可以實作，向AI工具公開其資料和動作。
 
-## [!DNL Marketo] MCP的功用和不功用
+## [!DNL Marketo Engage] MCP的功用和不功用
 
 在連線AI工具之前，瞭解MCP的範圍有助於設定期望。
 
@@ -59,6 +57,8 @@ MCP是一種通訊協定，任何應用程式都可以實作，向AI工具公開
 * 產生預測、建議或決策 — 決策是下遊人工智慧工具或使用者的責任
 * 儲存或保留要求之間的認證、要求資料或工作階段狀態
 * 需要您安裝、部署或管理任何伺服器端軟體
+
+MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而定，但B2B資料涉及客戶業務資料，不涉及PII資料。
 
 ## 先決條件
 
