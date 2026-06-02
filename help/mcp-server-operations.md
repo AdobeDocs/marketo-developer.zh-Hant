@@ -1,32 +1,26 @@
 ---
-title: 支援的MCP作業
+title: Marketo Engage MCP作業
 description: 瞭解哪些Marketo Engage MCP作業可搭配AI助理使用。
 autotag-review: '2026-06-02T13:31:42.084Z'
 TQID: 'https://experienceleague.adobe.com/qvrWbHOCsCCHctduNDxMhkE8JAKxZk8FCYfKvzxfcYA'
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: dca84292-69e9-4116-a575-667d31fa060d
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-topic_v2:
-  - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: bef569a714bfb797bcf8bb82a406ca6df26facb0
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: dca84292-69e9-4116-a575-667d31fa060did: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+topic_v2: id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
+source-git-commit: 08abe412b9750585f0b75364f20488bea767dcc2
 workflow-type: tm+mt
-source-wordcount: 234
+source-wordcount: 231
 ht-degree: 4%
 
 ---
 
 
-# 支援的[!DNL Marketo Engage] MCP作業
+# [!DNL Marketo Engage] MCP作業
 
 下列作業可透過[!DNL Marketo Engage] MCP伺服器使用。 一般而言，唯讀或非破壞性的端點可供使用。 AI系統無法使用`Delete`或其他破壞性作業。
 
 >[!NOTE]
 >
->此清單並非最終清單，且會隨著我們新增工具而持續成長。
+>隨著我們新增其他工具，此清單會持續成長。
 
 ## 大量匯出
 
