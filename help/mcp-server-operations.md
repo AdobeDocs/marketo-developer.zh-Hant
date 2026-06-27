@@ -12,10 +12,10 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 08abe412b9750585f0b75364f20488bea767dcc2
+source-git-commit: 1a8728ec05e15bef1271274248ce9fc25b14c768
 workflow-type: tm+mt
-source-wordcount: 231
-ht-degree: 4%
+source-wordcount: 264
+ht-degree: 3%
 
 ---
 
@@ -27,6 +27,8 @@ ht-degree: 4%
 >[!NOTE]
 >
 >隨著我們新增其他工具，此清單會持續成長。
+
+如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
 
 ## 大量匯出
 
