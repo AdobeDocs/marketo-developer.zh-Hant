@@ -21,9 +21,9 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 1a8728ec05e15bef1271274248ce9fc25b14c768
+source-git-commit: b28708e92f44082eb247d9053d6ebf2306739b38
 workflow-type: tm+mt
-source-wordcount: 1923
+source-wordcount: 2166
 ht-degree: 1%
 
 ---
@@ -46,7 +46,7 @@ ht-degree: 1%
 
 ## MCP基本需知
 
->將MCP想成是AI應用程式的USB-C連線埠。 正如USB-C提供標準化方式將裝置連線到各種周邊裝置和配件，MCP也提供標準化方式將AI模型連線到資料來源和工具。 — [模型內容通訊協定](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
+>將MCP想成是AI應用程式的USB-C連線埠。 USB-C提供標準化方式，將裝置連線至各種周邊裝置和配件，而MCP提供標準化方式，將AI模型連線至資料來源和工具。 — [模型內容通訊協定](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
 
 MCP可讓AI工具同時連線至多個外部服務。 例如，AI助理可以：
 
@@ -297,11 +297,11 @@ claude mcp add --transport http marketo \
 
 >[!NOTE]
 >
->為安全起見，請在設定檔案中使用環境變數內插，而非直接貼上認證。 您可以使用如`${MARKETO_CLIENT_SECRET}`的語法參考變數，並在您的環境中設定它們。 這可防止憑證以純文字形式儲存在版本控制的檔案中。
+>為安全起見，請在設定檔案中使用環境變數內插，而非直接貼上認證。 您可以使用如`${MARKETO_CLIENT_SECRET}`的語法參考變數，並在您的環境中設定它們。 這可防止在版本控制的檔案中以純文字儲存認證。
 
 ### Grean {#glean}
 
-若要將Glean連線至Marketo Engage MCP伺服器，以下自訂標頭必須由[Glean支援團隊](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features)設定。
+若要將Glean連線至Marketo Engage MCP伺服器，[Glean支援團隊](https://docs.glean.com/release-notes/releases/2026-04-22-april-release#admin-features)必須設定下列自訂標頭。
 
 | 標頭 | 值 |
 | ------ | ----- |
@@ -311,7 +311,7 @@ claude mcp add --transport http marketo \
 
 ### 其他工具 {#other-tools}
 
-[!DNL Marketo] MCP伺服器由Adobe代管，並在公用URL上公開。 任何透過可串流的HTTP傳輸支援遠端伺服器的MCP使用者端都可以連線到它。您不需要工具專用的橋接器或任何本機安裝的軟體。 如果您的工具未在上方列出，請使用下方的連線詳細資料來手動設定。
+Adobe主控[!DNL Marketo] MCP伺服器，並在公用URL中公開。 任何透過可串流的HTTP傳輸支援遠端伺服器的MCP使用者端都可以連線到它。您不需要工具專用的橋接器或任何本機安裝的軟體。 如果您的工具未在上方列出，請使用下方的連線詳細資料來手動設定。
 
 **連線詳細資料：**
 
@@ -440,3 +440,28 @@ claude mcp add --transport http marketo \
 * **Munchkin ID允許清單。** 伺服器只接受已核准[!DNL Marketo]執行個體的要求。 使用未經授權的Munchkin ID的請求會以403錯誤遭到拒絕。
 * **API速率限制。** MCP伺服器繼承[!DNL Marketo]執行個體的API速率限制。 使用專用的API使用者來追蹤及管理配額消耗。
 * **讓認證不受版本控制。** 如果您的AI工具支援，請使用環境變數內插(`${MARKETO_CLIENT_SECRET}`)，因此認證不會以純文字儲存在存放庫檔案中。
+
+## 治理和資料保留
+
+### 認證處理
+
+* 客戶認證不會儲存在伺服器端，而且由使用者端根據請求提供，這有助於限制服務內的認證曝光。
+
+### API互動模型
+
+* 代理程式使用：代理程式可能會使用MCP伺服器來叫用支援的Marketo API。
+* 驗證模型校準：此服務使用針對Marketo API記錄的相同外部API驗證模型。
+
+### 驗證和授權
+
+* 最低許可權：有效許可權繼承自指派給客戶LaunchPoint服務的僅限Marketo API的使用者，以在客戶的Marketo設定中啟用最低許可權管理。
+* 無伺服器端權杖持續性：此服務會繼續避免在伺服器端儲存客戶憑證或權杖。  
+
+### 記錄與監視
+
+* 安全性記錄：結構化JSON記錄會透過Fluent Bit路由至Splunk，並具備敏感資料遮罩和其他篩選功能，以支援法規遵循需求。
+* 稽核支援：這些控制項可支援持續監控服務可用性、安全性相關事件和作業品質。
+* 無伺服器端密碼儲存：客戶認證不會由MCP部署儲存，且必須由使用者端根據請求提供。
+* 權杖處理：存取權杖為短期性，權杖回應會標籤為no-store，而權杖會透過標準授權機制（而非查詢字串傳輸）被接受。
+* 角色型營運存取：管理部署存取許可權會透過Adobe基礎結構角色和群組型控制項進行管理，而資料平面許可權會繼承自客戶的Marketo API使用者設定。
+* 稽核和可觀察性：已啟用安全性記錄、遮罩、監視和警示，以支援調查、服務健康情況追蹤和作業監督。
