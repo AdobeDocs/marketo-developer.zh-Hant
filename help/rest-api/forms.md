@@ -4,11 +4,19 @@ feature: REST API, Forms
 description: Marketo Forms REST API指南可建立和管理表單、依id或名稱擷取、使用狀態篩選器瀏覽，以及管理欄位、欄位集和規則。
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
 TQID: https://experienceleague.adobe.com/56tc1a14d8okxweS7TK7SzfGB8G03WAI2KBlFKQbSdM
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: d65b4a73-87a3-4d56-b638-74e74d9939ceid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-subfeature_v2: id: d0251300-e25f-466f-9856-7e11ce8fa7aa
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: a7170d27-32ab-462b-a333-269abc654483
+  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+  - id: d65b4a73-87a3-4d56-b638-74e74d9939ce
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+subfeature_v2:
+  - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
 source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
 source-wordcount: 1494
@@ -910,7 +918,7 @@ Content-Type: text/html
 
 表單中的欄位必須是唯一的。 相同的欄位無法同時出現在表單的父欄位清單和子欄位集中。
 
-將具有[Add Fieldset的欄位集新增至Form](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFieldSetUsingPOST)端點。 欄位集接著會出現在表單](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getFormFieldByFormVidUsingGET)回應的[取得欄位中。 若要將欄位新增至欄位集，請使用[更新欄位位置](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/updateFieldPositionsUsingPOST)以將其移至其`fieldList`。
+將具有[Add Fieldset的欄位集新增至Form](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFieldSetUsingPOST)端點。 欄位集接著會出現在表單[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getFormFieldByFormVidUsingGET)回應的取得欄位中。 若要將欄位新增至欄位集，請使用[更新欄位位置](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/updateFieldPositionsUsingPOST)以將其移至其`fieldList`。
 
 對於這些端點，以`application/x-www-form-urlencoded`的POST形式傳送資料，而非以JSON形式傳送。
 
