@@ -31,9 +31,9 @@ Marketo webhook與協力廠商Web服務通訊。 webhook會使用GET或POST HTTP
 
 如需建立webhook並將其新增至Smart Campaign的說明，請參閱：
 
-- [建立 Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
-- [呼叫 Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
-- [在智慧行銷活動中使用 Webhook](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
+- [建立 Webhook](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
+- [呼叫 Webhook](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
+- [在智慧行銷活動中使用 Webhook](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
 
 使用下列屬性設定每個webhook：
 
@@ -52,8 +52,8 @@ Marketo webhook與協力廠商Web服務通訊。 webhook會使用GET或POST HTTP
 
 銷售機會和系統代號一律可用。 觸發器、行銷活動和方案代號可在各自的範圍中使用。 如需詳細資訊，請參閱：
 
-- [權杖概觀](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
-- [系統權杖字彙表](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
+- [權杖概觀](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
+- [系統權杖字彙表](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
 - [有趣時刻的Token](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
 
 例如，當方案或促銷活動對應至協力廠商資源時，請在方案層級將ID設定為`My Token`。 然後將ID當做權杖傳遞到webhook請求中。

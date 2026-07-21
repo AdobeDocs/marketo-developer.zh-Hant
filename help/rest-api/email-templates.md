@@ -26,7 +26,7 @@ ht-degree: 1%
 
 Marketo中的每封新電子郵件最初都是以電子郵件範本為基礎。 雖然您稍後可以取代HTML來取消電子郵件與其範本的連結，但您必須在建立電子郵件時選取範本。
 
-範本是含有如名稱和說明等中繼資料的HTML檔案。 範本HTML必須有效，並包含至少一個符合[可編輯區段需求](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0)的可編輯區段。
+範本是含有如名稱和說明等中繼資料的HTML檔案。 範本HTML必須有效，並包含至少一個符合[可編輯區段需求](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-editable-sections-to-email-templates-v1-0)的可編輯區段。
 
 ## 查詢
 

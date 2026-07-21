@@ -123,7 +123,7 @@ Munchkin Cookie特定於每個第二層網域，例如`example.com`。 預設Coo
 
 ## Beta
 
-若要選擇加入登陸頁面的Munchkin測試版管道，請前往[管理員 — > Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features)並啟用「登陸頁面上的Munchkin Beta」設定。
+若要選擇加入登陸頁面的Munchkin測試版管道，請前往[管理員 — > Treasure Chest](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features)並啟用「登陸頁面上的Munchkin Beta」設定。
 
 此設定會將程式碼片段新增至&#x200B;**[!UICONTROL Admin]** -> **[!UICONTROL Munchkin]**&#x200B;功能表。 使用這些程式碼片段在外部網站上執行測試版。
 

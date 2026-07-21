@@ -27,7 +27,7 @@ Marketo提供用於讀取、寫入、建立和更新商機記錄的API。 在Mar
 
 API會公開兩種物件型別。 和大多數Lead Database物件型別一樣，每個物件型別都有對應的Describe呼叫，可傳回物件中繼資料。
 
-商機API為已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en)的訂閱提供唯讀存取權。
+商機API為已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=zh-Hant)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=zh-Hant)的訂閱提供唯讀存取權。
 
 ## 說明
 

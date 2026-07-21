@@ -27,7 +27,7 @@ ht-degree: 1%
 
 使用電子郵件REST端點來查詢和管理電子郵件資產。
 
-如果電子郵件包含[Marketo預測性內容](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content)，則下列端點會失敗，錯誤碼為709，並顯示對應的錯誤訊息：
+如果電子郵件包含[Marketo預測性內容](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content)，則下列端點會失敗，錯誤碼為709，並顯示對應的錯誤訊息：
 
 - [取得電子郵件內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)
 - [更新電子郵件內容區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST)
@@ -37,7 +37,7 @@ ht-degree: 1%
 
 電子郵件支援與範本相同的查詢模式：識別碼[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET)的[、名稱](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET)的以及[瀏覽的](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET)。 by-name和瀏覽端點也支援資料夾篩選。
 
-如果電子郵件屬於使用[A/B測試](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test)的電子郵件程式，則下列端點不會傳回該電子郵件：
+如果電子郵件屬於使用[A/B測試](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test)的電子郵件程式，則下列端點不會傳回該電子郵件：
 
 - [依ID取得電子郵件](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET)
 - [依名稱取得電子郵件](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET)
@@ -535,7 +535,7 @@ type=Text&value=<h1>Hello World!</h1>&textValue=Hello World!
 
 ## 模組
 
-在電子郵件編輯器1.0中，模組是範本中定義的電子郵件區段。 模組可以包含元素、變數及其他HTML內容，如[電子郵件範本語法](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules)中所述。
+在電子郵件編輯器1.0中，模組是範本中定義的電子郵件區段。 模組可以包含元素、變數及其他HTML內容，如[電子郵件範本語法](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules)中所述。
 
 使用模組API來管理電子郵件中的模組。 針對使用HTTP POST的模組端點，將要求內文格式化為`application/x-www-form-urlencoded`，而非JSON。
 
@@ -909,7 +909,7 @@ name=MarketoVideo
 
 ## 變數
 
-在電子郵件編輯器1.0中，變數會儲存電子郵件元素的值。 依照[電子郵件範本語法](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables)的說明，將Marketo專屬語法新增至HTML以定義每個變數。 使用變數API來管理電子郵件中的變數。
+在電子郵件編輯器1.0中，變數會儲存電子郵件元素的值。 依照[電子郵件範本語法](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables)的說明，將Marketo專屬語法新增至HTML以定義每個變數。 使用變數API來管理電子郵件中的變數。
 
 ### 查詢
 

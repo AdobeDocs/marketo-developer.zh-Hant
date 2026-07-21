@@ -28,7 +28,7 @@ ht-degree: 3%
 >
 >隨著我們新增其他工具，此清單會持續成長。
 
-如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
+如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
 
 ## 大量匯出
 

@@ -43,4 +43,4 @@ Marketo只有在使用Marketo平台初始化Marketo Mobile SDK後，才會回應
 
 若要追蹤點選活動並以點選次數為基礎顯示頻率，請將「關閉」以外的動作指派給主要或次要按鈕。
 
-如需詳細資訊，請參閱產品檔案中的[應用程式內訊息](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message)。
+如需詳細資訊，請參閱產品檔案中的[應用程式內訊息](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/in-app-messages/creating-in-app-messages/create-an-in-app-message)。

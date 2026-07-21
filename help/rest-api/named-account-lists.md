@@ -21,7 +21,7 @@ ht-degree: 2%
 
 [具名帳戶列出端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Account-Lists)
 
-[具名帳戶清單](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/target-account-management/target/account-lists)是Marketo中的具名帳戶集合。 將其用於分類、資料擴充和智慧型行銷活動篩選。
+[具名帳戶清單](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/target-account-management/target/account-lists)是Marketo中的具名帳戶集合。 將其用於分類、資料擴充和智慧型行銷活動篩選。
 
 具名帳戶清單API可讓您從遠端管理清單資產及其成員資格。
 `Content`

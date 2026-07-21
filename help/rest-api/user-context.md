@@ -29,7 +29,7 @@ ht-degree: 5%
 
 此API還提供自訂變數，用於將資料和事件傳送到RTP後端以進行細分和個人化。 檢視相關的[觸發器](../javascript-api/triggers.md)和[模式比對](../javascript-api/pattern-match.md)功能。
 
-- 您必須是Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)。
+- 您必須是Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)。
 - 您必須要求Marketo支援以啟用使用者內容API。 啟用後，userContext物件會顯示在RTP全域物件下。
 
 ## 使用者內容屬性

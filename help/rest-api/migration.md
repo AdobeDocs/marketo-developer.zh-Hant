@@ -28,7 +28,7 @@ ht-degree: 0%
 根據您的使用案例，請使用下列其中一個移轉選項：
 
 * 將用於活動擷取的靜態清單限製為10,000個成員。 將現有清單分割為較小的清單，以繼續輪詢活動的相同對象。
-* 使用大量活動擷取或資料串流擷取活動或資料值變更。 以[getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1)或[大量潛在客戶擷取](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract)將結果加入靜態清單成員資格。
+* 使用大量活動擷取或資料串流擷取活動或資料值變更。 以[getLeadByListId](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET_1)或[大量潛在客戶擷取](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/bulk-extract/bulk-lead-extract)將結果加入靜態清單成員資格。
 
 ## 我若不採取任何動作，將會發生什麼事？
 

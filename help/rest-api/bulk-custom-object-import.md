@@ -40,7 +40,7 @@ ht-degree: 0%
 
 ## 自訂物件範例
 
-在使用大量API之前，請使用Marketo管理UI來[建立您的自訂物件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects)。
+在使用大量API之前，請使用Marketo管理UI來[建立您的自訂物件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects)。
 
 此範例使用具有`Color`、`Make`、`Model`和`VIN`欄位的`Car`自訂物件。 VIN欄位用於重複資料刪除。 管理員UI畫面會醒目顯示批次API端點所需的API名稱。
 

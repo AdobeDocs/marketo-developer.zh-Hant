@@ -25,7 +25,7 @@ ht-degree: 2%
 
 自訂動作會追蹤行動應用程式中的使用者互動。 當應用程式呼叫Marketo SDK以傳送自訂動作時，SDK會先將動作儲存至裝置。 SDK在偵測到足夠的網際網路連線能力後會傳送動作，因此Marketo可能會在延遲後收到動作。
 
-自訂動作可作為Smart Campaigns中的觸發器和篩選器。 如需詳細資訊，請參閱[行動應用程式活動](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns)。
+自訂動作可作為Smart Campaigns中的觸發器和篩選器。 如需詳細資訊，請參閱[行動應用程式活動](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/triggers-and-filters-for-mobile-smart-campaigns)。
 
 ## 在iOS上傳送自訂動作
 

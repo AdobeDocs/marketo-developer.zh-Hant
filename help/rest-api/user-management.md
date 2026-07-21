@@ -30,9 +30,9 @@ Marketo使用者管理端點會對使用者記錄執行CRUD操作。 若要建�
 不同於其他Marketo REST API，使用「使用者管理API」時：
 
 - 以HTTP標頭傳送存取權杖。 您不能以查詢字串引數的形式傳遞存取權杖。 請參閱[驗證指南](authentication.md)。
-- 建立REST API [自訂服務](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api)的使用者角色時，從下列每個群組選取許可權：
-  1. 來自[存取管理員](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)群組的「存取使用者」許可權
-  1. [Access API](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)群組中的「Access User Management Api」
+- 建立REST API [自訂服務](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api)的使用者角色時，從下列每個群組選取許可權：
+  1. 來自[存取管理員](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)群組的「存取使用者」許可權
+  1. [Access API](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)群組中的「Access User Management Api」
 - 評估HTTP回應狀態代碼，因為回應本文不包含「success」布林屬性。 成功的呼叫傳回狀態碼200。 失敗的呼叫傳回非200狀態代碼和標準「錯誤」陣列，其中包含錯誤代碼和描述性訊息。
 - 將日期時間字串格式化為`yyyyMMdd'T'HH:mm:ss.SSS't'+|-hhmm`。 此格式適用於`createdAt`、`updatedAt`和`expiresAt`。
 - 請勿在User Management API端點之前加上「/rest」。
@@ -312,11 +312,11 @@ GET /userservice/management/v1/users/workspaces.json
 
 ## 邀請使用者
 
-在[Adobe IMS整合訂閱](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview)上，此端點僅支援[僅限API的使用者](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user)的邀請。 若要邀請[標準使用者](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)，請改用[Adobe User Management API](https://developer.adobe.com/umapi/)。
+在[Adobe IMS整合訂閱](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview)上，此端點僅支援[僅限API的使用者](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user)的邀請。 若要邀請[標準使用者](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)，請改用[Adobe User Management API](https://developer.adobe.com/umapi/)。
 
 [邀請使用者](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/inviteUserUsingPOST)端點會傳送「歡迎使用Marketo」電子郵件邀請給新使用者。 電子郵件包含「登入Marketo」連結。 收件者可選取連結、建立密碼並取得Marketo的存取權。
 
-在收件者接受邀請之前，其狀態為「擱置中」，且無法編輯使用者記錄。 待處理的邀請會在傳送七天後過期。 如需詳細資訊，請參閱[Marketo使用者管理檔案](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)。
+在收件者接受邀請之前，其狀態為「擱置中」，且無法編輯使用者記錄。 待處理的邀請會在傳送七天後過期。 如需詳細資訊，請參閱[Marketo使用者管理檔案](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)。
 
 以`application/json`格式傳遞要求內文中的引數。
 
@@ -324,7 +324,7 @@ GET /userservice/management/v1/users/workspaces.json
 
 `userid`引數是用於登入的唯一使用者識別碼，必須格式化為電子郵件地址。 如果要求省略`userid`，其值預設為`emailAddress`的值。
 
-布林值`apiOnly`引數指定使用者是否為[僅限API的使用者](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user)。 `expiresAt`引數會指定使用者登入到期的時間，並使用W3C ISO-8601格式，不需毫秒。 如果要求遺漏`expiresAt`，則使用者永遠不會過期。 `reason`引數說明邀請的原因。
+布林值`apiOnly`引數指定使用者是否為[僅限API的使用者](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user)。 `expiresAt`引數會指定使用者登入到期的時間，並使用W3C ISO-8601格式，不需毫秒。 如果要求遺漏`expiresAt`，則使用者永遠不會過期。 `reason`引數說明邀請的原因。
 
 邀請成功時，端點會傳回「true」。 否則，會傳回錯誤訊息。
 
@@ -356,7 +356,7 @@ Content-Type: application/json
 true
 ```
 
-下圖顯示傳送給新使用者的「歡迎使用Marketo」電子郵件。 主旨為「Marketo登入資訊」。 寄件者是與[REST API自訂服務](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api)相關聯的僅限API使用者的電子郵件地址。 firstName、lastName和emailAddress引數會指定收件者。
+下圖顯示傳送給新使用者的「歡迎使用Marketo」電子郵件。 主旨為「Marketo登入資訊」。 寄件者是與[REST API自訂服務](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api)相關聯的僅限API使用者的電子郵件地址。 firstName、lastName和emailAddress引數會指定收件者。
 
 ![邀請使用者電子郵件](assets/invite-user-email.png)
 
@@ -368,7 +368,7 @@ true
 
 ### 更新使用者屬性
 
-在[Adobe IMS整合訂閱](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview)上，此端點僅支援更新[僅限API的使用者](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user)的屬性。 若要更新[標準使用者](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)的屬性，請改用[Adobe使用者管理API](https://developer.adobe.com/umapi/)。
+在[Adobe IMS整合訂閱](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview)上，此端點僅支援更新[僅限API的使用者](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user)的屬性。 若要更新[標準使用者](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)的屬性，請改用[Adobe使用者管理API](https://developer.adobe.com/umapi/)。
 
 [更新使用者屬性](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/updateUserAttributeUsingPOST)端點採用單一`userid`路徑引數並傳回單一使用者記錄。 要求內文包含一或多個要更新的使用者屬性： `emailAddress`、`firstName`、`lastName`、`expiresAt`。
 
@@ -423,7 +423,7 @@ Content-Type: application/json
 
 #### 刪除使用者
 
-在[Adobe IMS整合訂閱](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview)上，此端點僅支援刪除[僅限API的使用者](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user)。 若要刪除[標準使用者](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)，請改用[Adobe使用者管理API](https://developer.adobe.com/umapi/)。
+在[Adobe IMS整合訂閱](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview)上，此端點僅支援刪除[僅限API的使用者](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user)。 若要刪除[標準使用者](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)，請改用[Adobe使用者管理API](https://developer.adobe.com/umapi/)。
 
 [Delete User](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/deleteUserUsingPOST)端點採用單一`userid`路徑引數，並從執行個體中刪除對應的使用者。 這是破壞性刪除，無法回覆。 如果成功，會傳回200狀態碼，否則會傳回錯誤訊息。
 

@@ -59,7 +59,7 @@ Marketo會透過id欄位唯一識別銷售機會。 您必須在系統外強制�
 
 活動一律與leadId的銷售機會相關。
 
-您也可以定義自訂活動。 建立並發佈自訂活動後，您可以透過Marketo API新增其例項。 如需詳細資訊，請參閱[瞭解自訂活動](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities)。
+您也可以定義自訂活動。 建立並發佈自訂活動後，您可以透過Marketo API新增其例項。 如需詳細資訊，請參閱[瞭解自訂活動](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities)。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities)，[JavaScript](javascript-api/lead-tracking.md#munchkin-behavior)
 
@@ -79,7 +79,7 @@ Marketo會透過id欄位唯一識別銷售機會。 您必須在系統外強制�
 
 身為Marketo管理員，您可以建立使用者在建立方案時選取的必要和選用標籤型別。 您可以根據公司的報告需求來定義每個標籤型別的可能值。
 
-例如，使用值（例如Northeast和Southeast）建立自訂「區域」標籤型別，以分析哪個區域產生最多銷售機會。 建立「擁有者」標籤型別，比較哪些計畫擁有者（例如Maria、David或John）對建立銷售機會和機會的影響最大。 如需詳細資訊，請參閱[瞭解標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags)。
+例如，使用值（例如Northeast和Southeast）建立自訂「區域」標籤型別，以分析哪個區域產生最多銷售機會。 建立「擁有者」標籤型別，比較哪些計畫擁有者（例如Maria、David或John）對建立銷售機會和機會的影響最大。 如需詳細資訊，請參閱[瞭解標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags)。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/asset)
 
@@ -128,7 +128,7 @@ Token可讓行銷人員使用資產個人化訊息，並在流程動作中新增
 - 繼承：在行銷活動資料夾層級建立，可用於該資料夾中的所有計畫。
 - 已覆寫：在方案層級使用自訂值修改，而不在方案資料夾層級變更父級「我的Token」值。
 
-我的Token使用命名慣例`{{my.My Token}}`，在Token名稱的開頭加上「my」這個字。 例如，名為EventDate的日期型別「我的Token」的Token名稱為`{{my.EventDate}}`。 如需詳細資訊，請參閱[瞭解程式中的我的代號](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program)。
+我的Token使用命名慣例`{{my.My Token}}`，在Token名稱的開頭加上「my」這個字。 例如，名為EventDate的日期型別「我的Token」的Token名稱為`{{my.EventDate}}`。 如需詳細資訊，請參閱[瞭解程式中的我的代號](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program)。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)
 

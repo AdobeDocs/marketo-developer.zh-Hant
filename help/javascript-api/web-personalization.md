@@ -29,7 +29,7 @@ ht-degree: 6%
 
 相關功能包括[自訂資料事件](custom-data-events.md)、[動態內容](web-personalization.md)、[取得訪客資料](get-visitor-data.md)以及[排除特定機器人的標籤](#exclude_tag_for_specific_bots)。
 
-- 您必須是Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+- 您必須是Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - RTP不支援以帳戶為根據的行銷指定帳戶清單。 ABM清單和程式碼只與在RTP內管理的已上傳帳戶清單（CSV檔案）有關。
 
 ## 標籤設定

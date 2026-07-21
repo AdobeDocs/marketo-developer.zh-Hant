@@ -21,7 +21,7 @@ ht-degree: 0%
 
 [銷售人員端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
 
-銷售人員API為已啟用[SFDC Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync)的訂閱提供唯讀存取權。
+銷售人員API為已啟用[SFDC Sync](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync)的訂閱提供唯讀存取權。
 
 「銷售人員」是代表潛在客戶記錄之銷售擁有者的個人記錄。 每個Lead記錄上的externalSalesPersonId欄位會將Lead與Sales Person相關聯。 填入此欄位時，Marketo會填入潛在客戶記錄上對應的潛在客戶擁有者查詢欄位。 接著，您可以使用相關聯的篩選器和權杖。
 

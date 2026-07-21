@@ -27,7 +27,7 @@ ht-degree: 3%
 
 每個自訂資料事件在訪客工作階段期間會計為一次。
 
-您必須是Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+您必須是Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 
 | 參數 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |

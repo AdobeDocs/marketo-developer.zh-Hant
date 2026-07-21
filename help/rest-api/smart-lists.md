@@ -26,7 +26,7 @@ ht-degree: 1%
 
 使用智慧清單REST API來查詢、複製和刪除智慧清單。
 
-這些API僅支援使用者建立的智慧清單。 它們不支援[內建或系統智慧清單](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists)。
+這些API僅支援使用者建立的智慧清單。 它們不支援[內建或系統智慧清單](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists)。
 
 ## 查詢
 
