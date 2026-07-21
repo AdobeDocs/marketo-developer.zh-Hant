@@ -4,30 +4,21 @@ feature: REST API
 description: 全方位的Marketo REST API端點清單，包含方法、URI和跨活動、大量匯出、身分、銷售機會、資產、使用者的必要許可權。
 exl-id: 27d16b6f-865a-4e40-ab9c-cbabe2927472
 TQID: https://experienceleague.adobe.com/6A-gCvxkWibX5fi3zZw-nbdVRtszX2qoJtDTBSdxFzQ
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-subfeature_v2:
-  - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: c5f60233-d5ea-4453-a799-0ad258b4d399id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+subfeature_v2: id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 4793
+source-wordcount: 4807
 ht-degree: 8%
 
 ---
 
 # 端點參考
 
-以下是Marketo REST API參考資料的連結。
+使用下列參考資料來尋找每個Marketo REST API群組的請求引數、回應結構描述和範例：
 
 - [資產](https://developer.adobe.com/marketo-apis/api/asset)
 - [身分識別](https://developer.adobe.com/marketo-apis/api/identity/)
@@ -36,7 +27,7 @@ ht-degree: 8%
 
 ## 端點清單 {#endpoint_list}
 
-以下是REST API端點的完整清單。
+下表列出REST API端點、HTTP方法、URI和必要的許可權。
 
 | 名稱 | 群組 | 方法 | URI | 必要許可權 |
 | --- | --- | --- | --- | --- |
@@ -56,7 +47,7 @@ ht-degree: 8%
 | 取得分頁Token | 活動 | GET | /rest/v1/activities/pagingtoken.json | 唯讀活動 |
 | 更新自訂活動型別 | 活動 | POST | /rest/v1/activities/external/type/{apiName}.json | 讀寫活動中繼資料 |
 | 更新自訂活動型別屬性 | 活動 | POST | /rest/v1/activities/external/type/{apiName}/attributes/update.json | 讀寫活動中繼資料 |
-| 身分識別 | Authentication | GET或POST | /identity/oauth/token | None |
+| 身分識別 | Authentication | 取得或發佈 | /identity/oauth/token | None |
 | 取消匯出活動工作 | 大量匯出活動 | POST | /bulk/v1/activities/export/{exportid}/cancel.json | 唯讀活動 |
 | 建立匯出活動工作 | 大量匯出活動 | POST | /bulk/v1/activities/export/create.json | 唯讀活動 |
 | 將匯出活動工作排入佇列 | 大量匯出活動 | POST | /bulk/v1/activities/export/{exportid}/enqueue.json | 唯讀活動 |

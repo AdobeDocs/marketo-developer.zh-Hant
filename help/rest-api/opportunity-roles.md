@@ -4,15 +4,12 @@ feature: REST API
 description: 透過REST API管理Marketo商機角色，包括說明、使用複合重複資料刪除欄位進行查詢、建立更新刪除、逾時和無CRM同步。
 exl-id: 2ba84f4d-82d0-4368-94e8-1fc6d17b69ed
 TQID: https://experienceleague.adobe.com/aE27mBhsrn-0SO41M-pV5NFjoMq--1Lp-L2TQGL7-8Y
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 279
+source-wordcount: 254
 ht-degree: 0%
 
 ---
@@ -21,13 +18,13 @@ ht-degree: 0%
 
 [機會角色端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityRolesUsingGET)
 
-潛在客戶透過中繼`opportunityRole`物件連結至商機。
+中繼`opportunityRole`物件連結指向機會。
 
-機會角色API僅公開給未啟用原生CRM同步處理的訂閱。
+機會角色API僅適用於未啟用原生CRM同步處理的訂閱。
 
 ## 說明
 
-和機會一樣，說明呼叫和CRUD作業也會針對機會角色公開。
+和機會一樣，API也提供機會角色的Describe呼叫和CRUD作業。
 
 ```http
 GET /rest/v1/opportunities/roles/describe.json
@@ -113,7 +110,9 @@ GET /rest/v1/opportunities/roles/describe.json
 
 ## 查詢
 
-請注意，`dedupeFields`和`searchableFields`與機會都有點不同。 `dedupeFields`實際上提供了複合金鑰，其中需要`externalOpportunityId`、`leadId`和`role`的所有三項。 目的地執行個體中必須有識別碼欄位的機會和潛在客戶連結，才能成功建立記錄。 對於`searchableFields`、`marketoGUID`、`leadId`和`externalOpportunityId`，它們都自己對查詢有效，並使用與Opportunities相同的模式，但有一個額外的選項可使用複合索引鍵進行查詢，這要求透過POST提交JSON物件，連同額外的查詢引數`_method=GET`。
+`dedupeFields`和`searchableFields`值與機會不同。 `dedupeFields`提供需要`externalOpportunityId`、`leadId`和`role`的複合金鑰。 若要成功建立記錄，目的地執行個體中必須存在識別碼欄位參考的機會和銷售機會。
+
+`searchableFields`值`marketoGUID`、`leadId`和`externalOpportunityId`對使用與機會相同模式的個別查詢有效。 您也可以使用複合鍵進行查詢。 此查詢需要透過POST以`_method=GET`查詢引數提交的JSON物件。
 
 ```http
 POST /rest/v1/opportunities/roles.json?_method=GET
@@ -148,11 +147,11 @@ POST /rest/v1/opportunities/roles.json?_method=GET
 }
 ```
 
-這會產生與標準GET查詢相同的回應型別，只是用來提出要求的介面不同。
+此請求會產生與標準GET查詢相同的回應型別，但使用不同的請求介面。
 
 ## 建立和更新
 
-商機角色的介面與用來建立及更新商機記錄的介面相同。
+使用與商機相同的介面，建立並更新商機角色。
 
 ```http
 POST /rest/v1/opportunities/roles.json
@@ -200,7 +199,9 @@ POST /rest/v1/opportunities/roles.json
 
 ## 刪除
 
-您可以依重複資料刪除欄位或ID欄位來刪除商機角色。 使用deleteBy引數以及值dedupeFields或idField來指定。 如果未指定，預設值為dedupeFields。 請求內文包含要刪除的機會角色的輸入陣列。 每個呼叫最多允許300個機會角色。
+依重複資料刪除欄位或ID欄位刪除商機角色。 將deleteBy引數設定為dedupeFields或idField。 預設值為dedupeFields。
+
+請求內文包含要刪除的機會角色的輸入陣列。 每個呼叫最多允許300個機會角色。
 
 ```http
 POST /rest/v1/opportunities/roles/delete.json
@@ -235,6 +236,6 @@ POST /rest/v1/opportunities/roles/delete.json
 
 ## 逾時
 
-- 機會角色端點的逾時為30秒，除非以下說明
-   - 同步機會角色：60秒
-   - 刪除機會角色： 60秒
+- 除非另有說明，否則機會角色端點的逾時值為30秒。
+- 同步機會角色的逾時時間為60秒。
+- 刪除機會角色的逾時時間為60秒。

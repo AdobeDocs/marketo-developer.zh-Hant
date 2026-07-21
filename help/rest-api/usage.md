@@ -3,9 +3,9 @@ title: 使用情況
 feature: REST API
 description: 使用每日和過去7天的統計端點監視Marketo REST API使用情況和錯誤，包括每位使用者的計數和錯誤碼總計。
 exl-id: 935a00a4-1e1e-4b48-ae9c-72c5e578312a
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '393'
+source-wordcount: '382'
 ht-degree: 8%
 
 ---
@@ -14,7 +14,7 @@ ht-degree: 8%
 
 [使用方式端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Usage)
 
-使用API提供您訂閱的REST API使用量和錯誤活動摘要。 這些端點對於監控整合、追蹤每日來電數量及識別一段時間的錯誤趨勢相當實用。
+「使用API」會摘要您訂閱的REST API使用量和錯誤活動。 使用這些端點來監控整合、追蹤每日來電數量及識別錯誤趨勢。
 
 使用量資料包括API呼叫總數和每個使用者的劃分。 錯誤資料包括錯誤總數以及依錯誤碼的劃分。
 
@@ -153,4 +153,4 @@ GET /rest/v1/stats/errors/last7days.json
 
 ## 附註
 
-您的每位API使用者都會在使用情況回應中個別回報。 將整合分割給不同的API使用者，可讓您更輕鬆地識別使用配額且產生錯誤的服務。
+使用回應會個別報告每個API使用者。 將整合指派給個別的API使用者，可讓您更輕鬆地識別哪項服務佔用配額並產生錯誤。

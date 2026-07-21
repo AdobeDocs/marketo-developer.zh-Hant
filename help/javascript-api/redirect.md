@@ -4,29 +4,22 @@ description: 實作RTP重新導向API ，使用ABM、組織、位置和區段等
 feature: Javascript
 exl-id: bbf91245-42e5-47ae-a561-e522cc65ff49
 TQID: https://experienceleague.adobe.com/frvGjN7DBJ1RJ3QFvWxo1qGiTNFmvyxi3H6FeynJHLU
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-  - id: cdd65e7e-8839-44a2-bc21-0e03623b5dd1
-  - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87cid: cdd65e7e-8839-44a2-bc21-0e03623b5dd1id: e0eb8757-182f-49f3-94a4-1587d16f5094
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 502
-ht-degree: 7%
+source-wordcount: 473
+ht-degree: 8%
 
 ---
 
 # 重新導向
 
-RTP重新導向API可讓您將分段的對象重新導向至目標URL。
+使用RTP重新導向API ，傳送分段對象至目標URL。
 
-- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+- 您必須是Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - RTP不支援以帳戶為根據的行銷指定帳戶清單。 ABM清單和程式碼只與在RTP內管理的已上傳帳戶清單（CSV檔案）有關。
 
 ## 使用情況
@@ -42,7 +35,7 @@ RTP重新導向API可讓您將分段的對象重新導向至目標URL。
 | redirect_url | 必要 | 字串 | 將符合條件的訪客重新導向的目標URL。 |
 | redirect_matched_visitors | 選用 | 布林值 | 如果為true，則會重新導向符合條件的訪客。 若為false，系統會重新導向條件不相符的訪客。 預設值： true。 |
 
-組織、產業、ABM清單、地點、ISP、相符區段
+重新導向條件可使用組織、產業、ABM清單、位置、ISP或相符的區段。
 
 | 條件 | 資料階層 | 範例 |
 | --- | --- | --- |
@@ -59,10 +52,10 @@ RTP重新導向API可讓您將分段的對象重新導向至目標URL。
 
 ## 附註
 
-- 如果重新導向規則/條件以Firmographics （公司、產業、位置）為基礎，您可以在rtp(&#39;send&#39;、&#39;view&#39;)和rtp(&#39;get&#39;、&#39;campaign&#39;)之前插入重新導向程式碼，以減少延遲。
-- 透過JavaScript重新導向是瀏覽器端重新導向，並取決於網站的載入和最佳化以達成最大速度。
-- 最佳作法是直接在rtp標籤後面設定重新導向程式碼，並將其放在標頭。
-- 請確定您未執行自行重新導向（rtp中有安全網可封鎖循環重新導向呼叫）。
+- 若要減少根據公司圖、產業圖或位置重新導向的延遲，請在rtp(&#39;send&#39;， &#39;view&#39;)和rtp(&#39;get&#39;，&#39;campaign&#39;)之前插入重新導向程式碼。
+- 將重新導向程式碼放置在頁首中rtp標籤的後面。
+- 最佳化網站載入，以提升瀏覽器端JavaScript重新導向的速度。
+- 避免自行重新導向。 rtp包含可封鎖循環重新導向呼叫的保護機制。
 
 ```html
 <!DOCTYPE html>
@@ -98,15 +91,15 @@ rtp('get','campaign');
 
 ## 如何重新導向追蹤的訪客
 
-1. 在目標URL的結尾附加引數：即&lt;www.marketo.com？rtp=redirect>
-1. 建立名為「由RTP重新導向」的區段
-1. 使用「特定頁面」引數，透過下列引數鎖定檢視任何頁面的訪客。
+1. 將引數附加至目標URL，例如&lt;www.marketo.com？rtp=redirect>。
+1. 建立名稱為「Redirected by RTP」的區段。
+1. 使用「特定頁面」引數來鎖定檢視包含引數之頁面的訪客。
 
 ![追蹤重新導向的訪客](assets/tracking-redirected-vistors.png)
 
 ## 如何使用不同的目標URL定義多個條件
 
-重新導向呼叫支援多個呼叫。 這可讓您使用多個欄位重新導向，並使用不同的URL和值建立複雜的條件。
+重新導向呼叫支援多個呼叫。 使用多個呼叫來結合欄位，並使用不同的URL和值建立條件。
 
 ### 使用情況
 

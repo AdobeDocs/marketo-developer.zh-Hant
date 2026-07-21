@@ -4,52 +4,44 @@ feature: REST API
 description: 瞭解如何使用HTTP 413和414、回應6xx 7xx、記錄層級狀態、記錄最佳實務、重試和限制來處理Marketo REST API錯誤。
 exl-id: a923c4d6-2bbc-4cb7-be87-452f39b464b6
 TQID: https://experienceleague.adobe.com/-bV6fjqJ8RkIBGX6gpVKMjGX1qYXR2g7VK3efpEQLDM
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-  - id: cc72dcf1-72e1-48cc-b434-e7c27d62d67c
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: c5f60233-d5ea-4453-a799-0ad258b4d399id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: cc72dcf1-72e1-48cc-b434-e7c27d62d67cid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 2475
+source-wordcount: 2255
 ht-degree: 3%
 
 ---
 
 # 錯誤代碼
 
-以下是REST API錯誤碼清單，並說明如何將錯誤傳回至應用程式。
+Marketo REST API會在HTTP、回應或記錄層級傳回錯誤。 此頁面說明每種錯誤型別，並列出相關的錯誤代碼。
 
 ## 處理與記錄例外
 
-針對Marketo進行開發時，發生非預期的例外狀況時，請務必記錄請求和回應。 雖然重新驗證可以安全地處理某些型別的例外（例如過期的驗證），但其他例外可能需要支援互動，而在此情況下將一律要求請求和回應。
+當整合發生非預期的例外狀況時，記錄請求和回應。 有些例外狀況（例如過期的驗證）可透過重新驗證來處理。 其他例外情況可能需要支援部門的協助，以要求相關的請求和回應詳細資料。
 
 ## 錯誤型別
 
-Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
+Marketo REST API在正常作業期間可能會傳回三種型別的錯誤：
 
-* HTTP-Level：這些錯誤以`4xx`程式碼表示。
-* 回應層級：這些錯誤包含在JSON回應的「錯誤」陣列中。
-* 記錄層級：這些錯誤包含在JSON回應的「結果」陣列中，並以「狀態」欄位和「原因」陣列依個別記錄指示。
+- **HTTP層級：**&#x200B;以`4xx`程式碼表示。
+- **回應層級：**&#x200B;包含在JSON回應的「錯誤」陣列中。
+- **記錄層級：**&#x200B;包含在JSON回應的「result」陣列中，並由「status」欄位和「reasons」陣列為每個記錄指出。
 
-對於回應層級和記錄層級錯誤型別，會傳回HTTP狀態碼200。 對於所有錯誤型別，不應評估HTTP原因片語，因為它是選用且可能會變更。
+回應層級和記錄層級錯誤傳回HTTP狀態代碼200。 對於所有錯誤型別，請勿評估HTTP原因片語，因為它是選用的，而且可能會有所變更。
 
 ### HTTP層級錯誤
 
-在正常作業情況下，Marketo應該只傳回兩個HTTP狀態程式碼錯誤： `413 Request Entity Too Large`和`414 Request URI Too Long`。 擷取錯誤、修改請求和重試都可以復原這些設定，但使用智慧編碼實務作法，您絕不應該在萬不得已的情況下遇到這些設定。
+在正常作業期間，Marketo傳回兩個HTTP狀態代碼錯誤： `413 Request Entity Too Large`和`414 Request URI Too Long`。 若要從任一錯誤中復原，請修改請求並重試。 您可以在提交前先檢查要求大小，以避免發生這些錯誤。
 
-如果要求裝載超過1MB，Marketo會傳回413，若是Import Lead，會傳回10MB。 在大多數情況下，應該不會達到這些限制，但新增檢查至要求的大小，並移動任何記錄（這會導致限制超過新的要求）應該可以防止任何情況（這會導致任何端點傳回此錯誤）。
+當請求承載超過1MB時，Marketo會傳回413，或匯入潛在客戶會傳回10MB。 在提交之前檢查請求大小。 如果記錄導致請求超過限制，請將這些記錄移至另一個請求。
 
-當GET要求的URI超過8KB時，將會傳回414。 若要避免出現這種情況，請檢查查詢字串的長度，看看是否超過此限制。 如果它確實將您的要求變更為POST方法，則使用其他引數`_method=GET`將您的查詢字串輸入為要求內文。 這放棄了URI的限制。 在大多數情況下，很少會達到此限制，但在擷取具有長的個別篩選值（例如GUID）的大量記錄時，這比較常見。
-[身分](https://developer.adobe.com/marketo-apis/api/identity/)端點可能傳回401未授權錯誤。 這通常是因為無效的使用者端ID或無效的使用者端密碼。 HTTP層級錯誤代碼
+當GET要求的URI超過8KB時，Marketo會傳回414。 提交前請檢查查詢字串長度。 如果超過限制，請將要求方法變更為POST，將查詢字串放入要求內文中，然後新增`_method=GET`引數。 長URI在擷取具有長篩選值（例如GUID）的大型記錄批次時最常見。
+
+[身分](https://developer.adobe.com/marketo-apis/api/identity/)端點可能會傳回401 Unauthorized錯誤，通常是因為使用者端識別碼或使用者端密碼無效。 下表列出HTTP層級的錯誤碼。
 
 <table>
   <thead>
@@ -75,7 +67,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
 
 #### 回應層級錯誤
 
-當回應的`success`引數設為false，且結構如下列時，會出現回應層級錯誤：
+當回應將`success`引數設為false時，就會發生回應層級錯誤。 它們使用下列結構：
 
 ```json
 {
@@ -90,7 +82,14 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
 }
 ```
 
-「錯誤」陣列中的每個物件都有兩個成員，`code`，這是從601到799的引號整數，以及提供錯誤純文字原因的`message`。 6xx程式碼一律會指出要求完全失敗且未執行。 601「存取權杖無效」即是範例，您可使用要求重新驗證並傳遞新的存取權杖來復原它。 7xx錯誤表示請求失敗，可能是因為未傳回任何資料，或是請求引數化不正確，例如包含無效的日期，或遺漏必要的引數。
+「錯誤」陣列中的每個物件包含兩個成員：
+
+- `code`：引號為601到799的整數。
+- `message`：錯誤的純文字原因。
+
+6xx程式碼表示整個要求失敗且未執行。 例如，透過重新驗證並使用請求傳遞新存取權杖來從601「存取權杖無效」錯誤中復原。
+
+7xx程式碼表示要求失敗，因為未傳回任何資料或要求引數無效。 原因包括無效的日期或缺少必要引數。
 
 #### 回應層級錯誤代碼
 
@@ -130,7 +129,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     <tr>
       <td><a name="603"></a>603</td>
       <td>存取遭拒</td>
-      <td>驗證成功，但使用者沒有足夠的許可權呼叫此API。 [其他許可權](custom-services.md)可能需要指派給使用者角色，或可能啟用<a href="https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">IP型API存取的允許清單</a>。</td>
+      <td>驗證成功，但使用者沒有足夠的許可權呼叫此API。 [其他許可權](custom-services.md)可能需要指派給使用者角色，或可能啟用<a href="https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/additional-integrations/create-an-allowlist-for-ip-based-api-access">IP型API存取的允許清單</a>。</td>
     </tr>
     <tr>
       <td><a name="604"></a>604*</td>
@@ -140,7 +139,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     <tr>
       <td><a name="605"></a>605*</td>
       <td>不支援HTTP方法</td>
-      <td>Sync Leads端點不支援GET。 必須使用POST。</td>
+      <td>同步處理潛在客戶端點不支援GET。 必須使用POST。</td>
     </tr>
     <tr>
       <td><a name="606"></a>606</td>
@@ -224,7 +223,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
     <tr>
       <td><a name="709"></a>709</td>
       <td>違反商業規則</td>
-      <td>無法完成呼叫，因為它違反了建立或更新資產的要求，例如，嘗試在沒有範本的情況下建立電子郵件。 嘗試下列動作時，也可能發生此錯誤：
+      <td>無法完成呼叫，因為它違反了建立或更新資產的要求，例如，嘗試在沒有範本的情況下建立電子郵件。嘗試下列動作時，也可能發生此錯誤：
         <ul>
           <li>擷取包含社交內容的登入頁面內容。</li>
           <li>複製包含特定資產型別的程式（如需詳細資訊，請參閱<a href="programs.md#clone">程式複製</a>）。</li>
@@ -271,7 +270,7 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
 
 ### 記錄層級 {#record_level_errors}
 
-記錄層級錯誤表示無法完成個別記錄的作業，但要求本身有效。 含有記錄層級錯誤的回應會遵循以下模式：
+記錄層級錯誤表示要求有效，但無法完成個別記錄的作業。 含有記錄層級錯誤的回應會遵循以下模式：
 
 #### 回應
 
@@ -301,216 +300,219 @@ Marketo REST API在正常操作下可傳回三種不同型別的錯誤：
 }
 ```
 
-呼叫結果陣列中包含的記錄排序方式，與請求的輸入陣列相同。
-成功請求中的每個記錄都可能依個別情況成功或失敗，由回應結果陣列中所包含每個記錄的狀態列位表示。 這些記錄的「狀態」欄位將「略過」，且會出現「原因」陣列。 每個原因都包含「代碼」成員和「訊息」成員。 程式碼一律為1xxx，而訊息會指出略過記錄的原因。 例如，Sync Leads請求的「action」設為「createOnly」，但已提交記錄中的索引鍵之一已有潛在客戶。 此案例會傳回代碼1005，而如上所示，訊息為「潛在客戶已存在」。
+結果陣列中的記錄與請求輸入陣列中的記錄顯示順序相同。 每個記錄都可以獨立成功或失敗，如其狀態列位所示。
+
+對於失敗的記錄，「狀態」欄位為「已略過」，記錄包括「原因」陣列。 每個原因都包含「代碼」成員和「訊息」成員。 程式碼一律為1xxx，而訊息則說明略過記錄的原因。
+
+例如，如果「同步銷售機會」請求將「action」設為「createOnly」，而且其中一個已提交的索引鍵已有銷售機會存在，則回應會傳回代碼1005，並出現訊息「Lead already exists」，如上所示。
 
 #### 記錄層級錯誤代碼
 
 >[!NOTE]
 >
 ><table>
-><tbody>
->    <tr>
->      <td>回應代碼</td>
->      <td>說明</td>
->      <td>評論</td>
->    </tr>
->    <tr>
->      <td><a name="1001"></a>1001</td>
->      <td>無效的值'%s'。 需要'%s'型別</td>
->      <td>每當引數值的型別不符時，就會產生錯誤。 例如，為integer引數指定的字串值。</td>
->    </tr>
->    <tr>
->      <td><a name="1002"></a>1002</td>
->      <td>遺失必要引數'%s'的值</td>
->      <td>請求中缺少必要引數時會產生錯誤</td>
->    </tr>
->    <tr>
->      <td><a name="1003"></a>1003</td>
->      <td>無效的資料</td>
->      <td>當提交的資料不是指定端點或模式的有效型別時；例如當使用指定為createOnly的動作提交潛在客戶的ID時，或當在批次促銷活動上使用請求促銷活動時。</td>
->    </tr>
->    <tr>
->      <td><a name="1004"></a>1004</td>
->      <td>找不到銷售機會</td>
->      <td>對於syncLead，當動作為"updateOnly"且找不到潛在客戶時</td>
->    </tr>
->    <tr>
->      <td><a name="1005"></a>1005</td>
->      <td>潛在客戶已存在</td>
->      <td>對於syncLead，當動作為"createOnly"且潛在客戶已存在時</td>
->    </tr>
->    <tr>
->      <td><a name="1006"></a>1006</td>
->      <td>找不到欄位'%s'</td>
->      <td>呼叫中包含的欄位不是有效欄位。</td>
->    </tr>
->    <tr>
->      <td><a name="1007"></a>1007</td>
->      <td>多個銷售機會符合查詢條件</td>
->      <td>有多個銷售機會符合查詢條件。 僅當索引鍵符合單一記錄時才能執行更新</td>
->    </tr>
->    <tr>
->      <td><a name="1008"></a>1008</td>
->      <td>拒絕存取資料分割'%s'</td>
->      <td>自訂服務的使用者無法存取含有記錄所在資料分割的工作區。</td>
->    </tr>
->    <tr>
->      <td><a name="1009"></a>1009</td>
->      <td>必須指定資料分割名稱</td>
->      <td></td>
->    </tr>
->    <tr>
->      <td><a name="1010"></a>1010</td>
->      <td>不允許資料分割更新</td>
->      <td>指定的記錄已經存在於不同的潛在客戶分割中。</td>
->    </tr>
->    <tr>
->      <td><a name="1011"></a>1011</td>
->      <td>欄位'%s'不受支援</td>
->      <td>當查閱欄位或以不支援的標準欄位指定的「filterType」時（例如：firstName、lastName）</td>
->    </tr>
->    <tr>
->      <td><a name="1012"></a>1012</td>
->      <td>無效的Cookie值'%s'</td>
->      <td>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/associateLeadUsingPOST">關聯銷售機會</a>時，可能會發生'cookie'引數的無效值。
->        當使用'filterType=cookies'並有'filterValues'引數的無效值依篩選型別</a>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET">取得銷售機會時，也會發生這種情況。</td>
->    </tr>
->    <tr>
->      <td><a name="1013"></a>1013</td>
->      <td>找不到物件</td>
->      <td>依ID取得物件（清單、促銷活動）會傳回此錯誤代碼</td>
->    </tr>
->    <tr>
->      <td><a name="1014"></a>1014</td>
->      <td>無法建立物件</td>
->      <td>建立物件（清單）失敗</td>
->    </tr>
->    <tr>
->      <td><a name="1015"></a>1015</td>
->      <td>潛在客戶不在清單中</td>
->      <td>指定的潛在客戶不是目標清單的成員</td>
->    </tr>
->    <tr>
->      <td><a name="1016"></a>1016</td>
->      <td>匯入次數過多</td>
->      <td>有太多匯入已排入佇列。 最多允許10個</td>
->    </tr>
->    <tr>
->      <td><a name="1017"></a>1017</td>
->      <td>物件已存在</td>
->      <td>建立失敗，因為記錄已經存在</td>
->    </tr>
->    <tr>
->      <td><a name="1018"></a>1018</td>
->      <td>CRM已啟用</td>
->      <td>無法執行動作，因為執行個體已啟用原生CRM整合。</td>
->    </tr>
->    <tr>
->      <td><a name="1019"></a>1019</td>
->      <td>匯入進行中</td>
->      <td>目標清單已匯入</td>
->    </tr>
->    <tr>
->      <td><a name="1020"></a>1020</td>
->      <td>要程式化的翻制專案太多</td>
->      <td>訂閱已達當天排程程式中的「cloneToProgramName」使用配額</td>
->    </tr>
->    <tr>
->      <td><a name="1021"></a>1021</td>
->      <td>不允許公司更新</td>
->      <td>在syncLead期間不允許公司更新</td>
->    </tr>
->    <tr>
->      <td><a name="1022"></a>1022</td>
->      <td>使用中的物件</td>
->      <td>當物件正由另一個物件使用時，不允許刪除</td>
->    </tr>
->    <tr>
->      <td><a name="1025"></a>1025</td>
->      <td>找不到程式狀態</td>
->      <td>已為「變更銷售機會計畫狀態」指定狀態，但該狀態不符合計畫頻道可用的狀態。</td>
->    </tr>
->    <tr>
->      <td><a name="1026"></a>1026</td>
->      <td>未啟用自訂物件</td>
->      <td>無法執行動作，因為執行個體未啟用自訂物件整合。</td>
->    </tr>
->    <tr>
->      <td><a name="1027"></a>1027</td>
->      <td>已達到最大活動型別限制</td>
->      <td>訂閱已達到可用自訂活動型別的最大數量。</td>
->    </tr>
->    <tr>
->      <td><a name="1028"></a>1028</td>
->      <td>已達到最大欄位限制</td>
->      <td>自訂活動最多有20個次要屬性。</td>
->    </tr>
->    <tr>
->      <td><a name="1029"></a>1029</td>
->      <td><ul>
->          <li>佇列中有太多工作</li>
->          <li>超出匯出每日配額</li>
->          <li>工作已排入佇列</li>
->        </ul></td>
->      <td><ul>
->          <li>在任何指定時間，佇列中的訂閱最多允許10個大量擷取工作。</li>
->          <li>根據預設，擷取工作限製為每天500MB （CST每天凌晨12:00重設）。</li>
->          <li>匯出ID已排入佇列。</li>
->        </ul></td>
->    </tr>
->    <tr>
->      <td><a name="1035"></a>1035</td>
->      <td>不支援的篩選器型別</td>
->      <td>在某些訂閱中，不支援下列大量銷售機會擷取篩選器型別： updatedAt、smartListId、smartListName。</td>
->    </tr>
->    <tr>
->      <td><a name="1036"></a>1036</td>
->      <td>在輸入中發現重複的物件</td>
->      <td>已呼叫使用相同的外部索引鍵更新兩個或多個記錄。 例如，同步公司呼叫時，多個公司使用相同的externalCompanyId。</td>
->    </tr>
->    <tr>
->      <td><a name="1037"></a>1037</td>
->      <td>已略過銷售機會</td>
->      <td>已略過Lead，因為它已經處於或超過此狀態。</td>
->    </tr>
->    <tr>
->      <td><a name="1042"></a>1042</td>
->      <td>無效的runAt日期</td>
->      <td>為排程行銷活動指定的runAt日期太久未來（最多兩年）。</td>
->    </tr>
->    <tr>
->      <td><a name="1048"></a>1048</td>
->      <td>自訂物件捨棄草稿失敗</td>
->      <td>已進行呼叫以捨棄自訂物件的草稿版本。</td>
->    </tr>
->    <tr>
->      <td><a name="1049"></a>1049</td>
->      <td>建立活動失敗</td>
->      <td>屬性陣列太長。
->        傳遞至記錄的屬性陣列超過65536個位元組的最大長度</td>
->    </tr>
->    <tr>
->      <td><a name="1076"></a>1076</td>
->      <td>具有mergeInCRM旗標的<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫為4。</td>
->      <td>您正在建立重複記錄。 建議您改用現有記錄。
->        這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
->    </tr>
->    <tr>
->      <td><a name="1077"></a>1077</td>
->      <td>由於「SFDC欄位」長度，<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗</td>
->      <td>mergeInCRM設為true的合併潛在客戶呼叫失敗，因為「SFDC欄位」超過允許的字元限制。 若要更正，請縮短「SFDC欄位」的長度，或將mergeInCRM設為false。</td>
->    </tr>
->    <tr>
->      <td><a name="1078"></a>1078</td>
->      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗，因為實體已刪除，不是銷售機會/連絡人，或欄位篩選條件不符。</td>
->      <td>合併失敗，無法在原生同步的CRM中執行合併操作
->        這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
->    </tr>
->    <tr>
->      <td><a name="1079"></a>1079</td>
->      <td>由於重複記錄中的個人化URL衝突，<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗</td>
->      <td>合併銷售機會通話會指定多個具有相同個人化URL的銷售機會。 若要解決問題，請使用Marketo Engage使用者介面來合併這些記錄。</td>
->    </tr>
->  </tbody>
-></table>
+<tbody>
+    <tr>
+      <td>回應代碼</td>
+      <td>說明</td>
+      <td>評論</td>
+    </tr>
+    <tr>
+      <td><a name="1001"></a>1001</td>
+      <td>無效的值'%s'。 需要'%s'型別</td>
+      <td>每當引數值的型別不符時，就會產生錯誤。 例如，為integer引數指定的字串值。</td>
+    </tr>
+    <tr>
+      <td><a name="1002"></a>1002</td>
+      <td>遺失必要引數'%s'的值</td>
+      <td>請求中缺少必要引數時會產生錯誤</td>
+    </tr>
+    <tr>
+      <td><a name="1003"></a>1003</td>
+      <td>無效的資料</td>
+      <td>當提交的資料不是指定端點或模式的有效型別時；例如當使用指定為createOnly的動作提交潛在客戶的ID時，或當在批次促銷活動上使用請求促銷活動時。</td>
+    </tr>
+    <tr>
+      <td><a name="1004"></a>1004</td>
+      <td>找不到銷售機會</td>
+      <td>對於syncLead，當動作為"updateOnly"且找不到潛在客戶時</td>
+    </tr>
+    <tr>
+      <td><a name="1005"></a>1005</td>
+      <td>潛在客戶已存在</td>
+      <td>對於syncLead，當動作為"createOnly"且潛在客戶已存在時</td>
+    </tr>
+    <tr>
+      <td><a name="1006"></a>1006</td>
+      <td>找不到欄位'%s'</td>
+      <td>呼叫中包含的欄位不是有效欄位。</td>
+    </tr>
+    <tr>
+      <td><a name="1007"></a>1007</td>
+      <td>多個銷售機會符合查詢條件</td>
+      <td>有多個銷售機會符合查詢條件。 僅當索引鍵符合單一記錄時才能執行更新</td>
+    </tr>
+    <tr>
+      <td><a name="1008"></a>1008</td>
+      <td>拒絕存取資料分割'%s'</td>
+      <td>自訂服務的使用者無法存取含有記錄所在資料分割的工作區。</td>
+    </tr>
+    <tr>
+      <td><a name="1009"></a>1009</td>
+      <td>必須指定資料分割名稱</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><a name="1010"></a>1010</td>
+      <td>不允許資料分割更新</td>
+      <td>指定的記錄已經存在於不同的潛在客戶分割中。</td>
+    </tr>
+    <tr>
+      <td><a name="1011"></a>1011</td>
+      <td>欄位'%s'不受支援</td>
+      <td>當查閱欄位或以不支援的標準欄位指定的「filterType」時（例如：firstName、lastName）</td>
+    </tr>
+    <tr>
+      <td><a name="1012"></a>1012</td>
+      <td>無效的Cookie值'%s'</td>
+      <td>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/associateLeadUsingPOST">關聯銷售機會</a>時，可能會發生'cookie'引數的無效值。
+        當使用'filterType=cookies'且'filterValues'引數的值無效時，依篩選型別</a>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET">取得銷售機會，也會發生這種情況。</td>
+    </tr>
+    <tr>
+      <td><a name="1013"></a>1013</td>
+      <td>找不到物件</td>
+      <td>依ID取得物件（清單、促銷活動）會傳回此錯誤代碼</td>
+    </tr>
+    <tr>
+      <td><a name="1014"></a>1014</td>
+      <td>無法建立物件</td>
+      <td>建立物件（清單）失敗</td>
+    </tr>
+    <tr>
+      <td><a name="1015"></a>1015</td>
+      <td>潛在客戶不在清單中</td>
+      <td>指定的潛在客戶不是目標清單的成員</td>
+    </tr>
+    <tr>
+      <td><a name="1016"></a>1016</td>
+      <td>匯入次數過多</td>
+      <td>有太多匯入已排入佇列。 最多允許10個</td>
+    </tr>
+    <tr>
+      <td><a name="1017"></a>1017</td>
+      <td>物件已存在</td>
+      <td>建立失敗，因為記錄已經存在</td>
+    </tr>
+    <tr>
+      <td><a name="1018"></a>1018</td>
+      <td>CRM已啟用</td>
+      <td>無法執行動作，因為執行個體已啟用原生CRM整合。</td>
+    </tr>
+    <tr>
+      <td><a name="1019"></a>1019</td>
+      <td>匯入進行中</td>
+      <td>目標清單已匯入</td>
+    </tr>
+    <tr>
+      <td><a name="1020"></a>1020</td>
+      <td>要程式化的翻制專案太多</td>
+      <td>訂閱已達當天排程程式中的「cloneToProgramName」使用配額</td>
+    </tr>
+    <tr>
+      <td><a name="1021"></a>1021</td>
+      <td>不允許公司更新</td>
+      <td>在syncLead期間不允許公司更新</td>
+    </tr>
+    <tr>
+      <td><a name="1022"></a>1022</td>
+      <td>使用中的物件</td>
+      <td>當物件正由另一個物件使用時，不允許刪除</td>
+    </tr>
+    <tr>
+      <td><a name="1025"></a>1025</td>
+      <td>找不到程式狀態</td>
+      <td>已為「變更銷售機會計畫狀態」指定狀態，但該狀態不符合計畫頻道可用的狀態。</td>
+    </tr>
+    <tr>
+      <td><a name="1026"></a>1026</td>
+      <td>未啟用自訂物件</td>
+      <td>無法執行動作，因為執行個體未啟用自訂物件整合。</td>
+    </tr>
+    <tr>
+      <td><a name="1027"></a>1027</td>
+      <td>已達到最大活動型別限制</td>
+      <td>訂閱已達到可用自訂活動型別的最大數量。</td>
+    </tr>
+    <tr>
+      <td><a name="1028"></a>1028</td>
+      <td>已達到最大欄位限制</td>
+      <td>自訂活動最多有20個次要屬性。</td>
+    </tr>
+    <tr>
+      <td><a name="1029"></a>1029</td>
+      <td><ul>
+          <li>佇列中有太多工作</li>
+          <li>超出匯出每日配額</li>
+          <li>工作已排入佇列</li>
+        </ul></td>
+      <td><ul>
+          <li>在任何指定時間，佇列中的訂閱最多允許10個大量擷取工作。</li>
+          <li>根據預設，擷取工作限製為每天500MB （CST每天凌晨12:00重設）。</li>
+          <li>匯出ID已排入佇列。</li>
+        </ul></td>
+    </tr>
+    <tr>
+      <td><a name="1035"></a>1035</td>
+      <td>不支援的篩選器型別</td>
+      <td>在某些訂閱中，不支援下列大量銷售機會擷取篩選器型別： updatedAt、smartListId、smartListName。</td>
+    </tr>
+    <tr>
+      <td><a name="1036"></a>1036</td>
+      <td>在輸入中發現重複的物件</td>
+      <td>已呼叫使用相同的外部索引鍵更新兩個或多個記錄。 例如，同步公司呼叫時，多個公司使用相同的externalCompanyId。</td>
+    </tr>
+    <tr>
+      <td><a name="1037"></a>1037</td>
+      <td>已略過銷售機會</td>
+      <td>已略過Lead，因為它已經處於或超過此狀態。</td>
+    </tr>
+    <tr>
+      <td><a name="1042"></a>1042</td>
+      <td>無效的runAt日期</td>
+      <td>為排程行銷活動指定的runAt日期太久未來（最多兩年）。</td>
+    </tr>
+    <tr>
+      <td><a name="1048"></a>1048</td>
+      <td>自訂物件捨棄草稿失敗</td>
+      <td>已進行呼叫以捨棄自訂物件的草稿版本。</td>
+    </tr>
+    <tr>
+      <td><a name="1049"></a>1049</td>
+      <td>建立活動失敗</td>
+      <td>屬性陣列太長。
+        傳遞至記錄的屬性陣列超過65536個位元組的最大長度</td>
+    </tr>
+    <tr>
+      <td><a name="1076"></a>1076</td>
+      <td>具有mergeInCRM旗標的<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫為4。</td>
+      <td>您正在建立重複記錄。建議您改用現有記錄。
+        這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
+    </tr>
+    <tr>
+      <td><a name="1077"></a>1077</td>
+      <td>由於「SFDC欄位」長度，<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗</td>
+      <td>mergeInCRM設為true的合併潛在客戶呼叫失敗，因為「SFDC欄位」超過允許的字元限制。 若要更正，請縮短「SFDC欄位」的長度，或將mergeInCRM設為false。</td>
+    </tr>
+    <tr>
+      <td><a name="1078"></a>1078</td>
+      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗，因為實體已刪除，不是銷售機會/連絡人，或欄位篩選條件不符。</td>
+      <td>合併失敗，無法在原生同步的CRM中執行合併操作
+        這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
+    </tr>
+    <tr>
+      <td><a name="1079"></a>1079</td>
+      <td>由於重複記錄中的個人化URL衝突，<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗</td>
+      <td>合併銷售機會通話會指定多個具有相同個人化URL的銷售機會。 若要解決問題，請使用Marketo Engage使用者介面來合併這些記錄。</td>
+    </tr>
+  </tbody>
+</table>

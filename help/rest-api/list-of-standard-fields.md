@@ -4,25 +4,21 @@ feature: REST API, Field Management
 description: 瀏覽Marketo標準銷售機會欄位的完整清單，其中包含REST和SOAP名稱、標籤和說明，以及如何透過Describe Lead API擷取它們。
 exl-id: 147dbdff-4bc9-4ab3-8918-c4de3e1aa97a
 TQID: https://experienceleague.adobe.com/vu2wGk36XJ243vwavhfLE7Vc9vMIJKGx6vmVqMRgEDA
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 742
+source-wordcount: 745
 ht-degree: 16%
 
 ---
 
 # 標準欄位
 
-以下是可透過API存取的Marketo中可用標準欄位清單。
+下表列出可透過API使用的標準Marketo欄位。 其中包含每個欄位的REST API名稱、SOAP API名稱、標籤和說明。
 
-您可以使用REST [Describe Lead](https://developer.adobe.com/marketo-apis/api/mapi)端點來擷取潛在客戶記錄上所有支援的欄位名稱清單。
+使用REST [Describe Lead](https://developer.adobe.com/marketo-apis/api/mapi)端點來擷取您的Lead記錄支援的所有欄位名稱。
 
 | REST API名稱 | SOAP API名稱 | 易記標籤 | 說明 |
 | --- | --- | --- | --- |

@@ -4,35 +4,30 @@ description: Web Personalization JavaScript API和RTP標籤的指南，涵蓋頁
 feature: Web Personalization, Javascript
 exl-id: b2c26b28-e9bf-4faf-8b6e-c102f41aeaa1
 TQID: https://experienceleague.adobe.com/yplunKmgjOJ7gJTA2TDc9cfJXyXbrVWuM-NdVbDMN4A
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-  - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
-subfeature_v2:
-  - id: cdd4e0f6-e87e-453f-88ee-2ee54a7de272
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-  - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+subfeature_v2: id: cdd4e0f6-e87e-453f-88ee-2ee54a7de272
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87cid: e0eb8757-182f-49f3-94a4-1587d16f5094
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 452
-ht-degree: 5%
+source-wordcount: 435
+ht-degree: 6%
 
 ---
 
 # 網頁個人化
 
-網路Personalization JavaScript API擴充了平台的自動個人化功能。 它允許事件追蹤和網頁的動態自訂。 其他功能： [自訂資料事件](custom-data-events.md)、[動態內容](web-personalization.md)、[取得訪客資料](get-visitor-data.md)、[排除特定機器人的標籤](#exclude_tag_for_specific_bots)。
+網頁Personalization JavaScript API會追蹤事件並動態自訂網頁。 它擴充了平台的自動個人化功能。
 
-- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
+相關功能包括[自訂資料事件](custom-data-events.md)、[動態內容](web-personalization.md)、[取得訪客資料](get-visitor-data.md)以及[排除特定機器人的標籤](#exclude_tag_for_specific_bots)。
+
+- 您必須是Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 - RTP不支援以帳戶為根據的行銷指定帳戶清單。 ABM清單和程式碼只與在RTP內管理的已上傳帳戶清單（CSV檔案）有關。
 
 ## 標籤設定
 
-RTP標籤應插入個人化頁面的標頭。
+在每個個人化頁面的標頭中插入RTP標籤。
 
 ```javascript
 <!-- RTP tag -->
@@ -47,7 +42,7 @@ g.src=f;var b=h.getElementsByTagName("script")[0];b.parentNode.insertBefore(g,b)
 
 ## 帳戶設定
 
-系統會在標籤層級自動呼叫此方法，以設定相關的帳戶ID。 當您想要在不同網域之間分割時，可以設定帳戶ID。
+標籤會自動呼叫此方法以設定相關的帳戶ID。 當您想要針對不同的網域使用不同的帳戶時，請明確設定帳戶ID。
 
 | 參數 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
@@ -61,9 +56,9 @@ rtp('setAccount', accountId);
 
 ## 事件傳送函式
 
-此方法會傳送檢視事件，以用於頁面追蹤。 在以下範例中，目前頁面URL會以訪客頁面檢視受到追蹤。
+此方法會傳送檢視事件以進行頁面追蹤。 下列範例中的第一個呼叫會追蹤目前頁面URL作為訪客頁面檢視。
 
-透過在此方法中傳遞選用的「page」引數，可以覆寫目前頁面。
+傳遞選用的「page」引數以覆寫目前頁面，如第二個呼叫所示。
 
 | 參數 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
@@ -82,9 +77,9 @@ rtp('send', 'view', page);
 
 ## 排除特定機器人（使用者代理）的標籤
 
-若要將特定瀏覽器排除在傳送資料至Web Personalization平台（在已識別機器人的情況下）之外，請將下列IF陳述式新增至標籤指令碼。
+若要防止已識別的機器人傳送資料至Web Personalization平台，請將下列`if`陳述式新增至標籤指令碼。
 
-在以下程式碼範例中，「GoogleBot|msnbot」會作為機器人範例使用，以從網頁Personalization活動中排除。
+此範例排除來自Web Personalization活動的「GoogleBot|msnbot」使用者代理。
 
 ```javascript
 <!-- RTP tag -->
@@ -104,7 +99,7 @@ if(navigator.userAgent.match(/.(Googlebot|msnbot)./gi) == null){
 
 ## 說明JavaScript呼叫
 
-使用網頁JavaScript和預測性內容時，新增至網站的Personalization說明。
+下表說明新增至使用Web Personalization和預測性內容的網站的JavaScript。
 
 ### 核心/相依JavaScript
 
@@ -115,7 +110,7 @@ if(navigator.userAgent.match(/.(Googlebot|msnbot)./gi) == null){
 | jquery-custom-ui-min.js | v1.9.2 | 可透過聯絡Marketo客戶支援來停用 |
 | query-ui-1.8.17-dialog.js | v1.9.2* | 可透過聯絡Marketo客戶支援來停用 |
 
-*僅在jQuery UI缺少對話方塊時使用
+*僅在缺少jQuery UI對話方塊時使用。
 
 ### 隨選JavaScript
 

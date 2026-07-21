@@ -4,34 +4,32 @@ feature: REST API
 description: 使用Marketo Engage活動REST API來列出活動型別、擷取具有分頁權杖的銷售機會活動，以及處理自訂和資料值的變更。
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
 TQID: https://experienceleague.adobe.com/62keaj4uNoxIPCzr9AQzKrIsfuHBvC25knYisZRUvF4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: e71bcf289229867bc969345d79c8f014761aaaf9
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 2226
+source-wordcount: 1758
 ht-degree: 0%
 
 ---
 
 # 活動
 
-Marketo允許與潛在客戶記錄相關的各種活動型別。  幾乎所有變更、動作或流程步驟都會針對潛在客戶的活動記錄進行記錄，並可透過API擷取，或在「智慧清單」和「智慧行銷活動」篩選器和觸發器中運用。  活動一律透過leadId與潛在客戶記錄建立關聯，對應至記錄的Id欄位，並具有自己的唯一ID。
+Marketo支援許多與潛在客戶記錄相關的活動型別。 幾乎所有變更、動作或流程步驟都會記錄在潛在客戶的活動記錄中。 您可以透過API擷取這些活動，或在「智慧清單」和「智慧行銷活動」篩選器和觸發器中使用這些活動。
 
-潛在活動型別非常多，可能因訂閱而異，每種都有獨特的定義。 雖然每個活動都有自己的唯一`id`、`leadId`和`activityDate`，但`primaryAttributeValueId`和`primaryAttributeValue`值在含義上有所不同。
+每個活動都有唯一的`id`，並透過`leadId`連線到潛在客戶記錄，這與記錄的ID欄位相對應。 每個活動也有一個`activityDate`。
 
-Marketo也允許透過自訂活動中繼資料API建立自訂活動型別。 新增自訂活動可透過新增自訂活動API完成。
+可用的活動型別因訂閱而異，每種型別都有自己的定義。 `primaryAttributeValueId`和`primaryAttributeValue`的含義取決於活動型別。
+
+使用自訂活動中繼資料API來建立自訂活動型別。 使用新增自訂活動API來新增自訂活動記錄。
 
 大部分活動都會在一段時間後清除。
 
 ## 說明
 
-若要擷取執行個體的可用型別及其定義清單，您可以使用[取得活動型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)端點。
+使用[取得活動型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)端點來擷取執行個體的可用活動型別及其定義。
 
 ```
 GET /rest/v1/activities/types.json
@@ -80,13 +78,20 @@ GET /rest/v1/activities/types.json
 }
 ```
 
-現實世界的回應包括更多的定義。 在此範例中，顯示的型別是「填寫表單」，其主要屬性為「Webform ID」，這指回所填寫表單的Marketo ID，且可用來與Marketo中的該特定資產建立關聯。 此外，對於此型別的特定活動記錄及其資料型別，每個可能的屬性都有定義。 請注意，如果欄位為空，則個別活動記錄中會忽略該特定屬性。
+實際回應包含更多定義。 此範例顯示「填寫表格」活動型別。 其主要屬性「Webform ID」是指已提交表單的Marketo ID，並將活動連結至該資產。
+
+回應也會定義活動型別及其資料型別的每個可能屬性。 如果欄位為空，則會從個別活動記錄中忽略該屬性。
 
 ## 查詢
 
-若要從Marketo擷取活動，請呼叫[取得潛在客戶活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET)端點。 您必須先擷取要開始擷取活動的日期時間的分頁Token。 然後在`nextPageToken`查詢引數中傳遞分頁權杖。 此外，您最多可在`activityTypeIds`查詢引數中傳入10個活動型別ID作為逗號分隔清單。
+使用[取得潛在客戶活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET)端點來擷取活動。 首先，擷取活動擷取應該開始的日期時間的分頁Token。 在`nextPageToken`查詢引數中傳遞該權杖。
 
-您可以選擇加入`listId`查詢引數，將搜尋範圍縮小至特定靜態清單中所包含的記錄，或加入`leadIds`查詢引數，並僅從指定的潛在客戶集合中搜尋活動。 您最多可以將30個`leadIds`以逗號分隔的清單傳遞。
+在`activityTypeIds`查詢引數中以逗號分隔的清單傳遞最多10個活動型別ID。
+
+選擇性地使用以下其中一個引數來縮小查詢：
+
+- `listId`將結果限製為特定靜態清單中的記錄。
+- `leadIds`將結果限製為最多30個銷售機會的活動，並以逗號分隔清單提供。
 
 >[!CAUTION]
 >
@@ -138,20 +143,20 @@ GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK
 }
 ```
 
-第一次呼叫時，請使用[取得分頁權杖API]取得`nextPageToken`。 對於對此端點的後續呼叫，請使用回應中的`nextPageToken returned`。 此端點一律會傳回`the nextPageToken`。
+第一次呼叫時，請使用Get Paging Token API來取得`nextPageToken`。 對於每個後續呼叫，傳遞上一個回應傳回的`nextPageToken`。 此端點一律會傳回`nextPageToken`。
 
-如果`moreResult`屬性為true，則表示有更多結果可用。 繼續呼叫此端點，直到`moreResult`屬性傳回false，這表示沒有可用的結果。 從此API傳回的`nextPageToken`應一律重複用於此呼叫的下一個反複專案。
+如果`moreResult`為true，則有更多結果可用。 繼續使用傳回的`nextPageToken`呼叫端點，直到`moreResult`為false。
 
-在某些情況下，此API的回應可能會少於300個活動專案，但也會將`moreResult`屬性設定為true。  這表示有更多活動可傳回，而且將傳回的`nextPageToken`納入後續呼叫中，可查詢端點以取得較新的活動。
+將`moreResult`設定為true時，API可傳回少於300個活動專案。 在此情況下，請將傳回的`nextPageToken`包含在另一個呼叫中，以擷取較新的活動。
 
-請注意，在每個結果陣列專案中，`id`整數屬性會由`marketoGUID`字串屬性取代為唯一識別碼。
+在每個結果陣列專案中，`marketoGUID`字串屬性會取代`id`整數屬性做為唯一識別碼。
 
 ### 資料值變更
 
-針對資料值變更活動，提供專門的活動API版本。 [Get Lead Changes](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET)端點只傳回資料值變更記錄到Lead欄位的活動。 此介面與Get Lead Activities API相同，有兩個差異：
+使用[取得潛在客戶變更](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET)端點來擷取潛在客戶欄位的資料值變更記錄。 其介面與Get Lead Activities API有兩個不同之處：
 
-* 沒有`activityTypeIds`引數，因為端點只會傳回資料值變更和新潛在客戶活動。
-* `fields`查詢引數為必要項，您可以在此傳遞逗號分隔的欄位清單，以指出您要擷取變更的欄位。
+- 端點沒有`activityTypeIds`引數，因為它只傳回資料值變更和新潛在客戶活動。
+- 必要的`fields`查詢引數接受您要擷取其變更的逗號分隔欄位清單。
 
 >[!CAUTION]
 >
@@ -201,13 +206,13 @@ GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQG
 }
 ```
 
-回應中的每個活動都有一個欄位陣列，包括活動中的變更清單，這會指定已變更欄位的`id`和`name`，以及與變更相關的新舊值。
+回應中的每個活動都有列示其變更的欄位陣列。 每個變更都會指定欄位的`id`和`name`，以及新值和舊值。
 
-請注意，在每個結果陣列專案中，`id`整數屬性會由`marketoGUID`字串屬性取代為唯一識別碼。
+在每個結果陣列專案中，`marketoGUID`字串屬性會取代`id`整數屬性做為唯一識別碼。
 
 ### 已刪除的銷售機會
 
-還有一個特殊的端點[取得已刪除的銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getDeletedLeadsUsingGET)，用於從Marketo擷取已刪除的活動。
+使用[取得已刪除的銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getDeletedLeadsUsingGET)端點從Marketo擷取已刪除的銷售機會活動。
 
 ```http
 GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ
@@ -244,26 +249,30 @@ GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQ
 }
 ```
 
-請注意，在每個結果陣列專案中，`id`整數屬性會由`marketoGUID`字串屬性取代為唯一識別碼。
+在每個結果陣列專案中，`marketoGUID`字串屬性會取代`id`整數屬性做為唯一識別碼。
 
 ### 逐頁瀏覽結果
 
-依預設，本節中提到的端點一次會傳回300個活動專案。  如果`moreResult`屬性為true，則有更多結果可用。 呼叫端點，直到`moreResult`屬性傳回false為止，這表示沒有其他可用的結果。 從此端點傳回的`nextPageToken`應一律重複用於此呼叫的下一個反複專案。
+依預設，此區段中的端點一次會傳回300個活動專案。 如果`moreResult`為true，則有更多結果可用。 在後續每次呼叫中傳遞傳回的`nextPageToken`，直到`moreResult`為false。
 
-在某些情況下，此端點可能會以少於300個活動專案回應，但也會將`moreResult`屬性設定為true。  這表示有其他活動可傳回，而且將傳回的`nextPageToken`納入後續呼叫中，可查詢端點以取得較新的活動。 請注意，`nextPageToken`需要在請求中進行URL編碼。
+將`moreResult`設定為True時，端點可傳回少於300個活動專案。 在此情況下，請將傳回的`nextPageToken`包含在另一個呼叫中，以擷取較新的活動。 要求中的URL編碼`nextPageToken`。
 
 ## 自訂活動型別
 
-自訂活動的功能與標準活動類似，只是結構描述是由第三方管理，而非Marketo。 自訂活動的執行個體會透過`leadId`連結潛在客戶記錄，就像標準活動一樣，但主要和次要屬性都是任意定義的。 在核准自訂活動型別時，會建立對應的智慧清單觸發器和篩選器，以便可以根據目前或歷史自訂活動資料處理潛在客戶。
+自訂活動的運作方式與標準活動類似，但協力廠商可管理其結構。 自訂活動記錄透過`leadId`連結到潛在客戶記錄，且其主要和次要屬性是使用者定義的。
 
-* 自訂活動最大數量：10
-* 每個自訂活動的屬性數上限： 20
+當自訂活動型別獲得核準時，Marketo會建立對應的智慧列示觸發器和篩選器。 然後，您可以根據目前或歷史自訂活動資料處理銷售機會。
 
-擷取自訂活動資料的方式與標準活動相同，透過[取得潛在客戶活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET) API。
+- 自訂活動上限： 10
+- 每個自訂活動的最大屬性數： 20
+
+透過[取得銷售機會活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET) API擷取自訂活動資料，與擷取標準活動的方式相同。
 
 ## 查詢型別
 
-除了標準Get Activity Types端點之外，[Get Custom Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getCustomActivityTypeUsingGET)和[Describe Custom Activity Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/describeCustomActivityTypeUsingGET)端點也會傳回在Marketo執行個體中布建之活動型別的詳細資訊，以及有關指定型別之屬性的中繼資料。 一般[Get活動型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)仍會傳回有關自訂活動的中繼資料，但不會指出指定型別是否為自訂型別。
+使用[取得自訂活動型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getCustomActivityTypeUsingGET)來擷取在Marketo執行個體中布建之型別的詳細資訊。 使用[描述自訂活動型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/describeCustomActivityTypeUsingGET)來擷取特定型別的屬性中繼資料。
+
+標準[Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)端點也傳回自訂活動中繼資料，但無法識別型別是否為自訂型別。
 
 ### 取得型別
 
@@ -293,7 +302,7 @@ GET /rest/v1/activities/external/types.json
 
 ### 說明型別
 
-對於型別說明，您必須傳遞`apiName`作為路徑引數。 依預設，您會取得活動的核准版本。 您可以選擇傳遞`draft=true`引數以擷取活動的草稿版本。
+若要描述型別，請傳遞`apiName`作為路徑引數。 依預設，端點會傳回活動的核准版本。 若要擷取草稿版本，請傳遞選用的`draft=true`引數。
 
 ```http
 GET /rest/v1/activities/external/type/{apiName}/describe.json
@@ -341,25 +350,23 @@ GET /rest/v1/activities/external/type/{apiName}/describe.json
 
 ## 建立型別
 
-每個自訂活動型別都需要顯示名稱、API名稱、觸發程式名稱、篩選器名稱和主要屬性。
+每個自訂活動型別都需要顯示名稱、API名稱、觸發程式名稱、篩選器名稱和主要屬性。 使用下列准則來保持型別與Marketo慣例一致，並避免命名衝突：
 
-為了確保型別與Marketo慣例的一致性並避免衝突，在建立型別時請務必遵循一些准則：
+- **顯示名稱：**&#x200B;簡要說明活動記錄所代表的意義，例如「傳送電子郵件」或「變更資料值」。 使用無限表單，例如「出席事件」。 顯示名稱可接受英數字元、空格和底線，而且必須至少包含一個字母。
 
-**顯示名稱：**&#x200B;活動型別的顯示名稱應簡短描述活動記錄所代表的內容，例如「傳送電子郵件」或「變更資料值」。 這些名稱通常應採用不定式，即「出席事件」。  顯示名稱接受英數字元、空格和底線。 顯示名稱必須至少包含一個字母。
+- **API名稱：**&#x200B;使用英數字元，最大長度為255。 如果您是LaunchPoint合作夥伴，請在活動型別API名稱前面加上代表名稱空間，以避免與客戶布建的型別發生衝突。 使用小寫或駝峰式大小寫來區分API名稱與其他字串。
 
-**API名稱：** API名稱包含英數字元（長度上限為255）。 如果您是LaunchPoint合作夥伴，應在活動型別API名稱前面加上代表名稱空間。 這是為了避免與客戶布建的型別發生衝突。  慣例是使用所有小寫或駝峰式大小寫來協助區分其他文字字串。
+- **描述：**&#x200B;對於行為不明顯的活動，請說明活動型別相對於潛在客戶的代表內容。
 
-**描述：**&#x200B;對於可能具有非明顯行為的活動，應包含活動型別相對於潛在客戶所代表之內容的描述。
+- **觸發程式名稱：**&#x200B;以第三人稱現在時態提供人類看得懂的唯一名稱，例如「出席一個事件」。 LaunchPoint合作夥伴應包含其公司名稱，例如「Attends網路研討會 — Acme公司」。
 
-**觸發程式名稱：**&#x200B;每個活動型別都必須有唯一的、人類可讀的觸發程式名稱。 觸發程式名稱應以第三人稱現在時態顯示，例如「出席事件」。 LaunchPoint合作夥伴應在活動中加入其公司名稱，例如「Attends網路研討會 — Acme公司」。
+- **篩選器名稱：**&#x200B;以第三人稱過去式提供人類看得懂的唯一名稱，例如「已出席活動」。 LaunchPoint合作夥伴應包含其公司名稱，例如「已出席的網路研討會 — Acme公司」。
 
-**篩選器名稱：**&#x200B;每個活動型別都必須有唯一的、人類看得懂的篩選器名稱。 篩選器名稱應為第三人稱過去時，例如「已出席活動」。 LaunchPoint合作夥伴應在活動中加入其公司名稱，即「已出席的網路研討會 — Acme公司」。
+- **主要屬性：**&#x200B;選取活動型別的最重要欄位。 若為「已出席的活動」活動，此欄位是活動名稱。 根據預設，主要屬性會在活動型別的每個觸發程式或篩選器中顯示為引數。 其值也會顯示在人員的活動記錄中，不需要向下切入活動。
 
-**主要屬性：**&#x200B;自訂活動的主要屬性應該是活動型別的最重要欄位。 例如，對於「已出席事件」活動，這會是事件的名稱。 預設情況下，主要屬性會作為引數包含在該活動型別的每個觸發程式或篩選器中，該值會顯示在人員記錄的活動日誌中，而無需向下鑽研至活動。
+新的自訂活動型別會建立為草稿。 在新增該型別的活動記錄之前核准型別。 更新會套用至草稿版本，而且必須先經過核准，才會出現在即時版本中。 在自訂活動型別獲得核准且使用中後，無法變更前面的欄位。
 
-建立自訂活動時，會建立為草稿，必須先獲得核准，才能用來新增該型別的活動記錄。 所有更新都會隱含套用至型別的草稿版本。 若要反映此型別即時版本中的變更，必須將其核准。 當自訂活動型別獲得核准且使用中時，對上述欄位可能不會進行任何變更。
-
-建立型別時，描述引數是選用的，而下列所有引數都是必要引數： `apiName`、`name`、`triggerName`、`filterName`、`primaryAttribute`。
+建立型別時，說明引數是選用的。 必要的引數為`apiName`、`name`、`triggerName`、`filterName`和`primaryAttribute`。
 
 ```http
 POST /rest/v1/activities/external/type.json
@@ -405,7 +412,7 @@ POST /rest/v1/activities/external/type.json
 
 ## 更新型別
 
-更新型別非常類似，只是apiName是作為path引數唯一需要的引數。
+若要更新型別，請傳遞必要的apiName作為路徑引數。 可在要求內文中提供其他欄位。
 
 ```http
 POST /rest/v1/activities/external/type/{apiName}.json
@@ -450,23 +457,25 @@ POST /rest/v1/activities/external/type/{apiName}.json
 
 ## 核准型別
 
-您可以使用核准自訂活動型別、捨棄自訂活動型別草稿和刪除自訂活動型別來管理型別，就像標準Marketo資產一樣。
+使用核准自訂活動型別、捨棄自訂活動型別草稿和刪除自訂活動型別來管理型別，就像使用標準Marketo資產一樣。
 
 ## 自訂活動型別屬性
 
-每個自訂活動型別可以有0到20個次要屬性。 次要屬性可具有Marketo欄位的任何有效欄位型別。 它們會從父型別中分別新增、更新和移除，但在活動型別使用中時可以編輯，然後核准。 在即時型別上編輯欄位時，則核准後建立的該型別的所有活動都會有新的次要屬性集。 變更將不會回溯套用至共用該型別的現有活動。
+每個自訂活動型別可以有0到20個次要屬性。 次要屬性可使用任何有效的Marketo欄位型別。 從父型別個別新增、更新和移除次要屬性。
 
-移除屬性時請務必謹慎，因為這會影響其可用於相應篩選器的可用性。
+您可以在活動型別正在使用時編輯屬性，然後核准變更。 核准後建立的活動會使用新的次要屬性集。 變更不會回溯套用至該型別的現有活動。
 
-次要屬性清單的更新會使用每個屬性的API名稱作為主索引鍵。 屬性的API名稱不能變更，必須刪除並使用所需的API名稱再次新增。
+移除屬性也會移除其在對應篩選器中的可用性。
+
+更新次要屬性清單時，會將每個屬性的API名稱當作主索引鍵。 若要變更API名稱，請刪除屬性，然後使用所需的API名稱再次新增該屬性。
 
 屬性的有效資料型別為：字串、布林值、整數、浮點數、連結、電子郵件、貨幣、日期、日期時間、電話、文字。
 
-變更活動型別的主要屬性時，應該先將`isPrimary`設定為false，將任何現有的主要屬性降級。
+在變更活動型別的主要屬性之前，請先將`isPrimary`設定為false，將現有的主要屬性降級。
 
 ### 建立屬性
 
-建立屬性需要必要的`apiName`路徑引數。 `name`和`dataType`引數也是必要的。`The description and` `isPrimary`引數是選用的。
+若要建立屬性，請傳遞必要的`apiName`路徑引數。 `name`和`dataType`引數也是必要的。 說明和`isPrimary`引數是選用的。
 
 ```http
 POST /rest/v1/activities/external/type/{apiName}/attributes/create.json
@@ -533,7 +542,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/create.json
 
 ### 更新屬性
 
-執行屬性更新時，屬性的`apiName`是主索引鍵。 `apiName`引數必須存在，更新才能成功（也就是說，您無法使用更新變更`apiName`引數）。
+更新屬性時，屬性`apiName`是主索引鍵，而且必須已經存在。 您無法利用更新變更`apiName`。
 
 ```http
 POST /rest/v1/activities/external/type/{apiName}/attributes/update.json
@@ -600,7 +609,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/update.json
 
 ### 刪除屬性
 
-刪除屬性需要自訂活動API名稱的必要`apiName`路徑引數。  屬性引數也是必要的，它是屬性物件的陣列。  每個物件都必須包含自訂活動型別API名稱的`apiName`引數。
+若要刪除屬性，請為自訂活動傳遞必要的`apiName`路徑引數。 也可以傳遞必要的屬性引數，做為屬性物件的陣列。 每個物件都必須包含自訂活動型別的`apiName`引數。
 
 ```http
 POST /rest/v1/activities/external/type/{apiName}/attributes/delete.json
@@ -638,13 +647,17 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/delete.json
 
 ## 新增自訂活動
 
-自訂活動是與Marketo中個別人員記錄相關的歷史活動的一次性寫入記錄。 這些活動有一個結構描述，可由Marketo管理員管理或透過API整合從遠端管理。 透過[新增自訂活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/addCustomActivityUsingPOST)端點將自訂活動新增到潛在客戶記錄中，並透過其`leadId`欄位與每個潛在客戶記錄相關聯。 自訂活動可透過潛在客戶的活動記錄在使用者介面中檢視，或透過指定自訂活動的型別ID透過「取得潛在客戶活動」端點來擷取。
+自訂活動是個人記錄歷史活動的一次寫入記錄。 Marketo管理員可以在Marketo中管理其結構，或API整合可以遠端管理它。
 
-自訂活動適用於記錄與單一人員記錄相關的資料，且不需要更新或覆寫。 例如，將出席活動的人記錄為「已出席活動」活動。 對於與可能變更之人員（例如學生註冊）相關的記錄，應改用自訂物件，因為這些物件可以更新，而自訂活動則可能未更新。
+使用[新增自訂活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/addCustomActivityUsingPOST)端點將自訂活動新增到潛在客戶記錄。 `leadId`欄位會將每個活動與潛在客戶建立關聯。 檢視潛在客戶活動記錄中的自訂活動，或透過指定自訂活動型別ID以透過「取得潛在客戶活動」擷取自訂活動。
 
-輸入成員是活動物件的陣列。 一次最多可提交300個活動記錄。
+對同一個人不需要更新或覆寫的相關資料使用自訂活動。 例如，將事件出席記錄為「已出席事件」活動。
 
-需要`leadId`、`activityDate`、`activityTypeId`、`primaryAttributeValue`和屬性成員。 屬性陣列必須包含非主要屬性。 可使用name （欄位名稱）或apiName （API名稱）以及與您設定之值對應的值來指定此專案。
+針對可變更的人員相關記錄（例如學生註冊）使用自訂物件。 可以更新自訂物件，但不能更新自訂活動。
+
+輸入成員是活動物件的陣列。 您一次最多可以提交300筆活動記錄。
+
+需要`leadId`、`activityDate`、`activityTypeId`、`primaryAttributeValue`和屬性成員。 屬性陣列必須包含非主要屬性。 請為其指定名稱（欄位名稱）或apiName （API名稱），並為要設定的值指定值。
 
 ```http
 POST /rest/v1/activities/external.json
@@ -723,7 +736,7 @@ POST /rest/v1/activities/external.json
 
 ## 逾時
 
-除非在下面註明，否則活動端點的逾時值為30秒。
+活動端點的逾時為30秒，以下端點除外：
 
-* 取得分頁權杖： 300秒
-* 新增自訂活動：90秒
+- 取得分頁權杖： 300秒
+- 新增自訂活動：90秒

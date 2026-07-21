@@ -3,9 +3,9 @@ title: 電子郵件範本
 feature: REST API
 description: 使用Marketo Asset REST API可查詢、建立、更新、複製、刪除、核准和檢查電子郵件範本的相依性。
 exl-id: 50bb0047-d6ea-4c94-a900-18c37b17a147
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '292'
+source-wordcount: '307'
 ht-degree: 9%
 
 ---
@@ -63,9 +63,18 @@ GET /rest/asset/v2/emailtemplate/{id}
 
 ### 篩選器
 
-篩選器端點支援在工作區中搜尋，以及使用其他查詢引數縮小結果。 `workspaceId`為必要項。
+篩選器端點會在工作區中搜尋。 `workspaceId`引數為必要項。
 
-支援的篩選器包括`folderId`、重複`folderIds`、重複`status`、`pageIndex`、`pageSize`、`createdBy`、`createdAtStart`、`createdAtEnd`、`modifiedBy`、`modifiedAtStart`、`modifiedAtEnd`、`name`、`sortKey`、`sortOrder`、`isCreatedByMe`、`isModifiedByMe`、`scriptEngine`、`isValueNonNullable`和`includeArchived`。
+使用這些可選引數來縮小或組織結果：
+
+- 資料夾： `folderId`或重複的`folderIds`
+- 狀態：重複的`status`
+- 分頁： `pageIndex`和`pageSize`
+- 建立： `createdBy`、`createdAtStart`、`createdAtEnd`和`isCreatedByMe`
+- 修改： `modifiedBy`、`modifiedAtStart`、`modifiedAtEnd`和`isModifiedByMe`
+- 範本屬性： `name`、`scriptEngine`和`isValueNonNullable`
+- 排序： `sortKey`和`sortOrder`
+- 已封存的內容： `includeArchived`
 
 #### 請求
 

@@ -4,24 +4,22 @@ feature: Webhooks
 description: 瞭解Marketo Webhook錯誤代碼、為何需要2xx回應來更新潛在客戶欄位，以及如何使用Webhook擷取和處理呼叫的錯誤。
 exl-id: adce40c3-87b1-4f31-8995-eb64e8a72b55
 TQID: https://experienceleague.adobe.com/N2jNA4EUMMTUFL9uJHZhOor6Tlz4-EXWciwoXrPml48
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 252
-ht-degree: 1%
+source-wordcount: 210
+ht-degree: 2%
 
 ---
 
 # 錯誤次數
 
-此頁面列出Marketo中Webhook的錯誤回應代碼。
+本頁說明Marketo Webhook的錯誤回應程式碼，並說明如何處理Webhook錯誤。
 
-1000和1001由Marketo產生，2xx到5xx是從Marketo webhook呼叫的系統傳回的錯誤。
+Marketo產生錯誤代碼1000和1001。 Marketo webhook呼叫的系統會傳回2xx到5xx回應代碼。
 
-若要Marketo將值對應回欄位，webhook回應程式碼必須為2xx型別。 如果webhook的意圖是透過回應變更Marketo潛在客戶記錄中的值，則呼叫的Web服務必須傳回2xx，所有其他回應代碼都會導致webhook被忽略以更新潛在客戶記錄值。
+只有在Web服務傳回2xx回應代碼時，Marketo才會將回應值對應至欄位。 如果webhook回應的目的是要變更Marketo潛在客戶記錄中的值，則所有其他回應代碼都會導致Marketo忽略欄位更新的回應。
 
 | 回應代碼 | 說明 |
 | --- | --- |
@@ -30,11 +28,11 @@ ht-degree: 1%
 
 ## 擷取Webhook錯誤
 
-來自Webhook的錯誤可由&#x200B;**[!UICONTROL Webhook is Called]**&#x200B;觸發器捕捉和處理：
+使用&#x200B;**[!UICONTROL Webhook is Called]**&#x200B;觸發器來擷取及處理webhook錯誤：
 
 已呼叫![Webhook](assets/webhook-called.png)
 
-* **Response** - Response是要求已接收的常值回應裝載。
-* **錯誤型別** — 這與HTTP狀態訊息的原因短語相對應。
+* **回應** — 要求所接收的常值回應裝載。
+* **錯誤型別** - HTTP狀態訊息的原因短語。
 
-這些可用來處理和回應可預測的錯誤和例外。 視您要整合的服務而定，可能會自動復原某些類別的錯誤，同時可建立警示以通知使用者發生意外的錯誤。
+使用這些值來回應可預測的錯誤和例外。 視整合服務而定，您可以自動從某些錯誤類別復原，並針對未預期的錯誤建立警示。

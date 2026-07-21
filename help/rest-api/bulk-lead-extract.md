@@ -4,13 +4,11 @@ feature: REST API
 description: 瞭解如何使用Marketo大量銷售機會擷取REST API，以大量匯出具有日期、清單和智慧清單篩選器、自訂欄位和CSV/TSV格式的銷售機會。
 exl-id: 42796e89-5468-463e-9b67-cce7e798677b
 TQID: https://experienceleague.adobe.com/4eMJR87fHDdccrVid3wHtspvBVQmrBGHYMlIwFCSdEI
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1273
+source-wordcount: 1037
 ht-degree: 2%
 
 ---
@@ -19,40 +17,44 @@ ht-degree: 2%
 
 [大量潛在客戶擷取端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads)
 
-REST API的「大量銷售機會擷取」集提供程式設計介面，可從Marketo擷取大量銷售機會/人員記錄。 此外，它可用於根據記錄的建立日期、最近更新、靜態清單成員資格或智慧清單成員資格，以增量方式擷取潛在客戶。 使用案例的建議介面，此介面需要在Marketo和一個或多個外部系統之間持續交換資料，用於ETL、資料倉儲和封存目的。
+大量銷售機會擷取REST API會從Marketo擷取大量銷售機會/人員記錄。 您也可以根據記錄建立日期、最近更新、靜態清單成員資格或智慧清單成員資格，以增量方式擷取銷售機會。
+
+使用大量潛在客戶擷取，以在Marketo和外部系統（包括ETL、資料倉儲和封存工作流程）之間持續交換資料。
 
 ## 權限
 
-「大量銷售機會擷取API」要求擁有的API使用者必須具備一個或兩個唯讀銷售機會或讀寫銷售機會許可權的角色。
+擁有工作的API使用者必須具有角色具有唯讀銷售機會許可權、讀寫銷售機會許可權，或同時具有這兩項許可權。
 
 ## 篩選器
 
-潛在客戶支援各種篩選器選項。 某些篩選器（包括`updatedAt`、`smartListName`和`smartListId`）需要額外的基礎結構元件，這些元件尚未推出至所有訂閱。 每個匯出作業只能指定一個篩選器型別。
+潛在客戶匯出作業支援多種篩選器型別。 每個匯出作業只能使用一個篩選型別。
+
+`updatedAt`、`smartListName`和`smartListId`篩選器需要並非所有訂閱都可用的基礎結構。
 
 | 篩選器型別 | 資料類型 | 附註 |
 | --- | --- | --- |
-| createdAt | 日期範圍 | 接受具有成員`startAt`和`endAt`的JSON物件。 `startAt`接受代表低浮水印的日期時間，而`endAt`接受代表高浮水印的日期時間。 範圍必須為31天或更少。 日期時間應採用ISO-8601格式，不含毫秒。 具有此篩選型別的工作會傳回在日期範圍內建立的所有可存取記錄。 |
-| 更新時間* | 日期範圍 | 接受具有成員`startAt`和`endAt`的JSON物件。 `startAt`接受代表低浮水印的日期時間，而`endAt`接受代表高浮水印的日期時間。 範圍必須為31天或更少。 日期時間應採用ISO-8601格式，不含毫秒。 注意：此篩選器不會篩選可見的「updatedAt」欄位，這僅反映標準欄位的更新。 它會根據上次對潛在客戶記錄進行欄位更新的時間進行篩選。具有此篩選型別的工作會傳回日期範圍內最近更新的所有可存取記錄。 |
-| staticListName | 字串 | 接受靜態清單的名稱。 具有此篩選型別的工作會在工作開始處理時，傳回屬於靜態清單成員的所有可存取記錄。 使用取得清單端點擷取靜態清單名稱。 |
-| staticListId | 整數 | 接受靜態清單的識別碼。 具有此篩選型別的工作會在工作開始處理時，傳回屬於靜態清單成員的所有可存取記錄。 使用「取得清單」端點擷取靜態清單ID。 |
-| 智慧型清單名稱* | 字串 | 接受智慧清單的名稱。 具有此篩選型別的工作會傳回工作開始處理時屬於智慧列示成員的所有可存取記錄。 使用「取得智慧列示」端點擷取智慧列示名稱。 |
-| smartListId* | 整數 | 接受智慧清單的識別碼。 具有此篩選型別的工作會傳回工作開始處理時屬於智慧列示成員的所有可存取記錄。 使用「取得智慧清單」端點擷取智慧清單ID。 |
+| createdAt | 日期範圍 | 具有`startAt`和`endAt`成員的JSON物件。 `startAt`是低浮水印日期時間，`endAt`是高浮水印日期時間。 使用ISO-8601日期和時間值（不含毫秒）。 範圍必須為31天或更少。 此工作會傳回在日期範圍內建立的所有可存取記錄。 |
+| 更新時間* | 日期範圍 | 具有`startAt`和`endAt`成員的JSON物件。 `startAt`是低浮水印日期時間，`endAt`是高浮水印日期時間。 使用ISO-8601日期和時間值（不含毫秒）。 範圍必須為31天或更少。 此篩選器未使用可見的`updatedAt`欄位，這僅反映標準欄位的更新。 相反地，它會使用潛在客戶記錄最近一次欄位更新的時間。 此作業會傳回日期範圍內最近更新的所有可存取記錄。 |
+| staticListName | 字串 | 靜態清單的名稱。 作業開始處理時，會傳回屬於靜態清單成員的所有可存取記錄。 使用取得清單端點擷取靜態清單名稱。 |
+| staticListId | 整數 | 靜態清單的ID。 作業開始處理時，會傳回屬於靜態清單成員的所有可存取記錄。 使用取得清單端點擷取靜態清單ID。 |
+| 智慧型清單名稱* | 字串 | 智慧清單的名稱。 當工作開始處理時，工作會傳回智慧清單成員的所有可存取記錄。 使用取得智慧清單端點擷取智慧清單名稱。 |
+| smartListId* | 整數 | 智慧清單的ID。 當工作開始處理時，工作會傳回智慧清單成員的所有可存取記錄。 使用「取得智慧列示」端點擷取智慧列示ID。 |
 
-部分訂閱無法使用篩選器型別。 如果您的訂閱無法使用，您在呼叫「建立匯出潛在客戶工作」端點時會收到錯誤（「1035，目標訂閱不受支援的篩選器型別」）。 客戶可以聯絡Marketo支援，以便在他們的訂閱中啟用此功能。
+某些訂閱無法使用以星號標示的篩選型別。 如果您的訂閱無法使用篩選器型別，則「建立匯出潛在客戶工作」端點會傳回錯誤「1035，目標訂閱不支援的篩選器型別」。 請聯絡Marketo支援，為您的訂閱啟用此功能。
 
 ## 選項
 
-「建立匯出潛在客戶工作」端點提供數個格式選項，讓使用者能在匯出的檔案中包含特定欄位、重新命名這些欄位的欄標題，以及匯出的檔案格式。
+「建立匯出潛在客戶作業」端點提供選項，用於選取匯出的欄位、重新命名欄標題及設定檔案格式。
 
 | 參數 | 資料類型 | 必要 | 附註 |
 | --- | --- | --- | --- |
-| 欄位 | 陣列[字串] | 是 | 欄位引數接受字串的JSON陣列。 每個字串都必須是Marketo潛在客戶欄位的REST API名稱。 列出的欄位會包含在匯出的檔案中。 除非以columnHeader覆寫，否則每個欄位的欄標題將是每個欄位的REST API名稱。 注意：啟用[!DNL Adobe Experience Cloud Audience Sharing]功能時，會發生Cookie同步程式，將[!DNL Adobe Experience Cloud] ID (ECID)與Marketo銷售機會建立關聯。 您可以指定「ecid」欄位，將ECID包含在匯出檔案中。 |
-| columnHeaderName | 物件 | 無 | 包含欄位和欄標題名稱之索引鍵/值組的JSON物件。 索引鍵必須是匯出作業中包含的欄位名稱。 這是欄位的API名稱，可透過呼叫Describe Lead來擷取。 值是該欄位匯出的欄標題的名稱。 |
-| 格式 | 字串 | 無 | 接受以下其中之一：CSV、TSV、SSV。 匯出的檔案會分別呈現為逗號分隔值、定位字元分隔值或空格分隔值檔案（如果設定）。 如果未設定，則預設為CSV。 |
+| 欄位 | 陣列[字串] | 是 | 字串的JSON陣列。 每個字串都必須是Marketo潛在客戶欄位的REST API名稱。 匯出包含每個列出的欄位，並使用其REST API名稱作為欄標題，除非`columnHeaderNames`覆寫它。 [!DNL Adobe Experience Cloud Audience Sharing]功能啟用時，Cookie同步程式會將[!DNL Adobe Experience Cloud] ID (ECID)與Marketo銷售機會建立關聯。 指定`ecids`欄位，將ECID包含在匯出檔案中。 |
+| columnHeaderName | 物件 | 無 | 欄位和欄標題索引鍵值配對的JSON物件。 每個金鑰必須是匯出作業中包含的欄位的API名稱。 呼叫Describe Lead以擷取API名稱。 每個值都是該欄位的匯出欄標題。 |
+| 格式 | 字串 | 無 | 匯出檔案格式：CSV適用於逗號分隔值，TSV適用於定位字元分隔值，或SSV適用於空格分隔值。 預設值為CSV。 |
 
 ## 建立工作
 
-使用[建立匯出潛在客戶工作](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST)端點開始匯出之前，會定義工作的引數。 我們必須定義匯出所需的`fields`、`filter`的引數型別、檔案的`format`以及欄標題名稱（若有的話）。
+使用[建立匯出潛在客戶作業](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/createExportLeadsUsingPOST)端點來定義匯出作業。 指定要匯出的`fields`、一個`filter`型別及其引數、檔案`format`以及任何自訂資料行標頭名稱。
 
 ```http
 POST /bulk/v1/leads/export/create.json
@@ -76,13 +78,13 @@ POST /bulk/v1/leads/export/create.json
    "filter": {
       "createdAt": {
          "startAt": "2017-01-01T00:00:00Z",
-         "`endAt`": "2017-01-31T00:00:00Z"
+         "endAt": "2017-01-31T00:00:00Z"
       }
    }
 }
 ```
 
-此請求將開始匯出在2017年1月1日至2017年1月31日期間建立的一組銷售機會，包括來自對應`firstName`、`lastName`、`id`和`email`欄位的值。
+此請求會針對2017年1月1日至2017年1月31日期間建立的潛在客戶建立匯出工作。 匯出包含來自`firstName`、`lastName`、`id`及`email`欄位的值。
 
 ```json
 {
@@ -100,7 +102,7 @@ POST /bulk/v1/leads/export/create.json
 }
 ```
 
-這會傳回狀態回應，指出工作已建立。 工作已定義並建立，但尚未開始。 若要這麼做，必須使用建立狀態回應中的exportId來呼叫[Enqueue Export Lead Job](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST)端點：
+回應會確認工作已建立但尚未啟動。 若要啟動工作，請從建立回應呼叫具有`exportId`的[排入佇列匯出潛在客戶工作](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/enqueueExportLeadsUsingPOST)端點。
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/enqueue.json
@@ -122,13 +124,15 @@ POST /bulk/v1/leads/export/{exportId}/enqueue.json
 }
 ```
 
-此回應會顯示`status`個「已排入佇列」，之後在有可用的匯出位置時，會將其設為「正在處理」。
+排入佇列回應有`status`個「已排入佇列」。 當匯出槽可供使用時，狀態會變更為「正在處理」。
 
 ## 輪詢工作狀態
 
-只能為同一API使用者建立的作業擷取`Note:`狀態。
+您只能擷取相同API使用者所建立之工作的狀態。
 
-由於這是非同步端點，在建立作業後，我們必須輪詢其狀態以判斷其進度。 使用[取得匯出潛在客戶工作狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET)端點進行輪詢。 狀態只會每60秒更新一次，因此不建議使用低於此值的輪詢頻率，並且在幾乎所有情況下仍然會太高。 讓我們來快速瞭解輪詢。
+潛在客戶匯出工作會非同步執行。 輪詢[取得匯出潛在客戶工作狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsStatusUsingGET)端點以追蹤工作進度。
+
+狀態每60秒僅更新一次。 請勿更頻繁地輪詢；在幾乎所有情況下，該間隔仍然過大。
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/status.json
@@ -150,9 +154,9 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 }
 ```
 
-狀態端點回應指出工作仍在處理中，因此檔案尚不可擷取。 工作狀態變更為「已完成」後，即可開始下載。
+此回應顯示工作仍在處理中，因此檔案無法使用。 當工作狀態變更為「已完成」時，檔案就可供下載。
 
-狀態列位可能會以下列任一專案回應：
+`status`欄位可傳回下列任何值：
 
 - 建立日期
 - 已排入佇列
@@ -163,26 +167,26 @@ GET /bulk/v1/leads/export/{exportId}/status.json
 
 ## 正在擷取您的資料
 
-若要擷取已完成潛在客戶匯出的檔案，只要使用您的`exportId`呼叫[取得匯出潛在客戶檔案](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET)端點即可。
+若要擷取已完成的銷售機會匯出，請使用`exportId`呼叫[取得匯出銷售機會檔案](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/getExportLeadsFileUsingGET)端點。
 
 ```http
 GET /bulk/v1/leads/export/{exportId}/file.json
 ```
 
-回應包含以設定作業方式格式化的檔案。 端點會以檔案內容回應。
+回應內文包含為工作設定的格式的檔案。
 
-如果請求的潛在客戶欄位為空（不包含任何資料），則`null`會放置在匯出檔案中的對應欄位中。 在以下範例中，傳回潛在客戶的電子郵件欄位為空白。
+如果要求的潛在客戶欄位不含任何資料，則匯出檔案中的對應欄位會包含`null`。 在以下範例中，傳回的潛在客戶具有空白電子郵件欄位。
 
 ```csv
 firstName,lastName,email,cookies
 Russell,Wilson,null,_mch-localhost-1536605780000-12105
 ```
 
-為了支援擷取資料的部份擷取和便於恢復擷取，檔案端點可選擇性地支援型別位元組的HTTP標頭範圍。 如果未設定標頭，則會傳回整個內容。 深入瞭解如何搭配Marketo [大量擷取](bulk-extract.md)使用Range標頭。
+對於部分或可恢復擷取，檔案端點支援具有`bytes`型別的選用HTTP `Range`標頭。 如果您未設定標頭，端點會傳回所有內容。 深入瞭解如何搭配Marketo [大量擷取](bulk-extract.md)使用`Range`標頭。
 
 ## 取消工作
 
-如果工作設定錯誤或變得不必要，可以使用[取消匯出潛在客戶工作](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST)端點輕鬆取消工作：
+若要取消設定錯誤或不必要的工作，請呼叫[取消匯出潛在客戶工作](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Export-Leads/operation/cancelExportLeadsUsingPOST)端點。
 
 ```http
 POST /bulk/v1/leads/export/{exportId}/cancel.json
@@ -203,4 +207,4 @@ POST /bulk/v1/leads/export/{exportId}/cancel.json
 }
 ```
 
-此回應會以指出工作已取消的狀態回應。
+回應會確認工作已取消。

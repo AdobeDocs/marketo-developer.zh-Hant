@@ -4,15 +4,12 @@ feature: REST API
 description: 使用SFDC或Dynamics sync使用externalSalesPersonId來與銷售機會建立關聯及執行查詢、更新插入、刪除的銷售人員記錄Marketo REST API指南。
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
 TQID: https://experienceleague.adobe.com/JwLNgM0zgztyoYJotCiSdGxMixnzA0kvkFbvq8kEkzE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 396
+source-wordcount: 369
 ht-degree: 0%
 
 ---
@@ -21,19 +18,21 @@ ht-degree: 0%
 
 [銷售人員端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
 
-針對已啟用[SFDC Sync](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync)的訂閱，銷售人員API是唯讀存取權。 「銷售人員」是銷售機會記錄的銷售擁有者之人員記錄的型態。 它們與每個Lead記錄上的externalSalesPersonId欄位上的Lead記錄有關。 當銷售機會透過填入的externalSalesPersonId欄位與銷售人員相關時，對應的銷售機會擁有者查閱欄位會針對Marketo中的該銷售機會記錄填入，以允許使用對應的篩選器和代號。
+銷售人員API為已啟用[SFDC Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync)的訂閱提供唯讀存取權。
 
-銷售人員使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST)端點並傳遞externalSalesPersonId屬性，與銷售機會記錄相關聯。
+「銷售人員」是代表潛在客戶記錄之銷售擁有者的個人記錄。 每個Lead記錄上的externalSalesPersonId欄位會將Lead與Sales Person相關聯。 填入此欄位時，Marketo會填入潛在客戶記錄上對應的潛在客戶擁有者查詢欄位。 接著，您可以使用相關聯的篩選器和權杖。
 
-銷售人員使用[Sync Opportunities](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/syncOpportunitiesUsingPOST)端點並傳遞externalSalesPersonId屬性，與Opportunity記錄相關聯。
+將externalSalesPersonId屬性傳遞至對應的端點，使銷售人員與其他記錄產生關聯：
 
-使用[Sync Companies](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST)端點並傳遞externalSalesPersonId屬性，銷售人員與公司記錄相關。
+- 潛在客戶記錄：[同步處理潛在客戶](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST)。
+- 機會記錄： [同步處理機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/syncOpportunitiesUsingPOST)。
+- 公司記錄： [同步公司](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST)。
 
 銷售人員記錄只能透過API編輯。
 
 ## 說明
 
-描述銷售人員記錄會遵循潛在客戶資料庫物件的標準模式。
+使用Lead Database物件的標準模式來描述「銷售人員」記錄。
 
 ```http
 GET /rest/v1/salespersons/describe.json
@@ -102,11 +101,13 @@ GET /rest/v1/salespersons/describe.json
 }
 ```
 
-依預設，銷售人員的`idField`是&quot;id&quot;，`dedupeFields`只是&quot;externalSalesPersonId&quot;。
+根據預設，銷售人員`idField`為&quot;id&quot;，`dedupeFields`為&quot;externalSalesPersonId&quot;。
 
 ## 查詢
 
-銷售人員使用簡易鍵的標準查詢模式。 此範例顯示使用者電子郵件當作externalSalesPersonId使用。 依預設，查詢會傳回針對傳回記錄填入的所有欄位。
+使用簡易鍵的標準查詢模式來查詢「銷售人員」。 下列範例使用使用者的電子郵件做為externalSalesPersonId。
+
+依預設，查詢會傳回符合記錄的所有填入欄位。
 
 ```http
 GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.com,sam@test.com
@@ -137,7 +138,7 @@ GET /rest/v1/salespersons.json?filterType=dedupeFields&filterValues=david@test.c
 
 ## 建立和更新
 
-更新模式為標準模式。
+使用標準更新模式來建立或更新「業務代表」。
 
 ```http
 POST /rest/v1/salespersons.json
@@ -185,12 +186,12 @@ POST /rest/v1/salespersons.json
 
 ## 刪除
 
-刪除的模式是標準模式。
+使用標準刪除模式刪除銷售人員。
 
-「使用中」時不允許刪除銷售人員。 在此情況下，會略過「銷售人員」。 範例：
+您無法刪除使用中的銷售人員。 在以下情況下，請求會略過「銷售人員」：
 
-- 當銷售人員與有效潛在客戶相關聯時
-- 當銷售人員與已刪除的公司相關聯時
+- 銷售人員與有效銷售機會相關聯。
+- 此銷售人員與已刪除的公司相關聯。
 
 ```http
 POST /rest/v1/salespersons/delete.json
@@ -244,6 +245,6 @@ POST /rest/v1/salespersons/delete.json
 
 ## 逾時
 
-- 銷售人員端點的逾時為30秒，除非以下說明
-   - 同步銷售人員：60多歲
-   - 刪除銷售人員：60歲
+- 除非另有說明，否則銷售人員端點的逾時值為30秒。
+- 同步處理銷售人員的逾時時間為60秒。
+- 刪除銷售人員的逾時時間為60秒。

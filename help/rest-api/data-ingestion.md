@@ -4,24 +4,26 @@ feature: REST API, Dynamic Content, Static Lists
 description: 使用Marketo資料擷取API來擷取大量人員、自訂物件、公司、方案成員和清單，並降低延遲的資料擷取。
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
 TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 1a8345909b679b5651c94a68f8d29950ed47f6ed
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 2191
+source-wordcount: 2151
 ht-degree: 14%
 
 ---
 
 # 資料擷取API
 
-資料擷取API是一項高容量、低延遲、高可用性的服務，專門用於以最低延遲有效處理大量與人員相關的資料擷取。
+資料擷取API是一項高容量、低延遲、高可用的服務。 使用它可以以最低延遲擷取大量人員和個人相關資料。
 
-透過提交非同步執行的請求來內嵌資料。 訂閱來自[Marketo可觀察性資料流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup)的事件，即可擷取要求狀態。
+資料擷取要求會非同步執行。 若要擷取要求狀態，請從[Marketo可觀察性資料流](https://developer.adobe.com/events/docs/guides/using/marketo/marketo-observability-data-stream-setup)訂閱事件。
 
-介面提供五種物件型別：人員、自訂物件、公司、程式成員和清單（靜態清單）。 記錄作業僅限「插入或更新」，但同時支援刪除的「程式成員」和支援新增與移除作業的「清單」除外。
+API提供五種物件型別的介面：
+
+- 「人員」、「自訂物件」和「公司」支援「插入或更新」作業。
+- 程式成員支援「插入或更新」和刪除作業。
+- 清單（靜態清單）支援新增和移除操作。
 
 閱讀[資料擷取API檔案](https://developer.adobe.com/marketo-apis/api/data-ingestion)。
 
@@ -31,15 +33,15 @@ ht-degree: 14%
 
 ## Authentication
 
-資料擷取API使用與Marketo REST API相同的OAuth 2.0驗證方法來產生存取權杖，但必須透過HTTP標頭`X-Mkto-User-Token`傳遞存取權杖。 您無法透過查詢引數傳遞存取權杖。
+資料擷取API使用與Marketo REST API相同的OAuth 2.0驗證方法來產生存取權杖。 在`X-Mkto-User-Token` HTTP標頭中傳遞存取權杖。 您無法將其作為查詢引數傳遞。
 
-透過標題的範例存取Token：
+以下範例會在標頭中傳遞存取權杖：
 
 `X-Mkto-User-Token: 11606815-aa7a-405a-80a1-f9683efa528b:ab`
 
 ## 權限
 
-資料擷取使用與Marketo REST API相同的許可權模型，不需要使用任何其他特殊許可權，不過每個端點需要特定許可權。
+資料擷取使用Marketo REST API許可權模型，不需要額外許可權。 每個端點都需要特定的現有許可權，如下表所示。
 
 | 端點 | 權限 |
 | --- | --- |
@@ -61,7 +63,7 @@ ht-degree: 14%
 
 ## 標頭
 
-資料擷取會使用以下自訂HTTP標頭。
+資料擷取支援下列自訂HTTP標頭。
 
 ### 請求
 
@@ -80,11 +82,11 @@ ht-degree: 14%
 
 使用HTTP POST方法將資料傳送至伺服器。
 
-資料表示以application/json的形式包含在請求本文中。
+將資料以application/json的形式納入請求內文中。
 
-網域名稱是： `mkto-ingestion-api.adobe.io`
+使用網域`mkto-ingestion-api.adobe.io`。
 
-路徑以`/subscriptions/MunchkinId`開頭，其中MunchkinId是您的Marketo執行個體專屬的。 您可以在Marketo Engage UI的&#x200B;**管理員** > **我的帳戶** > **支援資訊**&#x200B;下找到您的Munchkin ID。  路徑的其餘部分用於指定感興趣的資源。
+路徑以`/subscriptions/MunchkinId`開頭，其中MunchkinId是您的Marketo執行個體專屬的。 在Marketo Engage UI的&#x200B;**管理員** > **我的帳戶** > **支援資訊**&#x200B;下尋找您的Munchkin ID。 路徑的其餘部分會指定資源。
 
 人員的URL範例：
 
@@ -108,7 +110,7 @@ ht-degree: 14%
 
 ### 回應
 
-所有回應都會透過`X-Request-Id`標頭傳回唯一的請求識別碼。
+每個回應都會在`X-Request-Id`標頭中傳回唯一請求識別碼。
 
 透過標題的請求ID範例：
 
@@ -116,7 +118,7 @@ ht-degree: 14%
 
 ### 成功
 
-當呼叫成功時，會傳回202狀態。  未傳回任何回應內文。
+成功的呼叫傳回狀態202且沒有回應內文。
 
 成功回應的範例：
 
@@ -129,9 +131,9 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ### 錯誤
 
-當呼叫產生錯誤時，會傳回非202狀態以及包含其他錯誤詳細資料的回應內文。 回應本文是`application/json`，且包含具有成員`error_code`與`message`的單一物件。
+呼叫失敗時，會傳回非202狀態和包含錯誤詳細資料的回應內文。 `application/json`回應本文包含一個物件，其中具有`error_code`和`message`個成員。
 
-以下是來自Adobe Developer閘道的可重複使用的錯誤代碼。
+Adobe Developer閘道中會重複使用下列錯誤碼。
 
 | HTTP狀態代碼 | error_code | 訊息 |
 | --- | --- | --- |
@@ -140,7 +142,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 | 404 | 404040 | 找不到資源 |
 | 429 | 429001 | 達到服務使用量限制 |
 
-以下是資料擷取API特有的錯誤代碼，由3個區段組成。  前三位是狀態（由Adobe Developer閘道傳回），後面接著零「0」，再後面三位。
+資料擷取API特有的錯誤碼包含三個區段：Adobe Developer閘道傳回的三位數狀態、零「0」和三個額外的位數。
 
 | HTTP狀態代碼 | error_code | 訊息 |
 | --- | --- | --- |
@@ -152,24 +154,24 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ## 重試次數
 
-偵測到暫時性錯誤時，服務會重試操作。 重試的原因有很多，主要是相依服務逾時或暫時無法使用時。
+當服務偵測到暫時性錯誤時，會重試操作。 重試主要發生於相依服務逾時或暫時無法使用時。
 
-重試間隔：
+此服務會使用以下重試間隔：
 
-* 初始操作和第一次重試：5分鐘
-* 第1和第2:15分鐘
-* 第2和第3:20分鐘
-* 第3和第4:20分鐘
-* 第4和第5 ：2小時
-* 第5次重試後 — > 3小時
+- 首次重試的初始操作：5分鐘
+- 第一次重試到第二次重試： 15分鐘
+- 第二次重試至第三次重試：20分鐘
+- 第三次重試到第四次重試：20分鐘
+- 第四次重試到第五次重試：2小時
+- 第五次重試後：3小時
 
 ## 端點
 
-擷取端點適用於人員、自訂物件、公司、方案成員和清單。
+擷取端點適用於人員、自訂物件、公司、方案成員和清單。 每個端點區段都會定義要求並提供範例。
 
 ### 人員
 
-用於更新插入人員記錄的端點。
+使用此端點來更新個人記錄。
 
 | 方法 | 路徑 |
 | --- | --- |
@@ -238,7 +240,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ### 自訂物件
 
-用來更新插入自訂物件記錄的端點。
+使用此端點來更新插入自訂物件記錄。
 
 | 方法 | 路徑 |
 | --- | --- |
@@ -306,7 +308,7 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ### 公司
 
-用來同步公司記錄的端點。 支援透過外部公司ID或Marketo內部ID執行重複資料刪除的建立、更新和更新插入操作。
+使用此端點來同步公司記錄。 它支援透過外部公司ID或Marketo內部ID執行重複資料刪除的建立、更新和更新插入操作。
 
 | 方法 | 路徑 |
 | --- | --- |
@@ -756,23 +758,23 @@ Date: Wed, 18 Oct 2023 18:56:49 GMT
 
 ## 限制
 
-以下是護欄的更新清單：
+資料擷取API具備下列護欄：
 
-* 請求大小上限： 1 MB
-* 每個物件型別的每個請求的最大物件數： 1,000
-* 每個使用者端ID每秒的最大要求數： 5,000
-* 每日最大物件數： 10,000,000
+- 最大請求大小： 1 MB
+- 每種物件型別的每個要求最大物件數： 1,000
+- 每個使用者端ID的每秒最大要求數：5,000
+- 每日最大物件數： 10,000,000
 
 這些限制會統一套用至人員、自訂物件、公司、方案成員和清單。 對於方案成員，「每個請求的物件」是單一請求中所有方案的潛在客戶參考總數。 若為List，「每個請求的物件」為輸入陣列中的潛在客戶參考數。
 
 ## 資料擷取API與REST API
 
-以下是資料擷取API與其他Marketo REST API之間的差異清單：
+資料擷取API與其他Marketo REST API有下列差異：
 
-* 若要驗證，您必須使用`X-Mkto-User-Token`標頭傳遞存取權杖
-* URL網域名稱是`mkto-ingestion-api.adobe.io`
-* URL路徑的開頭為`/subscriptions/MunchkinId`
-* 沒有查詢引數
-* 如果呼叫成功，則會傳回202狀態且回應本文是空的
-* 如果呼叫失敗，會傳回非202狀態，而且回應本文包含`{ "error_code" : "Error Code", "message" : "Message" }`
-* 要求識別碼是透過`X-Request-Id`標頭傳回
+- 在`X-Mkto-User-Token`標頭中傳遞存取權杖。
+- 使用`mkto-ingestion-api.adobe.io`網域。
+- URL路徑的開頭為`/subscriptions/MunchkinId`。
+- 請勿使用查詢引數。
+- 成功的呼叫會傳回狀態202和空白的回應內文。
+- 失敗的呼叫傳回非202狀態和包含`{ "error_code" : "Error Code", "message" : "Message" }`的回應內文。
+- `X-Request-Id`標頭會傳回要求識別碼。

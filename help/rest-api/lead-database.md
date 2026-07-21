@@ -4,28 +4,24 @@ feature: REST API, Database
 description: Marketo銷售機會資料庫API的指南，涵蓋物件、CRUD和描述方法、查詢模式、批次限制和CRM整合限制。
 exl-id: e62e381f-916b-4d56-bc3d-0046219b68d3
 TQID: https://experienceleague.adobe.com/7lGbhE92lvIE-XkMyUIaK9GrreZVRdM-WVZTpHARhxE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1373
+source-wordcount: 1058
 ht-degree: 1%
 
 ---
 
 # 商機資料庫
 
-Marketo Lead Database API是Marketo最常使用的API，可用於從Marketo交換人員和人員相關資料，例如活動、商機和公司。
+Marketo銷售機會資料庫API會與Marketo交換人員和人員相關資料。 此資料包括活動、機會和公司。
 
 ## 物件
 
-Lead Database物件包括：
+Lead資料庫包含下列物件：
 
 - 銷售機會
 - 公司/帳戶
@@ -37,13 +33,15 @@ Lead Database物件包括：
 - 活動
 - 清單和計畫成員資格
 
-這些物件大多至少包含「建立」、「讀取」、「更新」和「刪除」方法。 此外也包含一個「說明」方法，提供每種型別的可用欄位清單，以及重複資料刪除（針對非Lead物件）所使用的欄位清單，以及可搜尋哪些欄位以擷取記錄。 提供最豐富的一組功能給潛在客戶，因為在Marketo應用程式中，他們的功能種類最多。
+大部分的Lead資料庫物件都支援Create、Read、Update和Delete方法。 Describe方法提供每個物件型別的可用欄位。 對於非Lead物件，它也會識別用於重複資料刪除的欄位，以及擷取記錄時可搜尋的欄位。
+
+潛在客戶物件支援最廣泛的功能集，因為潛在客戶在Marketo應用程式中的使用種類最多。
 
 ## API
 
-如需潛在客戶資料庫API端點的完整清單，包括引數和模型資訊，請參閱[潛在客戶資料庫API端點參考](https://developer.adobe.com/marketo-apis/api/mapi)。
+如需潛在客戶資料庫API端點、引數和模型資訊的完整清單，請參閱[潛在客戶資料庫API端點參考](https://developer.adobe.com/marketo-apis/api/mapi)。
 
-若執行個體已啟用原生CRM整合（Microsoft Dynamics或Salesforce.com），則公司、機會、機會角色和銷售人員API都會停用。 記錄會在啟用時透過CRM管理，且無法透過Marketo的API存取或更新。
+當執行個體具有原生Microsoft Dynamics或Salesforce.com CRM整合時，公司、機會、機會角色和銷售人員API都會停用。 CRM會管理這些記錄，因此您無法透過Marketo API存取或更新記錄。
 
 - 最大批次大小（標準）：300筆記錄
 - 最大批次大小（大量）：10MB檔案
@@ -53,7 +51,12 @@ Lead Database物件包括：
 
 ## 說明
 
-針對銷售機會、公司、商機、角色、銷售人員和自訂物件，提供說明API。 呼叫此項會擷取物件的中繼資料，以及可用於更新和查詢的欄位清單。 說明是設計與Marketo適當整合的重要一環。 它提供豐富的中繼資料，說明物件可以和無法互動的方式，以及如何建立、更新和查詢物件。 除了Describe Lead之外，每個都傳回`dedupeFields`回應引數中`deduplication`可用的金鑰清單。 欄位清單可做為索引鍵以查詢`searchableFields`回應引數。
+Describe API適用於銷售機會、公司、商機、角色、銷售人員和自訂物件。 使用它來擷取物件中繼資料，以及可用於更新和查詢的欄位。
+
+除了Describe Leads，每個Describe端點都會傳回：
+
+- `dedupeFields`：可用於重複資料刪除的金鑰。
+- `searchableFields`：可供查詢的金鑰。
 
 ```http
 GET /rest/v1/opportunities/roles/describe.json
@@ -137,26 +140,36 @@ GET /rest/v1/opportunities/roles/describe.json
 }
 ```
 
-在此範例中，`dedupeFields`實際上是複合金鑰。 這表示在未來的更新及建立中，當您使用`dedupeFields`模式時，必須包含每個角色的`externalOpportunityId`、`leadId`及`role`的所有三項。 `searchableFields`陣列也提供可用於查詢角色記錄的欄位清單。 這也包括`externalOpportunityId`、`leadId`和`role`的複合索引鍵。
+在此範例中，`dedupeFields`是複合金鑰。 當您使用`dedupeFields`模式進行未來的建立和更新時，請包含每個角色的`externalOpportunityId`、`leadId`和`role`。
 
-此外還有欄位回應引數，可提供每個欄位的名稱、`displayName`在Marketo UI中的顯示方式、欄位的資料型別、建立後是否可更新，以及欄位的長度（如適用）。
+`searchableFields`陣列列出可供查詢角色記錄的欄位。 此清單包含`externalOpportunityId`、`leadId`和`role`的複合索引鍵。
+
+`fields`回應引數提供每個欄位的下列資訊：
+
+- 名稱。
+- `displayName`如Marketo UI中所示。
+- 資料型別。
+- 欄位是否可在建立後更新。
+- 欄位長度（如適用）。
 
 ## 查詢
 
-Lead Database物件都共用基本模式，以查詢簡單索引鍵，其中僅引用一個欄位。
+Lead Database物件會針對參照一個欄位的簡單索引鍵共用基本查詢模式。
 
 ```http
 GET /rest/v1/{type}.json?filterType={field to query}&filterValues={comma-separated list of possible values}
 ```
 
-對於潛在客戶以外的所有物件，您可以從對應的描述呼叫的searchableFields中選取{field to query}，並撰寫最多300個值的逗號分隔清單。 也有這些選用的查詢引數：
+針對潛在客戶以外的所有物件，從對應的Describe回應中選取`searchableFields`中的`{field to query}`。 提供最多300個值的逗號分隔清單。
 
-- `batchSize` — 要傳回的結果數的整數計數。 預設和最大值為300。
-- `nextPageToken` — 從先前呼叫傳回的分頁語彙基元。 如需詳細資訊，請參閱[分頁權杖](paging-tokens.md)。
-- `fields` — 以逗號分隔的欄位名稱清單，可針對每個記錄傳回。 如需有效欄位清單，請參閱對應的說明。 如果要求特定欄位但未傳回，則值會隱含為空值。
-- `_method` — 用於使用POST HTTP方法提交查詢。 請參閱下方的_method=GET一節以取得使用方式。
+您也可以包含下列選用查詢引數：
 
-舉個簡單的例子，讓我們來看看查詢商機：
+- `batchSize`：指定傳回結果數目的整數。 預設值和最大值為300。
+- `nextPageToken`：從先前呼叫傳回的分頁語彙基元。 如需詳細資訊，請參閱[分頁權杖](paging-tokens.md)。
+- `fields`：要傳回每個記錄的欄位名稱清單（以逗號分隔）。 檢視有效欄位的對應說明。 如果您要求未傳回的欄位，其值會隱含為空值。
+- `_method`：使用POST HTTP方法提交查詢。 請參閱_method=GET區段以瞭解使用方式。
+
+下列範例會查詢商機：
 
 ```http
 GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fa&dff23271-f996-47d7-984f-f2676861b5fc,dff23271-f996-47d7-984f-f2676861b5fb
@@ -189,13 +202,17 @@ GET /rest/v1/opportunities.json?filterType=idField&filterValues=dff23271-f996-47
 }
 ```
 
-此呼叫中指定的`filterType`是&quot;idField&quot;，而非&quot;marketoGUID&quot;。 這和「dedupeFields」都是特殊情況，其中對應至idField或dedupeFields的欄位可以這種方式成為別名。 「marketoGUID」仍是呼叫中的結果查詢欄位，但並未在呼叫中明確設定。 物件說明的`idField`和`dedupeFields`所指示的欄位和/或欄位集對於查詢一律有效`filterTypes`。 此呼叫會搜尋符合filterValues中所包含GUID的記錄，並傳回任何符合的記錄。 如果沒有使用此方法找到記錄，回應仍會指出成功，但結果陣列將是空的，因為搜尋已成功執行，但沒有任何記錄可傳回。
+此呼叫中的`filterType`是&quot;idField&quot;，而非&quot;marketoGUID&quot;。 「idField」和「dedupeFields」都是特殊情況，可讓您針對對應的欄位使用別名。 雖然呼叫未明確設定「marketoGUID」，但會保留為查詢欄位。
 
-如果查詢中的記錄集超過300或指定的`batchSize` （以較小者為準），則回應會具有值為true的成員`moreResult`，以及可包含在後續呼叫以擷取更多集合的`nextPageToken`。 如需詳細資訊，請參閱[分頁權杖](paging-tokens.md)。
+物件描述中由`idField`和`dedupeFields`識別的欄位或欄位集一律對查詢有效`filterTypes`。 此呼叫傳回符合filterValues中GUID的記錄。 如果沒有相符的記錄，回應會指出成功，並傳回空的結果陣列。
+
+如果相符的記錄集超過300或指定的`batchSize` （取較小者），回應會包含值為true的`moreResult`和`nextPageToken`。 在後續呼叫中包含代號，以擷取更多記錄。 如需詳細資訊，請參閱[分頁權杖](paging-tokens.md)。
 
 ### 長URI
 
-有時，例如透過GUID進行查詢時，您的URI可能會很長，並且超過REST服務所允許的8KB。 在此情況下，您必須使用HTTP POST方法而非GET，並新增查詢引數`_method=GET`。 此外，其餘的查詢引數必須以「application/x-www-form-urlencoded」字串形式傳遞至POST內文中，並傳遞相關聯的Content-type標頭。
+URI可以超過REST服務的8KB限制，例如當您依GUID進行查詢時。 在此情況下，請使用HTTP POST方法而不是GET，並新增`_method=GET`查詢引數。
+
+以「application/x-www-form-urlencoded」字串形式傳遞POST內文中的其餘查詢引數。 同時傳遞相關聯的Content-type標題。
 
 ```http
 POST /rest/v1/opportunities.json?_method=GET
@@ -209,11 +226,13 @@ Content-Type: application/x-www-form-urlencoded
 filterType=idField&filterValues=dff23271-f996-47d7-984f-f2676861b5fa&dff23271-f996-47d7-984f-f2676861b5fc,dff23271-f996-47d7-984f-f2676861b5fb,544fb7f5-2ddf-4fca-ae32-7e6ef1415e9f,f1ba41a2-69d1-4a35-9807-0e159d66f2c9,f7521272-3331-4a89-a768-222baff2f894
 ```
 
-除了長URI之外，查詢複合鍵時也需要此引數。
+查詢複合索引鍵時也需要`_method=GET`引數。
 
 ### 複合鍵
 
-查詢複合索引鍵的模式與簡單索引鍵不同，因為這需要提交具有JSON本文的POST。 這並非所有情況都需要，只有在具有多個欄位的`dedupeFields`選項已用作`filterType`的情況下。 目前複合金鑰僅供機會角色及某些自訂物件使用。 讓我們看一下具有來自`dedupeFields`的複合索引鍵的商機角色查詢範例：
+若要查詢複合索引鍵，請提交具有JSON本文的POST請求。 只有當`filterType`是具有多個欄位的`dedupeFields`選項時，才使用此模式。
+
+複合金鑰目前僅供機會角色和某些自訂物件使用。 下列範例使用複合索引鍵從`dedupeFields`查詢機會角色：
 
 ```http
 POST /rest/v1/opportunities/roles.json?_method=GET
@@ -248,15 +267,26 @@ POST /rest/v1/opportunities/roles.json?_method=GET
 }
 ```
 
-JSON物件的結構大部分是平面的，而且具有簡單索引鍵的查詢的所有查詢引數都是有效的成員，但`filterValues`除外。 JSON物件的「輸入」陣列不是篩選值，而是複合索引鍵中的每個欄位都必須有一個成員；在此例中，它們是`externalOpportunityId`、`leadId`和`role`。 這會針對提供的輸入執行`roles`的查詢，並傳回相符的結果。 如果回應傳回帶有`moreResult=true`和`nextPageToken`的引數，您必須包含所有原始輸入和`nextPageToken`，查詢才能正確執行。
+JSON物件接受所有用於簡單索引鍵查詢的查詢引數，但`filterValues`除外。 提供JSON物件的「輸入」陣列，而非`filterValues`。 每個物件都必須包含複合索引鍵中的每個欄位。 在此範例中，欄位是`externalOpportunityId`、`leadId`和`role`。
+
+要求會根據提供的輸入查詢`roles`並傳回相符的結果。 如果回應包含`moreResult=true`和`nextPageToken`，請在下一個要求中包含所有原始輸入和`nextPageToken`。
 
 ## 建立和更新
 
-潛在客戶資料庫記錄的建立和更新都是透過具有JSON本文的POST執行的。 商機、角色、自訂物件、公司和SalesPerson的介面都相同。 Lead的介面稍有不同，您可以在此處閱讀更多相關資訊。
+透過傳送包含JSON內文的POST請求來建立和更新Lead Database記錄。 商機、角色、自訂物件、公司和SalesPerson使用相同的介面。 潛在客戶使用不同的介面，有關說明請參閱潛在客戶檔案。
 
-唯一需要的引數是名為`input`的陣列，最多包含300個物件，每個物件都有您要插入/更新為成員的欄位。 您也可以選擇加入`action`引數，可以是： `createOnly`、`updateOnly`或`createOrUpdate`其中之一。 如果省略動作，則模式預設為`createOrUpdate`。 `dedupeBy`是另一個可選引數，當動作設為createOnly或`createOrUpdate`時可使用。 `dedupeBy`可以是`idField`或`dedupeFields`。 如果選取`idField`，則說明中列出的`idField`會用於重複資料刪除，且必須包含在每個記錄中。 `idField`模式與`createOnly`模式不相容。 如果選取`dedupeFields`，則在使用的物件描述中列出`dedupeFields`，每個記錄中都必須包含每個物件。 如果省略`dedupeBy`引數，則模式預設為`dedupeFields`。
+唯一需要的引數是`input`，一個最多包含300個物件的陣列。 每個物件都包含要插入或更新的欄位。
 
-傳遞欄位值清單時，`null`的值或空字串會寫入資料庫為`null`。
+您也可以包含下列選用引數：
+
+- `action`：接受`createOnly`、`updateOnly`或`createOrUpdate`。 如果省略，模式會預設為`createOrUpdate`。
+- `dedupeBy`：當動作設為createOnly或`createOrUpdate`時，接受`idField`或`dedupeFields`。 如果省略，模式會預設為`dedupeFields`。
+
+當`dedupeBy`為`idField`時，說明中列出的`idField`會用於重複資料刪除，且必須包含在每個記錄中。 `idField`模式與`createOnly`模式不相容。
+
+當`dedupeBy`為`dedupeFields`時，請在每個記錄中包含物件描述中列出的每個`dedupeFields`欄位。
+
+當您傳遞欄位值時，資料庫會將`null`的值或空字串寫入為`null`。
 
 ```http
 POST /rest/v1/opportunities.json
@@ -304,11 +334,15 @@ POST /rest/v1/opportunities.json
 }
 ```
 
-除了潛在客戶API之外，建立或更新潛在客戶資料庫物件的呼叫會在`result`陣列中的每個物件中傳回`seq`欄位。 列出的數字與請求中更新記錄的順序相對應。 每個專案都會傳回物件型別`idField`的值，以及`status`。 狀態列位會指出「已建立」、「已更新」或「已略過」其中之一。  如果略過狀態，則也會有對應的「原因」陣列，其中包含一或多個原因物件，其中包含程式碼和訊息，指出略過記錄的原因。 如需其他詳細資訊，請參閱[錯誤碼](error-codes.md)。
+除了Leads API，建立和更新呼叫在`result`陣列中的每個物件中傳回`seq`欄位。 編號對應於請求中已更新記錄的位置。
+
+每個結果也會傳回物件型別的`idField`值以及「已建立」、「已更新」或「已略過」的`status`。 如果跳過狀態，結果會包含「原因」陣列。 每個原因物件都包含程式碼和訊息，說明略過記錄的原因。 如需詳細資訊，請參閱[錯誤碼](error-codes.md)。
 
 ### 刪除
 
-刪除的介面是銷售機會資料庫物件的標準介面，除了銷售機會。 除了輸入之外，只有一個必要引數`deleteBy,`可以有idField或dedupeFields的值。 讓我們來看看刪除某些自訂物件。
+除了潛在客戶之外，Lead Database物件使用標準的刪除介面。 除了輸入之外，唯一需要的引數是接受idField或dedupeFields的`deleteBy,`。
+
+以下範例會刪除自訂物件：
 
 ```http
 POST /rest/v1/customobjects/{name}/delete.json
@@ -360,6 +394,6 @@ POST /rest/v1/customobjects/{name}/delete.json
 }
 ```
 
-您現在應該已經熟悉`seq`、`status`、`marketoGUID`和`reasons`。
+回應包括`seq`、`status`和`marketoGUID`。 對於略過的記錄，它也包含`reasons`。
 
-如需有關使用每種個別物件型別的CRUD作業的詳細資訊，請檢視其個別頁面。
+如需特定物件型別的CRUD作業詳細資訊，請參閱該物件的檔案。

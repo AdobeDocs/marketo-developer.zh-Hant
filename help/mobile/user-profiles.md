@@ -4,27 +4,25 @@ feature: Mobile Marketing, Users and Roles
 description: 瞭解如何使用Objective C Swift和Java、標準和自訂欄位、associateLead，在iOS和Android上的Marketo Mobile SDK中建立和更新使用者設定檔
 exl-id: 1b2cfb7f-d678-4022-8cd9-a56004a1ac46
 TQID: https://experienceleague.adobe.com/famIZ1O17Z7TTe2SBHqWSLLL-pp6Vx9M6xXhy2SbB-0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 103
+source-wordcount: 116
 ht-degree: 1%
 
 ---
 
 # 使用者設定檔
 
-如何建立使用者設定檔
+使用iOS或Android的Marketo Mobile SDK建立或更新使用者設定檔：
 
 1. [在iOS上建立使用者設定檔](#ios_user_profiles)
 1. [在Android上建立使用者設定檔](#android_user_profiles)
 
 ## 在iOS上建立使用者設定檔 {#ios_user_profiles}
 
-您可以傳送使用者欄位，建立豐富的設定檔，如下所示。
+建立設定檔並填入其使用者欄位。
 
 ```objectivec
 MarketoLead *profile = [[MarketoLead alloc] init];
@@ -70,7 +68,7 @@ profile.setLinkedInId("linkedinid")
 profile.setTwitterId("twitterid")
 ```
 
-新增更多[標準欄位](../rest-api/list-of-standard-fields.md)。
+新增其他[標準欄位](../rest-api/list-of-standard-fields.md)。
 
 >[!BEGINTABS]
 
@@ -94,7 +92,7 @@ profile.setFieldName("phone", withValue:"123.456.7890");
 
 >[!ENDTABS]
 
-報表使用者設定檔。
+報告使用者設定檔以建立或更新它。
 
 >[!BEGINTABS]
 
@@ -122,7 +120,7 @@ marketo.associateLead(profile)
 
 1. 建立使用者設定檔。
 
-   您可以傳送使用者欄位來建立豐富的設定檔，如下所示。
+   建立設定檔並填入其使用者欄位。
 
    ```java
    MarketoLead profile = new MarketoLead();
@@ -140,7 +138,7 @@ marketo.associateLead(profile)
    }
    ```
 
-1. 新增更多[標準欄位](../rest-api/list-of-standard-fields.md)。
+1. 新增其他[標準欄位](../rest-api/list-of-standard-fields.md)。
 
    ```java
    // Add other custom fields
@@ -157,7 +155,7 @@ marketo.associateLead(profile)
    profile.setCustomField("linkedInDisplayName", "Android");
    ```
 
-1. 報表使用者設定檔。
+1. 報告使用者設定檔以建立或更新它。
 
    ```java
    MarketoLead profile = new MarketoLead();

@@ -4,57 +4,55 @@ feature: REST API
 description: 瞭解如何針對異動電子郵件設定Marketo，並透過REST API Request Campaign觸發，包含設定步驟和Java程式碼範例。
 exl-id: 057bc342-53f3-4624-a3c0-ae619e0c81a5
 TQID: https://experienceleague.adobe.com/eUw2THnwDdIuEO3MsuG4cSaoPnKVvdZ0ZTV-gxP-pJQ
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1092
+source-wordcount: 897
 ht-degree: 1%
 
 ---
 
 # 異動電子郵件
 
-Marketo API的常見使用案例是透過[請求行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST) API呼叫，觸發傳送異動電子郵件給特定記錄。 Marketo有一些設定需求，需要透過Marketo REST API執行必要的呼叫。
+使用[請求行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST) API傳送異動電子郵件給特定Marketo記錄。 提出要求之前，先設定電子郵件並觸發行銷活動。
 
-- 收件者必須在Marketo中擁有記錄
-- 您的Marketo執行個體中必須已建立和核准交易式電子郵件。
-- 必須有具有「已請求行銷活動，1」的有效觸發行銷活動。 Source：網站服務API」，設定為傳送電子郵件
+- 確定收件者有Marketo記錄。
+- 在Marketo例項中建立和核准交易式電子郵件。
+- 啟用使用「已請求行銷活動， 1. Source：網站服務API」並傳送電子郵件。
 
-首先[建立並核准您的電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=zh-Hant)。 如果電子郵件確實是交易式的，您可能必須將其設定為可操作的，但請確保其符合操作性法律資格。 這可透過「電子郵件動作>電子郵件設定」下的「編輯」畫面進行設定：
+首先，[建立並核准電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html)。 如果電子郵件在法律上符合運作資格，請在「電子郵件動作>電子郵件設定」中將它設定為可運作：
 
 ![Request-Campaign-Email-Settings](assets/request-campaign-email-settings.png)
 
 ![Request-Campaign-Operational](assets/request-campaign-operational.png)
 
-核准，我們就能建立行銷活動：
+在建立行銷活動之前核准電子郵件：
 
 ![RequestCampaign-Approve-Draft](assets/request-campaign-approve-draft.png)
 
-如果您是建立行銷活動的新手，請參閱[建立新的Smart Campaign](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html?lang=zh-Hant)文章。 在您建立行銷活動後，我們必須完成這些步驟。 使用Campaign is Requested觸發器設定智慧清單：
+如有需要，請參閱[建立新的Smart Campaign](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html)。 使用「已請求促銷活動」觸發器設定促銷活動的智慧清單：
 
 ![Request-Campaign-Smart-List](assets/request-campaign-smart-list.png)
 
-現在，我們必須設定流程以將「傳送電子郵件」步驟指向電子郵件：
+設定參考交易式電子郵件的傳送電子郵件流程步驟：
 
 ![Request-Campaign-Flow](assets/request-campaign-flow.png)
 
-啟用之前，您必須在「排程」標籤中決定某些設定。 如果此特定電子郵件只應傳送至指定記錄一次，則保留資格設定。 不過，如果要求他們多次收到電子郵件，則您想要將其調整為每次或其中一個可用步調：
+啟動之前，請在「排程」標籤上設定資格設定。 如果每個記錄只接收一次電子郵件，則保留預設設定。 否則，每次或按可用步調允許收件者符合資格。
 
-現在我們已準備好啟動：
+啟動行銷活動：
 
 ![Request-Campaign-Schedule](assets/request-campaign-schedule.png)
 
 ## 傳送API呼叫
 
-**注意：**&#x200B;在下方的Java範例中，我們使用[minimal-json套件](https://github.com/ralfstx/minimal-json)處理程式碼中的JSON表現。
+Java範例使用[minimal-json套件](https://github.com/ralfstx/minimal-json)來處理JSON表示。
 
-透過API傳送交易式電子郵件的第一個部分，是確保您的Marketo執行個體中存在具有對應電子郵件地址的記錄，並且我們有權存取其銷售機會ID。 出於本文目的，我們假設電子郵件地址已在Marketo中，且我們僅必須擷取記錄ID。 為此，我們使用[依篩選器型別取得銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET)呼叫。 讓我們來看一下要求促銷活動的主要方法：
+在傳送電子郵件之前，請確認電子郵件地址存在Marketo記錄，並擷取其潛在客戶ID。 此範例假設電子郵件地址已存在。
+
+使用[依篩選型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET)取得銷售機會，以擷取識別碼。 然後以下主要方法會要求行銷活動：
 
 ```java
 package dev.marketo.blog_request_campaign;
@@ -88,14 +86,14 @@ public class App
 }
 ```
 
-若要從leadsRequest的JsonObject回應取得這些結果，我們必須編寫一些程式碼。 若要擷取Array中的第一個結果，我們必須從JsonObject中擷取Array，並取得在0索引的物件：
+從`JsonObject`回應中擷取結果陣列，並在索引0擷取物件：
 
 ```java
 JsonArray leadsResult = leadsRequest.getData().get("result").asArray();
 int leadId = leadsResult.get(0).asObject().get("id").asInt();
 ```
 
-從現在開始，我們只需進行「請求行銷活動」呼叫。 為此，所需的引數為請求URL中的ID，以及包含一個成員「id」的JSON物件陣列。 讓我們來看看相關的程式碼：
+使用請求URL中的促銷活動ID呼叫請求促銷活動。 要求內文包含具有`id`成員的JSON物件陣列：
 
 ```java
 package dev.marketo.blog_request_campaign;
@@ -190,7 +188,7 @@ public class RequestCampaign {
 
 ### 建立電子郵件
 
-若要自訂我們的內容，我們必須先在Marketo中設定[程式](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html?lang=zh-Hant)和[電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=zh-Hant)。 若要產生自訂內容，我們必須在程式中建立權杖，然後將它們放入要傳送的電子郵件中。 為了簡單起見，在此範例中，我們僅使用一個權杖，但您可以取代電子郵件、寄件者電子郵件、寄件者姓名、回覆或電子郵件中任何內容的任何數量權杖。 所以讓我們建立一個Token Rich Text作為取代，並將其稱為「bodyReplacement」。 RTF可讓我們使用想要輸入的任意HTML來取代權杖中的任何內容。
+若要自訂我們的內容，我們必須先在Marketo中設定[程式](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html)和[電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html)。 若要產生自訂內容，我們必須在程式中建立權杖，然後將它們放入要傳送的電子郵件中。 為了簡單起見，在此範例中，我們僅使用一個權杖，但您可以取代電子郵件、寄件者電子郵件、寄件者姓名、回覆或電子郵件中任何內容的任何數量權杖。 所以讓我們建立一個Token Rich Text作為取代，並將其稱為「bodyReplacement」。 RTF可讓我們使用想要輸入的任意HTML來取代權杖中的任何內容。
 
 ![New-Token](assets/New-Token.png)
 

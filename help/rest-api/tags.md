@@ -4,18 +4,14 @@ feature: REST API, Tags
 description: 查詢標籤型別、依名稱取得允許的值、透過REST Asset API更新或刪除Marketo中的程式標籤，並附上請求範例。
 exl-id: 64731d1a-a749-4d6f-b336-16c733d002f0
 TQID: https://experienceleague.adobe.com/zjdyfoofVWytE0Q-K4lk598jmleTSFOD7tSRqeAHsjk
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 258
-ht-degree: 1%
+source-wordcount: 227
+ht-degree: 2%
 
 ---
 
@@ -23,11 +19,11 @@ ht-degree: 1%
 
 [標籤端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags)
 
-標籤是使用者為方案定義的欄位。 每個標籤可套用至一或多個程式型別，且可以是必要或選用的，視標籤的定義方式而定。 標籤也可以提供允許值的清單，必須從中選擇這些值才能使用。
+標籤是使用者為方案定義的欄位。 標籤可套用至一或多個程式型別，且可為必要或選用。 標籤也可以定義使用者必須從中選取的允許值清單。
 
 ## 查詢
 
-使用標準資產模式查詢標籤，但沒有「依ID」的端點。 只有在依名稱查詢標籤時，才會傳回標籤的可允許值清單。
+使用標準資產模式查詢標籤。 標籤沒有「依據ID」端點。 若要擷取標籤的允許值，請依名稱查詢標籤。
 
 ### 取得標籤
 
@@ -86,7 +82,11 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 
 ## 更新
 
-[更新程式標籤](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST)端點可讓您更新指定標籤型別的值。 端點採用`id`和`tagType`路徑引數，這些引數指定程式ID以及要更新的標籤型別。 使用`tagValue`查詢引數來指定標籤型別的新值。 所有引數皆為必要項。
+使用[更新程式標籤](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST)端點來更新標籤型別的值。 所有引數皆為必要：
+
+- `id`路徑引數指定程式ID。
+- `tagType`路徑引數指定要更新的標籤型別。
+- `tagValue`查詢引數指定了新值。
 
 ```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
@@ -106,11 +106,11 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-可以使用[更新程式中繼資料](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST)端點大量更新標籤。 [程式更新區段](programs.md#update)中提供了範例。
+若要更新多個標籤，請使用[更新程式中繼資料](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST)端點。 請參閱[程式更新區段](programs.md#update)中的範例。
 
 ## 刪除
 
-[刪除程式標籤](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/deleteProgramUsingPOST)端點可讓您刪除不需要的標籤型別。 端點採用`id`和`tagType`路徑引數，這些引數指定程式識別碼以及要刪除的標籤型別。
+使用[刪除程式標籤](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/deleteProgramUsingPOST)端點來刪除非必要的標籤型別。 `id`路徑引數指定程式ID，而`tagType`路徑引數指定要刪除的標籤型別。
 
 ```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}/delete.json

@@ -3,9 +3,9 @@ title: 電子郵件
 feature: REST API
 description: 使用Marketo Asset REST API可查詢、建立、更新、複製、刪除、核准和檢查電子郵件資產的相依性。
 exl-id: b41a3ae5-2b25-4103-84b4-320fc2c44bd6
-source-git-commit: 59684e1c5a8082ad12f1e4bfc854c0d2dde35d2a
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '497'
+source-wordcount: '492'
 ht-degree: 5%
 
 ---
@@ -32,7 +32,7 @@ x-app-type: <app-type>
 
 ## 查詢
 
-您可以依資產`id`或使用篩選器端點擷取電子郵件中繼資料。
+依資產`id`或使用篩選器端點擷取電子郵件中繼資料。
 
 ### 依ID
 
@@ -63,7 +63,7 @@ GET /rest/asset/v2/email/{id}
 
 ### 篩選器
 
-篩選器端點支援在工作區中搜尋，以及使用其他查詢引數縮小結果。
+篩選器端點會在工作區中搜尋並支援其他查詢引數。
 
 `workspaceId`為必要項。
 

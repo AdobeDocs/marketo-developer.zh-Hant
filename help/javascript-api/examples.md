@@ -4,26 +4,23 @@ description: Marketo Forms 2.0 JavaScript範例，可在提交、設定和讀取
 feature: Javascript
 exl-id: dc5f0cc5-ff5a-48b0-be36-52c10e56f798
 TQID: https://experienceleague.adobe.com/dH1yaglpL3odGZfGk-JC8oGljBF2gDpdjdg1BPE6OcQ
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 228
+source-wordcount: 234
 ht-degree: 0%
 
 ---
 
 # 範例
 
-您可以在下方找到一組具示範性的Forms 2.0網頁表單範例。
+這些範例示範常見的Forms 2.0網頁表單工作流程。
 
 ## 提交成功後隱藏表單
 
-此範例不會將訪客帶往後續頁面或重新載入目前頁面。
+此範例會在成功提交後，讓訪客停留在目前頁面。 它不會開啟後續追蹤頁面或重新載入目前頁面。
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form) {
@@ -39,7 +36,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form
 
 ## 將訪客帶至使用者定義的URL
 
-此範例會在成功提交後，將訪客帶至JavaScript判斷的URL，而非已設定的感謝頁面。
+此範例會在成功提交後，將訪客傳送至JavaScript中定義的URL。 JavaScript URL會取代已設定的感謝頁面。
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form) {
@@ -66,7 +63,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form
 
 ## 在表單提交時讀取表單欄位值
 
-此範例讀取表單提交上的表單欄位。
+此範例會在提交表單時讀取表單欄位值。
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form) {
@@ -84,7 +81,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function(form
 
 ## 非表單點選事件上的表單提交
 
-此範例會根據某個其他元素或事件上的點選事件提交一個表單，該元素或事件不屬於表單。
+此範例會在訪客選取表單外部的元素時提交表單。
 
 ```javascript
 // Load the form normally
@@ -102,7 +99,7 @@ btn.onclick = function() {
 
 ## 防止使用者提交表單
 
-在此範例中，您必須至少三次按一下點選計數器按鈕，表單上的提交按鈕才能運作。
+在此範例中，訪客必須至少選取點選計數器按鈕三次，表單的提交按鈕才能運作。
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) {
@@ -144,7 +141,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (for
 
 ## 在LightBox中顯示表單
 
-此範例會在URL包含引數`lightboxForm=true`時顯示Lightbox樣式對話方塊中的表單。
+此範例會在URL包含`lightboxForm=true`引數時，在燈箱樣式對話方塊中顯示表單。
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) {
@@ -156,7 +153,7 @@ MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (for
 
 ## 顯示自訂錯誤訊息
 
-此範例根據自訂商業邏輯在提交上顯示自訂錯誤訊息。
+此範例在提交期間套用自訂商業邏輯，並在值不符合所需條件時顯示自訂錯誤訊息。
 
 ```javascript
 MktoForms2.loadForm("//app-ab00.marketo.com", "785-UHP-775", 1057, function (form) {

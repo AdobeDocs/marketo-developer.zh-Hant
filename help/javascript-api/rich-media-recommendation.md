@@ -1,63 +1,60 @@
 ---
 title: 多媒體推薦
-description: 使用Marketo預測性內容RTP標籤、template1 template2 template3 div、GET來設定豐富媒體建議（要填入）、設定為設定類別。
+description: 使用Marketo預測性內容RTP標籤、template1 template2 template3 div、GET要填入、SET要設定類別來設定多媒體建議。
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
 TQID: https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 854
-ht-degree: 3%
+source-wordcount: 814
+ht-degree: 4%
 
 ---
 
 # 多媒體推薦
 
-您必須在您要顯示Rich Media Recommendation範本的頁面上設定下列標籤和API呼叫。
+若要顯示Rich Media Recommendation範本，請將必要的標籤和API呼叫新增至頁面。
 
-1. 在頁首中
-   1. 已安裝RTP標籤
-   1. 將GET呼叫新增至頁面以填入建議
-   1. 新增SET呼叫以設定範本
-1. 在頁面本文中
-   1. 將範本標籤（div類別）放置在您要顯示範本的位置
+1. 在頁首中：
+   1. 安裝RTP標籤。
+   1. 新增GET呼叫以填入Recommendations。
+   1. 新增設定範本的SET呼叫。
+1. 在頁面本文中：
+   1. 將範本標籤（div類別）放置在要顯示範本的位置。
 
-[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)提供詳細資訊。
+如需詳細資訊，請參閱[為網頁多媒體啟用預測性內容](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)。
 
 ## 範本標籤
 
 | 屬性 | 選用/必要 | 說明 |
 | --- | --- | --- |
-| 類別 | 必要 | 指定此div HTML元素為RTP建議div。 |
-| data-rtp-template-id | 必要 | 範本識別碼。 這會決定建議的對齊方式。 使用「template1」進行水準對齊、「template2」進行垂直對齊，或「template3」進行僅包含標題和說明的垂直對齊。 指令碼會將相符的範本插入這個`div.Permissible`值：template1、template2、template3。 |
+| 類別 | 必要 | 將div HTML元素識別為RTP建議div。 |
+| data-rtp-template-id | 必要 | 決定建議對齊方式。 使用「template1」進行水準對齊、「template2」進行垂直對齊，或「template3」進行垂直對齊，但只有標題和說明。 指令碼會將相符的範本插入此`div`。 允許的值： template1、template2、template3。 |
 
 ### 範例
 
-若要以水準對齊方式顯示建議，請使用「template1」。
+使用「template1」可水準顯示建議。
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template1"></div>
 ```
 
-若要以垂直對齊方式顯示建議，請使用「template2」。
+使用「template2」可垂直顯示建議。
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template2"></div>
 ```
 
-若要以僅與標題和說明垂直對齊的方式顯示建議，請使用「template3」。
+使用「template3」可垂直顯示建議，只有標題和說明。
 
 ```html
 <div class="RTP_RCMD2" data-rtp-template-id="template3"></div>
 ```
 
-在[這裡](#example_of_rich_media_recommendation_template_1)檢視範本對齊的熒幕擷取畫面。
+檢視[範本對齊範例](#example_of_rich_media_recommendation_template_1)。
 
 ## 填入建議
 
@@ -75,9 +72,9 @@ ht-degree: 3%
 
 ## 變更範本組態
 
-此方法會變更範本的預設設定。
+此方法會變更預設範本設定。
 
-注意：使用此方法時，必須在呼叫rtp(&#39;get&#39;，&#39;rcmd&#39;， &#39;richmedia&#39;)之前呼叫它；
+在呼叫rtp(&#39;get&#39;，&#39;rcmd&#39;， &#39;richmedia&#39;)之前呼叫此方法；
 
 ### 使用情況
 
@@ -93,7 +90,7 @@ ht-degree: 3%
 
 ### 範例
 
-此程式碼片段會變更範本的標題文字。
+此範例會變更範本的標題文字。
 
 ```javascript
 rtp("set", "rcmd", "richmedia","template1",
@@ -103,7 +100,7 @@ rtp("set", "rcmd", "richmedia","template1",
 );
 ```
 
-此程式碼片段會針對範本顯示使用多個設定來設定類別。
+此範例會設定範本的類別和多個設定屬性。
 
 ```javascript
 rtp("set", "rcmd", "richmedia",
@@ -124,9 +121,11 @@ rtp("set", "rcmd", "richmedia",
 );
 ```
 
-注意：使用「類別」可篩選在預測性內容建議結果中顯示的內容。 若要將預測性內容套用至所有啟用的內容片段，請將「類別」留空。 如果您只想為Rich Media範本中的輸出建議特定內容，請在「設定內容」頁面中新增內容的類別，並在建議範本程式碼中建立該類別的關聯。 根據您網站的區段（產品或解決方案）分類相關內容。
+使用「類別」來篩選預測性內容建議中顯示的內容。 若要針對所有已啟用的內容使用預測性內容，請將「類別」留空。
 
-此程式碼片段顯示為一個範本設定多個範本設定。
+若只要建議多媒體範本中的特定內容，請在「設定內容」頁面上新增內容類別。 然後將該類別與建議範本程式碼建立關聯。 例如，依網站的產品或解決方案區段來分類相關內容。
+
+此範例會設定範本的多個設定屬性。
 
 ```javascript
 rtp("set", "rcmd", "richmedia",
@@ -156,11 +155,11 @@ rtp("set", "rcmd", "richmedia",
 | rcmd.cta.text | &quot;rcmd.cta.text&quot; ： &quot;推播&quot; | 變更按鈕文字。 所有按鈕的文字都相同。 |
 | 類別 | &quot;category&quot; ： [&quot;one category&quot;] | 變更此範本支援的建議類別。 範本只會顯示具有此組態所設定其中一個類別的建議。 |
 
-注意：組態支援可根據範本變更。
+設定支援可能因範本而異。
 
 #### 基本範例
 
-此範例有一個範本，內含三個建議。 將此範例複製到HTML頁面，然後將RTP標籤取代為您的標籤。
+此範例在一個範本中顯示三個建議。 將範例複製到HTML頁面，然後將RTP標籤取代為您的標籤。
 
 ```html
 <!DOCTYPE>
@@ -192,7 +191,7 @@ rtp('get','rcmd', 'richmedia');
 
 #### 進階範例
 
-此範例有一個範本，內含三個建議。 範本標題為「建議內容」，而按鈕文字為「閱讀更多」。 將此範例複製到HTML頁面，然後將RTP標籤取代為您的標籤。
+此範例在一個範本中顯示三個建議。 範本標題為「建議內容」，而按鈕文字為「瞭解詳情」。 將範例複製到HTML頁面，然後將RTP標籤取代為您的標籤。
 
 ```html
 <!DOCTYPE>
@@ -236,16 +235,24 @@ rtp('get','rcmd', 'richmedia');
 
 #### 多媒體建議範本范#1範例
 
-**名稱**：範本1 **描述**：水準內容包含影像、標題和描述，以及call to action按鈕。
+**名稱**： template1
+
+**說明**：包含影像、標題、說明和call-to-action按鈕的水準內容。
 
 ![多媒體範本](assets/rich-media-template1.png)
 
 #### 多媒體建議範本范#2範例
 
-**名稱**：範本2 **描述**：垂直內容，包括影像、標題和描述，以及call to action按鈕。
+**名稱**： template2
+
+**描述**：垂直內容，包括影像、標題、描述和call-to-action按鈕。
 
 ![多媒體範本](assets/rich-media-template2.png)
 
 #### 多媒體建議範本范#3範例
 
-**名稱**：範本3 **描述**：僅包含標題和描述的垂直內容。 滑鼠懸停時，標題會變更顏色，並超連結至內容URL。 說明也連結至不變更顏色的內容。 ![多媒體範本](assets/rich-media-template3.png)
+**名稱**： template3
+
+**描述**：僅包含標題和描述的垂直內容。 當滑鼠停留在滑鼠上時，標題會變更顏色並連結至內容URL。 說明也會連結至內容，而不會變更顏色。
+
+![多媒體範本](assets/rich-media-template3.png)

@@ -4,22 +4,19 @@ feature: REST API, Dynamic Content
 description: 透過REST API使用區段來設定區段層級Marketo動態內容，以個人化電子郵件、登入頁面以及包含端點和範例的片段
 exl-id: 8ab97624-5fb5-4a41-911f-ec8616dd43c9
 TQID: https://experienceleague.adobe.com/MwfPxu74qk0bPZMr6yuxQi--e3gMvP1tXQZ5iMil02o
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 463
-ht-degree: 2%
+source-wordcount: 329
+ht-degree: 3%
 
 ---
 
 # 動態內容
 
-Marketo透過對多種資產型別的潛在客戶細分來促進動態內容的使用：
+使用銷售機會區段，以這些資產型別提供動態內容：
 
 - 電子郵件
 - 登陸頁面
@@ -27,13 +24,17 @@ Marketo透過對多種資產型別的潛在客戶細分來促進動態內容的�
 
 ## 概觀
 
-動態內容是透過根據在所選細分內區段中的資格指定要提供給潛在客戶的區段的特定變數，在區段層級實作。 如果內容片段設定為根據特定細分提供動態內容，則潛在客戶看到內容時，會收到符合其所在區段的內容變數，或者，如果他們不符合區段的資格，會收到預設內容。
+動態內容在區段層級運作。 每個區段都可以提供選定區段中區段的變數。
+
+當潛在客戶檢視資產時，Marketo會顯示潛在客戶區段的變數。 如果潛在客戶不符合區段的資格，Marketo會顯示預設內容。
 
 ## 範例
 
-為了示範，讓我們檢視一個電子郵件範例，其中我們有地區（美國）分段，並且只想為落於西南區段的銷售機會顯示事件促銷活動，該區段包含加利福尼亞、內華達、猶他州、科羅拉多、亞利桑那州和新墨西哥的銷售機會。 為此，我們將ID為「Q1-promotion-banner」的電子郵件中的可編輯區段設為DynamicContent區段。 若要這麼做，我們必須使用電子郵件的[更新電子郵件內容區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST)端點。 `value`引數是用來指定分段的識別碼。
+此範例使用地區（美國）細分來顯示對西南區段中的潛在客戶的事件促銷。 此區段包含來自加州、內華達、猶他州、科羅拉多、亞利桑那州和新墨西哥州的銷售機會。
 
-注意：電子郵件和登入頁面都遵循此模式。 程式碼片段有不同的模式，詳細資訊請參閱程式碼片段API檔案。
+使用[更新電子郵件內容區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST)端點將識別碼為`Q1-promotion-banner`的可編輯區段變更為`DynamicContent`區段。 `value`引數指定分段ID。
+
+電子郵件和登入頁面會遵循此模式。 程式碼片段使用程式碼片段API檔案中所述的不同模式。
 
 以下範例將區段設為動態內容區段，並依區段1001分段。
 
@@ -59,9 +60,9 @@ type=DynamicContent&value=1001
 }
 ```
 
-若要為個別區段新增內容，我們必須呼叫特定區段的[更新電子郵件動態內容區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailDynamicContentUsingPOST)端點。
+呼叫[更新電子郵件動態內容區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailDynamicContentUsingPOST)端點以新增特定區段中的區段內容。
 
-下列範例會設定區段，以針對西南區段中的銷售機會顯示我們的特殊橫幅影像，而非預設值。 如果我們想要為更多區段建立更多變數，我們會為每個區段和區段再次呼叫此端點。
+以下請求會顯示特殊橫幅，而非西南區段中銷售機會的預設內容。 若要建立更多變數，請呼叫每個區段和區段的端點。
 
 ```http
 POST /rest/asset/v1/email/{id}/dynamicContent/{dynamicContentId}.json
@@ -87,11 +88,13 @@ segment=Southwest&type=HTML&value=<img src='//www.example.com/SuperSpecialBanner
 
 ## 細分
 
-細分是Marketo動態內容的核心。 區段是使用者定義的個別規則集清單，系統會根據整個潛在客戶資料庫從上到下評估這些規則。 潛在客戶只能是每個細分中一個區段的成員，並且將成為每個細分中它符合資格的第一個區段的成員。 若不符合區段的資格，則會是預設區段的成員，且會收到使用該區段之任何指定動態內容的預設內容。
+區段是使用者定義的規則集清單，Marketo會根據潛在客戶資料庫從上到下評估。 每個細分中，一個潛在客戶只能屬於一個區段。 潛在客戶會加入其符合資格的第一個區段。
+
+如果潛在客戶不符合另一個區段的資格，則會加入預設區段並接收區段的預設內容。
 
 ### 清單
 
-區段有一個清單端點，會傳回包含可用區段清單的回應。
+使用清單端點來擷取可用的區段。
 
 ```http
 GET /rest/asset/v1/segmentation.json
@@ -138,7 +141,7 @@ GET /rest/asset/v1/segmentation.json
 }
 ```
 
-區段也有一個端點，可傳回包含父區段清單的回應。
+使用區段端點可擷取父分段中的區段。
 
 ```http
 GET /rest/asset/v1/segmentation/1001/segments.json

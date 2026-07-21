@@ -4,45 +4,40 @@ feature: Mobile Marketing
 description: 使用Cordova設定Marketo PhoneGap外掛程式、設定Firebase雲端訊息、啟用iOS和Android推播、追蹤通知，以及初始化SDK。
 exl-id: 99f14c76-9438-4942-9309-643bca434d07
 TQID: https://experienceleague.adobe.com/eFAwR7r5IE6vKigsEWrJdCmC3VrfB-nl0h8x7Vgt1VY
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 841
+source-wordcount: 758
 ht-degree: 2%
 
 ---
 
 # PhoneGap
 
-整合Marketo PhoneGap外掛程式
+將Marketo PhoneGap外掛程式與Cordova應用程式整合。
 
 ## 先決條件
 
-1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）。
-1. 設定推播通知([iOS](push-notifications.md) | [Android](push-notifications.md))。
+1. [在Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app)中新增應用程式，並取得應用程式秘密金鑰和Munchkin ID。
+1. 設定[iOS](push-notifications.md)或[Android](push-notifications.md)的推播通知。
 1. [安裝PhoneGap/Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/)。
 
 ## 安裝指示
 
-1. 設定Marketo PhoneGap外掛程式
+1. 設定Marketo PhoneGap外掛程式。
 
-   假設您已安裝Cordova CLI，請前往PhoneGap應用程式目錄，然後執行下列命令，將Marketo外掛程式新增至您的應用程式：
+   前往PhoneGap應用程式目錄，然後執行下列命令以新增Marketo外掛程式：
 
    `$ cordova plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
-1. 安裝FCM外掛程式
+1. 安裝FCM外掛程式。
 
    `$ cordova plugin add cordova-plugin-fcm`
 
-   若要確認外掛程式已新增至應用程式，請執行以下命令並驗證
+   執行以下命令，確認外掛程式已新增：
 
    `$ cordova plugin ls com.marketo.plugin 0.X.0 "MarketoPlugin" cordova-plugin-fcm 2.1.2 "FCMPlugin"`
 
@@ -52,13 +47,13 @@ ht-degree: 2%
 
 `$ cordova plugin remove com.marketo.plugin`
 
-若要重新新增外掛程式，請執行以下命令：
+若要再次新增外掛程式，請執行以下命令：
 
 `$ cordova plugin add https://github.com/Marketo/PhoneGapPlugin.git --variable APPLICATION_SECRET_KEY="YOUR_APPLICATION_SECRET"`
 
 **Cordova 8.0.0版(Cordova@Android7.0.0)及更高版本**
 
-建置Cordova Android平台之後，請使用Android Studio開啟應用程式，並更新`com.marketo.plugin`資料夾中找到`Marketo.gradle`檔案的`dirs`值。
+建置Cordova Android平台後，請在Android Studio中開啟應用程式。 更新`com.marketo.plugin`資料夾中`Marketo.gradle`檔案的`dirs`值。
 
 ```groovy
 repositories{
@@ -69,23 +64,23 @@ repositories{
 }
 ```
 
-新增應用程式`$cordova platform add android` `$ cordova platform add ios`的目標平台
+新增應用程式的目標平台： `$cordova platform add android` `$ cordova platform add ios`
 
-檢查新增的平台清單`$cordova platform ls`
+檢查新增的平台： `$cordova platform ls`
 
 1. Firebase Cloud Messaging支援
 
-1. 在Firebase主控台上設定Firebase應用程式。
-   1. 在[&#128279;](https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
+1. 在Firebase主控台中設定Firebase應用程式。
+   1. 在[](https://console.firebase.google.com/)Firebase主控台中建立或新增專案。
       1. 在[Firebase主控台](https://console.firebase.google.com/)中，選取&#x200B;**[!UICONTROL Add Project]**。
       1. 從現有Google Cloud專案清單中選取您的GCM專案，然後選取&#x200B;**[!UICONTROL Add Firebase]**。
       1. 在Firebase歡迎畫面中，選取「將Firebase新增至Android應用程式」。
       1. 提供您的封裝名稱和SHA-1，然後選取&#x200B;**[!UICONTROL Add App]**。 已下載您Firebase應用程式的新`google-services.json`檔案。
-   1. 在[!UICONTROL Project Overview]中導覽至&#x200B;**[!UICONTROL Project Settings]**
-      1. 按一下「**[!UICONTROL General]**」標籤。 下載「google-services.json」檔案。
-      1. 按一下「**[!UICONTROL Cloud Messaging]**」標籤。 複製[!UICONTROL Server Key]和[!UICONTROL Sender ID]。 提供這些[!UICONTROL Server Key]和[!UICONTROL Sender ID]給Marketo。
-   1. 在Phonegap應用程式中設定FCM變更
-      1. 將下載的&#39;google-services.json&#39;檔案移動到Phonegap應用程式模組的根目錄中
+   1. 在[!UICONTROL Project Overview]中移至&#x200B;**[!UICONTROL Project Settings]**。
+      1. 選取「**[!UICONTROL General]**」索引標籤並下載「google-services.json」檔案。
+      1. 選取 **[!UICONTROL Cloud Messaging]** 索引標籤。 複製[!UICONTROL Server Key]和[!UICONTROL Sender ID]，並將其提供給Marketo。
+   1. 在PhoneGap應用程式中設定FCM。
+      1. 將下載的「google-services.json」檔案移至PhoneGap應用程式模組的根目錄中。
       1. 從位置`platforms/android/app/src/main/java/com/gae/scaffolder/plugin`移除檔案&#39;MyFirebaseInstanceIDService&#39; （已棄用）
       1. 修改位置`platforms/android/app/src/main/java/com/gae/scaffolder/plugin`中的檔案&#39;MyFirebaseMessagingService&#39;，如下所示：
 
@@ -135,7 +130,7 @@ repositories{
 
 >[!TAB 目標C]
 
-更新`applicationDidBecomeActive`方法，如下所示
+更新`applicationDidBecomeActive`方法，如下所示。
 
 ```objectivec
 Marketo *sharedInstance = [Marketo sharedInstance];
@@ -145,7 +140,7 @@ Marketo *sharedInstance = [Marketo sharedInstance];
 
 >[!TAB Swift]
 
-更新`applicationDidBecomeActive`方法，如下所示
+更新`applicationDidBecomeActive`方法，如下所示。
 
 ```swift
 let sharedInstance: Marketo = Marketo.sharedInstance()
@@ -157,9 +152,9 @@ sharedInstance.trackPushNotification(launchOptions)
 
 ### &#x200B;5. 初始化Marketo框架
 
-若要確保在應用程式啟動時起始Marketo架構，請在主要JavaScript檔案的`onDeviceReady`函式下新增下列程式碼。
+若要在應用程式啟動時初始化Marketo架構，請在JavaScript主檔案的`onDeviceReady`函式下新增下列程式碼。
 
-請注意，我們必須傳遞`phonegap`作為PhoneGap應用程式的架構型別。
+傳遞`phonegap`作為PhoneGap應用程式的架構型別。
 
 ### 語法
 
@@ -182,14 +177,14 @@ marketo.onStart(
 
 ### 參數
 
-- Success回呼：在Marketo架構成功初始化時要執行的函式。
+- Success回呼：Marketo架構成功初始化時要執行的函式。
 - 失敗回呼：當Marketo架構初始化失敗時要執行的函式。
-- Munchkin ID ：註冊時從Marketo收到的Munchkin ID。
-- 秘密金鑰：註冊時從Marketo收到的秘密金鑰。
+- Munchkin ID：註冊期間從Marketo收到的Munchkin ID。
+- 秘密金鑰：註冊期間從Marketo收到的秘密金鑰。
 
 ### &#x200B;6. 初始化Marketo推播通知
 
-若要確保Marketo推播通知已啟動，請在主要JavaScript檔案中的初始化函式後新增下列程式碼。
+若要初始化Marketo推播通知，請在主要JavaScript檔案中的初始化函式後新增下列程式碼。
 
 ### 語法
 
@@ -205,10 +200,10 @@ marketo.initializeMarketoPush(
 ### 參數
 
 - Success回呼：Marketo推播通知成功初始化時要執行的函式。
-- 失敗回呼：當Marketo推播通知無法初始化時要執行的函式。
-- GCM_PROJECT_ID ：建立應用程式後，在[Google開發人員主控台](https://console.developers.google.com/)中找到GCM專案ID。
+- 失敗回呼：當Marketo推播通知初始化失敗時要執行的函式。
+- GCM_PROJECT_ID：建立應用程式後，在[Google開發人員主控台](https://console.developers.google.com/)中找到GCM專案ID。
 
-登出時也可以取消註冊權杖。
+您也可以在登出時取消註冊Token。
 
 ```javascript
 marketo. uninitializeMarketoPush(
@@ -219,7 +214,7 @@ marketo. uninitializeMarketoPush(
 
 ## 關聯銷售機會
 
-您可以呼叫associateLead函式來建立Marketo Lead。
+呼叫associateLead函式以建立Marketo銷售機會。
 
 ### 語法
 
@@ -233,9 +228,9 @@ marketo.associateLead(
 
 ### 參數
 
-- Success回呼：當Marketo架構成功建立潛在客戶關聯時要執行的函式。
-- 失敗回呼：當Marketo架構無法關聯潛在客戶時要執行的函式。
-- 潛在客戶資料：JSON字串格式的潛在客戶資料。
+- Success回呼：在Marketo架構成功建立潛在客戶關聯時要執行的函式。
+- 失敗回呼：Marketo架構無法關聯潛在客戶時要執行的函式。
+- 潛在客戶資料： JSON字串格式的潛在客戶資料。
 
 ### 範例
 
@@ -264,7 +259,7 @@ marketo.associateLead(
 
 ## 報表動作
 
-您可以藉由呼叫`reportaction`函式來報告任何使用者執行的動作。
+呼叫`reportaction`函式以報告使用者動作。
 
 ### 語法
 
@@ -279,8 +274,8 @@ marketo.reportaction(
 
 ### 參數
 
-- 成功回呼：Marketo框架成功回報動作時要執行的函式。
-- 失敗回呼：Marketo框架無法回報動作時要執行的函式。
+- Success回呼：在Marketo架構成功回報動作時執行的函式。
+- 失敗回呼：Marketo架構無法回報動作時要執行的函式。
 - 動作名稱：動作名稱。
 - 動作資料： JSON字串格式的動作資料。
 
@@ -305,7 +300,7 @@ marketo.reportaction(
 
 ## 工作階段報告
 
-繫結「暫停」和「繼續」事件型別，如下所示，以報告「開始」和「停止」事件。  這可用來追蹤您在行動應用程式中花費的時間。 注意：這在Android中是必要的。
+繫結「暫停」和「繼續」事件型別以報告「開始」和「停止」事件。 這些事件會追蹤使用者在行動應用程式中花費的時間，並且在Android上為必要專案。
 
 ```javascript
 //Add the following code in your www/js/index.js
@@ -336,6 +331,9 @@ onStart: function() {
 1. MARKETO REST API
 1. 表單提交
 
-根據使用的方法，新建立的潛在客戶將由不同的觸發器和篩選器識別。 使用MME SDK或REST API建立的潛在客戶會出現在「建立的潛在客戶」觸發器和篩選器中。 由表單提交建立的潛在客戶會出現在「填寫表單」觸發器和篩選器中。
+識別新潛在客戶的觸發器和篩選器取決於建立方法：
 
-最佳實務建議在建立銷售機會時，與網頁應用程式使用的方法保持一致。 如果您已有使用表單提交作為建立銷售機會的機制之網頁應用程式，請在混合式應用程式中建立銷售機會時，使用該相同的機制。 如果您已有使用我們REST API作為建立銷售機會的機制的網頁應用程式，請在混合式應用程式中建立銷售機會時，使用該相同的機制。 如果您未使用表單提交或REST API做為在網頁應用程式中建立銷售機會的機制，可以考慮使用MME SDK在Marketo中建立銷售機會。
+- 使用MME SDK或REST API建立的銷售機會會出現在「建立的銷售機會」觸發器和篩選器中。
+- 由表單提交建立的潛在客戶會出現在「填寫表單」觸發器和篩選器中。
+
+在混合式應用程式和網頁應用程式中使用相同的銷售機會建立方法。 如果網頁應用程式使用表單提交或REST API，請在混合式應用程式中使用該方法。 如果網頁應用程式未使用其中一種方法，請考慮使用MME SDK在Marketo中建立銷售機會。

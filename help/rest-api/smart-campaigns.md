@@ -4,19 +4,13 @@ feature: REST API, Smart Campaigns
 description: 瞭解如何將Marketo REST API用於Smart Campaigns，包括依ID或名稱查詢、瀏覽篩選器、建立複製刪除，以及排程或請求觸發程式
 exl-id: 540bdf59-b102-4081-a3d7-225494a19fdd
 TQID: https://experienceleague.adobe.com/iysRjtqd9plkreyIMuNjAF3YVFHtDUIrc-GInB4V8mg
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-subfeature_v2:
-  - id: ad89fb33-8541-4339-afe7-bb13d1633714
-  - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+subfeature_v2: id: ad89fb33-8541-4339-afe7-bb13d1633714id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1196
+source-wordcount: 1009
 ht-degree: 1%
 
 ---
@@ -27,11 +21,11 @@ ht-degree: 1%
 
 [行銷活動端點參考（銷售機會）](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns)
 
-Marketo提供了一組REST API，可用於對智慧行銷活動執行操作。 這些API遵循資產API的標準介面模式，提供查詢、建立、複製和刪除選項。 此外，您也可以排程批次行銷活動或請求觸發行銷活動，以管理智慧行銷活動的執行。
+使用Smart Campaign REST API來查詢、建立、複製和刪除智慧行銷活動。 您也可以排程批次行銷活動、請求觸發行銷活動，以及管理行銷活動啟動。
 
 ## 查詢
 
-查詢智慧型行銷活動會遵循[的標準查詢型別（依識別碼](#by_id)、[依名稱](#by_name)和[瀏覽](#browse)）。
+依識別碼](#by_id)、[依名稱](#by_name)或[瀏覽](#browse)查詢智慧行銷活動[。
 
 ### 依Id
 
@@ -73,7 +67,7 @@ GET /rest/asset/v1/smartCampaign/{id}.json
 }
 ```
 
-使用此端點，`result`陣列的第一個位置將一律有單一記錄。
+端點在`result`陣列的第一個位置傳回一個記錄。
 
 ### 依名稱
 
@@ -119,21 +113,21 @@ GET /rest/asset/v1/smartCampaign/byName.json?name=Test Trigger Campaign
 }
 ```
 
-使用此端點，`result`陣列的第一個位置將一律有單一記錄。
+端點在`result`陣列的第一個位置傳回一個記錄。
 
 ### 瀏覽
 
-[Get Smart Campaigns](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getAllSmartCampaignsGET)端點的運作方式與其他資產API瀏覽端點類似，並可允許數個選用查詢引數來指定篩選條件。
+[Get Smart Campaigns](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getAllSmartCampaignsGET)端點支援用於篩選和分頁的選用查詢引數。
 
 `earliestUpdatedAt`和`latestUpdatedAt`引數接受ISO-8601格式的`datetimes` （不含毫秒）。 如果兩者皆已設定，則earliestUpdatedAt必須在latestUpdatedAt之前。
 
-`folder`引數指定要瀏覽的父資料夾。 格式為包含`id`和`type`屬性的JSON區塊。
+`folder`引數指定要瀏覽的父資料夾。 將其傳遞為包含`id`和`type`的JSON物件。
 
-`maxReturn`引數是整數，指定要傳回的專案數目上限。 預設值為20。 最大值為200。
+`maxReturn`整數指定專案數目上限。 預設值為20，最大值為200。
 
-`offset`引數是整數，指定從何處開始擷取專案。 可與`maxReturn`搭配使用。 預設值為0。
+`offset`整數指定開始擷取專案的位置。 與`maxReturn`搭配使用。 預設值為0。
 
-`isActive`引數是布林值，指定只傳回作用中的觸發促銷活動。
+設定`isActive`布林值引數以僅傳回作用中的觸發程式行銷活動。
 
 ```http
 GET /rest/asset/v1/smartCampaigns.json?earliestUpdatedAt=2016-09-10T23:15:00-00:00&latestUpdatedAt=2016-09-10T23:17:00-00:00
@@ -192,11 +186,11 @@ GET /rest/asset/v1/smartCampaigns.json?earliestUpdatedAt=2016-09-10T23:15:00-00:
 }
 ```
 
-使用此端點，`result`陣列中將有一或多個記錄。
+端點傳回`result`陣列中的一或多個記錄。
 
 ## 建立
 
-[建立Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST)端點是使用具有兩個必要引數的application/x-www-form-urlencoded POST執行。 `name`引數指定要建立的智慧行銷活動的名稱。 `folder`引數會指定智慧行銷活動建立所在的父資料夾。 格式為包含`id`和`type`屬性的JSON區塊。
+傳送`application/x-www-form-urlencoded` POST要求至[建立Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST)端點。 需要`name`和`folder`引數。 將`folder`傳遞為包含`id`和`type`的JSON物件。
 
 您可以選擇使用`description`引數（最多2,000個字元）描述智慧行銷活動。
 
@@ -250,7 +244,7 @@ name=Smart Campaign 02&folder={"type": "folder","id": 640}&description=This is a
 
 ## 更新
 
-[Update Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset)端點使用application/x-www-form-urlencoded POST執行。 它以單一智慧行銷活動`id`作為路徑引數。 您可以使用`name`引數來更新智慧行銷活動的名稱，或使用`description`引數來更新智慧行銷活動的說明。
+傳送`application/x-www-form-urlencoded` POST要求至[更新Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset)端點。 必須有smart-campaign `id`路徑引數。 使用`name`變更名稱，或使用`description`變更描述。
 
 ```http
 POST /rest/asset/v1/smartCampaign/{id}.json
@@ -302,7 +296,7 @@ name=Smart Campaign 02 Update&description=This is a smart campaign update test.
 
 ## 原地複製
 
-[仿製智慧型行銷活動](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5)端點是使用具有三個必要引數的application/x-www-form-urlencoded POST執行。 它需要指定要複製的智慧行銷活動的`id`引數、指定新智慧行銷活動名稱的`name`引數，以及指定建立新智慧行銷活動的父資料夾的`folder`引數。 格式為包含`id`和`type`屬性的JSON區塊。
+傳送`application/x-www-form-urlencoded` POST要求至[仿製智慧行銷活動](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5)端點。 需要`id`、`name`和`folder`引數。 它們會指定來源促銷活動、新促銷活動名稱和上層資料夾。 將`folder`傳遞為包含`id`和`type`的JSON物件。
 
 您可以選擇使用`description`引數（最多2,000個字元）描述智慧行銷活動。
 
@@ -378,15 +372,15 @@ POST /rest/asset/v1/smartCampaign/{id}/delete.json
 
 ## 批次
 
-批次智慧型行銷活動會在特定時間啟動，並一次影響一組特定的銷售機會。
+批次智慧型行銷活動會在指定的時間執行，並一起處理定義的銷售機會集。
 
 ## 排程
 
-使用[排程行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/scheduleCampaignUsingPOST)端點來排程要立即執行或在未來日期執行的批次行銷活動。 行銷活動`id`是必要的路徑引數。 選用引數是`tokens`、`runAt`和`cloneToProgram`，它們會在要求內文中以application/json形式傳遞。
+使用[排程行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/scheduleCampaignUsingPOST)來排程批次行銷活動。 行銷活動`id`路徑引數為必要項。 在JSON要求內文中傳遞選用的`tokens`、`runAt`和`cloneToProgram`引數。
 
-Token陣列引數是My Token的陣列，可覆寫現有的程式Token。 行銷活動執行後，會捨棄代號。  每個權杖陣列專案都包含名稱/值配對。 權杖的名稱必須格式化為&quot;`{{my.name}}`&quot;。
+`tokens`陣列會覆寫此回合的現有程式My Token。 Marketo會在行銷活動執行後捨棄覆寫。 每個專案都包含名稱/值組，而權杖名稱必須使用`{{my.name}}`格式。
 
-runAt日期時間引數會指定執行促銷活動的時間。 如果未指定，行銷活動將在呼叫端點後5分鐘執行。 日期時間值在未來的兩年內不得超過。
+`runAt`日期時間引數會指定何時執行行銷活動。 如果省略，行銷活動會在要求後五分鐘執行。 此值以後不能超過兩年。
 
 透過此API排程的行銷活動在執行之前一律至少要等待五分鐘。
 
@@ -429,17 +423,17 @@ POST /rest/v1/campaigns/{id}/schedule.json
 
 ## 觸發程序
 
-觸發智慧型行銷活動會根據觸發的事件而一次影響一個人。
+觸發智慧行銷活動一次處理一個人以回應事件。
 
 ### 請求
 
-使用[要求行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST)端點將一組銷售機會傳遞至觸發行銷活動，以透過行銷活動流程執行。 行銷活動必須有一個以「網站服務API」作為來源的「已要求行銷活動」觸發器。
+使用[要求行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST)透過觸發行銷活動的流程傳遞銷售機會。 行銷活動必須使用具有Web服務API作為來源的「已要求行銷活動」觸發器。
 
-此端點需要行銷活動`id`做為路徑引數，以及包含潛在客戶ID的`leads`整數陣列引數。 每次呼叫最多允許100個銷售機會。
+行銷活動`id`路徑引數及`leads`潛在客戶ID的整數陣列是必要的。 每個呼叫最多接受100個銷售機會。
 
-`tokens`陣列引數可選擇性用來覆寫促銷活動上層方案的本機My Token。 `tokens`接受最多100個權杖。 每個`tokens`陣列專案都包含一個名稱/值組。 權杖的名稱必須格式化為&quot;`{{my.name}}`&quot;。 如果您使用[新增系統權杖作為電子郵件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email)方法中的連結來新增「viewAsWebPageLink」系統權杖，則無法使用`tokens`覆寫它。 改為使用[將檢視新增為網頁連結至電子郵件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email)方法，可讓您使用`tokens`覆寫「viewAsWebPageLink」。
+`tokens`陣列引數可選擇性用來覆寫促銷活動上層方案的本機My Token。 `tokens`接受最多100個權杖。 每個`tokens`陣列專案都包含一個名稱/值組。 權杖的名稱必須格式化為&quot;`{{my.name}}`&quot;。 如果您使用[新增系統權杖作為電子郵件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/using-tokens/add-a-system-token-as-a-link-in-an-email)方法中的連結來新增「viewAsWebPageLink」系統權杖，則無法使用`tokens`覆寫它。 改為使用[將檢視新增為網頁連結至電子郵件](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/general/functions-in-the-editor/add-a-view-as-web-page-link-to-an-email)方法，可讓您使用`tokens`覆寫「viewAsWebPageLink」。
 
-`leads`和`tokens`引數是以application/json的形式傳入要求內文中。
+在JSON要求內文中傳遞`leads`和`tokens`引數。
 
 ```http
 POST /rest/v1/campaigns/{id}/trigger.json
@@ -487,9 +481,9 @@ POST /rest/v1/campaigns/{id}/trigger.json
 
 [啟動Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/activateSmartCampaignUsingPOST)端點很簡單。 需要`id`路徑引數。 若要成功啟用，行銷活動必須符合下列條件：
 
-- 必須停用
-- 必須至少有一個觸發器和一個流程步驟
-- 必須有沒有錯誤的觸發器、篩選器和流程步驟
+- 行銷活動已停用。
+- 行銷活動至少有一個觸發器和一個流程步驟。
+- 行銷活動具有無錯誤的觸發器、篩選器和流程步驟。
 
 ```http
 POST /rest/asset/v1/smartCampaign/{id}/activate.json

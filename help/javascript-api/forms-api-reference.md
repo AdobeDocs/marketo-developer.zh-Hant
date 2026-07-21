@@ -4,22 +4,21 @@ description: Marketo Forms 2.0 API的完整參考，詳細說明MktoForms2和For
 feature: Forms, Javascript
 exl-id: 0f8d242f-0b27-4087-b080-3d41ebaa25b3
 TQID: https://experienceleague.adobe.com/wLuN1H8tDFEihPqcAfoG-Y80d4Kw1BoSskVQu4Bgss0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1352
+source-wordcount: 1337
 ht-degree: 1%
 
 ---
 
 # Forms API參考
 
-使用Forms 2.0 API時，您會與兩個主要物件互動。 `MktoForms2`物件與`Form`物件。 `MktoForms2`物件是Forms2功能的最上層公開可見名稱空間，包含建立、載入及擷取Form物件的函式。
+Forms 2.0 API提供兩個主要物件： `MktoForms2`和`Form`。
+
+`MktoForms2`是Forms2功能的最上層公用名稱空間。 它包含建立、載入及擷取`Form`物件的函式。
 
 ## MktoForms2方法
 

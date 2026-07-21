@@ -4,34 +4,33 @@ feature: REST API
 description: Marketo大量匯入，用於透過多部分上傳載入銷售機會、自訂物件和程式成員，建立非同步工作、輪詢狀態和處理失敗。
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
 TQID: https://experienceleague.adobe.com/lr9dyX-fY-oJ2LM5P0zE1m24HtFYKQYYbxMkVe--PkE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 661
+source-wordcount: 538
 ht-degree: 2%
 
 ---
 
 # 大量匯入
 
-Marketo提供介面，用於插入大型人員及人員相關資料集，稱為大量匯入。 目前提供三種物件型別的介面：
+大量匯入提供介面，用於插入大量人員及人員相關資料。 您可以匯入三種物件型別：
 
 - 銷售機會（人員）
 - 自訂物件
 - 計畫成員
 
-大量匯入是透過建立工作，然後等待工作完成讀取檔案來執行。 這些工作會以非同步方式執行，且可以輪詢以擷取匯入的狀態。 根據RFC 2399，檔案會使用HTTP多部分/表單資料上傳。
+若要執行大量匯入，請建立讀取已上傳檔案的工作。 工作以非同步方式執行，因此輪詢它以擷取匯入狀態。
 
-大量API端點沒有像其他端點一樣以「/rest」為前置詞。
+每個RFC 2399使用HTTP `multipart/form-data`上傳檔案。
+
+與其他端點不同，大量API端點沒有前置詞`/rest`。
 
 ## Authentication
 
-大量匯入API使用與其他Marketo REST API相同的OAuth 2.0驗證方法。  這需要有效的存取權杖作為HTTP標頭`Authorization: Bearer {_AccessToken_}`傳送。
+大量匯入API使用與其他Marketo REST API相同的OAuth 2.0驗證方法。 在`Authorization: Bearer {_AccessToken_}` HTTP標頭中傳送有效的存取權杖。
 
 >[!IMPORTANT]
 >
@@ -40,20 +39,24 @@ Marketo提供介面，用於插入大型人員及人員相關資料集，稱為�
 ## 限制
 
 - 最大並行匯入工單：2
-- 已排入佇列的匯入作業上限（包含目前匯入的作業）：10
-- 匯入檔案大小上限： 10 MB
+- 已排入佇列的匯入作業上限（包括目前匯入的作業）： 10
+- 最大匯入檔案大小： 10 MB
 
 ## 權限
 
-大量匯入使用與Marketo REST API相同的許可權模型，而且不需要額外的特殊許可權即可使用，不過每個端點集都需要特定許可權。
+大量匯入使用與Marketo REST API相同的許可權模型。 它不需要額外的許可權，但每組端點需要特定的許可權。
 
 ## 記錄作業
 
-大量匯入是「插入或更新」記錄作業。 如果在資料庫中找到相符的記錄，則會更新記錄。 否則，將建立新記錄。 大量匯入回應不會指出指定的記錄是否已更新或插入。
+大量匯入是「插入或更新」記錄作業。 如果資料庫包含相符的記錄，作業會更新該記錄。 否則，作業會建立記錄。
+
+大量匯入回應不會指出個別記錄是否已更新或插入。
 
 ## 建立工作
 
-Marketo的大量匯入API使用工作的概念來執行資料匯入。 讓我們來看看如何使用[匯入銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)端點來建立簡單的銷售機會匯入工作。  請注意，此端點使用[multipart/form-data做為content-type](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html)。 這可能很難對付，因此最佳實務是為您選擇的語言使用HTTP支援程式庫。  如果您剛開始接觸，我們建議您使用[curl](https://curl.se/)。
+呼叫[匯入銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)端點以建立銷售機會匯入工作。 此端點使用[multipart/form-data做為content-type](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html)。
+
+使用您慣用語言的HTTP支援程式庫來建構多部分要求。 您也可以使用[curl](https://curl.se/)開始使用。
 
 ```http
 POST /bulk/v1/leads.json?format=csv
@@ -77,7 +80,7 @@ Easy,Fox,easyfox@marketo.com
 ------WebKitFormBoundaryBQACkJZyaiIAXogC--
 ```
 
-此請求將建構一個工作，匯入名為「leads.csv」的CSV檔案中包含的值，其欄標題為「FirstName」、「LastName」、「Email」、「Company」。
+此請求會建立從名為`leads.csv`的CSV檔案匯入值的工作。
 
 ```json
 {
@@ -93,11 +96,11 @@ Easy,Fox,easyfox@marketo.com
 }
 ```
 
-當我們提交工作時，它會傳回batchId，然後我們可以使用它來檢查其狀態。
+回應傳回`batchId`。 使用此值來檢查工作狀態。
 
 ### 通用引數
 
-每個工作建立端點會共用一些通用引數，用於設定檔案格式、欄位名稱和大量擷取工作的篩選器。  每個擷取作業的子型別都可能有其他引數：
+每個工作建立端點會共用引數以設定匯入檔案。 匯入子型別也可支援其他引數。
 
 | 參數 | 資料類型 | 附註 |
 | --- | --- | --- |
@@ -106,7 +109,7 @@ Easy,Fox,easyfox@marketo.com
 
 ## 輪詢工作狀態
 
-使用[Get Import Lead Status](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET)端點可輕鬆判斷工作的狀態。
+將`batchId`傳遞至[取得匯入銷售機會狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET)端點以擷取工作狀態。
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}.json
@@ -130,16 +133,18 @@ GET /bulk/v1/leads/batch/{batchId}.json
 }
 ```
 
-內部`status`成員會指出工作進度，可能是下列其中一個值：「已排入佇列」、「匯入」、「完成」、「失敗」。 在此情況下，我們的工作已完成，因此我們可以停止輪詢。
+`status`成員表示工作進度。 它的值可以是`Queued`、`Importing`、`Complete`或`Failed`。
+
+在此範例中，工作已完成，因此輪詢可以停止。
 
 ## 失敗
 
-失敗由Get Import Lead Status回應中的`numOfRowsFailed`屬性指示。 如果`numOfRowsFailed`大於零，則該值表示發生的失敗次數。
+Get Import Lead Status回應中的`numOfRowsFailed`屬性表示失敗的資料列數目。 值大於零表示發生失敗。
 
-若要擷取失敗資料列的記錄與原因，您必須使用[取得匯入潛在客戶失敗](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET)端點來擷取失敗檔案。
+若要擷取失敗的記錄及其原因，請使用[取得匯入潛在客戶失敗](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET)端點。
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}/failures.json
 ```
 
-檔案會指出哪些列失敗，並顯示訊息指出記錄失敗的原因。
+失敗檔案會識別每個失敗的資料列，並解釋記錄失敗的原因。
