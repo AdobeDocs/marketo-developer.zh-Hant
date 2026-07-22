@@ -11,24 +11,24 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 213
+source-wordcount: 194
 ht-degree: 2%
 
 ---
 
 # 欄位
 
-REST API和SOAP API對潛在客戶欄位使用不同的命名慣例。
+REST API和SOAP API對潛在客戶欄位使用不同的命名慣例。 使用每個整合功能所需的欄位名稱慣例。
 
 ## 擷取欄位名稱清單
 
-使用REST「描述銷售機會」端點擷取銷售機會記錄上所有支援的欄位名稱清單。
+使用REST「描述銷售機會」端點來擷取銷售機會記錄的所有支援欄位名稱。
 
 ## 在何處使用哪個欄位名稱型別？
 
-有時很難知道您運用特定整合相關功能時必須使用的欄位名稱型別。 以下為功能使用REST或SOAP欄位名稱型別的快速參考。
+必要的欄位名稱型別取決於整合功能。 下表指出每個功能是使用REST或SOAP欄位名稱。
 
 | 功能 | 要使用的欄位名稱型別 |
 | --- | --- |
@@ -43,4 +43,6 @@ REST API和SOAP API對潛在客戶欄位使用不同的命名慣例。
 
 ### 為何REST API欄位sfdcId一律會傳回null值？
 
-欄位`sfdcId`是公式欄位，錯誤包含在REST API的原始欄位對應中。 透過REST API擷取的記錄不會計算公式欄位的值，因此值將一律為空。 若要擷取真實的SFDC ID，您應該使用名為`sfdcLeadId`和`sfdcContactId`的欄位。
+`sfdcId`欄位是公式欄位，包含在REST API的原始欄位對應中。 透過REST API擷取的記錄不會計算公式欄位值，因此`sfdcId`一律會傳回null。
+
+若要擷取SFDC ID，請使用`sfdcLeadId`和`sfdcContactId`欄位。

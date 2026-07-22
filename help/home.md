@@ -12,22 +12,22 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 141
+source-wordcount: 134
 ht-degree: 3%
 
 ---
 
 # Marketo Engage開發人員檔案
 
-協助您掌握Marketo Engage API的詳細檔案
+使用本檔案瞭解如何使用Marketo Engage API和開發人員功能建置。
 
-* [**快速入門**](getting-started.md)&#x200B;熟悉Marketo Engage API。
-* [**REST API**](https://developer.adobe.com/marketo-apis/)透過REST API讀取、寫入及更新您的Marketo Engage資料。
-* [**Webhooks**](webhooks/webhooks.md)&#x200B;使用Webhooks與協力廠商Web服務通訊。
-* [**使用者端資料庫**](https://github.com/Marketo/Community-Supported-Client-Libraries)使用開放原始碼來擴充Marketo Engage的功能。
-* [**電子郵件指令碼**](email-scripting.md)&#x200B;使用Marketo Engage API來建立和編輯電子郵件與電子郵件範本。
-* [**銷售機會追蹤**](javascript-api/lead-tracking.md)&#x200B;管理您的客戶銷售機會。
-* [**行動Marketo**](mobile/mobile.md)&#x200B;使用Marketo Mobile在行動裝置上聽取和回應客戶。
-* [**網頁Personalization**](javascript-api/web-personalization.md)&#x200B;使用Javascript API進行事件追蹤及網頁的動態自訂。
+* [**快速入門**](getting-started.md) — 瞭解Marketo Engage API的基礎知識。
+* [**REST API**](https://developer.adobe.com/marketo-apis/) — 透過REST API讀取、寫入和更新Marketo Engage資料。
+* [**Webhooks**](webhooks/webhooks.md) — 透過Webhooks與協力廠商Web服務通訊。
+* [**使用者端資料庫**](https://github.com/Marketo/Community-Supported-Client-Libraries) — 使用開放原始碼來擴充Marketo Engage。
+* [**電子郵件指令碼**](email-scripting.md) — 建立和編輯電子郵件和電子郵件範本。
+* [**銷售機會追蹤**](javascript-api/lead-tracking.md) — 管理客戶銷售機會。
+* [**行動Marketo**](mobile/mobile.md) — 使用Marketo Mobile在行動裝置上聆聽和回應客戶。
+* [**網頁Personalization**](javascript-api/web-personalization.md) — 使用JavaScript API進行事件追蹤和動態網頁自訂。

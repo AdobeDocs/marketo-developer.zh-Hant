@@ -13,28 +13,30 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 4fbd04f9942f903ab8b44e9740a806b74a4ffaf4
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1100
+source-wordcount: 916
 ht-degree: 0%
 
 ---
 
 # 電子郵件指令碼
 
-注意：強烈建議您閱讀[Velocity使用手冊](https://velocity.apadche.org/engine/devel/user-guide.html)，以瞭解Velocity範本語言行為的詳細說明。
+閱讀[Velocity使用手冊](https://velocity.apache.org/engine/devel/user-guide.html)，瞭解Velocity範本語言行為的詳細說明。
 
-[Apache Velocity](https://velocity.apache.org/)是以Java建置的語言，專為範本化和指令碼HTML內容而設計。 Marketo可讓您使用指令碼代號，將其用於電子郵件內容中。 此功能可讓您存取儲存在商機和自訂物件中的資料，並允許在電子郵件中建立動態內容。 Velocity提供標準高階控制流程，其中包含if/else、for和for each ，以允許對內容進行條件式和反複式操控。
+[Apache Velocity](https://velocity.apache.org/)是一種以Java為基礎的語言，用於範本化和指令碼HTML內容。 在Marketo電子郵件指令碼權杖中使用Velocity來存取儲存在商機和自訂物件中的資料，並建立動態電子郵件內容。
+
+Velocity為條件式與反複式內容提供`if`/`else`、`for`和`foreach`控制流程。
 
 ## 變數
 
-變數一律以「$」為前置詞，並使用#set進行設定和更新：
+以`$`作為變數的前置詞。 使用`#set`建立或更新它們：
 
 ```velocity
 #set($variable = "value")
 ```
 
-接著，您就可以透過具有不同行為的多種不同參照型別來擷取其值：
+使用提供不同行為的參考型別擷取變數值：
 
 ```text
 $variable ##outputs 'value'
@@ -44,7 +46,7 @@ ${variable}name ##outputs 'valuename'
 
 
 
-也有無訊息參考標籤法，其中在`$`之後會包含`!`。 通常，當velocity遇到未定義的參照時，代表該參照的字串會保留在原處。 使用安靜參照標籤法，如果遇到未定義的參照，則不會發出任何值：
+`$`之後的安靜參考標籤法包含`!`。 依預設，當參照未定義時，Velocity會將參照字串保留在適當位置。 安靜參考未定義時不會發出任何值：
 
 ```velocity
 ##Defined Reference
@@ -65,7 +67,7 @@ $!baz ##outputs nothing
 
 ## Velocity工具
 
-Apache Velocity專案可透過[Velocity工具](https://velocity.apache.org/tools/devel/apidocs/overview-summary.html)來使用功能。 這些工具只是Java物件的包裝函式，並透過可供所有指令碼使用的全域變數公開其方法。
+Apache Velocity專案提供[Velocity工具](https://velocity.apache.org/tools/devel/apidocs/overview-summary.html)。 這些包裝函式會透過所有指令碼都可用的全域變數公開Java物件方法。
 
 - [AlternatorTool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/AlternatorTool.html)
 - [Comparisondatetool](https://velocity.apache.org/tools/devel/apidocs/org/apache/velocity/tools/generic/ComparisonDateTool.html)
@@ -87,29 +89,33 @@ $date.whenIs($birthday).days ##outputs 1
 
 ## 建立指令碼Token
 
-使用電子郵件指令碼Token時，電子郵件中會包含Velocity指令碼。 在行銷資料夾或方案內的行銷活動中建立這些專案。 對於要在電子郵件內使用的權杖，電子郵件必須是擁有權杖或從行銷資料夾繼承權杖之計畫的子項。 若要建立Token，請導覽至資料夾或程式，然後選取「[!UICONTROL My Tokens]」索引標籤。 從右側選單中，將「電子郵件指令碼」選項拖曳到權杖清單中
+使用Email Script Token將Velocity指令碼新增至電子郵件。 在行銷資料夾或方案的行銷活動中建立Token。
+
+若要使用權杖，電子郵件必須是擁有權杖的計畫的子項，或是從行銷資料夾繼承權杖。 移至資料夾或程式，然後選取[!UICONTROL My Tokens]標籤。 從右側選單將「電子郵件指令碼」選項拖曳到Token清單中。
 
 ![指令碼Token](assets/script-token.png)
 
-從這裡，您可以編輯權杖的名稱，並透過[!UICONTROL Click to Edit]選項開啟編輯器：
+編輯權杖名稱，然後選取[!UICONTROL Click to Edit]以開啟編輯器：
 
 ![編輯指令碼](assets/script-edit.png)
 
-進入編輯器後，您可以建立指令碼，以在指令碼可存取的物件中存取所有變數。 若要從物件取得欄位參考，請從右側樹狀結構將其拖曳到您的指令碼中：
+在編輯器中，建立指令碼，用於存取指令碼可存取物件中的變數。 若要新增物件欄位參照，請從右邊的樹狀結構將其拖曳到指令碼中：
 
 ![編輯指令碼Token](assets/edit-script-token.png)
 
 ## 指令碼內嵌和測試
 
-在計畫「我的Token」中定義指令碼後，您就可以使用Marketo電子郵件編輯器，在指定的電子郵件中參考該指令碼。
+在程式「我的Token」中定義指令碼後，從Marketo電子郵件編輯器中的電子郵件對其參照。
 
 ![電子郵件指令碼](assets/email-script-marketo-email.png)
 
-您可以使用Marketo電子郵件設計工具中的[!UICONTROL Send Sample Email]電子郵件動作來測試指令碼。 若要讓指令碼正確處理，您必須在[!UICONTROL Lead]欄位中選取要代表的現有銷售機會。 如果您使用`$TriggerObject`進行測試，您可以透過[!UICONTROL Trigger]引數選取觸發物件。 此程式會使用該型別最近更新之物件的資料做為`$TriggerObject`變數。
+在Marketo電子郵件設計工具中使用[!UICONTROL Send Sample Email]動作測試指令碼。 在[!UICONTROL Lead]欄位中選取現有的銷售機會，讓指令碼可正確處理。
+
+測試`$TriggerObject`時，請以[!UICONTROL Trigger]引數選取觸發物件。 Marketo使用該型別最近更新的物件做為`$TriggerObject`變數。
 
 ![測試電子郵件指令碼](assets/velocity-test.png)
 
-您也可以使用[!UICONTROL Email Preview]來測試您的指令碼。 若要這麼做，您必須選取&#x200B;**[!UICONTROL View As: Lead Detail]**，然後從可用的靜態清單中選取銷售機會。 此方法的另一個優點是，可輸出指令碼執行期間可能發生的任何例外狀況：
+您也可以使用[!UICONTROL Email Preview]進行測試。 選取「**[!UICONTROL View As: Lead Detail]**」，然後從靜態清單中選取潛在客戶。 預覽也會顯示指令碼執行的例外：
 
 ![以](assets/view-as.png)檢視電子郵件
 
@@ -123,11 +129,11 @@ $date.whenIs($birthday).days ##outputs 1
 - 您可以參照連線至Lead、Contact或Account的自訂物件，但不能參照多個物件。
 - 自訂物件只能透過單一連線、銷售機會、連絡人或帳戶參照
 - 勾選指令碼編輯器中的方塊，找出您正在使用的欄位，或這些欄位未處理
-- 對於每個自訂物件，每個人員/連絡人的最近十個更新記錄可在執行階段使用，並依照最近更新（於0）到最舊更新（於9）的順序排列。 您可以依照指示[&#128279;](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting)增加可用的記錄數。
+- 對於每個自訂物件，每個人員/連絡人在執行階段都可以使用最近更新的10筆記錄。 記錄會從索引0的最近更新到索引9的最舊排序。 您可以依照指示[&#128279;](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/email-setup/change-custom-object-retrieval-limits-in-velocity-scripting)增加個可用的記錄數。
 - 如果您在電子郵件中包含多個電子郵件指令碼，這些指令碼會由上到下執行。 第一個要執行的指令碼中所定義的變數範圍，可在後續指令碼中使用。
 - 工具參考： [https://velocity.apache.org/tools/2.0/index.html](https://velocity.apache.org/tools/2.0/index.html)
 - 有關包含新行字元「\n」或「\r\n」的權杖的備註。 當透過傳送範例或批次促銷活動傳送電子郵件時，代號中的新行字元會被替換為空格。 透過「觸發器促銷活動」傳送電子郵件時，新行字元保持不變。
-- 為確保正確剖析URL，應將整個路徑設定為變數，然後列印，而且變數不應在URL參照內列印。 必須包含通訊協定（http://或https://），且必須與URL的其餘部分分開。 URL也必須屬於完整格式的錨點(<a>)標籤。 指令碼必須輸出完整格式的錨點標籤，才能追蹤連結。 如果連結是從for或foreach回圈內輸出，則不會追蹤連結。
+- 若要確保URL剖析正確，請將完整路徑設定為變數，然後列印。 請勿在URL參照內列印變數。 將通訊協定（`http://`或`https://`）與URL的其餘部分分開加入。 輸出完整的錨點(`<a>`)標籤，以便追蹤連結。 未追蹤從`for`或`foreach`回圈輸出的連結。
 
 ```html
 <!-- Correct -->

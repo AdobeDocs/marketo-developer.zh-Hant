@@ -21,9 +21,9 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: b28708e92f44082eb247d9053d6ebf2306739b38
+source-git-commit: af0a3c77654f74d7cb5d2077518d764468a53ae0
 workflow-type: tm+mt
-source-wordcount: 2166
+source-wordcount: 1985
 ht-degree: 1%
 
 ---
@@ -34,27 +34,29 @@ ht-degree: 1%
 >
 > 此功能限時提供。 若要要求存取權，請填寫[此表單](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Wht7-jR7h0OUrtLBeN7O4Y-uSf63sAxCmWyqMJg8eMFUMVZSVExSNDA3T0I4SEcwRDFSVTBGWU01Uy4u&origin=QRCode){target="_blank"}。 請確定您已準備好訂閱的Munchkin ID。
 
-模型上下文通訊協定(MCP)是一種開放標準，可讓AI工具與外部服務通訊。 [!DNL Marketo] MCP伺服器可作為您的AI助理與[!DNL Marketo]之間的橋樑。 它會公開超過100項操作，涵蓋表單、方案、智慧行銷活動、銷售機會、電子郵件、代碼片段、清單和資料夾。
+模型上下文通訊協定(MCP)是一種將AI工具連線到外部服務的開放標準。 [!DNL Marketo] MCP伺服器會將您的AI助理連線到[!DNL Marketo]。 它為表單、方案、智慧行銷活動、銷售機會、電子郵件、代碼片段、清單和資料夾提供100多項操作。
 
-當您的AI工具呼叫MCP伺服器時，伺服器會使用您在每個請求中提供的認證，代表您執行相對應的REST API呼叫。 您不需要安裝、部署或執行任何伺服器端軟體。
+當您的AI工具呼叫MCP伺服器時，伺服器會使用該請求中的憑證來執行相對應的REST API呼叫。 您不需要安裝、部署或執行伺服器端軟體。
 
 如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的詳細資訊，請參閱[資料資訊](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
 
 >[!IMPORTANT]
 >
->模型內容通訊協定(MCP)是一種新興的開放原始碼標準，可能會帶來安全性或可靠性風險。 Adobe MCP伺服器整合和相關檔案係依「現況」提供，不提供任何形式的保證。將MCP使用者端或伺服器連線至Adobe產品是客戶選擇的組態，客戶需負責評估任何MCP整合的安全性和適用性。 Adobe對於因設定錯誤、誤用MCP、協力廠商實作中的漏洞，或透過啟用MCP的工作流程執行的意外動作所引起的問題，概不負責。為了降低風險，Adobe鼓勵您在有效使用之前在沙箱環境中測試整合，並在確認或依賴之前，仔細檢閱及驗證所有MCP啟動的動作和回應。
+>模型內容通訊協定(MCP)是一種新興的開放原始碼標準，可能會帶來安全性或可靠性風險。Adobe MCP伺服器整合和相關檔案係依「現況」提供，不提供任何形式的保證。
+>將MCP使用者端或伺服器連線至Adobe產品是客戶選擇的組態，客戶必須負責評估任何MCP整合的安全性和適用性。Adobe對於因設定錯誤、誤用MCP、協力廠商實作中的漏洞，或透過啟用MCP的工作流程執行的意外動作所引起的問題，概不負責。
+>為了降低風險，Adobe鼓勵您在有效使用之前在沙箱環境中測試整合，並在確認或依賴之前，仔細檢閱及驗證所有MCP啟動的動作和回應。
 
 ## MCP基本需知
 
 >將MCP想成是AI應用程式的USB-C連線埠。 USB-C提供標準化方式，將裝置連線至各種周邊裝置和配件，而MCP提供標準化方式，將AI模型連線至資料來源和工具。 — [模型內容通訊協定](https://modelcontextprotocol.io/docs/getting-started/intro){target="_blank"}
 
-MCP可讓AI工具同時連線至多個外部服務。 例如，AI助理可以：
+MCP可讓AI工具同時連線至多項外部服務。 例如，AI助理可以：
 
 * 連線至文書處理器，以產生AI輔助檔案
 * 連線至動畫工具（例如Blender），以建立視覺效果
 * 連線至Adobe After Effects以進行視訊編輯
 
-MCP是通訊協定：任何應用程式都可以實作的開放標準，以向AI工具公開其資料和動作。
+任何應用程式都可以實作MCP，以公開資料和動作給AI工具。
 
 ## [!DNL Marketo Engage] MCP的功用和不功用
 
@@ -108,7 +110,7 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 
 ## 設定您的AI工具
 
-每個AI工具的設定稍有不同。 提供常用工具的連線範例。
+設定因AI工具而異。 以下小節提供常用工具的連線範例。
 
 * [克勞德案頭](#claude-desktop)
 * [游標](#cursor)
@@ -131,8 +133,8 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 * Node.js v18+
 * npm
 
-1. 開啟Claude Desktop
-1. 移至&#x200B;**設定>開發人員>編輯設定**
+1. 開啟Claude Desktop。
+1. 移至&#x200B;**設定>開發人員>編輯設定**。
 1. 將下列專案新增至`claude_desktop_config.json`：
 
 ```json
@@ -154,11 +156,12 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 }
 ```
 
-1. 重新啟動Claude Desktop
+1. 重新啟動Claude Desktop。
 
 ### 游標 {#cursor}
 
-如果您的游標MCP組態已經包含其他伺服器，請在`mcpServers`下新增`marketo`專案。下列範例顯示專案目錄中&#x200B;**[!UICONTROL Settings]** > **[!UICONTROL MCP]**&#x200B;或`.cursor/mcp.json`中的完整`mcpServers`區塊：
+如果您的游標MCP組態已經包含其他伺服器，請在`mcpServers`下新增`marketo`專案。
+下列範例顯示專案目錄中&#x200B;**[!UICONTROL Settings]** > **[!UICONTROL MCP]**&#x200B;或`.cursor/mcp.json`中的完整`mcpServers`區塊：
 
 >[!BEGINTABS]
 
@@ -230,8 +233,8 @@ claude mcp add --transport http marketo \
 
 ### OpenAI程式碼 {#codex}
 
-1. 前往「設定> MCP伺服器>新增伺服器」
-1. 新增伺服器URL： `https://marketo-mcp.adobe.io/mcp`
+1. 前往「設定> MCP伺服器>新增伺服器」。
+1. 新增伺服器URL： `https://marketo-mcp.adobe.io/mcp`。
 1. 新增驗證方法的標頭：
 
 >[!BEGINTABS]
@@ -249,7 +252,7 @@ claude mcp add --transport http marketo \
 
 >[!ENDTABS]
 
-1. 按一下儲存，即可完成此程式。
+1. 選取「儲存」以完成程式。
 
 
 ### VS程式碼與GitHub Copilot {#vscode}
@@ -311,7 +314,8 @@ claude mcp add --transport http marketo \
 
 ### 其他工具 {#other-tools}
 
-Adobe主控[!DNL Marketo] MCP伺服器，並在公用URL中公開。 任何透過可串流的HTTP傳輸支援遠端伺服器的MCP使用者端都可以連線到它。您不需要工具專用的橋接器或任何本機安裝的軟體。 如果您的工具未在上方列出，請使用下方的連線詳細資料來手動設定。
+Adobe主控[!DNL Marketo] MCP伺服器，並在公用URL中公開。任何透過可串流的HTTP傳輸支援遠端伺服器的MCP使用者端都可以連線到它。
+您不需要工具專用的橋接器或任何本機安裝的軟體。如果您的工具未在上方列出，請使用下方的連線詳細資料來手動設定。
 
 **連線詳細資料：**
 

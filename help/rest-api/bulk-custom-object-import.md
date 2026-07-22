@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 953
+source-wordcount: 736
 ht-degree: 0%
 
 ---
@@ -23,15 +23,26 @@ ht-degree: 0%
 
 [大量自訂物件匯入端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects)
 
-如果要匯入許多自訂物件記錄，最佳做法是使用大量API以非同步方式匯入它們。 這是透過匯入包含分隔記錄（逗號、定位字元或分號）的純文字檔案來完成的。 檔案可包含任意數量的記錄，但大小必須小於10MB （否則會傳回HTTP 413狀態代碼）。 檔案的內容取決於您的自訂物件定義。 第一列一律包含標題，列出要將每列的值對應到的欄位。 標題中的所有欄位名稱都必須符合API名稱（如下所述）。 其餘的列包含要匯入的資料，每列有一筆記錄。 記錄作業僅限「插入或更新」。
+使用大量API以非同步方式匯入大量自訂物件記錄。 以逗號、定位字元或分號分隔的平面檔案提供小於10 MB的記錄。 如果檔案較大，API會傳回HTTP 413狀態代碼。
+
+檔案內容取決於自訂物件定義。 第一列必須為標題，且每個標題欄位都必須符合API名稱。 其餘的每一列包含一個記錄。
+
+大量自訂物件匯入僅支援「插入或更新」記錄作業。
 
 ## 處理限制
 
-在限制內，您可以提交多個大量匯入請求。 每個請求都會當作工作新增至FIFO佇列進行處理。 最多可同時處理兩個工作。 在任何指定時間，佇列中最多允許10個工作（包括目前處理的2個）。 如果超過十個作業的上限，則會傳回「1016，匯入次數過多」錯誤。
+每個大量匯入請求都會新增為先進先出(FIFO)佇列的工作。 下列限制適用：
+
+- 最多可同時處理兩個工作。
+- 佇列中最多可有10個工作，包括正在處理的兩個工作。
+
+如果您超過10個作業的上限，API會傳回`1016, Too many imports`錯誤。
 
 ## 自訂物件範例
 
-使用大量API之前，您必須先使用Marketo管理UI來[建立自訂物件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects)。 例如，假設我們已建立具有「顏色」、「製作」、「模型」和「VIN」欄位的「Car」自訂物件。 以下是顯示自訂物件的管理員UI畫面。 您可以看到我們使用VIN欄位進行重複資料刪除。 這些API名稱會強調顯示，因為在呼叫大量API相關端點時必須使用這些名稱。
+在使用大量API之前，請使用Marketo管理UI來[建立您的自訂物件](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/create-marketo-custom-objects)。
+
+此範例使用具有`Color`、`Make`、`Model`和`VIN`欄位的`Car`自訂物件。 VIN欄位用於重複資料刪除。 管理員UI畫面會醒目顯示批次API端點所需的API名稱。
 
 ![插入自訂物件](assets/bulk-insert-co-car-1.png)
 
@@ -41,7 +52,7 @@ ht-degree: 0%
 
 ### API名稱
 
-您可以將自訂物件API名稱傳遞至[描述自訂物件](#describe)端點，以程式設計方式擷取API名稱。
+若要以程式設計方式擷取API名稱，請將自訂物件API名稱傳遞至[描述自訂物件](#describe)端點。
 
 ```text
 /rest/v1/customobjects/{apiName}/describe.json
@@ -126,7 +137,7 @@ ht-degree: 0%
 
 ### 匯入檔案
 
-現在，假設您要匯入三筆「Car」自訂物件記錄。 使用逗號分隔格式(CSV)時，檔案可能如下所示：
+下列CSV檔案包含三個`Car`自訂物件記錄：
 
 ```text
 color,make,model,vin
@@ -135,11 +146,14 @@ yellow,bmw,320i,WBA4R7C30HK896061
 blue,bmw,325i,WBS3U9C52HP970604
 ```
 
-第1行是標題，第2-4行是自訂物件資料記錄。
+第一行是標題。 第2-4行包含自訂物件資料記錄。
 
 ## 建立工作
 
-若要提出大量匯入要求，您必須在[匯入自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#tag/Identity/operation/identityUsingPOST)端點的路徑中包含自訂物件的API名稱。 您還必須包含參照匯入檔案名稱的「file」引數，以及指定匯入檔案分隔方式的「format」引數（「csv」、「tsv」或「ssv」）。
+若要建立大量匯入工作，請在[匯入自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#tag/Identity/operation/identityUsingPOST)端點的路徑中包含自訂物件API名稱。 包含下列引數：
+
+- `file`：匯入檔案的名稱。
+- `format`：檔案分隔符號格式（`csv`、`tsv`或`ssv`）。
 
 ```http
 POST /bulk/v1/customobjects/{apiName}/import.json?format=csv
@@ -178,17 +192,19 @@ blue,bmw,325i,WBS3U9C52HP970604
 }
 ```
 
-在此範例中，我們指定了「csv」格式，並將匯入檔案命名為「custom_object_import.csv」。
+此範例指定`csv`格式並命名匯入檔案`custom_object_import.csv`。
 
-請注意，在回應我們呼叫時，這裡沒有成功或失敗清單，就像您會從同步自訂物件端點返回一樣。 您而是會收到`batchId`。 這是因為呼叫為非同步呼叫，且可能傳回`status`的「已排入佇列」、「正在匯入」或「失敗」。 您應該保留batchId，以便取得匯入工作的狀態，或在完成時擷取失敗和/或警告。 batchId的有效期為七天。
+因為呼叫為非同步，所以回應包含`batchId`，而不是同步自訂物件端點傳回的個別成功和失敗。 `status`可以是`Queued`、`Importing`或`Failed`。
 
-複製大量匯入請求的簡單方法是使用命令列的curl：
+保留`batchId`以檢查匯入狀態，並在完成後擷取失敗或警告。 `batchId`的有效期限為七天。
+
+以下命令列cURL請求會提交範例作業：
 
 ```bash
 curl -X POST -i -F format='csv' -F file='@custom_object_import.csv' -F access_token='<Access Token>' <REST API Endpoint URL>/bulk/v1/customobjects/car_c/import.json
 ```
 
-其中匯入檔案「custom_object_import.csv」包含以下內容：
+在此範例中，`custom_object_import.csv`檔案包含下列資料：
 
 ```text
 color,make,model,vin
@@ -199,7 +215,7 @@ blue,bmw,325i,WBS3U9C52HP970604
 
 ## 輪詢工作狀態
 
-建立匯入工作之後，您必須查詢其狀態。 最佳實務是每5到30秒輪詢匯入工作。 若要這麼做，請在[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)端點的路徑中傳遞自訂物件的API名稱和`batchId`。
+建立匯入工作後，每5到30秒輪詢一次。 傳遞自訂物件API名稱和`batchId`（在路徑中），以至[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)端點。
 
 ```http
 GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
@@ -225,19 +241,23 @@ GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
 }
 ```
 
-此回應顯示匯入已完成，但`status`可以是：完成、已排入佇列、匯入、失敗。 如果工作已完成，則會列出已處理的列數、失敗和警告。 訊息屬性也是尋找其他工作資訊的好地方。
+此回應會顯示已完成的匯入。 `status`可以是`Complete`、`Queued`、`Importing`或`Failed`。
+
+當工作完成時，回應會列出已處理、失敗和已處理但出現警告的列數。 `message`屬性可提供額外的作業資訊。
 
 ## 失敗
 
-失敗由[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)回應中的`numOfRowsFailed`屬性所指示。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。 呼叫[取得匯入自訂物件失敗](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET)端點以取得包含失敗詳細資料的檔案。 同樣地，您必須在路徑中傳遞自訂物件API名稱和`batchId`。 如果不存在失敗檔案，則會傳回HTTP 404狀態代碼。
+[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)回應中的`numOfRowsFailed`屬性表示失敗的資料列數目。 值大於零表示發生失敗。
 
-繼續此範例，我們可以修改標題並將「vin」變更為「vin」（在逗號和「vin」之間新增空格）以強制失敗。
+將自訂物件API名稱和`batchId`在路徑中傳遞至[取得匯入自訂物件失敗](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET)端點。 端點會傳回包含失敗詳細資料的檔案。 如果不存在失敗檔案，則會傳回HTTP 404狀態代碼。
+
+若要示範失敗，請將`vin`變更為` vin`，並在逗號和`vin`之間新增空格，以修改標題。
 
 ```text
 color,make,model, vin
 ```
 
-當我們重新匯入並檢查狀態時，我們會看到此回應包含`numRowsFailed`： 3。 這表示有三個失敗。
+重新匯入檔案後，狀態回應會顯示`numRowsFailed`： 3，指出三個失敗。
 
 ```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/status.json
@@ -263,7 +283,7 @@ GET /bulk/v1/customobjects/car_c/import/{batchId}/status.json
 }
 ```
 
-現在進行「取得匯入自訂物件失敗」端點呼叫，以取得其他失敗詳細資料：
+如需詳細資訊，請呼叫Get Import Custom Object Failures端點：
 
 ```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/failures.json
@@ -276,11 +296,13 @@ yellow,bmw,320i,WBA4R7C30HK896061,missing.dedupe.fields
 blue,bmw,325i,WBS3U9C52HP970604,missing.dedupe.fields
 ```
 
-我們可以看到我們遺漏了重複資料刪除欄位`vin`。
+回應顯示遺漏重複資料刪除欄位`vin`。
 
 ## 警告
 
-在Get Import Custom Object Status回應中，`numOfRowsWithWarning`屬性表示警告。 如果numOfRowsWithWarning大於零，則該值表示警告發生的次數。 呼叫[取得匯入自訂物件警告](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectWarningsUsingGET)端點以取得含有警告詳細資料的檔案。 同樣地，您必須在路徑中傳遞自訂物件API名稱和`batchId`。 如果警告檔案不存在，則會傳回HTTP 404狀態代碼。
+「取得匯入自訂物件狀態」回應中的`numOfRowsWithWarning`屬性指出含有警告的列數。 大於零的值表示發生警告。
+
+傳遞自訂物件API名稱和`batchId` （在[取得匯入自訂物件警告](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectWarningsUsingGET)端點的路徑中）。 端點會傳回包含警告詳細資料的檔案。 如果警告檔案不存在，則會傳回HTTP 404狀態代碼。
 
 ```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/warnings.json

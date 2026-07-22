@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 730
+source-wordcount: 590
 ht-degree: 1%
 
 ---
@@ -23,13 +23,15 @@ ht-degree: 1%
 
 [具名帳戶端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts)
 
-Marketo提供了一組API，可在具名帳戶上執行CRUD作業，以與Marketo ABM搭配使用。 這些API遵循潛在客戶資料庫API的標準介面模式，提供「說明」、「建立/更新」、「刪除」和「查詢」選項。
+Marketo提供API，可在具名帳戶上執行CRUD作業，以與Marketo ABM搭配使用。 這些API遵循標準Lead Database介面模式，並提供Describe、Create/Update、Delete和Query選項。
 
-目前，透過Marketo的API提供的唯一與ABM相關的功能是針對具名帳戶的CRUD操作；銷售機會無法透過任何API連結至具名帳戶。
+目前，Marketo API僅支援針對具名帳戶的CRUD操作。 您無法透過API將銷售機會連結至具名帳戶。
 
 ## 說明
 
-說明具名帳戶會透過Marketo的API傳回與具名帳戶的使用相關的中繼資料，包括在查詢時可搜尋的有效欄位清單，以及可供API使用的所有欄位清單。 具名帳戶的`idField`一律為`marketoGUID`，唯一可用的`dedupeField`且建立金鑰為物件的`name`欄位。
+說明具名帳戶會透過Marketo API傳回使用具名帳戶的中繼資料。 回應包含有效的可搜尋欄位和API可用的所有欄位。
+
+具名帳戶的`idField`一律為`marketoGUID`。 物件的`name`欄位是唯一可用的`dedupeField`和建立金鑰。
 
 ```http
 GET /rest/v1/namedaccounts/describe.json
@@ -144,7 +146,9 @@ GET /rest/v1/namedaccounts/describe.json
 
 ### 查詢
 
-查詢具名帳戶是根據filterType和一組最多300個逗號分隔的filterValues的使用情況。 `filterType`可能是任何單一欄位，在具名帳戶的describe結果的`searchableFields`成員中傳回，而filterValues可能是該欄位資料型別的任何有效輸入。 若要從傳回特定欄位集，必須傳遞欄位引數，其中的值是要於回應中傳回的欄位清單（以逗號分隔）。 如同其他查詢選項，單一查詢頁面的記錄數上限為300，而且必須使用呼叫傳回的nextPageToken來請求集合中的其他記錄。
+使用filterType和最多300個逗號分隔的filterValues來查詢具名帳戶。 filterType可以是Describe回應的`searchableFields`成員中傳回的任何單一欄位。 每個filterValues專案都必須是欄位資料型別的有效值。
+
+若要傳回特定欄位，請使用逗號分隔的欄位清單來傳遞欄位引數。 查詢頁面最多包含300筆記錄。 若要擷取其他記錄，請使用呼叫傳回的nextPageToken。
 
 ```http
 GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
@@ -175,7 +179,13 @@ GET /rest/v1/namedaccounts.json?filterType=name&filterValues=Google,Yahoo
 
 ### 建立和更新
 
-建立和更新具名帳戶會遵循標準潛在客戶資料庫模式。 必須在POST請求的JSON內文輸入成員中傳遞記錄。 `input`是唯一必要的成員，`action`與`dedupeBy`為選用成員。 輸入中最多可包含300筆記錄。 動作可以是createOnly、updateOnly或createOrUpdate其中之一。 如果未指定，動作會預設為createOrUpdate。 dedupeBy只能在action為updateOnly時指定，且僅接受其中一個dedupeFields或idField （分別對應至name和marketoGUID欄位）。
+使用標準Lead Database模式來建立和更新具名帳戶。 在POST請求的JSON內文的輸入成員中傳遞記錄。 您最多可以包含300筆記錄。
+
+請求成員包括：
+
+- `input`：唯一需要的成員。
+- `action`：可接受createOnly、updateOnly或createOrUpdate的選用成員。 預設值為createOrUpdate。
+- `dedupeBy`：選擇性成員僅在動作為updateOnly時可用。 它接受dedupeFields或idField，兩者分別對應至name和marketoGUID欄位。
 
 ```http
 POST /rest/v1/namedaccounts.json
@@ -223,17 +233,19 @@ Content-Type: application/json
 
 ### 欄位
 
-具名帳戶物件包含一組欄位。 每個欄位定義都由一組描述該欄位的屬性組成。 屬性的範例為顯示名稱、API名稱和dataType。 這些屬性統稱為中繼資料。
+具名帳戶物件包含由顯示名稱、API名稱和dataType等屬性定義的欄位。 這些屬性統稱為中繼資料。
 
-下列端點可讓您查詢公司物件上的欄位。 這些API要求擁有的API使用者必須具備讀寫結構描述標準欄位或讀寫結構描述自訂欄位許可權之一或兩者的角色。
+公司物件上的下列端點查詢欄位。 API使用者必須具有具有讀寫結構描述標準欄位許可權和/或讀寫結構描述自訂欄位許可權的角色。
 
 ### 查詢欄位
 
-查詢具名帳戶欄位簡單明瞭。 您可以依API名稱查詢單一具名帳戶欄位，或查詢所有公司欄位集。
+依API名稱查詢一個具名帳戶欄位或擷取所有公司欄位。
 
 #### 依名稱
 
-[依名稱取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上單一欄位的中繼資料。 必要的fieldApiName路徑引數會指定欄位的API名稱。 回應類似於「描述具名帳戶」端點，但包含其他中繼資料，例如isCustom屬性，其代表欄位是否為自訂欄位。
+[依名稱取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上某個欄位的中繼資料。 必填的fieldApiName路徑引數指定欄位的API名稱。
+
+回應類似於「描述具名帳戶」回應，但包含其他中繼資料。 例如，isCustom屬性會指出欄位是否為自訂欄位。
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
@@ -261,7 +273,9 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### 瀏覽
 
-[取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上所有欄位的中繼資料。 依預設，最多會傳回300筆記錄。 您可以使用batchSize查詢引數來減少此數目。 如果moreResult屬性為true，則表示有更多結果可用。 繼續呼叫此端點，直到moreResult屬性傳回false （表示沒有可用的結果）。 從此API傳回的nextPageToken一律應用於此呼叫的下一個反複專案。
+[取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上所有欄位的中繼資料。 依預設，它最多會傳回300筆記錄。 使用batchSize查詢引數來減少此數目。
+
+如果moreResult屬性為true，則有更多結果可用。 繼續使用傳回的nextPageToken呼叫端點，直到moreResult為false。
 
 ```http
 GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
@@ -340,7 +354,9 @@ GET /rest/v1/namedaccounts/schema/fields.json?batchSize=5
 
 ### 刪除
 
-刪除是透過JSON POST要求完成，並擁有必要的輸入成員以及選用的deleteBy成員。 deleteBy可能是「dedupeFields」或「idField」之一，分別對應至name或marketoGUID，如果未設定，將預設為dedupeFields。 輸入成員接受最多300筆記錄的陣列，每個包含一名成員，根據deleteBy的設定，可以是name或marketoGUID。
+傳送具有JSON內文的POST要求，以刪除具名帳戶。 請求包含必要的輸入成員和選用的deleteBy成員。
+
+deleteBy成員接受「dedupeFields」或「idField」，分別對應至name和marketoGUID。 如果未設定，預設為dedupeFields。 輸入成員最多可接受300筆記錄。 根據deleteBy設定，每個記錄都包含name或marketoGUID。
 
 ```http
 POST /rest/v1/namedaccounts/delete.json
@@ -398,6 +414,6 @@ Content-Type: application/json
 
 ## 逾時
 
-- 已命名的帳戶端點的逾時為30秒，除非以下說明
-   - 同步已命名帳戶： 120秒
-   - 刪除具名帳戶：60秒
+- 除非另有註明，具名帳戶端點的逾時值為30秒。
+- 同步具名帳戶的逾時時間為120秒。
+- 刪除具名帳戶的逾時時間為60秒。

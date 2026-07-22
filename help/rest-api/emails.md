@@ -14,24 +14,36 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 2301
+source-wordcount: 1813
 ht-degree: 1%
 
 ---
 
 # 電子郵件
 
-[電子郵件端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails)提供了一整組REST端點以操控電子郵件資產。
+[電子郵件端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails)
 
-注意：如果您使用[Marketo預測性內容](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content)，如果下列端點參考包含預測性內容的電子郵件，則會失敗： [取得電子郵件內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)、[更新電子郵件內容區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST)、[核准電子郵件草稿](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/approveDraftUsingPOST)。 呼叫會傳回709錯誤碼以及對應的錯誤訊息。
+使用電子郵件REST端點來查詢和管理電子郵件資產。
+
+如果電子郵件包含[Marketo預測性內容](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/predictive-content/working-with-predictive-content/understanding-predictive-content)，則下列端點會失敗，錯誤碼為709，並顯示對應的錯誤訊息：
+
+- [取得電子郵件內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)
+- [更新電子郵件內容區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST)
+- [核准電子郵件草稿](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/approveDraftUsingPOST)
 
 ## 查詢
 
-電子郵件的查詢模式與範本相同，允許查詢[依ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET)和[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET)，以及根據資料夾使用瀏覽和依名稱API進行篩選。
+電子郵件支援與範本相同的查詢模式：識別碼[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET)的[、名稱](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET)的以及[瀏覽的](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET)。 by-name和瀏覽端點也支援資料夾篩選。
 
-注意：如果電子郵件是使用[A/B測試](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test)的電子郵件程式的一部分，則無法使用下列端點查詢該電子郵件： [依ID取得電子郵件](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET)、[依名稱取得電子郵件](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET)、[取得電子郵件](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET)。 呼叫代表成功，但將包含下列警告：「找不到符合指定搜尋條件的資產。」
+如果電子郵件屬於使用[A/B測試](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test)的電子郵件程式，則下列端點不會傳回該電子郵件：
+
+- [依ID取得電子郵件](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByIdUsingGET)
+- [依名稱取得電子郵件](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailByNameUsingGET)
+- [取得電子郵件](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailUsingGET)
+
+通話表示成功，但包含警告`No assets found for the given search criteria.`
 
 ### 依ID
 
@@ -95,7 +107,7 @@ GET /rest/asset/v1/email/1351.json
 
 ### 依名稱
 
-若是依名稱，您可以選擇傳遞資料夾以僅在該資料夾中搜尋。
+依名稱查詢時，可選擇傳遞資料夾，以將搜尋限制在該資料夾。
 
 ```http
 GET /rest/asset/v1/email/byName.json?name=My Email&folder={"id":1056,"type"="Folder"}
@@ -162,7 +174,13 @@ GET /rest/asset/v1/email/byName.json?name=My Email&folder={"id":1056,"type"="Fol
 
 ### 瀏覽
 
-瀏覽資料夾的運作方式與其他資產API瀏覽端點類似，並且允許在`status`、`folder`、`earliestUpdatedAt`/`latestUpdatedAt`、`maxReturn`和`offset`上進行選擇性篩選。 `status`已核准或草稿。 `folder`是包含`id`和`type`的JSON物件。 `maxReturn`是限制結果數目的整數（預設為20，最大為200），而`offset`是可與`maxReturn`搭配使用以讀取大型結果集的整數（預設為0）。
+電子郵件瀏覽遵循標準Asset API模式，並支援這些選擇性篩選器：
+
+- `status`： `Approved`或`Draft`。
+- `folder`：包含`id`和`type`的JSON物件。
+- `earliestUpdatedAt`和`latestUpdatedAt`：更新時間範圍。
+- `maxReturn`：要傳回的結果數。 預設值為20，最大值為200。
+- `offset`：與`maxReturn`搭配使用以分頁瀏覽大型結果集。 預設值為0。
 
 ```http
 GET /rest/asset/v1/emails.json?maxReturn=3&folder={"id":341,"type":"Folder"}
@@ -229,7 +247,7 @@ GET /rest/asset/v1/emails.json?maxReturn=3&folder={"id":341,"type":"Folder"}
 
 ## 查詢內容
 
-您可以透過查詢電子郵件的內容來[擷取電子郵件的可用可編輯區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)，並選擇性地篩選狀態以取得已核准或草稿版本的區段。
+若要[擷取電子郵件的可編輯區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)，請查詢其內容。 選擇性地依狀態篩選，以從「已核准」或「草擬」版本傳回區段。
 
 ```http
 GET /rest/asset/v1/email/1356/content.json
@@ -260,11 +278,11 @@ GET /rest/asset/v1/email/1356/content.json
 }
 ```
 
-區段可能會傳回為具有dynamicContent型別。 如需詳細資訊，請參閱[動態內容](dynamic-content.md)區段。
+區段可以有`dynamicContent`型別。 如需詳細資訊，請參閱[動態內容](dynamic-content.md)。
 
 ## 查詢副本欄位
 
-您可以呼叫[取得電子郵件副本欄位](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailCCFieldsUsingGET)端點，擷取目標執行個體中啟用電子郵件副本的欄位集。
+呼叫[取得電子郵件副本欄位](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailCCFieldsUsingGET)端點以擷取目標執行個體中啟用電子郵件副本的欄位。
 
 ```http
 GET /rest/asset/v1/email/ccFields.json
@@ -295,9 +313,21 @@ GET /rest/asset/v1/email/ccFields.json
 
 ## 建立和更新
 
-[電子郵件是根據來源範本所建立](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/createEmailUsingPOST)，並包含衍生自該範本中每個獨立HTML元素的可編輯區段清單，其中包含「mktEditable」類別和唯一id屬性。 使用API建立電子郵件時，會根據範本以及任何傳遞的其他中繼資料建立記錄。 成功建立電子郵件呼叫需要下列引數：名稱、範本、資料夾。
+[從來源範本建立電子郵件](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/createEmailUsingPOST)。 電子郵件的可編輯區段來自範本的HTML元素，這些元素具有`mktEditable`類別和唯一的`id`屬性。
 
-建立時可選擇下列引數： `subject`、`fromName`、`fromEmail`、`replyEmail`、`operational`、`isOpenTrackingDisabled`。 如果未設定，`subject`將會是空的，`fromName`、`fromEmail`和`replyEmail`將會設定為執行個體預設值，而`operational`和`isOpenTrackingDisabled`將會是false。 `isOpenTrackingDisabled`決定傳送時電子郵件中是否包含開啟追蹤畫素。
+「建立電子郵件」呼叫需要下列引數：
+
+- `name`：電子郵件名稱。
+- `template`：來源範本。
+- `folder`：父資料夾。
+
+選擇性建立引數是`subject`、`fromName`、`fromEmail`、`replyEmail`、`operational`和`isOpenTrackingDisabled`。 省略這些引數時，將會套用下列預設值：
+
+- `subject`是空的。
+- `fromName`、`fromEmail`和`replyEmail`使用執行個體預設值。
+- `operational`和`isOpenTrackingDisabled`是`false`。
+
+`isOpenTrackingDisabled`引數會判斷傳送的電子郵件是否包含開啟追蹤畫素。
 
 ```http
 POST /rest/asset/v1/emails.json
@@ -363,7 +393,7 @@ name=My New Email 02 - deverly&folder={"id":1017,"type":"Program"}&template=24&d
 }
 ```
 
-[可以依ID更新電子郵件](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailContentUsingPOST)記錄。 這允許更新電子郵件的說明或名稱。
+若要[更新電子郵件](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailContentUsingPOST)，請傳遞其ID並更新電子郵件的說明或名稱。
 
 ```http
 POST /rest/asset/v1/email/{id}.json
@@ -431,7 +461,9 @@ description=This is an Email&name=Updated Email
 
 ### 內容區段、型別和更新
 
-除了主旨、fromName、fromEmail和replyEmail之外，電子郵件的每個區段內容都必須個別更新，這些更新是使用[更新電子郵件內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailContentUsingPOST)端點來更新。 使用此端點時，這些值也可以設定為使用動態內容而不是靜態內容。 每個引數都是型別/值JSON物件，其中型別是&quot;Text&quot;或&quot;DynamicContent&quot;，值是適當的文字值，或用於動態內容的分段ID。 資料以POST x-www-form-urlencoded傳遞，而非以JSON傳遞。  isOpenTrackingDisabled可設定為更新電子郵件內容
+個別更新每個電子郵件內容區段。 使用[更新電子郵件內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailContentUsingPOST)端點來更新`subject`、`fromName`、`fromEmail`和`replyEmail`。 此端點也可讓您設定這些值，以使用動態內容而非靜態內容。
+
+每個引數都是型別/值JSON物件。 型別是`Text`或`DynamicContent`。 此值是動態內容所使用的對應文字或分段ID。 以POST形式與`application/x-www-form-urlencoded`傳送資料，而非以JSON傳送。 您也可以使用更新電子郵件內容來設定`isOpenTrackingDisabled`。
 
 ```http
 POST /rest/asset/v1/email/{id}/content.json
@@ -459,11 +491,19 @@ subject={"type":"Text","value":"Gettysburg Address"}&fromEmail={"type":"Text","v
 }
 ```
 
-如果設定區段以使用動態內容，則必須透過「取得電子郵件內容」呼叫擷取區段ID。
+若要設定區段以使用動態內容，請先使用「取得電子郵件內容」擷取其區段ID。
 
 ### 更新可編輯區段
 
-可編輯區段會依其個別htmlId更新。 只有電子郵件的ID和區段的htmlId才需要作為路徑引數，而type、value和textValue則是選用專案。 型別可以是「Text」、「DynamicContent」或「Snippet」其中之一，並會影響值中傳遞的內容。 如果型別是文字，則值是包含區段HTML內容的字串。 如果是DynamicContent，則為具有三個成員的JSON區塊；型別（將為「DynamicContent」）、分段（用於內容的區段ID）以及預設（包含區段的預設HTML內容的字串）。 選用的textValue引數是包含區段文字版本的字串。 資料以POST x-www-form-urlencoded傳遞，而非以JSON傳遞。
+依其`htmlId`更新可編輯的區段。 電子郵件`id`和區段`htmlId`是必要的路徑引數。 `type`、`value`和`textValue`引數為選用引數。
+
+`type`決定`value`的內容：
+
+- `Text`： `value`是包含區段HTML內容的字串。
+- `DynamicContent`： `value`是JSON物件，其中包含`type`設定為`DynamicContent`、`segmentation`設定為分段ID，以及`default`設定為預設HTML內容。
+- `Snippet`：支援的區段型別。
+
+選用的`textValue`引數包含區段的文字版本。 以POST形式與`application/x-www-form-urlencoded`傳送資料，而非以JSON傳送。
 
 ```http
 POST /rest/asset/v1/email/{id}/content/{htmlId}.json
@@ -491,21 +531,23 @@ type=Text&value=<h1>Hello World!</h1>&textValue=Hello World!
 }
 ```
 
-注意：如果電子郵件中內嵌的程式碼片段停用「自動複製至文字」 ，接著會更新程式碼片段的HTML值，然後更新電子郵件中其他區段的文字版本，然後電子郵件的文字版本會包含反映程式碼片段HTML更新值的文字，而非停用「自動複製」時所預期的先前版本。
+如果內嵌程式碼片段的「自動複製到文字」功能已停用，則更新HTML程式碼片段然後更新其他區段的文字版本，會導致電子郵件文字版本反映更新的程式碼片段HTML。 當自動複製停用時，它無法如預期保留先前的程式碼片段文字。
 
 ## 模組
 
-在電子郵件編輯器1.0中，模組是您在範本中定義的電子郵件區段。 模組可包含任何元素、變數和其他HTML內容的組合，如[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules)所述。 Marketo提供一組用於管理電子郵件中模組的API。 針對需要HTTP POST方法的模組相關端點，本文會格式化為「application/x-www-form-urlencoded」（而非JSON）。
+在電子郵件編輯器1.0中，模組是範本中定義的電子郵件區段。 模組可以包含元素、變數及其他HTML內容，如[電子郵件範本語法](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Modules)中所述。
 
-大部分模組相關端點都需要「moduleId」做為路徑引數。 這是說明模組的字串。 [Get Email Content](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)端點傳回moduleIds為「htmlId」屬性（請參閱下面的[查詢](#modules_query)區段）。
+使用模組API來管理電子郵件中的模組。 針對使用HTTP POST的模組端點，將要求內文格式化為`application/x-www-form-urlencoded`，而非JSON。
+
+大部分模組端點都需要`moduleId`做為路徑引數。 [取得電子郵件內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)端點傳回`htmlId`屬性中的模組ID。 請參閱[查詢](#modules_query)。
 
 ### 查詢
 
-若要使用模組，您必須指定唯一識別模組的moduleId引數。 您也可以指定模組索引引數，此引數是說明電子郵件中模組順序的整數。
+若要使用模組，請指定可唯一識別模組的`moduleId`。 您可能還需要整數模組索引，以說明模組在電子郵件中的順序。
 
-[將電子郵件ID指定為路徑引數，以擷取moduleId及其索引](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)。
+若要[擷取模組ID及其索引](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailContentByIdUsingGET)，請將電子郵件ID指定為路徑引數。
 
-以下範例根據範本選擇器UI的「入門範本」區段中的「骨架」範本，查詢1.0電子郵件。
+下列範例會根據範本選擇器UI的[入門範本]區段中的`Skeleton`範本，來查詢1.0電子郵件。
 
 ```http
 GET /rest/asset/v1/email/{moduleId}/content.json
@@ -716,9 +758,9 @@ GET /rest/asset/v1/email/{moduleId}/content.json
 }
 ```
 
-結果陣列中包含的元素說明模組和HTML元素混合的情況。 模組元素包含「contentType」：「Module」屬性和「index」屬性。 moduleId儲存在「htmlId」屬性中。
+結果陣列同時包含模組和HTML元素說明。 模組元素有`Module`的`contentType`且包含`index`。 `htmlId`屬性包含`moduleId`。
 
-繼續以上的「骨架」範例，下表包含電子郵件中所包含的moduleId及其對應索引的摘要。
+在`Skeleton`範例中，下表將每個`moduleId`對應至電子郵件中的索引。
 
 | moduleId （亦即htmlId） | 索引 |
 | --- | --- |
@@ -733,7 +775,7 @@ GET /rest/asset/v1/email/{moduleId}/content.json
 
 #### 新增
 
-[從使用中的電子郵件範本中所包含的其中一個現有模組進行選取，以將模組](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/addModuleUsingPOST)新增至電子郵件。 若要這麼做，請指定電子郵件ID和moduleId作為路徑引數。 索引查詢引數為必要項，可決定電子郵件中模組的順序。 如果索引值超過最大的現有索引值，則模組會附加至電子郵件。
+若要[新增模組](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/addModuleUsingPOST)，請從電子郵件的範本中選取現有的模組。 將電子郵件ID和`moduleId`指定為路徑引數。 必要的`index`查詢引數會決定模組的位置。 如果`index`超過最大的現有索引，API會將模組附加至電子郵件。
 
 ```http
 POST /rest/asset/v1/email/{id}/content/{moduleId}/add.json
@@ -763,7 +805,7 @@ index=10
 
 #### 刪除
 
-[指定電子郵件ID，並將moduleId指定為路徑引數，以刪除模組](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/deleteModuleUsingPOST)。
+若要[刪除模組](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/deleteModuleUsingPOST)，請指定電子郵件識別碼和`moduleId`作為路徑引數。
 
 ```http
 POST /rest/asset/v1/email/{id}/content/{moduleId}/delete.json
@@ -783,9 +825,9 @@ POST /rest/asset/v1/email/{id}/content/{moduleId}/delete.json
 }
 ```
 
-#### 重複
+#### 複製
 
-[指定電子郵件ID和moduleId作為路徑引數，以複製模組](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/duplicateModuleUsingPOST)。 此呼叫會複製模組，將其置於原始模組下方，並向下按壓其他模組。
+若要[複製模組](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/duplicateModuleUsingPOST)，請指定電子郵件識別碼和`moduleId`作為路徑引數。 API會將重複專案放置在原始模組下方，並將剩餘模組往下移。
 
 ```http
 POST /rest/asset/v1/email/{id}/content/{moduleId}/duplicate.json
@@ -807,7 +849,7 @@ POST /rest/asset/v1/email/{id}/content/{moduleId}/duplicate.json
 
 #### 重新排列
 
-[重新排列模組](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/rearrangeModulesUsingPOST)陣列，其中包含所有模組，以及每個模組在電子郵件中所需的位置。 每個陣列元素包含下列格式的JSON物件： { &quot;index&quot;： &lt;_index_>， &quot;moduleId&quot;： &quot;&lt;_moduleId_>&quot; }，其中&lt;_index_>是以零為主的模組順序編號，而&lt;_moduleId_>是moduleId。
+若要[重新排列模組](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/rearrangeModulesUsingPOST)，請提交包含每個模組及其所需位置的陣列。 每個陣列元素都是格式為`{ "index": <_index_>, "moduleId": "<_moduleId_>" }`的JSON物件，其中`<_index_>`是以零為主的模組位置，`<_moduleId_>`是模組識別碼。
 
 ```http
 POST /rest/asset/v1/email/{id}/content/rearrange.json
@@ -837,7 +879,7 @@ positions=[ {"index": 0, "moduleId": "free-image"}, {"index": 1, "moduleId": "ti
 
 #### 重新命名
 
-[透過name引數傳遞新名稱，重新命名電子郵件上的模組](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/renameUsingPOST)。 將電子郵件ID和moduleId （現有名稱）指定為路徑引數。
+若要[重新命名模組](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/renameUsingPOST)，請在`name`引數中傳遞新名稱。 指定電子郵件識別碼和現有的`moduleId`作為路徑引數。
 
 ```http
 POST /rest/asset/v1/email/{id}/content/{moduleId}/rename.json
@@ -867,13 +909,13 @@ name=MarketoVideo
 
 ## 變數
 
-在電子郵件編輯器1.0中，變數可用來儲存電子郵件中元素的值。 每個變數的定義方式，都是將Marketo專屬語法新增至您的HTML，如[此處](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables)所述。 Marketo提供一組管理電子郵件中變數的API。
+在電子郵件編輯器1.0中，變數會儲存電子郵件元素的值。 依照[電子郵件範本語法](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/email-editor-2/email-template-syntax#EmailTemplateSyntax-Variables)的說明，將Marketo專屬語法新增至HTML以定義每個變數。 使用變數API來管理電子郵件中的變數。
 
 ### 查詢
 
-[將電子郵件ID指定為路徑引數，以擷取電子郵件的變數](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailVariablesUsingGET)。
+若要[擷取變數](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailVariablesUsingGET)，請將電子郵件識別碼指定為路徑引數。
 
-以下範例根據範本選擇器UI的「入門範本」區段中的「骨架」範本，查詢1.0電子郵件。
+下列範例會根據範本選擇器UI的[入門範本]區段中的`Skeleton`範本，來查詢1.0電子郵件。
 
 ```http
 GET /rest/asset/v1/email/{id}/variables.json
@@ -1085,15 +1127,15 @@ GET /rest/asset/v1/email/{id}/variables.json
 }
 ```
 
-結果陣列包含描述變數的元素，每個元素一個變數。
+結果陣列中的每個元素都說明一個變數。
 
-變數可在整個電子郵件設定全域範圍，或在本機設定特定模組的範圍。 任一範圍的變數包含「name」、「value」和「moduleScope」屬性。 「moduleScope」屬性是布林值，其中false表示全域，true表示本機。 區域變數包含額外的「moduleId」屬性，指定了與變數相關聯的模組。
+變數可以有整個電子郵件的全域範圍，或模組的本機範圍。 每個變數都包含`name`、`value`和`moduleScope`屬性。 全域變數的布林值`moduleScope`屬性是`false`，而區域變數是`true`。 區域變數也包含其關聯模組的`moduleId`。
 
 #### 更新
 
-[透過value引數傳遞新的所需值，以更新電子郵件中的變數](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateVariableUsingPOST)。 將電子郵件ID和變數名稱指定為路徑引數。 如果您要更新模組變數，則必須傳遞moduleId引數，以指定與變數相關聯的模組。
+若要[更新變數](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateVariableUsingPOST)，請在`value`引數中傳遞新值。 將電子郵件ID和變數名稱指定為路徑引數。 更新模組變數時，也傳遞`moduleId`以識別關聯的模組。
 
-在下列範例中，我們將名為「hrBorderSize」的全域變數更新為1的值。
+下列範例會更新全域變數`hrBorderSize`。
 
 ```http
 POST /rest/asset/v1/email/{id}/variable/{name}.json
@@ -1123,7 +1165,7 @@ value=2
 }
 ```
 
-在以下範例中，我們將名為「ctaLinkText」的本機變數更新為moduleId「CTA」中的「Click this button！」值。
+下列範例會將模組`CTA`中的本機變數`ctaLinkText`更新為`Click this button!`。
 
 ```http
 POST /rest/asset/v1/email/1032/variable/ctaLinkText.json
@@ -1156,11 +1198,11 @@ value=Click this button!&moduleId=CTA
 
 ## 核准
 
-電子郵件遵循核准資產記錄的標準模式。 您可以核准草稿、取消核准已核准的版本，以及透過其各自的端點捨棄電子郵件的現有草稿。
+電子郵件會遵循標準資產核准生命週期。 個別的端點可讓您核准草稿、取消核准已核准的版本，或捨棄現有的草稿。
 
 ### 核准
 
-呼叫核准端點時，系統會根據Marketo電子郵件規則來驗證電子郵件。 在核准電子郵件之前，必須填入`from name`、`from email`、`reply to email`和`subject`。
+核准端點會根據Marketo電子郵件規則驗證電子郵件。 `from name`、`from email`、`reply to email`和`subject`必須在核准前填入。
 
 ```http
 POST /rest/asset/v1/email/{id}/approveDraft.json
@@ -1182,7 +1224,7 @@ POST /rest/asset/v1/email/{id}/approveDraft.json
 
 #### 取消核准
 
-`unapprove`作業只能在核准的電子郵件上執行。
+只對核准的電子郵件使用`unapprove`作業。
 
 ```http
 POST /rest/asset/v1/email/{id}/unapprove.json
@@ -1204,7 +1246,7 @@ POST /rest/asset/v1/email/{id}/unapprove.json
 
 #### 捨棄
 
-電子郵件必須處於草稿狀態才能捨棄。 無法捨棄已核准的電子郵件。
+您只能捨棄處於草稿狀態的電子郵件。 您無法捨棄已核准的電子郵件。
 
 ```http
 POST /rest/asset/v1/email/{id}/discardDraft.json
@@ -1246,7 +1288,13 @@ POST /rest/asset/v1/email/{id}/delete.json
 
 ## 原地複製
 
-Marketo提供複製電子郵件的簡單方法。 此類請求是透過application/x-www-url-urlencoded POST發出，並使用兩個必要的引數（名稱和資料夾），即含有ID和型別的內嵌JSON物件。 description也是選用引數。 如果不存在核准的版本，則會複製草稿版本。
+若要複製電子郵件，請使用下列引數傳送`application/x-www-form-urlencoded` POST要求：
+
+- `name`：必要。 複製的電子郵件名稱。
+- `folder`：必要。 內嵌JSON物件，具有`id`和`type`。
+- `description`：選擇性。 複製的電子郵件說明。
+
+如果來源電子郵件沒有核准的版本，端點會複製草稿版本。
 
 ```http
 POST /rest/asset/v1/email/{id}/clone.json
@@ -1310,7 +1358,10 @@ name=Clone of Social Sharing in Email&folder={"id":239,"type":"Folder"}&descript
 
 ## 傳送範例
 
-您可以透過api觸發範例電子郵件，以傳送至emailAddress查詢引數。 您也可以選擇新增leadId引數，以模擬資料庫中的特定銷售機會，以及新增textOnly引數，以僅傳送電子郵件的文字版本。
+若要傳送範例電子郵件，請在`emailAddress`查詢引數中指定收件者。 您也可以包含下列選用引數：
+
+- `leadId`：從資料庫模擬特定銷售機會。
+- `textOnly`：只傳送電子郵件的文字版本。
 
 ```http
 POST /rest/asset/v1/email/{id}/sendSample.json
@@ -1340,11 +1391,13 @@ emailAddress=abe@testmail.com&textOnly=true
 
 ## 預覽電子郵件
 
-Marketo提供[取得電子郵件完整內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailFullContentUsingGET)端點，以擷取將傳送給收件者的電子郵件即時預覽。 此端點只能用於1.0版本的電子郵件。 有一個必要的引數id path引數，這是您要預覽的電子郵件資產的id。 有三個額外的選用查詢引數：
+使用[取得電子郵件完整內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/getEmailFullContentUsingGET)端點來擷取收件者將會收到之電子郵件的即時預覽。 此端點僅支援1.0版本的電子郵件。
 
-- 狀態：接受「草稿」或「已核准」值，若已核准，預設值為已核准版本；若未核准，預設值為草稿
-- 型別：接受「文字」或「HTML」，並預設為HTML
-- 銷售機會ID：。 接受潛在客戶的整數ID。 設定後，會預覽電子郵件，就像是由指定的潛在客戶所收到
+必要的`id`路徑引數可識別要預覽的電子郵件。 端點也接受三個選用的查詢引數：
+
+- `status`：接受`draft`或`approved`。 預設值是已核准電子郵件的已核准版本，或未核准電子郵件的草稿版本。
+- `type`：接受`Text`或`HTML`。 預設值為 `HTML`。
+- `leadId`：接受潛在客戶的整數ID，並預覽電子郵件，就像該潛在客戶已收到電子郵件一樣。
 
 ```http
 GET /rest/asset/v1/email/{id}/fullContent.json
@@ -1368,9 +1421,13 @@ GET /rest/asset/v1/email/{id}/fullContent.json
 
 ## 取代HTML
 
-Marketo提供[更新電子郵件完整內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/createEmailFullContentUsingPOST)端點來取代電子郵件資產的整個內容。 此端點只能用於1.0版本的電子郵件，這些電子郵件具有用於它們的UI「編輯代碼」功能，並且與其父範本的關係已中斷。 此API主要適用於已復製為程式一部分的資產，且無法使用標準內容端點進行修改。 不支援包含動態內容的電子郵件。 此外，如果您嘗試在關係完整的電子郵件上取代HTML，則會傳回錯誤。
+使用[更新電子郵件完整內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/createEmailFullContentUsingPOST)端點來取代電子郵件資產中的所有內容。 此端點僅支援已在UI中使用編輯程式碼函式，且不再連結至其上層範本的1.0版電子郵件。
 
-此端點必須是Content-Type ： multipart/form-data，其中路徑中有id引數、電子郵件的id，以及內文中有一個引數，內容才會成為完整HTML電子郵件檔案，且內容型別為「text/html」。 格式錯誤的HTML檔案會發出警告，但可能不允許核准，而檔案中包含JavaScript和/或`<script>`標籤會導致呼叫失敗並發出錯誤。
+此端點主要適用於復製為計劃一部分的資產，無法使用標準內容端點變更。 不支援含有動態內容的電子郵件。 如果電子郵件仍連結至其範本，端點會傳回錯誤。
+
+在路徑中傳送包含電子郵件`id`的`multipart/form-data`請求。 要求內文必須包含一個`content`引數，且此引數必須包含完整的HTML電子郵件檔案以及內容型別`text/html`。
+
+格式錯誤的HTML檔案會產生警告並可能阻止核准。 包含JavaScript或`<script>`標籤會造成呼叫失敗並出現錯誤。
 
 ```http
 POST /rest/asset/v1/email/{id}/fullContent.json

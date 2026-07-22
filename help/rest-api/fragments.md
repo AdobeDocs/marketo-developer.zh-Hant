@@ -3,9 +3,9 @@ title: 片段
 feature: REST API
 description: 使用Marketo Asset REST API來查詢、建立、更新、複製、刪除、核准和檢查片段的相依性。
 exl-id: 9dd532d1-1dd7-4581-86dd-1943fab66cbb
-source-git-commit: e2606d6cb12c572603ff069617de58417e43ca63
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: '272'
+source-wordcount: '282'
 ht-degree: 9%
 
 ---
@@ -61,10 +61,18 @@ GET /rest/asset/v2/fragment/{id}
 
 ### 篩選器
 
-篩選器端點支援在工作區中搜尋，以及使用其他查詢引數縮小結果。 `workspaceId`為必要項。
+篩選器端點會在工作區中搜尋。 `workspaceId`引數為必要項。
 
-todo：讓此為表格
-支援的篩選器包括`folderId`、重複`folderIds`、重複`status`、`pageIndex`、`pageSize`、`createdBy`、`createdAtStart`、`createdAtEnd`、`modifiedBy`、`modifiedAtStart`、`modifiedAtEnd`、`name`、`fragmentType`、`sortKey`、`sortOrder`、`isCreatedByMe`、`isModifiedByMe`、`scriptEngine`、`isValueNonNullable`和`includeArchived`。
+使用這些可選引數來縮小或組織結果：
+
+* 資料夾： `folderId`或重複的`folderIds`
+* 狀態：重複的`status`
+* 分頁： `pageIndex`和`pageSize`
+* 建立： `createdBy`、`createdAtStart`、`createdAtEnd`和`isCreatedByMe`
+* 修改： `modifiedBy`、`modifiedAtStart`、`modifiedAtEnd`和`isModifiedByMe`
+* 片段屬性： `name`、`fragmentType`、`scriptEngine`和`isValueNonNullable`
+* 排序： `sortKey`和`sortOrder`
+* 已封存的內容： `includeArchived`
 
 #### 請求
 

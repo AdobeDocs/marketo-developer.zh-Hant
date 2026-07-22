@@ -8,7 +8,7 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
 source-wordcount: 44
 ht-degree: 9%
@@ -17,4 +17,4 @@ ht-degree: 9%
 
 # 預測內容
 
-預測內容JavaScript API可擴充平台的預測內容。 它允許透過[Rich Media Recommendations](rich-media-recommendation.md)動態自訂網頁。
+預測內容JavaScript API使用[多媒體建議](rich-media-recommendation.md)動態自訂網頁。 使用API來擴充平台的預測性內容功能。

@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 364
+source-wordcount: 290
 ht-degree: 3%
 
 ---
@@ -19,7 +19,9 @@ ht-degree: 3%
 
 [權杖端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)
 
-Marketo中的Token是類似短程式碼的特殊字串，在執行階段會由單獨的資料片段取代。 Marketo中有多種型別的代號可用，但只有「我的代號」可以透過API編輯。 我的Token是位於特定資料夾或程式本機的子Token。 Token可透過API讀取、建立和刪除。
+代號是Marketo在執行階段以其他資料取代的字串。 API只能編輯「我的權杖」，這些權杖是資料夾或程式本機的子權杖。
+
+使用Token API來讀取、建立、更新和刪除My Token。
 
 ## 資料類型
 
@@ -34,11 +36,11 @@ Marketo中的Token是類似短程式碼的特殊字串，在執行階段會由�
 | sfdc行銷活動 | 用於Salesforce行銷活動管理整合 |
 | 文字 | 文字字串 |
 
-透過API建立Token時，只有這些資料型別可以使用。
+建立Token時，API僅支援這些資料型別。
 
 ## 查詢
 
-[依資料夾識別碼取得權杖](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/getTokensByFolderIdUsingGET)會將`id`當成程式或資料夾型別的路徑引數。 此型別由`folderType`引數指定。
+[依資料夾識別碼取得權杖](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/getTokensByFolderIdUsingGET)會以程式或資料夾識別碼作為路徑引數。 使用`folderType`引數指定型別。
 
 ```http
 GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
@@ -71,7 +73,9 @@ GET /rest/asset/v1/folder/{id}/tokens.json?folderType=Folder
 
 ## 建立和更新
 
-[建立Token](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/addTokenTOFolderUsingPOST)端點會建立Token，或如果存在，會以提交的值更新它們。 代號會在資料夾或方案的內容中建立。 必要的`id`路徑引數為與權杖關聯的資料夾識別碼。 `name`、`type`、`value`和`folderType`都是權杖的必要引數。 資料以POST x-www-form-urlencoded傳遞，而非以JSON傳遞。 權杖的`name`欄位不可超過50個字元。
+[建立Token](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/addTokenTOFolderUsingPOST)端點會建立Token或使用提交的值更新現有的Token。 Token屬於資料夾或程式。
+
+`id`路徑引數可識別父資料夾。 需要`name`、`type`、`value`和`folderType`引數。 以POST `x-www-form-urlencoded`傳遞資料，而非以JSON傳遞。 語彙基元`name`不能超過50個字元。
 
 ```http
 POST /rest/asset/v1/folder/{id}/tokens.json
@@ -112,7 +116,9 @@ name=April Fools&type=date&value=2015-04-01&folderType=Folder
 
 ## 刪除
 
-[依名稱刪除Token](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/deleteTokenByNameUsingPOST)會將ID當做Program或Folder型別的路徑引數。 此型別由`folderType`引數指定。 系統會根據其父資料夾、`name`和權杖的`type`刪除權杖，每個都是必要專案。 資料以POST x-www-form-urlencoded傳遞，而非以JSON傳遞。
+[依名稱刪除Token](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens/operation/deleteTokenByNameUsingPOST)會將程式或資料夾的ID當成路徑引數。 使用`folderType`指定型別。
+
+需要父資料夾、權杖`name`和權杖`type`。 以POST `x-www-form-urlencoded`傳遞資料，而非以JSON傳遞。
 
 ```http
 POST /rest/asset/v1/folder/{id}/tokens/delete.json

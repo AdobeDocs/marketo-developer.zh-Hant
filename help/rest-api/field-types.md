@@ -16,16 +16,16 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 373
+source-wordcount: 371
 ht-degree: 8%
 
 ---
 
 # 欄位型別
 
-以下是Marketo中欄位型別的說明。 有關欄位型別的其他資訊可在[這裡](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary)找到。 有關欄位型別限制的其他資訊可在[這裡](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613)找到。
+下表說明Marketo中可用的欄位型別。 如需詳細資訊，請參閱[自訂欄位型別字彙表](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary)和依欄位型別[&#128279;](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613)的Marketo欄位限制。
 
 | 欄位型別 | 說明 | 範例 |
 | --- | --- | --- |

@@ -18,16 +18,16 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 4793
+source-wordcount: 4807
 ht-degree: 8%
 
 ---
 
 # 端點參考
 
-以下是Marketo REST API參考資料的連結。
+使用下列參考資料來尋找每個Marketo REST API群組的請求引數、回應結構描述和範例：
 
 - [資產](https://developer.adobe.com/marketo-apis/api/asset)
 - [身分識別](https://developer.adobe.com/marketo-apis/api/identity/)
@@ -36,7 +36,7 @@ ht-degree: 8%
 
 ## 端點清單 {#endpoint_list}
 
-以下是REST API端點的完整清單。
+下表列出REST API端點、HTTP方法、URI和必要的許可權。
 
 | 名稱 | 群組 | 方法 | URI | 必要許可權 |
 | --- | --- | --- | --- | --- |
@@ -56,7 +56,7 @@ ht-degree: 8%
 | 取得分頁Token | 活動 | GET | /rest/v1/activities/pagingtoken.json | 唯讀活動 |
 | 更新自訂活動型別 | 活動 | POST | /rest/v1/activities/external/type/{apiName}.json | 讀寫活動中繼資料 |
 | 更新自訂活動型別屬性 | 活動 | POST | /rest/v1/activities/external/type/{apiName}/attributes/update.json | 讀寫活動中繼資料 |
-| 身分識別 | Authentication | GET或POST | /identity/oauth/token | None |
+| 身分識別 | Authentication | 取得或發佈 | /identity/oauth/token | None |
 | 取消匯出活動工作 | 大量匯出活動 | POST | /bulk/v1/activities/export/{exportid}/cancel.json | 唯讀活動 |
 | 建立匯出活動工作 | 大量匯出活動 | POST | /bulk/v1/activities/export/create.json | 唯讀活動 |
 | 將匯出活動工作排入佇列 | 大量匯出活動 | POST | /bulk/v1/activities/export/{exportid}/enqueue.json | 唯讀活動 |

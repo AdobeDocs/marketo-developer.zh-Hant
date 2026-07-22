@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 962
+source-wordcount: 771
 ht-degree: 0%
 
 ---
@@ -23,34 +23,47 @@ ht-degree: 0%
 
 [大量程式成員匯入端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members)
 
-對於大量的程式成員記錄，可以使用[大量API](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members)非同步匯入程式成員。 這可讓您使用含分隔字元（逗號、定位字元或分號）的平面檔案，將記錄清單匯入Marketo。 檔案可包含任意數量的記錄，只要檔案總計小於10MB即可。 記錄作業僅限「插入或更新」。
+使用[大量API](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members)以非同步方式匯入大量程式成員記錄。 以逗號、定位字元或分號分隔的平面檔案提供小於10 MB的記錄。
+
+大量程式成員匯入僅支援「插入或更新」記錄作業。
 
 ## 處理限制
 
-您可以提交一個以上的大量匯入要求，但會有限制。 每個請求都會當作工作新增至FIFO佇列進行處理。 最多可同時處理兩個工作。 在任何指定時間，佇列中最多允許10個工作（包括目前處理的2個）。 如果超過十個作業的上限，則會傳回「1016，匯入次數過多」錯誤。
+每個大量匯入請求都會新增為先進先出(FIFO)佇列的工作。 下列限制適用：
+
+- 最多可同時處理兩個工作。
+- 佇列中最多可有10個工作，包括正在處理的兩個工作。
+
+如果您超過10個作業的上限，API會傳回`1016, Too many imports`錯誤。
 
 ## 匯入檔案
 
-檔案的第一列必須是標題，標題會列出對應的REST API名稱，作為要將每列的值對應到的欄位。 可以使用[描述銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeUsingGET_2)和/或[描述方案成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeProgramMemberUsingGET)端點來擷取REST API名稱。 記錄可包含潛在客戶欄位、自訂潛在客戶欄位和自訂方案成員欄位。
+檔案的第一列必須是標頭，該標頭會列出每列對應值的REST API欄位名稱。 使用[Describe Lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeUsingGET_2)和[Describe Program Member](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeProgramMemberUsingGET)端點擷取這些名稱。
 
-典型的檔案會遵循此基本模式：
+記錄可包含潛在客戶欄位、自訂潛在客戶欄位和自訂方案成員欄位。
+
+典型的檔案會遵循以下模式：
 
 ```text
 email,firstName,lastName
 test@example.com,John,Doe
 ```
 
-呼叫本身是使用`multipart/form-data`內容型別所執行。
-
-此請求型別可能很難實作，因此強烈建議您使用現有程式庫實作。
+使用`multipart/form-data`內容型別傳送要求。 使用現有的程式庫實作來建構多部分要求。
 
 ## 建立工作
 
-[匯入程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST)端點會讀取包含程式成員記錄的檔案，並將它們新增至具有指定狀態的程式。 記錄可以同時包含潛在客戶欄位和方案成員自訂欄位。 所有記錄都必須包含電子郵件欄位，用於重複資料刪除目的。
+[匯入程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST)端點會從檔案讀取程式成員記錄，並將它們新增至具有指定狀態的程式。 記錄可包含潛在客戶欄位和自訂方案成員欄位。
+
+每個記錄都必須包含電子郵件欄位，用於重複資料刪除。
 
 `programId`路徑引數指定成員加入的程式。
 
-有三個必要的查詢引數。 `format`引數指定匯入檔案格式（CSV、TSV或SSV），`programMemberStatus`引數指定正在加入程式的成員的程式狀態，而`file`引數包含包含包含程式成員記錄的匯入檔案名稱。
+此請求需要三個查詢引數：
+
+- `format`：匯入檔案格式（`CSV`、`TSV`或`SSV`）。
+- `programMemberStatus`：指派給匯入成員的方案狀態。
+- `file`：包含程式成員記錄的檔案名稱。
 
 ```http
 POST /bulk/v1/program/{programId}/members/import.json?format=csv&programMemberStatus=On List
@@ -94,15 +107,17 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 }
 ```
 
-請注意，在回應我們的呼叫時，結果陣列中的記錄有`batchId`和`status`欄位。 由於此端點為非同步，因此它可以傳回「已排入佇列」、「匯入」或「失敗」狀態。 您必須保留`batchId`才能取得匯入工作的狀態，以及在完成時擷取失敗和/或警告。 `batchId`的有效期限為七天。
+因為端點非同步，所以回應包含`batchId`和`status`欄位。 狀態可以是`Queued`、`Importing`或`Failed`。
 
-使用上面的範例，呼叫端點的簡單方法是從命令列使用cURL：
+保留`batchId`以檢查匯入狀態，並在完成後擷取失敗或警告。 `batchId`的有效期限為七天。
+
+以下命令列cURL請求會提交範例作業：
 
 ```bash
 curl -i -F format='csv' -F programMemberStatus='On List' -F file='@Lead-House-Lannister.csv' -F access_token='<Access Token>' <REST API Endpoint Base URL>/bulk/v1/program/{programId}/members/import.json
 ```
 
-其中匯入檔案「Lead-House-Lannister.csv」包含下列內容：
+在此範例中，`Lead-House-Lannister.csv`匯入檔案包含下列資料：
 
 ```text
 firstName,lastName,email,title,company,leadScore
@@ -118,7 +133,7 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 
 ## 輪詢工作狀態
 
-建立匯入工作之後，您必須查詢其狀態。 最佳實務是每5到30秒輪詢匯入工作。 若要這麼做，請將`batchId`路徑引數傳遞至[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)端點。
+建立匯入工作後，每5到30秒輪詢一次。 將`batchId`路徑引數傳遞至[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)端點。
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -142,21 +157,21 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 }
 ```
 
-此回應會顯示已完成的匯入。 狀態可為下列其中之一：完成、已排入佇列、匯入、失敗。
+此回應會顯示已完成的匯入。 狀態可以是`Complete`、`Queued`、`Importing`或`Failed`。
 
-如果工作已完成，則會列出已處理、失敗或有警告的列數。 如果狀態為「失敗」，則訊息引數也會提供失敗訊息。
+當工作完成時，回應會列出已處理、失敗和已處理但出現警告的列數。 當狀態為`Failed`時，`message`引數也可以提供失敗訊息。
 
 ## 失敗
 
-[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsFailed`屬性指出失敗。 如果numOfRowsFailed大於零，則該值表示發生的失敗次數。
+[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsFailed`屬性表示失敗的資料列數目。 值大於零表示發生失敗。
 
-使用Get Import Program Member Failures端點傳遞`batchId`路徑引數，以擷取失敗資料列的記錄和原因。
+將`batchId`路徑引數傳遞至[取得匯入程式成員失敗]端點，以擷取失敗的記錄及其原因。
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/failures.json
 ```
 
-端點會以檔案回應，指出哪些資料列失敗，同時訊息指出記錄失敗的原因。 檔案的格式與工作建立期間在`format`引數中指定的格式相同。 附加欄位會附加至每個記錄並附有失敗說明。
+端點會傳回可識別每個失敗列的檔案，並說明記錄失敗的原因。 檔案在建立工作期間使用`format`引數指定的格式。 每個記錄上的額外欄位說明了失敗。
 
 例如，假設您匯入下列潛在客戶分數無效的檔案：
 
@@ -165,7 +180,7 @@ firstName,lastName,email,title,company,leadScore
 Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTEGER_FIELD
 ```
 
-當您檢查工作狀態時，您會看到`numOfRowsFailed`為1，表示發生失敗：
+工作狀態傳回`numOfRowsFailed`為1，表示發生失敗：
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -189,7 +204,7 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 }
 ```
 
-然後擷取失敗檔案以取得失敗的其他詳細資訊：
+擷取失敗檔案以取得詳細資訊：
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/failures.json
@@ -202,15 +217,15 @@ Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTE
 
 ## 警告
 
-[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsWithWarning`屬性表示警告。 如果`numOfRowsWithWarning`大於零，則該值表示發生的警告數。
+[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsWithWarning`屬性表示含有警告的資料列數目。 大於零的值表示發生警告。
 
-使用[取得匯入程式成員警告](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET)端點傳遞`batchId`路徑引數，以擷取記錄及警告資料列的原因。
+將`batchId`路徑引數傳遞至[取得匯入程式成員警告](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET)端點，以擷取受影響的記錄及其原因。
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/warnings.json
 ```
 
-端點會以檔案回應，指出哪些列產生警告，同時也會以訊息指出記錄產生警告的原因。 檔案的格式與工作建立期間在`format`引數中指定的格式相同。 附加欄位會附加至每個記錄，並附有警告的說明。
+端點會傳回檔案，此檔案會識別每個具有警告的列，並說明警告發生的原因。 檔案在建立工作期間使用`format`引數指定的格式。 每個記錄上的額外欄位會說明警告。
 
 例如，假設您匯入下列電子郵件地址無效的檔案：
 
@@ -219,7 +234,7 @@ firstName,lastName,email,title,company,leadScore
 Aerys,Targaryen,INVALID_EMAIL,Targaryen,House Targaryen,0
 ```
 
-當您檢查工作狀態時，您會看到`numOfRowsWithWarning`為1，表示發生警告：
+工作狀態傳回`numOfRowsWithWarning`為1，表示發生警告：
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -243,7 +258,7 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 }
 ```
 
-然後，您可以擷取警告檔案，以取得有關警告的其他詳細資訊：
+擷取警告檔案以取得詳細資訊：
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/warnings.json

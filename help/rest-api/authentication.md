@@ -8,28 +8,30 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 657
+source-wordcount: 519
 ht-degree: 0%
 
 ---
 
 # Authentication
 
-Marketo的REST API已透過雙腿OAuth 2.0驗證。 使用者端ID和使用者端密碼由您定義的自訂服務提供。 每個自訂服務都由僅限API的使用者擁有，該使用者擁有一組可授權服務執行特定動作的角色和許可權。 存取權杖與單一自訂服務相關聯。 存取權杖到期與執行個體中可能存在之其他自訂服務相關聯的權杖無關。
+Marketo REST API使用2腿OAuth 2.0進行驗證。 自訂服務提供用於取得存取權杖的使用者端ID和使用者端密碼。
+
+每個自訂服務都屬於僅限API的使用者。 使用者的角色和許可權可授權服務執行特定動作。 存取權杖屬於單一自訂服務，其到期日與執行個體中其他自訂服務的權杖無關。
 
 ## 建立存取Token
 
-在&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL LaunchPoint]**&#x200B;功能表中找到`Client ID`和`Client Secret`，方法是選取自訂服務並按一下&#x200B;**[!UICONTROL View Details]**。
+若要尋找`Client ID`和`Client Secret`，請移至&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL LaunchPoint]**。 選取自訂服務，然後選取&#x200B;**[!UICONTROL View Details]**。
 
 ![取得REST服務詳細資料](assets/authentication-service-view-details.png)
 
 ![啟動點認證](assets/admin-launchpoint-credentials.png)
 
-在REST API區段的&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**&#x200B;功能表中找到`Identity URL`。
+若要尋找`Identity URL`，請前往&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Integration]** > **[!UICONTROL Web Services]**。 URL會顯示在REST API區段中。
 
-使用HTTP GET （或POST）要求建立存取權杖，如下所示：
+使用HTTP GET或POST要求建立存取權杖：
 
 ```http
 GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client Id>&client_secret=<Client Secret>
@@ -46,33 +48,32 @@ GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client I
 }
 ```
 
-回應定義
+回應包含下列欄位：
 
-- `access_token` — 您隨著後續呼叫傳遞的Token，以驗證目標執行個體。
-- `token_type` - OAuth驗證方法。
-- `expires_in` — 目前Token的剩餘有效期限（以秒為單位） （超過此時間後即無效）。 存取權杖最初建立時，其有效期限為3600秒或一小時。
-- `scope` — 用於驗證之自訂服務的擁有使用者。
+- `access_token`：您在後續呼叫中傳遞的Token，以驗證目標執行個體。
+- `token_type`： OAuth驗證方法。
+- `expires_in`：目前權杖的剩餘有效期限（以秒為單位）。 新的存取權杖的有效期限為3,600秒或1小時。
+- `scope`：擁有用於驗證的自訂服務的使用者。
 
 ## 使用存取權杖
 
-呼叫REST API方法時，存取權杖必須包含在每個呼叫中，呼叫才能成功。
-存取權杖必須以HTTP標頭傳送。
+每個REST API呼叫都必須在HTTP標頭中包含存取權杖。
 
 >[!IMPORTANT]
 >
->2026年7月31日將移除使用`access_token`查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，應儘快更新以使用[授權標頭](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/authentication#using-an-access-token)。 新開發應僅使用`Authorization`標頭。
+>2026年8月31日將移除使用`access_token`查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，應儘快更新以使用[授權標頭](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/authentication#using-an-access-token)。 新開發應僅使用`Authorization`標頭。
 
 ### 切換至Authorization標題
 
-若要從使用`access_token`查詢引數切換為授權標頭，需要少量程式碼變更。
+若要以Authorization標頭取代`access_token`查詢引數，請更新要求傳送權杖的方式。
 
-以CURL為例，此程式碼會傳送`access_token`值做為表單引數（ — F標幟）：
+下列cURL範例將`access_token`值傳送為含有`-F`旗標的表單引數：
 
 ```bash
 curl ...  -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/apiCall.json
 ```
 
-此程式碼會傳送與`Authorization: Bearer` http標頭相同的值（ — H標幟）：
+下列範例會在`Authorization: Bearer` HTTP標頭中傳送具有`-H`旗標的相同值：
 
 ```bash
 curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/bulk/v1/apiCall.json
@@ -80,12 +81,19 @@ curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/
 
 ## 提示和最佳實務
 
-管理存取權杖到期很重要，可確保您的整合順暢運作，並防止在正常作業期間發生未預期的驗證錯誤。 為整合設計驗證時，請務必儲存身分識別回應中包含的權杖和有效期。
+儲存身分回應的存取權杖和到期日。 管理權杖到期有助於防止在正常操作期間發生未預期的驗證錯誤。
 
-在發出任何REST呼叫之前，您應該根據權杖的剩餘期限來檢查其有效性。 如果權杖已過期，請呼叫[身分](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET)端點以更新權杖。 這有助於確保您的REST呼叫絕不會因為權杖過期而失敗。 這可協助您以可預測的方式管理REST呼叫的延遲，這對於面向使用者的應用程式至關重要。
+在進行REST呼叫之前，請檢查權杖的剩餘期限。 如果權杖已過期，請呼叫[身分](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET)端點以更新權杖。 主動更新可防止權杖過期所導致的失敗，並讓REST呼叫延遲更可預測，這對於面向使用者的應用程式非常重要。
 
-如果使用過期的權杖來驗證REST呼叫，REST呼叫將失敗並傳回602錯誤代碼。 如果使用無效的權杖來驗證REST呼叫，則會傳回601錯誤代碼。 如果收到這些程式碼中的任一個，使用者端應呼叫身分識別端點以續約權杖。
+驗證錯誤傳回下列程式碼：
 
-如果您在權杖過期之前呼叫身分端點，回應中將會傳回相同的權杖及其剩餘期限。
+- `602`：存取權杖已過期。
+- `601`：存取權杖無效。
 
-請記住，您的存取權杖是按自訂服務而非使用者所擁有。 即使兩個身分識別回應的範圍可能屬於同一個使用者，但如果是透過來自兩個不同服務的憑證所建立，則存取權杖和到期日會彼此獨立。 當同一應用程式中有多組認證時，請記住這一點；使用者端ID可能是用來分別管理認證的有用金鑰。
+如果使用者端收到任一程式碼，請呼叫身分識別端點以續約權杖。
+
+如果您在權杖過期之前呼叫身分端點，則回應會傳回相同的權杖及其剩餘期限。
+
+存取權杖屬於自訂服務，而非使用者。 如果來自兩個不同服務的憑證產生範圍設定為相同使用者的身分回應，則其存取權杖和到期日將維持獨立。
+
+當應用程式使用多個認證集時，請使用使用者端ID作為金鑰，以獨立管理每個權杖。

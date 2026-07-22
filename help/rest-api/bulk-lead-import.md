@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 825
+source-wordcount: 623
 ht-degree: 0%
 
 ---
@@ -23,30 +23,38 @@ ht-degree: 0%
 
 [大量潛在客戶匯入端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads)
 
-針對大量潛在客戶記錄，可以使用[大量API](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)非同步匯入潛在客戶。 這可讓您使用含分隔字元（逗號、定位字元或分號）的平面檔案，將記錄清單匯入Marketo。 檔案可包含任意數量的記錄，只要檔案總計小於10MB即可。 記錄作業僅限「插入或更新」。
+使用[大量API](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)以非同步方式匯入大量潛在客戶記錄。 以逗號、定位字元或分號分隔的平面檔案提供小於10 MB的記錄。
+
+大量潛在客戶匯入僅支援「插入或更新」記錄作業。
 
 ## 處理限制
 
-您可以提交一個以上的大量匯入要求，但會有限制。 每個請求都會當作工作新增至FIFO佇列進行處理。 最多可同時處理兩個工作。 在任何指定時間，佇列中最多允許10個工作（包括目前處理中的兩個）。 如果超過十個作業的上限，則會傳回`1016, Too many imports`錯誤。
+每個大量匯入請求都會新增為先進先出(FIFO)佇列的工作。 下列限制適用：
+
+- 最多可同時處理兩個工作。
+- 佇列中最多可有10個工作，包括正在處理的兩個工作。
+
+如果您超過10個作業的上限，API會傳回`1016, Too many imports`錯誤。
 
 ## 匯入檔案
 
-檔案的第一列必須是標頭，其中列出要將每列的值對應到的對應REST API欄位。 典型的檔案會遵循此基本模式：
+檔案的第一列必須是標頭，該標頭會列出每列對應值的REST API欄位。 典型的檔案會遵循以下模式：
 
 ```csv
 email,firstName,lastName
 test@example.com,John,Doe
 ```
 
-`externalCompanyId`欄位可用來將潛在客戶記錄連結至公司記錄。 `externalSalesPersonId`欄位可用來將潛在客戶記錄連結至銷售人員記錄。
+使用`externalCompanyId`將潛在客戶記錄連結至公司記錄。 使用`externalSalesPersonId`將潛在客戶記錄連結至銷售人員記錄。
 
-呼叫本身是使用`multipart/form-data`內容型別所執行。
-
-此請求型別可能很難實作，因此強烈建議您使用現有程式庫實作。
+使用`multipart/form-data`內容型別傳送要求。 使用現有的程式庫實作來建構多部分要求。
 
 ## 建立工作
 
-若要提出大量匯入要求，您必須將內容型別標頭設為`multipart/form-data`，並包含檔案內容中的至少`file`引數，以及值為`csv`、`tsv`或`ssv`的`format`引數，以表示您的檔案格式。
+若要建立大量匯入工作，請將內容型別設定為`multipart/form-data`並包含這些引數：
+
+- `file`：匯入檔案內容。
+- `format`：檔案格式。 有效值為`csv`、`tsv`和`ssv`。
 
 ```http
 POST /bulk/v1/leads.json?format=csv
@@ -84,13 +92,13 @@ Easy,Fox,easyfox@marketo.com,Marketo
 }
 ```
 
-此端點使用[multipart/form-data做為content-type](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html)。 最佳實務是為您選擇的語言使用HTTP支援程式庫，以確保正確使用。 以下範例是從命令列對cURL執行此作業的簡單方法：
+此端點使用[multipart/form-data做為content-type](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html)。 使用您偏好語言的HTTP支援程式庫來正確建構要求。 以下範例使用命令列中的cURL：
 
 ```bash
 curl -i -F format=csv -F file=@lead_data.csv -F access_token=<Access Token> <REST API Endpoint Base URL>/bulk/v1/leads.json
 ```
 
-其中匯入檔案`lead_data.csv`包含下列專案：
+在此範例中，`lead_data.csv`匯入檔案包含下列資料：
 
 ```text
 firstName,lastName,email,company
@@ -99,13 +107,19 @@ Charlie,Dog,charliedog@marketo.com,Marketo
 Easy,Fox,easyfox@marketo.com,Marketo
 ```
 
-您也可以選擇在要求中包含`lookupField`、`listId`和`partitionName`引數。 `lookupField`可讓您選取要取消重複的特定欄位，例如「同步銷售機會」，並預設為電子郵件。 您可以將`id`指定為`lookupField`以表示「僅更新」作業。 `listId`可讓您選取要匯入潛在客戶清單的靜態清單；這將導致清單中的潛在客戶成為此靜態清單的成員，以及匯入所導致的任何建立或更新。 `partitionName`選取要匯入的特定磁碟分割。 如需詳細資訊，請參閱工作區和分割區區段。
+您也可以包含下列選用引數：
 
-請注意，在回應我們的呼叫時，沒有成功或失敗清單（例如同步銷售機會），而是結果陣列中記錄的batchId和狀態列位。 這是因為此API為非同步，且可能傳回「已排入佇列」、「匯入」或「失敗」狀態。 您必須保留batchId才能取得匯入工作的狀態，以及在完成時擷取失敗和/或警告。 batchId的有效期為七天。
+- `lookupField`：選取用於重複資料刪除的欄位，並預設為`email`。 指定`id`以執行「僅更新」作業。
+- `listId`：選取靜態清單。 除了匯入所建立或更新的任何記錄外，匯入的潛在客戶也會成為此清單的成員。
+- `partitionName`：選取要匯入的分割區。 如需詳細資訊，請參閱工作區和分割區區段。
+
+由於API為非同步，因此回應包含`batchId`和`status`欄位，而非個別的成功和失敗。 狀態可以是`Queued`、`Importing`或`Failed`。
+
+保留`batchId`以檢查工作狀態，並在完成後擷取失敗或警告。 `batchId`的有效期限為七天。
 
 ## 輪詢工作狀態
 
-最佳實務是每5到30秒輪詢一次工作，視所需的延遲和API呼叫限制而定，以檢視匯入工作的狀態。 您可以使用Get Import Lead Status API來執行此操作。
+根據延遲需求和API呼叫限制，使用「取得匯入銷售機會狀態API」每5-30秒輪詢一次作業。
 
 ```http
 GET /bulk/v1/leads/batch/{id}.json
@@ -128,35 +142,35 @@ GET /bulk/v1/leads/batch/{id}.json
 }
 ```
 
-此回應會顯示已完成的匯入，但狀態可為其中一項：
+此回應會顯示已完成的匯入。 狀態可以是下列其中一個值：
 
 - 完成
 - 已排入佇列
 - 正在匯入
 - 失敗
 
-如果工作已完成，則會列出已處理、失敗、有警告的資料列數目。 如果狀態為「失敗」，則訊息引數也會提供失敗訊息。
+當工作完成時，回應會列出已處理、失敗和已處理但出現警告的列數。 當狀態為`Failed`時，`message`引數也可以提供失敗訊息。
 
 ## 失敗
 
-失敗由Get Import Lead Status回應中的`numOfRowsFailed`屬性指示。 如果`numOfRowsFailed`大於零，則該值表示發生的失敗次數。
+Get Import Lead Status回應中的`numOfRowsFailed`屬性表示失敗的資料列數目。 值大於零表示發生失敗。
 
-若要擷取失敗資料列的記錄和原因，您必須擷取失敗檔案：
+若要擷取失敗的記錄及其原因，請要求失敗檔案：
 
 ```http
 GET /bulk/v1/leads/batch/{id}/failures.json
 ```
 
-API會以指出哪些列失敗的檔案回應，並顯示指出記錄失敗原因的訊息。 檔案的格式與工作建立期間在`format`引數中指定的格式相同。 附加欄位會附加至每個記錄並附有失敗說明。
+此API會傳回一個檔案，用於識別每個失敗的列，並說明記錄失敗的原因。 檔案在建立工作期間使用`format`引數指定的格式。 每個記錄上的額外欄位說明了失敗。
 
 ## 警告
 
-在Get Import Lead Status回應中，`numOfRowsWithWarning`屬性會指出警告。 如果`numOfRowsWithWarning`大於零，該值表示發生的警告數。
+Get Import Lead Status回應中的`numOfRowsWithWarning`屬性指出有警告的列數。 大於零的值表示發生警告。
 
-若要擷取記錄以及警告列的原因，請擷取警告檔案：
+若要擷取受影響的記錄及其原因，請要求警告檔案：
 
 ```http
 GET /bulk/v1/leads/batch/{id}/warnings.json
 ```
 
-API會以檔案回應，指出哪些列產生警告，以及指出記錄失敗原因的訊息。 檔案的格式與工作建立期間在`format`引數中指定的格式相同。 附加欄位會附加至每個記錄，並附有警告的說明。
+此API會傳回一個檔案，用於識別含有警告的每一列，並解釋警告發生的原因。 檔案在建立工作期間使用`format`引數指定的格式。 每個記錄上的額外欄位會說明警告。

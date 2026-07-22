@@ -14,23 +14,23 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 848
+source-wordcount: 765
 ht-degree: 0%
 
 ---
 
 # 安裝
 
-Marketo Mobile SDK的安裝指示。 傳送推播通知及/或應用程式內訊息需執行以下步驟。
+安裝並初始化Marketo Mobile SDK，以傳送推播通知和/或應用程式內訊息。
 
 ## 在iOS上安裝Marketo SDK
 
 ### 先決條件
 
-1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）
-1. [設定推播通知](push-notifications.md) （選擇性）
+1. [在Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app)中新增應用程式，並取得應用程式秘密金鑰和Munchkin ID。
+1. 選用： [設定推播通知](push-notifications.md)。
 
 ### 透過CocoaPods安裝框架
 
@@ -44,15 +44,15 @@ Marketo Mobile SDK的安裝指示。 傳送推播通知及/或應用程式內訊
 
 ### 使用Swift Package Manager安裝架構
 
-1. 從專案導覽器選取您的專案，並在「新增套件相依性」底下，按一下「+」，如下所示：
+1. 在「專案導覽器」中選取您的專案。 在「新增套件相依性」下，選取「+」。
 
    ![新增相依性](assets/dependency-manager-add.png)
 
-1. 從此存放庫新增Marketo套件。 新增此存放庫的此URL： <https://github.com/Marketo/ios-sdk>。
+1. 從<https://github.com/Marketo/ios-sdk>新增Marketo套件。
 
    ![存放庫URL](assets/dependency-manager-url.png)
 
-1. 現在新增資源套件，如下所示：在專案導覽器中找到`MarketoFramework.XCframework`，並在Finder中將其開啟。 拖放`MKTResources.bundle`以複製組合資源。
+1. 新增資源套件。 在專案導覽器中找出`MarketoFramework.XCframework`，並在Finder中將其開啟。 拖曳`MKTResources.bundle`以複製組合資源。
 
 ### 設定Swift橋接標題
 
@@ -70,9 +70,9 @@ Marketo Mobile SDK的安裝指示。 傳送推播通知及/或應用程式內訊
 
 ## 初始化SDK
 
-您必須先使用Marketo iOS SDK帳戶ID和應用程式秘密金鑰將其初始化，才能使用。 您可以在Marketo管理區域的「行動應用程式和裝置」下方找到這些應用程式。
+使用您的Marketo帳戶ID和應用程式秘密金鑰初始化Munchkin iOS SDK。 在Marketo管理員的「行動應用程式和裝置」底下尋找這兩個值。
 
-1. 開啟您的AppDelegate.m檔案(Objective-C)或橋接檔案(Swift)，並匯入Marketo.h標題檔案。
+1. 開啟Objective-C的AppDelegate.m檔案或Swift的橋接檔案。 匯入Marketo.h標頭檔案。
 
    ```
    #import <MarketoFramework/MarketoFramework.h>
@@ -80,7 +80,7 @@ Marketo Mobile SDK的安裝指示。 傳送推播通知及/或應用程式內訊
 
 1. 將下列程式碼貼到`application:didFinishLaunchingWithOptions`：函式中。
 
-   請注意，我們必須傳遞「原生」作為原生應用程式的框架型別。
+   傳遞「原生」作為原生應用程式的框架型別。
 
 >[!BEGINTABS]
 
@@ -102,14 +102,14 @@ sharedInstance.initialize(withMunchkinID: "munchkinAccountId", appSecret: "secre
 
 >[!ENDTABS]
 
-1. 使用您在Marketo **[!UICONTROL Admin]** > **[!UICONTROL Mobile Apps and Devices]**&#x200B;區段找到的「Munchkin帳戶ID」和「秘密金鑰」，取代上方的`munkinAccountId`和`secretKey`。
+1. 將`munkinAccountId`和`secretKey`取代為Marketo **[!UICONTROL Admin]** > **[!UICONTROL Mobile Apps and Devices]**&#x200B;中的「Munchkin帳戶ID」和「秘密金鑰」。
 
 ## iOS測試裝置
 
 1. 選取「專案>目標>資訊> URL型別」。
-1. 新增識別碼： ${PRODUCT_NAME}
-1. 設定URL配置： `mkto-<Secret Key_>`
-1. 將應用程式:openURL:sourceApplication:annotation:包含到AppDelegate.m檔案(Objective-C)
+1. 新增識別碼${PRODUCT_NAME}。
+1. 將URL配置設定為`mkto-<Secret Key_>`。
+1. 將應用程式:openURL:sourceApplication:annotation:新增至Objective-C的AppDelegate.m檔案。
 
 ## 在AppDelegate中處理自訂Url型別
 
@@ -143,17 +143,17 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 ### 先決條件
 
-1. [在Marketo Admin中新增應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app) （取得您的應用程式秘密金鑰和Munchkin ID）
-1. [設定推播通知](push-notifications.md#android_setup_push) （選擇性）
+1. [在Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app)中新增應用程式，並取得應用程式秘密金鑰和Munchkin ID。
+1. 選用： [設定推播通知](push-notifications.md#android_setup_push)。
 1. [下載適用於Android的Marketo SDK](https://codeload.github.com/Marketo/android-sdk/zip/refs/heads/master)
 
 ### 使用Gradle設定Android SDK
 
-1. 在應用程式層級build.gradle檔案中，在相依性區段下新增
+1. 在應用程式層級build.gradle檔案中，在相依性區段下新增相依性。
 
-`implementation 'com.marketo:MarketoSDK:0.8.9'`
+   `implementation 'com.marketo:MarketoSDK:0.8.9'`
 
-1. 根`build.gradle`檔案應該有
+1. 將下列設定新增至根`build.gradle`檔案。
 
    ```
    buildscript {
@@ -163,11 +163,11 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
        }
    ```
 
-1. 將專案與Gradle檔案同步
+1. 將專案與Gradle檔案同步。
 
 ### 設定許可權
 
-開啟`AndroidManifest.xml`並新增下列許可權。 您的應用程式必須要求「網際網路」和「ACCESS_NETWORK_STATE」許可權。 如果您的應用程式已要求這些許可權，請略過此步驟。
+開啟`AndroidManifest.xml`並新增下列許可權。 您的應用程式必須要求「網際網路」和「ACCESS_NETWORK_STATE」許可權。 如果應用程式已要求，請略過此步驟。
 
 ```xml
 <uses‐permission android:name="android.permission.INTERNET"></uses‐permission>
@@ -176,7 +176,7 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 ### 初始化SDK
 
-1. 開啟應用程式中的Application或Activity類別，並在setContentView或Application Context之前，將Marketo SDK匯入您的Activity。
+1. 開啟「應用程式」或「活動」類別。 在setContentView之前或在Application Context中將Marketo SDK匯入活動中。
 
    ```java
    // Initialize Marketo
@@ -186,7 +186,7 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 1. ProGuard組態（選購）
 
-   如果您正在使用應用程式的ProGuard，請在`proguard.cfg`檔案中新增下列行。 檔案位於您的專案資料夾中。 新增此程式碼會將Marketo SDK排除在模糊化程式之外。
+   如果您的應用程式使用ProGuard，請在專案資料夾的`proguard.cfg`檔案中加入下列各行。 此設定會排除Marketo SDK的模糊化功能。
 
    ```
    -dontwarn com.marketo.*
@@ -196,7 +196,7 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 ## Android測試裝置
 
-將「MarketoActivity」新增至應用程式標籤內的`AndroidManifest.xml`檔案。
+將「MarketoActivity」新增至應用程式標籤內的`AndroidManifest.xml`。
 
 ```xml
 <activity android:name="com.marketo.MarketoActivity"  android:configChanges="orientation|screenSize" >
@@ -211,14 +211,12 @@ private func application(_ app: UIApplication, open url: URL, options: [UIApplic
 
 ## Firebase Cloud Messaging支援
 
-適用於Android的MME Software Development Kit (SDK)已更新至更現代、穩定及可擴充的架構，其中包含更優異的彈性和全新的工程功能，適合您的Android應用程式開發人員使用。
-
-Android應用程式開發人員現在可以直接將Google的[Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging/) (FCM)與此SDK搭配使用。
+適用於Android的MME SDK支援直接使用Google的[Firebase雲端通訊](https://firebase.google.com/docs/cloud-messaging/) (FCM)。
 
 ### 新增FCM至您的應用程式
 
-1. 在Android應用程式中整合最新的Marketo Android SDK 。  步驟可在[GitHub](https://github.com/Marketo/android-sdk)取得。
-1. 在Firebase主控台上設定Firebase應用程式。
+1. 將最新的Marketo Android SDK整合至Android應用程式。 檢視[GitHub](https://github.com/Marketo/android-sdk)上的步驟。
+1. 在Firebase主控台中設定Firebase應用程式。
    1. 在[&#128279;](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)Firebase主控台上建立/新增專案。
       1. 在[Firebase主控台](https://accounts.google.com/ServiceLogin?passive=1209600&osid=1&continue=https://console.firebase.google.com/&followup=https://console.firebase.google.com/)中，選取`Add Project`。
       1. 從現有Google Cloud專案清單中選取您的GCM專案，然後選取`Add Firebase`。
@@ -229,7 +227,7 @@ Android應用程式開發人員現在可以直接將Google的[Firebase Cloud Mes
    1. 導覽至專案總覽中的「專案設定」
       1. 按一下「一般」標籤。 下載「google-services.json」檔案。
       1. 按一下「雲端訊息」索引標籤。 複製「伺服器金鑰」和「寄件者ID」。 提供這些「伺服器金鑰」和「傳送者ID」給Marketo。
-   1. 在Android應用程式中設定FCM變更
+   1. 在Android應用程式中設定FCM。
       1. 切換至Android Studio中的專案檢視，以檢視您的專案根目錄
          1. 將下載的「google-services.json」檔案移至Android應用程式模組的根目錄中
          1. 在專案層級build.gradle中，新增下列內容：
@@ -253,7 +251,7 @@ Android應用程式開發人員現在可以直接將Google的[Firebase Cloud Mes
             ```
 
          1. 最後，選取ID中所顯示列中的&#x200B;**[!UICONTROL Sync now]**
-   1. 編輯應用程式的資訊清單FCM SDK會自動新增所有必要許可權和必要的接收器功能。 請務必從應用程式的資訊清單中移除下列過時的（且可能有害，因為它們可能會導致訊息重複）元素：
+   1. 編輯應用程式資訊清單。 FCM SDK會自動新增必要的許可權和接收者功能。 移除下列過時元素，這些元素可能會導致訊息重複：
 
       ```xml
       <uses-permission android:name="android.permission.WAKE_LOCK" />

@@ -14,16 +14,16 @@ role_v2:
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 116
+source-wordcount: 117
 ht-degree: 8%
 
 ---
 
 # 觸發程序
 
-新增在全域rtp物件的特定狀態上觸發函式的功能。
+全域`rtp`物件達到指定狀態時觸發執行函式。
 
 您必須是Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
 
@@ -38,7 +38,7 @@ ht-degree: 8%
 
 ### 使用者內容就緒觸發器
 
-根據使用者位置設定自訂變數。 當「rtpUserContext」全域物件就緒時，會呼叫此函式。
+全域`rtpUserContext`物件就緒時，`userContextReady`觸發程式會呼叫函式。 以下範例會根據使用者的位置設定自訂變數。
 
 ```javascript
 rtp('userContextReady', function() {

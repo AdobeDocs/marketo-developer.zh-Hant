@@ -10,20 +10,20 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 67
+source-wordcount: 69
 ht-degree: 7%
 
 ---
 
 # 範例
 
-您可以在下方找到一組示範性電子郵件指令碼範例。
+下列範例示範常見的電子郵件指令碼模式。
 
 ## 事件清單
 
-此範例使用假設性的事件自訂物件。
+此範例使用假設的事件自訂物件來示範排序和篩選。
 
 ```html
 ##declare an $EventsThisYear variable

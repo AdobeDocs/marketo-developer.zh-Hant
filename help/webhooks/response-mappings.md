@@ -10,36 +10,43 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 484
+source-wordcount: 373
 ht-degree: 0%
 
 ---
 
 # 回應對應
 
-Marketo可以翻譯Webhook從兩種內容型別收到的資料，並將這些值傳回潛在客戶欄位：JSON和XML。 Marketo欄位引數一律會使用欄位的[SOAP API名稱](../rest-api/fields.md)。 每個Webhook可以有不限數量的回應對應，這些對應可以按一下Webhook的「回應對應」窗格中的[!UICONTROL Edit]按鈕來新增和編輯：
+Marketo可以從JSON或XML翻譯webhook資料，並將值寫入潛在客戶欄位。 Marketo欄位引數一律使用欄位的[SOAP API名稱](../rest-api/fields.md)。
+
+每個webhook都可以有不限數量的回應對應。 若要新增或編輯對應，請在webhook的「回應對應」窗格中選取[!UICONTROL Edit]：
 
 ![回應對應](assets/response-mapping.png)
 
-「回應對應」是透過「回應屬性」、XML或JSON檔案中所需屬性的路徑，以及「Marketo欄位」的配對所建立，該欄位指定了「銷售機會」欄位，該欄位具有從「回應屬性」寫入的值。
+回應對應會配對這些值：
 
-屬性的索引鍵必須包含英數字元、破折號(-)、底線(_)、冒號(：)和空白字元，才能透過Marketo回應對應加以存取。
+- &quot;Response Attribute&quot;： XML或JSON檔案中所需屬性的路徑。
+- 「Marketo欄位」： Marketo寫入回應屬性值的潛在客戶欄位。
+
+若要透過Marketo回應對應存取屬性，其索引鍵只能包含英數字元、破折號(-)、底線(_)、冒號(：)和空格。
 
 ## JSON對應
 
-JSON屬性可使用點標籤法和陣列標籤法存取。 Marketo中的陣列標籤法不接受字串作為輸入，僅接受整數。 若要從JSON檔案擷取資料，回應型別必須設為JSON：
+使用點標籤法和陣列標籤法存取JSON屬性。 Marketo陣列標籤法只接受整數，不接受字串。
+
+若要從JSON檔案中擷取資料，請將回應型別設為JSON：
 
 ```json
 { "foo":"bar"}
 ```
 
-若要存取回應對應中的`foo`屬性，請使用屬性的`name`，因為該屬性位於JSON物件的第一個層級`foo`。 以下顯示Marketo中的顯示內容：
+`foo`屬性位於JSON物件的第一層級。 在回應對應中使用其屬性`name`， `foo`：
 
 ![回應對應](assets/json-resp.png)
 
-以下是較複雜的陣列範例：
+下列範例包含陣列：
 
 ```json
 {
@@ -61,11 +68,11 @@ JSON屬性可使用點標籤法和陣列標籤法存取。 Marketo中的陣列�
 }
 ```
 
-我們想從訂單陣列的第一個元素存取orderDate。 若要存取此屬性，請使用下列專案： `orders[0].orderDate`
+若要從orders陣列的第一個元素存取orderDate，請使用`orders[0].orderDate`。
 
 ## XML對應
 
-可以從XML檔案中的個別元素存取值。 這會使用與JSON對應類似的點標籤法。 考量這個簡單的範例：
+使用點標籤法（類似JSON對應）存取個別XML元素的值。 請參考此範例：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -74,9 +81,11 @@ JSON屬性可使用點標籤法和陣列標籤法存取。 Marketo中的陣列�
 </example>
 ```
 
-若要在此存取foo屬性，請使用下列專案： `example.foo`
+若要存取foo屬性，請使用`example.foo`。
 
-在存取`foo`之前，必須先參考範例專案。 若要存取屬性，必須在對應中參考階層中的所有元素。 含陣列的XML檔案則更為複雜。 使用下列範例：
+在存取`foo`之前，請先參考範例專案。 對應必須參考屬性階層中的每個元素。
+
+對於具有陣列的XML檔案，請考量以下範例：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,8 +102,12 @@ JSON屬性可使用點標籤法和陣列標籤法存取。 Marketo中的陣列�
 </elementList>
 ```
 
-檔案由父陣列`elementList`組成，具有子系，元素包含一個屬性： `foo`。 就Marketo回應對應而言，陣列是以`elementList.element`參考，因此可透過`elementList.element[i]`存取elementList的子系。 若要從elementList的第一個子系取得foo的值，我們會使用此回應屬性： `elementList.element[0].foo`這會將「baz」值傳回至我們的指定欄位。 嘗試存取同時包含唯一和非唯一元素名稱的元素內的屬性會導致未定義的行為。 每個元素都必須是單一屬性或陣列，型別不能混合使用。
+父陣列為`elementList`。 每個子專案都包含`foo`屬性。 Marketo回應對應會將陣列參考為`elementList.element`，並透過`elementList.element[i]`存取其子系。
+
+若要從elementList的第一個子系取得foo的值，請使用回應屬性`elementList.element[0].foo`。 此對應會將「baz」值傳回至指定欄位。
+
+存取包含唯一和非唯一元素名稱的元素內的屬性會產生未定義的行為。 每個元素必須是單一屬性或陣列。 請勿混用不同型別。
 
 ## 類型
 
-將屬性對應到欄位時，您必須確保webhook回應中的型別與目標欄位相容。 例如，如果回應中的值為字串，而選取的欄位為型別整數，則不會寫入值。 閱讀[欄位型別](../rest-api/field-types.md)。
+將屬性對應到欄位時，請確保webhook回應型別與目標欄位相容。 例如，Marketo不會將字串回應值寫入整數型別的欄位。 如需詳細資訊，請參閱[欄位型別](../rest-api/field-types.md)。

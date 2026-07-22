@@ -14,9 +14,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1581
+source-wordcount: 1440
 ht-degree: 6%
 
 ---
@@ -25,21 +25,21 @@ ht-degree: 6%
 
 [使用者管理端點參考](https://developer.adobe.com/marketo-apis/api/user/)
 
-Marketo提供了一組「使用者管理」端點，可讓您對Marketo中的使用者記錄執行CRUD操作。 使用者是透過傳送邀請給使用者來建立，接著使用者會設定密碼，並首次獲得Marketo存取權。
+Marketo使用者管理端點會對使用者記錄執行CRUD操作。 若要建立使用者，請傳送邀請。 然後，使用者會設定密碼並首次存取Marketo。
 
 不同於其他Marketo REST API，使用「使用者管理API」時：
 
-- 您必須使用HTTP標頭方法來傳送存取權杖以進行驗證。 您無法傳遞存取權杖作為查詢字串引數。 [驗證指南](authentication.md)中有更多資訊。
-- 建立REST API之[自訂服務](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api)的使用者角色時，您必須從兩個不同的群組選取角色許可權：
-   1. 來自[存取管理員](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)群組的「存取使用者」許可權
-   1. [Access API](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)群組中的「Access User Management Api」
-- 回應主體不包含「success」布林值屬性，指出呼叫的成功或失敗。 您必須改為評估HTTP回應狀態代碼。 如果呼叫成功，則會傳回200狀態代碼。 如果呼叫失敗，會傳回非200層級的狀態代碼，且回應內文包含標準「錯誤」陣列，其中包含錯誤代碼和描述性錯誤訊息。
-- 日期時間字串的格式為`yyyyMMdd'T'HH:mm:ss.SSS't'+|-hhmm`。 這適用於下列屬性： `createdAt`、`updatedAt`、`expiresAt`。
-- 使用者管理API端點未像其他端點一樣以「/rest」為前置詞。
+- 以HTTP標頭傳送存取權杖。 您不能以查詢字串引數的形式傳遞存取權杖。 請參閱[驗證指南](authentication.md)。
+- 建立REST API [自訂服務](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api)的使用者角色時，從下列每個群組選取許可權：
+  1. 來自[存取管理員](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)群組的「存取使用者」許可權
+  1. [Access API](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/descriptions-of-role-permissions)群組中的「Access User Management Api」
+- 評估HTTP回應狀態代碼，因為回應本文不包含「success」布林屬性。 成功的呼叫傳回狀態碼200。 失敗的呼叫傳回非200狀態代碼和標準「錯誤」陣列，其中包含錯誤代碼和描述性訊息。
+- 將日期時間字串格式化為`yyyyMMdd'T'HH:mm:ss.SSS't'+|-hhmm`。 此格式適用於`createdAt`、`updatedAt`和`expiresAt`。
+- 請勿在User Management API端點之前加上「/rest」。
 
 ## 查詢
 
-使用者管理的查詢支援包括擷取所有使用者、角色和工作區的功能。 此外，您也可以依使用者ID擷取單一使用者記錄，或依使用者ID擷取角色/工作區記錄。
+「使用者管理」查詢可擷取所有使用者、角色和工作區。 他們也可以依使用者ID擷取一個使用者或關聯的角色和工作區記錄。
 
 ### 使用者（依ID）
 
@@ -107,7 +107,7 @@ GET /userservice/management/v1/users/{userid}/invite.json
 
 ### 依Id區分的角色和工作區
 
-[依ID](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/getUserRolesAndWorkspacesUsingGET)取得角色和工作區端點採用單一`userid`路徑引數，並傳回使用者角色和工作區記錄的清單。 回應包含一個物件的陣列，其中含有指定使用者的角色和工作區ID與名稱。
+[依ID](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/getUserRolesAndWorkspacesUsingGET)取得角色和工作區端點會採用一個`userid`路徑引數，並傳回使用者的角色和工作區記錄。 回應陣列中的每個物件都包含角色和工作區ID與名稱。
 
 ```http
 GET /userservice/management/v1/users/{userid}/roles.json
@@ -132,7 +132,10 @@ GET /userservice/management/v1/users/{userid}/roles.json
 
 ### 瀏覽使用者
 
-[Get Users](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/getUsersUsingGET)端點傳回所有使用者記錄的清單。 選用的`pageSize`引數是整數，它指定要傳回的最大專案數。 預設值為20。 最大值為200。 選用的`pageOffset`引數是整數，指定從何處開始擷取專案。 可與`pageSize`搭配使用。 預設值為0。
+[Get Users](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/getUsersUsingGET)端點傳回所有使用者記錄。 支援下列選用整數引數：
+
+- `pageSize`指定要傳回的專案數目上限。 預設值為20，最大值為200。
+- `pageOffset`指定開始擷取專案的位置。 預設值為0，可與`pageSize`搭配使用。
 
 ```http
 GET /userservice/management/v1/users/allusers.json
@@ -311,17 +314,19 @@ GET /userservice/management/v1/users/workspaces.json
 
 在[Adobe IMS整合訂閱](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview)上，此端點僅支援[僅限API的使用者](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user)的邀請。 若要邀請[標準使用者](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)，請改用[Adobe User Management API](https://developer.adobe.com/umapi/)。
 
-[邀請使用者](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/inviteUserUsingPOST)端點會傳送「歡迎使用Marketo」電子郵件邀請給新使用者。 電子郵件內文包含「登入Marketo」連結，可讓使用者首次存取Marketo。 若要接受邀請，電子郵件收件者請按一下「登入Marketo」連結、建立密碼，然後取得Marketo的存取權。 在接受程式完成之前，邀請處於「擱置中」狀態，使用者記錄可能無法編輯。 未決的邀請會在傳送七天後過期。 [Marketo使用者管理檔案](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)中提供詳細資訊。
+[邀請使用者](https://developer.adobe.com/marketo-apis/api/user/#tag/User-Management/operation/inviteUserUsingPOST)端點會傳送「歡迎使用Marketo」電子郵件邀請給新使用者。 電子郵件包含「登入Marketo」連結。 收件者可選取連結、建立密碼並取得Marketo的存取權。
 
-引數以`application/json`格式傳入要求內文。
+在收件者接受邀請之前，其狀態為「擱置中」，且無法編輯使用者記錄。 待處理的邀請會在傳送七天後過期。 如需詳細資訊，請參閱[Marketo使用者管理檔案](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/managing-marketo-users)。
 
-需要下列引數： `emailAddress`、`firstName`、`lastName`和`userRoleWorkspaces`。 `userRoleWorkspaces`引數是包含`accessRoleId`和`workspaceId`屬性的物件陣列。
+以`application/json`格式傳遞要求內文中的引數。
 
-`userid`引數是用於使用者登入目的的唯一使用者識別碼字串值，必須格式化為電子郵件地址。 如果未在要求中提供，`userid`的值預設為`emailAddress`引數中提供的值。
+必要的引數為`emailAddress`、`firstName`、`lastName`和`userRoleWorkspaces`。 `userRoleWorkspaces`引數是包含`accessRoleId`和`workspaceId`屬性的物件陣列。
 
-布林值`apiOnly`引數指定使用者是否為[僅限API的使用者](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user)。 `expiresAt`引數指定使用者登入到期的時間，並使用W3C ISO-8601格式（不含毫秒）格式化。 如果要求中未提供，則使用者永不過期。 `reason`引數是說明使用者邀請原因的字串。
+`userid`引數是用於登入的唯一使用者識別碼，必須格式化為電子郵件地址。 如果要求省略`userid`，其值預設為`emailAddress`的值。
 
-如果成功，端點會傳回「true」值，否則會傳回錯誤訊息。
+布林值`apiOnly`引數指定使用者是否為[僅限API的使用者](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/users-and-roles/create-an-api-only-user)。 `expiresAt`引數會指定使用者登入到期的時間，並使用W3C ISO-8601格式，不需毫秒。 如果要求遺漏`expiresAt`，則使用者永遠不會過期。 `reason`引數說明邀請的原因。
+
+邀請成功時，端點會傳回「true」。 否則，會傳回錯誤訊息。
 
 ```http
 POST /userservice/management/v1/users/invite.json
@@ -351,15 +356,15 @@ Content-Type: application/json
 true
 ```
 
-以下是傳送給新使用者的「歡迎使用Marketo」電子郵件邀請範例。 電子郵件主旨列為「Marketo登入資訊」，寄件者為與[REST API自訂服務](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api)相關聯的僅限API使用者的電子郵件地址，而收件者則是透過firstName、lastName及emailAddress引數指定的收件者。
+下圖顯示傳送給新使用者的「歡迎使用Marketo」電子郵件。 主旨為「Marketo登入資訊」。 寄件者是與[REST API自訂服務](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-a-custom-service-for-use-with-rest-api)相關聯的僅限API使用者的電子郵件地址。 firstName、lastName和emailAddress引數會指定收件者。
 
 ![邀請使用者電子郵件](assets/invite-user-email.png)
 
-使用者透過輸入兩次密碼並按一下「建立密碼」按鈕來接受電子郵件邀請。 之後，她便第一次獲得Marketo的存取權。
+使用者透過輸入兩次密碼並選取「建立密碼」按鈕來接受邀請。 接著，使用者會收到Marketo的存取權。
 
 ## 更新使用者
 
-更新對使用者的支援包括更新使用者屬性或刪除使用者的功能。 只有已接受其邀請的使用者才能更新。 屬性會以application/json格式傳遞為請求內文的引數。
+您可以在使用者接受邀請後更新使用者屬性或刪除使用者。 以application/json格式將屬性傳遞為請求內文中的引數。
 
 ### 更新使用者屬性
 
@@ -436,7 +441,7 @@ POST /userservice/management/v1/users/{userid}/invite/delete.json
 
 ## 更新角色
 
-對角色的更新支援包括新增和刪除角色的功能。 屬性會以application/json格式傳遞為請求內文的引數。
+您可以新增或刪除角色。 以application/json格式將屬性傳遞為請求內文中的引數。
 
 ## 新增角色
 

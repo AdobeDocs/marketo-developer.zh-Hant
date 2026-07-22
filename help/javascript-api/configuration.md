@@ -13,16 +13,16 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 614
-ht-degree: 4%
+source-wordcount: 541
+ht-degree: 5%
 
 ---
 
 # 設定
 
-Munchkin可接受各種組態設定來自訂行為。 組態設定是在呼叫[Munchkin.init()](api-reference.md#munchkin_init)時作為第二個引數傳遞的JavaScript物件屬性
+Munchkin接受可自訂其行為的組態設定。 在[Munchkin.init()](api-reference.md#munchkin_init)的第二個引數中傳遞設定作為JavaScript物件的屬性。
 
 ```json
 Munchkin.init("AAA-BBB-CCC", {
@@ -32,25 +32,25 @@ Munchkin.init("AAA-BBB-CCC", {
 );
 ```
 
-組態設定物件可包含下表中的任意數量屬性。
+組態設定物件可包含下表中的任何數量屬性。
 
 ## 屬性
 
 | 名稱 | 資料類型 | 說明 |
 | --- | --- | --- |
-| altIds | 陣列 | 接受Munchkin ID字串的陣列。 啟用後，系統會根據目標訂閱的Munchkin ID，將所有網頁活動複製到目標訂閱。 |
+| altIds | 陣列 | 接受Munchkin ID字串的陣列。 啟用後，所有網頁活動都會複製到其Munchkin ID所識別的訂閱。 |
 | anonymizeip | 布林值 | 將新訪客在Marketo中記錄的IP位址匿名化。 |
 | apiOnly | 布林值 | 若設為true，則`Munchkin.Init()`函式將不會呼叫`visitsWebPage`。 這對於需要每個`visitsWebPage`事件的完整控制權的單頁網頁應用程式非常有用。 |
-| asyncOnly | 布林值 | 若設為true，會以非同步方式傳送XMLHttpRequest。 預設值為false。 |
-| clickTime | 整數 | 設定點選後要封鎖的時間長度，以允許點選追蹤要求（以毫秒為單位）。 減少這項操作會降低點選追蹤的準確度。 預設值為350毫秒。 |
-| cookieAnon | 布林值 | 如果設為false，會防止追蹤和Cookie建立新的匿名銷售機會。 潛在客戶具有Cookie，並在填寫Marketo表單後或從Marketo電子郵件點進時被追蹤。 預設為true。 |
+| asyncOnly | 布林值 | 若設為true，會非同步傳送XMLHttpRequests。 預設值為false。 |
+| clickTime | 整數 | 設定點選後封鎖的時間（以毫秒為單位），以便完成點選追蹤要求。 減少此值會降低點選追蹤的準確度。 預設值為350毫秒。 |
+| cookieAnon | 布林值 | 若設為false，會防止追蹤及建立新的匿名潛在客戶的Cookie。 在提交Marketo表單或從Marketo電子郵件點進之後，銷售機會會接收Cookie並進行追蹤。 預設為true。 |
 | cookieLifeDays | 整數 | 將任何新建立的Munchkin追蹤Cookie的到期日設定為未來的這個天數。 預設值為730天（2年）。 |
 | customName | 字串 | 自訂頁面名稱。 僅限系統使用。 |
-| <a name="domainlevel"></a>domainLevel | 整數 | 設定頁面網域中設定Cookie網域屬性時要使用的部分數量。例如，假設目前頁面網域為「www.example.com」。domainLevel： 2會將Cookie網域屬性設為「.example.com」domainLevel： 3會將Cookie網域屬性設為「。www.example.com」。Background:Munchkin會自動管理特定的雙字母上層網域。 在正常情況下，這預設為兩個部分，最上層網域是三個字母。 例如「www.example.com」，最右邊的兩個部分可用來設定Cookie「.example.com」。若為兩個字母的國家代碼，例如「.jp」、「.us」、「.cn」和「.uk」，則程式碼預設為三個部分。 例如，「www.example.co.jp」將使用三個最右邊的網域部分，「.example.co.jp」。如果網域模式需要不同的行為，則必須使用`domainLevel`引數來指定。 |
+| <a name="domainlevel"></a>domainLevel | 整數 | 設定頁面網域的幾個部分要用於Cookie的網域屬性。<br><br>針對「www.example.com」，`domainLevel: 2`會將Cookie網域設為&quot;。example.com&quot;，而`domainLevel: 3`會將其設為&quot;。www.example.com&quot;。<br><br>依預設，當最上層網域有三個字母時，Munchkin會使用兩個部分。 例如，「www.example.com」使用「.example.com」。<br><br>對於雙字母國家/地區代碼，例如「.jp」、「.us」、「.cn」和「.uk」，Munchkin使用三個部分。 例如，「www.example.co.jp」使用「.example.co.jp」。<br><br>當網域模式需要不同的行為時，請使用`domainLevel`引數。 |
 | domainSelectorV2 | 布林值 | 若設為true，會使用改良的方法判斷如何設定Cookie網域屬性。 |
 | httpsOnly | 布林值 | 預設為false。 若設為true，則在透過https提供追蹤的頁面時，將Cookie設定為使用Secure設定。 |
-| useBeaconAPI | 布林值 | 預設為false。 設定為True時，會使用[Beacon API](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API)來傳送非封鎖要求，而非[XMLHttpRequest](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest)。 如果瀏覽器不支援此API，Munchkin會退回使用XMLHttpRequest。 |
-| wsInfo | 字串 | 以字串作為工作區的目標。 在「管理員>整合> Munchkin」功能表中選取Workspace ，即可取得此工作區ID。 此設定僅適用於匿名潛在客戶記錄的初始建立。 一旦為該潛在客戶記錄建立了Munchkin Cookie值，wsInfo引數就無法用來變更其資料分割。 由於此設定只會影響匿名銷售機會，因此只與網頁報表中分割特定的[匿名訪客](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports)有關。 |
+| useBeaconAPI | 布林值 | 預設為false。 設定為True時，會使用[Beacon API](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API)來傳送非封鎖要求，而非[XMLHttpRequest](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest)。 如果瀏覽器不支援Beacon API，Munchkin會使用XMLHttpRequest。 |
+| wsInfo | 字串 | 以工作區為目標。 在「管理員>整合> Munchkin」功能表中選取工作區，以取得工作區ID。<br><br>此設定只適用於最初建立匿名潛在客戶記錄時。 為該潛在客戶記錄建立Munchkin Cookie值後，wsInfo引數就無法變更其資料分割。<br><br>由於此設定只會影響匿名銷售機會，因此它只與網頁報表中分割特定的[匿名訪客](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports)有關。 |
 
 ## 範例
 
@@ -86,7 +86,7 @@ Munchkin.init("AAA-BBB-CCC", {
 
 ### 將追蹤設定為非同步
 
-此範例會強制從主要執行緒非同步傳送所有XMLHttpRequest。
+此範例會強制從主要執行緒非同步傳送所有XMLHttpRequests。
 
 ```javascript
 <script type="text/javascript">

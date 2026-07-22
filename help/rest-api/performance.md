@@ -8,20 +8,20 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 146
+source-wordcount: 131
 ht-degree: 1%
 
 ---
 
 # 績效
 
-此頁面包含效能相關主題的清單，可用來提高整合的效能。
+使用此頁面上的效能選項來提高整合的效率。
 
 ## HTTP壓縮
 
-Marketo REST API使用HTTP 1.1規格定義的標準，支援回應主體的HTTP壓縮。 建議啟用壓縮，因為這會減少頻寬使用量，以及擷取資料所花費的時間。
+Marketo REST API支援HTTP 1.1規格所定義的HTTP回應本文壓縮。 啟用壓縮功能以減少頻寬使用量和資料擷取時間。
 
 >[!NOTE]
 >
@@ -33,13 +33,13 @@ Marketo REST API使用HTTP 1.1規格定義的標準，支援回應主體的HTTP�
 Accept-Encoding: gzip
 ```
 
-Marketo REST API會壓縮回應內文，並包含此標題：
+Marketo REST API會壓縮回應內文，並包含下列標頭：
 
 ```html
 Content-Encoding: gzip
 ```
 
-以下是使用Curl呼叫[Get Leads by Filter Type](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET)端點以擷取5個銷售機會的範例：
+下列cURL範例會呼叫[依篩選型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET)的取得銷售機會，以擷取五個銷售機會：
 
 ```bash
 curl -H 'Accept-Encoding: gzip' 'https://123-ABC-456.mktorest.com/rest/v1/leads.json?filterType=id&filterValues=4,5,7,12,13'

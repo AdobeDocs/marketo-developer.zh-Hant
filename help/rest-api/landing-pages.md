@@ -13,10 +13,10 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1221
-ht-degree: 1%
+source-wordcount: 917
+ht-degree: 2%
 
 ---
 
@@ -24,13 +24,13 @@ ht-degree: 1%
 
 [登陸頁面端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages)
 
-登陸頁面是Marketo託管的網頁。
+登陸頁面是Marketo託管的網頁。 使用登入頁面REST API來查詢及管理其中繼資料、內容、生命週期和預覽。
 
 ## 查詢
 
-如同其他大部分資產，登入頁面可依名稱[&#x200B; &#x200B;](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByNameUsingGET)、[依識別碼](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByIdUsingGET)和[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/browseLandingPagesUsingGET)查詢。 這些查詢將只會傳回中繼資料，而且登入頁面的內容區段清單必須依登入頁面的ID單獨查詢。
+依名稱[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByNameUsingGET)、[依識別碼](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageByIdUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/browseLandingPagesUsingGET)查詢登入頁面。 這些查詢只會傳回中繼資料。 依頁面ID個別查詢登入頁面的內容區段。
 
-查詢登入頁面的內容將傳回登入頁面中可用的內容區段清單。 區段必須存在於頁面的內容清單中才能更新內容：
+查詢登入頁面內容會傳回其可用的內容區段。 區段必須出現在此清單中，您才能進行更新。
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/content.json
@@ -62,13 +62,15 @@ GET /rest/asset/v1/landingPage/{id}/content.json
 }
 ```
 
-引導式與自由表單範本的結果將會不同，因為引導式登入頁面會隨附一組由範本定義的區段，而自由表單頁面不會隨附預先定義的區段，且必須在編輯前新增其內容。  請注意，「content」屬性的格式視「type」屬性而異，且欄位是靜態還是動態。
+引導式登入頁面包含由其範本定義的區段。 自由表單頁面不包含預先定義的區段，因此在編輯前請先新增其內容。
+
+`content`屬性的格式取決於`type`屬性以及欄位是靜態或動態。
 
 ## 建立和更新
 
-[登入頁面是透過參考回範本所建立](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/createLandingPageUsingPOST)。 建立所需的欄位只有名稱、範本（範本的ID）以及放置頁面的資料夾。 如需可填入的其他中繼資料，請參閱端點參考。
+[從範本建立登入頁面](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/createLandingPageUsingPOST)。 需要頁面名稱、範本ID和目的地資料夾。 如需選擇性中繼資料，請參閱端點參考。
 
-[登入頁面內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content)端點的有效內容型別為： rtf、HTML、Form、Image、Rectangle、Snippet。
+[登入頁面內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content)端點支援這些內容型別： `richText`、`HTML`、`Form`、`Image`、`Rectangle`和`Snippet`。
 
 ```http
 POST rest/asset/v1/landingPages.json
@@ -119,25 +121,25 @@ name=createLandingPage&folder={"type": "Folder", "id": 11}&template=1&descriptio
 
 ## 核准
 
-登陸頁面會遵循標準草稿核准模式，其中可能有草稿版本和/或核准版本。 每當將更新套用至頁面時，都會先將更新套用至草稿版本，而且只有在頁面獲得核准後才會即時顯示。
+登入頁面使用標準草稿和已核准模型。 更新會套用至草稿，並僅在核准後上線。
 
 ## 刪除
 
-若要刪除登入頁面，該頁面必須先停止使用、未被任何其他Marketo資產參照，以及未核准。 使用[刪除登陸頁面](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/deleteLandingPageByIdUsingPOST)端點個別刪除頁面。 無法透過此API刪除內嵌社交按鈕的登陸頁面。
+刪除登入頁面之前，請確定該頁面未核准，且沒有其他Marketo資產參考它。 使用[刪除登陸頁面](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/deleteLandingPageByIdUsingPOST)端點個別刪除頁面。 您無法使用此API來刪除內嵌社交按鈕的頁面。
 
 ## 原地複製
 
-Marketo提供複製登入頁面的簡單方法。 這是application/x-www-url-formencoded POST要求。
+複製具有`application/x-www-url-formencoded` POST要求的登入頁面。
 
-`id`路徑引數指定要複製的來源登陸頁面識別碼。
+`id`路徑引數指定來源登陸頁面。
 
-`name`引數是用來指定新登陸頁面的名稱。
+`name`引數會指定新的登陸頁面名稱。
 
-`folder`引數是用來指定建立新登陸頁面的父資料夾。 這是內嵌JSON物件的形式，包含`id`和`type`。
+`folder`引數指定父資料夾。 將其傳遞為包含`id`和`type`的內嵌JSON物件。
 
-`template`引數是用來指定來源登入頁面範本ID。
+`template`引數指定來源登入頁面範本識別碼。
 
-選用的`description`引數可用來說明新的登陸頁面。
+選用的`description`引數說明新的登陸頁面。
 
 ```http
 POST /rest/asset/v1/landingPage/{id}/clone.json
@@ -183,7 +185,9 @@ name=MyNewLandingPage&folder={"type":"Program","id":1119}&template=57
 
 ## 管理內容區段
 
-內容區段會根據其索引屬性排序，最終根據使用者端顯示時套用的任何CSS規則進行編排。 內容區段會與對應的[新增](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/addLandingPageContentUsingPOST)、[更新](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST)和[刪除](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/removeLandingPageContentUsingPOST)登陸頁面內容區段端點一起包含和管理，並可使用[取得登陸頁面內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET)進行查詢。 每個區段都有一個型別和一個值引數。 型別會決定應該放入值的內容。  對於這些端點，資料會以POST x-www-form-urlencoded傳遞，而非以JSON傳遞。
+內容區段依其`index`屬性排序，並根據使用者端的CSS規則顯示。 使用[新增](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/addLandingPageContentUsingPOST)、[更新](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST)和[刪除](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/removeLandingPageContentUsingPOST)端點來管理區段。 使用[取得登入頁面內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET)來查詢這些內容。
+
+每個區段都有`type`和`value`引數。 `type`決定預期的`value`。 將資料以POST `x-www-form-urlencoded`傳遞至這些端點，而非以JSON傳遞。
 
 **區段型別**
 
@@ -199,11 +203,15 @@ name=MyNewLandingPage&folder={"type":"Program","id":1119}&template=57
 | 社交按鈕 | 社交按鈕的id。 |
 | 影片 | 視訊的ID。 |
 
-對於自由格式頁面，必須新增所有需要的內容區段，並將嵌入到ID為`mktoContent`的div元素中。 對於引導式頁面，預先定義的元素清單可能會出現在[取得登陸頁面內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET)端點的清單中。 可透過其各自的端點新增更多內容或更新其[內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST)。
+針對自由格式頁面，新增每個必要的內容區段。 Marketo會將它們內嵌在ID為`mktoContent`的`div`元素中。
+
+引導式頁面可包含由[取得登入頁面內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/getLandingPageContentUsingGET)傳回的預先定義元素。 使用對應的端點來新增元素或[更新其內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST)。
 
 ### 動態內容
 
-若要建立「動態內容」區段，該區段必須已存在於登入頁面的內容清單中。 然後，必須使用[更新登入頁面內容區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST)端點將型別設定為&#39;DynamicContent&#39;。 當區段設為動態內容時，會在內容區段中建立基礎動態區段，這些區段都會繼承轉換元素的基本型別。 每個動態區段也會繼承已轉換區段的內容。
+若要讓區段成為動態區段，請先確定該區段會顯示在登入頁面的內容清單中。 然後使用[更新登入頁面內容區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Content/operation/updateLandingPageContentUsingPOST)來將其型別設定為`DynamicContent`。
+
+Marketo會建立基礎動態區段，這些區段繼承轉換後元素的基底型別和內容。
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/dynamicContent/RVMtNDg=.json
@@ -269,11 +277,11 @@ segment=New Segment&value=New Content
 
 ## 變數
 
-引導式登入頁面中匯入的功能之一是可編輯的變數。  變數包含登陸頁面上元素的值。  您可以使用登入頁面編輯器輕鬆修改變數，如下所示：
+引導式登入頁面支援包含元素值的可編輯變數。 在登入頁面編輯器中修改變數：
 
 ![登陸頁面變數](assets/landing-page-variables.png)
 
-變數在引導模式登入頁面範本的`<head>`元素中定義為中繼標籤。 可用的變數型別有三種：字串、顏色和布林值。  以下是三個變數定義的範例：
+變數是引導式登入頁面範本之`<head>`元素中的中繼標籤。 支援的型別為String、Color和Boolean。 下列範例會定義每種型別的一個變數：
 
 ```html
 <head>
@@ -320,7 +328,7 @@ GET /rest/asset/v1/landingPage/{id}/variables.json
 }
 ```
 
-在此範例中，引導式登陸頁面包含3個變數：stringVar、colorVar、boolVar。
+此引導式登陸頁面包含三個變數： `stringVar`、`colorVar`和`boolVar`。
 
 ### 更新
 
@@ -348,10 +356,10 @@ POST /rest/asset/v1/landingPage/{id}/variable/{variableId}.json?value={newValue}
 
 ## 預覽登陸頁面
 
-Marketo提供[取得登陸頁面完整內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageFullContentUsingGET)端點，以擷取登陸頁面的即時預覽，如同在瀏覽器中呈現一樣。 有一個必要的引數，`id`路徑引數，是您要預覽之登入頁面的ID。 還有兩個額外的選用查詢引數：
+使用[取得登入頁面完整內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Pages/operation/getLandingPageFullContentUsingGET)來擷取瀏覽器轉譯的預覽。 登入頁面`id`路徑引數為必要項。 端點也接受兩個選用的查詢引數：
 
-- segmentation：接受包含segmentationId和segmentId屬性的JSON物件陣列。 設定後，會將您視為符合這些區段的潛在客戶來預覽登陸頁面。
-- leadId：接受潛在客戶的整數ID。 設定後，會預覽登入頁面，就像是由指定的潛在客戶檢視一樣。
+- `segmentation`：包含`segmentationId`和`segmentId`的JSON物件陣列。 預覽代表符合這些區段的銷售機會。
+- `leadId`：整數銷售機會識別碼。 預覽代表指定的銷售機會。
 
 ```http
 GET /rest/asset/v1/landingPage/{id}/fullContent.json?leadId=1001&segmentation=[{"segmentationId":1030,"segmentId":1103}]

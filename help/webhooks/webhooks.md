@@ -18,54 +18,60 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 700
-ht-degree: 2%
+source-wordcount: 590
+ht-degree: 3%
 
 ---
 
 # Webhooks
 
-Marketo允許使用Webhook與協力廠商Web服務通訊。 Webhook支援使用GET或POST HTTP動詞來推送或擷取特定URL的資料。 如需應用程式內建立Webhook以及如何將其新增到Smart Campaigns的詳細指示，請參閱下列文章：
+Marketo webhook與協力廠商Web服務通訊。 webhook會使用GET或POST HTTP動詞來傳送資料至特定URL或從中擷取資料。
+
+如需建立webhook並將其新增至Smart Campaign的說明，請參閱：
 
 - [建立 Webhook](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/additional-integrations/create-a-webhook)
 - [呼叫 Webhook](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/call-webhook)
 - [在智慧行銷活動中使用 Webhook](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/use-a-webhook-in-a-smart-campaign)
 
-每個單獨的webhook都有以下屬性：
+使用下列屬性設定每個webhook：
 
-- **[!UICONTROL URL]** — 輸入您用來將要求提交至Web服務的URL。
+- **[!UICONTROL URL]** — 您提交Web服務要求的URL。
 - **[!UICONTROL Request Type]** - HTTP方法。
-- **[!UICONTROL Payload Template]** — 如果您想要在POST內文中傳輸資訊，請輸入範本。 使用支援HTTP POST的任何資料格式，包括XML、JSON或SOAP。 序列化格式必須在字串周圍加上雙引號。 若要在範本中插入權杖，請選取&#x200B;**[!UICONTROL Insert Token]**。 字串型別的權杖會自動以雙引號括住。
-- **[!UICONTROL Request Token Encoding]** — 如果權杖值包含特殊字元（例如&amp;符號、&#39;&amp;&#39;），請指出您請求的格式（JSON或表單/URL）。 必須為主體選擇正確的編碼，以確保Webhook正確與Web服務通訊。
-- **[!UICONTROL Response Type]** — 選取您從服務收到的回應格式（JSON或XML）。 必須選取正確的回應型別，才能將回應的屬性對應回Marketo中的潛在客戶欄位。
-- **[!UICONTROL Custom Headers]** — 透過&#x200B;**[!UICONTROL Webhooks Actions]** > **[!UICONTROL Set Custom Header]**&#x200B;存取，此功能表允許將任意數量的自訂索引鍵/值配對新增為HTTP標題。
+- **[!UICONTROL Payload Template]** - POST本文中傳送之資訊的範本。 使用支援HTTP POST的任何資料格式，包括XML、JSON或SOAP。 序列化格式必須在字串周圍加上雙引號。 若要插入權杖，請選取&#x200B;**[!UICONTROL Insert Token]**。 Marketo會自動將字串型別的Token括在雙引號中。
+- **[!UICONTROL Request Token Encoding]** — 請求格式（JSON或表單/URL），用於編碼包含&amp;等特殊字元的權杖值。 選取正確的主體編碼，讓webhook可正確與Web服務通訊。
+- **[!UICONTROL Response Type]** — 回應格式，JSON或XML。 選取正確的型別，將回應屬性對應至Marketo中的潛在客戶欄位。
+- **[!UICONTROL Custom Headers]** — 透過&#x200B;**[!UICONTROL Webhooks Actions]** > **[!UICONTROL Set Custom Header]**&#x200B;新增為HTTP標題的機碼值組。 您可以新增任意數量的自訂標頭。
 
-可以使用[回應對應](response-mappings.md)，將資料從Web服務回應寫入潛在客戶。
+使用[回應對應](response-mappings.md)將資料從Web服務回應寫入回潛在客戶。
 
 ## 權杖
 
-Webhook中的所有傳出欄位（URL、範本和自訂標題）都會在流程步驟的相同內容中填入權杖的內容。 也就是說，銷售機會和系統代號永遠都可使用，而觸發器、促銷活動和方案代號則可在各自的範圍中使用。 請參閱權杖相關文章：
+所有傳出webhook欄位（包括URL、範本和自訂標題）都會將權杖內容填入與流程步驟相同的內容中。
+
+銷售機會和系統代號一律可用。 觸發器、行銷活動和方案代號可在各自的範圍中使用。 如需詳細資訊，請參閱：
 
 - [權杖概觀](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
 - [系統權杖字彙表](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
-- [有趣時刻的Token](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
+- [有趣時刻的Token](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
 
-常見的情況是，方案或行銷活動明確對應至協力廠商資源。 ID可在程式層級設定為`My Token`，然後作為Token傳遞至Webhook要求。
+例如，當方案或促銷活動對應至協力廠商資源時，請在方案層級將ID設定為`My Token`。 然後將ID當做權杖傳遞到webhook請求中。
 
 ## 自訂標頭
 
-Webhook允許使用任意數量的自訂標題欄位與傳出請求一起傳送。 可透過&#x200B;**[!UICONTROL Webhooks Actions]** > **[!UICONTROL Set Custom Header]**&#x200B;新增這些專案。 每個標頭都會記錄為一個簡單的索引鍵/值組。 Token可用於此區域。
+Webhook可使用傳出請求傳送任意數量的自訂標題欄位。 透過&#x200B;**[!UICONTROL Webhooks Actions]** > **[!UICONTROL Set Custom Header]**&#x200B;新增標題。
+
+每個標頭都是一個索引鍵/值組，可包含代號。
 
 ![自訂標頭](assets/custom-headers.png)
 
 ## 提示
 
-- 呼叫Webhook流程步驟僅在觸發行銷活動中有效。
-- 只有在Web服務以2xx HTTP回應代碼回應時，才會透過回應對應進行更新。 其他型別的程式碼將不會導致記錄的更新。
+- 僅在觸發行銷活動中使用「呼叫Webhook」流程步驟。
+- 只有在Web服務傳回2xx HTTP回應代碼時，回應對應才會更新記錄。
 - 您可以使用Web服務，從內部或外部服務執行自訂資料擴充、驗證或標準化。
-- Webhook執行時間取決於所用服務的回應時間，並可能導致較長的行銷活動執行延遲。 即使服務只需要50毫秒執行，當執行100,000次時也就是1.5小時。
+- Webhook執行時間取決於服務的回應時間，並可能導致較長的行銷活動執行延遲。 即使服務只需要50毫秒即可執行，100,000次執行仍需要1.5小時。
 - Marketo在終止呼叫（也稱為逾時）之前，最多會等待指定的服務呼叫30秒。
-- URL欄位中內嵌的字元會以寫入方式傳遞，例如&#39;&amp;&#39;會以&#39;&amp;&#39;傳送，&#39;%26&#39;會以&#39;%26&#39;傳送
-   - 如果收件者伺服器收到字元時，該字元應為百分比編碼，則應明確傳遞為代表該字元的字串
+- Marketo會以寫入的方式傳遞URL欄位中的字元。 例如，&#39;&amp;&#39;是以&#39;&amp;&#39;傳送，而&#39;%26&#39;是以&#39;%26&#39;傳送。
+  - 若要將百分比編碼的字元傳送至收件者伺服器，請明確傳遞代表該字元的字串。

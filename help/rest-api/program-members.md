@@ -16,9 +16,9 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 1924
+source-wordcount: 1670
 ht-degree: 2%
 
 ---
@@ -27,11 +27,16 @@ ht-degree: 2%
 
 [程式成員端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members)
 
-Marketo會公開API，以供讀取、建立、更新和刪除程式成員記錄。 方案成員記錄會透過銷售機會ID欄位與銷售機會記錄相關。 記錄由一組標準欄位和選擇性地最多20個其他自訂欄位組成。 這些欄位包含每個成員的程式特定資料，並可用於表單、篩選器、觸發器和流程動作。 您可以在Marketo Engage UI中程式[成員標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members)中檢視此資料。
+Marketo提供讀取、建立、更新和刪除程式成員記錄的API。 潛在客戶識別碼欄位將方案成員記錄與潛在客戶記錄相關聯。
+
+每個記錄包含標準欄位，最多可包含20個自訂欄位。 這些欄位會儲存程式特定的成員資料，以用於表單、篩選器、觸發器和流程動作。 您可以在Marketo Engage UI中程式[成員標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members)中檢視此資料。
 
 ## 說明
 
-[Describe程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2)端點遵循潛在客戶資料庫物件的標準模式。 `searchableFields`陣列為您提供一組有效的欄位，以供查詢。 `fields`陣列包含欄位中繼資料，包括REST API名稱、顯示名稱和欄位更新能力。
+[Describe程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2)端點遵循Lead資料庫物件的標準模式。
+
+- `searchableFields`陣列識別對查詢有效的欄位。
+- `fields`陣列包含中繼資料，例如REST API名稱、顯示名稱，以及欄位是否可更新。
 
 ```http
 GET /rest/v1/programs/members/describe.json
@@ -222,26 +227,30 @@ GET /rest/v1/programs/members/describe.json
 
 ## 查詢
 
-[取得方案成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMembersUsingGET)端點可讓您擷取方案的成員。 它需要`programId`路徑引數，以及`filterType`和`filterValues`查詢引數。
+使用[取得方案成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMembersUsingGET)端點來擷取方案的成員。 此要求需要`programId`路徑引數以及`filterType`和`filterValues`查詢引數。
 
-`programId`用於指定要搜尋的方案。
+`programId`指定要搜尋的方案。
 
-`filterType`用於指定要用作搜尋篩選的欄位。 它接受[Describe程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2)端點傳回之「searchableFields」清單中的任何欄位。 如果您指定的filterType是自訂欄位，則自訂欄位的dataType必須是&quot;string&quot;或&quot;integer&quot;。 如果您指定「leadId」以外的filterType，請求最多可以處理100,000個程式成員記錄。 視您的Marketo執行個體的設定方式而定，您會收到下列其中一個錯誤：
+`filterType`指定要做為搜尋篩選的欄位。 它接受[Describe程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2)端點傳回之「searchableFields」清單中的任何欄位。 對於自訂欄位，dataType必須是&quot;string&quot;或&quot;integer&quot;。
+
+當filterType不是「leadId」時，請求最多可以處理100,000個程式成員記錄。 根據您的Marketo執行個體設定，您會收到以下其中一個錯誤：
 
 - 如果方案成員總數超過100,000，則會傳回錯誤：「1003，成員大小總計：100,001超過篩選允許的100,000限制」。
 - 如果符合篩選器&#x200B;_的程式成員_&#x200B;總數超過100,000，會傳回錯誤：「1003，符合成員資格大小： 100,001超過此API允許的限制(100,000)」。
 
-若要查詢成員計數超過限制的程式，請改用[大量程式成員擷取API](bulk-program-member-extract.md)。
+若要查詢成員資格計數超過限制的程式，請改用[大量程式成員擷取API](bulk-program-member-extract.md)。
 
-`filterValues`用於指定要搜尋的值，並以逗號分隔格式接受最多300個值。 呼叫會搜尋程式成員的欄位符合其中一個filterValues的記錄。
+`filterValues`指定要搜尋的值，並接受最多300個逗號分隔的值。 呼叫會搜尋程式成員欄位符合其中一個filterValues的記錄。
 
-或者，您可以透過將`updatedAt`指定為filterType搭配`startAt`和`endAt`日期時間引數來依日期範圍篩選。 範圍必須等於或少於7天。 日期時間應採用ISO-8601格式，不含毫秒。
+或者，透過將`updatedAt`指定為filterType並提供`startAt`和`endAt`日期時間引數來依日期範圍篩選。 範圍必須等於或少於7天。 日期時間值使用不含毫秒的ISO-8601格式。
 
-選用的`fields`查詢引數接受[描述程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2)端點傳回的欄位API名稱清單（以逗號分隔）。 包含時，回應中的每個記錄都包含指定欄位。 省略時，傳回的預設欄位集是`acquiredBy`、`leadId`、`membershipDate`、`programId`和`reachedSuccess`。
+選用的`fields`查詢引數接受[描述程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2)端點傳回的欄位API名稱清單（以逗號分隔）。 包含時，每個回應記錄都包含指定的欄位。 省略時，回應預設會傳回`acquiredBy`、`leadId`、`membershipDate`、`programId`和`reachedSuccess`。
 
-依預設，最多會傳回300筆記錄。 您可以使用`batchSize`查詢引數來減少此數目。 如果&#x200B;**moreResult**&#x200B;屬性為true，表示有更多結果可用。 繼續呼叫此端點，直到moreResult屬性傳回false （表示沒有可用的結果）。 從此API傳回的`nextPageToken`應一律重複用於此呼叫的下一個反複專案。
+依預設，端點最多會傳回300筆記錄。 使用`batchSize`查詢引數來減少此數目。
 
-如果GET請求的總長度超過8KB，則會傳回HTTP錯誤：「414， URI太長」。 暫行解決方法是將GET變更為POST、新增`_method=GET`引數，並將查詢字串放入要求內文中。
+如果&#x200B;**moreResult**&#x200B;屬性為true，則有更多結果可用。 繼續使用傳回的`nextPageToken`呼叫端點，直到moreResult為false。
+
+如果GET要求的總長度超過8KB，端點會傳回HTTP錯誤「414， URI太長」。 若要解決此限制，請將請求從GET變更為POST、新增`_method=GET`引數，並將查詢字串放入請求內文中。
 
 ```http
 GET /rest/v1/programs/{programId}/members.json?filterType=statusName&filterValues=Influenced
@@ -355,19 +364,26 @@ GET /rest/v1/programs/{programId}/members.json?filterType=statusName&filterValue
 
 ## 建立和更新
 
-有兩個端點支援在方案成員上建立/更新操作。 一個僅允許您更新計畫成員狀態。 另一個可讓您更新標示為「可更新」的程式成員欄位集。 兩個端點都可讓您修改每個呼叫最多300個程式成員記錄。
+兩個端點支援方案成員的建立和更新操作：
+
+- 一個端點只會更新程式成員狀態。
+- 一個端點更新標籤為「可更新」的程式成員欄位。
+
+每個端點最多可以修改300個程式成員記錄。
 
 ### 方案成員狀態
 
-[同步程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/syncProgramMemberStatusUsingPOST)端點用來建立或更新一或多個成員的程式狀態。
+使用[同步程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/syncProgramMemberStatusUsingPOST)端點可建立或更新一或多個成員的程式狀態。
 
-必要的`programId`路徑引數指定了包含要建立或更新之成員的程式。
+必要的引數包括：
 
-必要的`statusName`引數指定要套用至潛在客戶清單的程式狀態。 statusName必須符合方案頻道的可用狀態。 可以使用[取得通道](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels/operation/getAllChannelsUsingGET)端點擷取有效的狀態。 如果潛在客戶狀態的步驟值大於指定的statusName，則會略過該潛在客戶。
+- `programId`：指定包含要建立或更新之成員的程式的路徑引數。
+- `statusName`：指定要套用至潛在客戶清單的程式狀態。 statusName必須符合方案頻道的可用狀態。 使用[Get Channels](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels/operation/getAllChannelsUsingGET)端點擷取有效的狀態。 如果潛在客戶狀態的步驟值大於指定的statusName，則請求會跳過該潛在客戶。
+- `input`：對應至方案成員的`leadId`值陣列。 您最多可以提交每個呼叫300個銷售機會ID。
 
-必要的`input`引數是`leadId`的陣列，對應至方案成員。 您最多可以提交每個呼叫300個銷售機會ID。 對每個記錄執行更新插入操作。 如果leadId與方案成員相關聯，則會更新其成員資格狀態。 如果沒有，則會建立新的方案成員記錄，該記錄會與leadId相關聯，並會指派成員資格狀態。
+端點會對每個記錄執行更新插入。 如果leadId與方案成員相關聯，端點會更新其成員資格狀態。 否則，它會建立方案成員記錄，將該記錄與leadId相關聯，並指派成員資格狀態。
 
-端點以「已更新」、「已建立」或「已略過」的`status`回應。 如果略過，也會包含`reasons`陣列。 端點也會以`seq`欄位回應，此欄位是可用來將提交的記錄與回應順序產生關聯的索引。
+回應包含`status`個「已更新」、「已建立」或「已略過」。 略過的結果也包含`reasons`陣列。 `seq`欄位是將每個提交的記錄與回應順序關聯的索引。
 
 如果通話成功，「變更方案狀態」活動會寫入潛在客戶的活動記錄中。
 
@@ -427,13 +443,16 @@ Content-Type: application/json
 
 ### 方案成員資料
 
-[同步程式成員資料](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/syncProgramMemberDataUsingPOST)端點用於更新一或多個成員的程式成員欄位資料。 您可以修改任何自訂欄位或「可更新」的標準欄位（請參閱[描述程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2)端點）。
+使用[同步程式成員資料](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/syncProgramMemberDataUsingPOST)端點更新一或多個成員的程式成員欄位資料。 您可以修改任何自訂欄位，或任何由[描述程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/describeProgramMemberUsingGET2)端點標籤為「可更新」的標準欄位。
 
-必要的`programId`路徑引數指定了包含要更新的成員的程式。
+必要的引數包括：
 
-必要的`input`引數是陣列。 每個陣列元素包含`leadId`和一個或多個要更新的欄位（使用API名稱）。 對每個記錄執行更新操作。 leadId必須與方案成員相關聯。 欄位必須可更新。 您最多可以提交每個呼叫300個銷售機會ID。
+- `programId`：指定包含要更新之成員的程式的路徑引數。
+- `input`：其元素包含`leadId`和一個或多個欄位，以透過API名稱更新的陣列。 您最多可以提交每個呼叫300個銷售機會ID。
 
-端點以「已更新」或「已略過」的`status`回應。 如果略過，也會包含`reasons`陣列。 端點也會以`seq`欄位回應，此欄位是可用來將提交的記錄與回應順序產生關聯的索引。
+端點會更新每個記錄。 leadId必須與方案成員相關聯，且每個欄位都必須可更新。
+
+回應包含`status`個「已更新」或「已略過」。 略過的結果也包含`reasons`陣列。 `seq`欄位是將每個提交的記錄與回應順序關聯的索引。
 
 如果呼叫成功，「變更方案成員資料」活動會寫入潛在客戶的活動記錄中。
 
@@ -495,17 +514,21 @@ Content-Type: application/json
 
 ## 欄位
 
-程式成員物件包含標準欄位和選擇性自訂欄位。 標準欄位會顯示在每個Marketo Engage訂閱中，而自訂欄位則由使用者視需要建立。 每個欄位定義都由一組描述該欄位的屬性組成。 屬性的範例為顯示名稱、API名稱和dataType。 這些屬性統稱為中繼資料。
+程式成員物件包含標準欄位和選擇性自訂欄位。 標準欄位會顯示在每個Marketo Engage訂閱中，而使用者會視需要建立自訂欄位。
 
-下列端點可讓您查詢、建立和更新程式成員物件上的欄位。 這些API要求擁有的API使用者必須擁有具有&#x200B;**讀寫結構描述標準欄位**&#x200B;或&#x200B;**讀寫結構描述自訂欄位**&#x200B;許可權之一或兩者的角色。
+每個欄位都由顯示名稱、API名稱和dataType等屬性定義。 這些屬性統稱為中繼資料。
+
+下列端點查詢、建立和更新程式成員物件上的欄位。 API使用者必須具有具有&#x200B;**讀寫結構描述標準欄位**&#x200B;許可權、**讀寫結構描述自訂欄位**&#x200B;許可權或兩者的角色。
 
 ### 查詢欄位
 
-查詢方案成員欄位簡單明瞭。 您可以按API名稱查詢單一方案成員欄位，或查詢所有方案成員欄位集。 視使用的角色許可權而定，可擷取標準欄位和自訂欄位。 也會擷取隱藏欄位。
+依API名稱查詢一個方案成員欄位或擷取所有方案成員欄位。 角色許可權會決定回應可包含標準欄位和/或自訂欄位。 回應也包含隱藏欄位。
 
 #### 依名稱
 
-[依名稱取得程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMemberFieldByNameUsingGET)端點會擷取程式成員物件上單一欄位的中繼資料。 必要的`fieldApiName`路徑引數指定欄位的API名稱。 回應類似於Describe Program Member端點，但包含其他中繼資料，例如`isCustom`屬性，其代表欄位是否為自訂欄位。
+[依名稱取得程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMemberFieldByNameUsingGET)端點會擷取程式成員物件上某個欄位的中繼資料。 必要的`fieldApiName`路徑引數指定欄位的API名稱。
+
+此回應類似於「描述方案成員」回應，但包含其他中繼資料。 例如，`isCustom`屬性指出欄位是否為自訂欄位。
 
 ```http
 GET /rest/v1/programs/members/schema/fields/{fieldApiName}.json
@@ -534,7 +557,9 @@ GET /rest/v1/programs/members/schema/fields/{fieldApiName}.json
 
 #### 瀏覽
 
-[取得程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMemberFieldsUsingGET)端點會擷取程式成員物件上所有欄位的中繼資料。 依預設，最多會傳回300筆記錄。 您可以使用`batchSize`查詢引數來減少此數目。 如果`moreResult`屬性為true，則表示有更多結果可用。 繼續呼叫此端點，直到moreResult屬性傳回false （表示沒有可用的結果）。 從此API傳回的`nextPageToken`應一律重複用於此呼叫的下一個反複專案。
+[取得程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/getProgramMemberFieldsUsingGET)端點會擷取程式成員物件上所有欄位的中繼資料。 依預設，它最多會傳回300筆記錄。 使用`batchSize`查詢引數來減少此數目。
+
+如果`moreResult`屬性為true，則有更多結果可用。 繼續使用傳回的`nextPageToken`呼叫端點，直到moreResult為false。
 
 ```http
 GET /rest/v1/programs/members/schema/fields.json?batchSize=5
@@ -610,13 +635,21 @@ GET /rest/v1/programs/members/schema/fields.json?batchSize=5
 
 ### 建立欄位
 
-[建立程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/createProgramMemberFieldUsingPOST)端點會在程式成員物件上建立一或多個自訂欄位。 此端點提供的功能與Marketo Engage UI[&#128279;](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields)中的可用功能相當。 您可以使用此端點建立最多20個自訂欄位。
+[建立程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/createProgramMemberFieldUsingPOST)端點會在程式成員物件上建立自訂欄位。 它提供的功能與[Marketo Engage UI](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields)類似。 您可以使用此端點建立最多20個自訂欄位。
 
-請仔細考慮您在使用API的Marketo Engage生產執行個體中建立的每個欄位。 欄位建立後，您就無法刪除（[您只能隱藏它](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)）。 未使用欄位數量激增是壞做法，會增加執行個體的雜亂。
+在生產Marketo Engage例項中建立欄位之前，請仔細考慮每個欄位。 建立欄位後，您便無法刪除它；[您只能隱藏它](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)。 未使用的欄位會新增待篩選專案到執行個體。
 
-必要的`input`引數是程式成員欄位物件的陣列。 每個物件包含一或多個屬性。 必要屬性為`displayName`、`name`和`dataType`，分別對應至欄位的UI顯示名稱、欄位的API名稱以及欄位型別。 您可以選擇指定`description`、`isHidden`、`isHtmlEncodingInEmail`和`isSensitive`。
+必要的`input`引數是程式成員欄位物件的陣列。 每個物件包含一或多個屬性。
 
-有一些規則與`name`和`displayName`命名相關。 `name`屬性必須是唯一的、以字母開頭，並且僅包含字母、數字或底線。 *`isplayName`必須是唯一的，而且不能包含特殊字元。 常見的命名慣例是將[駝峰式大小寫](https://en.wikipedia.org/wiki/Camel_case#)套用至`displayName`以產生`name`。 例如，「我的自訂欄位」的`displayName`會產生「myCustomField」的`name`。
+- 必要的屬性為`displayName`、`name`和`dataType`。 它們分別對應至UI顯示名稱、API名稱和欄位型別。
+- 選擇性屬性為`description`、`isHidden`、`isHtmlEncodingInEmail`和`isSensitive`。
+
+`name`和`displayName`屬性有下列命名規則：
+
+- `name`屬性必須是唯一的、以字母開頭，並且僅包含字母、數字或底線。
+- *`isplayName`必須是唯一的，而且不能包含特殊字元。
+
+常見的慣例是將[駝峰式大小寫](https://en.wikipedia.org/wiki/Camel_case#)套用至`displayName`以產生`name`。 例如，「我的自訂欄位」的`displayName`會產生「myCustomField」的`name`。
 
 ```http
 POST /rest/v1/programs/members/schema/fields.json
@@ -650,7 +683,7 @@ POST /rest/v1/programs/members/schema/fields.json
 
 ### 更新欄位
 
-[更新程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/updateProgramMemberFieldUsingPOST)端點更新程式成員物件上的單一自訂欄位。 一般而言，使用Marketo Engage UI執行的欄位更新作業，可使用API達成。 下表總結了幾項差異。
+[更新程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/updateProgramMemberFieldUsingPOST)端點會更新程式成員物件上的一個自訂欄位。 Marketo Engage UI中提供的大部分欄位更新也可透過API取得。 下表總結了兩者的差異。
 
 | 屬性 | 可透過API更新嗎？ | 可透過UI更新嗎？ | 可透過API更新嗎？ | 可透過UI更新嗎？ |
 | --- | --- | --- | --- | --- |
@@ -664,7 +697,10 @@ POST /rest/v1/programs/members/schema/fields.json
 | length | no | no | no | no |
 | 名稱 | no | no | no | no |
 
-必要的`fieldApiName`路徑引數指定要更新的欄位的API名稱。 必要的`input`引數是包含單一潛在客戶欄位物件的陣列。 欄位物件包含一或多個屬性。
+此請求需要下列引數：
+
+- `fieldApiName`：指定要更新的欄位API名稱的路徑引數。
+- `input`：包含一潛在客戶欄位物件的陣列，該物件具有一或多個屬性。
 
 ```http
 POST /rest/v1/programs/members/schema/fields/pMCFCustomField03.json
@@ -697,9 +733,11 @@ POST /rest/v1/programs/members/schema/fields/pMCFCustomField03.json
 
 ## 刪除
 
-[刪除程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/deleteProgramMemberUsingPOST)端點用於刪除程式成員記錄。 必要的`programId`路徑引數指定包含要刪除之成員的程式。 要求內文包含`input`個潛在客戶ID陣列。 每個呼叫最多允許300個銷售機會ID。
+使用[刪除程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Program-Members/operation/deleteProgramMemberUsingPOST)端點刪除程式成員記錄。 必要的`programId`路徑引數指定了包含要刪除之成員的程式。
 
-端點以`status`的「已刪除」或「已略過」回應。 如果略過，也會包含`reasons`陣列。 端點也會以`seq`欄位回應，此欄位是可用來將提交的記錄與回應順序產生關聯的索引。
+要求內文包含`input`個潛在客戶ID陣列。 每個呼叫最多允許300個銷售機會ID。
+
+回應包含`status`個「已刪除」或「已略過」。 略過的結果也包含`reasons`陣列。 `seq`欄位是將每個提交的記錄與回應順序關聯的索引。
 
 ```http
 POST /rest/v1/programs/{programId}/members/delete.json

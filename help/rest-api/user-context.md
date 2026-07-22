@@ -16,19 +16,21 @@ role_v2:
 topic_v2:
   - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
   - id: e0eb8757-182f-49f3-94a4-1587d16f5094
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 296
+source-wordcount: 273
 ht-degree: 5%
 
 ---
 
 # 使用者內容
 
-使用者內容JavaScript API會公開多個工作階段中的使用者和訪客層級資料，以使用歷史使用者行為和資料啟用進階個人化功能。 此API超越了資料讀取與公開自訂變數的範圍，可讓您將有意義的資料和事件推送到RTP後端，以用於進階分段和個人化目的。 其他功能： [觸發器](../javascript-api/triggers.md)，[模式符合](../javascript-api/pattern-match.md)。
+使用者內容JavaScript API會公開多個工作階段中的使用者層級和訪客層級資料。 使用歷史行為和資料來建立進階個人化。
 
-- 您必須成為Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)，才能使用使用者內容API。
-- 使用者內容API是一項功能，必須由Marketo支援根據請求啟用。 啟用API時，RTP全域物件下的userContext物件將會公開。
+此API還提供自訂變數，用於將資料和事件傳送到RTP後端以進行細分和個人化。 檢視相關的[觸發器](../javascript-api/triggers.md)和[模式比對](../javascript-api/pattern-match.md)功能。
+
+- 您必須是Web Personalization客戶，並在您的網站上部署[RTP標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/web-personalization/rtp-tag-implementation/deploy-the-rtp-javascript)。
+- 您必須要求Marketo支援以啟用使用者內容API。 啟用後，userContext物件會顯示在RTP全域物件下。
 
 ## 使用者內容屬性
 
@@ -40,7 +42,7 @@ ht-degree: 5%
 
 ## 設定自訂變數
 
-新增自訂資料至使用者內容。
+設定自訂變數以新增資料至使用者內容。
 
 ### 使用情況
 
@@ -52,11 +54,11 @@ ht-degree: 5%
 | `customVar` | 必要 | 字串 | 自訂變數名稱。 |
 | `my_custom_value` | 必要 | 字串 | 要儲存在索引1-5中的自訂變數上的自訂值。 |
 
-注意：自訂變數只有在檢視呼叫中才會傳送至RTP，因此建議在呼叫檢視之前設定自訂變數。 否則，此摘要只會在下次檢視呼叫時傳送。
+自訂變數只有在檢視呼叫中才會傳送至RTP。 在檢視呼叫之前設定自訂變數。 否則，變數會在下次檢視呼叫中傳送。
 
-自訂Var限制
+自訂變數有下列限制：
 
-- 自訂變數長度不能超過100個字元。
+- 自訂變數不可超過100個字元。
 - 行銷活動資料僅限於最近10次瀏覽，每次瀏覽包含10個行銷活動。
 
 ### 使用情況

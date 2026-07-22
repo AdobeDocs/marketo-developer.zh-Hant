@@ -10,20 +10,24 @@ feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 00118a89f25a23b931fac671130932bb0e0e4e4e
+source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
 workflow-type: tm+mt
-source-wordcount: 426
+source-wordcount: 414
 ht-degree: 7%
 
 ---
 
 # Munchkin API參考
 
-Munchkin提供數個可透過Javascript手動呼叫的功能。 這些專案可允許自訂追蹤瀏覽器事件，例如視訊播放或非連結上的點選次數。
+Munchkin提供JavaScript功能，供您自訂追蹤瀏覽器事件。 例如，您可以追蹤非連結元素的視訊播放或點按。
 
 ## 函數
 
-Munchkin API由下列函式組成： `init`、`createTrackingCookie`、`munchkinFunction`。
+Munchkin API包含下列函式：
+
+- `init`
+- `createTrackingCookie`
+- `munchkinFunction`
 
 <a name="munchkin_init"></a>
 
@@ -42,7 +46,9 @@ Munchkin.init('299-BYM-827');
 
 ### Munchkin.createTrackingCookie()
 
-呼叫時，會檢查瀏覽器中是否存在`_mkto_trk` Cookie，若不存在，則會建立一個。 如果`cookieAnon`設為false，這適合用於追蹤特定動作期間的使用者，例如註冊或下載資產。
+`Munchkin.createTrackingCookie()`會檢查瀏覽器中是否存在`_mkto_trk` Cookie。 如果此Cookie不存在，此函式會建立一個。
+
+當`cookieAnon`設為false時，請使用此函式在特定動作期間追蹤使用者，例如註冊或下載資產。
 
 | 引數名稱 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
@@ -54,7 +60,7 @@ Munchkin.createTrackingCookie(true);
 
 ### Munchkin.munchkinFunction()
 
-用於產生自訂追蹤行為，例如視訊播放器播放和暫停，或非標準導覽的頁面造訪，例如雜湊代碼。
+使用`Munchkin.munchkinFunction()`建立自訂追蹤行為。 例如，追蹤視訊播放器活動或來自非標準導覽（例如雜湊變更）的頁面造訪。
 
 | 引數名稱 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
@@ -63,7 +69,7 @@ Munchkin.createTrackingCookie(true);
 
 #### visitWebPage
 
-使用`visitWebPage`呼叫`munchkinFunction()`會將目前使用者的「造訪」活動傳送至Marketo。 您可以自訂URL和`querystring`，它們會與第二個引數中的資料物件一起傳送。
+使用`visitWebPage`呼叫`munchkinFunction()`會將目前使用者的「造訪」活動傳送至Marketo。 使用第二個引數中的資料物件來自訂URL和`querystring`。
 
 | 資料屬性名稱 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
@@ -82,7 +88,7 @@ Munchkin.munchkinFunction('visitWebPage', {
 
 #### clickLink
 
-使用`clickLink`呼叫`munchkinFunction()`會將目前使用者的點選活動傳送至Marketo。 您可以使用資料物件中的`href`屬性自訂點按URL。
+使用`clickLink`呼叫`munchkinFunction()`會將目前使用者的點選活動傳送至Marketo。 使用資料物件中的`href`屬性來自訂點按URL。
 
 | 資料屬性名稱 | 選用/必要 | 類型 | 說明 |
 | --- | --- | --- | --- |
