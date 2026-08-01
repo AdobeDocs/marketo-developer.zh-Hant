@@ -54,7 +54,7 @@ Marketo webhook與協力廠商Web服務通訊。 webhook會使用GET或POST HTTP
 
 - [權杖概觀](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/landing-pages/personalizing-landing-pages/tokens-overview)
 - [系統權杖字彙表](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/email-marketing/general/using-tokens/system-tokens-glossary)
-- [有趣時刻的Token](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
+- [有趣時刻的Token](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-sales-insight/msi-for-salesforce/features/tabs-in-the-msi-panel/interesting-moments/trigger-tokens-for-interesting-moments)
 
 例如，當方案或促銷活動對應至協力廠商資源時，請在方案層級將ID設定為`My Token`。 然後將ID當做權杖傳遞到webhook請求中。
 

@@ -32,4 +32,4 @@ Marketo Mobile Engagement有兩個元件：
 
    使用Marketo來定義對象、建立通知、啟動鎖定目標的傳訊行銷活動，以及檢視客戶分析。
 
-將Marketo SDK整合至行動應用程式後，您就可以從Marketo傳送行動推播通知和應用程式內訊息。 若要設定及部署行動訊息，請參閱產品檔案中的[行動行銷](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app)。
+將Marketo SDK整合至行動應用程式後，您就可以從Marketo傳送行動推播通知和應用程式內訊息。 若要設定及部署行動訊息，請參閱產品檔案中的[行動行銷](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app)。

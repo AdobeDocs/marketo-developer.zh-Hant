@@ -22,7 +22,7 @@ ht-degree: 2%
 完成下列步驟即可使用Marketo應用程式內傳訊：
 
 1. 依照[行動安裝](installation.md)中的說明安裝Marketo Mobile SDK。
-1. 依照[新增行動應用程式](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app)中所述，將行動應用程式新增至Marketo。
+1. 依照[新增行動應用程式](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app)中所述，將行動應用程式新增至Marketo。
 1. 可選：新增程式碼至您的行動應用程式以擷取[自訂動作](custom-actions.md)。
 
 安裝Marketo Mobile SDK並將應用程式新增至Marketo後，您就可以傳送當使用者開啟您的應用程式時所顯示的應用程式內訊息。
