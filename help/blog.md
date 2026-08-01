@@ -4222,7 +4222,7 @@ REST API
 * 為了符合Has Opportunity智慧清單篩選器的資格，潛在客戶必須具有與機會相關的OpportunityRole。
 * 機會透過externalCompanyId欄位與公司物件有多對一的關係。
 * 潛在客戶透過externalCompanyId欄位與公司具有一對多關係。
-* 機會是根據潛在客戶的贏取方案或其在方案中的成員資格和成功來歸因於方案（請參閱[瞭解歸因](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/reporting/revenue-cycle-analytics/revenue-tools/attribution/understanding-attribution)）。
+* 機會是根據潛在客戶的贏取方案或其在方案中的成員資格和成功來歸因於方案（請參閱[瞭解歸因](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/reporting/revenue-cycle-analytics/revenue-tools/attribution/understanding-attribution)）。
 
 在潛在客戶資料庫中建立這些關係，可讓您充分利用Marketo Analytics，並瞭解您的方案對機會建立和成功率的影響。
 
