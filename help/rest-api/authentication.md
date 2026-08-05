@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: 6d9408d07557d4b7426ad72d2a886220d622fb78
 workflow-type: tm+mt
-source-wordcount: 519
+source-wordcount: 517
 ht-degree: 0%
 
 ---
@@ -83,7 +83,7 @@ curl ... -H 'Authorization: Bearer <Access Token>' <REST API Endpoint Base URL>/
 
 儲存身分回應的存取權杖和到期日。 管理權杖到期有助於防止在正常操作期間發生未預期的驗證錯誤。
 
-在進行REST呼叫之前，請檢查權杖的剩餘期限。 如果權杖已過期，請呼叫[身分](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET)端點以更新權杖。 主動更新可防止權杖過期所導致的失敗，並讓REST呼叫延遲更可預測，這對於面向使用者的應用程式非常重要。
+在進行REST呼叫之前，請檢查權杖的剩餘期限。 如果權杖已過期，請呼叫[身分](https://developer.adobe.com/marketo-apis/api/identity#tag/Identity)端點以更新權杖。 主動更新可防止權杖過期所導致的失敗，並讓REST呼叫延遲更可預測，這對於面向使用者的應用程式非常重要。
 
 驗證錯誤傳回下列程式碼：
 
