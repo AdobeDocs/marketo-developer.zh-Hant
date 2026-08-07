@@ -16,9 +16,9 @@ role_v2:
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1225
+source-wordcount: 1198
 ht-degree: 2%
 
 ---
@@ -31,8 +31,7 @@ Marketo Engage是行銷自動化平台，用於為潛在客戶和客戶管理個
 
 >[!NOTE]
 >
->SOAP API即將淘汰，自2026年7月31日起將不再提供使用。 針對所有新開發使用Marketo [REST API](./rest-api/rest-api.md)。 在此日期之前移轉現有服務，以避免服務中斷。 如果服務使用SOAP API，請參閱SOAP API [移轉指南](./soap-api/migration.md)。
->
+>自2026年7月31日起，SOAP API已棄用，不再提供。 針對所有新開發使用Marketo [REST API](./rest-api/rest-api.md)。
 
 在Marketo Engage執行個體上啟用原生SFDC或MS Dynamics CRM連線時，這些物件為唯讀：
 
@@ -144,6 +143,6 @@ Marketo自訂物件會在Marketo銷售機會與自訂物件記錄之間建立一
 
 若未啟用原生CRM整合，您可以在Marketo中管理銷售人員記錄及其銷售機會關係。 這些記錄包含名稱、電子郵件和職稱等資訊。 當銷售人員擁有銷售機會時，您可以使用此資訊來篩選和代號。
 
-透過「externalSalesPersonId」欄位，在潛在客戶層級管理與銷售人員的關係。 透過[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) API更新此欄位。
+透過「externalSalesPersonId」欄位，在潛在客戶層級管理與銷售人員的關係。 透過[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST) API更新此欄位。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)

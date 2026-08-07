@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 708
+source-wordcount: 702
 ht-degree: 0%
 
 ---
@@ -100,7 +100,7 @@ GET /rest/v1/opportunities/describe.json
 
 ## 查詢
 
-[查詢商機](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunitiesUsingGET)的模式非常遵循Leads API。 但是，`filterType`引數只接受在對應的Describe回應或dedupeFields的`searchableFields`陣列中列出的欄位。
+[查詢商機](https://developer.adobe.com/marketo-apis/api/mapi#operation/getOpportunitiesUsingGET)的模式非常遵循Leads API。 但是，`filterType`引數只接受在對應的Describe回應或dedupeFields的`searchableFields`陣列中列出的欄位。
 
 對於自訂機會欄位，只有String或Integer型別的欄位會出現在可搜尋的fields陣列中。
 
@@ -221,7 +221,7 @@ POST /rest/v1/opportunities.json
 
 #### 依名稱
 
-[依名稱取得機會欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityFieldByNameUsingGET)端點會擷取公司物件上某個欄位的中繼資料。 必要的`fieldApiName`路徑引數指定欄位的API名稱。
+[依名稱取得機會欄位](https://developer.adobe.com/marketo-apis/api/mapi#operation/getOpportunityFieldByNameUsingGET)端點會擷取公司物件上某個欄位的中繼資料。 必要的`fieldApiName`路徑引數指定欄位的API名稱。
 
 回應類似於Describe Opportunity回應，但包含其他中繼資料。 例如，`isCustom`屬性指出欄位是否為自訂欄位。
 
@@ -252,7 +252,7 @@ GET /rest/v1/opportunities/schema/fields/externalOpportunityId.json
 
 #### 瀏覽
 
-[取得機會欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities/operation/getOpportunityFieldsUsingGET)端點會擷取公司物件上所有欄位的中繼資料。 依預設，它最多會傳回300筆記錄。 使用`batchSize`查詢引數來減少此數目。
+[取得機會欄位](https://developer.adobe.com/marketo-apis/api/mapi#operation/getOpportunityFieldsUsingGET)端點會擷取公司物件上所有欄位的中繼資料。 依預設，它最多會傳回300筆記錄。 使用`batchSize`查詢引數來減少此數目。
 
 如果`moreResult`屬性為true，則有更多結果可用。 繼續使用傳回的`nextPageToken`呼叫端點，直到moreResult為false。
 

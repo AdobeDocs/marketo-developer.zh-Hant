@@ -8,10 +8,10 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 360
-ht-degree: 1%
+source-wordcount: 333
+ht-degree: 2%
 
 ---
 
@@ -25,11 +25,11 @@ ht-degree: 1%
 
 ## 查詢
 
-依識別碼[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListsUsingGET)查詢靜態清單。
+依識別碼[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListsUsingGET)查詢靜態清單。
 
 ### 依Id
 
-[依ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByIdUsingGET)查詢，需要一個靜態清單`id`路徑引數並傳回相符記錄。
+[依ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByIdUsingGET)查詢，需要一個靜態清單`id`路徑引數並傳回相符記錄。
 
 ```http
 GET /rest/asset/v1/staticList/{id}.json
@@ -58,7 +58,7 @@ GET /rest/asset/v1/staticList/{id}.json
 
 #### 依名稱
 
-[依名稱查詢](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListByNameUsingGET)採用靜態清單`name`引數。 端點會針對靜態清單名稱執行完全比對，並傳回比對記錄。
+[依名稱查詢](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByNameUsingGET)採用靜態清單`name`引數。 端點會針對靜態清單名稱執行完全比對，並傳回比對記錄。
 
 ```http
 GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
@@ -87,7 +87,7 @@ GET /rest/asset/v1/staticList/byName.json?name=Foundation Seed List
 
 #### 瀏覽
 
-使用瀏覽端點[以批次](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/getStaticListsUsingGET)擷取靜態清單。 選用的`folder`引數會將查詢範圍限定到父資料夾。 將資料夾傳遞為包含`id`和`type`的JSON物件。
+使用瀏覽端點[以批次](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListsUsingGET)擷取靜態清單。 選用的`folder`引數會將查詢範圍限定到父資料夾。 將資料夾傳遞為包含`id`和`type`的JSON物件。
 
 使用`offset`和`maxReturn`進行分頁。 使用`earliestUpdatedAt`和`latestUpdatedAt`作為高低日期時間界限。 這些引數會傳回在範圍內建立或更新清單。 使用不含毫秒的ISO-8601值。
 
@@ -140,7 +140,7 @@ GET /rest/asset/v1/staticLists.json?folder={"id":13,"type":"Folder"}
 
 ## 建立和更新
 
-傳送`application/x-www-form-urlencoded` POST要求給[建立靜態清單](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/createStaticListUsingPOST)。 需要`folder`和`name`引數。
+傳送`application/x-www-form-urlencoded` POST要求給[建立靜態清單](https://developer.adobe.com/marketo-apis/api/asset#operation/createStaticListUsingPOST)。 需要`folder`和`name`引數。
 
 將`folder`傳遞為包含`id`和`type`的JSON物件。 `name`必須是唯一的。 選用的`description`引數描述清單。
 
@@ -177,7 +177,7 @@ folder={"id":1034,"type":"Program"}&name=My Static List
 }
 ```
 
-使用更新端點來[變更靜態清單](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/updateStaticListUsingPOST)。 選用的`description`引數會變更描述。 選用的`name`引數會變更名稱，而且必須是唯一的。
+使用更新端點來[變更靜態清單](https://developer.adobe.com/marketo-apis/api/asset#operation/updateStaticListUsingPOST)。 選用的`description`引數會變更描述。 選用的`name`引數會變更名稱，而且必須是唯一的。
 
 ```http
 POST /rest/asset/v1/staticList/{id}.json
@@ -215,7 +215,7 @@ description=This is a static list used for testing
 
 ## 刪除
 
-若要[刪除靜態清單](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists/operation/deleteStaticListByIdUsingPOST)，請將其`id`傳遞為路徑引數。 您無法刪除匯入、匯出或其他資產所使用的清單。
+若要[刪除靜態清單](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteStaticListByIdUsingPOST)，請將其`id`傳遞為路徑引數。 您無法刪除匯入、匯出或其他資產所使用的清單。
 
 ```http
 POST /rest/asset/v1/staticList/{id}/delete.json

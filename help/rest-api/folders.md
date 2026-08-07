@@ -13,9 +13,9 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 806
+source-wordcount: 792
 ht-degree: 1%
 
 ---
@@ -30,7 +30,7 @@ ht-degree: 1%
 
 ## 查詢
 
-資料夾支援標準資產查詢模式： [依id](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET)，以及[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET)。
+資料夾支援標準資產查詢模式： [依id](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET)，以及[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderUsingGET)。
 
 ### 依Id
 
@@ -86,7 +86,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 
 ### 依名稱
 
-依名稱[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET)的查詢端點需要`name`，它會針對資料夾名稱執行完全相符的專案，並傳回每個相符的資料夾。
+依名稱[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET)的查詢端點需要`name`，它會針對資料夾名稱執行完全相符的專案，並傳回每個相符的資料夾。
 
 端點也接受以下選用引數：
 
@@ -135,12 +135,12 @@ GET /rest/asset/v1/folder/byName.json?name=Test%2010%20-%20deverly
 
 ### 瀏覽
 
-您也可以[大量擷取資料夾](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderUsingGET)。 使用`root`引數指定要查詢的父資料夾。 將`root`傳遞為具有兩個成員的內嵌JSON物件：
+您也可以[大量擷取資料夾](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderUsingGET)。 使用`root`引數指定要查詢的父資料夾。 將`root`傳遞為具有兩個成員的內嵌JSON物件：
 
 1. `id`：資料夾或程式的識別碼。
 1. `type`： `Folder`或`Program`，視根資料夾型別而定。
 
-如果您不知道根資料夾或想擷取某個區域中的所有資料夾，請使用Marketing Activities、Design Studio或Lead Database根。 將區域名稱傳遞至[依名稱取得資料夾](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/getFolderByNameUsingGET) API，以擷取根ID。
+如果您不知道根資料夾或想擷取某個區域中的所有資料夾，請使用Marketing Activities、Design Studio或Lead Database根。 將區域名稱傳遞至[依名稱取得資料夾](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET) API，以擷取根ID。
 
 如同其他大量資產擷取端點，請使用選用的`offset`和`maxReturn`引數進行分頁。 其他選用引數包括：
 
@@ -237,7 +237,7 @@ GET /rest/asset/v1/folders.json?root={"id":14,"type":"Folder"}
 
 ## 建立和更新
 
-若要[建立資料夾](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders/operation/createFolderUsingPOST)，請使用下列引數傳送`application/x-www-form-urlencoded` POST要求：
+若要[建立資料夾](https://developer.adobe.com/marketo-apis/api/asset#operation/createFolderUsingPOST)，請使用下列引數傳送`application/x-www-form-urlencoded` POST要求：
 
 - `name`：包含資料夾名稱的必要字串。
 - `parent`：必要的內嵌JSON物件包含`id`和`type`。 型別是`Folder`或`Program`，視父項而定。

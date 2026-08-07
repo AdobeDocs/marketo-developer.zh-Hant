@@ -12,16 +12,16 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 872
+source-wordcount: 868
 ht-degree: 0%
 
 ---
 
 # 自訂服務
 
-自訂服務提供用來向Marketo進行驗證以及從Marketo [身分識別服務](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET)取得存取權杖的認證。 每個自訂服務的範圍限定為一個「僅限API」使用者，並從該使用者衍生其許可權。
+自訂服務提供用來向Marketo進行驗證以及從Marketo [身分識別服務](https://developer.adobe.com/marketo-apis/api/identity#operation/identityUsingGET)取得存取權杖的認證。 每個自訂服務的範圍限定為一個「僅限API」使用者，並從該使用者衍生其許可權。
 
 ## 角色
 
@@ -79,7 +79,7 @@ ht-degree: 0%
 
 此服務會顯示在LaunchPoint Services清單中，並包含「檢視詳細資料」選項。 選取「檢視詳細資料」以存取使用者端ID、使用者端密碼、擁有使用者以及取得權杖選項。
 
-使用Get Token進行短期測試。 權杖的存留期與從[身分識別服務](https://developer.adobe.com/marketo-apis/api/identity/#tag/Identity/operation/identityUsingGET)取得的權杖相同，且在建立後3,600秒內有效。
+使用Get Token進行短期測試。 權杖的存留期與從[身分識別服務](https://developer.adobe.com/marketo-apis/api/identity#operation/identityUsingGET)取得的權杖相同，且在建立後3,600秒內有效。
 
 ![取得Token](assets/get-token.png)
 

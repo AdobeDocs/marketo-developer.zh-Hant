@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 519
+source-wordcount: 499
 ht-degree: 2%
 
 ---
@@ -33,7 +33,7 @@ Marketo提供自由格式和引導式登陸頁面範本。 自由格式範本提
 
 ## 查詢
 
-依識別碼[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplateByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/getLandingPageTemplatesUsingGET)查詢登入頁面範本。 這些端點會傳回範本中繼資料。 依ID分別擷取每個範本的HTML內容。
+依識別碼[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplateByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplateByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplatesUsingGET)查詢登入頁面範本。 這些端點會傳回範本中繼資料。 依ID分別擷取每個範本的HTML內容。
 
 ## 建立和更新
 
@@ -79,11 +79,11 @@ name=New LPT - PHP&folder={"id":12,"type":"Folder"}
 }
 ```
 
-使用[更新登入頁面範本內容](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLandingPageTemplateContentUsingPOST)端點個別新增範本內容。
+使用[更新登入頁面範本內容](https://developer.adobe.com/marketo-apis/api/asset#operation/updateLandingPageTemplateContentUsingPOST)端點個別新增範本內容。
 
 ### 更新中繼資料
 
-使用[更新登入頁面範本中繼資料](https://developer.adobe.com/marketo-apis/api/asset#tag/Landing-Page-Templates/operation/updateLpTemplateUsingPOST)端點來變更名稱、說明或`enableMunchkin`設定。
+使用[更新登入頁面範本中繼資料](https://developer.adobe.com/marketo-apis/api/asset#operation/updateLpTemplateUsingPOST)端點來變更名稱、說明或`enableMunchkin`設定。
 
 ### 更新內容
 

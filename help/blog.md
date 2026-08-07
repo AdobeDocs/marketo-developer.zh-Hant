@@ -2,9 +2,9 @@
 title: 部落格封存
 description: Marketo開發人員部落格檔案2014-2023提供Forms 2.0、Zapier、API更新、SOAP淘汰和移轉至REST的歷史文章。
 exl-id: d7ae88dd-9938-4957-9798-db43090dab4e
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: '65291'
+source-wordcount: '65289'
 ht-degree: 0%
 
 ---
@@ -18,7 +18,7 @@ ht-degree: 0%
 >
 
 >[!IMPORTANT]
->SOAP API即將淘汰，2026年7月31日後將不再提供使用。 所有新開發應透過Marketo REST API完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱[SOAP API移轉指南](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/soap/migration)以瞭解如何移轉的資訊。
+>自2026年7月31日起，SOAP API已淘汰，不再提供。 所有新開發應透過Marketo REST API完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱[SOAP API移轉指南](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/soap/migration)以瞭解如何移轉的資訊。
 >
 
 >[!IMPORTANT]
@@ -45,8 +45,8 @@ Forms 2.0可讓行銷人員建立美觀、穩定且有彈性的網路表單，�
 
 ### SOAP API 2_3版現已可用
 
-* [getLeadChanges：](/help/soap-api/getleadchanges.md)已引入要求欄位`activityNameFilter`
-* [ListOperation：](/help/soap-api/listoperation.md)已移除要求欄位`skipActivityLog`
+* getLeadChanges：引入要求欄位`activityNameFilter`
+* ListOperation：已移除要求欄位`skipActivityLog`
 
 **注意：** SOAP API修訂版本可回溯相容
 
@@ -288,7 +288,7 @@ public class GetMultipleLeads {
 
 ### SOAP API更新
 
-* [syncMObjects](/help/soap-api/syncmobjects.md)：您現在可以為現有程式新增和更新標籤和頻道。
+* syncMObjects：您現在可以為現有程式新增和更新標籤和通道。
 
 更新已合併至[2_3 WSDL](http://app.marketo.com/soap/mktows/2_3?WSDL)。
 
@@ -298,7 +298,7 @@ public class GetMultipleLeads {
 
 ### SOAP API更新
 
-* [syncLead](/help/soap-api/synclead.md)和[syncMultipleLeads](/help/soap-api/syncmultipleleads.md)的效能改善
+* syncLead和syncMultipleLeads的效能改善
 
 更新已合併至[2_3 WSDL](http://app.marketo.com/soap/mktows/2_3?WSDL)。
 
@@ -600,7 +600,7 @@ $(function(){
 
 ## 在Workspace中建立銷售機會
 
-假設您的公司有兩個部門：北美和歐洲。 您想要根據Marketo中的公司部門來細分潛在客戶。 您可以使用工作區來達到此目的，這是Marketo中的功能，可讓您限制對潛在客戶的存取。 為此，您需要為北美建立一個工作區，並為歐洲建立一個工作區。 然後，您可以使用[syncLead API](/help/soap-api/synclead.md)，在特定工作區中建立銷售機會。 如果您的組織具備以下條件，您應該考慮使用工作區和銷售機會分割：
+假設您的公司有兩個部門：北美和歐洲。 您想要根據Marketo中的公司部門來細分潛在客戶。 您可以使用工作區來達到此目的，這是Marketo中的功能，可讓您限制對潛在客戶的存取。 為此，您需要為北美建立一個工作區，並為歐洲建立一個工作區。 接著，您可以使用syncLead API在特定工作區中建立銷售機會。 如果您的組織具備以下條件，您應該考慮使用工作區和銷售機會分割：
 
 1. 為多個產品線區分行銷團隊
 1. 針對不同的地區或國家/地區設立不同的行銷團隊
@@ -613,7 +613,7 @@ $(function(){
 1. 限制存取組織中的資產
 1. 在行銷團隊間共用資產
 
-我們會先說明如何透過UI在Marketo中建立工作區，然後說明如何使用[syncLead API](/help/soap-api/synclead.md)將銷售機會寫入該工作區。 **建立Workspace**&#x200B;工作區是一組銷售機會和Marketo資產。 在工作區中，您只能看見來自該工作區和資產（電子郵件、行銷活動、清單等）的銷售機會 在該工作區中。 該工作區中的智慧行銷活動只會影響該工作區中的銷售機會。 若要檢視帳戶中的工作區：
+我們會先說明如何透過UI在Marketo中建立工作區，然後說明如何使用syncLead API將銷售機會寫入該工作區。 **建立Workspace**&#x200B;工作區是一組銷售機會和Marketo資產。 在工作區中，您只能看見來自該工作區和資產（電子郵件、行銷活動、清單等）的銷售機會 在該工作區中。 該工作區中的智慧行銷活動只會影響該工作區中的銷售機會。 若要檢視帳戶中的工作區：
 
 1. 前往「管理員」區段的「工作區和銷售機會分割」頁面。 您的工作區會顯示在「工作區」標籤中。 1.若要建立新工作區，請按一下「工作區」標籤之功能表列中的「新增Workspace」按鈕。
 1. 在對話方塊中，您需要新增一些有關新工作區的資訊：
@@ -774,13 +774,13 @@ Marketo即時Personalization (RTP) JavaScript API擴充了平台的自動個人�
 
 ## 在Marketo中儲存外部索引鍵
 
-在例如專屬CRM或資料倉儲等系統之間同步處理聯絡人和潛在客戶記錄時，通常需要將潛在客戶記錄與唯一的系統識別碼建立關聯。 在Marketo中，您可以使用唯一的系統識別碼，透過[syncMultipleLeads API](/help/soap-api/syncmultipleleads.md)呼叫建立或更新潛在客戶記錄。 若要完成此操作，您可以將唯一的系統識別碼（主索引鍵）儲存為Marketo中的外部索引鍵。 此欄位在Marketo中儲存外部索引鍵的名稱為foreignSysPersonId。 以下是三個需要注意的重要事項：
+在例如專屬CRM或資料倉儲等系統之間同步處理聯絡人和潛在客戶記錄時，通常需要將潛在客戶記錄與唯一的系統識別碼建立關聯。 在Marketo中，您可以使用唯一的系統識別碼，透過syncMultipleLeads API呼叫建立或更新潛在客戶記錄。 若要完成此操作，您可以將唯一的系統識別碼（主索引鍵）儲存為Marketo中的外部索引鍵。 此欄位在Marketo中儲存外部索引鍵的名稱為foreignSysPersonId。 以下是三個需要注意的重要事項：
 
 1. externalSysPersonId在Marketo的UI中不可見。 因此，最佳實務是也使用此值填入自訂屬性欄位。
 1. foreignSysPersonId是潛在客戶所獨有的，但潛在客戶可以有一個以上的foreignSysPersonId。
 1. 無法更新或刪除foreignSysPersonId，但可以重新指派給其他記錄。
 
-我們說明如何呼叫[syncMultipleLeads API](/help/soap-api/syncmultipleleads.md)，將foreignSysPersonId值寫入Marketo中的兩個現有潛在客戶記錄。 **如何使用syncMultipleLeads API寫入foreignSysPersonId**&#x200B;您可以插入新的潛在客戶記錄並指定foreignSysPersonId。 您也可以指定Marketo ID和foreignSysPersonId，將其新增至現有的銷售機會。 我們將向您介紹後一種情況。 **要求syncMultipleLeads SOAP API呼叫的XML**
+我們會說明如何呼叫syncMultipleLeads API，將foreignSysPersonId值寫入Marketo中的兩個現有銷售機會記錄。 **如何使用syncMultipleLeads API寫入foreignSysPersonId**&#x200B;您可以插入新的潛在客戶記錄並指定foreignSysPersonId。 您也可以指定Marketo ID和foreignSysPersonId，將其新增至現有的銷售機會。 我們將向您介紹後一種情況。 **要求syncMultipleLeads SOAP API呼叫的XML**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -926,7 +926,7 @@ puts response
 
 ## 更新潛在客戶的電子郵件地址
 
-假設使用者在您的網站上填寫Marketo表單。 會發生什麼事？ Marketo會對使用者進行Cookie，並將他們與其提供的電子郵件建立關聯。 如果使用者下次造訪您的網站時，再次填寫相同的表格並使用不同的電子郵件，該怎麼做？ 會發生什麼事？ Marketo將建立新的潛在客戶記錄，並覆寫使用者瀏覽器上的第一個Cookie。 使用者現在是Marketo中的新銷售機會/其他銷售機會。 我們為您說明在Marketo中更新潛在客戶電子郵件地址的四種方式，包括[syncLead API方法](/help/soap-api/synclead.md)、表單方法中的自訂欄位、Marketo UI以及匯入清單。 **透過syncLead API**&#x200B;您可以使用[syncLead API](/help/soap-api/synclead.md)，使用其Marketo ID和新的電子郵件地址來更新潛在客戶記錄。 要求`syncMultipleLeads` SOAP API呼叫的XML
+假設使用者在您的網站上填寫Marketo表單。 會發生什麼事？ Marketo會對使用者進行Cookie，並將他們與其提供的電子郵件建立關聯。 如果使用者下次造訪您的網站時，再次填寫相同的表格並使用不同的電子郵件，該怎麼做？ 會發生什麼事？ Marketo將建立新的潛在客戶記錄，並覆寫使用者瀏覽器上的第一個Cookie。 使用者現在是Marketo中的新銷售機會/其他銷售機會。 我們為您說明在Marketo中更新銷售機會電子郵件地址的四種方式，包括syncLead API方法、表單方法中的自訂欄位、Marketo UI以及匯入清單。 **透過syncLead API**&#x200B;您可以使用syncLead API，使用其Marketo ID和新的電子郵件地址來更新潛在客戶記錄。 要求`syncMultipleLeads` SOAP API呼叫的XML
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1370,8 +1370,8 @@ Marketo中的自訂服務可讓您說明和定義應用程式可存取的資料�
 **答案：**&#x200B;無法直接進行。 不過，下述的因應措施可讓您進行此作業。
 
 1. 在Marketo中建立名為「Fullname」的自訂欄位。
-1. 使用[getMultipleLeads](/help/soap-api/getmultipleleads.md) SOAP API或[依篩選型別](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadByIdUsingGET)取得多個銷售機會，以查詢您的銷售機會資料庫。 在向REST或SOAP API提出的請求中，將您的名字和姓氏加入為屬性。
-1. 查詢潛在客戶資料庫之後，請為每個潛在客戶串連「名字」和「姓氏」，並將此資料儲存在「全名」欄中。 1.使用[syncMultipleLeads](/help/soap-api/syncmultipleleads.md) SOAP API將此資料推送到「Fullname」自訂欄位。 或者，您可以使用[Import Lead](/help/rest-api/leads.md) API，或使用Marketo UI匯入CSV或XLS。
+1. 使用getMultipleLeads SOAP API或[依篩選型別](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadByIdUsingGET)取得多個銷售機會，以查詢您的銷售機會資料庫。 在向REST或SOAP API提出的請求中，將您的名字和姓氏加入為屬性。
+1. 查詢潛在客戶資料庫之後，請為每個潛在客戶串連「名字」和「姓氏」，並將此資料儲存在「全名」欄中。 1.使用syncMultipleLeads SOAP API將此資料推送到「Fullname」自訂欄位。 或者，您可以使用[Import Lead](/help/rest-api/leads.md) API，或使用Marketo UI匯入CSV或XLS。
 1. 現在，您可以使用[依篩選型別API取得多個銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET)以全名查詢，以搜尋此自訂欄位。 指定「Fullname」為「filterType」，「filterValue」為「Joe Johnson」，且「依篩選型別REST API呼叫取得多個銷售機會」。
 
 由&#x200B;_Murta_&#x200B;張貼於&#x200B;_2014-09-09_
@@ -1487,7 +1487,7 @@ MktoForms2.whenReady( function(form) {
 
 ## Marketo REST與SOAP API常見問題集
 
-**更新日期： 2016年3月**&#x200B;以下是有關Marketo [REST](/help/rest-api/rest-api.md)和[SOAP](/help/soap-api/soap-api.md) API最常見問題的解答。 **問：Marketo REST與SOAP API之間有何主要差異？** 答：雖然透過REST和SOAP API推送/提取特定資料的功能大多重疊，但有些功能僅存在於REST或SOAP API中。 就效能而言，REST API的[輸送量](https://en.wikipedia.org/wiki/Throughput)優於SOAP API。 就驗證模型而言，REST API的驗證模型會使用即將到期的代號。 我們的REST API也可讓您存取Marketo [資產](https://developer.adobe.com/marketo-apis/api/asset)。   **問：REST API中有哪些功能在SOAP API中無法使用？** 答： [清單API](/help/rest-api/list-of-standard-fields.md)、[從清單API移除銷售機會](/help/rest-api/lead-database.md)、[使用情況API](/help/rest-api/rest-api.md)以及[錯誤API](/help/rest-api/rest-api.md)僅適用於REST API。 **問：有增加SOAP API可用API數量的計畫嗎？** 答：不會。 **問：有增加REST API可用API數目的計畫嗎？** 答：是。 REST目前是Marketo API開發的主要焦點。
+**更新日期： 2016年3月**&#x200B;以下是有關Marketo [REST](/help/rest-api/rest-api.md)和SOAP API最常見問題的解答。 **問：Marketo REST與SOAP API之間有何主要差異？** 答：雖然透過REST和SOAP API推送/提取特定資料的功能大多重疊，但有些功能僅存在於REST或SOAP API中。 就效能而言，REST API的[輸送量](https://en.wikipedia.org/wiki/Throughput)優於SOAP API。 就驗證模型而言，REST API的驗證模型會使用即將到期的代號。 我們的REST API也可讓您存取Marketo [資產](https://developer.adobe.com/marketo-apis/api/asset)。   **問：REST API中有哪些功能在SOAP API中無法使用？** 答： [清單API](/help/rest-api/list-of-standard-fields.md)、[從清單API移除銷售機會](/help/rest-api/lead-database.md)、[使用情況API](/help/rest-api/rest-api.md)以及[錯誤API](/help/rest-api/rest-api.md)僅適用於REST API。 **問：有增加SOAP API可用API數量的計畫嗎？** 答：不會。 **問：有增加REST API可用API數目的計畫嗎？** 答：是。 REST目前是Marketo API開發的主要焦點。
 
 由&#x200B;_Murta_&#x200B;張貼於&#x200B;_2014-09-20_
 
@@ -1509,7 +1509,7 @@ MktoForms2.whenReady( function(form) {
 
 ## 尋找特定日期範圍內更新的銷售機會
 
-假設您想要尋找透過[Marketo API](/help/soap-api/soap-api.md)在特定日期更新的潛在客戶。 使用[getMultipleLeads SOAP API](/help/soap-api/getmultipleleads.md)即可實現此目的。 此方法會針對您請求的日期範圍，傳回Marketo中發生資料值變更或新活動的任何銷售機會。 對於`leadSelector`，您可以指定`LastUpdateAtSelector`。 然後，您會定義具有`oldestUpdatedAt`和`latestUpdatedAt`時間範圍的日期範圍。 請參閱以下的請求XML範例，此範例說明如何尋找在2014年6月6日凌晨12點(PST)至2011年6月7日凌晨12點(PST)之間更新的銷售機會。 注意：日期範圍不得超過30天。
+假設您想要尋找透過Marketo API在特定日期更新的潛在客戶。 使用getMultipleLeads SOAP API即可做到這點。 此方法會針對您請求的日期範圍，傳回Marketo中發生資料值變更或新活動的任何銷售機會。 對於`leadSelector`，您可以指定`LastUpdateAtSelector`。 然後，您會定義具有`oldestUpdatedAt`和`latestUpdatedAt`時間範圍的日期範圍。 請參閱以下的請求XML範例，此範例說明如何尋找在2014年6月6日凌晨12點(PST)至2011年6月7日凌晨12點(PST)之間更新的銷售機會。 注意：日期範圍不得超過30天。
 
 **範例要求XML以尋找於日期**&#x200B;更新的潛在客戶
 
@@ -1567,7 +1567,7 @@ Marketo已對Bash漏洞(也稱為[Shellshock (CVE-2014-6271)](https://nvd.nist.g
 
 ## 如何更新SOAP API認證
 
-最佳實務是定期更新您的[SOAP API](/help/soap-api/soap-api.md)認證。 目前無法透過Marketo API以程式設計方式執行此工作。 下列指示會示範如何透過Marketo UI更新SOAP API認證。
+最佳實務是定期更新SOAP API認證。 目前無法透過Marketo API以程式設計方式執行此工作。 下列指示會示範如何透過Marketo UI更新SOAP API認證。
 
 1. 移至「管理員」區段，然後按一下「網站服務」。
 1. 設定至少10個字元的加密金鑰，按一下「儲存變更」。
@@ -1745,7 +1745,7 @@ puts response
 
 在[LaunchPoint市集](https://exchange.adobe.com/apps/browse/ec?product=MRKTO)中檢視這些類別中的幾個類別： - [分析工具](https://exchange.adobe.com/apps/browse/ec?product=MRKTO) - [資料附加](https://exchange.adobe.com/apps/browse/ec?product=MRKTO) - [內容管理系統](https://exchange.adobe.com/apps/browse/ec?product=MRKTO)某些協力廠商應用程式會在平台內提供直覺式控制面板和設定工具(GoToWebinar)。 這些是「原生」整合，您最需要做的就是設定登入，然後在Marketo中使用它。 不過，其他擴充功能需要使用較複雜的API，而且必須更直接地加以程式設計。
 
-**Marketo的整合選項** - LaunchPoint整合 — 通常是登入或簡易設定。 - API整合 — 需要設定API和程式設計： (1) [REST API](/help/rest-api/rest-api.md) (2) [SOAP API](/help/soap-api/soap-api.md) (3) [Webhook整合](/help/webhooks/webhooks.md) — 需要設定特殊程式碼，但相當容易。 (4) [電子郵件指令碼](./email-scripting.md) (Velocity) - JavaScript和jQuery： (1) [Forms 2.0](/help/javascript-api/forms-api-reference.md) (2) [潛在客戶追蹤(Munchkin)](/help/javascript-api/lead-tracking.md) (3) [RTP JS](/help/javascript-api/web-personalization.md)以下是幾個使用開發人員擴充Marketo平台功能的使用案例。 您有這些使用案例嗎？ 若是如此，開發人員的溝通時間或許已成熟。 [瀏覽LaunchPoint](https://exchange.adobe.com/apps/browse/ec?product=MRKTO)上的服務合作夥伴區段。
+**Marketo的整合選項** - LaunchPoint整合 — 通常是登入或簡易設定。 - API整合 — 需要設定API和程式設計： (1) [REST API](/help/rest-api/rest-api.md) (2) SOAP API (3) [Webhook整合](/help/webhooks/webhooks.md) — 需要設定特殊程式碼，但相當容易。 (4) [電子郵件指令碼](./email-scripting.md) (Velocity) - JavaScript和jQuery： (1) [Forms 2.0](/help/javascript-api/forms-api-reference.md) (2) [潛在客戶追蹤(Munchkin)](/help/javascript-api/lead-tracking.md) (3) [RTP JS](/help/javascript-api/web-personalization.md)以下是幾個使用開發人員擴充Marketo平台功能的使用案例。 您有這些使用案例嗎？ 若是如此，開發人員的溝通時間或許已成熟。 [瀏覽LaunchPoint](https://exchange.adobe.com/apps/browse/ec?product=MRKTO)上的服務合作夥伴區段。
 
 由&#x200B;_Josh_&#x200B;張貼於&#x200B;_2014-11-06_
 
@@ -2259,7 +2259,7 @@ end
 ## 效能調整API要求
 
 本文會討論改善向Marketo API要求資料時效能的策略。 不過，您必須將這些策略的好處與Marketo API的每日限制的作業限制進行權衡。
-**策略1 — 在每個API呼叫中要求較少的資料**&#x200B;一般而言，當您在API呼叫中要求更多資料時，Marketo伺服器查詢資料庫中的資料所花的時間會增加。 如果您使用日期範圍進行API呼叫，例如[getMultipleLeads SOAP API](/help/soap-api/getmultipleleads.md)，請縮短每次呼叫的時間範圍，並使用更多呼叫進行補償。 例如，與其請求6月1日至7月1日的資料，不如一次請求一天，例如6月1日至2日的一個呼叫，然後是6月2日至1日的另一個呼叫。 如果您要進行API呼叫以從Marketo銷售機會欄位傳回資料，請僅請求這些必要的欄位。 每個額外的潛在客戶欄位都會逐步增加API呼叫所需的時間。 另一種方法是減少批次大小，或減少每次呼叫請求的潛在客戶數。
+**策略1 — 在每個API呼叫中要求較少的資料**&#x200B;一般而言，當您在API呼叫中要求更多資料時，Marketo伺服器查詢資料庫中的資料所花的時間會增加。 如果您使用日期範圍進行API呼叫（例如getMultipleLeads SOAP API），請縮短每次呼叫的時間範圍並使用更多呼叫進行補償。 例如，與其請求6月1日至7月1日的資料，不如一次請求一天，例如6月1日至2日的一個呼叫，然後是6月2日至1日的另一個呼叫。 如果您要進行API呼叫以從Marketo銷售機會欄位傳回資料，請僅請求這些必要的欄位。 每個額外的潛在客戶欄位都會逐步增加API呼叫所需的時間。 另一種方法是減少批次大小，或減少每次呼叫請求的潛在客戶數。
 **策略2 — 提出並行要求**&#x200B;以提升效能並一次提取更多資料。 您可以同時向API提出請求。 此方法可減少線API請求總計花費的時間。 例如，假設您向「依篩選型別取得多個銷售機會」提出請求。 您可以針對查詢銷售機會1到300的一個請求發出並行請求，針對查詢銷售機會301到600的另一個請求發出並行請求。
 **策略3 — 快取資料** Marketo中某些資料（例如潛在客戶欄位清單）的變更頻率低於其他資料（例如潛在客戶活動資料）。 如果您快取較不經常更新的資料，則可以減少必須進行的API呼叫數。 一般來說，在本機查詢資料的速度會比從遠端Web服務存取資料的速度更快，因此您也能獲得更優異的效能。
 
@@ -2916,18 +2916,18 @@ break;
 
 ## Marketo SOAP API提示與秘訣
 
-注意：這是訪客部落格。 [&#128279;](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fprofile%2Fview%3Fid%3D2777965)Ed Blachman是[TIBCO Software （知名企業軟體廠商](https://exchange.adobe.com/apps/browse/ec?product=MRKTO)）的資深架構師。 Ed正在研發的產品可讓Gartner所謂的「公民開發人員」整合他們使用的雲端服務，而不需自行進行任何程式設計。 [Marketo的SOAP API](/help/soap-api/soap-api.md)是功能強大的工具，開發人員可藉此運用Marketo的強大功能，並將其與我們自己的應用程式整合。 在[正式檔案](./getting-started.md)和[社群資源](https://nation.marketo.com/)之間，有許多有關如何使用的資訊。 剛開始使用時，我高度依賴這些資訊，並發現其價值難以估量。 不過，在此過程中，我累積了一些在上述任何地方都未見過的秘訣和技巧。 以下是我想到的部分內容。
+注意：這是訪客部落格。 [&#128279;](https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fprofile%2Fview%3Fid%3D2777965)Ed Blachman是[TIBCO Software （知名企業軟體廠商](https://exchange.adobe.com/apps/browse/ec?product=MRKTO)）的資深架構師。 Ed正在研發的產品可讓Gartner所謂的「公民開發人員」整合他們使用的雲端服務，而不需自行進行任何程式設計。 Marketo的SOAP API是功能強大的工具，開發人員可藉此運用Marketo的強大功能，並將其與我們自己的應用程式整合。 在[正式檔案](./getting-started.md)和[社群資源](https://nation.marketo.com/)之間，有許多有關如何使用的資訊。 剛開始使用時，我高度依賴這些資訊，並發現其價值難以估量。 不過，在此過程中，我累積了一些在上述任何地方都未見過的秘訣和技巧。 以下是我想到的部分內容。
 
 **開發人員的沙箱**&#x200B;沙箱當然是API開發人員的絕佳資源：您可以在此安全的地方試驗Marketo功能，新增和移除物件，而不會干擾貴組織的實際Marketo使用者進行的真實行銷活動。 不過，沙箱並非萬能藥。
 例如，我需要和其他開發群組共用我們的沙箱，這需要花一些時間，因為他們已經習慣了擁有沙箱的觀念。 最終，我們提出了幾個分享的最佳實務： — 請勿撰寫依賴完全瞭解沙箱內容的測試。 作為共用資源，結構描述可能會隨時變更，恕不另行通知，潛在客戶資料庫或方案或其他實體中的完整專案也可能隨時變更。 如果您的測試假設您完全瞭解沙箱，則開發週期會為您共用該沙箱的群組建立中斷期間。 由於它們的開發週期通常不會與您的週期一致，因此這相當於佔用了資源，而不是酷。 如果您仔細想一想，也沒必要。  — 請使用慣例來標示您所有的東西 — 您的銷售機會、您的銷售機會結構描述欄位、您的計畫，等等。 如果您每個人都可以識別自己的物件，而且如果您同意共同租使用者的意見，即您每個人都將保留其他人的物件，那麼您應該有穩固的共用基礎。 對於銷售機會，您可以建立一個自訂欄位，並使用此自訂欄位建立一個慣例，以識別這些銷售機會作為您的測試銷售機會。 對於清單或程式，您可能會以某些字串來開始物件的名稱，這些字串會將這些物件識別為您所屬。  — 請考慮撰寫可自我清理的測試，先建立您感興趣的物件，然後存取或更新或選擇性地刪除物件，最後移除物件。 (請注意，這在SOAP API中無法一律實現，因為並非沙箱或就此而言的實際執行個體中的所有專案都能透過SOAP API管理。 即使如此，您還是有必要儘可能多地做這件事。)
 
 **實際執行個體**&#x200B;沙箱的問題在於它並未在生產環境中使用，因此很難瞭解Marketo執行個體中的實際使用情形。 現在，如果您幸運地擁有團隊中的Marketo進階使用者，或者您正在執行針對內部Marketo使用者的客製化開發，則這並不是問題。 但就我的團隊而言，這確實是一筆大買賣。 我們誰也不是Marketo專家，而且因為被要求瞭解大量雲端服務，我們只是沒有人數成為任何方面的專家。 以下是我們從存取實際執行個體中收集的一些見解： — 大型潛在客戶結構描述。 我們存取的生產執行個體中的潛在客戶結構描述有超過200個欄位。 這清楚地向我們的UI設計人員說明他們設計的UI必須容納該大小（或更大）的結構描述。  — 大量使用。 我們看到最高使用時間和低使用時間之間兩個數量級的差異（就建立或更新潛在客戶數量而言）。 這會影響我們從API呼叫傳回的資料量（顯而易見），以及API呼叫回應所需的時間（可能不太明顯）。
 
-**API呼叫回應時間**&#x200B;根據每日時間、API呼叫的詳細資料和執行個體的內容，您可能會發現SOAP API的回應時間比平均時間長。 有時，我們的API呼叫需要一分鐘半的時間才能回應。 您必須注意處理問題的可能性： — 測試。 也許這對您的使用情況沒有影響。 但請勿僅假設上述情況，執行一些測試。  — 調整您的使用方式。 在此案例中，最大的問題是我們將呼叫[getMultipleLeads](/help/soap-api/getmultipleleads.md)的頁面大小設定為API允許的最大值。 在我們的情境中，這樣的設定有一定道理，因為我們的目標是儘可能以最高效率處理客戶的API配額。 但在您的情境下，您或許不需要特別擔心使用者的API呼叫配額，若是如此，您要求較小型的資料頁面絕對可獲得較佳的回應時間。
+**API呼叫回應時間**&#x200B;根據每日時間、API呼叫的詳細資料和執行個體的內容，您可能會發現SOAP API的回應時間比平均時間長。 有時，我們的API呼叫需要一分鐘半的時間才能回應。 您必須注意處理問題的可能性： — 測試。 也許這對您的使用情況沒有影響。 但請勿僅假設上述情況，執行一些測試。  — 調整您的使用方式。 在我們的案例中，最大的問題是我們將getMultipleLead呼叫的頁面大小設定為API允許的最大值。 在我們的情境中，這樣的設定有一定道理，因為我們的目標是儘可能以最高效率處理客戶的API配額。 但在您的情境下，您或許不需要特別擔心使用者的API呼叫配額，若是如此，您要求較小型的資料頁面絕對可獲得較佳的回應時間。
 
 **潛在客戶分割** Marketo提供強大的工具 — 分割和工作區，允許多個行銷群組共用單一Marketo執行個體。 不過，這些工具不會直接反映在SOAP API中。 例如，當您使用getMultipleLeads來取得自某個日期時間以來已更新或建立的所有潛在客戶時，您會收回執行個體中符合這些條件的所有潛在客戶，而不考慮（且不會指示）哪個分割區或工作區包含任何指定潛在客戶。 潛在客戶建立和新增潛在客戶至清單是其他情境，在這些情境中，潛在客戶分割可能會影響您API呼叫的實際作業。 請注意，這表示分割區和工作區可能不是上述沙箱共用問題所需的解決方案。 那麼，您如何判斷這是否對您而言是個問題？ 我發現所有這些都很有幫助：開發人員宣傳人員致力於幫助我們成功使用API，並且在有問題的地方，他們非常善於尋找答案。 - [API檔案](./getting-started.md)。 宣傳人員已將此問題帶入部分檔案中，並且作為他們承諾要成功的一部分，他們對更新檔案真的很好。  — 您自己的測試案例。 雖然使用分割區和工作區來共用沙箱可能不是個好主意，但沙箱是您與分割區和工作區一起玩耍的好地方，以便瞭解它們是否對您的預期用途構成挑戰。 （這也是縮小向福音傳道者提問的範圍的好方法，這始終是好主意。）
 
-**TIMTOWTDI和測試** 「有多種方法可以做到」 — Perl程式設計格言在某些內容中會實際套用至Marketo SOAP API。 例如，我想將更新一組銷售機會與將這些銷售機會新增到一些清單結合使用。 SOAP API提供您兩種執行此動作的方法： 1. [importToList](/help/soap-api/importtolist.md) + [getImportToListStatus](/help/soap-api/getimporttoliststatus.md)。 閱讀本檔案後，這顯然是執行此動作的「正常」方式。 不過，您必須輪詢匯入作業的狀態這個事實為我帶來一個黃色旗標。 這真的是我想實作匯入的方式嗎？ 1. [syncMultipleLeads](/help/soap-api/syncmultipleleads.md) + [listOperation](/help/soap-api/listoperation.md)。 這看起來比單一importToList呼叫來得輕鬆許多，但不仰賴輪詢。 這是一個可行的選項嗎？ 這類案例很難讓福音傳教士處理，因為它們真的取決於您正在處理的例項的性質，以及您正在嘗試執行的確切動作。 幸運的是，如果您建立了強大的單元測試環境，您應該能夠用它來探索類似這樣的問題。 在此特定案例中，我發現選項2比選項1更適合我的使用案例 — 不是因為輪詢，而是因為在importToList上我遇到欄位導向的限制，而且因為我嘗試編寫可用於我沒有控制權的內容和執行個體的程式碼。 但您的使用案例可能不同，而測試是您瞭解的唯一方法。
+**TIMTOWTDI和測試** 「有多種方法可以做到」 — Perl程式設計格言在某些內容中會實際套用至Marketo SOAP API。 例如，我想將更新一組銷售機會與將這些銷售機會新增到一些清單結合使用。 SOAP API提供您兩種執行此動作的方法： 1. importToList + getImportToListStatus。 閱讀本檔案後，這顯然是執行此動作的「正常」方式。 不過，您必須輪詢匯入作業的狀態這個事實為我帶來一個黃色旗標。 這真的是我想實作匯入的方式嗎？ 1. syncMultipleLeads + listOperation。 這看起來比單一importToList呼叫來得輕鬆許多，但不仰賴輪詢。 這是一個可行的選項嗎？ 這類案例很難讓福音傳教士處理，因為它們真的取決於您正在處理的例項的性質，以及您正在嘗試執行的確切動作。 幸運的是，如果您建立了強大的單元測試環境，您應該能夠用它來探索類似這樣的問題。 在此特定案例中，我發現選項2比選項1更適合我的使用案例 — 不是因為輪詢，而是因為在importToList上我遇到欄位導向的限制，而且因為我嘗試編寫可用於我沒有控制權的內容和執行個體的程式碼。 但您的使用案例可能不同，而測試是您瞭解的唯一方法。
 
 **結論**&#x200B;我認為這些都不是大秘密。 另一方面，如果我開始之前就知道這些的話，我就會領先於遊戲。 我希望您覺得它很有用。
 
@@ -5574,7 +5574,7 @@ Marketo REST API可能會傳回例外狀況或錯誤，為方便起見，我們�
 
 1. 註冊DataDirect雲端登入
 1. 按一下「資料來源」，然後按「+新增資料Source」按鈕
-1. 選取「Marketo」並輸入連線資訊。 您可以向您的Marketo管理員確認或登入以尋找SOAP整合的[連線資訊](/help/soap-api/soap-api.md)。
+1. 選取「Marketo」並輸入連線資訊。 您可以洽詢Marketo管理員或登入以尋找SOAP整合的連線資訊。
 1. 按一下「測試連線」按鈕。 請注意，有一個OData索引標籤可以從Marketo產生OData，我們將在未來的部落格中討論。
 1. 如果您想要檢查Marketo架構是否公開，或想要從UI內發出基本SQL查詢，請按一下「SQL測試」。
 1. 按一下左側的[下載]，然後選取要安裝之應用程式和平台的DataDirect Cloud ODBC或JDBC驅動程式。
@@ -6582,7 +6582,7 @@ public class SyncMultipleLeadsExample {
 
 ## 使用API從Marketo傳送交易式電子郵件
 
-需要使用Marketo UI建立現有的Smart Campaign。 電子郵件收件者也必須存在於Marketo中。 因此，在呼叫requestCampaign API之前，請使用[getLead API]&#x200B;(/help/soap-api/getlead.md)來驗證電子郵件是否存在於Marketo中。 在透過requestCampaign API進行呼叫後，您可檢查以檢視Smart Campaign是否已在Marketo中執行以進行確認。 我們會先說明如何建立Smart Campaign、如何設定觸發程式以透過API傳送行銷活動、如何定義電子郵件作為流程動作的一部分，以及用來執行此行銷活動的程式碼範例。
+需要使用Marketo UI建立現有的Smart Campaign。 電子郵件收件者也必須存在於Marketo中。 因此，在呼叫requestCampaign API之前，請使用getLead API來驗證電子郵件是否存在於Marketo中。 在透過requestCampaign API進行呼叫後，您可檢查以檢視Smart Campaign是否已在Marketo中執行以進行確認。 我們會先說明如何建立Smart Campaign、如何設定觸發程式以透過API傳送行銷活動、如何定義電子郵件作為流程動作的一部分，以及用來執行此行銷活動的程式碼範例。
 **如何在Marketo中建立新的Smart Campaign** Marketo中的Smart Campaign執行您的所有行銷活動。 您可以設定一系列自動化動作，以針對智慧型連絡人清單執行。 在傳送異動電子郵件的情況下，您可在行銷活動中設定觸發條件（如下所示），以使用API傳送電子郵件。 首先設定Smart Campaign。 1.在「行銷活動」中選擇方案，然後在「新增」下拉式清單中，按一下「新增本機資產」。
 
 1. 按一下Smart Campaign
@@ -6595,7 +6595,7 @@ public class SyncMultipleLeadsExample {
 **如何在行銷活動上建立電子郵件流程動作**&#x200B;電子郵件與Smart Campaign的關聯可讓行銷人員管理想要電子郵件的外觀，並允許協力廠商應用程式決定接收者與接收時間。 將電子郵件建立為新的本機資產後，您可以在行銷活動中將其設定為流量動作。  尋找並選取您要傳送的電子郵件。
 
 **呼叫requestCampaign API的程式碼範例**&#x200B;在Marketo介面中設定行銷活動和觸發器後，我們會示範如何使用API傳送電子郵件。 第一個範例是XML要求，第二個範例是XML回應，最後一個範例是可用來產生XML要求的Java程式碼範例。 我們也會說明如何尋找呼叫`requestCampaign` API時使用的促銷活動ID。
-此API呼叫也要求您預先知道Marketo促銷活動的ID。 您可以使用下列其中一種方法來判斷促銷活動ID： 1. 使用[getCampaignsForSource](/help/soap-api/getcampaignsforsource.md) API 1。 在瀏覽器中開啟Marketo促銷活動，並檢視URL位址列。 行銷活動ID （以4位數的整數表示）可在「SC」後面立即找到。 例如 `<https://app-stage.marketo.com/#SC**1025**A1>`。 粗體部分是促銷活動ID - &quot;1025&quot;。 `requestCampaign`的SOAP請求
+此API呼叫也要求您預先知道Marketo促銷活動的ID。 您可以使用下列其中一種方法來判斷促銷活動ID： 1. 使用getCampaignsForSource API 1。 在瀏覽器中開啟Marketo促銷活動，並檢視URL位址列。 行銷活動ID （以4位數的整數表示）可在「SC」後面立即找到。 例如 `<https://app-stage.marketo.com/#SC**1025**A1>`。 粗體部分是促銷活動ID - &quot;1025&quot;。 `requestCampaign`的SOAP請求
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -6733,7 +6733,7 @@ public class RequestCampaign {
 
 ## 使用AP從Marketo傳送包含動態內容的電子郵件 — 
 
-想像您想要自動處理客服中心後續追蹤的電子郵件。 您的支援代表與客戶交談後，您想要自動傳送一封電子郵件，感謝他們連絡您的公司。 讓我們更進一步瞭解一下，並假設您想加入與您在CRM中追蹤的客戶討論的特定交談主題。 您可以使用requestCampaign SOAP API從Marketo執行此作業，以傳送包含動態內容的電子郵件。 requestCampaign API可讓您傳入銷售機會或銷售機會。 它也可讓您傳入可與現有行銷活動搭配使用的方案代號，以傳送動態內容。 requestCampaign SOAP API需要電子郵件收件者存在於Marketo中。 因此，在呼叫requestCampaign API之前，請使用[getLead API](/help/soap-api/getlead.md)來驗證電子郵件是否存在於Marketo中。 我們會先說明如何建立Smart Campaign、如何設定觸發程式以透過API傳送行銷活動、如何建立透過方案權杖接受動態內容的電子郵件、如何定義電子郵件作為流程動作的一部分，以及第五個用於執行此行銷活動的程式碼範例。 **如何在Marketo中建立新的Smart Campaign** Marketo中的Smart Campaign執行您的所有行銷活動。 您可以設定一系列自動化動作，以針對智慧型連絡人清單執行。 在傳送異動電子郵件的情況下，您可在行銷活動中設定觸發條件（如下所示），以使用API傳送電子郵件。 首先設定Smart Campaign。 1.在「行銷活動」中選擇方案，然後在「新增」下拉式清單中，按一下「新增本機資產」
+想像您想要自動處理客服中心後續追蹤的電子郵件。 您的支援代表與客戶交談後，您想要自動傳送一封電子郵件，感謝他們連絡您的公司。 讓我們更進一步瞭解一下，並假設您想加入與您在CRM中追蹤的客戶討論的特定交談主題。 您可以使用requestCampaign SOAP API從Marketo執行此作業，以傳送包含動態內容的電子郵件。 requestCampaign API可讓您傳入銷售機會或銷售機會。 它也可讓您傳入可與現有行銷活動搭配使用的方案代號，以傳送動態內容。 requestCampaign SOAP API需要電子郵件收件者存在於Marketo中。 因此，在呼叫requestCampaign API之前，請使用getLead API來驗證電子郵件是否存在於Marketo中。 我們會先說明如何建立Smart Campaign、如何設定觸發程式以透過API傳送行銷活動、如何建立透過方案權杖接受動態內容的電子郵件、如何定義電子郵件作為流程動作的一部分，以及第五個用於執行此行銷活動的程式碼範例。 **如何在Marketo中建立新的Smart Campaign** Marketo中的Smart Campaign執行您的所有行銷活動。 您可以設定一系列自動化動作，以針對智慧型連絡人清單執行。 在傳送異動電子郵件的情況下，您可在行銷活動中設定觸發條件（如下所示），以使用API傳送電子郵件。 首先設定Smart Campaign。 1.在「行銷活動」中選擇方案，然後在「新增」下拉式清單中，按一下「新增本機資產」
 
 1. 按一下Smart Campaign
 1. 輸入智慧行銷活動名稱，然後按一下「建立&#x200B;**將觸發器新增至Smart Campaign」**&#x200B;將觸發器新增至Smart Campaign可讓您根據即時事件（在此例中為透過[requestCampaign API](https://developer.adobe.com/marketo-apis/api/mapi#operation/triggerCampaignUsingPOST)提出的請求），一次對一個人執行Smart Campaign。
@@ -6744,7 +6744,7 @@ public class RequestCampaign {
 
 以下是其操作方式。 1.從「行銷活動」樹狀結構中，選取您要建立代號的「促銷活動」資料夾或方案。 從頂端功能表列中，選取「我的Token」 。 接著會顯示「我的Token」畫布。 從右側樹狀結構拖曳權杖型別至畫布，此例中為「文字」。 在Token Name欄位中，反白顯示My Token並輸入唯一的Token Name，在此例中為「my.conversationtopic」。 在「值」欄位中，輸入Token的相關值，在此案例中為「感謝您今天與我們通話」。 請注意，我們將透過API覆寫預設的「我的Token」值。 按一下「儲存」以儲存自訂Token。 1. 按一下[新增]以建立新電子郵件。 然後按一下「新增本機Assets」並選取「電子郵件」。 接著，填寫相關欄位，為您的電子郵件命名。 起草電子郵件時，請按一下「代號」圖示，將代號加入電子郵件中。 現在您已使用Token建立範本電子郵件，我們將在後續步驟中新增該電子郵件，作為Campaign的流程動作。 因此，當您透過API呼叫行銷活動時，將會傳送電子郵件。
 **如何在行銷活動上建立電子郵件流程動作**&#x200B;電子郵件與Smart Campaign的關聯可讓行銷人員管理想要電子郵件的外觀，並允許協力廠商應用程式決定接收者與接收時間。 將電子郵件建立為新的本機資產後，您可以在行銷活動中將其設定為流量動作。 尋找並選取您要傳送的電子郵件。
-**呼叫requestCampaign API的程式碼範例**&#x200B;在Marketo介面中設定行銷活動和觸發器後，我們會示範如何使用API傳送電子郵件。 第一個範例是XML要求，第二個範例是XML回應，最後一個範例是可用來產生XML要求的Java程式碼範例。 我們也會說明如何尋找在呼叫requestCampaign API時使用的促銷活動ID。 此API呼叫也要求您預先知道Marketo促銷活動的ID。 您可以使用下列其中一種方法來判斷促銷活動ID： 1. 使用[getCampaignsForSource](/help/soap-api/getcampaignsforsource.md) API 1。 在瀏覽器中開啟Marketo促銷活動，並檢視URL位址列。 行銷活動ID （以4位數的整數表示）可在「SC」後面立即找到。 例如 `<https://app-stage.marketo.com/#SC**1025**A1>`。 粗體部分是促銷活動ID - &quot;1025&quot;。 SOAP的requestCampaign
+**呼叫requestCampaign API的程式碼範例**&#x200B;在Marketo介面中設定行銷活動和觸發器後，我們會示範如何使用API傳送電子郵件。 第一個範例是XML要求，第二個範例是XML回應，最後一個範例是可用來產生XML要求的Java程式碼範例。 我們也會說明如何尋找在呼叫requestCampaign API時使用的促銷活動ID。 此API呼叫也要求您預先知道Marketo促銷活動的ID。 您可以使用下列其中一種方法來判斷促銷活動ID： 1. 使用getCampaignsForSource API 1。 在瀏覽器中開啟Marketo促銷活動，並檢視URL位址列。 行銷活動ID （以4位數的整數表示）可在「SC」後面立即找到。 例如 `<https://app-stage.marketo.com/#SC**1025**A1>`。 粗體部分是促銷活動ID - &quot;1025&quot;。 SOAP的requestCampaign
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -8066,7 +8066,7 @@ in
 
 ### 資產API
 
-* [**電子郵件**](https://developer.adobe.com/marketo-apis/api/asset#operation/describeUsingGET_5)
+* [**電子郵件**](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails)
   * 操控電子郵件v2變數的新端點
   * 操控電子郵件v2模組的新端點
   * 已知問題：
@@ -8279,7 +8279,7 @@ in
 
 SOAP
 
-[getLeadActivity](/help/soap-api/getleadactivity.md)，[getLeadChanges](/help/soap-api/getleadchanges.md)
+getleadactivity， getLeadChanges
 
 由這些端點傳回的記錄中包含的整數「id」欄位將不再保證唯一。 這會影響活動、資料值變更和潛在客戶刪除記錄型別。 為避免擷取這些記錄型別的整合服務中斷，id欄位應視為選用。
 
@@ -9773,7 +9773,7 @@ Munchkin 161版將於2021年9月7日開始推出，至啟用Munchkin Beta訂閱�
 
 ### 瑕疵解決方案
 
-* 已修正[使用者管理](/help/rest-api/user-management.md) API的問題。 屬於設定為可與[銷售Insight](https://business.adobe.com/tw/products/marketo/sales-insight.html)搭配使用的Marketo使用者。 這些使用者現在由[取得使用者](https://developer.adobe.com/marketo-apis/api/user/#operation/getUsersUsingGET)端點傳回，現在可以使用[刪除使用者](https://developer.adobe.com/marketo-apis/api/user/#operation/deleteUserUsingPOST)端點刪除這些使用者。 [LM-155864]
+* 已修正[使用者管理](/help/rest-api/user-management.md) API的問題。 屬於設定為可與[銷售Insight](https://business.adobe.com/tw/products/marketo/sales-insight.html)搭配使用的Marketo使用者。 這些使用者現在由[取得使用者](https://developer.adobe.com/marketo-apis/api/user#)端點傳回，現在可以使用[刪除使用者](https://developer.adobe.com/marketo-apis/api/user#)端點刪除這些使用者。 [LM-155864]
 * 已修正新增[RTF欄位](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/addRichTextFieldUsingPOST)端點的問題。 將超過65,000個字元的RTF欄位新增至電子郵件、登陸頁面、程式碼片段或表單時，系統傳回「611，系統錯誤」。 現在會傳回錯誤「701，無法完成作業。 &#39;content&#39;超過65,535位元組的最大長度&#39;。
 
 由&#x200B;_David_&#x200B;張貼於&#x200B;_2021-10-25_
@@ -9794,7 +9794,7 @@ Munchkin 161版將於2021年9月7日開始推出，至啟用Munchkin Beta訂閱�
 * 修正呼叫[建立潛在客戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#operation/createLeadFieldUsingPOST)端點的時間，與智慧清單中有新建立潛在客戶欄位的時間之間的延遲問題。 [LM-152838]
 * 修正[建立潛在客戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#operation/createLeadFieldUsingPOST)端點的問題，其中建立的欄位無法用於[新增欄位至Marketo Engage UI中的表單](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/demand-generation/forms/creating-a-form/add-a-field-to-a-form)的表單欄位下拉式清單。 [LM-158243]
 * 修正指定isTriggerable=true引數時，[Get Campaigns](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCampaignsUsingGET)端點未傳回可觸發行銷活動的問題。 [LM-158283]
-* 修正了[依清單ID](https://developer.adobe.com/marketo-apis/api/mapi#operation/deleteTokenByNameUsingPOST)取得銷售機會端點在某些情況下會傳回錯誤「611，系統錯誤」的問題。 [LM-157214]
+* 修正了[依清單ID](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET)取得銷售機會端點在某些情況下會傳回錯誤「611，系統錯誤」的問題。 [LM-157214]
 * 已清除[更新潛在客戶欄位](/help/rest-api/leads.md)端點傳回的幾則錯誤訊息。 [LM-151886、LM-151888、LM-151889]
 
 由&#x200B;_David_&#x200B;張貼於&#x200B;_2022-01-27_
@@ -9816,7 +9816,7 @@ Munchkin 161版將於2021年9月7日開始推出，至啟用Munchkin Beta訂閱�
 
 ### Adobe IMS整合
 
-* 已加入[Adobe IMS](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview)的使用者無法使用所有[Marketo使用者管理API](/help/rest-api/user-management.md)。 呼叫與Adobe IMS整合的Marketo執行個體時，下列端點將會傳回錯誤： [邀請使用者](https://developer.adobe.com/marketo-apis/api/user/#operation/inviteUserUsingPOST)、[依ID取得受邀請使用者](https://developer.adobe.com/marketo-apis/api/user/#operation/getInvitedUserUsingGET)、[更新使用者屬性](https://developer.adobe.com/marketo-apis/api/user/#operation/updateUserAttributeUsingPOST)、[刪除使用者](https://developer.adobe.com/marketo-apis/api/user/#operation/deleteUserUsingPOST)以及[刪除受邀請使用者](https://developer.adobe.com/marketo-apis/api/user/#operation/deleteInvitedUserUsingPOST)。 作為取代，應使用[Adobe User Management API](https://developer.adobe.com/umapi/)。
+* 已加入[Adobe IMS](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-with-adobe-identity/adobe-identity-management-overview)的使用者無法使用所有[Marketo使用者管理API](/help/rest-api/user-management.md)。 呼叫與Adobe IMS整合的Marketo執行個體時，下列端點將會傳回錯誤： [邀請使用者](https://developer.adobe.com/marketo-apis/api/user#)、[依ID取得受邀請使用者](https://developer.adobe.com/marketo-apis/api/user#)、[更新使用者屬性](https://developer.adobe.com/marketo-apis/api/user#)、[刪除使用者](https://developer.adobe.com/marketo-apis/api/user#)以及[刪除受邀請使用者](https://developer.adobe.com/marketo-apis/api/user#)。 作為取代，應使用[Adobe User Management API](https://developer.adobe.com/umapi/)。
 
 由&#x200B;_David_&#x200B;張貼於&#x200B;_2022-03-14_
 
@@ -9853,7 +9853,7 @@ Munchkin 161版將於2021年9月7日開始推出，至啟用Munchkin Beta訂閱�
 
 ### 公告
 
-* [身分](https://developer.adobe.com/marketo-apis/api/identity/#operation/identityUsingGET)端點的行為已變更。 當您呼叫端點而且不包含&#x200B;**access_token**&#x200B;引數時，會傳回「603， Access被拒絕」錯誤。 先前，會傳回「600，空白存取權杖」錯誤。 請注意，「600，空白存取權杖」錯誤已被取代。
+* [身分](https://developer.adobe.com/marketo-apis/api/identity#)端點的行為已變更。 當您呼叫端點而且不包含&#x200B;**access_token**&#x200B;引數時，會傳回「603， Access被拒絕」錯誤。 先前，會傳回「600，空白存取權杖」錯誤。 請注意，「600，空白存取權杖」錯誤已被取代。
 
 由&#x200B;_David_&#x200B;張貼於&#x200B;_2022-09-03_
 

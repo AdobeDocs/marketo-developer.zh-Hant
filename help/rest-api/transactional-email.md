@@ -11,16 +11,16 @@ feature_v2:
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 897
+source-wordcount: 891
 ht-degree: 1%
 
 ---
 
 # 異動電子郵件
 
-使用[請求行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST) API傳送異動電子郵件給特定Marketo記錄。 提出要求之前，先設定電子郵件並觸發行銷活動。
+使用[請求行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#operation/triggerCampaignUsingPOST) API傳送異動電子郵件給特定Marketo記錄。 提出要求之前，先設定電子郵件並觸發行銷活動。
 
 - 確定收件者有Marketo記錄。
 - 在Marketo例項中建立和核准交易式電子郵件。
@@ -56,7 +56,7 @@ Java範例使用[minimal-json套件](https://github.com/ralfstx/minimal-json)來
 
 在傳送電子郵件之前，請確認電子郵件地址存在Marketo記錄，並擷取其潛在客戶ID。 此範例假設電子郵件地址已存在。
 
-使用[依篩選型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET)取得銷售機會，以擷取識別碼。 然後以下主要方法會要求行銷活動：
+使用[依篩選型別](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET)取得銷售機會，以擷取識別碼。 然後以下主要方法會要求行銷活動：
 
 ```java
 package dev.marketo.blog_request_campaign;
@@ -274,4 +274,4 @@ Result:
 
 ## 正在結束
 
-此方法可透過多種方式擴充，可變更個別版面區段內或外部電子郵件中的內容，讓自訂值可傳遞至任務或有趣的時刻。 在程式中可以使用代號的任何地方，都可以使用此方法自訂。 [排程行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/scheduleCampaignUsingPOST)呼叫也有類似的功能，可讓您處理整個批次行銷活動中的權杖。 這些無法根據潛在客戶進行自訂，但可用於在廣泛的潛在客戶集合中自訂內容。
+此方法可透過多種方式擴充，可變更個別版面區段內或外部電子郵件中的內容，讓自訂值可傳遞至任務或有趣的時刻。 在程式中可以使用代號的任何地方，都可以使用此方法自訂。 [排程行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#operation/scheduleCampaignUsingPOST)呼叫也有類似的功能，可讓您處理整個批次行銷活動中的權杖。 這些無法根據潛在客戶進行自訂，但可用於在廣泛的潛在客戶集合中自訂內容。

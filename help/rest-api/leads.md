@@ -15,9 +15,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 2728
+source-wordcount: 2733
 ht-degree: 3%
 
 ---
@@ -72,7 +72,7 @@ GET /rest/v1/leads/describe.json
 
 實際回應在結果陣列中包含更多欄位。 每個專案代表潛在客戶記錄上可用的欄位，並至少包含id、displayName和資料型別。
 
-只有當欄位對對應的API有效時，才會顯示rest和soap子物件。 `readOnly`屬性指出對應的API是否可以更新欄位。 出現時，length屬性會提供最大欄位長度，而dataType屬性會提供欄位的資料型別。
+只有當欄位對對應的API有效時，REST子物件才會出現。 `readOnly`屬性指出對應的API是否可以更新欄位。 出現時，length屬性會提供最大欄位長度，而dataType屬性會提供欄位的資料型別。
 
 ## 查詢
 
@@ -177,7 +177,7 @@ GET /rest/v1/leads.json?filterType=id&filterValues=318581,318592
 
 >[!NOTE]
 >
-> 不支援使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST)端點更新公司欄位。 請改用[同步處理公司](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST)端點。
+> 不支援使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST)端點更新公司欄位。 請改用[同步處理公司](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCompaniesUsingPOST)端點。
 
 >[!NOTE]
 >
@@ -863,7 +863,7 @@ POST /rest/v1/leads/{id}/associate.json?cookie=id:287-GTJ-838%26token:_mch-marke
 }
 ```
 
-如果此Cookie已與已知銷售機會相關聯，則對不同的銷售機會使用此API會針對新記錄記錄記錄新的網站活動。現有網站活動未移至新記錄。
+如果此Cookie已與已知銷售機會相關聯，則對不同的銷售機會使用此API會針對新記錄記錄記錄新的網站活動。 現有網站活動未移至新記錄。
 會籍
 
 根據靜態清單或計畫中的成員資格來擷取潛在客戶記錄。 您也可以擷取包含特定潛在客戶的所有靜態清單、方案或智慧行銷活動。

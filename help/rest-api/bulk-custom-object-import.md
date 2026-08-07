@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 736
+source-wordcount: 714
 ht-degree: 0%
 
 ---
@@ -150,7 +150,7 @@ blue,bmw,325i,WBS3U9C52HP970604
 
 ## 建立工作
 
-若要建立大量匯入工作，請在[匯入自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#tag/Identity/operation/identityUsingPOST)端點的路徑中包含自訂物件API名稱。 包含下列引數：
+若要建立大量匯入工作，請在[匯入自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#operation/importCustomObjectUsingPOST)端點的路徑中包含自訂物件API名稱。 包含下列引數：
 
 - `file`：匯入檔案的名稱。
 - `format`：檔案分隔符號格式（`csv`、`tsv`或`ssv`）。
@@ -215,7 +215,7 @@ blue,bmw,325i,WBS3U9C52HP970604
 
 ## 輪詢工作狀態
 
-建立匯入工作後，每5到30秒輪詢一次。 傳遞自訂物件API名稱和`batchId`（在路徑中），以至[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)端點。
+建立匯入工作後，每5到30秒輪詢一次。 傳遞自訂物件API名稱和`batchId`（在路徑中），以至[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportCustomObjectStatusUsingGET)端點。
 
 ```http
 GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
@@ -247,9 +247,9 @@ GET /bulk/v1/customobjects/{apiName}/import/{batchId}/status.json
 
 ## 失敗
 
-[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectStatusUsingGET)回應中的`numOfRowsFailed`屬性表示失敗的資料列數目。 值大於零表示發生失敗。
+[取得匯入自訂物件狀態](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportCustomObjectStatusUsingGET)回應中的`numOfRowsFailed`屬性表示失敗的資料列數目。 值大於零表示發生失敗。
 
-將自訂物件API名稱和`batchId`在路徑中傳遞至[取得匯入自訂物件失敗](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectFailuresUsingGET)端點。 端點會傳回包含失敗詳細資料的檔案。 如果不存在失敗檔案，則會傳回HTTP 404狀態代碼。
+將自訂物件API名稱和`batchId`在路徑中傳遞至[取得匯入自訂物件失敗](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportCustomObjectFailuresUsingGET)端點。 端點會傳回包含失敗詳細資料的檔案。 如果不存在失敗檔案，則會傳回HTTP 404狀態代碼。
 
 若要示範失敗，請將`vin`變更為` vin`，並在逗號和`vin`之間新增空格，以修改標題。
 
@@ -302,7 +302,7 @@ blue,bmw,325i,WBS3U9C52HP970604,missing.dedupe.fields
 
 「取得匯入自訂物件狀態」回應中的`numOfRowsWithWarning`屬性指出含有警告的列數。 大於零的值表示發生警告。
 
-傳遞自訂物件API名稱和`batchId` （在[取得匯入自訂物件警告](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Custom-Objects/operation/getImportCustomObjectWarningsUsingGET)端點的路徑中）。 端點會傳回包含警告詳細資料的檔案。 如果警告檔案不存在，則會傳回HTTP 404狀態代碼。
+傳遞自訂物件API名稱和`batchId` （在[取得匯入自訂物件警告](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportCustomObjectWarningsUsingGET)端點的路徑中）。 端點會傳回包含警告詳細資料的檔案。 如果警告檔案不存在，則會傳回HTTP 404狀態代碼。
 
 ```http
 GET /bulk/v1/customobjects/car_c/import/{batchId}/warnings.json

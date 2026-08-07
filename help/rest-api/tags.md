@@ -12,9 +12,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 227
+source-wordcount: 221
 ht-degree: 2%
 
 ---
@@ -86,7 +86,7 @@ GET /rest/asset/v1/tagType/byName.json?name=AAA1 Required Tag Type
 
 ## 更新
 
-使用[更新程式標籤](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST)端點來更新標籤型別的值。 所有引數皆為必要：
+使用[更新程式標籤](https://developer.adobe.com/marketo-apis/api/asset#operation/updateProgramUsingPOST)端點來更新標籤型別的值。 所有引數皆為必要：
 
 - `id`路徑引數指定程式ID。
 - `tagType`路徑引數指定要更新的標籤型別。
@@ -110,11 +110,11 @@ POST /rest/asset/v1/program/{id}/tag/{tagType}.json?tagValue=David
 }
 ```
 
-若要更新多個標籤，請使用[更新程式中繼資料](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST)端點。 請參閱[程式更新區段](programs.md#update)中的範例。
+若要更新多個標籤，請使用[更新程式中繼資料](https://developer.adobe.com/marketo-apis/api/asset#operation/updateProgramUsingPOST)端點。 請參閱[程式更新區段](programs.md#update)中的範例。
 
 ## 刪除
 
-使用[刪除程式標籤](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/deleteProgramUsingPOST)端點來刪除非必要的標籤型別。 `id`路徑引數指定程式ID，而`tagType`路徑引數指定要刪除的標籤型別。
+使用[刪除程式標籤](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteProgramUsingPOST)端點來刪除非必要的標籤型別。 `id`路徑引數指定程式ID，而`tagType`路徑引數指定要刪除的標籤型別。
 
 ```http
 POST /rest/asset/v1/program/{id}/tag/{tagType}/delete.json

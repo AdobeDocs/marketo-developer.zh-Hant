@@ -17,9 +17,9 @@ topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
   - id: cc72dcf1-72e1-48cc-b434-e7c27d62d67c
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 2255
+source-wordcount: 2332
 ht-degree: 3%
 
 ---
@@ -232,7 +232,7 @@ Marketo REST API在正常作業期間可能會傳回三種型別的錯誤：
     <tr>
       <td><a name="709"></a>709</td>
       <td>違反商業規則</td>
-      <td>無法完成呼叫，因為它違反了建立或更新資產的要求，例如，嘗試在沒有範本的情況下建立電子郵件。嘗試下列動作時，也可能發生此錯誤：
+      <td>無法完成呼叫，因為它違反了建立或更新資產的要求，例如，嘗試在沒有範本的情況下建立電子郵件。 嘗試下列動作時，也可能發生此錯誤：
         <ul>
           <li>擷取包含社交內容的登入頁面內容。</li>
           <li>複製包含特定資產型別的程式（如需詳細資訊，請參閱<a href="programs.md#clone">程式複製</a>）。</li>
@@ -384,8 +384,8 @@ Marketo REST API在正常作業期間可能會傳回三種型別的錯誤：
 >    <tr>
 >      <td><a name="1012"></a>1012</td>
 >      <td>無效的Cookie值'%s'</td>
->      <td>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/associateLeadUsingPOST">關聯銷售機會</a>時，可能會發生'cookie'引數的無效值。
->        當使用'filterType=cookies'且'filterValues'引數的值無效時，依篩選型別</a>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET">取得銷售機會，也會發生這種情況。</td>
+>      <td>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/associateLeadUsingPOST">關聯銷售機會</a>時，可能會發生'cookie'引數的無效值。
+>        當使用'filterType=cookies'並有'filterValues'引數的無效值依篩選型別</a>呼叫<a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET">取得銷售機會時，也會發生這種情況。</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1013"></a>1013</td>
@@ -503,24 +503,24 @@ Marketo REST API在正常作業期間可能會傳回三種型別的錯誤：
 >    </tr>
 >    <tr>
 >      <td><a name="1076"></a>1076</td>
->      <td>具有mergeInCRM旗標的<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫為4。</td>
->      <td>您正在建立重複記錄。建議您改用現有記錄。
+>      <td>具有mergeInCRM旗標的<a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫為4。</td>
+>      <td>您正在建立重複記錄。 建議您改用現有記錄。
 >        這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1077"></a>1077</td>
->      <td>由於「SFDC欄位」長度，<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗</td>
+>      <td>由於「SFDC欄位」長度，<a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗</td>
 >      <td>mergeInCRM設為true的合併潛在客戶呼叫失敗，因為「SFDC欄位」超過允許的字元限制。 若要更正，請縮短「SFDC欄位」的長度，或將mergeInCRM設為false。</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1078"></a>1078</td>
->      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗，因為實體已刪除，不是銷售機會/連絡人，或欄位篩選條件不符。</td>
+>      <td><a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗，因為實體已刪除，不是銷售機會/連絡人，或欄位篩選條件不符。</td>
 >      <td>合併失敗，無法在原生同步的CRM中執行合併操作
 >        這是Marketo在Salesforce中合併時收到的錯誤訊息。</td>
 >    </tr>
 >    <tr>
 >      <td><a name="1079"></a>1079</td>
->      <td>由於重複記錄中的個人化URL衝突，<a href="https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗</td>
+>      <td>由於重複記錄中的個人化URL衝突，<a href="https://developer.adobe.com/marketo-apis/api/mapi#operation/mergeLeadsUsingPOST">合併銷售機會</a>呼叫失敗</td>
 >      <td>合併銷售機會通話會指定多個具有相同個人化URL的銷售機會。 若要解決問題，請使用Marketo Engage使用者介面來合併這些記錄。</td>
 >    </tr>
 >  </tbody>

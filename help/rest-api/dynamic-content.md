@@ -10,9 +10,9 @@ feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 329
+source-wordcount: 325
 ht-degree: 3%
 
 ---
@@ -35,7 +35,7 @@ ht-degree: 3%
 
 此範例使用地區（美國）細分來顯示對西南區段中的潛在客戶的事件促銷。 此區段包含來自加州、內華達、猶他州、科羅拉多、亞利桑那州和新墨西哥州的銷售機會。
 
-使用[更新電子郵件內容區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailComponentContentUsingPOST)端點將識別碼為`Q1-promotion-banner`的可編輯區段變更為`DynamicContent`區段。 `value`引數指定分段ID。
+使用[更新電子郵件內容區段](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailComponentContentUsingPOST)端點將識別碼為`Q1-promotion-banner`的可編輯區段變更為`DynamicContent`區段。 `value`引數指定分段ID。
 
 電子郵件和登入頁面會遵循此模式。 程式碼片段使用程式碼片段API檔案中所述的不同模式。
 
@@ -63,7 +63,7 @@ type=DynamicContent&value=1001
 }
 ```
 
-呼叫[更新電子郵件動態內容區段](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails/operation/updateEmailDynamicContentUsingPOST)端點以新增特定區段中的區段內容。
+呼叫[更新電子郵件動態內容區段](https://developer.adobe.com/marketo-apis/api/asset#operation/updateEmailDynamicContentUsingPOST)端點以新增特定區段中的區段內容。
 
 以下請求會顯示特殊橫幅，而非西南區段中銷售機會的預設內容。 若要建立更多變數，請呼叫每個區段和區段的端點。
 

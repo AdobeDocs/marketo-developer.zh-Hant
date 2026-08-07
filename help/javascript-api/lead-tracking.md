@@ -16,9 +16,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 718
+source-wordcount: 716
 ht-degree: 0%
 
 ---
@@ -93,7 +93,7 @@ Marketo會將該瀏覽器的後續網頁活動記錄在該匿名記錄上。 若
 
 - 潛在客戶必須從追蹤的Munchkin電子郵件連結，造訪在查詢字串中具有`mkt_tok`引數的Marketo追蹤頁面。
 - 潛在客戶必須填寫Marketo表單。
-- 必須傳送REST [關聯銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/associateLeadUsingPOST)呼叫。
+- 必須傳送REST [關聯銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/associateLeadUsingPOST)呼叫。
 
 當其中一個事件發生時，Marketo會將Cookie和所有相關的網路活動與已知潛在客戶建立關聯。
 

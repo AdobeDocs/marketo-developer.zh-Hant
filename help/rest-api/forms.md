@@ -17,9 +17,9 @@ role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1494
+source-wordcount: 1447
 ht-degree: 2%
 
 ---
@@ -40,11 +40,11 @@ ht-degree: 2%
 
 ## 查詢
 
-Forms支援標準資產擷取方法：[依識別碼](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByNameUsingGET)及[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/browseForms2UsingGET)。 表單回應包含每個表單屬性，但欄位清單除外。
+Forms支援標準資產擷取方法：[依識別碼](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByNameUsingGET)及[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/browseForms2UsingGET)。 表單回應包含每個表單屬性，但欄位清單除外。
 
 ### 依ID
 
-將表單`id`作為路徑引數傳遞至[依ID取得表單](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByIdUsingGET)。 端點會傳回相符的表單記錄。
+將表單`id`作為路徑引數傳遞至[依ID取得表單](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByIdUsingGET)。 端點會傳回相符的表單記錄。
 
 ```http
 GET /rest/asset/v1/form/{id}.json
@@ -98,7 +98,7 @@ GET /rest/asset/v1/form/{id}.json
 
 ### 依名稱
 
-傳遞表單`name`至[依名稱取得表單](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getLpFormByNameUsingGET)。 端點會傳回相符的表單記錄。
+傳遞表單`name`至[依名稱取得表單](https://developer.adobe.com/marketo-apis/api/asset#operation/getLpFormByNameUsingGET)。 端點會傳回相符的表單記錄。
 
 ```http
 GET /rest/asset/v1/form/byName.json?name=newForm
@@ -152,7 +152,7 @@ GET /rest/asset/v1/form/byName.json?name=newForm
 
 ### 瀏覽
 
-[取得Forms](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/browseForms2UsingGET)遵循標準的資產API瀏覽模式。 支援下列可選用的篩選器：
+[取得Forms](https://developer.adobe.com/marketo-apis/api/asset#operation/browseForms2UsingGET)遵循標準的資產API瀏覽模式。 支援下列可選用的篩選器：
 
 - `status`：依`approved`、`approved with draft`或`draft`篩選。
 - `maxReturn`：限制傳回的記錄數。
@@ -332,7 +332,7 @@ GET /rest/asset/v1/form/{id}/fields.json
 
 ### 相依性
 
-將表單`id`作為路徑引數傳遞給[取得](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/getFormUsedByUsingGET)使用的表單。 端點會傳回與表單相依的資產。
+將表單`id`作為路徑引數傳遞給[取得](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormUsedByUsingGET)使用的表單。 端點會傳回與表單相依的資產。
 
 以下資產型別可使用表單：
 
@@ -366,7 +366,7 @@ GET /rest/asset/v1/form/{id}/usedBy.json
 
 ## 建立和更新
 
-若要[建立表單](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/createLpFormsUsingPOST)，請提供兩個必要欄位：
+若要[建立表單](https://developer.adobe.com/marketo-apis/api/asset#operation/createLpFormsUsingPOST)，請提供兩個必要欄位：
 
 - 表單的父資料夾。
 - 表單名稱。
@@ -431,7 +431,7 @@ name=newForm&description=test&folder={"type": "Folder","id": 293}&language=Frenc
 }
 ```
 
-若要[更新表單](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/updateFormsUsingPOST)，請傳遞其識別碼。 在建立或更新期間，您可以設定基本樣式引數，以控制向使用者顯示表單的方式。
+若要[更新表單](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFormsUsingPOST)，請傳遞其識別碼。 在建立或更新期間，您可以設定基本樣式引數，以控制向使用者顯示表單的方式。
 
 ```http
 POST /rest/asset/v1/form/736.json
@@ -496,7 +496,7 @@ name=updated name&description=This is a test for updateapi&language=English&prog
 
 新增或編輯表單欄位之前，請先擷取目標例項的有效欄位。 欄位作業會使用每個欄位傳回的`id`屬性。
 
-針對潛在客戶欄位，請使用[取得可用的表單欄位](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllFieldsUsingGET)端點。 回應包含每個欄位的資料型別，以及在將欄位新增至表單時套用的預設中繼資料。
+針對潛在客戶欄位，請使用[取得可用的表單欄位](https://developer.adobe.com/marketo-apis/api/asset#operation/getAllFieldsUsingGET)端點。 回應包含每個欄位的資料型別，以及在將欄位新增至表單時套用的預設中繼資料。
 
 ```http
 GET /rest/asset/v1/form/fields.json
@@ -628,7 +628,7 @@ GET /rest/asset/v1/form/fields.json
 }
 ```
 
-針對程式成員自訂欄位，請呼叫[取得可用的表單程式成員欄位](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getAllProgramMemberFieldsUsingGET)端點。 回應包括方案成員自訂欄位資料型別和預設中繼資料。
+針對程式成員自訂欄位，請呼叫[取得可用的表單程式成員欄位](https://developer.adobe.com/marketo-apis/api/asset#operation/getAllProgramMemberFieldsUsingGET)端點。 回應包括方案成員自訂欄位資料型別和預設中繼資料。
 
 若要使用這些欄位，表單必須位於「程式」下，而不是位於Design Studio中。 包含具有這些欄位的表單的登陸頁面也必須位於計畫下。 它不能在Design Studio中或複製到其中。
 
@@ -669,7 +669,7 @@ GET /rest/asset/v1/form/programMemberFields.json
 
 每個表單都有一個可編輯的欄位清單，在表單載入時向使用者顯示。 使用對應的端點來一次新增、更新或刪除一個欄位。
 
-若要[新增欄位](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFieldToAFormUsingPOST)，請提供上層表單識別碼和欄位`fieldId`。 所有其他屬性都是空的，或根據欄位的資料型別和中繼資料使用預設值。
+若要[新增欄位](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldToAFormUsingPOST)，請提供上層表單識別碼和欄位`fieldId`。 所有其他屬性都是空的，或根據欄位的資料型別和中繼資料使用預設值。
 
 以POST形式與`application/x-www-form-urlencoded`傳送資料，而非以JSON傳送。
 
@@ -835,7 +835,7 @@ values=[{"label":"Select...","value":"","isDefault":true,"selected":true}, {"lab
 
 ### 重新排列欄位
 
-使用[變更表單欄位位置](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/updateFieldPositionsUsingPOST)端點將所有表單欄位重新排列為單一單位。 端點需要`positions`，一個具有三個成員的物件JSON陣列：
+使用[變更表單欄位位置](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST)端點將所有表單欄位重新排列為單一單位。 端點需要`positions`，一個具有三個成員的物件JSON陣列：
 
 - `columnNumber`
 - `rowNumber`
@@ -875,7 +875,7 @@ positions=[{"columnNumber":0,"rowNumber":0,"fieldName":"FirstName"},{"columnNumb
 
 ### RTF 文字
 
-使用[個別的端點](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addRichTextFieldUsingPOST)來新增RTF文字欄位。 在`multipart/form-data`請求中傳遞內容作為HTML。 HTML不得包含指令碼、中繼標籤或連結標籤。
+使用[個別的端點](https://developer.adobe.com/marketo-apis/api/asset#operation/addRichTextFieldUsingPOST)來新增RTF文字欄位。 在`multipart/form-data`請求中傳遞內容作為HTML。 HTML不得包含指令碼、中繼標籤或連結標籤。
 
 ```http
 POST /rest/asset/v1/form/{id}/richText.json
@@ -918,7 +918,7 @@ Content-Type: text/html
 
 表單中的欄位必須是唯一的。 相同的欄位無法同時出現在表單的父欄位清單和子欄位集中。
 
-將具有[Add Fieldset的欄位集新增至Form](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFieldSetUsingPOST)端點。 欄位集接著會出現在表單[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/getFormFieldByFormVidUsingGET)回應的取得欄位中。 若要將欄位新增至欄位集，請使用[更新欄位位置](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/updateFieldPositionsUsingPOST)以將其移至其`fieldList`。
+將具有[Add Fieldset的欄位集新增至Form](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldSetUsingPOST)端點。 欄位集接著會出現在表單[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormFieldByFormVidUsingGET)回應的取得欄位中。 若要將欄位新增至欄位集，請使用[更新欄位位置](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST)以將其移至其`fieldList`。
 
 對於這些端點，以`application/x-www-form-urlencoded`的POST形式傳送資料，而非以JSON形式傳送。
 
@@ -965,7 +965,7 @@ visibilityRule={"ruleType":"show", "rules":[{"subjectField": "LastName", "operat
 }
 ```
 
-如需完整的運運算元清單，請參閱[新增表單欄位可見性規則](https://developer.adobe.com/marketo-apis/api/asset#tag/Form-Fields/operation/addFormFieldVisibilityRuleUsingPOST)。
+如需完整的運運算元清單，請參閱[新增表單欄位可見性規則](https://developer.adobe.com/marketo-apis/api/asset#operation/addFormFieldVisibilityRuleUsingPOST)。
 
 ## 後續追蹤
 
@@ -977,7 +977,7 @@ visibilityRule={"ruleType":"show", "rules":[{"subjectField": "LastName", "operat
 
 ## 提交按鈕
 
-使用[更新提交按鈕](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms/operation/updateFormSubmitButtonUsingPOST)端點修改提交按鈕樣式。 您可以更新`buttonPosition`、`buttonStyle`、`label`和`waitingLabel`。 `waitingLabel`會在提交擱置時顯示。
+使用[更新提交按鈕](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFormSubmitButtonUsingPOST)端點修改提交按鈕樣式。 您可以更新`buttonPosition`、`buttonStyle`、`label`和`waitingLabel`。 `waitingLabel`會在提交擱置時顯示。
 
 這是破壞性更新。
 

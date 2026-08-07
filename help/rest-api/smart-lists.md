@@ -13,9 +13,9 @@ subfeature_v2:
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 431
+source-wordcount: 402
 ht-degree: 1%
 
 ---
@@ -30,11 +30,11 @@ ht-degree: 1%
 
 ## 查詢
 
-查詢智慧清單[依識別碼](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListsUsingGET)。
+查詢智慧清單[依識別碼](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartListByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartListByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartListsUsingGET)。
 
 ### 依Id
 
-[依ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByIdUsingGET)的查詢需要一個智慧清單`id`路徑引數並傳回相符記錄。 設定選用的`includeRules`布林值引數以包含智慧列示規則。
+[依ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartListByIdUsingGET)的查詢需要一個智慧清單`id`路徑引數並傳回相符記錄。 設定選用的`includeRules`布林值引數以包含智慧列示規則。
 
 ![智慧清單規則](assets/smartlist-rules.png)
 
@@ -109,7 +109,7 @@ GET /rest/asset/v1/smartList/{id}.json?includeRules=true
 
 ### 依智慧行銷活動Id
 
-[依智慧行銷活動ID查詢](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getSmartListBySmartCampaignIdUsingGET)需要一個智慧行銷活動`id`路徑引數並傳回其智慧清單記錄。 設定選用的`includeRules`布林值引數以包含智慧列示規則。
+[依智慧行銷活動ID查詢](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartListBySmartCampaignIdUsingGET)需要一個智慧行銷活動`id`路徑引數並傳回其智慧清單記錄。 設定選用的`includeRules`布林值引數以包含智慧列示規則。
 
 ```http
 GET /rest/asset/v1/smartCampaign/{smartCampaignId}/smartList.json
@@ -140,7 +140,7 @@ GET /rest/asset/v1/smartCampaign/{smartCampaignId}/smartList.json
 
 ### 依計畫ID
 
-[依程式識別碼查詢](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getSmartListByProgramIdUsingGET)需要一個電子郵件程式`id`路徑引數並傳回其智慧清單記錄。 設定選用的`includeRules`布林值引數以包含智慧列示規則。
+[依程式識別碼查詢](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartListByProgramIdUsingGET)需要一個電子郵件程式`id`路徑引數並傳回其智慧清單記錄。 設定選用的`includeRules`布林值引數以包含智慧列示規則。
 
 ```http
 GET /rest/asset/v1/program/{programId}/smartList.json
@@ -171,7 +171,7 @@ GET /rest/asset/v1/program/{programId}/smartList.json
 
 ### 依名稱
 
-[依名稱查詢](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListByNameUsingGET)採用智慧清單`name`引數。 端點會執行完全相符的名稱並傳回相符的記錄。
+[依名稱查詢](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartListByNameUsingGET)採用智慧清單`name`引數。 端點會執行完全相符的名稱並傳回相符的記錄。
 
 ```http
 GET /rest/asset/v1/smartList/byName.json?name=2018 Leads
@@ -201,7 +201,7 @@ GET /rest/asset/v1/smartList/byName.json?name=2018 Leads
 
 ### 瀏覽
 
-使用瀏覽端點[以批次](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/getSmartListsUsingGET)擷取智慧清單。 選用的`folder`引數會將查詢範圍限定到父資料夾。 將其傳遞為包含`id`和`type`的JSON物件。
+使用瀏覽端點[以批次](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartListsUsingGET)擷取智慧清單。 選用的`folder`引數會將查詢範圍限定到父資料夾。 將其傳遞為包含`id`和`type`的JSON物件。
 
 使用`offset`和`maxReturn`進行分頁。 使用選用的`earliestUpdatedAt`和`latestUpdatedAt`引數，依`updatedAt`日期範圍篩選。
 
@@ -257,7 +257,7 @@ GET /rest/asset/v1/smartLists.json?folder={"id":31,"type":"Folder"}
 
 ## 原地複製
 
-傳送`application/x-www-form-urlencoded` POST要求給[複製智慧清單](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/cloneSmartListUsingPOST)。 `id`路徑引數可識別來源智慧清單。
+傳送`application/x-www-form-urlencoded` POST要求給[複製智慧清單](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneSmartListUsingPOST)。 `id`路徑引數可識別來源智慧清單。
 
 將`folder`傳遞為包含`id`和`type`的JSON物件。 父級必須是程式或智慧清單資料夾。 `name`必須是唯一的。 選用的`description`引數說明新清單。
 
@@ -297,7 +297,7 @@ folder={"id":31,"type":"Folder"}&name=2018 Leads Qualified
 
 ## 刪除
 
-若要[刪除智慧列示](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists/operation/deleteSmartListByIdUsingPOST)，請將其`id`傳遞為路徑引數。
+若要[刪除智慧列示](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteSmartListByIdUsingPOST)，請將其`id`傳遞為路徑引數。
 
 ```http
 POST /rest/asset/v1/smartList/{id}/delete.json

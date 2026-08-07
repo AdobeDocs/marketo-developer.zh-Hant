@@ -14,9 +14,9 @@ subfeature_v2:
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1009
+source-wordcount: 978
 ht-degree: 1%
 
 ---
@@ -35,7 +35,7 @@ ht-degree: 1%
 
 ### 依Id
 
-[依ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getSmartCampaignByIdUsingGET)取得Smart Campaign端點將單一Smart Campaign `id`當做路徑引數，並傳回單一Smart Campaign記錄。
+[依ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartCampaignByIdUsingGET)取得Smart Campaign端點將單一Smart Campaign `id`當做路徑引數，並傳回單一Smart Campaign記錄。
 
 ```http
 GET /rest/asset/v1/smartCampaign/{id}.json
@@ -77,7 +77,7 @@ GET /rest/asset/v1/smartCampaign/{id}.json
 
 ### 依名稱
 
-[依名稱取得Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getSmartCampaignByNameUsingGET)端點將單一Smart Campaign `name`作為引數，並傳回單一Smart Campaign記錄。
+[依名稱取得Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#operation/getSmartCampaignByNameUsingGET)端點將單一Smart Campaign `name`作為引數，並傳回單一Smart Campaign記錄。
 
 ```http
 GET /rest/asset/v1/smartCampaign/byName.json?name=Test Trigger Campaign
@@ -123,7 +123,7 @@ GET /rest/asset/v1/smartCampaign/byName.json?name=Test Trigger Campaign
 
 ### 瀏覽
 
-[Get Smart Campaigns](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/getAllSmartCampaignsGET)端點支援用於篩選和分頁的選用查詢引數。
+[Get Smart Campaigns](https://developer.adobe.com/marketo-apis/api/asset#operation/getAllSmartCampaignsGET)端點支援用於篩選和分頁的選用查詢引數。
 
 `earliestUpdatedAt`和`latestUpdatedAt`引數接受ISO-8601格式的`datetimes` （不含毫秒）。 如果兩者皆已設定，則earliestUpdatedAt必須在latestUpdatedAt之前。
 
@@ -196,7 +196,7 @@ GET /rest/asset/v1/smartCampaigns.json?earliestUpdatedAt=2016-09-10T23:15:00-00:
 
 ## 建立
 
-傳送`application/x-www-form-urlencoded` POST要求至[建立Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/createSmartCampaignUsingPOST)端點。 需要`name`和`folder`引數。 將`folder`傳遞為包含`id`和`type`的JSON物件。
+傳送`application/x-www-form-urlencoded` POST要求至[建立Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#operation/createSmartCampaignUsingPOST)端點。 需要`name`和`folder`引數。 將`folder`傳遞為包含`id`和`type`的JSON物件。
 
 您可以選擇使用`description`引數（最多2,000個字元）描述智慧行銷活動。
 
@@ -302,7 +302,7 @@ name=Smart Campaign 02 Update&description=This is a smart campaign update test.
 
 ## 原地複製
 
-傳送`application/x-www-form-urlencoded` POST要求至[仿製智慧行銷活動](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5)端點。 需要`id`、`name`和`folder`引數。 它們會指定來源促銷活動、新促銷活動名稱和上層資料夾。 將`folder`傳遞為包含`id`和`type`的JSON物件。
+傳送`application/x-www-form-urlencoded` POST要求至[仿製智慧行銷活動](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneSmartCampaignUsingPOST)端點。 需要`id`、`name`和`folder`引數。 它們會指定來源促銷活動、新促銷活動名稱和上層資料夾。 將`folder`傳遞為包含`id`和`type`的JSON物件。
 
 您可以選擇使用`description`引數（最多2,000個字元）描述智慧行銷活動。
 
@@ -356,7 +356,7 @@ name=Test Trigger Campaign Clone&folder={"type": "folder","id": 640}&description
 
 ## 刪除
 
-[刪除Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/deleteSmartCampaignUsingPOST)端點會將單一Smart Campaign `id`當做路徑引數。
+[刪除Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteSmartCampaignUsingPOST)端點會將單一Smart Campaign `id`當做路徑引數。
 
 ```http
 POST /rest/asset/v1/smartCampaign/{id}/delete.json
@@ -382,7 +382,7 @@ POST /rest/asset/v1/smartCampaign/{id}/delete.json
 
 ## 排程
 
-使用[排程行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/scheduleCampaignUsingPOST)來排程批次行銷活動。 行銷活動`id`路徑引數為必要項。 在JSON要求內文中傳遞選用的`tokens`、`runAt`和`cloneToProgram`引數。
+使用[排程行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#operation/scheduleCampaignUsingPOST)來排程批次行銷活動。 行銷活動`id`路徑引數為必要項。 在JSON要求內文中傳遞選用的`tokens`、`runAt`和`cloneToProgram`引數。
 
 `tokens`陣列會覆寫此回合的現有程式My Token。 Marketo會在行銷活動執行後捨棄覆寫。 每個專案都包含名稱/值組，而權杖名稱必須使用`{{my.name}}`格式。
 
@@ -390,7 +390,7 @@ POST /rest/asset/v1/smartCampaign/{id}/delete.json
 
 透過此API排程的行銷活動在執行之前一律至少要等待五分鐘。
 
-`cloneToProgram`字串引數包含產生程式的名稱。  設定後，促銷活動、上層方案及其所有資產都會以產生的新名稱建立。 父方案已複製，並將排程新建立的行銷活動。 產生的程式會在父項下建立。 包含程式碼片段、推播通知、應用程式內訊息、靜態清單、報表和社交資產的程式可能無法以這種方式複製。 使用時，此端點限制每天最多20次呼叫。 [復製程式](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5)端點是建議的替代方案。
+`cloneToProgram`字串引數包含產生程式的名稱。  設定後，促銷活動、上層方案及其所有資產都會以產生的新名稱建立。 父方案已複製，並將排程新建立的行銷活動。 產生的程式會在父項下建立。 包含程式碼片段、推播通知、應用程式內訊息、靜態清單、報表和社交資產的程式可能無法以這種方式複製。 使用時，此端點限制每天最多20次呼叫。 [復製程式](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneProgramUsingPOST)端點是建議的替代方案。
 
 ```http
 POST /rest/v1/campaigns/{id}/schedule.json
@@ -433,7 +433,7 @@ POST /rest/v1/campaigns/{id}/schedule.json
 
 ### 請求
 
-使用[要求行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns/operation/triggerCampaignUsingPOST)透過觸發行銷活動的流程傳遞銷售機會。 行銷活動必須使用具有Web服務API作為來源的「已要求行銷活動」觸發器。
+使用[要求行銷活動](https://developer.adobe.com/marketo-apis/api/mapi#operation/triggerCampaignUsingPOST)透過觸發行銷活動的流程傳遞銷售機會。 行銷活動必須使用具有Web服務API作為來源的「已要求行銷活動」觸發器。
 
 行銷活動`id`路徑引數及`leads`潛在客戶ID的整數陣列是必要的。 每個呼叫最多接受100個銷售機會。
 
@@ -485,7 +485,7 @@ POST /rest/v1/campaigns/{id}/trigger.json
 
 ### 啟動
 
-[啟動Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/activateSmartCampaignUsingPOST)端點很簡單。 需要`id`路徑引數。 若要成功啟用，行銷活動必須符合下列條件：
+[啟動Smart Campaign](https://developer.adobe.com/marketo-apis/api/asset#operation/activateSmartCampaignUsingPOST)端點很簡單。 需要`id`路徑引數。 若要成功啟用，行銷活動必須符合下列條件：
 
 - 行銷活動已停用。
 - 行銷活動至少有一個觸發器和一個流程步驟。
@@ -510,7 +510,7 @@ POST /rest/asset/v1/smartCampaign/{id}/activate.json
 
 ### 停用
 
-[停用智慧行銷活動](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns/operation/deactivateSmartCampaignUsingPOST)簡單明瞭。 需要`id`路徑引數。 若要成功停用，必須啟動行銷活動。
+[停用智慧行銷活動](https://developer.adobe.com/marketo-apis/api/asset#operation/deactivateSmartCampaignUsingPOST)簡單明瞭。 需要`id`路徑引數。 若要成功停用，必須啟動行銷活動。
 
 ```http
 POST /rest/asset/v1/smartCampaign/{id}/deactivate.json

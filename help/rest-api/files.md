@@ -10,9 +10,9 @@ feature_v2:
   - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 274
+source-wordcount: 263
 ht-degree: 1%
 
 ---
@@ -27,7 +27,7 @@ Marketo檔案儲存空間並未針對頻寬密集的應用程式進行最佳化�
 
 ## 查詢
 
-查詢檔案[依識別碼](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFileByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/getFilesUsingGET)。
+查詢檔案[依識別碼](https://developer.adobe.com/marketo-apis/api/asset#operation/getFileByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getFileByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getFilesUsingGET)。
 
 ### 依Id
 
@@ -164,7 +164,7 @@ GET /rest/asset/v1/files.json?folder={"id":436, "type": "Folder"}&maxReturn=3
 
 ## 建立和更新
 
-使用`multipart/form-data`要求[建立檔案](https://developer.adobe.com/marketo-apis/api/asset#tag/Files/operation/createFileUsingPOST)。 需要`name`、`folder`和`file`引數。 `description`和`insertOnly`引數是選用的。 為true時，`insertOnly`會防止要求更新具有相同名稱的現有檔案。
+使用`multipart/form-data`要求[建立檔案](https://developer.adobe.com/marketo-apis/api/asset#operation/createFileUsingPOST)。 需要`name`、`folder`和`file`引數。 `description`和`insertOnly`引數是選用的。 為true時，`insertOnly`會防止要求更新具有相同名稱的現有檔案。
 
 對於`file`引數，在`Content-Disposition`標頭中包含`filename`。 也包含檔案的`Content-Type`標頭。 Marketo在提供檔案時使用此MIME型別。
 
@@ -219,7 +219,7 @@ This is a test file
 }
 ```
 
-若要[更新檔案](https://developer.adobe.com/marketo-apis/api/asset#tag/File-Contents/operation/updateContentUsingPOST)，請指定其識別碼。 `file`引數具有與檔案建立相同的需求。
+若要[更新檔案](https://developer.adobe.com/marketo-apis/api/asset#operation/updateContentUsingPOST)，請指定其識別碼。 `file`引數具有與檔案建立相同的需求。
 
 ```http
 POST /rest/asset/v1/file/{id}/content.json
