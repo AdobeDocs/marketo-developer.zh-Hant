@@ -4,20 +4,13 @@ feature: REST API, Programs
 description: Marketo的Asset REST API方案指南涵蓋型別、管道、標籤、成員狀態和端點，可依ID或名稱取得、瀏覽及依狀態篩選。
 exl-id: 30700de2-8f4a-4580-92f2-7036905deb80
 TQID: https://experienceleague.adobe.com/5ILyahSn3Pp-lF6YPogVnkXjXP-QLtEmyLm7iKMIgo0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: ebde5b41-29c9-4f5e-9ef6-1197e85409e3
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: ebde5b41-29c9-4f5e-9ef6-1197e85409e3
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 741
+source-wordcount: 718
 ht-degree: 1%
 
 ---
@@ -46,11 +39,11 @@ Marketo中有五種核心型別的計畫：
 
 ## 查詢
 
-依ID、名稱、瀏覽或標籤型別和值查詢程式。 使用[取得標籤型別](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags/operation/getTagTypesUsingGET)來擷取可用的標籤和值。
+依ID、名稱、瀏覽或標籤型別和值查詢程式。 使用[取得標籤型別](https://developer.adobe.com/marketo-apis/api/asset#operation/getTagTypesUsingGET)來擷取可用的標籤和值。
 
 ### 依Id
 
-[依ID](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5)取得程式端點需要`id`路徑引數。
+[依ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramByIdUsingGET)取得程式端點需要`id`路徑引數。
 
 您可以從其UI URL （例如`https://app-\*\*\*.marketo.com/#PG1001A1`）取得程式ID。 在此範例中，ID是介於第一組和第二組字母之間的`1001`。
 
@@ -140,13 +133,13 @@ GET /rest/asset/v1/program/byName.json?name=TestProgramName&includeTags=true
 
 ### 瀏覽
 
-使用[取得程式](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5)端點來瀏覽程式。
+使用[取得程式](https://developer.adobe.com/marketo-apis/api/asset#operation/browseProgramsUsingGET)端點來瀏覽程式。
 
 選用的`status`引數會依狀態篩選參與和電子郵件程式。 有效值為`on`和`off` （適用於參與計畫）以及`unlocked` （適用於電子郵件計畫）。
 
 選用的`maxReturn`引數控制傳回的程式數目。 預設值為20，最大值為200。 使用選用的`offset`引數來進行分頁；其預設值為0。
 
-此端點未傳回程式標籤。 使用[依識別碼取得程式](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByIdUsingGET)或[依名稱取得程式](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramByNameUsingGET)擷取標籤。
+此端點未傳回程式標籤。 使用[依識別碼取得程式](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramByIdUsingGET)或[依名稱取得程式](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramByNameUsingGET)擷取標籤。
 
 ```http
 GET /rest/asset/v1/programs.json
@@ -201,7 +194,7 @@ GET /rest/asset/v1/programs.json
 
 ### 依日期範圍
 
-使用`earliestUpdatedAt`和`latestUpdatedAt`引數搭配[取得程式](https://developer.adobe.com/marketo-apis/api/asset#tag/Sales-Persons/operation/describeUsingGET_5)來設定低和高的日期時間界限。 端點會傳回在範圍內建立或更新之程式。
+使用`earliestUpdatedAt`和`latestUpdatedAt`引數搭配[取得程式](https://developer.adobe.com/marketo-apis/api/asset#operation/browseProgramsUsingGET)來設定低和高的日期時間界限。 端點會傳回在範圍內建立或更新之程式。
 
 ```http
 GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&latestUpdatedAt=2017-01-30T00:00:00-05:00
@@ -292,7 +285,7 @@ GET /rest/asset/v1/programs.json?earliestUpdatedAt=2017-01-01T00:00:00-05:00&lat
 
 ### 依標籤型別
 
-[依標籤取得程式](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/getProgramListByTagUsingGET)端點傳回符合指定標籤型別和值的程式。
+[依標籤取得程式](https://developer.adobe.com/marketo-apis/api/asset#operation/getProgramListByTagUsingGET)端點傳回符合指定標籤型別和值的程式。
 
 需要`tagType`和`tagValue`引數。 選擇性整數`maxReturn`控制傳回的程式數目；預設值為20，最大值為200。 使用選用的整數`offset`進行分頁；其預設值為0。 結果會以隨機順序傳回。
 
@@ -334,9 +327,9 @@ GET /rest/asset/v1/program/byTag.json?tagType=Presenter&tagValue=Dennis
 
 ## 建立和更新
 
-[建立](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/createProgramUsingPOST)程式需要`folder`、`name`、`type`和`channel`。 選用引數是`description`、`costs`和`tags`。 某些訂閱需要特定計畫型別的標籤。 使用取得標籤來檢查執行個體需求。
+[建立](https://developer.adobe.com/marketo-apis/api/asset#operation/createProgramUsingPOST)程式需要`folder`、`name`、`type`和`channel`。 選用引數是`description`、`costs`和`tags`。 某些訂閱需要特定計畫型別的標籤。 使用取得標籤來檢查執行個體需求。
 
-當[更新](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/updateProgramUsingPOST)時，您只能變更描述、名稱、`tags`和`costs`。 您只能在建立期間設定頻道和型別。 將`costsDestructiveUpdate`設定為`true`會清除所有現有成本，並以要求中包含的成本取代這些成本。
+當[更新](https://developer.adobe.com/marketo-apis/api/asset#operation/updateProgramUsingPOST)時，您只能變更描述、名稱、`tags`和`costs`。 您只能在建立期間設定頻道和型別。 將`costsDestructiveUpdate`設定為`true`會清除所有現有成本，並以要求中包含的成本取代這些成本。
 
 建立或更新電子郵件程式時，`startDate`和`endDate`也可能作為UTC日期/時間傳遞：
 
@@ -503,7 +496,7 @@ POST /rest/asset/v1/program/{id}/unapprove.json
 
 ## 原地複製
 
-[復製程式](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs/operation/cloneProgramUsingPOST)需要新的名稱和父資料夾。 說明為選用。 `name`必須是全域唯一的，而且不能超過255個字元。
+[復製程式](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneProgramUsingPOST)需要新的名稱和父資料夾。 說明為選用。 `name`必須是全域唯一的，而且不能超過255個字元。
 
 將`folder`引數的型別屬性設定為`Folder`。 目標資料夾必須與來源程式位於相同的工作區。
 

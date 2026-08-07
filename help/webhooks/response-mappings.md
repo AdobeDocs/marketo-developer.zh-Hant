@@ -1,25 +1,22 @@
 ---
 title: 回應對應
 feature: Webhooks
-description: Marketo Webhook會對JSON和XML進行回應對應，將屬性對應至具有SOAP API名稱、點和陣列標籤法以及型別相容性的潛在客戶欄位。
+description: Marketo Webhook會對JSON和XML進行回應對應、將屬性對應到潛在客戶欄位、點和陣列標籤法，以及型別相容性。
 exl-id: 95c6e33e-487c-464b-b920-3c67e248d84e
 TQID: https://experienceleague.adobe.com/-OGDeKLPS1KmWGIKj6BGq5DGXoCSj5ip-dVr7-kKDro
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: bcf56d2102f2f60eac5ad3318d348fd020391e6b
 workflow-type: tm+mt
-source-wordcount: 373
+source-wordcount: 369
 ht-degree: 0%
 
 ---
 
 # 回應對應
 
-Marketo可以從JSON或XML翻譯webhook資料，並將值寫入潛在客戶欄位。 Marketo欄位引數一律使用欄位的[SOAP API名稱](../rest-api/fields.md)。
+Marketo可以從JSON或XML翻譯webhook資料，並將值寫入潛在客戶欄位。 Marketo欄位引數一律使用欄位的SOAP API名稱。
 
 每個webhook都可以有不限數量的回應對應。 若要新增或編輯對應，請在webhook的「回應對應」窗格中選取[!UICONTROL Edit]：
 

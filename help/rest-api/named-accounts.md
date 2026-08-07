@@ -4,17 +4,13 @@ feature: REST API
 description: Marketo REST指南，針對ABM的具名帳戶執行CRUD，其中包含說明、查詢、建立更新範例、可搜尋欄位、重複資料刪除規則，以及無銷售機會連結。
 exl-id: 2aa1d2a0-9e54-4a9a-abb1-0d0479ed3558
 TQID: https://experienceleague.adobe.com/iY3UYVelm3aKuuDBCTxaVCbkXfwnJzDjV3Kvn9rcNbA
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 590
+source-wordcount: 584
 ht-degree: 1%
 
 ---
@@ -243,7 +239,7 @@ Content-Type: application/json
 
 #### 依名稱
 
-[依名稱取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上某個欄位的中繼資料。 必填的fieldApiName路徑引數指定欄位的API名稱。
+[依名稱取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上某個欄位的中繼資料。 必填的fieldApiName路徑引數指定欄位的API名稱。
 
 回應類似於「描述具名帳戶」回應，但包含其他中繼資料。 例如，isCustom屬性會指出欄位是否為自訂欄位。
 
@@ -273,7 +269,7 @@ GET /rest/v1/namedaccounts/schema/fields/annualRevenue.json
 
 #### 瀏覽
 
-[取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Named-Accounts/operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上所有欄位的中繼資料。 依預設，它最多會傳回300筆記錄。 使用batchSize查詢引數來減少此數目。
+[取得具名帳戶欄位](https://developer.adobe.com/marketo-apis/api/mapi#operation/getNamedAccountFieldByNameUsingGET)端點會擷取具名帳戶物件上所有欄位的中繼資料。 依預設，它最多會傳回300筆記錄。 使用batchSize查詢引數來減少此數目。
 
 如果moreResult屬性為true，則有更多結果可用。 繼續使用傳回的nextPageToken呼叫端點，直到moreResult為false。
 

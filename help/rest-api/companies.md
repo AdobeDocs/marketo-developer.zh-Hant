@@ -4,17 +4,13 @@ feature: REST API
 description: 使用Marketo Companies REST API來說明、查詢及同步公司記錄、管理欄位並依externalCompanyId重複資料刪除，並注意CRM同步為唯讀。
 exl-id: 80e514a2-1c86-46a7-82bc-e4db702189b0
 TQID: https://experienceleague.adobe.com/LdJYN4lx9JfcE-02zTz8ktfYXm4EdPtxMYOx9gGR0sg
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 582
+source-wordcount: 572
 ht-degree: 1%
 
 ---
@@ -23,11 +19,11 @@ ht-degree: 1%
 
 [公司端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies)
 
-公司代表潛在客戶記錄所屬的組織。 若要新增銷售機會至公司，請使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST)或[大量銷售機會匯入](bulk-lead-import.md)端點填入其`externalCompanyId`欄位。
+公司代表潛在客戶記錄所屬的組織。 若要新增銷售機會至公司，請使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST)或[大量銷售機會匯入](bulk-lead-import.md)端點填入其`externalCompanyId`欄位。
 
 除非您將銷售機會新增至其他公司，否則無法從公司中移除銷售機會。 連結至公司記錄的潛在客戶會繼承該記錄的值，就好像這些值存在於潛在客戶記錄上一樣。
 
-公司API為已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=zh-Hant)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=zh-Hant)的訂閱提供唯讀存取權。
+公司API為已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en)的訂閱提供唯讀存取權。
 
 ## 說明
 
@@ -109,7 +105,7 @@ GET /rest/v1/companies/describe.json
 
 ## 查詢
 
-[查詢公司](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompaniesUsingGET)的模式非常遵循Leads API。 不過，`filterType`引數只接受Describe Companies回應或dedupeFields之searchableFields陣列中所列的欄位。
+[查詢公司](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompaniesUsingGET)的模式非常遵循Leads API。 不過，`filterType`引數只接受Describe Companies回應或dedupeFields之searchableFields陣列中所列的欄位。
 
 查詢引數包括：
 
@@ -152,7 +148,7 @@ GET /rest/v1/companies.json?filterType=id&filterValues=3433,5345
 
 ## 建立和更新
 
-[同步公司](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/syncCompaniesUsingPOST)端點接受包含公司物件陣列的必要`input`引數。
+[同步公司](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCompaniesUsingPOST)端點接受包含公司物件陣列的必要`input`引數。
 
 與商機一樣，端點支援三種建立和更新模式：createOnly、updateOnly和createOrUpdate。 在請求的`action`引數中指定模式。
 
@@ -214,7 +210,7 @@ Content-Type: application/json
 
 #### 依名稱
 
-[依名稱取得公司欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldByNameUsingGET)端點會擷取公司物件上某個欄位的中繼資料。 必要的`fieldApiName`路徑引數指定欄位的API名稱。
+[依名稱取得公司欄位](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompanyFieldByNameUsingGET)端點會擷取公司物件上某個欄位的中繼資料。 必要的`fieldApiName`路徑引數指定欄位的API名稱。
 
 回應類似於「描述公司」回應，但包含其他中繼資料。 例如，`isCustom`屬性指出欄位是否為自訂欄位。
 
@@ -245,7 +241,7 @@ GET /rest/v1/companies/schema/fields/industry.json
 
 #### 瀏覽
 
-[取得公司欄位](https://developer.adobe.com/marketo-apis/api/mapi#tag/Companies/operation/getCompanyFieldsUsingGET)端點會擷取公司物件上所有欄位的中繼資料。 依預設，它最多會傳回300筆記錄。 使用`batchSize`查詢引數來減少此數目。
+[取得公司欄位](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCompanyFieldsUsingGET)端點會擷取公司物件上所有欄位的中繼資料。 依預設，它最多會傳回300筆記錄。 使用`batchSize`查詢引數來減少此數目。
 
 如果`moreResult`屬性為true，則有更多結果可用。 繼續使用傳回的`nextPageToken`呼叫端點，直到`moreResult`為false。
 

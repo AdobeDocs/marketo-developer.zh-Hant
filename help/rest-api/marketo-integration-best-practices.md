@@ -4,20 +4,13 @@ feature: REST API
 description: Marketo API整合的最佳實務涵蓋配額、速率和並行限制、批次、大量匯入和匯出、快取和延遲計畫。
 exl-id: 1e418008-a36b-4366-a044-dfa9fe4b5f82
 TQID: https://experienceleague.adobe.com/Ld-rmFCwKSx-0W2-ceYICu0FQHK8BKAC1QgqtiOWDn4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: df401a2a-327d-468c-a5e4-b7b7ccd071a0
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45id: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: df401a2a-327d-468c-a5e4-b7b7ccd071a0
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 882
+source-wordcount: 866
 ht-degree: 0%
 
 ---
@@ -34,7 +27,6 @@ ht-degree: 0%
 - **批次大小：**&#x200B;潛在客戶資料庫支援300筆記錄；資產查詢支援200筆記錄。
 - **REST API承載大小：** 1 MB。
 - **大量匯入檔案大小：** 10 MB。
-- **SOAP批次大小上限：** 300筆記錄。
 - **大量擷取工作：**&#x200B;兩個正在執行，10個已排入佇列（含）。
 
 ## 快速提示
@@ -66,15 +58,15 @@ ht-degree: 0%
 
 容量由執行個體中的所有API服務和使用者共用。 儘可能將多餘的呼叫和批次記錄排除到少數呼叫中。
 
-最有效率呼叫的匯入方法是Marketo大量匯入API，可供[銷售機會/人員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)和[自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#tag/Snippets/operation/createSnippetUsingPOST)使用。 Marketo也為[銷售機會](bulk-lead-extract.md)和[活動](bulk-activity-extract.md)提供大量擷取。
+最有效率呼叫的匯入方法是Marketo大量匯入API，可供[銷售機會/人員](https://developer.adobe.com/marketo-apis/api/mapi#operation/importLeadUsingPOST)和[自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#operation/importCustomObjectUsingPOST)使用。 Marketo也為[銷售機會](bulk-lead-extract.md)和[活動](bulk-activity-extract.md)提供大量擷取。
 
 ### 快取
 
 下列作業的結果通常可以在使用者端快取一天以上，因為它們很少變更：
 
 - 說明作業的結果
-- [活動類型](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)
-- [分割區](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadPartitionsUsingGET)
+- [活動類型](https://developer.adobe.com/marketo-apis/api/mapi#operation/getAllActivityTypesUsingGET)
+- [分割區](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadPartitionsUsingGET)
 
 若是銷售機會或活動資料擴充等使用案例，您也可以快取方案、電子郵件和資料夾等資產型別。
 

@@ -3,22 +3,13 @@ title: 快速入門
 description: 開始使用Marketo Engage API和資料模型，包括銷售機會、活動、方案、標籤、清單、REST指引和SOAP淘汰通知。
 exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
 TQID: https://experienceleague.adobe.com/0lfzor5EQJ0VqIh4fqlK29OiPmRCy6fnEtncJ38r-OM
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: c954475c-8548-4e33-a0b8-6b550d956115
-  - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-  - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: c954475c-8548-4e33-a0b8-6b550d956115id: d1d0a9cd-295d-4976-8c39-ddae266f240eid: e64968b2-4ee5-47f9-8cae-0588f184b9ebid: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: aa2f3246-cb95-4b30-8899-fdf7d73550ccid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1225
+source-wordcount: 1198
 ht-degree: 2%
 
 ---
@@ -31,8 +22,7 @@ Marketo Engage是行銷自動化平台，用於為潛在客戶和客戶管理個
 
 >[!NOTE]
 >
->SOAP API即將淘汰，自2026年7月31日起將不再提供使用。 針對所有新開發使用Marketo [REST API](./rest-api/rest-api.md)。 在此日期之前移轉現有服務，以避免服務中斷。 如果服務使用SOAP API，請參閱SOAP API [移轉指南](./soap-api/migration.md)。
->
+>自2026年7月31日起，SOAP API已棄用，不再提供。 針對所有新開發使用Marketo [REST API](./rest-api/rest-api.md)。
 
 在Marketo Engage執行個體上啟用原生SFDC或MS Dynamics CRM連線時，這些物件為唯讀：
 
@@ -59,7 +49,7 @@ Marketo會透過id欄位唯一識別銷售機會。 您必須在系統外強制�
 
 活動一律與leadId的銷售機會相關。
 
-您也可以定義自訂活動。 建立並發佈自訂活動後，您可以透過Marketo API新增其例項。 如需詳細資訊，請參閱[瞭解自訂活動](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities)。
+您也可以定義自訂活動。 建立並發佈自訂活動後，您可以透過Marketo API新增其例項。 如需詳細資訊，請參閱[瞭解自訂活動](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities)。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities)，[JavaScript](javascript-api/lead-tracking.md#munchkin-behavior)
 
@@ -79,7 +69,7 @@ Marketo會透過id欄位唯一識別銷售機會。 您必須在系統外強制�
 
 身為Marketo管理員，您可以建立使用者在建立方案時選取的必要和選用標籤型別。 您可以根據公司的報告需求來定義每個標籤型別的可能值。
 
-例如，使用值（例如Northeast和Southeast）建立自訂「區域」標籤型別，以分析哪個區域產生最多銷售機會。 建立「擁有者」標籤型別，比較哪些計畫擁有者（例如Maria、David或John）對建立銷售機會和機會的影響最大。 如需詳細資訊，請參閱[瞭解標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags)。
+例如，使用值（例如Northeast和Southeast）建立自訂「區域」標籤型別，以分析哪個區域產生最多銷售機會。 建立「擁有者」標籤型別，比較哪些計畫擁有者（例如Maria、David或John）對建立銷售機會和機會的影響最大。 如需詳細資訊，請參閱[瞭解標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags)。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/asset)
 
@@ -128,7 +118,7 @@ Token可讓行銷人員使用資產個人化訊息，並在流程動作中新增
 - 繼承：在行銷活動資料夾層級建立，可用於該資料夾中的所有計畫。
 - 已覆寫：在方案層級使用自訂值修改，而不在方案資料夾層級變更父級「我的Token」值。
 
-我的Token使用命名慣例`{{my.My Token}}`，在Token名稱的開頭加上「my」這個字。 例如，名為EventDate的日期型別「我的Token」的Token名稱為`{{my.EventDate}}`。 如需詳細資訊，請參閱[瞭解程式中的我的代號](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program)。
+我的Token使用命名慣例`{{my.My Token}}`，在Token名稱的開頭加上「my」這個字。 例如，名為EventDate的日期型別「我的Token」的Token名稱為`{{my.EventDate}}`。 如需詳細資訊，請參閱[瞭解程式中的我的代號](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program)。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)
 
@@ -144,6 +134,6 @@ Marketo自訂物件會在Marketo銷售機會與自訂物件記錄之間建立一
 
 若未啟用原生CRM整合，您可以在Marketo中管理銷售人員記錄及其銷售機會關係。 這些記錄包含名稱、電子郵件和職稱等資訊。 當銷售人員擁有銷售機會時，您可以使用此資訊來篩選和代號。
 
-透過「externalSalesPersonId」欄位，在潛在客戶層級管理與銷售人員的關係。 透過[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/syncLeadUsingPOST) API更新此欄位。
+透過「externalSalesPersonId」欄位，在潛在客戶層級管理與銷售人員的關係。 透過[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST) API更新此欄位。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)

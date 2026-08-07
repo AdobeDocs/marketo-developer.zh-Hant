@@ -4,17 +4,13 @@ feature: REST API
 description: 瞭解如何使用10MB以下的CSV TSV或SSV檔案、佇列限制、必要引數和輪詢工作狀態，透過Marketo REST API大量匯入方案成員。
 exl-id: b0e1039a-fe9b-4fb7-9aa6-9980a06da673
 TQID: https://experienceleague.adobe.com/T1PAzLN1mnp38kJ0jwh6kPv6r1Uvxc7-o9zeTHetIV0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: e2290edd-b061-4880-9d79-dee306cf5aa9
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: e2290edd-b061-4880-9d79-dee306cf5aa9
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: b5ce8718-c3af-4fdb-a1a9-fca32f83a87c
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 771
+source-wordcount: 742
 ht-degree: 0%
 
 ---
@@ -38,7 +34,7 @@ ht-degree: 0%
 
 ## 匯入檔案
 
-檔案的第一列必須是標頭，該標頭會列出每列對應值的REST API欄位名稱。 使用[Describe Lead](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeUsingGET_2)和[Describe Program Member](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/describeProgramMemberUsingGET)端點擷取這些名稱。
+檔案的第一列必須是標頭，該標頭會列出每列對應值的REST API欄位名稱。 使用[Describe Lead](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeUsingGET_2)和[Describe Program Member](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeProgramMemberUsingGET)端點擷取這些名稱。
 
 記錄可包含潛在客戶欄位、自訂潛在客戶欄位和自訂方案成員欄位。
 
@@ -53,7 +49,7 @@ test@example.com,John,Doe
 
 ## 建立工作
 
-[匯入程式成員](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/importProgramMemberUsingPOST)端點會從檔案讀取程式成員記錄，並將它們新增至具有指定狀態的程式。 記錄可包含潛在客戶欄位和自訂方案成員欄位。
+[匯入程式成員](https://developer.adobe.com/marketo-apis/api/mapi#operation/importProgramMemberUsingPOST)端點會從檔案讀取程式成員記錄，並將它們新增至具有指定狀態的程式。 記錄可包含潛在客戶欄位和自訂方案成員欄位。
 
 每個記錄都必須包含電子郵件欄位，用於重複資料刪除。
 
@@ -133,7 +129,7 @@ Lancel,Lannister,Lancel@Lannister.com,Lannister,House Lannister,0
 
 ## 輪詢工作狀態
 
-建立匯入工作後，每5到30秒輪詢一次。 將`batchId`路徑引數傳遞至[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)端點。
+建立匯入工作後，每5到30秒輪詢一次。 將`batchId`路徑引數傳遞至[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberStatusUsingGET)端點。
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/status.json
@@ -163,7 +159,7 @@ GET /bulk/v1/program/members/import/{batchId}/status.json
 
 ## 失敗
 
-[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsFailed`屬性表示失敗的資料列數目。 值大於零表示發生失敗。
+[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsFailed`屬性表示失敗的資料列數目。 值大於零表示發生失敗。
 
 將`batchId`路徑引數傳遞至[取得匯入程式成員失敗]端點，以擷取失敗的記錄及其原因。
 
@@ -217,9 +213,9 @@ Aerys,Targaryen,Aerys@Targaryen.com,Targaryen,House Targaryen,TEXT_VALUE_IN_INTE
 
 ## 警告
 
-[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsWithWarning`屬性表示含有警告的資料列數目。 大於零的值表示發生警告。
+[取得匯入程式成員狀態](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberStatusUsingGET)回應中的`numOfRowsWithWarning`屬性表示含有警告的資料列數目。 大於零的值表示發生警告。
 
-將`batchId`路徑引數傳遞至[取得匯入程式成員警告](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Program-Members/operation/getImportProgramMemberWarningsUsingGET)端點，以擷取受影響的記錄及其原因。
+將`batchId`路徑引數傳遞至[取得匯入程式成員警告](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportProgramMemberWarningsUsingGET)端點，以擷取受影響的記錄及其原因。
 
 ```http
 GET /bulk/v1/program/members/import/{batchId}/warnings.json

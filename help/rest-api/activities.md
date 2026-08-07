@@ -4,17 +4,13 @@ feature: REST API
 description: 使用Marketo Engage活動REST API來列出活動型別、擷取具有分頁權杖的銷售機會活動，以及處理自訂和資料值的變更。
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
 TQID: https://experienceleague.adobe.com/62keaj4uNoxIPCzr9AQzKrIsfuHBvC25knYisZRUvF4
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 1758
+source-wordcount: 1740
 ht-degree: 0%
 
 ---
@@ -33,7 +29,7 @@ Marketo支援許多與潛在客戶記錄相關的活動型別。 幾乎所有變
 
 ## 說明
 
-使用[取得活動型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)端點來擷取執行個體的可用活動型別及其定義。
+使用[取得活動型別](https://developer.adobe.com/marketo-apis/api/mapi#operation/getAllActivityTypesUsingGET)端點來擷取執行個體的可用活動型別及其定義。
 
 ```
 GET /rest/v1/activities/types.json
@@ -88,7 +84,7 @@ GET /rest/v1/activities/types.json
 
 ## 查詢
 
-使用[取得潛在客戶活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET)端點來擷取活動。 首先，擷取活動擷取應該開始的日期時間的分頁Token。 在`nextPageToken`查詢引數中傳遞該權杖。
+使用[取得潛在客戶活動](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadActivitiesUsingGET)端點來擷取活動。 首先，擷取活動擷取應該開始的日期時間的分頁Token。 在`nextPageToken`查詢引數中傳遞該權杖。
 
 在`activityTypeIds`查詢引數中以逗號分隔的清單傳遞最多10個活動型別ID。
 
@@ -157,7 +153,7 @@ GET /rest/v1/activities.json?activityTypeIds=1&nextPageToken=WQV2VQVPPCKHC6AQYVK
 
 ### 資料值變更
 
-使用[取得潛在客戶變更](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadChangesUsingGET)端點來擷取潛在客戶欄位的資料值變更記錄。 其介面與Get Lead Activities API有兩個不同之處：
+使用[取得潛在客戶變更](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadChangesUsingGET)端點來擷取潛在客戶欄位的資料值變更記錄。 其介面與Get Lead Activities API有兩個不同之處：
 
 - 端點沒有`activityTypeIds`引數，因為它只傳回資料值變更和新潛在客戶活動。
 - 必要的`fields`查詢引數接受您要擷取其變更的逗號分隔欄位清單。
@@ -216,7 +212,7 @@ GET /rest/v1/activities/leadchanges.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQG
 
 ### 已刪除的銷售機會
 
-使用[取得已刪除的銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getDeletedLeadsUsingGET)端點從Marketo擷取已刪除的銷售機會活動。
+使用[取得已刪除的銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/getDeletedLeadsUsingGET)端點從Marketo擷取已刪除的銷售機會活動。
 
 ```http
 GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQGA5DAMBOGAYDAKZQGAYDALBQ
@@ -270,13 +266,13 @@ GET /rest/v1/activities/deletedleads.json?nextPageToken=GIYDAOBNGEYS2MBWKQYDAORQ
 - 自訂活動上限： 10
 - 每個自訂活動的最大屬性數： 20
 
-透過[取得銷售機會活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getLeadActivitiesUsingGET) API擷取自訂活動資料，與擷取標準活動的方式相同。
+透過[取得銷售機會活動](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadActivitiesUsingGET) API擷取自訂活動資料，與擷取標準活動的方式相同。
 
 ## 查詢型別
 
-使用[取得自訂活動型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getCustomActivityTypeUsingGET)來擷取在Marketo執行個體中布建之型別的詳細資訊。 使用[描述自訂活動型別](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/describeCustomActivityTypeUsingGET)來擷取特定型別的屬性中繼資料。
+使用[取得自訂活動型別](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCustomActivityTypeUsingGET)來擷取在Marketo執行個體中布建之型別的詳細資訊。 使用[描述自訂活動型別](https://developer.adobe.com/marketo-apis/api/mapi#operation/describeCustomActivityTypeUsingGET)來擷取特定型別的屬性中繼資料。
 
-標準[Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/getAllActivityTypesUsingGET)端點也傳回自訂活動中繼資料，但無法識別型別是否為自訂型別。
+標準[Get Activity Types](https://developer.adobe.com/marketo-apis/api/mapi#operation/getAllActivityTypesUsingGET)端點也傳回自訂活動中繼資料，但無法識別型別是否為自訂型別。
 
 ### 取得型別
 
@@ -653,7 +649,7 @@ POST /rest/v1/activities/external/type/{apiName}/attributes/delete.json
 
 自訂活動是個人記錄歷史活動的一次寫入記錄。 Marketo管理員可以在Marketo中管理其結構，或API整合可以遠端管理它。
 
-使用[新增自訂活動](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities/operation/addCustomActivityUsingPOST)端點將自訂活動新增到潛在客戶記錄。 `leadId`欄位會將每個活動與潛在客戶建立關聯。 檢視潛在客戶活動記錄中的自訂活動，或透過指定自訂活動型別ID以透過「取得潛在客戶活動」擷取自訂活動。
+使用[新增自訂活動](https://developer.adobe.com/marketo-apis/api/mapi#operation/addCustomActivityUsingPOST)端點將自訂活動新增到潛在客戶記錄。 `leadId`欄位會將每個活動與潛在客戶建立關聯。 檢視潛在客戶活動記錄中的自訂活動，或透過指定自訂活動型別ID以透過「取得潛在客戶活動」擷取自訂活動。
 
 對同一個人不需要更新或覆寫的相關資料使用自訂活動。 例如，將事件出席記錄為「已出席事件」活動。
 

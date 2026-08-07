@@ -3,9 +3,9 @@ title: 清單成員資格（靜態清單）
 feature: REST API, Static Lists
 description: 使用Marketo銷售機會資料庫REST API將銷售機會新增至靜態清單、移除銷售機會、擷取清單成員，以及檢查清單成員資格。
 exl-id: b8f74bcf-834a-44db-81fd-621048afeba4
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: '427'
+source-wordcount: '415'
 ht-degree: 5%
 
 ---
@@ -32,7 +32,7 @@ List Membership API提供管理靜態清單成員的Lead Database端點。 使�
 
 ## 新增至清單
 
-使用[新增至清單](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/addLeadsToListUsingPOST)端點新增一或多個成員至清單。 傳遞必要的`listId`路徑引數以及一或多個包含潛在客戶ID的`id`查詢引數。 潛在客戶ID的最大數量為300。
+使用[新增至清單](https://developer.adobe.com/marketo-apis/api/mapi#operation/addLeadsToListUsingPOST)端點新增一或多個成員至清單。 傳遞必要的`listId`路徑引數以及一或多個包含潛在客戶ID的`id`查詢引數。 潛在客戶ID的最大數量為300。
 
 回應包含`result`陣列，其狀態為要求中的每個潛在客戶ID。
 
@@ -65,7 +65,7 @@ POST /rest/v1/lists/{listId}/leads.json?id=318594&id=318595
 
 ## 從清單中移除
 
-使用[從清單移除](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/removeLeadsFromListUsingDELETE)端點從清單中移除一或多個成員。 傳遞必要的`listId`路徑引數以及一或多個包含潛在客戶ID的`id`查詢引數。 潛在客戶ID的最大數量為300。
+使用[從清單移除](https://developer.adobe.com/marketo-apis/api/mapi#operation/removeLeadsFromListUsingDELETE)端點從清單中移除一或多個成員。 傳遞必要的`listId`路徑引數以及一或多個包含潛在客戶ID的`id`查詢引數。 潛在客戶ID的最大數量為300。
 
 回應包含`result`陣列，其狀態為要求中的每個潛在客戶ID。
 
@@ -102,7 +102,7 @@ DELETE /rest/v1/lists/{listId}/leads.json?id=318603&id=318595&id=999999
 
 ## 依清單ID取得銷售機會
 
-使用[依清單識別碼](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/getLeadsByListIdUsingGET)取得銷售機會，以擷取清單的成員。 傳遞必要的`listId`路徑引數。 您也可以傳遞選用的查詢引數以指定篩選條件。
+使用[依清單識別碼](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByListIdUsingGET)取得銷售機會，以擷取清單的成員。 傳遞必要的`listId`路徑引數。 您也可以傳遞選用的查詢引數以指定篩選條件。
 
 選用的查詢引數包括：
 
@@ -152,7 +152,7 @@ GET /rest/v1/lists/{listId}/leads.json?batchSize=3
 
 ## 清單的成員
 
-使用[Member of List](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists/operation/areLeadsMemberOfListUsingGET)端點來判斷一或多個潛在客戶是否為清單的成員。 傳遞必要的`listId`路徑引數以及一或多個包含潛在客戶ID的`id`查詢引數。 潛在客戶ID的最大數量為300。
+使用[Member of List](https://developer.adobe.com/marketo-apis/api/mapi#operation/areLeadsMemberOfListUsingGET)端點來判斷一或多個潛在客戶是否為清單的成員。 傳遞必要的`listId`路徑引數以及一或多個包含潛在客戶ID的`id`查詢引數。 潛在客戶ID的最大數量為300。
 
 回應包含`result`陣列，其狀態為要求中的每個潛在客戶ID。
 

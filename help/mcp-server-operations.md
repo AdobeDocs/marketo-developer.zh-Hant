@@ -3,18 +3,12 @@ title: Marketo Engage MCP作業
 description: 瞭解哪些Marketo Engage MCP作業可搭配AI助理使用。
 autotag-review: '2026-06-02T13:31:42.084Z'
 TQID: 'https://experienceleague.adobe.com/qvrWbHOCsCCHctduNDxMhkE8JAKxZk8FCYfKvzxfcYA'
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: a7170d27-32ab-462b-a333-269abc654483
-  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
-  - id: dca84292-69e9-4116-a575-667d31fa060d
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-topic_v2:
-  - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: a7170d27-32ab-462b-a333-269abc654483id: b0bb9048-d951-48d8-8232-45cf248a7e27id: dca84292-69e9-4116-a575-667d31fa060did: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+topic_v2: id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 260
+source-wordcount: 280
 ht-degree: 3%
 
 ---
@@ -22,17 +16,17 @@ ht-degree: 3%
 
 # [!DNL Marketo Engage] MCP作業
 
-下列作業可透過[!DNL Marketo Engage] MCP伺服器使用。 伺服器通常提供唯讀或非破壞性端點。 AI系統無法使用`Delete`或其他破壞性作業。
+下列作業可透過[!DNL Marketo Engage] MCP伺服器使用。 伺服器提供唯讀或非破壞性端點。 AI系統無法使用`Delete`或其他破壞性作業。
 
 >[!NOTE]
 >
->隨著我們新增其他工具，此清單會持續成長。
+>MCP伺服器團隊正在努力啟用智慧清單和智慧行銷活動資產API以搭配MCP伺服器使用。 這項工作（包括允許清單專案）預計於2026年第3季度完成。
 
-如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
+如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
 
 ## 大量匯出
 
-[大量匯出API參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Bulk-Export){target="_blank"}
+[大量匯出API參考](https://developer.adobe.com/marketo-apis/api/mapi){target="_blank"}
 
 - `bulk_export_create`
 - `bulk_export_enqueue`
@@ -42,7 +36,7 @@ ht-degree: 3%
 
 ## 管道和標籤
 
-[管道API參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Channels){target="_blank"} | [標籤API參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tags){target="_blank"}
+[管道API參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Channels){target="_blank"} | [標籤API參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Tags){target="_blank"}
 
 - `browse_channels`
 - `browse_tag_types`
@@ -51,7 +45,7 @@ ht-degree: 3%
 
 ## 電子郵件
 
-[電子郵件API參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Emails){target="_blank"}
+[電子郵件API參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Emails){target="_blank"}
 
 - `approve_email`
 - `browse_emails`
@@ -63,7 +57,7 @@ ht-degree: 3%
 
 ## 資料夾
 
-[資料夾API參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Folders){target="_blank"}
+[資料夾API參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Folders){target="_blank"}
 
 - `browse_folders`
 - `create_folder`
@@ -75,7 +69,7 @@ ht-degree: 3%
 
 ## 表單
 
-[Forms API參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Forms){target="_blank"}
+[Forms API參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms){target="_blank"}
 
 - `add_field_set`
 - `add_field_to_form`
@@ -103,7 +97,7 @@ ht-degree: 3%
 
 ## 銷售機會
 
-[銷售機會API參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Leads){target="_blank"}
+[銷售機會API參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads){target="_blank"}
 
 - `add_leads_to_list`
 - `describe_lead`
@@ -115,7 +109,7 @@ ht-degree: 3%
 
 ## 方案
 
-[程式API參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Programs){target="_blank"}
+[程式API參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Programs){target="_blank"}
 
 - `approve_program`
 - `browse_email_batch_programs`
@@ -138,7 +132,7 @@ ht-degree: 3%
 
 ## 智慧行銷活動
 
-[智慧行銷活動API參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Campaigns){target="_blank"}
+[智慧行銷活動API參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Campaigns){target="_blank"}
 
 - `activate_smart_campaign`
 - `add_flow_step`
@@ -164,7 +158,7 @@ ht-degree: 3%
 
 ## 智慧清單
 
-[智慧清單API參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Smart-Lists){target="_blank"}
+[智慧清單API參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists){target="_blank"}
 
 - `add_smart_list_rule`
 - `browse_smart_lists`
@@ -184,7 +178,7 @@ ht-degree: 3%
 
 ## 程式碼片段
 
-[程式碼片段API參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Snippets){target="_blank"}
+[程式碼片段API參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets){target="_blank"}
 
 - `approve_snippet`
 - `browse_snippets`
@@ -203,7 +197,7 @@ ht-degree: 3%
 
 ## 靜態清單
 
-[靜態清單API參考](https://developer.adobe.com/marketo-apis/api/mapi/#tag/Static-Lists){target="_blank"}
+[靜態清單API參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Static-Lists){target="_blank"}
 
 - `browse_lists`
 - `create_list`
@@ -215,7 +209,7 @@ ht-degree: 3%
 
 ## 權杖
 
-[Token API參考](https://developer.adobe.com/marketo-apis/api/asset/#tag/Tokens){target="_blank"}
+[Token API參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens){target="_blank"}
 
 - `create_calendar_token`
 - `create_token`

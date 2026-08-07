@@ -4,17 +4,12 @@ feature: REST API
 description: 瞭解如何使用Marketo REST API、設定API使用者和LaunchPoint、檢視配額和限制、使用授權標頭驗證以及擷取銷售機會。
 exl-id: 4b9beaf0-fc04-41d7-b93a-a1ae3147ce67
 TQID: https://experienceleague.adobe.com/GqhWI816wWX-2zf89wWj-GXpg9i615HRFVl2ljdYVj0
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: b13bd2ad-8e65-49e5-9691-2a0d31067b35id: c5f60233-d5ea-4453-a799-0ad258b4d399id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 765
+source-wordcount: 726
 ht-degree: 2%
 
 ---
@@ -30,7 +25,7 @@ REST API分為兩大類：
 
 >[!NOTE]
 >
->SOAP API即將淘汰，自2026年7月31日起將不再提供使用。 所有新的開發應使用Marketo [REST API](./rest-api.md)完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱SOAP API [移轉指南](../soap-api/migration.md)以瞭解如何移轉的資訊。
+>自2026年7月31日起，SOAP API已淘汰，不再提供。 所有新的開發應使用Marketo [REST API](./rest-api.md)完成。
 >
 
 >[!IMPORTANT]
@@ -100,7 +95,7 @@ Authorization: Bearer cdf01657-110d-4155-99a7-f986b2ff13a0:int
 >
 >自2025年6月30日起，將移除對使用&#x200B;**access_token**&#x200B;查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，則應儘快更新以使用&#x200B;**Authorization**&#x200B;標頭。 新開發應專門使用&#x200B;**Authorization**&#x200B;標頭。
 
-開啟新的瀏覽器索引標籤，然後輸入下列URL。 將預留位置取代為您執行個體的端點和電子郵件地址，以呼叫[依篩選器型別取得銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads/operation/getLeadsByFilterUsingGET)。
+開啟新的瀏覽器索引標籤，然後輸入下列URL。 將預留位置取代為您執行個體的端點和電子郵件地址，以呼叫[依篩選器型別取得銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/getLeadsByFilterUsingGET)。
 
 ```text
 <Your Endpoint URL>/rest/v1/leads.json?&filterType=email&filterValues=<Your Email Address>

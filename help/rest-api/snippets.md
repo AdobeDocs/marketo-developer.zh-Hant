@@ -4,18 +4,13 @@ feature: REST API, Snippets
 description: Marketo Asset REST API適用於程式碼片段，可依ID涵蓋查詢、使用狀態瀏覽、取得內容、建立和更新HTML、文字及動態內容。
 exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
 TQID: https://experienceleague.adobe.com/1UpwX-ZzXTzkTRheu8exBDIoIvAGgoZgpA851PuL8sI
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2:
-  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-  - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 386
+source-wordcount: 376
 ht-degree: 2%
 
 ---
@@ -28,7 +23,7 @@ ht-degree: 2%
 
 ## 查詢
 
-依ID[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetByIdUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/getSnippetUsingGET)查詢片段。 API不提供依名稱查詢的方法。 兩個端點都接受`status`欄位以擷取核准或草稿版本。
+依ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetByIdUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetUsingGET)查詢片段[。 API不提供依名稱查詢的方法。 兩個端點都接受`status`欄位以擷取核准或草稿版本。
 
 ### 依Id
 
@@ -153,7 +148,7 @@ GET /rest/asset/v1/snippet/{id}/content.json
 
 ## 建立和更新
 
-分別建立程式碼片段資產及其內容。 首先，呼叫[建立程式碼片段](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/createSnippetUsingPOST)端點。 說明為選用。 以`x-www-form-urlencoded`傳遞資料，而非以JSON傳遞。
+分別建立程式碼片段資產及其內容。 首先，呼叫[建立程式碼片段](https://developer.adobe.com/marketo-apis/api/asset#operation/createSnippetUsingPOST)端點。 說明為選用。 以`x-www-form-urlencoded`傳遞資料，而非以JSON傳遞。
 
 ```http
 POST /rest/asset/v1/snippets.json
@@ -225,7 +220,7 @@ type=HTML&content=draft testUpdateSnippetContent1 HTML Content
 }
 ```
 
-若要[更新中繼資料](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/updateSnippetUsingPOST)，請指定程式碼片段ID。 您只能更新名稱和說明。
+若要[更新中繼資料](https://developer.adobe.com/marketo-apis/api/asset#operation/updateSnippetUsingPOST)，請指定程式碼片段ID。 您只能更新名稱和說明。
 
 ```http
 POST /rest/asset/v1/snippet/{id}.json
@@ -416,7 +411,7 @@ POST /rest/asset/v1/snippet/{id}/discardDraft.json
 
 ## 原地複製
 
-若要[復製程式碼片段](https://developer.adobe.com/marketo-apis/api/asset#tag/Snippets/operation/cloneSnippetUsingPOST)，請提供名稱、來源程式碼片段ID和資料夾。 說明為選用。 如果來源沒有核准的版本，端點會複製其草稿。
+若要[復製程式碼片段](https://developer.adobe.com/marketo-apis/api/asset#operation/cloneSnippetUsingPOST)，請提供名稱、來源程式碼片段ID和資料夾。 說明為選用。 如果來源沒有核准的版本，端點會複製其草稿。
 
 ```http
 POST /rest/asset/v1/snippet/{id}/clone.json

@@ -4,15 +4,12 @@ feature: REST API
 description: Marketo大量匯入，用於透過多部分上傳載入銷售機會、自訂物件和程式成員，建立非同步工作、輪詢狀態和處理失敗。
 exl-id: f7922fd2-8408-4d04-8955-0f8f58914d24
 TQID: https://experienceleague.adobe.com/lr9dyX-fY-oJ2LM5P0zE1m24HtFYKQYYbxMkVe--PkE
-product_v2:
-  - id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2:
-  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
-role_v2:
-  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2: id: c5f60233-d5ea-4453-a799-0ad258b4d399
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
-source-wordcount: 538
+source-wordcount: 526
 ht-degree: 2%
 
 ---
@@ -57,7 +54,7 @@ ht-degree: 2%
 
 ## 建立工作
 
-呼叫[匯入銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/importLeadUsingPOST)端點以建立銷售機會匯入工作。 此端點使用[multipart/form-data做為content-type](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html)。
+呼叫[匯入銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/importLeadUsingPOST)端點以建立銷售機會匯入工作。 此端點使用[multipart/form-data做為content-type](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html)。
 
 使用您慣用語言的HTTP支援程式庫來建構多部分要求。 您也可以使用[curl](https://curl.se/)開始使用。
 
@@ -112,7 +109,7 @@ Easy,Fox,easyfox@marketo.com
 
 ## 輪詢工作狀態
 
-將`batchId`傳遞至[取得匯入銷售機會狀態](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadStatusUsingGET)端點以擷取工作狀態。
+將`batchId`傳遞至[取得匯入銷售機會狀態](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportLeadStatusUsingGET)端點以擷取工作狀態。
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}.json
@@ -144,7 +141,7 @@ GET /bulk/v1/leads/batch/{batchId}.json
 
 Get Import Lead Status回應中的`numOfRowsFailed`屬性表示失敗的資料列數目。 值大於零表示發生失敗。
 
-若要擷取失敗的記錄及其原因，請使用[取得匯入潛在客戶失敗](https://developer.adobe.com/marketo-apis/api/mapi#tag/Bulk-Import-Leads/operation/getImportLeadFailuresUsingGET)端點。
+若要擷取失敗的記錄及其原因，請使用[取得匯入潛在客戶失敗](https://developer.adobe.com/marketo-apis/api/mapi#operation/getImportLeadFailuresUsingGET)端點。
 
 ```http
 GET /bulk/v1/leads/batch/{batchId}/failures.json
