@@ -4,10 +4,15 @@ feature: REST API, Snippets
 description: Marketo Asset REST API適用於程式碼片段，可依ID涵蓋查詢、使用狀態瀏覽、取得內容、建立和更新HTML、文字及動態內容。
 exl-id: 87901c29-ee59-4224-848d-3bd6a6c52718
 TQID: https://experienceleague.adobe.com/1UpwX-ZzXTzkTRheu8exBDIoIvAGgoZgpA851PuL8sI
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: f82558ea-6af5-44eb-a424-5b3389abb0a3
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-topic_v2: id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dcid: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
+  - id: bce87dde-a4ab-44c9-8a18-ad66e4ddb377
 source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
 source-wordcount: 376
@@ -23,7 +28,7 @@ ht-degree: 2%
 
 ## 查詢
 
-依ID](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetByIdUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetUsingGET)查詢片段[。 API不提供依名稱查詢的方法。 兩個端點都接受`status`欄位以擷取核准或草稿版本。
+依ID[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetByIdUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getSnippetUsingGET)查詢片段。 API不提供依名稱查詢的方法。 兩個端點都接受`status`欄位以擷取核准或草稿版本。
 
 ### 依Id
 

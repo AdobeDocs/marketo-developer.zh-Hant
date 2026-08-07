@@ -4,9 +4,15 @@ feature: REST API
 description: Marketo REST API指南涵蓋建立、更新、刪除、依ID和名稱查詢、使用根、工作區、maxDepth和分頁大量瀏覽的資料夾。
 exl-id: 4b55c256-ef0a-42b4-9548-ff8a4106f064
 TQID: https://experienceleague.adobe.com/OxCNdy8qW6jwq8u57RF9mqVKPVvH99UmuiOBjFprHCM
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-feature_v2: id: b0bb9048-d951-48d8-8232-45cf248a7e27id: c5f60233-d5ea-4453-a799-0ad258b4d399id: d65b4a73-87a3-4d56-b638-74e74d9939ceid: e64968b2-4ee5-47f9-8cae-0588f184b9eb
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+feature_v2:
+  - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+  - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+  - id: d65b4a73-87a3-4d56-b638-74e74d9939ce
+  - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
 source-wordcount: 792
@@ -80,7 +86,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 
 ### 依名稱
 
-依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET)的[查詢端點需要`name`，它會針對資料夾名稱執行完全相符的專案，並傳回每個相符的資料夾。
+依名稱[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET)的查詢端點需要`name`，它會針對資料夾名稱執行完全相符的專案，並傳回每個相符的資料夾。
 
 端點也接受以下選用引數：
 

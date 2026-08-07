@@ -4,8 +4,10 @@ feature: REST API, Static Lists
 description: 使用Marketo REST API來查詢、建立、更新和刪除靜態清單，其端點包括ID、名稱和瀏覽、資料夾範圍設定、分頁和日期篩選器。
 exl-id: 20679fd2-fae2-473e-84bc-cb4fdf2f5151
 TQID: https://experienceleague.adobe.com/DSV9h6d4F3ZrIUT-VtqlmFAnpdxOuTf05ajCqiGegqk
-product_v2: id: b27e5950-9033-45ac-9f86-eb22e567f615
-role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
 source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
 source-wordcount: 333
@@ -23,7 +25,7 @@ ht-degree: 2%
 
 ## 查詢
 
-依識別碼](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListsUsingGET)查詢靜態清單[。
+依識別碼[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListsUsingGET)查詢靜態清單。
 
 ### 依Id
 
