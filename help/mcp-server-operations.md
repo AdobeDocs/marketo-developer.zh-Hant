@@ -28,7 +28,7 @@ ht-degree: 3%
 >
 >MCP伺服器團隊正在努力啟用智慧清單和智慧行銷活動資產API以搭配MCP伺服器使用。 這項工作（包括允許清單專案）預計於2026年第3季度完成。
 
-如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
+如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
 
 ## 大量匯出
 

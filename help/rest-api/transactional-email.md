@@ -26,7 +26,7 @@ ht-degree: 1%
 - 在Marketo例項中建立和核准交易式電子郵件。
 - 啟用使用「已請求行銷活動， 1. Source：網站服務API」並傳送電子郵件。
 
-首先，[建立並核准電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html)。 如果電子郵件在法律上符合運作資格，請在「電子郵件動作>電子郵件設定」中將它設定為可運作：
+首先，[建立並核准電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=zh-Hant)。 如果電子郵件在法律上符合運作資格，請在「電子郵件動作>電子郵件設定」中將它設定為可運作：
 
 ![Request-Campaign-Email-Settings](assets/request-campaign-email-settings.png)
 
@@ -36,7 +36,7 @@ ht-degree: 1%
 
 ![RequestCampaign-Approve-Draft](assets/request-campaign-approve-draft.png)
 
-如有需要，請參閱[建立新的Smart Campaign](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html)。 使用「已請求促銷活動」觸發器設定促銷活動的智慧清單：
+如有需要，請參閱[建立新的Smart Campaign](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/creating-a-smart-campaign/create-a-new-smart-campaign.html?lang=zh-Hant)。 使用「已請求促銷活動」觸發器設定促銷活動的智慧清單：
 
 ![Request-Campaign-Smart-List](assets/request-campaign-smart-list.png)
 
@@ -192,7 +192,7 @@ public class RequestCampaign {
 
 ### 建立電子郵件
 
-若要自訂我們的內容，我們必須先在Marketo中設定[程式](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html)和[電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html)。 若要產生自訂內容，我們必須在程式中建立權杖，然後將它們放入要傳送的電子郵件中。 為了簡單起見，在此範例中，我們僅使用一個權杖，但您可以取代電子郵件、寄件者電子郵件、寄件者姓名、回覆或電子郵件中任何內容的任何數量權杖。 所以讓我們建立一個Token Rich Text作為取代，並將其稱為「bodyReplacement」。 RTF可讓我們使用想要輸入的任意HTML來取代權杖中的任何內容。
+若要自訂我們的內容，我們必須先在Marketo中設定[程式](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/programs/creating-programs/create-a-program.html?lang=zh-Hant)和[電子郵件](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=zh-Hant)。 若要產生自訂內容，我們必須在程式中建立權杖，然後將它們放入要傳送的電子郵件中。 為了簡單起見，在此範例中，我們僅使用一個權杖，但您可以取代電子郵件、寄件者電子郵件、寄件者姓名、回覆或電子郵件中任何內容的任何數量權杖。 所以讓我們建立一個Token Rich Text作為取代，並將其稱為「bodyReplacement」。 RTF可讓我們使用想要輸入的任意HTML來取代權杖中的任何內容。
 
 ![New-Token](assets/New-Token.png)
 

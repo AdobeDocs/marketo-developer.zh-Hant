@@ -27,7 +27,7 @@ ht-degree: 2%
 
 API會匯出直接連結至潛在客戶的第一級Marketo自訂物件記錄。 指定自訂物件名稱和連結的潛在客戶清單。 對於每個潛在客戶，API會將比對的連結自訂物件記錄寫入匯出檔案中的列。
 
-您可以在Marketo UI[&#128279;](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects)中潛在客戶詳細資訊頁面的自訂物件標籤中檢視自訂物件資料。
+您可以在Marketo UI[&#128279;](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-objects/understanding-marketo-custom-objects)中潛在客戶詳細資訊頁面的自訂物件標籤中檢視自訂物件資料。
 
 ## 權限
 

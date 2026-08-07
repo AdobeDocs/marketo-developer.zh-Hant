@@ -27,7 +27,7 @@ ht-degree: 1%
 
 除非您將銷售機會新增至其他公司，否則無法從公司中移除銷售機會。 連結至公司記錄的潛在客戶會繼承該記錄的值，就好像這些值存在於潛在客戶記錄上一樣。
 
-公司API為已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en)的訂閱提供唯讀存取權。
+公司API為已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=zh-Hant)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=zh-Hant)的訂閱提供唯讀存取權。
 
 ## 說明
 

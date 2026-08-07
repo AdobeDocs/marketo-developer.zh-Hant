@@ -29,7 +29,7 @@ ht-degree: 2%
 
 Marketo提供讀取、建立、更新和刪除程式成員記錄的API。 潛在客戶識別碼欄位將方案成員記錄與潛在客戶記錄相關聯。
 
-每個記錄包含標準欄位，最多可包含20個自訂欄位。 這些欄位會儲存程式特定的成員資料，以用於表單、篩選器、觸發器和流程動作。 您可以在Marketo Engage UI中程式[成員標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members)中檢視此資料。
+每個記錄包含標準欄位，最多可包含20個自訂欄位。 這些欄位會儲存程式特定的成員資料，以用於表單、篩選器、觸發器和流程動作。 您可以在Marketo Engage UI中程式[成員標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/manage-and-view-members)中檢視此資料。
 
 ## 說明
 
@@ -635,9 +635,9 @@ GET /rest/v1/programs/members/schema/fields.json?batchSize=5
 
 ### 建立欄位
 
-[建立程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi#operation/createProgramMemberFieldUsingPOST)端點會在程式成員物件上建立自訂欄位。 它提供的功能與[Marketo Engage UI](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields)類似。 您可以使用此端點建立最多20個自訂欄位。
+[建立程式成員欄位](https://developer.adobe.com/marketo-apis/api/mapi#operation/createProgramMemberFieldUsingPOST)端點會在程式成員物件上建立自訂欄位。 它提供的功能與[Marketo Engage UI](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/program-member-custom-fields)類似。 您可以使用此端點建立最多20個自訂欄位。
 
-在生產Marketo Engage例項中建立欄位之前，請仔細考慮每個欄位。 建立欄位後，您便無法刪除它；[您只能隱藏它](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)。 未使用的欄位會新增待篩選專案到執行個體。
+在生產Marketo Engage例項中建立欄位之前，請仔細考慮每個欄位。 建立欄位後，您便無法刪除它；[您只能隱藏它](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/field-management/delete-a-custom-field-in-marketo)。 未使用的欄位會新增待篩選專案到執行個體。
 
 必要的`input`引數是程式成員欄位物件的陣列。 每個物件包含一或多個屬性。
 
