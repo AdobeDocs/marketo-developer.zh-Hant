@@ -1,7 +1,6 @@
 ---
 title: Marketo Engage MCP 伺服器
 description: 瞭解如何使用Marketo Engage MCP伺服器將AI助理連線到Marketo。 使用您的Marketo憑證設定Claude Desktop、Cursor、Claude Code或VS Code。
-badgeBeta: label="有限可用性" type="informative" tooltip="此功能目前在有限測試版中提供"
 exl-id: ab446e56-6250-4af5-b03e-162991d09a5c
 autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
@@ -21,22 +20,19 @@ role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 4d690179b0ff8da03b6eb7d11566f511d491f369
+source-git-commit: 8fc4e9a161decdc0b39a7e98bdb17de035538a6a
 workflow-type: tm+mt
-source-wordcount: 2181
-ht-degree: 1%
+source-wordcount: 2111
+ht-degree: 0%
 
 ---
 
-# [!DNL Marketo Engage] MCP伺服器
 
->[!AVAILABILITY]
->
-> 此功能限時提供。 若要要求存取權，請填寫[此表單](https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Wht7-jR7h0OUrtLBeN7O4Y-uSf63sAxCmWyqMJg8eMFUMVZSVExSNDA3T0I4SEcwRDFSVTBGWU01Uy4u&origin=QRCode){target="_blank"}。 請確定您已準備好訂閱的Munchkin ID。
+# [!DNL Marketo Engage] MCP伺服器
 
 >[!NOTE]
 >
->MCP伺服器團隊正在努力啟用智慧清單和智慧行銷活動資產API以搭配MCP伺服器使用。 這項工作（包括加入允許清單的活動、動作和規則）預計將於2026年第3季完成。
+>智慧清單和智慧行銷活動`create`和`update`工具預計於2026年9月發行。
 
 模型上下文通訊協定(MCP)是一種將AI工具連線到外部服務的開放標準。 [!DNL Marketo] MCP伺服器會將您的AI助理連線到[!DNL Marketo]。 它為表單、方案、智慧行銷活動、銷售機會、電子郵件、代碼片段、清單和資料夾提供100多項操作。
 
