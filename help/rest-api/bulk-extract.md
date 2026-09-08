@@ -10,9 +10,9 @@ feature_v2:
   - id: f71e690b-4480-4b67-9ef5-88f42f9cdfdb
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+source-git-commit: 1a442b6008fbb8f05ad346f1b7185a5b2e22f0e4
 workflow-type: tm+mt
-source-wordcount: 1549
+source-wordcount: 1525
 ht-degree: 0%
 
 ---
@@ -43,14 +43,14 @@ Marketo大量擷取提供可擷取大型人員和人員相關資料集的介面�
 
 >[!IMPORTANT]
 >
->自2026年8月31日起，將移除對使用&#x200B;**access_token**&#x200B;查詢引數的驗證支援。 如果您的專案使用查詢引數來傳遞存取Token，則應儘快更新以使用&#x200B;**Authorization**&#x200B;標頭。 新開發應專門使用&#x200B;**Authorization**&#x200B;標頭。
+>對使用&#x200B;**access_token**&#x200B;查詢引數的驗證支援已於2026年8月31日移除。 新開發應專門使用&#x200B;**Authorization**&#x200B;標頭。
 
 ## 限制
 
 - 最大並行匯出工作數：2
 - 已排入佇列的匯出作業上限（包括目前正在匯出的作業）： 10
 - 檔案保留期：7天
-- 預設每日匯出配置： 500MB。 此配置每天於中午12:00重設。 可購買加值。
+- 此配置會根據日光節約時間於每日午夜12:00 CST/CDT重設。 可購買加值。
 - 日期範圍篩選器的最大時間範圍（`createdAt`或`updatedAt`）： 31天
 
 UpdatedAt和智慧清單的大量潛在客戶擷取篩選器不適用於某些訂閱型別。 如果這些篩選器無法使用，建立匯出潛在客戶作業端點會傳回錯誤「1035，目標訂閱不受支援的篩選器型別」。 請聯絡Marketo支援，為您的訂閱啟用此功能。
