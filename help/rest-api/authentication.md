@@ -8,9 +8,9 @@ product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 1a442b6008fbb8f05ad346f1b7185a5b2e22f0e4
+source-git-commit: eb4e99aff94f3106b96f999fc56a6db7c5598b1f
 workflow-type: tm+mt
-source-wordcount: 478
+source-wordcount: 554
 ht-degree: 0%
 
 ---
@@ -62,6 +62,8 @@ GET <Identity URL>/oauth/token?grant_type=client_credentials&client_id=<Client I
 >[!IMPORTANT]
 >
 >對使用`access_token`查詢引數的驗證支援已於2026年8月31日移除。 新開發應僅使用`Authorization`標頭。
+>此變更是安全性補救，以符合產業和OAuth 2.0安全性最佳實務，建議不要在URL中傳輸存取權杖。  以這種方式驗證的現有工作流程可能已經遇到603 （存取遭拒）錯誤。
+>優先更新您的整合，以便在2026年9月15日之前使用標題型驗證。  如果您需要更多時間，請聯絡Adobe支援以討論可用選項
 
 ### 切換至Authorization標題
 
