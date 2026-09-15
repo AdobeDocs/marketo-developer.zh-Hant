@@ -6,9 +6,7 @@ source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
 workflow-type: tm+mt
 source-wordcount: '65289'
 ht-degree: 0%
-
 ---
-
 # 部落格封存
 
 >[!INFO]
@@ -18,7 +16,7 @@ ht-degree: 0%
 >
 
 >[!IMPORTANT]
->自2026年7月31日起，SOAP API已淘汰，不再提供。 所有新開發應透過Marketo REST API完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱[SOAP API移轉指南](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/soap/migration)以瞭解如何移轉的資訊。
+>自2026年7月31日起，SOAP API已淘汰，不再提供。 所有新開發應透過Marketo REST API完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱[SOAP API移轉指南](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/migration)以瞭解如何移轉的資訊。
 >
 
 >[!IMPORTANT]
@@ -326,7 +324,7 @@ public class GetMultipleLeads {
 
 ### Marketo Forms安全性更新
 
-我們對來自單一IP位址的表單貼文提交數量和頻率進行了限制。 此限制現在強製為每分鐘30個貼文，以保護我們的客戶免受惡意使用程式化表單提交的攻擊。 [syncLead API](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/soap/leads/synclead)是建議的整合工具，可在Marketo中以程式化方式提交新連絡人。
+我們對來自單一IP位址的表單貼文提交數量和頻率進行了限制。 此限制現在強製為每分鐘30個貼文，以保護我們的客戶免受惡意使用程式化表單提交的攻擊。 [syncLead API](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/leads/synclead)是建議的整合工具，可在Marketo中以程式化方式提交新連絡人。
 
 由&#x200B;_Travis Kaufman_&#x200B;張貼於&#x200B;_2014-04-29_
 
@@ -1048,7 +1046,7 @@ puts response
 
 ## 在Marketo中建立自訂欄位，並透過AP更新此欄位
 
-假設您有關於潛在客戶的其他資料，這些資料不符合標準Marketo欄位。 例如，此自訂欄位可能是第三方分數。 您可以在Marketo中建立自訂欄位，以取得協力廠商分數，然後透過Marketo [REST API](https://developer.adobe.com/marketo-apis/)或[SOAP API](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/soap/activity-type-filters)更新此欄位的值。 我們會先說明如何在Marketo中建立自訂欄位，然後說明如何使用REST API更新此欄位。
+假設您有關於潛在客戶的其他資料，這些資料不符合標準Marketo欄位。 例如，此自訂欄位可能是第三方分數。 您可以在Marketo中建立自訂欄位，以取得協力廠商分數，然後透過Marketo [REST API](https://developer.adobe.com/marketo-apis/)或[SOAP API](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/activity-type-filters)更新此欄位的值。 我們會先說明如何在Marketo中建立自訂欄位，然後說明如何使用REST API更新此欄位。
 
 ### 如何在Marketo中建立自訂欄位
 
