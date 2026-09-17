@@ -6,27 +6,37 @@ autotag-review: '2026-06-02T13:31:15.329Z'
 TQID: 'https://experienceleague.adobe.com/PJJm7yv8HmbwMB2fsnfDCXs8zprDJK5Q5z2uiiCJRZI'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: a7170d27-32ab-462b-a333-269abc654483
+    internal-label: Smart Campaigns
   - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+    internal-label: Forms
   - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
+    internal-label: Integrations
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
   - id: c2dbad80-0f5c-4d96-a798-2a65f93b8721
+    internal-label: Assets
   - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
   - id: e2290edd-b061-4880-9d79-dee306cf5aa9
+    internal-label: Implementation
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
   - id: f82558ea-6af5-44eb-a424-5b3389abb0a3
+    internal-label: Templates
 role_v2:
   - id: ff6a42d2-313e-452e-93a6-792e4fad9ff8
+    internal-label: Developer
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
-source-git-commit: 8fc4e9a161decdc0b39a7e98bdb17de035538a6a
+    internal-label: Artificial intelligence
+source-git-commit: b12faeb0cb1a3680f6e0e7a522c54931b3de2c5d
 workflow-type: tm+mt
-source-wordcount: 2111
+source-wordcount: '2066'
 ht-degree: 0%
-
 ---
-
 
 # [!DNL Marketo Engage] MCP伺服器
 
@@ -163,27 +173,6 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 如果您的游標MCP組態已經包含其他伺服器，請在`mcpServers`下新增`marketo`專案。
 下列範例顯示專案目錄中&#x200B;**[!UICONTROL Settings]** > **[!UICONTROL MCP]**&#x200B;或`.cursor/mcp.json`中的完整`mcpServers`區塊：
 
->[!BEGINTABS]
-
->[!TAB IMS權杖]
-
-```json
-{
-  "mcpServers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR-IMS-TOKEN",
-        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
-      }
-    }
-  }
-}
-```
-
->[!TAB Marketo使用者端認證]
-
 ```json
 {
   "mcpServers": {
@@ -200,26 +189,11 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 }
 ```
 
->[!ENDTABS]
-
 重新啟動游標。
 
 ### 克勞德程式碼(CLI) {#claude-code}
 
 在終端機中執行以下命令，取代您的認證：
-
->[!BEGINTABS]
-
->[!TAB IMS權杖]
-
-```bash
-claude mcp add --transport http marketo \
-  https://marketo-mcp.adobe.io/mcp \
-  --header "Authorization: Bearer YOUR-IMS-TOKEN" \
-  --header "x-gw-ims-org-id: YOUR-IMS-ORG-ID"
-```
-
->[!TAB Marketo使用者端認證]
 
 ```bash
 claude mcp add --transport http marketo \
@@ -229,28 +203,15 @@ claude mcp add --transport http marketo \
   --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID"
 ```
 
->[!ENDTABS]
-
 ### OpenAI程式碼 {#codex}
 
 1. 前往「設定> MCP伺服器>新增伺服器」。
 1. 新增伺服器URL： `https://marketo-mcp.adobe.io/mcp`。
 1. 新增驗證方法的標頭：
 
->[!BEGINTABS]
-
->[!TAB IMS權杖]
-
-* 授權：「持有人YOUR-IMS-TOKEN」
-* x-gw-ims-org-id： &quot;YOUR-IMS-ORG-ID&quot;
-
->[!TAB Marketo使用者端認證]
-
 * X-Marketo-Client-Id： &quot;YOUR-CLIENT-ID&quot;
 * X-Marketo-Client-Secret： &quot;YOUR-CLIENT-SECRET&quot;
 * X-Marketo-Munchkin-Id： &quot;YOUR-MUNCHKIN-ID&quot;
-
->[!ENDTABS]
 
 1. 選取「儲存」以完成程式。
 
@@ -258,27 +219,6 @@ claude mcp add --transport http marketo \
 ### VS程式碼與GitHub Copilot {#vscode}
 
 按&#x200B;**[!UICONTROL Ctrl+Shift+P]** （或macOS上的&#x200B;**[!UICONTROL Cmd+Shift+P]**），輸入&#x200B;**[!UICONTROL MCP: Open User Configuration]**，然後按Enter。 這會開啟`mcp.json`。 在`servers`物件中新增`marketo`專案：
-
->[!BEGINTABS]
-
->[!TAB IMS權杖]
-
-```json
-{
-  "servers": {
-    "marketo": {
-      "type": "http",
-      "url": "https://marketo-mcp.adobe.io/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR-IMS-TOKEN",
-        "x-gw-ims-org-id": "YOUR-IMS-ORG-ID"
-      }
-    }
-  }
-}
-```
-
->[!TAB Marketo使用者端認證]
 
 ```json
 {
@@ -295,8 +235,6 @@ claude mcp add --transport http marketo \
   }
 }
 ```
-
->[!ENDTABS]
 
 >[!NOTE]
 >
@@ -328,24 +266,11 @@ Adobe主控[!DNL Marketo] MCP伺服器，並在公用URL中公開。 任何透�
 
 針對每個請求的下列驗證方法之一，傳送標頭。 您在其中輸入伺服器URL和標題取決於您的工具，因此請參閱其MCP檔案。
 
->[!BEGINTABS]
-
->[!TAB IMS權杖]
-
-| 標頭 | 值 |
-| ------ | ----- |
-| `Authorization` | `Bearer YOUR-IMS-TOKEN` |
-| `x-gw-ims-org-id` | 您的IMS組織ID |
-
->[!TAB Marketo使用者端認證]
-
 | 標頭 | 值 |
 | ------ | ----- |
 | `X-Marketo-Client-Id` | 您的使用者端ID |
 | `X-Marketo-Client-Secret` | 您的使用者端密碼 |
 | `X-Marketo-Munchkin-Id` | 您的Munchkin帳戶ID |
-
->[!ENDTABS]
 
 如果您的工具接受JSON設定，請從[Cursor](#cursor)或[VS Code](#vscode)範例開始，並調整金鑰(`mcpServers`、`servers`)以符合您工具的結構描述。
 
