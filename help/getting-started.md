@@ -5,24 +5,31 @@ exl-id: 78c44c32-4e59-4d55-a45c-ef0d7dac814d
 TQID: https://experienceleague.adobe.com/0lfzor5EQJ0VqIh4fqlK29OiPmRCy6fnEtncJ38r-OM
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+    internal-label: Forms
   - id: c954475c-8548-4e33-a0b8-6b550d956115
+    internal-label: Marketing automation
   - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+    internal-label: Administration
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
   - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+    internal-label: Reporting
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
+    internal-label: Reporting
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Administration
+source-git-commit: 8e1497d0d018bacb210b202d488e285a798e9dcf
 workflow-type: tm+mt
-source-wordcount: 1198
+source-wordcount: '1190'
 ht-degree: 2%
-
 ---
-
 # 快速入門
 
 Marketo Engage是行銷自動化平台，用於為潛在客戶和客戶管理個人化的多頻道方案和行銷活動。 您可以透過其整合點擴充平台。
@@ -38,17 +45,17 @@ Marketo Engage是行銷自動化平台，用於為潛在客戶和客戶管理個
 - 公司
 - 機會
 - 機會角色
-- 銷售人員
+- 銷售代表
 
 ![資料模型](assets/data_model.png)
 
 ## 人員（銷售機會）
 
-人是行銷自動化的基礎。 Marketo將所有非銷售人員記錄稱為銷售機會，無論銷售人員是否將其視為銷售機會、潛在客戶、疑犯或聯絡人。
+人是行銷自動化的基礎。 Marketo會將所有非銷售代表記錄稱為銷售機會，無論銷售人員是否將其視為銷售機會、潛在客戶、疑犯或聯絡人。
 
-潛在客戶物件包含標準欄位，例如電子郵件、名字和姓氏。 您可以新增欄位以儲存其他資訊，也可以以與標準欄位相同的方式讀取和寫入自訂屬性。 在Marketo的&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Field Management]**&#x200B;下尋找完整的欄位清單。
+潛在客戶物件包含標準欄位，例如電子郵件、名字和姓氏。 若要儲存其他資訊，您可以新增欄位，也可以以與標準欄位相同的方式讀取和寫入自訂屬性。 在Marketo的&#x200B;**[!UICONTROL Admin]** > **[!UICONTROL Field Management]**&#x200B;下尋找完整的欄位清單。
 
-Marketo會透過id欄位唯一識別銷售機會。 您必須在系統外強制實行其他唯一索引鍵。
+Marketo會透過id欄位唯一識別銷售機會。 在系統外部強制執行其他唯一索引鍵。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Leads)，[JavaScript](javascript-api/lead-tracking.md#lead-tracking-api)
 
@@ -58,17 +65,17 @@ Marketo會透過id欄位唯一識別銷售機會。 您必須在系統外強制�
 
 活動一律與leadId的銷售機會相關。
 
-您也可以定義自訂活動。 建立並發佈自訂活動後，您可以透過Marketo API新增其例項。 如需詳細資訊，請參閱[瞭解自訂活動](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities)。
+您也可以定義自訂活動。 建立並發佈自訂活動後，您可以透過Marketo API新增其例項。 如需詳細資訊，請參閱[瞭解自訂活動](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-activities/understanding-custom-activities)。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Activities)，[JavaScript](javascript-api/lead-tracking.md#munchkin-behavior)
 
 ## 方案與行銷活動
 
-計畫在一個位置組織行銷人員的相關行銷工作。 例如，電子郵件爆炸可以是計畫。
+計畫在一個位置組織行銷人員的相關行銷工作。 例如，電子郵件行銷活動可以是方案。
 
-潛在客戶可以執行與方案相關聯的多個動作或活動。 此程式稱為潛在客戶進度。 對於電子郵件快速啟動計畫，進度可以記錄Marketo傳送電子郵件的時間、使用者開啟電子郵件的時間，以及使用者是否按一下連結。
+潛在客戶可以執行與方案相關聯的多個動作或活動。 此程式稱為潛在客戶進度。 對於電子郵件促銷活動方案，進度可以記錄Marketo傳送電子郵件的時間、人員開啟電子郵件的時間，以及人員是否按一下連結。
 
-行銷活動在方案中用於特定目的和目標。 例如，行銷活動可以選取一組銷售機會並傳送電子郵件爆炸訊息。 當潛在客戶在電子郵件爆炸中點按連結時，另一個Campaign可以通知銷售代表。
+行銷活動在方案中用於特定目的和目標。 例如，行銷活動可以選取一組銷售機會並傳送電子郵件爆炸訊息。 當銷售機會點按電子郵件行銷活動中的連結時，另一個Campaign可以通知銷售代表。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Campaigns)
 
@@ -78,7 +85,7 @@ Marketo會透過id欄位唯一識別銷售機會。 您必須在系統外強制�
 
 身為Marketo管理員，您可以建立使用者在建立方案時選取的必要和選用標籤型別。 您可以根據公司的報告需求來定義每個標籤型別的可能值。
 
-例如，使用值（例如Northeast和Southeast）建立自訂「區域」標籤型別，以分析哪個區域產生最多銷售機會。 建立「擁有者」標籤型別，比較哪些計畫擁有者（例如Maria、David或John）對建立銷售機會和機會的影響最大。 如需詳細資訊，請參閱[瞭解標籤](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags)。
+例如，若要分析哪個區域產生最多銷售機會，請建立具有如「東北」和「東南」等值的自訂「區域」標籤型別。 建立「擁有者」標籤型別，比較哪些方案擁有者在建立銷售機會和商機方面有最大影響。 如需詳細資訊，請參閱[瞭解標籤](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/working-with-programs/understanding-tags)。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/asset)
 
@@ -89,7 +96,7 @@ Marketo會透過id欄位唯一識別銷售機會。 您必須在系統外強制�
 - 靜態清單是行銷人員可以新增或移除潛在客戶的固定集合。
 - 智慧清單是根據定義特性的動態集合。
 
-例如，名為「所有造訪過我們網站定價頁面的潛在客戶」的智慧清單，會隨著更多潛在客戶造訪該頁面而持續成長。 如需詳細資訊，請參閱[Marketo Engage檔案](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/home)。
+例如，名為「所有造訪過網站定價頁面的潛在客戶」的智慧清單會隨著更多潛在客戶造訪該頁面而持續成長。 如需詳細資訊，請參閱[Marketo Engage檔案](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/home)。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Static-Lists)
 
@@ -127,7 +134,7 @@ Token可讓行銷人員使用資產個人化訊息，並在流程動作中新增
 - 繼承：在行銷活動資料夾層級建立，可用於該資料夾中的所有計畫。
 - 已覆寫：在方案層級使用自訂值修改，而不在方案資料夾層級變更父級「我的Token」值。
 
-我的Token使用命名慣例`{{my.My Token}}`，在Token名稱的開頭加上「my」這個字。 例如，名為EventDate的日期型別「我的Token」的Token名稱為`{{my.EventDate}}`。 如需詳細資訊，請參閱[瞭解程式中的我的代號](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program)。
+我的Token使用命名慣例`{{my.My Token}}`，在Token名稱的開頭加上「my」這個字。 例如，名為EventDate的日期型別「我的Token」的Token名稱為`{{my.EventDate}}`。 如需詳細資訊，請參閱[瞭解程式中的我的代號](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/core-marketo-concepts/programs/tokens/understanding-my-tokens-in-a-program)。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)
 
@@ -139,10 +146,10 @@ Marketo自訂物件會在Marketo銷售機會與自訂物件記錄之間建立一
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Custom-Objects)
 
-## 銷售人員
+## 銷售代表
 
-若未啟用原生CRM整合，您可以在Marketo中管理銷售人員記錄及其銷售機會關係。 這些記錄包含名稱、電子郵件和職稱等資訊。 當銷售人員擁有銷售機會時，您可以使用此資訊來篩選和代號。
+若未啟用原生CRM整合，您可以在Marketo中管理銷售代表記錄及其銷售機會關係。 這些記錄包含名稱、電子郵件和職稱等資訊。 當銷售代表擁有銷售機會時，您可以使用此資訊來篩選和代號。
 
-透過「externalSalesPersonId」欄位，在潛在客戶層級管理與銷售人員的關係。 透過[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST) API更新此欄位。
+透過「externalSalesPersonId」欄位，在潛在客戶層級管理與銷售代表的關係。 透過[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST) API更新此欄位。
 
 相關API： [REST](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
