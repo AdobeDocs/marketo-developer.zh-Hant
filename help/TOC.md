@@ -1,18 +1,16 @@
 ---
 user-guide-title: '[!DNL Marketo] 開發人員指南'
-user-guide-description: 本指南提供使用 [!DNL Marketo] API的說明。
+user-guide-description: 本指南提供使用 [!DNL Marketo] API 的說明。
 breadcrumb-title: '[!DNL Marketo] 開發人員指南'
 role: Admin
 feature-set: "Marketo Engage"
 index: true
 author: Donald
-source-git-commit: ece6e257d28839582be659daf0b8ba1a6b6a5c3c
+source-git-commit: 4dffbef0e0ea16393a9e30f5f8e1021331ca9a37
 workflow-type: tm+mt
-source-wordcount: '256'
-ht-degree: 29%
-
+source-wordcount: '262'
+ht-degree: 31%
 ---
-
 
 # [!DNL Marketo]開發人員 {#marketo}
 
@@ -115,6 +113,8 @@ ht-degree: 29%
   - [標記](rest-api/tags.md)
   - [使用者內容](rest-api/user-context.md)
   - [使用者管理](rest-api/user-management.md)
+- SOAP {#soap}
+  - [移轉至REST API](soap-api/migration.md)
 - [SOAP常見問題集](soap-faq.md)
 - Webhooks {#webhooks}
   - [錯誤次數](webhooks/errors.md)
