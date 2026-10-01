@@ -32,23 +32,19 @@ role_v2:
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: b12faeb0cb1a3680f6e0e7a522c54931b3de2c5d
+source-git-commit: 56fb36ccfa88bb90244f7756b0fba6ac787bfbfe
 workflow-type: tm+mt
-source-wordcount: '2066'
+source-wordcount: '2052'
 ht-degree: 0%
 ---
 
 # [!DNL Marketo Engage] MCP伺服器
 
->[!NOTE]
->
->智慧清單和智慧行銷活動`create`和`update`工具預計於2026年9月發行。
-
 模型上下文通訊協定(MCP)是一種將AI工具連線到外部服務的開放標準。 [!DNL Marketo] MCP伺服器會將您的AI助理連線到[!DNL Marketo]。 它為表單、方案、智慧行銷活動、銷售機會、電子郵件、代碼片段、清單和資料夾提供100多項操作。
 
 當您的AI工具呼叫MCP伺服器時，伺服器會使用該請求中的憑證來執行相對應的REST API呼叫。 您不需要安裝、部署或執行伺服器端軟體。
 
-如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的詳細資訊，請參閱[資料資訊](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
+如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的詳細資訊，請參閱[資料資訊](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
 
 >[!IMPORTANT]
 >
@@ -171,7 +167,7 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 ### 游標 {#cursor}
 
 如果您的游標MCP組態已經包含其他伺服器，請在`mcpServers`下新增`marketo`專案。
-下列範例顯示專案目錄中&#x200B;**[!UICONTROL Settings]** > **[!UICONTROL MCP]**&#x200B;或`.cursor/mcp.json`中的完整`mcpServers`區塊：
+下列範例顯示專案目錄中**[!UICONTROL Settings]** > **[!UICONTROL MCP]**&#x200B;或`.cursor/mcp.json`中的完整`mcpServers`區塊：
 
 ```json
 {
