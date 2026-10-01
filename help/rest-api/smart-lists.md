@@ -6,27 +6,33 @@ exl-id: 4ba37e57-ee56-48c3-bb2b-b4ec8e907911
 TQID: https://experienceleague.adobe.com/wQ2PQFabw8E5XYP4zJ2RMPcurRkoxA7UecpA-YuQuBc
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: a7170d27-32ab-462b-a333-269abc654483
+    internal-label: Smart Campaigns
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
 subfeature_v2:
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+    internal-label: Smart Lists
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 15a223e2511f405ebaebbba933acac1429514030
 workflow-type: tm+mt
-source-wordcount: 402
-ht-degree: 1%
-
+source-wordcount: '393'
+ht-degree: 2%
 ---
-
 # 智慧清單
 
 [智慧清單端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Smart-Lists)
 
 使用智慧清單REST API來查詢、複製和刪除智慧清單。
 
-這些API僅支援使用者建立的智慧清單。 它們不支援[內建或系統智慧清單](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/core-marketo-concepts/smart-lists-and-static-lists/using-smart-lists/use-built-in-system-smart-lists)。
+>[!NOTE]
+>
+>在應用程式中，如果您為「清單成員」或「智慧清單成員」選取「in」運運算元，它在API回應中會顯示為「is」。
+> ![在運運算元欄位](assets/in-operator.png){width=600}中
 
 ## 查詢
 
