@@ -32,17 +32,13 @@ role_v2:
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: b12faeb0cb1a3680f6e0e7a522c54931b3de2c5d
+source-git-commit: 56fb36ccfa88bb90244f7756b0fba6ac787bfbfe
 workflow-type: tm+mt
-source-wordcount: '2066'
+source-wordcount: '2052'
 ht-degree: 0%
 ---
 
 # [!DNL Marketo Engage] MCP伺服器
-
->[!NOTE]
->
->智慧清單和智慧行銷活動`create`和`update`工具預計於2026年9月發行。
 
 模型上下文通訊協定(MCP)是一種將AI工具連線到外部服務的開放標準。 [!DNL Marketo] MCP伺服器會將您的AI助理連線到[!DNL Marketo]。 它為表單、方案、智慧行銷活動、銷售機會、電子郵件、代碼片段、清單和資料夾提供100多項操作。
 
