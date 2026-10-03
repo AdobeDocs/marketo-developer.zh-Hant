@@ -16,7 +16,7 @@ ht-degree: 0%
 >
 
 >[!IMPORTANT]
->自2026年7月31日起，SOAP API已淘汰，不再提供。 所有新開發應透過Marketo REST API完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱[SOAP API移轉指南](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/migration)以瞭解如何移轉的資訊。
+>自2026年7月31日起，SOAP API已淘汰，不再提供。 所有新開發應透過Marketo REST API完成，而現有服務應於該日期前移轉，以避免服務中斷。 如果您有使用SOAP API的服務，請參閱[SOAP API移轉指南](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/soap/migration)以瞭解如何移轉的資訊。
 >
 
 >[!IMPORTANT]
