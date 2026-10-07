@@ -44,7 +44,7 @@ ht-degree: 0%
 
 當您的AI工具呼叫MCP伺服器時，伺服器會使用該請求中的憑證來執行相對應的REST API呼叫。 您不需要安裝、部署或執行伺服器端軟體。
 
-如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的詳細資訊，請參閱[資料資訊](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
+如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的詳細資訊，請參閱[資料資訊](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
 
 >[!IMPORTANT]
 >
@@ -168,7 +168,7 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 ### 游標 {#cursor}
 
 如果您的游標MCP組態已經包含其他伺服器，請在`mcpServers`下新增`marketo`專案。
-下列範例顯示專案目錄中&#x200B;**[!UICONTROL Settings]** > **[!UICONTROL MCP]**&#x200B;或`.cursor/mcp.json`中的完整`mcpServers`區塊：
+下列範例顯示專案目錄中**[!UICONTROL Settings]** > **[!UICONTROL MCP]**&#x200B;或`.cursor/mcp.json`中的完整`mcpServers`區塊：
 
 ```json
 {
