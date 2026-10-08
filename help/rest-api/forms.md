@@ -928,7 +928,7 @@ Content-Type: text/html
 
 表單中的欄位必須是唯一的。 相同的欄位無法同時出現在表單的父欄位清單和子欄位集中。
 
-將具有[Add Fieldset的欄位集新增至Form](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldSetUsingPOST)端點。 欄位集接著會出現在表單](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormFieldByFormVidUsingGET)回應的[取得欄位中。 若要將欄位新增至欄位集，請使用[更新欄位位置](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST)以將其移至其`fieldList`。
+將具有[Add Fieldset的欄位集新增至Form](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldSetUsingPOST)端點。 欄位集接著會出現在表單[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormFieldByFormVidUsingGET)回應的取得欄位中。 若要將欄位新增至欄位集，請使用[更新欄位位置](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST)以將其移至其`fieldList`。
 
 對於這些端點，以`application/x-www-form-urlencoded`的POST形式傳送資料，而非以JSON形式傳送。
 

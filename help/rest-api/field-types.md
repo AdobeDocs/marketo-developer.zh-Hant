@@ -34,7 +34,7 @@ ht-degree: 8%
 ---
 # 欄位型別
 
-下表說明Marketo中可用的欄位型別。 如需詳細資訊，請參閱[自訂欄位型別字彙表](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary)和依欄位型別](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613)的[Marketo欄位限制。
+下表說明Marketo中可用的欄位型別。 如需詳細資訊，請參閱[自訂欄位型別字彙表](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/field-management/custom-field-type-glossary)和依欄位型別[&#128279;](https://nation.marketo.com/t5/knowledgebase/marketo-field-limits-by-field-type/ta-p/251613)的Marketo欄位限制。
 
 | 欄位型別 | 說明 | 範例 |
 | --- | --- | --- |

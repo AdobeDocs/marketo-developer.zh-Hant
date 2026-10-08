@@ -44,7 +44,7 @@ ht-degree: 1%
 
 ## 查詢
 
-電子郵件支援與範本相同的查詢模式：識別碼](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailByIdUsingGET)的[、名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailByNameUsingGET)的[以及[瀏覽的](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailUsingGET)。 by-name和瀏覽端點也支援資料夾篩選。
+電子郵件支援與範本相同的查詢模式：識別碼[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailByIdUsingGET)的[、名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailByNameUsingGET)的以及[瀏覽的](https://developer.adobe.com/marketo-apis/api/asset#operation/getEmailUsingGET)。 by-name和瀏覽端點也支援資料夾篩選。
 
 如果電子郵件屬於使用[A/B測試](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/email-marketing/email-programs/email-program-actions/email-test-a-b-test/add-an-a-b-test)的電子郵件程式，則下列端點不會傳回該電子郵件：
 

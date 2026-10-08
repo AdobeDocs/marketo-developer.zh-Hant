@@ -40,7 +40,7 @@ ht-degree: 2%
 
 ## 查詢
 
-依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageByNameUsingGET)、[依識別碼](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageByIdUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/browseLandingPagesUsingGET)查詢登入頁面[。 這些查詢只會傳回中繼資料。 依頁面ID個別查詢登入頁面的內容區段。
+依名稱[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageByNameUsingGET)、[依識別碼](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageByIdUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/browseLandingPagesUsingGET)查詢登入頁面。 這些查詢只會傳回中繼資料。 依頁面ID個別查詢登入頁面的內容區段。
 
 查詢登入頁面內容會傳回其可用的內容區段。 區段必須出現在此清單中，您才能進行更新。
 
