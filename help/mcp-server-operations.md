@@ -31,7 +31,7 @@ ht-degree: 25%
 
 下列作業可透過[!DNL Marketo Engage] MCP伺服器使用。 伺服器提供唯讀或非破壞性端點。 AI系統無法使用`Delete`或其他破壞性作業。
 
-如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
+如需有關如何使用Marketo AI和Marketo Engage MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
 
 ## 大量匯出
 
