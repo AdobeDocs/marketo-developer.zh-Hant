@@ -39,9 +39,9 @@ Marketo Engage SOAP API將於2026年3月31日後淘汰。 在此日期之前，�
 
 ## 移轉
 
-與[REST AP](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/rest-api)I相比，SOAP API支援有限的使用案例範圍。 在決定要對應使用案例的端點時，您應該遵循[Marketo整合最佳實務](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/marketo-integration-best-practices)
+與[REST AP](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/rest-api)I相比，SOAP API支援有限的使用案例範圍。 在決定要對應使用案例的端點時，您應該遵循[Marketo整合最佳實務](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/marketo-integration-best-practices)
 
-[參考架構](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/reference-architectures)可用於[CRM同步處理](https://experienceleague.adobe.com/docs/marketo-developer/assets/sync-architecture-whitepaper.pdf?lang=en)和[Data Warehouse匯出](https://experienceleague.adobe.com/docs/marketo-developer/assets/reference_architecture.pdf?lang=en)使用案例。
+[參考架構](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/reference-architectures)可用於[CRM同步處理](https://experienceleague.adobe.com/docs/marketo-developer/assets/sync-architecture-whitepaper.pdf?lang=en)和[Data Warehouse匯出](https://experienceleague.adobe.com/docs/marketo-developer/assets/reference_architecture.pdf?lang=en)使用案例。
 
 ## Authentication
 
@@ -51,14 +51,14 @@ Marketo REST API會搭配使用者端憑證授權型別，使用OAuth 2.0型驗�
 
 ## 銷售機會
 
-[主管API檔案](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/leads)
+[主管API檔案](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/lead-database/leads)
 
 SOAP API支援銷售機會資料同步處理、[Munchkin Cookie關聯](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/javascriptapi/leadtracking/lead-tracking)以及銷售機會合併。 如果您的應用程式呼叫SOAP syncLead方法並設定`marketoCookie`引數，您可以透過下列其中一種方式移轉：
 
 1. 使用[同步銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncLeadUsingPOST) REST方法，接著使用[關聯銷售機會](https://developer.adobe.com/marketo-apis/api/mapi#operation/associateLeadUsingPOST)
-2. 您可以呼叫[提交表單](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/leads)，不過這需要設定一些行銷Assets以及與[Forms API](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/forms)的某些互動
+2. 您可以呼叫[提交表單](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/lead-database/leads)，不過這需要設定一些行銷Assets以及與[Forms API](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/assets/forms)的某些互動
 
-使用`foreignSysPersonId`金鑰型別的應用程式，應移轉至使用自訂銷售機會欄位來代表此外部識別碼，並使用[同步銷售機會](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/leads#create-and-update)或[大量銷售機會匯入](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-import/bulk-lead-import) REST方法。
+使用`foreignSysPersonId`金鑰型別的應用程式，應移轉至使用自訂銷售機會欄位來代表此外部識別碼，並使用[同步銷售機會](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/lead-database/leads#create-and-update)或[大量銷售機會匯入](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/bulk-import/bulk-lead-import) REST方法。
 
 | SOAP方法 | REST方法 |
 | --- | --- |
@@ -74,9 +74,9 @@ M Objects是一個概念性的概念，可支援匯出Opportunity Attribution資
 
 REST檔案：
 
-- [機會](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/opportunities)
-- [角色](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/opportunity-roles)
-- [方案](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/programs)
+- [機會](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/lead-database/opportunities)
+- [角色](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/lead-database/opportunity-roles)
+- [方案](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/assets/programs)
 
 | SOAP方法 | REST方法 |
 | --- | --- |
@@ -90,7 +90,7 @@ REST檔案：
 
 ## 靜態清單
 
-SOAP API中的靜態清單使用案例僅限於擷取成員資格和銷售機會資料，以及移除成員資格，其可透過[新增至清單](https://developer.adobe.com/marketo-apis/api/mapi#operation/addLeadsToListUsingPOST)、[大量匯入銷售機會](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-import/bulk-lead-import)或是[從清單](https://developer.adobe.com/marketo-apis/api/mapi#operation/removeLeadsFromListUsingDELETE) REST方法移除。
+SOAP API中的靜態清單使用案例僅限於擷取成員資格和銷售機會資料，以及移除成員資格，其可透過[新增至清單](https://developer.adobe.com/marketo-apis/api/mapi#operation/addLeadsToListUsingPOST)、[大量匯入銷售機會](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/bulk-import/bulk-lead-import)或是[從清單](https://developer.adobe.com/marketo-apis/api/mapi#operation/removeLeadsFromListUsingDELETE) REST方法移除。
 
 | SOAP方法 | REST方法 |
 | --- | --- |
@@ -104,8 +104,8 @@ SOAP API僅支援活動擷取。
 
 REST檔案：
 
-- [同步活動](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/activities)
-- [大量活動擷取](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-extract/bulk-activity-extract)
+- [同步活動](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/lead-database/activities)
+- [大量活動擷取](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/bulk-extract/bulk-activity-extract)
 
 | SOAP方法 | REST方法 |
 | --- | --- |
@@ -116,9 +116,9 @@ REST檔案：
 
 REST檔案：
 
-- [智慧行銷活動](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/smart-campaigns)
+- [智慧行銷活動](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/assets/smart-campaigns)
 
-SOAP API僅支援智慧行銷活動的三個使用案例：[觸發銷售機會以符合申請的Smart Campaign](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/smart-campaigns#trigger)、擷取這些申請的行銷活動，以及[排程未來執行Smart Campaign](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/assets/smart-campaigns#schedule)。
+SOAP API僅支援智慧行銷活動的三個使用案例：[觸發銷售機會以符合申請的Smart Campaign](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/assets/smart-campaigns#trigger)、擷取這些申請的行銷活動，以及[排程未來執行Smart Campaign](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/assets/smart-campaigns#schedule)。
 
 | SOAP方法 | REST方法 |
 | --- | --- |
@@ -130,7 +130,7 @@ SOAP API僅支援智慧行銷活動的三個使用案例：[觸發銷售機會�
 
 REST檔案：
 
-- [自訂物件](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/lead-database/custom-objects)
+- [自訂物件](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/lead-database/custom-objects)
 
 SOAP API僅支援自訂物件的CRUD操作。
 
@@ -138,4 +138,4 @@ SOAP API僅支援自訂物件的CRUD操作。
 | --- | --- |
 | [deleteCustomObjects](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/custom-objects/deletecustomobjects) | [刪除自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#operation/deleteCustomObjectsUsingPOST) |
 | [getCustomObjects](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/custom-objects/getcustomobjects) | [取得自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#operation/getCustomObjectsUsingGET) |
-| [syncCustomObjects](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/custom-objects/synccustomobjects) | [同步自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCustomObjectsUsingPOST) [大量匯入自訂物件](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/rest/bulk-import/bulk-custom-object-import) |
+| [syncCustomObjects](https://experienceleague.adobe.com/en/docs/marketo-developer/marketo/soap/custom-objects/synccustomobjects) | [同步自訂物件](https://developer.adobe.com/marketo-apis/api/mapi#operation/syncCustomObjectsUsingPOST) [大量匯入自訂物件](https://experienceleague.adobe.com/zh-hant/docs/marketo-developer/marketo/rest/bulk-import/bulk-custom-object-import) |
