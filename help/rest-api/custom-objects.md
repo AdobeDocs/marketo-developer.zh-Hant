@@ -980,7 +980,7 @@ POST /rest/v1/customobjects/schema/{apiName}/delete.json
 對於一對多自訂物件結構，請使用連結欄位將自訂物件連線至標準Lead或Company物件。 以下工作流程使用[車主範例](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/marketo-custom-objects/add-marketo-custom-object-link-fields#AddMarketoCustomObjectLinkFields-CreateaLinkFieldforaOne-to-ManyStructure)建立自訂物件，以儲存車資訊並連線至銷售機會。
 
 1. 建立&#x200B;**Car**&#x200B;物件。
-1. 將欄位新增至&#x200B;**Car**&#x200B;物件： **VIN**&#x200B;上的重複資料刪除，以及連結至&#x200B;**銷售機會****/銷售機會ID**。
+1. 將欄位新增至&#x200B;**Car**&#x200B;物件： **VIN**&#x200B;上的重複資料刪除，以及連結至&#x200B;**銷售機會**&#x200B;**/銷售機會ID**。
 1. 核准&#x200B;**Car**&#x200B;物件。
 
 首先，建立包含特定車輛資訊的自訂物件型別。
@@ -1090,7 +1090,7 @@ POST /rest/v1/customobjects/schema/course/approve.json
 1. 在&#x200B;**課程ID**&#x200B;上新增欄位至&#x200B;**課程：**&#x200B;重複資料刪除。
 1. 核准&#x200B;**課程**。
 1. 建立&#x200B;**註冊**&#x200B;橋接器物件。
-1. 新增欄位至&#x200B;**註冊：**&#x200B;註冊ID **上的**&#x200B;重複資料刪除、連結至&#x200B;**課程****/課程ID**&#x200B;欄位，以及連結至**銷售機會****/銷售機會ID**。
+1. 新增欄位至&#x200B;**註冊：**&#x200B;註冊ID **上的**&#x200B;重複資料刪除、連結至&#x200B;**課程**&#x200B;**/課程ID**&#x200B;欄位，以及連結至&#x200B;**銷售機會**&#x200B;**/銷售機會ID**。
 1. 核准&#x200B;**註冊**。
 
 首先，建立包含課程特定資訊的邊緣物件型別：

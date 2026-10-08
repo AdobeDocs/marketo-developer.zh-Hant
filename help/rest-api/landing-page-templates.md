@@ -44,7 +44,7 @@ Marketo提供自由格式和引導式登陸頁面範本。 自由格式範本提
 
 ## 查詢
 
-依識別碼](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplateByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplateByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplatesUsingGET)查詢登入頁面範本[。 這些端點會傳回範本中繼資料。 依ID分別擷取每個範本的HTML內容。
+依識別碼[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplateByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplateByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getLandingPageTemplatesUsingGET)查詢登入頁面範本。 這些端點會傳回範本中繼資料。 依ID分別擷取每個範本的HTML內容。
 
 ## 建立和更新
 

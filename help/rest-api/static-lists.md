@@ -33,7 +33,7 @@ ht-degree: 2%
 
 ## 查詢
 
-依識別碼](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListsUsingGET)查詢靜態清單[。
+依識別碼[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByIdUsingGET)、[依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListByNameUsingGET)或[瀏覽](https://developer.adobe.com/marketo-apis/api/asset#operation/getStaticListsUsingGET)查詢靜態清單。
 
 ### 依Id
 
