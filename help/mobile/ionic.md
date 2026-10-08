@@ -3,29 +3,33 @@ title: '[!DNL Ionic]'
 feature: Mobile Marketing
 description: 將Marketo Cordova外掛程式與Ionic整合的逐步指南，可啟用推播通知、初始化SDK、追蹤工作階段並關聯銷售機會。
 exl-id: 204e5fb4-c9d6-43a6-9d77-0b2a67ddbed3
-TQID: https://experienceleague.adobe.com/UTNWd69NliR896RcO-XM2GG35liuLeNNhTXo9GRtB4o
+TQID: 'https://experienceleague.adobe.com/UTNWd69NliR896RcO-XM2GG35liuLeNNhTXo9GRtB4o'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+    internal-label: Reporting
+  - id: 44b89f75-c1af-5353-8094-79b278102d46
+    internal-label: Mobile Marketing
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Reporting
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 581
+source-wordcount: '581'
 ht-degree: 2%
-
 ---
-
 # 離子型
 
 將Marketo Cordova外掛程式與[!DNL Ionic]應用程式整合。[!DNL Ionic] 目前不支援電容器。
 
 ## 先決條件
 
-1. [在Marketo Admin](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app)中新增應用程式，並取得應用程式秘密金鑰和Munchkin ID。
+1. [在Marketo Admin](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/mobile-marketing/admin/add-a-mobile-app)中新增應用程式，並取得應用程式秘密金鑰和Munchkin ID。
 1. 設定[iOS](push-notifications.md)或[Android](push-notifications.md)的推播通知。
 1. 安裝[[!DNL Ionic]](https://ionicframework.com/getting-started/)與[Cordova CLI](https://cordova.apache.org/docs/en/latest/guide/cli/)。
 

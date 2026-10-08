@@ -3,18 +3,26 @@ title: 權杖
 feature: REST API, Tokens
 description: 使用Asset REST API管理Marketo的「我的Token」 。 檢視支援的資料型別、依資料夾或程式取得、透過表單編碼POST建立或更新，以及依名稱刪除。
 exl-id: 4f8d87d7-ba2a-4c90-8b39-4d20679d404a
-TQID: https://experienceleague.adobe.com/uqOpu2vDuiQiZhILKuxZJQGadd0K14zwIaAdmNfK1-I
+TQID: 'https://experienceleague.adobe.com/uqOpu2vDuiQiZhILKuxZJQGadd0K14zwIaAdmNfK1-I'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: a6d52c76-712f-5f64-a879-9c65c1499322
+    internal-label: Tokens
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 284
+source-wordcount: '284'
 ht-degree: 3%
-
 ---
-
 # 權杖
 
 [權杖端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Tokens)

@@ -3,26 +3,35 @@ title: 銷售機會追蹤
 description: 瞭解如何內嵌Marketo Munchkin JavaScript、追蹤造訪和點按、管理已知和匿名的銷售機會、跨網域Cookie，以及選擇退出智慧行銷活動。
 feature: Munchkin Tracking Code, Javascript
 exl-id: 7ece5133-9d32-4be3-a940-4ac0310c4d8b
-TQID: https://experienceleague.adobe.com/nGUcLLgL9X7PBKf2E5IzppDj8e-SyEtxmkQaESd90mE
+TQID: 'https://experienceleague.adobe.com/nGUcLLgL9X7PBKf2E5IzppDj8e-SyEtxmkQaESd90mE'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: a7170d27-32ab-462b-a333-269abc654483
+    internal-label: Smart Campaigns
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
   - id: d1d0a9cd-295d-4976-8c39-ddae266f240e
+    internal-label: Administration
+  - id: 1c1a93b2-f024-5627-9905-6faf6fcc22be
+    internal-label: Munchkin Tracking Code
+  - id: dda1332a-c3e0-583f-9d9b-15f1934e0ad3
+    internal-label: Javascript
 subfeature_v2:
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+    internal-label: Smart lists
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Administration
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 716
+source-wordcount: '716'
 ht-degree: 0%
-
 ---
-
 # 潛在客戶追蹤API
 
 Marketo的Munchkin JavaScript會追蹤Marketo登陸頁面和外部網頁上的頁面瀏覽次數和連結點按次數。 Marketo會將這些互動記錄為「造訪網頁」和「網頁上的點選連結」活動。
@@ -123,7 +132,7 @@ Munchkin Cookie特定於每個第二層網域，例如`example.com`。 預設Coo
 
 ## Beta
 
-若要選擇加入登陸頁面的Munchkin測試版管道，請前往[管理員 — > Treasure Chest](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features)並啟用「登陸頁面上的Munchkin Beta」設定。
+若要選擇加入登陸頁面的Munchkin測試版管道，請前往[管理員 — > Treasure Chest](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/administration/settings/enable-or-disable-treasure-chest-features)並啟用「登陸頁面上的Munchkin Beta」設定。
 
 此設定會將程式碼片段新增至&#x200B;**[!UICONTROL Admin]** -> **[!UICONTROL Munchkin]**&#x200B;功能表。 使用這些程式碼片段在外部網站上執行測試版。
 

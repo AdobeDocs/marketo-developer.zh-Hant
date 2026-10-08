@@ -3,23 +3,30 @@ title: 設定
 description: 使用Marketo API設定JavaScript Munchkin。 瞭解Munchkin.init設定，例如altIds、anonymizeIP、asyncOnly、cookie期限、domainLevel、Beacon API。
 feature: Munchkin Tracking Code, Javascript
 exl-id: 4700ce7b-f624-4f27-871e-9a050f203973
-TQID: https://experienceleague.adobe.com/ip2cCGgoa83v8m9GYLYXe132veYxS1C6UWX1iLB6X5Q
+TQID: 'https://experienceleague.adobe.com/ip2cCGgoa83v8m9GYLYXe132veYxS1C6UWX1iLB6X5Q'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
   - id: ea90ebee-5c84-42d9-8b21-006bdabc95a3
+    internal-label: Reporting
+  - id: 1c1a93b2-f024-5627-9905-6faf6fcc22be
+    internal-label: Munchkin Tracking Code
+  - id: dda1332a-c3e0-583f-9d9b-15f1934e0ad3
+    internal-label: Javascript
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: aa2f3246-cb95-4b30-8899-fdf7d73550cc
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Reporting
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 541
+source-wordcount: '541'
 ht-degree: 5%
-
 ---
-
 # 設定
 
 Munchkin接受可自訂其行為的組態設定。 在[Munchkin.init()](api-reference.md#munchkin_init)的第二個引數中傳遞設定作為JavaScript物件的屬性。
@@ -50,7 +57,7 @@ Munchkin.init("AAA-BBB-CCC", {
 | domainSelectorV2 | 布林值 | 若設為true，會使用改良的方法判斷如何設定Cookie網域屬性。 |
 | httpsOnly | 布林值 | 預設為false。 若設為true，則在透過https提供追蹤的頁面時，將Cookie設定為使用Secure設定。 |
 | useBeaconAPI | 布林值 | 預設為false。 設定為True時，會使用[Beacon API](https://developer.mozilla.org/en-US/docs/Web/API/Beacon_API)來傳送非封鎖要求，而非[XMLHttpRequest](https://developer.mozilla.org/zh-TW/docs/Web/API/XMLHttpRequest)。 如果瀏覽器不支援Beacon API，Munchkin會使用XMLHttpRequest。 |
-| wsInfo | 字串 | 以工作區為目標。 在「管理員>整合> Munchkin」功能表中選取工作區，以取得工作區ID。<br><br>此設定只適用於最初建立匿名潛在客戶記錄時。 為該潛在客戶記錄建立Munchkin Cookie值後，wsInfo引數就無法變更其資料分割。<br><br>由於此設定只會影響匿名銷售機會，因此它只與網頁報表中分割特定的[匿名訪客](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports)有關。 |
+| wsInfo | 字串 | 以工作區為目標。 在「管理員>整合> Munchkin」功能表中選取工作區，以取得工作區ID。<br><br>此設定只適用於最初建立匿名潛在客戶記錄時。 為該潛在客戶記錄建立Munchkin Cookie值後，wsInfo引數就無法變更其資料分割。<br><br>由於此設定只會影響匿名銷售機會，因此它只與網頁報表中分割特定的[匿名訪客](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/reporting/basic-reporting/report-activity/display-people-or-anonymous-visitors-in-web-reports)有關。 |
 
 ## 範例
 

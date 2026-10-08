@@ -3,18 +3,30 @@ title: 資料攝取
 feature: REST API, Dynamic Content, Static Lists
 description: 使用Marketo資料擷取API來擷取大量人員、自訂物件、公司、方案成員和清單，並降低延遲的資料擷取。
 exl-id: 1d501916-53ac-42d8-a804-abb4ab01c7e8
-TQID: https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk
+TQID: 'https://experienceleague.adobe.com/xby7hs-CSLrVzy-FXEBi1FeU1-ca7vI4kB85BYJ9snk'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: c56e5f8f-221f-55c2-8170-b1a9e10687cb
+    internal-label: Static Lists
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+  - id: ed6be6bb-75bb-4ea9-9a42-3bcaa65e1bcc
+    internal-label: Personalization
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
+  - id: cdd4e0f6-e87e-453f-88ee-2ee54a7de272
+    internal-label: Dynamic content
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 2151
+source-wordcount: '2153'
 ht-degree: 14%
-
 ---
-
 # 資料擷取API
 
 資料擷取API是一項高容量、低延遲、高可用的服務。 使用它可以以最低延遲擷取大量人員和個人相關資料。
@@ -76,7 +88,7 @@ API提供五種物件型別的介面：
 
 ### 回應
 
-| 索引鍵 | 價值 | 必要 |
+| 索引鍵 | 價值 | 必填 |
 | --- | --- | --- |
 | `X-Request-Id` | 唯一請求識別碼。 | 是 |
 
@@ -318,7 +330,7 @@ Adobe Developer閘道中會重複使用下列錯誤碼。
 
 #### 標頭
 
-| 索引鍵 | 價值 | 必要 |
+| 索引鍵 | 價值 | 必填 |
 | --- | --- | --- |
 | `Content-Type` | application/json | 是 |
 | `X-Mkto-User-Token` | {accessToken} | 是 |
@@ -615,7 +627,7 @@ Adobe Developer閘道中會重複使用下列錯誤碼。
 
 #### 標頭
 
-| 索引鍵 | 價值 | 必要 |
+| 索引鍵 | 價值 | 必填 |
 | --- | --- | --- |
 | `Content-Type` | application/json | 是 |
 | `X-Mkto-User-Token` | {accessToken} | 是 |
@@ -695,7 +707,7 @@ Adobe Developer閘道中會重複使用下列錯誤碼。
 
 #### 標頭
 
-| 索引鍵 | 價值 | 必要 |
+| 索引鍵 | 價值 | 必填 |
 | --- | --- | --- |
 | `Content-Type` | application/json | 是 |
 | `X-Mkto-User-Token` | {accessToken} | 是 |

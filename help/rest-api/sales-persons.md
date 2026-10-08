@@ -3,25 +3,31 @@ title: 銷售人員
 feature: REST API
 description: 使用SFDC或Dynamics sync使用externalSalesPersonId來與銷售機會建立關聯及執行查詢、更新插入、刪除的銷售人員記錄Marketo REST API指南。
 exl-id: f8ed5aa5-63c1-4c5b-8683-bf47eed1ea18
-TQID: https://experienceleague.adobe.com/JwLNgM0zgztyoYJotCiSdGxMixnzA0kvkFbvq8kEkzE
+TQID: 'https://experienceleague.adobe.com/JwLNgM0zgztyoYJotCiSdGxMixnzA0kvkFbvq8kEkzE'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 363
+source-wordcount: '363'
 ht-degree: 0%
-
 ---
-
 # 銷售人員
 
 [銷售人員端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Sales-Persons)
 
-銷售人員API為已啟用[SFDC Sync](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync)的訂閱提供唯讀存取權。
+銷售人員API為已啟用[SFDC Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync)的訂閱提供唯讀存取權。
 
 「銷售人員」是代表潛在客戶記錄之銷售擁有者的個人記錄。 每個Lead記錄上的externalSalesPersonId欄位會將Lead與Sales Person相關聯。 填入此欄位時，Marketo會填入潛在客戶記錄上對應的潛在客戶擁有者查詢欄位。 接著，您可以使用相關聯的篩選器和權杖。
 

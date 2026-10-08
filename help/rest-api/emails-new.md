@@ -3,13 +3,23 @@ title: 電子郵件
 feature: REST API
 description: 使用Marketo Asset REST API可查詢、建立、更新、複製、刪除、核准和檢查電子郵件資產的相依性。
 exl-id: b41a3ae5-2b25-4103-84b4-320fc2c44bd6
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
 source-wordcount: '490'
 ht-degree: 5%
-
 ---
-
 # 電子郵件
 
 [電子郵件端點參考](https://developer.adobe.com/marketo-apis/api/asset)

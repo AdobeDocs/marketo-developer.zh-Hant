@@ -3,27 +3,37 @@ title: 表單
 feature: REST API, Forms
 description: Marketo Forms REST API指南可建立和管理表單、依id或名稱擷取、使用狀態篩選器瀏覽，以及管理欄位、欄位集和規則。
 exl-id: 2e5dfa70-3163-4ab4-b269-3112417714c3
-TQID: https://experienceleague.adobe.com/56tc1a14d8okxweS7TK7SzfGB8G03WAI2KBlFKQbSdM
+TQID: 'https://experienceleague.adobe.com/56tc1a14d8okxweS7TK7SzfGB8G03WAI2KBlFKQbSdM'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: a7170d27-32ab-462b-a333-269abc654483
+    internal-label: Smart Campaigns
   - id: b0bb9048-d951-48d8-8232-45cf248a7e27
+    internal-label: Forms
   - id: d65b4a73-87a3-4d56-b638-74e74d9939ce
+    internal-label: Design Studio
   - id: e64968b2-4ee5-47f9-8cae-0588f184b9eb
+    internal-label: Programs
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
 subfeature_v2:
   - id: d0251300-e25f-466f-9856-7e11ce8fa7aa
+    internal-label: Smart lists
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Metadata
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 1447
+source-wordcount: '1447'
 ht-degree: 2%
-
 ---
-
 # 表單
 
 [Forms端點參考](https://developer.adobe.com/marketo-apis/api/asset#tag/Forms)
@@ -339,7 +349,7 @@ GET /rest/asset/v1/form/{id}/fields.json
 - 登陸頁面
 - 智慧清單
 - 智慧行銷活動
-- 報表
+- 報告
 - 電子郵件方案
 
 ```http
@@ -918,7 +928,7 @@ Content-Type: text/html
 
 表單中的欄位必須是唯一的。 相同的欄位無法同時出現在表單的父欄位清單和子欄位集中。
 
-將具有[Add Fieldset的欄位集新增至Form](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldSetUsingPOST)端點。 欄位集接著會出現在表單[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormFieldByFormVidUsingGET)回應的取得欄位中。 若要將欄位新增至欄位集，請使用[更新欄位位置](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST)以將其移至其`fieldList`。
+將具有[Add Fieldset的欄位集新增至Form](https://developer.adobe.com/marketo-apis/api/asset#operation/addFieldSetUsingPOST)端點。 欄位集接著會出現在表單](https://developer.adobe.com/marketo-apis/api/asset#operation/getFormFieldByFormVidUsingGET)回應的[取得欄位中。 若要將欄位新增至欄位集，請使用[更新欄位位置](https://developer.adobe.com/marketo-apis/api/asset#operation/updateFieldPositionsUsingPOST)以將其移至其`fieldList`。
 
 對於這些端點，以`application/x-www-form-urlencoded`的POST形式傳送資料，而非以JSON形式傳送。
 

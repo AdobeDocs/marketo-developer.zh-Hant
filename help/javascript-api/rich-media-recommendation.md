@@ -3,20 +3,23 @@ title: 多媒體推薦
 description: 使用Marketo預測性內容RTP標籤、template1 template2 template3 div、GET要填入、SET要設定類別來設定多媒體建議。
 feature: Javascript
 exl-id: ee92e46d-e529-40a2-a0d0-ee233916f004
-TQID: https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI
+TQID: 'https://experienceleague.adobe.com/ygm5h1FJZZW4mC318-fRR3VAcO6j1sitcAeqIUjDTbI'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
+  - id: dda1332a-c3e0-583f-9d9b-15f1934e0ad3
+    internal-label: Javascript
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 814
-ht-degree: 4%
-
+source-wordcount: '814'
+ht-degree: 3%
 ---
-
 # 多媒體推薦
 
 若要顯示Rich Media Recommendation範本，請將必要的標籤和API呼叫新增至頁面。
@@ -28,14 +31,14 @@ ht-degree: 4%
 1. 在頁面本文中：
    1. 將範本標籤（div類別）放置在要顯示範本的位置。
 
-如需詳細資訊，請參閱[為網頁多媒體啟用預測性內容](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)。
+如需詳細資訊，請參閱[為網頁多媒體啟用預測性內容](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/predictive-content/enabling-predictive-content/enable-predictive-content-for-web-rich-media)。
 
 ## 範本標籤
 
 | 屬性 | 選用/必要 | 說明 |
 | --- | --- | --- |
-| 類別 | 必要 | 將div HTML元素識別為RTP建議div。 |
-| data-rtp-template-id | 必要 | 決定建議對齊方式。 使用「template1」進行水準對齊、「template2」進行垂直對齊，或「template3」進行垂直對齊，但只有標題和說明。 指令碼會將相符的範本插入此`div`。 允許的值： template1、template2、template3。 |
+| 類別 | 必填 | 將div HTML元素識別為RTP建議div。 |
+| data-rtp-template-id | 必填 | 決定建議對齊方式。 使用「template1」進行水準對齊、「template2」進行垂直對齊，或「template3」進行垂直對齊，但只有標題和說明。 指令碼會將相符的範本插入此`div`。 允許的值： template1、template2、template3。 |
 
 ### 範例
 
