@@ -33,7 +33,7 @@ ht-degree: 3%
 
 使用登陸頁面重新導向規則REST API來查詢、建立、更新及刪除登陸頁面重新導向URL。
 
-重新導向規則會將一個登陸頁面URL傳送到另一個頁面URL。 來源和目的地可以是Marketo或非Marketo頁面。 如需相關產品檔案，請參閱[Marketo Engage檔案](https://experienceleague.adobe.com/docs/marketo/using/home.html?lang=zh-Hant)。
+重新導向規則會將一個登陸頁面URL傳送到另一個頁面URL。 來源和目的地可以是Marketo或非Marketo頁面。 如需相關產品檔案，請參閱[Marketo Engage檔案](https://experienceleague.adobe.com/docs/marketo/using/home.html)。
 
 ## 查詢
 
@@ -172,7 +172,7 @@ GET /rest/asset/v1/redirectRules.json&maxReturn=3
 | Marketo | landingPageId | {&quot;type&quot;：&quot;landingPageId&quot;，&quot;value&quot;：&quot;1774&quot;} |
 | 非Marketo | url | {&quot;type&quot;：&quot;url&quot;，&quot;value&quot;：&quot;www.contactLogs.com&quot;} |
 
-如需詳細資訊，請參閱[將Marketo登入頁面重新導向至其他頁面](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html?lang=zh-Hant)。
+如需詳細資訊，請參閱[將Marketo登入頁面重新導向至其他頁面](https://experienceleague.adobe.com/docs/marketo/using/product-docs/demand-generation/landing-pages/landing-page-actions/redirect-a-marketo-landing-page-to-another-page.html)。
 
 ```http
 POST /rest/asset/v1/redirectRules.json
@@ -262,7 +262,7 @@ redirectTo={"type":"landingPageId", "value":"5561"}
 
 ## 刪除
 
-依ID[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteLandingPageRedirectRuleUsingPOST)端點的刪除登陸頁面重新導向規則需要一個重新導向規則`id`路徑引數。
+依ID](https://developer.adobe.com/marketo-apis/api/asset#operation/deleteLandingPageRedirectRuleUsingPOST)端點的[刪除登陸頁面重新導向規則需要一個重新導向規則`id`路徑引數。
 
 ```http
 POST /rest/asset/v1/redirectRule/{id}/delete.json

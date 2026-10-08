@@ -95,7 +95,7 @@ GET /rest/asset/v1/folder/{id}.json?type=Folder
 
 ### 依名稱
 
-依名稱[&#128279;](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET)的查詢端點需要`name`，它會針對資料夾名稱執行完全相符的專案，並傳回每個相符的資料夾。
+依名稱](https://developer.adobe.com/marketo-apis/api/asset#operation/getFolderByNameUsingGET)的[查詢端點需要`name`，它會針對資料夾名稱執行完全相符的專案，並傳回每個相符的資料夾。
 
 端點也接受以下選用引數：
 
