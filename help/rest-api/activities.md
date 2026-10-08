@@ -3,22 +3,29 @@ title: 活動
 feature: REST API
 description: 使用Marketo Engage活動REST API來列出活動型別、擷取具有分頁權杖的銷售機會活動，以及處理自訂和資料值的變更。
 exl-id: 1e69af23-2b0c-467a-897c-1dcf81343e73
-TQID: https://experienceleague.adobe.com/62keaj4uNoxIPCzr9AQzKrIsfuHBvC25knYisZRUvF4
+TQID: 'https://experienceleague.adobe.com/62keaj4uNoxIPCzr9AQzKrIsfuHBvC25knYisZRUvF4'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: c5f60233-d5ea-4453-a799-0ad258b4d399
+    internal-label: Database
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
-source-git-commit: aeb0d5a176ffdd0910ee533353593bba95f91d08
+    internal-label: Metadata
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 1740
+source-wordcount: '1740'
 ht-degree: 0%
-
 ---
-
 # 活動
 
 Marketo支援許多與潛在客戶記錄相關的活動型別。 幾乎所有變更、動作或流程步驟都會記錄在潛在客戶的活動記錄中。 您可以透過API擷取這些活動，或在「智慧清單」和「智慧行銷活動」篩選器和觸發器中使用這些活動。

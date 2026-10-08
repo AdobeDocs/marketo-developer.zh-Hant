@@ -3,18 +3,24 @@ title: 錯誤次數
 feature: Webhooks
 description: 瞭解Marketo Webhook錯誤代碼、為何需要2xx回應來更新潛在客戶欄位，以及如何使用Webhook擷取和處理呼叫的錯誤。
 exl-id: adce40c3-87b1-4f31-8995-eb64e8a72b55
-TQID: https://experienceleague.adobe.com/N2jNA4EUMMTUFL9uJHZhOor6Tlz4-EXWciwoXrPml48
+TQID: 'https://experienceleague.adobe.com/N2jNA4EUMMTUFL9uJHZhOor6Tlz4-EXWciwoXrPml48'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: b13bd2ad-8e65-49e5-9691-2a0d31067b35
+    internal-label: Integrations
+subfeature_v2:
+  - id: fc9b09fe-b844-4544-887b-e420c3b82065
+    internal-label: Webhooks
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 210
+source-wordcount: '210'
 ht-degree: 2%
-
 ---
-
 # 錯誤次數
 
 本頁說明Marketo Webhook的錯誤回應程式碼，並說明如何處理Webhook錯誤。

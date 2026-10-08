@@ -3,18 +3,24 @@ title: 基礎 URL
 feature: REST API
 description: 瞭解如何建立Marketo REST API要求、瞭解基本URL路徑資源和引數，並尋找您唯一的基本URL。
 exl-id: 6c3f122c-3ace-4ed3-bed0-a6b89cedc99a
-TQID: https://experienceleague.adobe.com/NZisV6V-FMPi0RHpdaFrc1kZc3nb15YomwRgohaQmEE
+TQID: 'https://experienceleague.adobe.com/NZisV6V-FMPi0RHpdaFrc1kZc3nb15YomwRgohaQmEE'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 142
+source-wordcount: '142'
 ht-degree: 2%
-
 ---
-
 # 基礎 URL
 
 [端點參考](endpoint-reference.md)中的每個API呼叫都指定了REST方法、路徑、資源和引數。 將這些元件附加至基底URL以形成請求。

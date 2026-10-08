@@ -1,24 +1,28 @@
 ---
-title: ' [!DNL Adobe Launch]的Marketo Mobile擴充功能'
+title: '[!DNL Adobe Launch]的Marketo Mobile擴充功能'
 feature: Mobile Marketing
 description: 在適用於Marketo和Android的Adobe Launch中安裝並設定iOS Mobile SDK擴充功能，包括推播通知和應用程式內訊息的設定。
 exl-id: 2f8691ff-0442-45a5-aeba-c91c3af5c711
-TQID: https://experienceleague.adobe.com/Bk5GTnQjm6NDosl5Iw6TS-NRjH8owNRUKoE0mZ-H3pY
+TQID: 'https://experienceleague.adobe.com/Bk5GTnQjm6NDosl5Iw6TS-NRjH8owNRUKoE0mZ-H3pY'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
+  - id: 44b89f75-c1af-5353-8094-79b278102d46
+    internal-label: Mobile Marketing
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: d095671a-1355-40aa-8b5f-06c33c68080b
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Security
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 303
+source-wordcount: '303'
 ht-degree: 0%
-
 ---
-
 # [!DNL Adobe Launch]的Marketo Mobile擴充功能
 
 在[!DNL Adobe Launch]中安裝Marketo Mobile SDK擴充功能，以傳送推播通知、應用程式內訊息或兩者。

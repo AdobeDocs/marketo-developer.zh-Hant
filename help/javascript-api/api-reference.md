@@ -3,20 +3,25 @@ title: Munchkin API參考
 description: 使用Munchkin Javascript API透過init、createTrackingCookie和munchkinFunction方法追蹤頁面造訪、連結點選和自訂事件。
 feature: Munchkin Tracking Code, Javascript
 exl-id: e9727691-5501-4223-bc98-2b4bacc33513
-TQID: https://experienceleague.adobe.com/s97x6wVZijnnxZwS7HMIkQAKlxXkcfPXuSZG4KjXGoc
+TQID: 'https://experienceleague.adobe.com/s97x6wVZijnnxZwS7HMIkQAKlxXkcfPXuSZG4KjXGoc'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
 feature_v2:
   - id: b3b8a63f-51fc-40f6-a7d2-a31c5d49fb45
+    internal-label: Configuration
+  - id: 1c1a93b2-f024-5627-9905-6faf6fcc22be
+    internal-label: Munchkin Tracking Code
+  - id: dda1332a-c3e0-583f-9d9b-15f1934e0ad3
+    internal-label: Javascript
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 414
+source-wordcount: '414'
 ht-degree: 7%
-
 ---
-
 # Munchkin API參考
 
 Munchkin提供JavaScript功能，供您自訂追蹤瀏覽器事件。 例如，您可以追蹤非連結元素的視訊播放或點按。

@@ -3,20 +3,24 @@ title: 應用程式內訊息
 feature: Mobile Marketing
 description: 使用Mobile SDK設定Marketo應用程式內訊息、設定自訂事件觸發器、追蹤點選活動，以及修正首次開啟應用程式的初始化問題。
 exl-id: 73c9f862-d154-4b37-94ce-92311aa756e8
-TQID: https://experienceleague.adobe.com/RVkEUBaFb-PHd0gE9ngzYc5zOojINwSI7ic2TmcU7-8
+TQID: 'https://experienceleague.adobe.com/RVkEUBaFb-PHd0gE9ngzYc5zOojINwSI7ic2TmcU7-8'
 product_v2:
   - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: 44b89f75-c1af-5353-8094-79b278102d46
+    internal-label: Mobile Marketing
 role_v2:
   - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
 topic_v2:
   - id: c1579802-ddd4-4214-8a91-97b2066abe11
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+    internal-label: Troubleshooting
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
-source-wordcount: 321
+source-wordcount: '321'
 ht-degree: 2%
-
 ---
-
 # 應用程式內訊息
 
 完成下列步驟即可使用Marketo應用程式內傳訊：

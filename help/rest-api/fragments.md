@@ -3,13 +3,23 @@ title: 片段
 feature: REST API
 description: 使用Marketo Asset REST API來查詢、建立、更新、複製、刪除、核准和檢查片段的相依性。
 exl-id: 9dd532d1-1dd7-4581-86dd-1943fab66cbb
-source-git-commit: 3e6d310c5aec1a3435424fb122b71d825db5af0e
+product_v2:
+  - id: b27e5950-9033-45ac-9f86-eb22e567f615
+    internal-label: Marketo Engage
+feature_v2:
+  - id: dca84292-69e9-4116-a575-667d31fa060d
+    internal-label: APIs
+subfeature_v2:
+  - id: cf1396d8-ab85-4e93-b35d-d9b573024abf
+    internal-label: REST APIs
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+    internal-label: Admin
+source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
 workflow-type: tm+mt
 source-wordcount: '282'
 ht-degree: 9%
-
 ---
-
 # 片段
 
 片段是可重複使用的內容資產，可供其他資產（例如電子郵件）參考。
