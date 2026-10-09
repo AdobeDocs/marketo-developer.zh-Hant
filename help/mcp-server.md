@@ -34,9 +34,9 @@ role_v2:
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
+source-git-commit: 5c356507ac2551edfbb1c60dba7b167d7ef0b4c0
 workflow-type: tm+mt
-source-wordcount: '2176'
+source-wordcount: '2104'
 ht-degree: 0%
 ---
 
@@ -92,7 +92,6 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 
 * 已啟用REST API存取的[!DNL Marketo]執行個體
 * 在[!DNL Marketo] LaunchPoint中建立API認證的管理員存取權
-* 下列AI工具之一： Claude Desktop、Cursor、Codex、Claude Code (CLI)、使用GitHub Copilot的VS Code，或其他相容的MCP使用者端，例如Gemini CLI
 * 網路存取MCP伺服器URL： `https://marketo-mcp.adobe.io/mcp`
 
 ## 取得Marketo認證
@@ -118,20 +117,15 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 
 ## 設定您的AI工具
 
-設定因AI工具而異。 以下小節提供常用工具的連線範例。
-
-* [克勞德案頭](#claude-desktop)
-* [游標](#cursor)
-* [克勞德程式碼CLI](#claude-code)
-* [OpenAI程式碼](#codex)
-* [Gemini CLI](#gemini-cli)
-* [VSCode搭配GitHub Copilot](#vscode)
-* [Grean](#glean)
-* [其他工具](#other-tools)
+設定會依工具而略有不同。 以下提供常用工具的連線範例。
 
 >[!TIP]
 >
 >若要連線到多個[!DNL Marketo]執行個體，請在您的MCP設定中新增具有唯一名稱的個別專案： `marketo-prod`和`marketo-staging`，每個專案都有對應的認證。
+
+>[!BEGINTABS]
+
+>[!TAB 克勞德案頭]
 
 ### 克勞德案頭 {#claude-desktop}
 
@@ -167,6 +161,8 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 
 1. 重新啟動Claude Desktop。
 
+>[!TAB 游標]
+
 ### 游標 {#cursor}
 
 如果您的游標MCP組態已經包含其他伺服器，請在`mcpServers`下新增`marketo`專案。
@@ -190,6 +186,8 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 
 重新啟動游標。
 
+>[!TAB 克勞德程式碼CLI]
+
 ### 克勞德程式碼(CLI) {#claude-code}
 
 在終端機中執行以下命令，取代您的認證：
@@ -202,6 +200,8 @@ claude mcp add --transport http marketo \
   --header "X-Marketo-Munchkin-Id: YOUR-MUNCHKIN-ID"
 ```
 
+>[!TAB OpenAI程式碼]
+
 ### OpenAI程式碼 {#codex}
 
 1. 前往「設定> MCP伺服器>新增伺服器」。
@@ -213,6 +213,8 @@ claude mcp add --transport http marketo \
 * X-Marketo-Munchkin-Id： &quot;YOUR-MUNCHKIN-ID&quot;
 
 1. 選取「儲存」以完成程式。
+
+>[!TAB Gemini CLI]
 
 ### Gemini CLI
 
@@ -244,6 +246,8 @@ gemini mcp add --transport http -s user marketo https://marketo-mcp.adobe.io/mcp
 
 重新啟動工作階段以挑選新的MCP伺服器組態。
 
+>[!TAB 使用GitHub Copilot的 VS程式碼]
+
 ### VS程式碼與GitHub Copilot {#vscode}
 
 按&#x200B;**[!UICONTROL Ctrl+Shift+P]** （或macOS上的&#x200B;**[!UICONTROL Cmd+Shift+P]**），輸入&#x200B;**[!UICONTROL MCP: Open User Configuration]**，然後按Enter。 這會開啟`mcp.json`。 在`servers`物件中新增`marketo`專案：
@@ -264,9 +268,58 @@ gemini mcp add --transport http -s user marketo https://marketo-mcp.adobe.io/mcp
 }
 ```
 
->[!NOTE]
->
->為安全起見，請在設定檔案中使用環境變數內插，而非直接貼上認證。 您可以使用如`${MARKETO_CLIENT_SECRET}`的語法參考變數，並在您的環境中設定它們。 這可防止在版本控制的檔案中以純文字儲存認證。
+>[!TAB Copilot Studio]
+
+### Copilot Studio
+
+Copilot Studio的運作方式有些不同。 您可以建立YAML定義檔案，然後Copilot Studio會從中建置聯結器UI。 您可在此處定義自訂標頭。
+
+建立新聯結器時，請開啟「Swagger編輯器」並貼入下列程式碼：
+
+```yaml
+swagger: '2.0'
+info:
+  title: Marketo MCP Server
+  description: Connect to the Marketo MCP server.
+  version: 1.0.0
+host: marketo-mcp.adobe.io
+basePath: /
+schemes:
+  - https
+paths:
+  /mcp:
+    post:
+      summary: Marketo MCP Server
+      description: Invoke the Marketo MCP server.
+      operationId: InvokeServer
+      x-ms-agentic-protocol: mcp-streamable-1.0
+      parameters:
+        - name: MARKETO_MCP_PROD_CLIENT_ID
+          in: header
+          description: Client ID.
+          type: string
+          required: true
+        - name: MARKETO_MCP_PROD_CLIENT_SECRET
+          in: header
+          description: Client secret.
+          type: string
+          required: true
+        - name: MARKETO_MCP_PROD_MUNCHKIN_ID
+          in: header
+          description: Munchkin ID.
+          type: string
+          required: true
+      responses:
+        '200':
+          description: Immediate Response
+securityDefinitions: {}
+security: []
+```
+
+更新聯結器，然後關閉並重新開啟聯結器。
+您現在可以依照連線流程並填入標頭值。
+
+>[!TAB Glean]
 
 ### Grean {#glean}
 
@@ -277,6 +330,8 @@ gemini mcp add --transport http -s user marketo https://marketo-mcp.adobe.io/mcp
 | `X-Marketo-Client-Id` | 您的使用者端ID |
 | `X-Marketo-Client-Secret` | 您的使用者端密碼 |
 | `X-Marketo-Munchkin-Id` | 您的Munchkin帳戶ID |
+
+>[!TAB 其他工具]
 
 ### 其他工具 {#other-tools}
 
@@ -302,9 +357,7 @@ Adobe主控[!DNL Marketo] MCP伺服器，並在公用URL中公開。 任何透�
 
 如果您的工具接受JSON設定，請從[Cursor](#cursor)或[VS Code](#vscode)範例開始，並調整金鑰(`mcpServers`、`servers`)以符合您工具的結構描述。
 
->[!NOTE]
->
->Gemini CLI透過可串流的HTTP和自訂驗證標頭，支援遠端MCP伺服器。 若要將其連線到[!DNL Marketo] MCP伺服器，請使用上述連線詳細資料，並遵循[Gemini CLI MCP組態檔案](https://geminicli.com/docs/tools/mcp-server/){target="_blank"}。 在`settings.json`中的`mcpServers`底下新增伺服器專案，將`httpUrl`設定為`https://marketo-mcp.adobe.io/mcp`，並在`headers`中提供三個Marketo驗證標頭。 請使用Gemini CLI用於SSE傳輸的`httpUrl`，而不是`url`。 本指引適用於Gemini CLI，而非Gemini Web或行動應用程式。
+>[!ENDTABS]
 
 ## 可用的作業
 
