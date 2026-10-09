@@ -166,7 +166,7 @@ MCP可能會傳輸資料，包括可能的敏感欄位，視API使用方式而�
 ### 游標 {#cursor}
 
 如果您的游標MCP組態已經包含其他伺服器，請在`mcpServers`下新增`marketo`專案。
-下列範例顯示專案目錄中**[!UICONTROL Settings]** > **[!UICONTROL MCP]**&#x200B;或`.cursor/mcp.json`中的完整`mcpServers`區塊：
+下列範例顯示專案目錄中&#x200B;**[!UICONTROL Settings]** > **[!UICONTROL MCP]**&#x200B;或`.cursor/mcp.json`中的完整`mcpServers`區塊：
 
 ```json
 {
@@ -246,7 +246,7 @@ gemini mcp add --transport http -s user marketo https://marketo-mcp.adobe.io/mcp
 
 重新啟動工作階段以挑選新的MCP伺服器組態。
 
->使用GitHub Copilot的[!TAB VS程式碼]
+>[!TAB 使用GitHub Copilot的 VS程式碼]
 
 ### VS程式碼與GitHub Copilot {#vscode}
 
