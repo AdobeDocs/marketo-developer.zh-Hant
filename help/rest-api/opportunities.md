@@ -21,20 +21,20 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
     internal-label: Metadata
-source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
+source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
 workflow-type: tm+mt
 source-wordcount: '702'
 ht-degree: 0%
 ---
 # 機會
 
-[機會端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Opportunities)
+[機會端點參考](https://developer.adobe.com/marketo-apis/api/mapi#tag/Oppofrtunities)
 
 Marketo提供用於讀取、寫入、建立和更新商機記錄的API。 在Marketo中，中繼機會角色物件會將機會記錄連結至銷售線索和聯絡人記錄。 因此，機會可以連結到許多個別銷售機會。
 
 API會公開兩種物件型別。 和大多數Lead Database物件型別一樣，每個物件型別都有對應的Describe呼叫，可傳回物件中繼資料。
 
-商機API為已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=zh-Hant)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=zh-Hant)的訂閱提供唯讀存取權。
+商機API為已啟用[SFDC Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/salesforce-sync/sfdc-sync-details/sfdc-sync-field-sync.html?lang=en)或[Microsoft Dynamics Sync](https://experienceleague.adobe.com/docs/marketo/using/product-docs/crm-sync/microsoft-dynamics/microsoft-dynamics-sync-details/microsoft-dynamics-sync-user-sync.html?lang=en)的訂閱提供唯讀存取權。
 
 ## 說明
 
