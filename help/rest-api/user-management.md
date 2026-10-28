@@ -25,14 +25,14 @@ role_v2:
 topic_v2:
   - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
     internal-label: Administration
-source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
+source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
 workflow-type: tm+mt
 source-wordcount: '1404'
 ht-degree: 6%
 ---
 # 使用者管理
 
-[使用者管理端點參考](https://developer.adobe.com/marketo-apis/api/user/)
+[使用者管理端點參考](https://developer.adobe.com/marketo-apis/api/user)
 
 Marketo使用者管理端點會對使用者記錄執行CRUD操作。 若要建立使用者，請傳送邀請。 然後，使用者會設定密碼並首次存取Marketo。
 

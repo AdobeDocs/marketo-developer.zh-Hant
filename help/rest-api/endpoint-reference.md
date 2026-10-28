@@ -31,7 +31,7 @@ role_v2:
 topic_v2:
   - id: a004cc84-67b9-4a33-a3a7-8ec7273ef4dc
     internal-label: Metadata
-source-git-commit: 5620f050ba834be3f6648650b5cc7d781ea394bf
+source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
 workflow-type: tm+mt
 source-wordcount: '4807'
 ht-degree: 8%
@@ -41,9 +41,9 @@ ht-degree: 8%
 使用下列參考資料來尋找每個Marketo REST API群組的請求引數、回應結構描述和範例：
 
 - [資產](https://developer.adobe.com/marketo-apis/api/asset)
-- [身分識別](https://developer.adobe.com/marketo-apis/api/identity/)
+- [身分識別](https://developer.adobe.com/marketo-apis/api/identity)
 - [商機資料庫](https://developer.adobe.com/marketo-apis/api/mapi)
-- [使用者管理](https://developer.adobe.com/marketo-apis/api/user/)
+- [使用者管理](https://developer.adobe.com/marketo-apis/api/user)
 
 ## 端點清單 {#endpoint_list}
 
