@@ -21,9 +21,9 @@ role_v2:
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
+source-git-commit: 3e6e6ecbd10bb38c347bae82bc5acba7cda40f79
 workflow-type: tm+mt
-source-wordcount: '260'
+source-wordcount: '257'
 ht-degree: 0%
 ---
 
@@ -52,10 +52,10 @@ ht-degree: 0%
 * 推播通知工具
 * 應用程式內訊息和應用程式內程式工具
 * 使用`schedule_smart_campaign`排程智慧行銷活動
-* 使用者管理和大量服務工具
+* 使用者管理工具
 
 使用者端認證連線支援`schedule_campaign`作業。
 
 可用的操作取決於您的API使用者許可權、[!DNL Marketo]執行個體開啟的功能，以及MCP使用者端中的任何限制。 有些變更或刪除資料的作業需要確認和額外的存取權。 類別支援並不意味著要存取每個REST端點。
 
-如需連線指示和範例提示，請參閱[MCP伺服器](mcp-server.md#available-operations)頁面。 如需有關如何使用[!DNL Marketo] AI和[!DNL Marketo Engage] MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
+如需連線指示和範例提示，請參閱[MCP伺服器](mcp-server.md#available-operations)頁面。 如需有關如何使用[!DNL Marketo] AI和[!DNL Marketo Engage] MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
