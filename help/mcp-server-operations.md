@@ -58,4 +58,4 @@ ht-degree: 0%
 
 可用的操作取決於您的API使用者許可權、[!DNL Marketo]執行個體開啟的功能，以及MCP使用者端中的任何限制。 有些變更或刪除資料的作業需要確認和額外的存取權。 類別支援並不意味著要存取每個REST端點。
 
-如需連線指示和範例提示，請參閱[MCP伺服器](mcp-server.md#available-operations)頁面。 如需有關如何使用[!DNL Marketo] AI和[!DNL Marketo Engage] MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/en/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
+如需連線指示和範例提示，請參閱[MCP伺服器](mcp-server.md#available-operations)頁面。 如需有關如何使用[!DNL Marketo] AI和[!DNL Marketo Engage] MCP伺服器處理資料的資訊，請參閱[資料資訊](https://experienceleague.adobe.com/zh-hant/docs/marketo/using/product-docs/marketo-ai/data-information)頁面。
