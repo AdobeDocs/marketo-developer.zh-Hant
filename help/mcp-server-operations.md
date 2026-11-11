@@ -21,9 +21,9 @@ role_v2:
 topic_v2:
   - id: bbbea26f-9621-49eb-9ab8-e06fb3bbce8c
     internal-label: Artificial intelligence
-source-git-commit: 1cdb28422994b772a0fa430e213facaf26817952
+source-git-commit: 3e6e6ecbd10bb38c347bae82bc5acba7cda40f79
 workflow-type: tm+mt
-source-wordcount: '260'
+source-wordcount: '257'
 ht-degree: 0%
 ---
 
@@ -52,7 +52,7 @@ ht-degree: 0%
 * 推播通知工具
 * 應用程式內訊息和應用程式內程式工具
 * 使用`schedule_smart_campaign`排程智慧行銷活動
-* 使用者管理和大量服務工具
+* 使用者管理工具
 
 使用者端認證連線支援`schedule_campaign`作業。
 
